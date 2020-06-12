@@ -15,12 +15,6 @@ matrix:
       env:
         - TOXENV=docs
     - env:
-        - TOXENV=py27,codecov
-      python: '2.7'
-    - env:
-        - TOXENV=py35,codecov
-      python: '3.5'
-    - env:
         - TOXENV=py36,codecov
       python: '3.6'
     - env:
@@ -29,13 +23,6 @@ matrix:
     - env:
         - TOXENV=py38,codecov
       python: '3.8'
-    - env:
-        - TOXENV=pypy,codecov
-      python: 'pypy'
-    - env:
-        - TOXENV=pypy3,codecov
-        - TOXPYTHON=pypy3
-      python: 'pypy3'
 before_install:
   - python --version
   - uname -a
