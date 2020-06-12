@@ -2,14 +2,13 @@ import pytest
 
 import os
 import pathlib
-
+from py_dss_interface import DSSDLL
 
 script_path = os.path.dirname(os.path.abspath(__file__))
 ddll_path = os.path.join(pathlib.Path(script_path).parent.parent, "DDLL")
 
 @pytest.fixture
 def DSS():
-    from py_dss_interface import DSSDLL
 
     dss = DSSDLL(ddll_path)
     actual = dss.opendss_started

@@ -18,7 +18,6 @@ class DSSDLL:
         self.opendss_started = False
 
         if platform.architecture()[0] == "64bit":
-            os.chdir(os.path.join(dll_folder, "64"))
             self.dssObj = ctypes.WinDLL(os.path.join(dll_folder, "64", "OpenDSSDirect.dll"))
             self.opendss_started = True
         elif platform.architecture()[0] == "32bit":
