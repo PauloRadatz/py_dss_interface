@@ -13,7 +13,10 @@ include CHANGELOG.rst
 include CONTRIBUTING.rst
 include LICENSE
 include README.rst
-include DDLL
+include *.py
+recursive-include DDLL *.dll
+recursive-include DDLL *.exe
+
 
 include tox.ini .travis.yml .appveyor.yml .readthedocs.yml
 
