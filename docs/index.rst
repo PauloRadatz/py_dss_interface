@@ -8,7 +8,7 @@ Contents
    readme
    installation
    usage
-   reference/index
+   modules
    contributing
    authors
    changelog

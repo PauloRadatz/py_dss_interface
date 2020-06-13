@@ -70,11 +70,6 @@ Installation
 
     pip install py-dss-interface
 
-You can also install the in-development version with::
-
-    pip install https://github.com/PauloRadatz/py_dss_interface/archive/master.zip
-
-
 Documentation
 =============
 
