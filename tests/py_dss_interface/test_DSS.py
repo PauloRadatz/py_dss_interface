@@ -5,7 +5,7 @@ import pathlib
 import py_dss_interface
 
 script_path = os.path.dirname(os.path.abspath(__file__))
-ddll_path = os.path.join(pathlib.Path(script_path).parent.parent, "DDLL")
+ddll_path = os.path.join(pathlib.Path(script_path), "DDLL")
 
 @pytest.fixture
 def DSS():
