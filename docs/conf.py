@@ -1,7 +1,35 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+# Configuration file for the Sphinx documentation builder.
+#
+# This file only contains a selection of the most common options. For a full
+# list see the documentation:
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+# -- Path setup --------------------------------------------------------------
+
+# If extensions (or modules to document with autodoc) are in another directory,
+# add these directories to sys.path here. If the directory is relative to the
+# documentation root, use os.path.abspath to make it absolute, like shown here.
+#
 import os
+import sys
+import pathlib
+#sys.path.insert(0, os.path.abspath('..'))
+
+script_path = os.path.dirname(os.path.abspath(__file__))
+src_path = os.path.join(pathlib.Path(script_path).parent, "src", "py_dss_interface")
+
+sys.path.insert(0, src_path)
+
+
+# -- Project information -----------------------------------------------------
+
+source_suffix = '.rst'
+master_doc = 'index'
+project = 'py_dss_interface'
+year = '2020'
+author = 'Paulo Radatz'
+copyright = '{0}, {1}'.format(year, author)
+version = release = '0.0.1'
 
 
 extensions = [
@@ -24,7 +52,7 @@ copyright = '{0}, {1}'.format(year, author)
 version = release = '0.0.1'
 
 pygments_style = 'trac'
-templates_path = ['.']
+templates_path = ['_templates']
 extlinks = {
     'issue': ('https://github.com/PauloRadatz/py_dss_interface/issues/%s', '#'),
     'pr': ('https://github.com/PauloRadatz/py_dss_interface/pull/%s', 'PR #'),
