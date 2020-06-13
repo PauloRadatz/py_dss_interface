@@ -88,10 +88,11 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#thanks">Thanks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">How to Use py-dss-interface Python package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">src</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
@@ -187,7 +188,7 @@
 </tr>
 </tbody>
 </table>
-<p>py-dss-interface is a Windows Python package providing access to OpenDSS direct dll version of OpenDSS.</p>
+<p>py-dss-interface is a Windows Python package providing access to OpenDSS direct dll version of OpenDSS - Version 8.6.7.1 (64-bit build); License Status: Open and Version 8.6.7.1 (32-bit build); License Status: Open.</p>
 <ul class="simple">
 <li><p>Free software: MIT license</p></li>
 </ul>
@@ -199,7 +200,17 @@
 </div>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>You can access the documentation through:</p>
+<p>1 - The Read the Docs (the only problem is that it could not generate the doc using the docstring from the DSSDLL class. This class uses ctypes in a way that just works with Windows, but the Read the Docs uses linux to create it - Any help would be great!)</p>
 <p><a class="reference external" href="https://py_dss_interface.readthedocs.io/">https://py_dss_interface.readthedocs.io/</a></p>
+<p>2 - Well, there is a solution (I hate it, but works), you can download the docs created offline and open that in your browser.</p>
+<p><a class="reference external" href="https://github.com/PauloRadatz/py_dss_interface/tree/master/docs/my_doc">https://github.com/PauloRadatz/py_dss_interface/tree/master/docs/my_doc</a></p>
+<p>3 - Another good resource is the OpenDSS_Direct_DLL.pdf doc created by Davis Montenegro. The package has been done based on this documentation.</p>
+<p><a class="reference external" href="https://sourceforge.net/p/electricdss/code/HEAD/tree/trunk/Version8/Distrib/Doc/OpenDSS_Direct_DLL.pdf">https://sourceforge.net/p/electricdss/code/HEAD/tree/trunk/Version8/Distrib/Doc/OpenDSS_Direct_DLL.pdf</a></p>
+</div>
+<div class="section" id="thanks">
+<h2>Thanks<a class="headerlink" href="#thanks" title="Permalink to this headline">¶</a></h2>
+<p>Thanks to Celso Rocha for starting the main script with me back in 2016/2017.</p>
 </div>
 </div>
 
