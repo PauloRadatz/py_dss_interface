@@ -21,7 +21,7 @@ project = 'py_dss_interface'
 year = '2020'
 author = 'Paulo Radatz'
 copyright = '{0}, {1}'.format(year, author)
-version = release = '0.0.0'
+version = release = '0.0.1'
 
 pygments_style = 'trac'
 templates_path = ['.']
