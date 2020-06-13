@@ -1,20 +1,23 @@
-import sys
-import os
-import pathlib
-
-
-from py_dss_interface import DSSDLL
-
-
+# First import the Package
+import py_dss_interface
 
 # Creates an OpenDSS object
-dss = DSSDLL()
-dss_file = r"C:\PauloRadatz\GitLab\opendsspy_workflow\Feeders\Creelman\Master_NoPV.dss"
+dss = py_dss_interface.DSSDLL()
 
-dss.text(r"compile " + dss_file)
+# Select the DSS model
+dss_file = r"C:\OpenDSS_svn\Version8\Distrib\IEEETestCases\13Bus\IEEE13Nodeckt.dss"
 
+# Compile
+dss.text("compile {}".format(dss_file))
+
+# Solve
+dss.solution_solve()
+
+# Show Voltage Report
 dss.text("show voltages")
 
+# Get all buses voltages
+allbusvolts = dss.circuit_allbusvolts()
 
-
+print(dss.circuit_allbusvolts())
 

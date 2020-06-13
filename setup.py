@@ -25,7 +25,7 @@ def read(*names, **kwargs):
 
 setup(
     name='py-dss-interface',
-    version='0.0.1',
+    version='0.0.2',
     license='MIT',
     description='opendsspy is a Windows Python package providing access to OpenDSS direct dll version of OpenDSS.',
     long_description='%s\n%s' % (

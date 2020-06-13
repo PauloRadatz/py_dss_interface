@@ -14,6 +14,7 @@ include CONTRIBUTING.rst
 include LICENSE
 include README.rst
 include *.py
+include *.dss
 recursive-include src\py_dss_interface\DDLL *.dll
 recursive-include src\py_dss_interface\DDLL *.exe
 recursive-include tests\py_dss_interface\DDLL *.dll
