@@ -6,6 +6,7 @@ import py_dss_interface
 
 script_path = os.path.dirname(os.path.abspath(__file__))
 ddll_path = os.path.join(pathlib.Path(script_path), "DDLL")
+dss13_path = os.path.join(pathlib.Path(script_path), "13Bus", "IEEE13Nodeckt.dss")
 
 @pytest.fixture
 def DSS():
@@ -39,4 +40,7 @@ class TestDSS(object):
         assert self.dss.dss_version is not None
 
 
+    def test_solution_totaliterations(self):
+        self.dss.text("compile " + dss13_path)
 
+        assert self.dss.solution_totaliterations() == 11
