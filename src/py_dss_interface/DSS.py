@@ -11,6 +11,10 @@ import pathlib
 class DSSDLL:
 
     def __init__(self, dll_folder=None):
+        """
+        Class to create an OpenDSS object
+        :param dll_folder: None will use the OpenDSS available within the package. The DDLL path allows to use a different OpenDSS
+        """
 
         if dll_folder == None:
             script_path = os.path.dirname(os.path.abspath(__file__))
@@ -19,7 +23,6 @@ class DSSDLL:
         self.opendss_started = False
 
         if platform.architecture()[0] == "64bit":
-
             try:
                 os.chdir(os.path.join(dll_folder, "64"))
                 self.dssObj = ctypes.WinDLL("OpenDSSDirect.dll")
@@ -45,7 +48,6 @@ class DSSDLL:
             # print("OpenDSS Failed to Start")
 
     def _allocate_memory(self):
-
         self.dssObj.ActiveClassS.restype = ctypes.c_char_p
 
         self.dssObj.BUSF.restype = ctypes.c_double
