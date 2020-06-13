@@ -10,7 +10,7 @@ Overview
     * - docs
       - |docs|
     * - tests
-      - | |travis| |appveyor| |requires|
+      - | |appveyor| |requires|
         | |codecov|
     * - package
       - | |version| |wheel| |supported-versions| |supported-implementations|
@@ -59,7 +59,7 @@ Overview
 
 .. end-badges
 
-opendsspy is a Windows Python package providing access to OpenDSS direct dll version of OpenDSS.
+py-dss-interface is a Windows Python package providing access to OpenDSS direct dll version of OpenDSS.
 
 * Free software: MIT license
 
@@ -80,28 +80,3 @@ Documentation
 
 
 https://py_dss_interface.readthedocs.io/
-
-
-Development
-===========
-
-To run the all tests run::
-
-    tox
-
-Note, to combine the coverage data from all the tox environments run:
-
-.. list-table::
-    :widths: 10 90
-    :stub-columns: 1
-
-    - - Windows
-      - ::
-
-            set PYTEST_ADDOPTS=--cov-append
-            tox
-
-    - - Other
-      - ::
-
-            PYTEST_ADDOPTS=--cov-append tox
