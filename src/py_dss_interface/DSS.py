@@ -1,5 +1,6 @@
 # -*- coding: iso-8859-15 -*-
 
+import sys
 import ctypes
 from comtypes import automation
 import os
@@ -13,13 +14,20 @@ class DSSDLL:
 
         if dll_folder == None:
             script_path = os.path.dirname(os.path.abspath(__file__))
-            dll_folder = os.path.join(pathlib.Path(script_path).parent.parent, "DDLL")
+            dll_folder = os.path.join(pathlib.Path(script_path), "DDLL")
 
         self.opendss_started = False
 
         if platform.architecture()[0] == "64bit":
-            self.dssObj = ctypes.CDLL(os.path.join(dll_folder, "64", "OpenDSSDirect.dll"))
-            self.opendss_started = True
+
+            try:
+                os.chdir(os.path.join(dll_folder, "64"))
+                self.dssObj = ctypes.WinDLL("OpenDSSDirect.dll")
+                self.opendss_started = True
+            except:
+                os.chdir(os.path.join(dll_folder, "64"))
+                self.dssObj = ctypes.WinDLL(os.path.join(dll_folder, "64", "OpenDSSDirect.dll"))
+                self.opendss_started = True
         elif platform.architecture()[0] == "32bit":
             os.chdir(os.path.join(dll_folder, "32"))
             self.dssObj = ctypes.CDLL(os.path.join(dll_folder, "32", "OpenDSSDirect.dll"))

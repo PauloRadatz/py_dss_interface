@@ -3,7 +3,7 @@ dist: xenial
 cache: false
 env:
   global:
-    - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
+    - os: windows
     - SEGFAULT_SIGNALS=all
     - LANG=en_US.UTF-8
 matrix:

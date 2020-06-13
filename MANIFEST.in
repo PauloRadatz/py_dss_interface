@@ -14,9 +14,10 @@ include CONTRIBUTING.rst
 include LICENSE
 include README.rst
 include *.py
-recursive-include DDLL *.dll
-recursive-include DDLL *.exe
-
+recursive-include src\py_dss_interface\DDLL *.dll
+recursive-include src\py_dss_interface\DDLL *.exe
+recursive-include tests\py_dss_interface\DDLL *.dll
+recursive-include tests\py_dss_interface\DDLL *.exe
 
 include tox.ini .travis.yml .appveyor.yml .readthedocs.yml
 

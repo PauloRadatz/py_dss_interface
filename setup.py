@@ -25,7 +25,7 @@ def read(*names, **kwargs):
 
 setup(
     name='py-dss-interface',
-    version='0.0.0',
+    version='0.0.1',
     license='MIT',
     description='opendsspy is a Windows Python package providing access to OpenDSS direct dll version of OpenDSS.',
     long_description='%s\n%s' % (
@@ -37,6 +37,7 @@ setup(
     url='https://github.com/PauloRadatz/py_dss_interface',
     packages=find_packages('src'),
     package_dir={'': 'src'},
+    package_data={'py-dss-interface': ['DDLL/64/OpenDSSDirect.dll']},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
     include_package_data=True,
     zip_safe=False,
