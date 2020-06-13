@@ -19,17 +19,9 @@ Overview
     :target: https://readthedocs.org/projects/py_dss_interface
     :alt: Documentation Status
 
-.. |travis| image:: https://api.travis-ci.org/PauloRadatz/py_dss_interface.svg?branch=master
-    :alt: Travis-CI Build Status
-    :target: https://travis-ci.org/PauloRadatz/py_dss_interface
-
 .. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/PauloRadatz/py_dss_interface?branch=master&svg=true
     :alt: AppVeyor Build Status
     :target: https://ci.appveyor.com/project/PauloRadatz/py_dss_interface
-
-.. |requires| image:: https://requires.io/github/PauloRadatz/py_dss_interface/requirements.svg?branch=master
-    :alt: Requirements Status
-    :target: https://requires.io/github/PauloRadatz/py_dss_interface/requirements/?branch=master
 
 .. |codecov| image:: https://codecov.io/gh/PauloRadatz/py_dss_interface/branch/master/graphs/badge.svg?branch=master
     :alt: Coverage Status
