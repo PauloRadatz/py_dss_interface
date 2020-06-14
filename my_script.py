@@ -21,4 +21,3 @@ allbusvolts = dss.circuit_allbusvolts()
 
 print(dss.circuit_allbusvolts())
 
-dss.loads_read_
