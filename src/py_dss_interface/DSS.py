@@ -2,7 +2,7 @@
 
 import sys
 import ctypes
-from comtypes import automation, COMError
+from comtypes import automation
 import os
 import platform
 import pathlib
@@ -22,24 +22,23 @@ class DSSDLL:
 
         self.opendss_started = False
 
-        try:
-            if platform.architecture()[0] == "64bit":
-                try:
-                    os.chdir(os.path.join(dll_folder, "64"))
-                    self.dssObj = ctypes.WinDLL("OpenDSSDirect.dll")
-                    self.opendss_started = True
-                except:
-                    os.chdir(os.path.join(dll_folder, "64"))
-                    self.dssObj = ctypes.WinDLL(os.path.join(dll_folder, "64", "OpenDSSDirect.dll"))
-                    self.opendss_started = True
-            elif platform.architecture()[0] == "32bit":
-                os.chdir(os.path.join(dll_folder, "32"))
-                self.dssObj = ctypes.CDLL(os.path.join(dll_folder, "32", "OpenDSSDirect.dll"))
+
+        if platform.architecture()[0] == "64bit":
+            try:
+                os.chdir(os.path.join(dll_folder, "64"))
+                self.dssObj = ctypes.WinDLL("OpenDSSDirect.dll")
                 self.opendss_started = True
-            else:
-                print("Make sure you are using the OpenDSS DLL and Python with the same bits")
-        except COMError:
-            pass
+            except:
+                os.chdir(os.path.join(dll_folder, "64"))
+                self.dssObj = ctypes.WinDLL(os.path.join(dll_folder, "64", "OpenDSSDirect.dll"))
+                self.opendss_started = True
+        elif platform.architecture()[0] == "32bit":
+            os.chdir(os.path.join(dll_folder, "32"))
+            self.dssObj = ctypes.CDLL(os.path.join(dll_folder, "32", "OpenDSSDirect.dll"))
+            self.opendss_started = True
+        else:
+            print("Make sure you are using the OpenDSS DLL and Python with the same bits")
+
 
         self._allocate_memory()
 
