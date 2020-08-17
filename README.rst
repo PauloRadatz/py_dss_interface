@@ -55,6 +55,10 @@ py-dss-interface is a Windows Python package providing access to OpenDSS direct 
 
 * Free software: MIT license
 
+Disclaimer
+============
+This Python Package is purely responsibility of Paulo Radatz and not his employer. Use this package at your own risk.
+
 Installation
 ============
 
@@ -70,7 +74,7 @@ You can access the documentation through:
 
 https://py_dss_interface.readthedocs.io/
 
-2 - Well, there is a solution (I hate it, but works), you can download the docs created offline and open that in your browser. 
+2 - Well, there is a solution (I hate it, but works), you can download the docs created offline and open that in your browser.
 
 https://github.com/PauloRadatz/py_dss_interface/tree/master/docs/my_doc
 

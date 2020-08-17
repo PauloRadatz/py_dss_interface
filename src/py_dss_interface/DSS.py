@@ -24,17 +24,21 @@ class DSSDLL:
 
 
         if platform.architecture()[0] == "64bit":
+            dll64_path = os.path.join(dll_folder, "x64")
+            os.environ['PATH'] = dll64_path + os.pathsep + os.environ['PATH']
             try:
-                os.chdir(os.path.join(dll_folder, "64"))
+                os.chdir(os.path.join(dll_folder, "x64"))
                 self.dssObj = ctypes.WinDLL("OpenDSSDirect.dll")
                 self.opendss_started = True
             except:
-                os.chdir(os.path.join(dll_folder, "64"))
-                self.dssObj = ctypes.WinDLL(os.path.join(dll_folder, "64", "OpenDSSDirect.dll"))
+                os.chdir(os.path.join(dll_folder, "x64"))
+                self.dssObj = ctypes.WinDLL(os.path.join(dll_folder, "x64", "OpenDSSDirect.dll"))
                 self.opendss_started = True
         elif platform.architecture()[0] == "32bit":
-            os.chdir(os.path.join(dll_folder, "32"))
-            self.dssObj = ctypes.CDLL(os.path.join(dll_folder, "32", "OpenDSSDirect.dll"))
+            dll86_path = os.path.join(dll_folder, "x86")
+            os.environ['PATH'] = dll86_path + os.pathsep + os.environ['PATH']
+            os.chdir(os.path.join(dll_folder, "x86"))
+            self.dssObj = ctypes.CDLL(os.path.join(dll_folder, "x86", "OpenDSSDirect.dll"))
             self.opendss_started = True
         else:
             print("Make sure you are using the OpenDSS DLL and Python with the same bits")
@@ -44,10 +48,10 @@ class DSSDLL:
 
         if int(self.dssObj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0))) == 1:
             self.dss_version = ctypes.c_char_p(self.dssObj.DSSS(ctypes.c_int32(1), "".encode('ascii')))
-            # print("OpenDSS Started successfully! \nOpenDSS " + dss_version.value.decode('ascii'))
+            print("OpenDSS Started successfully! \nOpenDSS {}\n\n".format(self.dss_version.value.decode('ascii')))
         else:
             self.dss_version = None
-            # print("OpenDSS Failed to Start")
+            print("OpenDSS Failed to Start")
 
     def _allocate_memory(self):
         self.dssObj.ActiveClassS.restype = ctypes.c_char_p

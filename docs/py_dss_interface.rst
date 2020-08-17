@@ -1,6 +1,9 @@
 py\_dss\_interface package
 ==========================
 
+Submodules
+----------
+
 py\_dss\_interface.DSS module
 -----------------------------
 
@@ -9,3 +12,10 @@ py\_dss\_interface.DSS module
    :undoc-members:
    :show-inheritance:
 
+Module contents
+---------------
+
+.. automodule:: py_dss_interface
+   :members:
+   :undoc-members:
+   :show-inheritance:
