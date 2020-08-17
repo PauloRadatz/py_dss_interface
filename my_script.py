@@ -5,7 +5,7 @@ import py_dss_interface
 dss = py_dss_interface.DSSDLL()
 
 # Select the DSS model
-dss_file = r"C:\OpenDSS_svn\Version8\Distrib\IEEETestCases\13Bus\IEEE13Nodeckt.dss"
+dss_file = r"C:\MeuTCC\Paulo_Example\DSSFiles\MASTER_RedeTeste13Barras.dss"
 
 # Compile
 dss.text("compile {}".format(dss_file))
