@@ -5,7 +5,7 @@ py-dss-interface Python package
 -------------------------------
 
 py-dss-interface is a Windows Python package providing access to OpenDSS
-direct dll.
+direct dll - mudou.
 
 Simple Usage
 ------------
