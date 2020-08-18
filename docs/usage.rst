@@ -36,7 +36,7 @@ as argument to the DSSDLL class, as can be seen below:
 
 .. code:: ipython3
 
-    opendss_path = r"C:\Program Files\OpenDSS"
+    opendss_path = "C:/Program Files/OpenDSS"
 
 Creates a dss object with your OpenDSS
 
@@ -57,7 +57,7 @@ Select the DSS model
 
 .. code:: ipython3
 
-    dss_file = r"C:\MeuTCC\Paulo_Example\DSSFiles\MASTER_RedeTeste13Barras.dss"
+    dss_file = "C:/MeuTCC/Paulo_Example/DSSFiles/MASTER_RedeTeste13Barras.dss"
 
 Compile
 
