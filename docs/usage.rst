@@ -5,16 +5,20 @@ py-dss-interface Python package
 -------------------------------
 
 py-dss-interface is a Windows Python package providing access to OpenDSS
-direct dll - mudou.
+direct dll.
 
 Simple Usage
 ------------
 
-First import the Package:
+First import the Package
+
+.. code:: ipython3
 
     import py_dss_interface
 
-Creates an OpenDSS object:
+Creates an OpenDSS object
+
+.. code:: ipython3
 
     dss = py_dss_interface.DSSDLL()
 
@@ -28,11 +32,15 @@ Creates an OpenDSS object:
     
 
 If you want to use your OpenDSS, you will need to pass the OpenDSS path
-as argument to the DSSDLL class, as can be seen below::
+as argument to the DSSDLL class, as can be seen below:
+
+.. code:: ipython3
 
     opendss_path = r"C:\Program Files\OpenDSS"
 
-Creates a dss object with your OpenDSS:
+Creates a dss object with your OpenDSS
+
+.. code:: ipython3
 
     dss = py_dss_interface.DSSDLL(opendss_path)
 
@@ -45,15 +53,21 @@ Creates a dss object with your OpenDSS:
     
     
 
-Select the DSS model:
+Select the DSS model
+
+.. code:: ipython3
 
     dss_file = r"C:\MeuTCC\Paulo_Example\DSSFiles\MASTER_RedeTeste13Barras.dss"
 
-Compile:
+Compile
+
+.. code:: ipython3
 
     dss.text("compile {}".format(dss_file))
 
-Solve - You can use the text interface as well: dss.text(“solve”):
+Solve - You can use the text interface as well: dss.text(“solve”)
+
+.. code:: ipython3
 
     dss.solution_solve()
 
@@ -66,13 +80,20 @@ Solve - You can use the text interface as well: dss.text(“solve”):
 
 
 
-Show Voltage Report:
+Show Voltage Report
+
+.. code:: ipython3
 
     dss.text("show voltages")
 
-Get all buses voltages:
+Get all buses voltages
+
+.. code:: ipython3
 
     allbusvolts = dss.circuit_allbusvolts()
+
+.. code:: ipython3
+
     print(dss.circuit_allbusvolts())
 
 
