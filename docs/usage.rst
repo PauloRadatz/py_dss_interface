@@ -10,15 +10,11 @@ direct dll.
 Simple Usage
 ------------
 
-First import the Package
-
-.. code:: ipython3
+First import the Package:
 
     import py_dss_interface
 
-Creates an OpenDSS object
-
-.. code:: ipython3
+Creates an OpenDSS object:
 
     dss = py_dss_interface.DSSDLL()
 
@@ -32,15 +28,11 @@ Creates an OpenDSS object
     
 
 If you want to use your OpenDSS, you will need to pass the OpenDSS path
-as argument to the DSSDLL class, as can be seen below:
-
-.. code:: ipython3
+as argument to the DSSDLL class, as can be seen below::
 
     opendss_path = r"C:\Program Files\OpenDSS"
 
-Creates a dss object with your OpenDSS
-
-.. code:: ipython3
+Creates a dss object with your OpenDSS:
 
     dss = py_dss_interface.DSSDLL(opendss_path)
 
@@ -53,21 +45,15 @@ Creates a dss object with your OpenDSS
     
     
 
-Select the DSS model
-
-.. code:: ipython3
+Select the DSS model:
 
     dss_file = r"C:\MeuTCC\Paulo_Example\DSSFiles\MASTER_RedeTeste13Barras.dss"
 
-Compile
-
-.. code:: ipython3
+Compile:
 
     dss.text("compile {}".format(dss_file))
 
-Solve - You can use the text interface as well: dss.text(“solve”)
-
-.. code:: ipython3
+Solve - You can use the text interface as well: dss.text(“solve”):
 
     dss.solution_solve()
 
@@ -80,20 +66,13 @@ Solve - You can use the text interface as well: dss.text(“solve”)
 
 
 
-Show Voltage Report
-
-.. code:: ipython3
+Show Voltage Report:
 
     dss.text("show voltages")
 
-Get all buses voltages
-
-.. code:: ipython3
+Get all buses voltages:
 
     allbusvolts = dss.circuit_allbusvolts()
-
-.. code:: ipython3
-
     print(dss.circuit_allbusvolts())
 
 
