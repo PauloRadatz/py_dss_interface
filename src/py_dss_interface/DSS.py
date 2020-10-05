@@ -914,32 +914,32 @@ class DSSDLL:
         self.dssObj.CircuitV(ctypes.c_int32(13), variant_pointer, ctypes.c_int32(0))
         return variant_pointer.contents.value
 
-    def circuit_allnodevmagbyphase(self):
+    def circuit_allnodevmagbyphase(self, argument):
         """Returns array of doubles representing the voltage magnitudes for nodes on the specified phase.
         The phase must be specified in the Argument2."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dssObj.CircuitV(ctypes.c_int32(14), variant_pointer, ctypes.c_int32(0))
+        self.dssObj.CircuitV(ctypes.c_int32(14), variant_pointer, ctypes.c_int32(argument))
         return variant_pointer.contents.value
 
-    def circuit_allnodevmagpubyphase(self):
+    def circuit_allnodevmagpubyphase(self, argument):
         """Returns array of doubles representing the voltage magnitudes (in per unit) for nodes on the specified phase.
         The phase must be specified in the Argument2."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dssObj.CircuitV(ctypes.c_int32(15), variant_pointer, ctypes.c_int32(0))
+        self.dssObj.CircuitV(ctypes.c_int32(15), variant_pointer, ctypes.c_int32(argument))
         return variant_pointer.contents.value
 
-    def circuit_allnodedistancesbyphase(self):
+    def circuit_allnodedistancesbyphase(self, argument):
         """Returns array of doubles representing the distances to parent EnergyMeter. Sequence of array corresponds to
         other node ByPhase properties. Argument2 must contain the number of the phase to return."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dssObj.CircuitV(ctypes.c_int32(16), variant_pointer, ctypes.c_int32(0))
+        self.dssObj.CircuitV(ctypes.c_int32(16), variant_pointer, ctypes.c_int32(argument))
         return variant_pointer.contents.value
 
-    def circuit_allnodenamesbyphase(self):
+    def circuit_allnodenamesbyphase(self, argument):
         """Returns array of strings of the node names by Phase criteria. Sequence corresponds to other ByPhase properties.
         Argument2 must contain the number of the phase to return."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dssObj.CircuitV(ctypes.c_int32(17), variant_pointer, ctypes.c_int32(0))
+        self.dssObj.CircuitV(ctypes.c_int32(17), variant_pointer, ctypes.c_int32(argument))
         return variant_pointer.contents.value
 
     def circuit_ynodevarray(self):
