@@ -22,7 +22,6 @@ class DSSDLL:
 
         self.opendss_started = False
 
-
         if platform.architecture()[0] == "64bit":
             dll64_path = os.path.join(dll_folder, "x64")
             os.environ['PATH'] = dll64_path + os.pathsep + os.environ['PATH']
@@ -42,7 +41,6 @@ class DSSDLL:
             self.opendss_started = True
         else:
             print("Make sure you are using the OpenDSS DLL and Python with the same bits")
-
 
         self._allocate_memory()
 
@@ -503,6 +501,7 @@ class DSSDLL:
         """Sets a variant array of integers [0..numsteps-1] indicating the state of each step.
         If value is -1 and error has occurred."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.CapacitorsV(ctypes.c_int(2), variant_pointer)
         return variant_pointer.contents.value
 
@@ -1108,6 +1107,7 @@ class DSSDLL:
     def cktelement_write_busnames(self, argument):
         """Allows to fix an array of strings with the names of all the buses connected to the active circuit element."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.CktElementV(ctypes.c_int(1), variant_pointer)
         return variant_pointer.contents.value
 
@@ -2138,6 +2138,7 @@ class DSSDLL:
     def lines_write_rmatrix(self, argument):
         """Sets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.LinesV(ctypes.c_int(2), variant_pointer)
         return variant_pointer.contents.value
 
@@ -2150,6 +2151,7 @@ class DSSDLL:
     def lines_write_xmatrix(self, argument):
         """Sets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.LinesV(ctypes.c_int(4), variant_pointer)
         return variant_pointer.contents.value
 
@@ -2162,6 +2164,7 @@ class DSSDLL:
     def lines_write_cmatrix(self, argument):
         """Sets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.LinesV(ctypes.c_int(6), variant_pointer)
         return variant_pointer.contents.value
 
@@ -2174,6 +2177,7 @@ class DSSDLL:
     def lines_write_yprim(self, argument):
         """Does nothing at present."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.LinesV(ctypes.c_int(8), variant_pointer)
         return variant_pointer.contents.value
 
@@ -2332,6 +2336,7 @@ class DSSDLL:
         """Sets the resistance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.LineCodesV(ctypes.c_int(1), variant_pointer)
         return variant_pointer.contents.value
 
@@ -2345,6 +2350,7 @@ class DSSDLL:
         """Sets the reactance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.LineCodesV(ctypes.c_int(3), variant_pointer)
         return variant_pointer.contents.value
 
@@ -2358,6 +2364,7 @@ class DSSDLL:
         """Sets the capacitance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.LineCodesV(ctypes.c_int(5), variant_pointer)
         return variant_pointer.contents.value
 
@@ -2863,6 +2870,7 @@ class DSSDLL:
     def loads_write_zipv(self, argument):
         """Allows to write the array of 7 elements (doubles) for ZIP property of the active Load object."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.DSSLoadsV(ctypes.c_int(2), variant_pointer)
         return variant_pointer.contents.value
 
@@ -2963,56 +2971,59 @@ class DSSDLL:
         return result
 
     # LoadShapeS (String)
-    def loadshape_read_name(self):
+    def loadshapes_read_name(self):
         """Gets the name of the active LoadShape object."""
         result = ctypes.c_char_p(self.dssObj.LoadShapeS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def loadshape_write_name(self, argument):
+    def loadshapes_write_name(self, argument):
         """Sets the name of the active LoadShape object."""
         result = ctypes.c_char_p(self.dssObj.LoadShapeS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
      # LoadShapeV (Variant)
-    def loadshape_allnames(self):
+    def loadshapes_allnames(self):
         """Gets a variant array of strings containing names of all LoadShape objects currently defined."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
         self.dssObj.LoadShapeV(ctypes.c_int(0), variant_pointer)
         return variant_pointer.contents.value
 
-    def loadshape_read_pmult(self):
+    def loadshapes_read_pmult(self):
         """Gets a variant array of doubles for the P multiplier in the LoadShape."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
         self.dssObj.LoadShapeV(ctypes.c_int(1), variant_pointer)
         return variant_pointer.contents.value
 
-    def loadshape_write_pmult(self, argument):
+    def loadshapes_write_pmult(self, argument):
         """Sets a variant array of doubles for the P multiplier in the LoadShape."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.LoadShapeV(ctypes.c_int(2), variant_pointer)
         return variant_pointer.contents.value
 
-    def loadshape_read_qmult(self):
+    def loadshapes_read_qmult(self):
         """Gets a variant array of doubles for the Q multiplier in the LoadShape."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
         self.dssObj.LoadShapeV(ctypes.c_int(3), variant_pointer)
         return variant_pointer.contents.value
 
-    def loadshape_write_qmult(self, argument):
+    def loadshapes_write_qmult(self, argument):
         """Sets a variant array of doubles for the Q multiplier in the LoadShape."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.LoadShapeV(ctypes.c_int(4), variant_pointer)
         return variant_pointer.contents.value
 
-    def loadshape_read_timearray(self):
+    def loadshapes_read_timearray(self):
         """Gets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
         self.dssObj.LoadShapeV(ctypes.c_int(5), variant_pointer)
         return variant_pointer.contents.value
 
-    def loadshape_write_timearray(self, argument):
+    def loadshapes_write_timearray(self, argument):
         """Sets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.LoadShapeV(ctypes.c_int(6), variant_pointer)
         return variant_pointer.contents.value
 
@@ -3255,6 +3266,7 @@ class DSSDLL:
     def meters_write_peakcurrent(self, argument):
         """Receives an array of doubles to set values of Peak Current Property."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.MetersV(ctypes.c_int(5), variant_pointer)
         return variant_pointer.contents.value
 
@@ -3269,6 +3281,7 @@ class DSSDLL:
         """Sets the magnitude of the real part of the Calculated Current (normally determined by solution)
         for the meter to force some behavior on Load Allocation."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.MetersV(ctypes.c_int(7), variant_pointer)
         return variant_pointer.contents.value
 
@@ -3281,6 +3294,7 @@ class DSSDLL:
     def meters_write_allocfactors(self, argument):
         """Receives an array of doubles to set the phase allocation factors for the active Meter."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.MetersV(ctypes.c_int(9), variant_pointer)
         return variant_pointer.contents.value
 
@@ -3460,10 +3474,11 @@ class DSSDLL:
         self.dssObj.MonitorsV(ctypes.c_int(4), variant_pointer)
         return variant_pointer.contents.value
 
-    def monitors_channel(self):
+    def monitors_channel(self, argument):
         """Returns a variant array of doubles for the specified channel (usage: MyArray = DSSmonitor.
         Channel(i)) A save or SaveAll should be executed first. Done automatically by most standard solution modes."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.MonitorsV(ctypes.c_int(5), variant_pointer)
         return variant_pointer.contents.value
 
@@ -4521,6 +4536,7 @@ class DSSDLL:
     def sensors_write_currents(self, argument):
         """Sets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.SensorsV(ctypes.c_int(2), variant_pointer)
         return variant_pointer.contents.value
 
@@ -4533,6 +4549,7 @@ class DSSDLL:
     def sensors_write_kvars(self, argument):
         """Sets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.SensorsV(ctypes.c_int(4), variant_pointer)
         return variant_pointer.contents.value
 
@@ -4545,6 +4562,7 @@ class DSSDLL:
     def sensors_write_kws(self, argument):
         """Sets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.SensorsV(ctypes.c_int(6), variant_pointer)
         return variant_pointer.contents.value
 
@@ -4702,6 +4720,7 @@ class DSSDLL:
     def settings_write_ueregs(self, argument):
         """Sets the array of Integers defining Energy Meter registers to use for computing UE."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.SettingsV(ctypes.c_int(1), variant_pointer)
         return variant_pointer.contents.value
 
@@ -4714,6 +4733,7 @@ class DSSDLL:
     def settings_write_lossregs(self, argument):
         """Sets the array of Integers defining Energy Meter registers to use for computing Losses."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.SettingsV(ctypes.c_int(3), variant_pointer)
         return variant_pointer.contents.value
 
@@ -4726,6 +4746,7 @@ class DSSDLL:
     def settings_write_voltagebases(self, argument):
         """Sets the array of doubles defining the legal voltage bases in kV L-L."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.SettingsV(ctypes.c_int(5), variant_pointer)
         return variant_pointer.contents.value
 
@@ -5853,6 +5874,7 @@ class DSSDLL:
         """Sets the X values as a variant array of doubles specified in Argument. Set Npts to max number expected
         if setting."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.XYCurvesV(ctypes.c_int(1), variant_pointer)
         return variant_pointer.contents.value
 
@@ -5866,5 +5888,6 @@ class DSSDLL:
         """Sets the Y values as a variant array of doubles specified in Argument. Set Npts to max number expected
         if setting."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
+        variant_pointer.contents.value = argument
         self.dssObj.XYCurvesV(ctypes.c_int(3), variant_pointer)
         return variant_pointer.contents.value
