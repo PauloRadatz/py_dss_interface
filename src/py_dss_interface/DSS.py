@@ -3808,27 +3808,27 @@ class DSSDLL:
     # PVSystemsI(int)
     def pvsystems_count(self):
         """Returns the number of PVSystem objects currently defined in the active circuit."""
-        result = int(self.dssObj.PVSystemsI(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = int(self.dssObj.PVsystemsI(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result
 
     def pvsystems_first(self):
         """Sets the first PVSystem to be active; returns 0 if none."""
-        result = int(self.dssObj.PVSystemsI(ctypes.c_int32(1), ctypes.c_int32(0)))
+        result = int(self.dssObj.PVsystemsI(ctypes.c_int32(1), ctypes.c_int32(0)))
         return result
 
     def pvsystems_next(self):
         """Sets the next PVSystem to be active; returns 0 if none."""
-        result = int(self.dssObj.PVSystemsI(ctypes.c_int32(2), ctypes.c_int32(0)))
+        result = int(self.dssObj.PVsystemsI(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result
 
     def pvsystems_read_idx(self):
         """Gets the active PVSystem by index; 1..Count."""
-        result = int(self.dssObj.PVSystemsI(ctypes.c_int32(3), ctypes.c_int32(0)))
+        result = int(self.dssObj.PVsystemsI(ctypes.c_int32(3), ctypes.c_int32(0)))
         return result
 
     def pvsystems_write_idx(self, argument):
         """Sets the active PVSystem by index; 1..Count.."""
-        result = int(self.dssObj.PVSystemsI(ctypes.c_int32(4), ctypes.c_int32(argument)))
+        result = int(self.dssObj.PVsystemsI(ctypes.c_int32(4), ctypes.c_int32(argument)))
         return result
 
     # PVsystemsF (Float)
@@ -3898,11 +3898,11 @@ class DSSDLL:
         result = ctypes.c_char_p(self.dssObj.PVsystemsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    # PVSystemsV (Variant)
+    # PVsystemsV (Variant)
     def pvsystems_allnames(self):
         """Gets the variant array of string containing names of all PVSystems in the circuit."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dssObj.PVSystemsV(ctypes.c_int32(0), variant_pointer)
+        self.dssObj.PVsystemsV(ctypes.c_int32(0), variant_pointer)
         return variant_pointer.contents.value
 
 # Reclosers Interface
