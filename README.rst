@@ -51,7 +51,7 @@ Overview
 
 .. end-badges
 
-py-dss-interface is a Windows Python package providing access to OpenDSS direct dll version of OpenDSS - Version 8.6.7.1 (64-bit build); License Status: Open and Version 8.6.7.1 (32-bit build); License Status: Open.
+py-dss-interface is a Windows Python package providing access to OpenDSS direct dll version of OpenDSS - Version 9.1.0.1 (64-bit build); License Status: Open and Version 9.1.0.1 (32-bit build); License Status: Open.
 
 * Free software: MIT license
 

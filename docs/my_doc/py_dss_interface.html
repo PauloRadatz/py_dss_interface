@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>py_dss_interface package &mdash; py_dss_interface 0.0.5 documentation</title>
+  <title>py_dss_interface package &mdash; py_dss_interface 0.0.7 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.5
+                0.0.7
               </div>
             
           
@@ -828,7 +828,7 @@ Argument2 must be 0.</p>
 
 <dl class="py method">
 <dt id="py_dss_interface.DSS.DSSDLL.circuit_allnodedistancesbyphase">
-<code class="sig-name descname">circuit_allnodedistancesbyphase</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.circuit_allnodedistancesbyphase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.circuit_allnodedistancesbyphase" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">circuit_allnodedistancesbyphase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.circuit_allnodedistancesbyphase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.circuit_allnodedistancesbyphase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns array of doubles representing the distances to parent EnergyMeter. Sequence of array corresponds to
 other node ByPhase properties. Argument2 must contain the number of the phase to return.</p>
 </dd></dl>
@@ -843,21 +843,21 @@ Argument2 must be 0.</p>
 
 <dl class="py method">
 <dt id="py_dss_interface.DSS.DSSDLL.circuit_allnodenamesbyphase">
-<code class="sig-name descname">circuit_allnodenamesbyphase</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.circuit_allnodenamesbyphase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.circuit_allnodenamesbyphase" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">circuit_allnodenamesbyphase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.circuit_allnodenamesbyphase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.circuit_allnodenamesbyphase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns array of strings of the node names by Phase criteria. Sequence corresponds to other ByPhase properties.
 Argument2 must contain the number of the phase to return.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="py_dss_interface.DSS.DSSDLL.circuit_allnodevmagbyphase">
-<code class="sig-name descname">circuit_allnodevmagbyphase</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.circuit_allnodevmagbyphase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.circuit_allnodevmagbyphase" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">circuit_allnodevmagbyphase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.circuit_allnodevmagbyphase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.circuit_allnodevmagbyphase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns array of doubles representing the voltage magnitudes for nodes on the specified phase.
 The phase must be specified in the Argument2.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="py_dss_interface.DSS.DSSDLL.circuit_allnodevmagpubyphase">
-<code class="sig-name descname">circuit_allnodevmagpubyphase</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.circuit_allnodevmagpubyphase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.circuit_allnodevmagpubyphase" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">circuit_allnodevmagpubyphase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.circuit_allnodevmagpubyphase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.circuit_allnodevmagpubyphase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns array of doubles representing the voltage magnitudes (in per unit) for nodes on the specified phase.
 The phase must be specified in the Argument2.</p>
 </dd></dl>
@@ -3182,57 +3182,9 @@ The return value will be equal to empty.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="py_dss_interface.DSS.DSSDLL.loadshape_allnames">
-<code class="sig-name descname">loadshape_allnames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshape_allnames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshape_allnames" title="Permalink to this definition">¶</a></dt>
+<dt id="py_dss_interface.DSS.DSSDLL.loadshapes_allnames">
+<code class="sig-name descname">loadshapes_allnames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_allnames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_allnames" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a variant array of strings containing names of all LoadShape objects currently defined.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="py_dss_interface.DSS.DSSDLL.loadshape_read_name">
-<code class="sig-name descname">loadshape_read_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshape_read_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshape_read_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the name of the active LoadShape object.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="py_dss_interface.DSS.DSSDLL.loadshape_read_pmult">
-<code class="sig-name descname">loadshape_read_pmult</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshape_read_pmult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshape_read_pmult" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a variant array of doubles for the P multiplier in the LoadShape.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="py_dss_interface.DSS.DSSDLL.loadshape_read_qmult">
-<code class="sig-name descname">loadshape_read_qmult</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshape_read_qmult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshape_read_qmult" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a variant array of doubles for the Q multiplier in the LoadShape.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="py_dss_interface.DSS.DSSDLL.loadshape_read_timearray">
-<code class="sig-name descname">loadshape_read_timearray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshape_read_timearray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshape_read_timearray" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a time array in hours corresponding to P and Q multipliers when the Interval = 0.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="py_dss_interface.DSS.DSSDLL.loadshape_write_name">
-<code class="sig-name descname">loadshape_write_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshape_write_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshape_write_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the name of the active LoadShape object.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="py_dss_interface.DSS.DSSDLL.loadshape_write_pmult">
-<code class="sig-name descname">loadshape_write_pmult</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshape_write_pmult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshape_write_pmult" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets a variant array of doubles for the P multiplier in the LoadShape.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="py_dss_interface.DSS.DSSDLL.loadshape_write_qmult">
-<code class="sig-name descname">loadshape_write_qmult</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshape_write_qmult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshape_write_qmult" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets a variant array of doubles for the Q multiplier in the LoadShape.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="py_dss_interface.DSS.DSSDLL.loadshape_write_timearray">
-<code class="sig-name descname">loadshape_write_timearray</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshape_write_timearray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshape_write_timearray" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets a time array in hours corresponding to P and Q multipliers when the Interval = 0.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -3272,6 +3224,12 @@ The return value will be equal to empty.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="py_dss_interface.DSS.DSSDLL.loadshapes_read_name">
+<code class="sig-name descname">loadshapes_read_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_read_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_read_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the name of the active LoadShape object.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="py_dss_interface.DSS.DSSDLL.loadshapes_read_npts">
 <code class="sig-name descname">loadshapes_read_npts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_read_npts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_read_npts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the number of points in active LoadShape.</p>
@@ -3284,15 +3242,33 @@ The return value will be equal to empty.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="py_dss_interface.DSS.DSSDLL.loadshapes_read_pmult">
+<code class="sig-name descname">loadshapes_read_pmult</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_read_pmult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_read_pmult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a variant array of doubles for the P multiplier in the LoadShape.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="py_dss_interface.DSS.DSSDLL.loadshapes_read_qbase">
 <code class="sig-name descname">loadshapes_read_qbase</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_read_qbase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_read_qbase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the base for normalizing Q curve. If left at zero, the peak value is used.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="py_dss_interface.DSS.DSSDLL.loadshapes_read_qmult">
+<code class="sig-name descname">loadshapes_read_qmult</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_read_qmult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_read_qmult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a variant array of doubles for the Q multiplier in the LoadShape.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="py_dss_interface.DSS.DSSDLL.loadshapes_read_sinterval">
 <code class="sig-name descname">loadshapes_read_sinterval</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_read_sinterval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_read_sinterval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the fixed interval data time interval, seconds.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="py_dss_interface.DSS.DSSDLL.loadshapes_read_timearray">
+<code class="sig-name descname">loadshapes_read_timearray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_read_timearray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_read_timearray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a time array in hours corresponding to P and Q multipliers when the Interval = 0.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -3315,6 +3291,12 @@ a multiplier.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="py_dss_interface.DSS.DSSDLL.loadshapes_write_name">
+<code class="sig-name descname">loadshapes_write_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_write_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_write_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the name of the active LoadShape object.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="py_dss_interface.DSS.DSSDLL.loadshapes_write_npts">
 <code class="sig-name descname">loadshapes_write_npts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_write_npts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_write_npts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the number of points in active LoadShape.</p>
@@ -3327,15 +3309,33 @@ a multiplier.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="py_dss_interface.DSS.DSSDLL.loadshapes_write_pmult">
+<code class="sig-name descname">loadshapes_write_pmult</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_write_pmult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_write_pmult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a variant array of doubles for the P multiplier in the LoadShape.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="py_dss_interface.DSS.DSSDLL.loadshapes_write_qbase">
 <code class="sig-name descname">loadshapes_write_qbase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_write_qbase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_write_qbase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the base for normalizing Q curve. If left at zero, the peak value is used.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="py_dss_interface.DSS.DSSDLL.loadshapes_write_qmult">
+<code class="sig-name descname">loadshapes_write_qmult</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_write_qmult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_write_qmult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a variant array of doubles for the Q multiplier in the LoadShape.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="py_dss_interface.DSS.DSSDLL.loadshapes_write_sinterval">
 <code class="sig-name descname">loadshapes_write_sinterval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_write_sinterval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_write_sinterval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the fixed interval data time interval, seconds.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="py_dss_interface.DSS.DSSDLL.loadshapes_write_timearray">
+<code class="sig-name descname">loadshapes_write_timearray</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.loadshapes_write_timearray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.loadshapes_write_timearray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a time array in hours corresponding to P and Q multipliers when the Interval = 0.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -3673,7 +3673,7 @@ Make sure a “save” is done first (standard solution modes do this automatica
 
 <dl class="py method">
 <dt id="py_dss_interface.DSS.DSSDLL.monitors_channel">
-<code class="sig-name descname">monitors_channel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.monitors_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.monitors_channel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">monitors_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/py_dss_interface/DSS.html#DSSDLL.monitors_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#py_dss_interface.DSS.DSSDLL.monitors_channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a variant array of doubles for the specified channel (usage: MyArray = DSSmonitor.
 Channel(i)) A save or SaveAll should be executed first. Done automatically by most standard solution modes.</p>
 </dd></dl>
@@ -6592,7 +6592,7 @@ if setting.</p>
         
         &copy; Copyright 2020, Paulo Radatz
       <span class="lastupdated">
-        Last updated on Aug 26, 2020.
+        Last updated on Oct 22, 2020.
       </span>
 
     </p>
