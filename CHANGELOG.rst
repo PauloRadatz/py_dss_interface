@@ -2,6 +2,14 @@
 Changelog
 =========
 
+0.0.7 (2020-10-22)
+------------------
+
+* PVsystems updated.
+* Update OpenDSS version to: OpenDSS Version 9.1.0.1 (64-bit build); License Status: Open.
+* Allowing to write values into Variant methods.
+
+
 0.0.4 (2020-08-17)
 ------------------
 
