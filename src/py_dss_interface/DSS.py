@@ -10,7 +10,7 @@ import pathlib
 
 class DSSDLL:
 
-    def __init__(self, dll_folder=None):
+    def __init__(self, dll_folder=None, dll_name="OpenDSSDirect.dll"):
         """
         Class to create an OpenDSS object
         :param dll_folder: None will use the OpenDSS available within the package. The DDLL path allows to use a different OpenDSS
@@ -24,20 +24,22 @@ class DSSDLL:
 
         if platform.architecture()[0] == "64bit":
             dll64_path = os.path.join(dll_folder, "x64")
-            os.environ['PATH'] = dll64_path + os.pathsep + os.environ['PATH']
+            if not dll64_path in os.environ['PATH']:
+                os.environ['PATH'] = dll64_path + os.pathsep + os.environ['PATH']
             try:
                 os.chdir(os.path.join(dll_folder, "x64"))
-                self.dssObj = ctypes.WinDLL("OpenDSSDirect.dll")
+                self.dssObj = ctypes.WinDLL(dll_name)
                 self.opendss_started = True
             except:
                 os.chdir(os.path.join(dll_folder, "x64"))
-                self.dssObj = ctypes.WinDLL(os.path.join(dll_folder, "x64", "OpenDSSDirect.dll"))
+                self.dssObj = ctypes.WinDLL(os.path.join(dll_folder, "x64", dll_name))
                 self.opendss_started = True
         elif platform.architecture()[0] == "32bit":
             dll86_path = os.path.join(dll_folder, "x86")
-            os.environ['PATH'] = dll86_path + os.pathsep + os.environ['PATH']
+            if not dll86_path in os.environ['PATH']:
+                os.environ['PATH'] = dll86_path + os.pathsep + os.environ['PATH']
             os.chdir(os.path.join(dll_folder, "x86"))
-            self.dssObj = ctypes.CDLL(os.path.join(dll_folder, "x86", "OpenDSSDirect.dll"))
+            self.dssObj = ctypes.CDLL(os.path.join(dll_folder, "x86", dll_name))
             self.opendss_started = True
         else:
             print("Make sure you are using the OpenDSS DLL and Python with the same bits")
