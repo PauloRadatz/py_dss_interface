@@ -54,6 +54,8 @@ class DSSDLL:
             print("OpenDSS Failed to Start")
 
     def _allocate_memory(self):
+        self.dssObj.DSSPut_Command.restype = ctypes.c_char_p
+
         self.dssObj.ActiveClassS.restype = ctypes.c_char_p
 
         self.dssObj.BUSF.restype = ctypes.c_double
@@ -5340,9 +5342,9 @@ class DSSDLL:
 # Text Interface
     def text(self, argument):
         """Can be used to send commands to the text interface of OpenDSS (DSS.Text)."""
-        ctypes.c_char_p(self.dssObj.DSSPut_Command(argument.encode('ascii')))
-        #result = ctypes.c_char_p(self.dssObj.DSSPut_Command(comando.encode('ascii')))
-        #return result.value
+        # ctypes.c_char_p(self.dssObj.DSSPut_Command(argument.encode('ascii')))
+        result = ctypes.c_char_p(self.dssObj.DSSPut_Command(argument.encode('ascii')))
+        return result.value.decode("ascii")
 
 # Topology Interface
 
