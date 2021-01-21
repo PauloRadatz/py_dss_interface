@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>py_dss_interface.DSS &mdash; py_dss_interface 0.0.7 documentation</title>
+  <title>py_dss_interface.DSS &mdash; py_dss_interface 0.0.9 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.0.7
+                0.0.9
               </div>
             
           
@@ -168,7 +168,7 @@
 
 <div class="viewcode-block" id="DSSDLL"><a class="viewcode-back" href="../../py_dss_interface.html#py_dss_interface.DSS.DSSDLL">[docs]</a><span class="k">class</span> <span class="nc">DSSDLL</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dll_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dll_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dll_name</span><span class="o">=</span><span class="s2">&quot;OpenDSSDirect.dll&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Class to create an OpenDSS object</span>
 <span class="sd">        :param dll_folder: None will use the OpenDSS available within the package. The DDLL path allows to use a different OpenDSS</span>
@@ -182,20 +182,22 @@
 
         <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">architecture</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;64bit&quot;</span><span class="p">:</span>
             <span class="n">dll64_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dll_folder</span><span class="p">,</span> <span class="s2">&quot;x64&quot;</span><span class="p">)</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dll64_path</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">dll64_path</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dll64_path</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dll_folder</span><span class="p">,</span> <span class="s2">&quot;x64&quot;</span><span class="p">))</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">dssObj</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">WinDLL</span><span class="p">(</span><span class="s2">&quot;OpenDSSDirect.dll&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dssObj</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">WinDLL</span><span class="p">(</span><span class="n">dll_name</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">opendss_started</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">except</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dll_folder</span><span class="p">,</span> <span class="s2">&quot;x64&quot;</span><span class="p">))</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">dssObj</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">WinDLL</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dll_folder</span><span class="p">,</span> <span class="s2">&quot;x64&quot;</span><span class="p">,</span> <span class="s2">&quot;OpenDSSDirect.dll&quot;</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dssObj</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">WinDLL</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dll_folder</span><span class="p">,</span> <span class="s2">&quot;x64&quot;</span><span class="p">,</span> <span class="n">dll_name</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">opendss_started</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">architecture</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;32bit&quot;</span><span class="p">:</span>
             <span class="n">dll86_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dll_folder</span><span class="p">,</span> <span class="s2">&quot;x86&quot;</span><span class="p">)</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dll86_path</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">dll86_path</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dll86_path</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span>
             <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dll_folder</span><span class="p">,</span> <span class="s2">&quot;x86&quot;</span><span class="p">))</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">dssObj</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">CDLL</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dll_folder</span><span class="p">,</span> <span class="s2">&quot;x86&quot;</span><span class="p">,</span> <span class="s2">&quot;OpenDSSDirect.dll&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dssObj</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">CDLL</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dll_folder</span><span class="p">,</span> <span class="s2">&quot;x86&quot;</span><span class="p">,</span> <span class="n">dll_name</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">opendss_started</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Make sure you are using the OpenDSS DLL and Python with the same bits&quot;</span><span class="p">)</span>
@@ -210,6 +212,8 @@
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OpenDSS Failed to Start&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_allocate_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dssObj</span><span class="o">.</span><span class="n">DSSPut_Command</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">dssObj</span><span class="o">.</span><span class="n">ActiveClassS</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">dssObj</span><span class="o">.</span><span class="n">BUSF</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span>
@@ -5496,9 +5500,9 @@
 <span class="c1"># Text Interface</span>
 <div class="viewcode-block" id="DSSDLL.text"><a class="viewcode-back" href="../../py_dss_interface.html#py_dss_interface.DSS.DSSDLL.text">[docs]</a>    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Can be used to send commands to the text interface of OpenDSS (DSS.Text).&quot;&quot;&quot;</span>
-        <span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dssObj</span><span class="o">.</span><span class="n">DSSPut_Command</span><span class="p">(</span><span class="n">argument</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)))</span></div>
-        <span class="c1">#result = ctypes.c_char_p(self.dssObj.DSSPut_Command(comando.encode(&#39;ascii&#39;)))</span>
-        <span class="c1">#return result.value</span>
+        <span class="c1"># ctypes.c_char_p(self.dssObj.DSSPut_Command(argument.encode(&#39;ascii&#39;)))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dssObj</span><span class="o">.</span><span class="n">DSSPut_Command</span><span class="p">(</span><span class="n">argument</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span></div>
 
 <span class="c1"># Topology Interface</span>
 
@@ -6064,7 +6068,7 @@
         
         &copy; Copyright 2020, Paulo Radatz
       <span class="lastupdated">
-        Last updated on Oct 22, 2020.
+        Last updated on Jan 21, 2021.
       </span>
 
     </p>

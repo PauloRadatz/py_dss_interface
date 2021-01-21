@@ -2,6 +2,12 @@
 Changelog
 =========
 
+0.0.9 (2021-01-21)
+------------------
+
+* text method returns string values (Jouni request)
+* OpenDSS exe 64bits included
+
 0.0.8 (2020-12-10)
 ------------------
 
