@@ -2,6 +2,11 @@
 Changelog
 =========
 
+0.1.0 (2021-01-21)
+------------------
+
+* Update OpenDSS version to: OpenDSS Version 9.2.0.1; License Status: Open
+
 0.0.9 (2021-01-21)
 ------------------
 
