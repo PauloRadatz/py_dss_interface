@@ -37,7 +37,7 @@ setup(
     url='https://github.com/PauloRadatz/py_dss_interface',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    package_data={'py-dss-interface': ['DDLL/x64/OpenDSSDirect.dll']},
+    package_data={'py-dss-interface': ['dll/x64/OpenDSSDirect.dll']},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
     include_package_data=True,
     zip_safe=False,
