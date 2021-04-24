@@ -14,29 +14,32 @@ dss_file = r"C:\eniocc\EPRI\py_dss_interface-master\src\py_dss_interface\tests\p
            r".dss "
 
 # Compile
-dss.Text.text("compile {}".format(dss_file))
-overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.Circuit.name()}_EXP_OVERLOADS.CSV")
+dss.text("compile {}".format(dss_file))
+overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.circuit_name()}_EXP_OVERLOADS.CSV")
 
 # Solve
-dss.Text.text('export overloads')
+dss.text('export overloads')
 # text.text('export overloads')
-dss.Text.text("? Load.611.kw")
-dss.Solution.solution_solve()
+dss.text("? Load.611.kw")
+dss.solution_solve()
 
-dss.LoadShapes.loadshapes_first()
-dss.LoadShapes.loadshapes_read_pmult()
+dss.loadshapes_first()
+dss.loadshapes_read_pmult()
 
-new = list(dss.LoadShapes.loadshapes_read_pmult())
+new = list(dss.loadshapes_read_pmult())
 new[2] = 0
 
-dss.LoadShapes.loadshapes_write_pmult(new)
+dss.loadshapes_write_pmult(new)
 # Show Voltage Report
 
-print(dss.LoadShapes.loadshapes_read_pmult())
+print(dss.loadshapes_read_pmult())
 # dss.text.text("show voltages")
 
 # print(dss.dssinterface.dss_read_datapath())
 # Get all buses voltages
-allbusvolts = dss.Circuit.all_bus_volts()
+allbusvolts = dss.circuit_all_bus_volts()
 
 # print(dss.circuit.circuit_allbusvolts())
+
+# from  py_dss_interface import Loads
+
