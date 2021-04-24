@@ -12,10 +12,10 @@ class CapacitorsS(Base):
         result = ctypes.c_char_p(self.dss_obj.BUSS(ctypes.c_int32(first), ctypes.c_int32(second)))
         return result.value.decode('ascii')
 
-    def read_name(self):
+    def capacitors_read_name(self):
         """Gets the name of the active Capacitor element."""
         return self.capacitors_string(0, 0)
 
-    def write_name(self, argument):
+    def capacitors_write_name(self, argument):
         """Sets the name of the Capacitor element to set it active."""
         return self.capacitors_string(1, 0)
