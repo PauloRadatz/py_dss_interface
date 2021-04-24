@@ -11,8 +11,8 @@ dss13_path = os.path.join(pathlib.Path(script_path), "13Bus", "IEEE13Nodeckt.dss
 @pytest.fixture
 def DSS():
 
-    dss = py_dss_interface.DSSDLL(ddll_path)
-    actual = dss.opendss_started
+    dss = py_dss_interface.DSS()
+    actual = dss.started
     expected = True
 
     message = ("OpenDSSDirectDLL has been loaded: {}".format(actual))
@@ -29,7 +29,7 @@ class TestDSS(object):
 
     def test_DSS(self):
 
-        actual = self.dss.opendss_started
+        actual = self.dss.started
         expected = True
 
         message = ("OpenDSSDirectDLL has been loaded: {}".format(actual))
