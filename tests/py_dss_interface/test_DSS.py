@@ -8,9 +8,9 @@ script_path = os.path.dirname(os.path.abspath(__file__))
 ddll_path = os.path.join(pathlib.Path(script_path), "DDLL")
 dss13_path = os.path.join(pathlib.Path(script_path), "13Bus", "IEEE13Nodeckt.dss")
 
+
 @pytest.fixture
 def DSS():
-
     dss = py_dss_interface.DSS()
     actual = dss.started
     expected = True
@@ -21,6 +21,7 @@ def DSS():
 
     return dss
 
+
 class TestDSS(object):
 
     @pytest.fixture(autouse=True)
@@ -28,7 +29,6 @@ class TestDSS(object):
         self.dss = DSS
 
     def test_DSS(self):
-
         actual = self.dss.started
         expected = True
 
@@ -38,7 +38,6 @@ class TestDSS(object):
 
     def test_DSS_version(self):
         assert self.dss.dss_version is not None
-
 
     def test_solution_totaliterations(self):
         self.dss.text("compile " + dss13_path)
