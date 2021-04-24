@@ -38,8 +38,6 @@ print(dss.loadshapes_read_pmult())
 # print(dss.dssinterface.dss_read_datapath())
 # Get all buses voltages
 allbusvolts = dss.circuit_all_bus_volts()
-
-# print(dss.circuit.circuit_allbusvolts())
+print(allbusvolts)
 
 # from  py_dss_interface import Loads
-
