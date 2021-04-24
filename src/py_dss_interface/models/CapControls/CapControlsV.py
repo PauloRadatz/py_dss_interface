@@ -14,5 +14,5 @@ class CapControlsV(Base):
         self.dss_obj.CapControlsV(ctypes.c_int32(first), variant_pointer)
         return variant_pointer.contents.value
 
-    def all_names(self):
+    def cap_controls_all_names(self):
         return self.cap_controls_variant(0)

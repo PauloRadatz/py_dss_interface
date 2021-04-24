@@ -14,16 +14,16 @@ class CapacitorsV(Base):
         self.dss_obj.CapacitorsV(ctypes.c_int32(first), variant_pointer)
         return variant_pointer.contents.value
 
-    def allnames(self):
+    def capacitors_allnames(self):
         """Gets a variant array of strings with all Capacitor names in the circuit."""
         return self.capacitors_variant(0)
 
-    def read_states(self):
+    def capacitors_read_states(self):
         """Gets a variant array of integers [0..numsteps-1] indicating the state of each step.
         If value is -1 and error has occurred."""
         return self.capacitors_variant(1)
 
-    def write_states(self, argument):
+    def capacitors_write_states(self, argument):
         """Sets a variant array of integers [0..numsteps-1] indicating the state of each step.
         If value is -1 and error has occurred."""
         variant_pointer = ctypes.pointer(automation.VARIANT())

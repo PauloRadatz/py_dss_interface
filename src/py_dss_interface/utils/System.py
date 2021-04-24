@@ -19,7 +19,7 @@ class System:
         return plat
 
     @staticmethod
-    def get_architecture_dll(dll_folder):
+    def get_architecture_path(dll_folder):
         """
         Method to detect the architecture of the machine
         :param dll_folder: Folder that contains dll

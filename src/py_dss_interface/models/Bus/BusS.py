@@ -12,6 +12,6 @@ class BusS(Base):
         result = ctypes.c_char_p(self.dss_obj.BUSS(ctypes.c_int32(first), ctypes.c_int32(second)))
         return result.value.decode('ascii')
 
-    def name(self):
+    def  bus_name(self):
         """Returns the name of the active bus."""
         return self.bus_string(0, 0)

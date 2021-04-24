@@ -13,6 +13,6 @@ class ActiveClassV(Base):
         self.dss_obj.ActiveClassV(ctypes.c_int32(first), variant_pointer)
         return variant_pointer.contents.value
 
-    def all_names(self):
+    def active_class_all_names(self):
         """Gets a variant array of strings consisting of all element names in the active Class."""
         return self.active_class_variant(0)
