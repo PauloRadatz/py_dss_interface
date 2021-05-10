@@ -9,4 +9,8 @@ from py_dss_interface.models.Capacitors.CapacitorsF import CapacitorsF
 
 
 class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
+    """
+    This interface implements the Capacitors (ICapacitors) interface of OpenDSS by declaring 4 procedures for
+    accessing the different properties included in this interface: CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV.
+    """
     pass

@@ -10,4 +10,8 @@ from py_dss_interface.models.Bus.BusF import BusF
 
 
 class Bus(BusS, BusI, BusV, BusF):
+    """
+    This interface implements the Bus (IBus) interface of OpenDSS by declaring 4 procedures for accessing the
+    different properties included in this interface: BusS, BusI, BusV, BusF.
+    """
     pass
