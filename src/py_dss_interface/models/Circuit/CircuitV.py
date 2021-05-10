@@ -2,8 +2,11 @@
 """
  Created by eniocc at 11/10/2020
 """
+from py_dss_interface.models import Bridge
 import ctypes
+
 from comtypes import automation
+
 from py_dss_interface.models.Base import Base
 
 
@@ -38,12 +41,19 @@ class CircuitV(Base):
         self.dss_obj.CircuitV(ctypes.c_int32(3), variant_pointer, ctypes.c_int32(0))
         return variant_pointer.contents.value
 
+        # aqui = Bridge.VarArrayFunction(self.dss_obj.CircuitV, ctypes.c_int32(3), ctypes.c_int32(0), None)
+        # print('Resultado: {0}'.format(aqui))
+        # return aqui
+
     def circuit_all_bus_volts(self):
         """Returns an array of doubles (two doubles for representing a complex number) with the node voltages from
         the most recent solution. Argument2 must be 0."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.CircuitV(ctypes.c_int32(4), variant_pointer, ctypes.c_int32(0))
-        return variant_pointer.contents.value
+
+        teste = ctypes.pointer(automation.VARIANT())
+
+        self.dss_obj.CircuitV(ctypes.c_int32(4), teste)
+
+        return teste.contents.value
 
     def circuit_all_bus_vmag(self):
         """Returns an array of doubles (magnitude) with the node voltages from the most recent solution.
