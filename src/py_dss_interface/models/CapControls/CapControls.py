@@ -9,4 +9,9 @@ from py_dss_interface.models.CapControls.CapControlsV import CapControlsV
 
 
 class CapControls(CapControlsF, CapControlsI, CapControlsS, CapControlsV):
+    """
+    This interface implements the CapControls (ICapControls) interface of OpenDSS by declaring 4 procedures for
+    accessing the different properties included in this interface: CapControlsF, CapControlsI, CapControlsS,
+    CapControlsV
+    """
     pass

@@ -2,19 +2,20 @@
 """
  Created by eniocc at 11/10/2020
 """
+from typing import List
 
 from py_dss_interface.models.Base import Base
 
 
 class BusV(Base):
     """
-    This interface can be used to read/write certain properties of the active DSS object. The structure of the
-    interface is as follows:
+    This interface can be used to read/write certain properties of the active DSS object.
+
+    The structure of the interface is as follows:
         void BUSV(int32_t Parameter, VARIANT *Argument)
 
-    This interface returns a variant according to the number sent in the first parameter.
-
-    That parameter is an integer and could be call by the theses methods below.
+    This interface returns a variant according to the number sent in the variable “parameter”. The parameter can be
+    one of the following.
     """
 
     def bus_voltages(self):
@@ -26,7 +27,7 @@ class BusV(Base):
         """Returns a complex array of Sequence voltages at this bus."""
         return self.get_variant(1)
 
-    def bus_nodes(self):
+    def bus_nodes(self) -> List[int]:
         """Returns an integer array of node numbers defined at the bus in same order as the voltages."""
         return self.get_variant(2)
 
@@ -94,10 +95,10 @@ class BusV(Base):
         """Variant array of doubles (complex) containing the complete 012 Zsc matrix."""
         return self.get_variant(17)
 
-    def bus_all_pace_active_bus(self):
+    def bus_all_pace_active_bus(self) -> List[str]:
         """Returns an array with the names of all PCE connected to the active bus."""
         return self.get_variant(18)
 
-    def bus_all_pde_active_bus(self):
+    def bus_all_pde_active_bus(self) -> List[str]:
         """Returns an array with the names of all PDE connected to the active bus."""
         return self.get_variant(19)
