@@ -10,11 +10,13 @@ from py_dss_interface.models.Base import Base
 
 class BusI(Base):
     """
-    This interface can be used to read/write certain properties of the active DSS object. The structure of the
-        interface is as follows: int32_t BUSI(int32_t Parameter, int32_t Argument)
+    This interface can be used to read/write certain properties of the active DSS object.
 
-    For this interface only one parameter must be change, the first one. That parameter is an integer and could be call
-    by the theses methods below.
+    The structure of the interface is as follows:
+        int32_t BUSI(int32_t Parameter, int32_t Argument)
+
+    This interface returns an integer according to the number sent in the variable “parameter”. The parameter can be
+    one of the following.
     """
 
     def bus_num_nodes(self) -> int:

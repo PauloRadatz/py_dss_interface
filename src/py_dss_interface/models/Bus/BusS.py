@@ -7,14 +7,15 @@ from py_dss_interface.models.Base import Base
 
 class BusS(Base):
     """
-    This interface can be used to read/write certain properties of the active DSS object. The structure of the
-    interface is as follows:
+    This interface can be used to read/write certain properties of the active DSS object.
+
+    The structure of the interface is as follows:
         CStr BUSS(int32_t Parameter, CStr Argument)
 
-    This interface returns a string according to the number sent in the first parameter. That parameter is an string
-    and could be call by the theses methods below.
+    This interface returns a string according to the number sent in the variable “parameter”. The parameter can be
+    one of the following.
     """
 
-    def bus_name(self):
+    def bus_name(self) -> str:
         """Returns the name of the active bus."""
         return self.get_string(0, 0)

@@ -4,6 +4,8 @@
 """
 import ctypes
 from comtypes import automation
+
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -49,8 +51,7 @@ class LoadShapes(Base):
     def loadshapes_write_useactual(self, argument):
         """Sets a TRUE/FALSE (1/0 - Argument) to let Loads know to use the actual value in the curve rather than use
          the value as a multiplier."""
-        result = self.dss_obj.LoadShapeI(ctypes.c_int32(7), ctypes.c_int32(argument))
-        return result
+        return self.dss_obj.LoadShapeI(ctypes.c_int32(7), ctypes.c_int32(argument))
 
     # LoadShapeF (Float)
     def loadshapes_read_hrinterval(self):
@@ -123,16 +124,73 @@ class LoadShapes(Base):
 
     def loadshapes_read_pmult(self):
         """Gets a variant array of doubles for the P multiplier in the LoadShape."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.LoadShapeV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        # variant_pointer = ctypes.pointer(automation.VARIANT())
+        # self.dss_obj.LoadShapeV(ctypes.c_int(1), variant_pointer)
+        # aqui = variant_pointer.contents.value
+        # # print(f'Aqui1: {aqui}')
+        aqui = Bridge.VarArrayFunction(self.dss_obj.LoadShapeV, ctypes.c_int(1), ctypes.c_int(0), None)
+        # print(aqui)
+        # print(type(aqui))
+        return aqui
 
     def loadshapes_write_pmult(self, argument):
         """Sets a variant array of doubles for the P multiplier in the LoadShape."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.LoadShapeV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
+        # print(fr'Argument {argument}')
+        # variant_pointer = ctypes.pointer(automation.VARIANT())
+        # print(variant_pointer.__dir__())
+        # variant_pointer.contents.value = argument
+        points = ctypes.c_float * len(argument)
+        # # print(f'points: {points}')
+        ppoints = ctypes.POINTER(points)
+        # # print(f'ppoints: {ppoints}')
+        ppoints.contents = argument
+        # print(f'ppoints: {ppoints.contents}')
+
+        # variant_pointer = ctypes.POINTER(ctypes.c_float)
+        # print(f'variant_pointer.contents: {variant_pointer.contents}')
+        # variant_pointer.contents.value = argument
+        # print(f'variant_pointer: {variant_pointer}')
+
+        # aqui = Bridge.ArrayEnio()
+        # # print(f'aqui: {aqui}')
+        # # print(f'aqui.data {aqui.data}')
+        #
+        # aqui.size = len(argument)  # print(f'aqui.size: {aqui.size}')
+        #
+        # aqui.data = (ctypes.c_float * aqui.size)()  # print(f'aqui.data {aqui.data}')
+        #
+        # for i in range(aqui.size):
+        #     aqui.data[i] = argument[i]
+        # # print(aqui.data[i])
+        #
+        # data = ctypes.cast(aqui.data, ctypes.POINTER(ctypes.c_double * aqui.size))
+        #
+        # # Converting CFloat to Python float, more efficiency could be gained by using NumPy
+        # # TODO: Consider making numpy/pandas a dependency?
+        # l = []
+        # for i in data.contents:
+        #     l.append(i)
+        # print(l)
+
+        # print(f'argument : {argument}')
+        # values_ = (ctypes.c_float*aqui.size)
+        # print(f'values: {values_}')
+        # aqui.data.contents.value = argument
+        # aqui.data = ctypes.POINTER()()
+        # print(f'aqui: {aqui.data}')
+
+        # print(type(variant_pointer.contents))
+        # print(f'Aqui 2 {variant_pointer.contents.value}')
+        # print(type(ppoints))
+        # oi = self.dss_obj.LoadShapeV(ctypes.c_int(2), ppoints)
+        # print(f'oi: {oi}')
+        # return oi
+
+        return Bridge.VarArrayFunction(self.dss_obj.LoadShapeV, ctypes.c_int(1), ctypes.c_int(0), None)
+
+        # return Bridge.VarArrayFunction(self.dss_obj.LoadShapeV, l, ctypes.c_int(2), 'None')
+        # print(f'Aqui 3 {variant_pointer.contents.value}')
+        # return aqui.data
 
     def loadshapes_read_qmult(self):
         """Gets a variant array of doubles for the Q multiplier in the LoadShape."""

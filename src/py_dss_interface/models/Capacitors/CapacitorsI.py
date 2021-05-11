@@ -8,6 +8,7 @@ from py_dss_interface.models.Base import Base
 class CapacitorsI(Base):
     """
     This interface can be used to read/modify the properties of the Capacitors Class where the values are integers.
+
     The structure of the interface is as follows:
         int32_t CapacitorsI(int32_t Parameter, int32_t argument)
 
@@ -15,8 +16,7 @@ class CapacitorsI(Base):
     the class to be used and the variable “argument” can be used to modify the value of the property when necessary.
     Reading and writing properties are separated and require a different parameter number to be executed.
 
-    For this interface only one parameter must be change, the first one. That parameter is an integer and could be call
-    by the theses methods below.
+    The properties (parameter) are integer numbers and are described as follows.
     """
 
     def capacitors_read_nums_teps(self) -> int:

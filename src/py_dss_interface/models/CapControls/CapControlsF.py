@@ -6,8 +6,17 @@ from py_dss_interface.models.Base import Base
 
 
 class CapControlsF(Base):
+    """
+    This interface can be used to read/write certain properties of the active DSS object.
 
-    def cap_controls_read_ct_ratio(self):
+    The structure of the interface is as follows:
+        double CapControlsF(int32_t Parameter, double Argument);
+
+    This interface returns a floating point number (64 bits) with the result of the query according to the value of
+    the variable Parameter, which can be one of the following.
+    """
+
+    def cap_controls_read_ct_ratio(self) -> float:
         """Gets the transducer ratio current to control current."""
         return self.get_float(0, 0)
 
@@ -15,7 +24,7 @@ class CapControlsF(Base):
         """Sets the transducer ratio current to control current."""
         return self.get_float(1, argument)
 
-    def cap_controls_read_pt_ratio(self):
+    def cap_controls_read_pt_ratio(self) -> float:
         """Gets the transducer ratio from primary feeder to control voltage."""
         return self.get_float(2, 0)
 
@@ -23,7 +32,7 @@ class CapControlsF(Base):
         """Sets the transducer ratio from primary feeder to control voltage."""
         return self.get_float(3, argument)
 
-    def cap_controls_read_on_setting(self):
+    def cap_controls_read_on_setting(self) -> float:
         """Gets the threshold to arm or switch on a step. See Mode for Units."""
         return self.get_float(4, 0)
 
@@ -31,7 +40,7 @@ class CapControlsF(Base):
         """Sets the threshold to arm or switch on a step. See Mode for Units."""
         return self.get_float(5, argument)
 
-    def cap_controls_read_off_setting(self):
+    def cap_controls_read_off_setting(self) -> float:
         """Gets the threshold to switch off a step. See Mode for Units."""
         return self.get_float(6, 0)
 
@@ -39,7 +48,7 @@ class CapControlsF(Base):
         """Sets the threshold to switch off a step. See Mode for Units."""
         return self.get_float(7, argument)
 
-    def cap_controls_read_vmax(self):
+    def cap_controls_read_vmax(self) -> float:
         """Gets the Vmax, this reference with VoltOverride, switch off whenever PT voltage exceeds this level."""
         return self.get_float(8, 0)
 
@@ -47,7 +56,7 @@ class CapControlsF(Base):
         """Sets the Vmax, this reference with VoltOverride, switch off whenever PT voltage exceeds this level."""
         return self.get_float(9, argument)
 
-    def cap_controls_read_vmin(self):
+    def cap_controls_read_vmin(self) -> float:
         """Gets the Vmin, this reference with VoltOverride, switch ON whenever PT voltage drops below this level."""
         return self.get_float(10, 0)
 
@@ -55,7 +64,7 @@ class CapControlsF(Base):
         """Sets the Vmin, this reference with VoltOverride, switch ON whenever PT voltage drops below this level."""
         return self.get_float(11, argument)
 
-    def cap_controls_read_delay(self):
+    def cap_controls_read_delay(self) -> float:
         """Gets the time delay [s] to switch on after arming. Control may reset before actually switching."""
         return self.get_float(12, 0)
 
@@ -63,7 +72,7 @@ class CapControlsF(Base):
         """Sets the time delay [s] to switch on after arming. Control may reset before actually switching."""
         return self.get_float(13, argument)
 
-    def cap_controls_read_delay_off(self):
+    def cap_controls_read_delay_off(self) -> float:
         """Gets the time delay [s] before switching off a step. Control may reset before actually switching."""
         return self.get_float(14, 0)
 
@@ -71,7 +80,7 @@ class CapControlsF(Base):
         """Sets the time delay [s] before switching off a step. Control may reset before actually switching."""
         return self.get_float(15, argument)
 
-    def cap_controls_read_dead_time(self):
+    def cap_controls_read_dead_time(self) -> float:
         """Gets the time delay [s] after switching off a step. Control may reset before actually switching."""
         return self.get_float(16, 0)
 
