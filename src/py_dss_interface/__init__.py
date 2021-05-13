@@ -1,6 +1,6 @@
 __version__ = '0.1.0'
 
-from .models.Base import Base
+from py_dss_interface.models.Base import Base
 from py_dss_interface.models.ActiveClass.ActiveClass import ActiveClass
 from py_dss_interface.models.Bus.Bus import Bus
 from py_dss_interface.models.Capacitors.Capacitors import Capacitors
@@ -14,7 +14,7 @@ from py_dss_interface.models.DSSInterface.DSSInterface import DSSInterface
 from py_dss_interface.models.DSSLoads.DSSLoads import DSSLoads
 from py_dss_interface.models.DSSProgress.DSSProgress import DSSProgress
 from py_dss_interface.models.DSSProperties.DSSProperties import DSSProperties
-from .models.DSSExecutive import DSSExecutive
+from py_dss_interface.models.DSSExecutive import DSSExecutive
 from py_dss_interface.models.Fuses.Fuses import Fuses
 from py_dss_interface.models.Generators.Generators import Generators
 from py_dss_interface.models.ISources.ISources import ISources
