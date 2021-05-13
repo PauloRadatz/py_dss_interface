@@ -2,10 +2,10 @@
 """
  Created by eniocc at 11/10/2020
 """
-from py_dss_interface.models.Capacitors.CapacitorsI import CapacitorsI
-from py_dss_interface.models.Capacitors.CapacitorsS import CapacitorsS
-from py_dss_interface.models.Capacitors.CapacitorsV import CapacitorsV
-from py_dss_interface.models.Capacitors.CapacitorsF import CapacitorsF
+from py_dss_interface.models.PD_Elements.Capacitors.CapacitorsI import CapacitorsI
+from py_dss_interface.models.PD_Elements.Capacitors.CapacitorsS import CapacitorsS
+from py_dss_interface.models.PD_Elements.Capacitors.CapacitorsV import CapacitorsV
+from py_dss_interface.models.PD_Elements.Capacitors.CapacitorsF import CapacitorsF
 
 
 class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
