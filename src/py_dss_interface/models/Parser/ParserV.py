@@ -9,12 +9,7 @@ from comtypes import automation
 from py_dss_interface.models.Base import Base
 
 
-class Parser(Base):
-    """
-    This interface implements the CmathLib (ICmathLib) interface of OpenDSS by declaring 4 procedures for accessing
-    the different properties included in this interface.
-    """
-
+class ParserV(Base):
     """
     This interface can be used to read/write certain properties of the active DSS object.
 
@@ -33,7 +28,7 @@ class Parser(Base):
 
     def parser_matrix(self):
         """Use this property to parse a Matrix token in OpenDSS format. Returns square matrix of order specified.
-        Order same as default fortran order: column by column."""
+        Order same as default fortran order: column by column. """
         variant_pointer = ctypes.pointer(automation.VARIANT())
         self.dss_obj.ParserV(ctypes.c_int(1), variant_pointer)
         return variant_pointer.contents.value

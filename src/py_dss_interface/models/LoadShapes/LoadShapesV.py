@@ -9,7 +9,7 @@ from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
-class LoadShapes(Base):
+class LoadShapesV(Base):
     """
     This interface implements the LoadShape (ILoadShape) interface of OpenDSS by declaring 4 procedures for accessing
     the different properties included in this interface: .

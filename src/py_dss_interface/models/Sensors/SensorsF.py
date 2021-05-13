@@ -3,110 +3,44 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
-from comtypes import automation
+
 from py_dss_interface.models.Base import Base
 
 
-class Sensors(Base):
+class SensorsF(Base):
     """
-    This interface implements the Sensors (ISensors) interface of OpenDSS by declaring 4 procedures for accessing the
-    different properties included in this interface: .
+    This interface can be used to read/write certain properties of the active DSS object.
+
+    The structure of the interface is as follows:
+        double SensorsF(int32_t Parameter, double Argument);
+
+    This interface returns a floating point number with the result of the query according to the value of the
+    variable Parameter, which can be one of the following.
     """
 
-    # SensorsF (Float)
-    def sensors_read_pcterror(self):
+    def sensors_read_pcterror(self) -> float:
         """Gets the assumed percent error in the Sensor measurement. Default is 1."""
-        result = float(self.dss_obj.SensorsF(ctypes.c_int32(0), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.SensorsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def sensors_write_pcterror(self, argument):
+    def sensors_write_pcterror(self, argument) -> float:
         """Sets the assumed percent error in the Sensor measurement. Default is 1."""
-        result = float(self.dss_obj.SensorsF(ctypes.c_int32(1), ctypes.c_double(argument)))
-        return result
+        argument = Base.check_float_param(argument)
+        return float(self.dss_obj.SensorsF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
-    def sensors_read_weight(self):
+    def sensors_read_weight(self) -> float:
         """Gets the weighting factor for this sensor measurement with respect to the other sensors. Default is 1."""
-        result = float(self.dss_obj.SensorsF(ctypes.c_int32(2), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.SensorsF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def sensors_write_weight(self, argument):
+    def sensors_write_weight(self, argument) -> float:
         """Sets the weighting factor for this sensor measurement with respect to the other sensors. Default is 1."""
-        result = float(self.dss_obj.SensorsF(ctypes.c_int32(3), ctypes.c_double(argument)))
-        return result
+        argument = Base.check_float_param(argument)
+        return float(self.dss_obj.SensorsF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    def sensors_read_kvbase(self):
+    def sensors_read_kvbase(self) -> float:
         """Gets the voltage base for the sensor measurements. LL for 2 and 3 - phase sensors, LN for 1-phase sensors."""
-        result = float(self.dss_obj.SensorsF(ctypes.c_int32(4), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.SensorsF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def sensors_write_kvbase(self, argument):
+    def sensors_write_kvbase(self, argument) -> float:
         """Sets the voltage base for the sensor measurements. LL for 2 and 3 - phase sensors, LN for 1-phase sensors."""
-        result = float(self.dss_obj.SensorsF(ctypes.c_int32(5), ctypes.c_double(argument)))
-        return result
-
-    # SensorsS (String)
-    def sensors_read_name(self):
-        """Gets the name of the active sensor object."""
-        result = ctypes.c_char_p(self.dss_obj.SensorsS(ctypes.c_int32(0), ctypes.c_int32(0)))
-        return result.value.decode('ascii')
-
-    def sensors_write_name(self, argument):
-        """Sets the name of the active sensor object."""
-        result = ctypes.c_char_p(self.dss_obj.SensorsS(ctypes.c_int32(1), argument.encode('ascii')))
-        return result.value.decode('ascii')
-
-    def sensors_read_meteredelement(self):
-        """Gets the full name of the measured element."""
-        result = ctypes.c_char_p(self.dss_obj.SensorsS(ctypes.c_int32(2), ctypes.c_int32(0)))
-        return result.value.decode('ascii')
-
-    def sensors_write_meteredelement(self, argument):
-        """Sets the full name of the measured element."""
-        result = ctypes.c_char_p(self.dss_obj.SensorsS(ctypes.c_int32(3), argument.encode('ascii')))
-        return result.value.decode('ascii')
-
-    # SensorsV (Variant)
-    def sensors_allnames(self):
-        """Returns a variant array of sensor names."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SensorsV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
-
-    def sensors_read_currents(self):
-        """Gets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SensorsV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
-
-    def sensors_write_currents(self, argument):
-        """Sets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.SensorsV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
-
-    def sensors_read_kvars(self):
-        """Gets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SensorsV(ctypes.c_int(3), variant_pointer)
-        return variant_pointer.contents.value
-
-    def sensors_write_kvars(self, argument):
-        """Sets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.SensorsV(ctypes.c_int(4), variant_pointer)
-        return variant_pointer.contents.value
-
-    def sensors_read_kws(self):
-        """Gets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SensorsV(ctypes.c_int(5), variant_pointer)
-        return variant_pointer.contents.value
-
-    def sensors_write_kws(self, argument):
-        """Sets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.SensorsV(ctypes.c_int(6), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_float_param(argument)
+        return float(self.dss_obj.SensorsF(ctypes.c_int32(5), ctypes.c_double(argument)))

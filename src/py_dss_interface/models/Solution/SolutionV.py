@@ -9,14 +9,17 @@ from comtypes import automation
 from py_dss_interface.models.Base import Base
 
 
-class Solution(Base):
+class SolutionV(Base):
     """
-    This interface implements the Solution (ISolution) interface of OpenDSS by declaring 4 procedures for accessing
-    the different properties included in this interface: .
+    This interface can be used to read/write certain properties of the active DSS object.
+
+    The structure of the interface is as follows:
+        void SolutionV(int32_t Parameter, VARIANT *Argument);
+
+    This interface returns a variant according to the number sent in the variable “parameter”. The parameter can be
+    one of the following.
     """
 
-
-    # SolutionV (Variant)
     def solution_eventlog(self):
         """Returns an array of strings containing the Event Log."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
@@ -24,19 +27,17 @@ class Solution(Base):
         return variant_pointer.contents.value
 
     def solution_ncmatrix(self):
-        """Returns an array of integers containing the incidence matrix (1-D).
-        Each cell of the incidence matrix is delivered using 3 elements of the array delivered,
-        the first is the row, the second is the column and the third is the value (1/-1).
-        This procedure will only deliver the non-zero elements.."""
+        """Returns an array of integers containing the incidence matrix (1-D). Each cell of the incidence matrix is
+        delivered using 3 elements of the array delivered, the first is the row, the second is the column and the
+        third is the value (1/-1). This procedure will only deliver the non-zero elements.. """
         variant_pointer = ctypes.pointer(automation.VARIANT())
         self.dss_obj.SolutionV(ctypes.c_int(1), variant_pointer)
         return variant_pointer.contents.value
 
     def solution_buslevels(self):
-        """Returns an array of integers containing BusLevels array.
-        This array gives a numeric value to each bus to specify how far it is from the
-        circuit?s backbone (a continuous path from the feeder head to the feeder end).
-        It is very handy to understand the circuit?s topology."""
+        """Returns an array of integers containing BusLevels array. This array gives a numeric value to each bus to
+        specify how far it is from the circuit?s backbone (a continuous path from the feeder head to the feeder end).
+        It is very handy to understand the circuit?s topology. """
         variant_pointer = ctypes.pointer(automation.VARIANT())
         self.dss_obj.SolutionV(ctypes.c_int(2), variant_pointer)
         return variant_pointer.contents.value

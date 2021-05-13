@@ -21,7 +21,7 @@ class CapacitorsS(Base):
 
     def capacitors_read_name(self) -> str:
         """Gets the name of the active Capacitor element."""
-        return self.get_string(0, 0)
+        return (self.dss_obj.CapacitorsS(0, 0)).decode('ascii')
 
     def capacitors_write_name(self, capacitor_name):
         """Sets the name of the Capacitor element to set it active.
@@ -29,4 +29,6 @@ class CapacitorsS(Base):
         """
         # TODO: what is the the return type?
         capacitor_name = Base.check_string_param(capacitor_name)
-        return self.get_string(1, capacitor_name)
+        import ctypes
+        ctypes.c_char_p(capacitor_name.encode('utf-8'))
+        return (self.dss_obj.CapacitorsS(1, ctypes.c_char_p(capacitor_name.encode('utf-8')))).decode('ascii')

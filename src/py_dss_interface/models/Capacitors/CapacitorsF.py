@@ -3,7 +3,7 @@
  Created by eniocc at 11/10/2020
 """
 from py_dss_interface.models.Base import Base
-
+import ctypes
 
 class CapacitorsF(Base):
     """
@@ -20,20 +20,20 @@ class CapacitorsF(Base):
     """
     def capacitors_read_kv(self) -> float:
         """Gets the bank rating. Use LL for 2 or 3 phases, or actual can rating for 1 phase."""
-        return self.get_float(0, 0)
+        return self.dss_obj.CapacitorsF(0, 0)
 
     def capacitors_write_kv(self, argument):
         """Sets the bank rating. Use LL for 2 or 3 phases, or actual can rating for 1 phase."""
         # TODO: what is the the return type?
         argument = Base.check_float_param(argument)
-        return self.get_float(1, argument)
+        return self.dss_obj.CapacitorsF(1, ctypes.c_double(argument))
 
     def capacitors_read_kvar(self) -> float:
         """Gets the total bank kvar, distributed equally among phases and steps."""
-        return self.get_float(2, 0)
+        return self.dss_obj.CapacitorsF(2, 0)
 
     def capacitors_write_kvar(self, argument):
         """Sets the total bank kvar, distributed equally among phases and steps."""
         # TODO: what is the the return type?
         argument = Base.check_float_param(argument)
-        return self.get_float(3, argument)
+        return self.dss_obj.CapacitorsF(3, ctypes.c_double(argument))

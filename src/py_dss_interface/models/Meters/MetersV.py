@@ -9,13 +9,17 @@ from comtypes import automation
 from py_dss_interface.models.Base import Base
 
 
-class Meters(Base):
+class MetersV(Base):
     """
-    This interface implements the Meters (IMeters) interface of OpenDSS by declaring 4 procedures for accessing the
-    different properties included in this interface: .
+    This interface can be used to read/write certain properties of the active DSS object.
+
+    The structure of the interface is as follows:
+        void MetersV(int32_t Parameter, VARIANT *Argument);
+
+    This interface returns a variant according to the number sent in the variable “parameter”. The parameter can be
+    one of the following.
     """
 
-    # MetersV (Variant)
     def meters_allnames(self):
         """Returns an array of all Energy Meter names."""
         variant_pointer = ctypes.pointer(automation.VARIANT())

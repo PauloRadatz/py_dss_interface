@@ -9,14 +9,17 @@ from comtypes import automation
 from py_dss_interface.models.Base import Base
 
 
-class XYCurves(Base):
+class XYCurvesV(Base):
     """
-    This interface implements the XYCurves (IXYCurves) interface of OpenDSS by declaring 4 procedures for accessing
-    the different properties included in this interface: .
+    This interface can be used to read/write certain properties of the active DSS object.
+
+    The structure of the interface is as follows:
+        void XYCurvesS(int32_t Parameter, VARIANT *Argument);
+
+    This interface returns a Variant with the result of the query according to the value of the variable Parameter,
+    which can be one of the following.
     """
 
-
-    # XYCurvesV (Variant)
     def read_xarray(self):
         """Gets the X values as a variant array of doubles. Set Npts to max number expected if setting."""
         variant_pointer = ctypes.pointer(automation.VARIANT())

@@ -4,14 +4,20 @@
 """
 import ctypes
 
-from comtypes import automation
-
 from py_dss_interface.models.Base import Base
 
 
-class PVSystems(Base):
+class PVSystemsS(Base):
+    """
+    This interface can be used to read/write certain properties of the active DSS object.
 
-    # PVsystemsS (String)
+    The structure of the interface is as follows:
+        CStr PVSystemsS(int32_t Parameter, CStr Argument);
+
+    This interface returns a string with the result of the query according to the value of the variable Parameter,
+    which can be one of the following.
+    """
+
     def pvsystems_read_name(self):
         """Gets the name of the active PVSystem."""
         result = ctypes.c_char_p(self.dss_obj.PVsystemsS(ctypes.c_int32(0), ctypes.c_int32(0)))
@@ -21,10 +27,3 @@ class PVSystems(Base):
         """Sets the name of the active PVSystem."""
         result = ctypes.c_char_p(self.dss_obj.PVsystemsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
-
-    # PVsystemsV (Variant)
-    def pvsystems_allnames(self):
-        """Gets the variant array of string containing names of all PVSystems in the circuit."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.PVsystemsV(ctypes.c_int32(0), variant_pointer)
-        return variant_pointer.contents.value

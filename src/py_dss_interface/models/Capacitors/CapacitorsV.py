@@ -2,10 +2,9 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
 from typing import List
 
-from comtypes import automation
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -25,25 +24,25 @@ class CapacitorsV(Base):
 
     def capacitors_allnames(self) -> List[str]:
         """Gets a variant array of strings with all Capacitor names in the circuit."""
-        return self.get_variant(0)
+        # return Bridge.VarArrayFunction(self.dss_obj.CapacitorsV, 0, None, '')
+        return Bridge.VarArrayFunction(self.dss_obj.CapacitorsV, 0, None, '')
 
     def capacitors_read_states(self) -> List[int]:
         """Gets a variant array of integers [0..numsteps-1] indicating the state of each step.
         If value is -1 and error has occurred."""
-        result = self.get_variant(1)
+        result = Bridge.VarArrayFunction(self.dss_obj.CapacitorsV, 1, None, '')
         if result == -1:
             raise ValueError("An error ocurred when tries to READ Capacitors states! ")
         return result
 
-    # TODO: must be change when linux compatibility comes
-    def capacitors_write_states(self, argument) -> int:
+    def capacitors_write_states(self, dss, argument) -> int:
         """Sets a variant array of integers [0..numsteps-1] indicating the state of each step. If value is -1 and
-        error has occurred. """
-        # TODO: what is the the possible return values?
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.type(self).__name__(ctypes.c_int(2), variant_pointer)
-        result = variant_pointer.contents.value
-        if result == -1:
+        error has occurred.
+        :param argument: list with status of Capacitor states
+        """
+        # Edit the capacitor
+        dss.capacitors_write_name(dss.capacitors_read_name())
+        result = dss.text(f'edit Capacitor.{dss.capacitors_read_name()} states={argument}')
+        if not result == '':
             raise ValueError("An error ocurred when tries to WRITE Capacitors states! ")
         return result

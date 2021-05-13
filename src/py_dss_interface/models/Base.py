@@ -57,6 +57,8 @@ class Base:
         :param default: self explained
         :param param: any int number
         """
+        if default is None:
+            default = 0
         if not isinstance(default, int):
             default = 0
         if param is None:
