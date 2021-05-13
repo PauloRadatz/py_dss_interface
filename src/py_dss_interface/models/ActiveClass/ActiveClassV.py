@@ -4,6 +4,7 @@
 """
 from typing import List
 
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -22,6 +23,6 @@ class ActiveClassV(Base):
     """
 
     def active_class_all_names(self) -> List[str]:
-        """Gets a variant array of strings consisting of all element names in the active Class.
-        """
-        return self.get_variant(0)
+        """Gets a variant array of strings consisting of all element names in the active Class."""
+        aqui = Bridge.VarArrayFunction(self.dss_obj.ActiveClassV, 0, None, '')
+        return aqui

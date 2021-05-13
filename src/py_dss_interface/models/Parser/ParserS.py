@@ -3,18 +3,11 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
-from comtypes import automation
+
 from py_dss_interface.models.Base import Base
 
 
-class Parser(Base):
-    """
-    This interface implements the CmathLib (ICmathLib) interface of OpenDSS by declaring 4 procedures for accessing
-    the different properties included in this interface.
-    """
-
-
-
+class ParserS(Base):
     """
     This interface can be used to read/write certain properties of the active DSS object.
 
@@ -24,6 +17,7 @@ class Parser(Base):
     This interface returns a string with the result of the query according to the value of the variable Parameter,
     which can be one of the following.
     """
+
     def parser_read_cmdstring(self):
         """Gets a string to be parsed. Loading this string resets the parser to the beginning of the line.
         Then parse off the tokens in sequence."""
@@ -81,35 +75,13 @@ class Parser(Base):
         return result.value.decode('ascii')
 
     def parser_read_delimiters(self):
-        """Gets the string defining hard delimiters used to separate token on the command string.
-        Default is , and =. The = separates token name from token value. These override whitespaces to separate
-        tokens."""
+        """Gets the string defining hard delimiters used to separate token on the command string. Default is ,
+        and =. The = separates token name from token value. These override whitespaces to separate tokens. """
         result = ctypes.c_char_p(self.dss_obj.ParserS(ctypes.c_int32(10), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     def parser_write_delimiters(self, argument):
-        """Sets the string defining hard delimiters used to separate token on the command string.
-        Default is , and =. The = separates token name from token value. These override whitespace to separate
-        tokens."""
+        """Sets the string defining hard delimiters used to separate token on the command string. Default is ,
+        and =. The = separates token name from token value. These override whitespace to separate tokens. """
         result = ctypes.c_char_p(self.dss_obj.ParserS(ctypes.c_int32(11), argument.encode('ascii')))
         return result.value.decode('ascii')
-
-    # ParserV (Variant)
-    def parser_vector(self):
-        """Returns token as variant array of doubles. For parsing quoted array syntax."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.ParserV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
-
-    def parser_matrix(self):
-        """Use this property to parse a Matrix token in OpenDSS format. Returns square matrix of order specified.
-        Order same as default fortran order: column by column."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.ParserV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
-
-    def parser_symmatrix(self):
-        """Use this property to parse a Matrix token in lower triangular form. Symmetry is forced."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.ParserV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value

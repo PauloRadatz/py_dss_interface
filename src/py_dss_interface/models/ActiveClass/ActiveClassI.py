@@ -19,20 +19,23 @@ class ActiveClassI(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
+    # TODO: check returns, [if -1, an error occur]; [if 0, nothing wrong but can't get the correct answer,
+    #  probably end of results]
+
     def active_class_first(self) -> int:
         """Sets first element in the active class to be the active DSS object. If object is a CktElement,
         ActiveCktElement also points to this element. Returns 0 if none."""
-        return self.dss_obj.get_integer(0, 0)
+        return self.dss_obj.ActiveClassI(0, 0)
 
     def active_class_next(self) -> int:
         """Sets next element in the active class to be the active DSS object.
         If object is a CktElement, ActiveCktElement also points to this element. Returns 0 if none."""
-        return self.dss_obj.get_integer(1, 0)
+        return self.dss_obj.ActiveClassI(1, 0)
 
     def active_class_num_elements(self) -> int:
         """Gets the number of elements in this class. Same as Count Property."""
-        return self.dss_obj.get_integer(2, 0)
+        return self.dss_obj.ActiveClassI(2, 0)
 
     def active_class_count(self) -> int:
         """Gets the number of elements in this class. Same as NumElements Property."""
-        return self.dss_obj.get_integer(3, 0)
+        return self.dss_obj.ActiveClassI(3, 0)

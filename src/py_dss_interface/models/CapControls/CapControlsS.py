@@ -18,24 +18,32 @@ class CapControlsS(Base):
 
     def cap_controls_read_name(self) -> str:
         """Gets the name of the active CapControl."""
-        return self.get_string(0, 0)
+        return (self.dss_obj.CapControlsS(0, 0)).decode('ascii')
 
     def cap_controls_write_name(self, argument):
         """Sets a CapControl active by name."""
-        return self.get_string(1, argument.encode('ascii'))
+        return self.dss_obj.CapControlsS(1, argument.encode('ascii'))
 
     def cap_controls_read_capacitor(self) -> str:
         """Gets the name of the capacitor that is controlled."""
-        return self.get_string(2, 0)
+        return (self.dss_obj.CapControlsS(2, 0)).decode('ascii')
 
     def cap_controls_write_capacitor(self, argument):
         """Sets the name of the capacitor that is controlled."""
-        return self.get_string(3, argument.encode('ascii'))
+        try:
+            result = self.dss_obj.CapControlsS(3, argument.encode('ascii'))
+            return result
+        except Exception as e:
+            print(f'cap_controls_write_capacitor: Check if exist at least one CapControl!. {e}')
 
     def cap_controls_read_monitored_obj(self) -> str:
         """Gets the full name of the element that PT and CT are connected to."""
-        return self.get_string(4, 0)
+        return (self.dss_obj.CapControlsS(4, 0)).decode('ascii')
 
     def cap_controls_write_monitored_obj(self, argument):
         """Sets the full name of the element that PT and CT are connected to."""
-        return self.get_string(5, argument.encode('ascii'))
+        try:
+            result = self.dss_obj.CapControlsS(5, argument.encode('ascii'))
+            return result
+        except Exception as e:
+            print(f'cap_controls_write_monitored_obj: Check if exist at least one CapControl!. {e}')

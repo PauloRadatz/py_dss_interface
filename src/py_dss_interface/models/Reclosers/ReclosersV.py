@@ -7,13 +7,17 @@ from comtypes import automation
 from py_dss_interface.models.Base import Base
 
 
-class Reclosers(Base):
+class ReclosersV(Base):
     """
-    This interface implements the Reclosers (IReclosers) interface of OpenDSS by declaring 4 procedures for accessing
-    the different properties included in this interface: .
+    This interface can be used to read/write certain properties of the active DSS object.
+
+    The structure of the interface is as follows:
+        void ReclosersV(int32_t Parameter, VARIANT *Argument);
+
+    This interface returns a Variant with the result of the query according to the value of the variable Parameter,
+    which can be one of the following.
     """
 
-    # ReclosersV (Variant)
     def reclosers_allnames(self):
         """Gets a variant array of strings with names of all reclosers in active circuit."""
         variant_pointer = ctypes.pointer(automation.VARIANT())

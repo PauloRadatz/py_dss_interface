@@ -4,6 +4,7 @@
 """
 from typing import List
 
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -19,4 +20,7 @@ class CapControlsV(Base):
     """
 
     def cap_controls_all_names(self) -> List[str]:
-        return self.get_variant(0)
+        result = Bridge.VarArrayFunction(self.dss_obj.CapControlsV, 0, None, '')
+        if result == -1:
+            raise ValueError("An error ocurred when tries to READ CapControls states! ")
+        return result

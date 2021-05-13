@@ -3,82 +3,62 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
-from comtypes import automation
+
 from py_dss_interface.models.Base import Base
 
 
-class PVSystems(Base):
+class PVSystemsF(Base):
+    """
+    This interface can be used to read/write certain properties of the active DSS object.
 
-    # PVsystemsF (Float)
-    def pvsystems_read_irradiance(self):
+    The structure of the interface is as follows:
+        double PVSystemsF(int32_t Parameter, double Argument);
+
+    This interface returns a floating point number with the result of the query according to the value of the
+    variable Parameter, which can be one of the following.
+
+    """
+
+    def pvsystems_read_irradiance(self) -> float:
         """Gets the present value of the Irradiance property in W/sq-m."""
-        result = float(self.dss_obj.PVsystemsF(ctypes.c_int32(0), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def pvsystems_write_irradiance(self, argument):
+    def pvsystems_write_irradiance(self, argument) -> float:
         """Sets the present value of the Irradiance property in W/sq-m."""
-        result = float(self.dss_obj.PVsystemsF(ctypes.c_int32(1), ctypes.c_double(argument)))
-        return result
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
-    def pvsystems_kw(self):
+    def pvsystems_kw(self) -> float:
         """Gets the kW output."""
-        result = float(self.dss_obj.PVsystemsF(ctypes.c_int32(2), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def pvsystems_read_kvar(self):
+    def pvsystems_read_kvar(self) -> float:
         """Gets the kvar value."""
-        result = float(self.dss_obj.PVsystemsF(ctypes.c_int32(3), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(3), ctypes.c_double(0)))
 
-    def pvsystems_write_kvar(self, argument):
+    def pvsystems_write_kvar(self, argument) -> float:
         """Sets the kvar value."""
-        result = float(self.dss_obj.PVsystemsF(ctypes.c_int32(4), ctypes.c_double(argument)))
-        return result
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(4), ctypes.c_double(argument)))
 
-    def pvsystems_read_pf(self):
+    def pvsystems_read_pf(self) -> float:
         """Gets the power factor value."""
-        result = float(self.dss_obj.PVsystemsF(ctypes.c_int32(5), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(5), ctypes.c_double(0)))
 
-    def pvsystems_write_pf(self, argument):
+    def pvsystems_write_pf(self, argument) -> float:
         """Sets the power factor value."""
-        result = float(self.dss_obj.PVsystemsF(ctypes.c_int32(6), ctypes.c_double(argument)))
-        return result
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(6), ctypes.c_double(argument)))
 
-    def pvsystems_read_kvarated(self):
+    def pvsystems_read_kvarated(self) -> float:
         """Gets the rated kVA of the PVSystem."""
-        result = float(self.dss_obj.PVsystemsF(ctypes.c_int32(7), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(7), ctypes.c_double(0)))
 
-    def pvsystems_write_kvarated(self, argument):
+    def pvsystems_write_kvarated(self, argument) -> float:
         """Sets the rated kVA of the PVSystem."""
-        result = float(self.dss_obj.PVsystemsF(ctypes.c_int32(8), ctypes.c_double(argument)))
-        return result
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(8), ctypes.c_double(argument)))
 
-    def pvsystems_read_pmpp(self):
+    def pvsystems_read_pmpp(self) -> float:
         """Gets the Pmpp."""
-        result = float(self.dss_obj.PVsystemsF(ctypes.c_int32(9), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(9), ctypes.c_double(0)))
 
-    def pvsystems_read_kv(self):
+    def pvsystems_read_kv(self) -> float:
         """Gets the kV."""
-        result = float(self.dss_obj.PVsystemsF(ctypes.c_int32(11), ctypes.c_double(0)))
-        return result
-
-    # PVsystemsS (String)
-    def pvsystems_read_name(self):
-        """Gets the name of the active PVSystem."""
-        result = ctypes.c_char_p(self.dss_obj.PVsystemsS(ctypes.c_int32(0), ctypes.c_int32(0)))
-        return result.value.decode('ascii')
-
-    def pvsystems_write_name(self, argument):
-        """Sets the name of the active PVSystem."""
-        result = ctypes.c_char_p(self.dss_obj.PVsystemsS(ctypes.c_int32(1), argument.encode('ascii')))
-        return result.value.decode('ascii')
-
-    # PVsystemsV (Variant)
-    def pvsystems_allnames(self):
-        """Gets the variant array of string containing names of all PVSystems in the circuit."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.PVsystemsV(ctypes.c_int32(0), variant_pointer)
-        return variant_pointer.contents.value
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(11), ctypes.c_double(0)))

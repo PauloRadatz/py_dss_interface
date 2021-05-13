@@ -3,17 +3,21 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
-from comtypes import automation
+
 from py_dss_interface.models.Base import Base
 
 
-class RegControls(Base):
+class RegControlsS(Base):
     """
-    This interface implements the RegControls (IRegControls) interface of OpenDSS by declaring 4 procedures for
-    accessing the different properties included in this interface: .
+    This interface can be used to read/write certain properties of the active DSS object.
+
+    The structure of the interface is as follows:
+        CStr RegControlsS(int32_t Parameter, CStr Argument);
+
+    This interface returns a string with the result of the query according to the value of the variable Parameter,
+    which can be one of the following.
     """
 
-    # RegControlsS (String)
     def regcontrols_read_name(self):
         """Gets the active RegControl name."""
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(0), ctypes.c_int32(0)))
@@ -21,6 +25,7 @@ class RegControls(Base):
 
     def regcontrols_write_name(self, argument):
         """Sets the active RegControl name."""
+        argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -31,6 +36,7 @@ class RegControls(Base):
 
     def regcontrols_write_monitoredbus(self, argument):
         """Sets the name of the remote regulated bus, in lieu of LDC settings."""
+        argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -41,12 +47,6 @@ class RegControls(Base):
 
     def regcontrols_write_transformer(self, argument):
         """Sets the name of the transformer this regulator controls."""
+        argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(5), argument.encode('ascii')))
         return result.value.decode('ascii')
-
-    # RegControlsV (Variant)
-    def regcontrols_allnames(self):
-        """Gets a variant array of strings containing all RegControl names."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.RegControlsV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value

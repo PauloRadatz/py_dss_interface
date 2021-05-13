@@ -2,6 +2,8 @@
 """
  Created by eniocc at 11/10/2020
 """
+import ctypes
+
 from py_dss_interface.models.Base import Base
 
 
@@ -19,18 +21,26 @@ class ActiveClassS(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
+    # TODO: if return is str:'0' we can't get the name
     def active_class_get_name(self) -> str:
         """Gets the name of the active Element of the Active class."""
-        return self.dss_obj.get_string(0, 0)
+        return (self.dss_obj.ActiveClassS(0, 0)).decode('ascii')
 
-    def active_class_write_name(self, argument) -> str:
-        """Sets the name of the active Element of the Active class.
-        : TODO: After sets the name what is the return type? str or int? How can I treat this? >=0 is ok?
-        """
-        return self.dss_obj.get_string(1, argument)
+    # TODO: need more research about this method
+    # def active_class_write_name(self, argument) -> str:
+    #     """Sets the name of the active Element of the Active class.
+    #     : TODO: After sets the name what is the return type? str or int? How can I treat this? >=0 is ok?
+    #     """
+    #     return (self.dss_obj.ActiveClassS(1, argument.encode('ascii'))).decode('ascii')
+    #     # result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(1), ))
+    #     # return result.value.decode('ascii')
 
-    def active_class_set_name(self) -> str:
+    def active_class_get_class_name(self) -> str:
         """Sets the name of the active Element of the Active class.
          TODO: After sets the name what is the return type? str or int? How can I treat this? >=0 is ok?
          """
-        return self.dss_obj.get_string(2, 0)
+        return (self.dss_obj.ActiveClassS(2, 0)).decode('ascii')
+
+    def active_class_parent_class_name(self) -> str:
+        """Gets the name of the Parent Element of the Active class."""
+        return (self.dss_obj.ActiveClassS(3, 0)).decode('ascii')

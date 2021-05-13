@@ -3,17 +3,21 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
-from comtypes import automation
+
 from py_dss_interface.models.Base import Base
 
 
-class Relays(Base):
+class RelaysS(Base):
     """
-    This interface implements the Relays (IRelays) interface of OpenDSS by declaring 3 procedures for accessing the
-    different properties included in this interface: .
+    This interface can be used to read/write certain properties of the active DSS object.
+
+    The structure of the interface is as follows:
+        CStr RelaysS(int32_t Parameter, CStr Argument);
+
+    This interface returns a string with the result of the query according to the value of the variable Parameter,
+    which can be one of the following.
     """
 
-    # RelaysS (String)
     def relays_read_name(self):
         """Gets the name of the active Relay."""
         result = ctypes.c_char_p(self.dss_obj.RelaysS(ctypes.c_int32(0), ctypes.c_int32(0)))
@@ -21,6 +25,7 @@ class Relays(Base):
 
     def relays_write_name(self, argument):
         """Sets the name of the active Relay."""
+        argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.RelaysS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -31,6 +36,7 @@ class Relays(Base):
 
     def relays_write_monitoredobj(self, argument):
         """Sets the full name of the object this relay is monitoring."""
+        argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.RelaysS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -41,12 +47,6 @@ class Relays(Base):
 
     def relays_write_switchedobj(self, argument):
         """Sets the full name of element that will switched when relay trips."""
+        argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.RelaysS(ctypes.c_int32(5), argument.encode('ascii')))
         return result.value.decode('ascii')
-
-    # RelaysV (Variant)
-    def relays_allnames(self):
-        """Getsa variant array of strings containing names of all relay elements."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.RelaysV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value

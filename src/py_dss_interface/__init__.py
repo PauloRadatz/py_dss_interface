@@ -19,7 +19,6 @@ from py_dss_interface.models.Fuses.Fuses import Fuses
 from py_dss_interface.models.Generators.Generators import Generators
 from py_dss_interface.models.ISources.ISources import ISources
 from py_dss_interface.models.LineCodes.LineCodes import LineCodes
-from py_dss_interface.models.Lines.Lines import Lines
 from py_dss_interface.models.Loads.Loads import Loads
 from py_dss_interface.models.LoadShapes.LoadShapes import LoadShapes
 from py_dss_interface.models.Meters.Meters import Meters

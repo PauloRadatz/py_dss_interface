@@ -3,13 +3,21 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
-from comtypes import automation
+
 from py_dss_interface.models.Base import Base
 
 
-class Monitors(Base):
+class MonitorsI(Base):
+    """
+    This interface can be used to read/write certain properties of the active DSS object.
 
-    # MonitorsI (int)
+    The structure of the interface is as follows:
+        int32_t MonitorsI(int32_t Parameter, int32_t Argument);
+
+    This interface returns an integer according to the number sent in the variable “parameter”. The parameter can be
+    one of the following.
+    """
+
     def monitors_first(self):
         """Sets the first monitor active. Returns 0 if no monitors."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(0), ctypes.c_int32(0))
@@ -57,7 +65,7 @@ class Monitors(Base):
         return result
 
     def monitors_samplecount(self):
-        """Returns number of samples in Monitor at present."""
+        """Returns number of examples in Monitor at present."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(9), ctypes.c_int32(0))
         return result
 
@@ -77,7 +85,7 @@ class Monitors(Base):
         return result
 
     def monitors_process(self):
-        """Post-process monitor samples taken so far, e.g., Pst for mode = 4."""
+        """Post-process monitor examples taken so far, e.g., Pst for mode = 4."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(13), ctypes.c_int32(0))
         return result
 
@@ -110,71 +118,3 @@ class Monitors(Base):
         """Sets sets the terminal number of element being monitored."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(19), ctypes.c_int32(argument))
         return result
-
-    # MonitorsS (String)
-    def monitors_filename(self):
-        """Returns the name of the CSV file associated with active monitor."""
-        result = ctypes.c_char_p(self.dss_obj.MonitorsS(ctypes.c_int32(0), ctypes.c_int32(0)))
-        return result.value.decode('ascii')
-
-    def monitors_read_name(self):
-        """Returns the active Monitor object by name."""
-        result = ctypes.c_char_p(self.dss_obj.MonitorsS(ctypes.c_int32(1), ctypes.c_int32(0)))
-        return result.value.decode('ascii')
-
-    def monitors_write_name(self, argument):
-        """Sets the active Monitor object by name."""
-        result = ctypes.c_char_p(self.dss_obj.MonitorsS(ctypes.c_int32(2), argument.encode('ascii')))
-        return result.value.decode('ascii')
-
-    def monitors_read_element(self):
-        """Returns the full name of element being monitored by the active Monitor."""
-        result = ctypes.c_char_p(self.dss_obj.MonitorsS(ctypes.c_int32(3), ctypes.c_int32(0)))
-        return result.value.decode('ascii')
-
-    def monitors_write_element(self, argument):
-        """Sets the full name of element being monitored by the active Monitor."""
-        result = ctypes.c_char_p(self.dss_obj.MonitorsS(ctypes.c_int32(4), argument.encode('ascii')))
-        return result.value.decode('ascii')
-
-    # MonitorsV (Variant)
-    def monitors_allnames(self):
-        """Returns an array of all Monitor names (array of strings)."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MonitorsV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
-
-    def monitors_bytestream(self):
-        """Returns a byte array containing monitor stream values.
-        Make sure a "save" is done first (standard solution modes do this automatically)."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MonitorsV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
-
-    def monitors_header(self):
-        """Returns the header string; Variant array of strings containing Channel Names."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MonitorsV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
-
-    def monitors_dblhour(self):
-        """Returns returns a variant array of doubles containing time value in hours for the time-sampled monitor
-        values; empty if frequency-sampled values for harmonics solution (see dblFreq)."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MonitorsV(ctypes.c_int(3), variant_pointer)
-        return variant_pointer.contents.value
-
-    def monitors_dblfreq(self):
-        """Returns a variant array of doubles containing time values for harmonics mode solutions;
-        empty for time mode solutions (use dblHour)."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MonitorsV(ctypes.c_int(4), variant_pointer)
-        return variant_pointer.contents.value
-
-    def monitors_channel(self, argument):
-        """Returns a variant array of doubles for the specified channel (usage: MyArray = DSSmonitor.
-        Channel(i)) A save or SaveAll should be executed first. Done automatically by most standard solution modes."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.MonitorsV(ctypes.c_int(5), variant_pointer)
-        return variant_pointer.contents.value

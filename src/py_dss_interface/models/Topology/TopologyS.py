@@ -3,14 +3,20 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
-from comtypes import automation
+
 from py_dss_interface.models.Base import Base
 
 
-class Topology(Base):
+class TopologyS(Base):
+    """
+    This interface can be used to read/write certain properties of the active DSS object.
 
+    The structure of the interface is as follows:
+        CStr TopologyS(int32_t Parameter, CStr Argument);
 
-        # TopologyS (String)
+    This interface returns a string with the result of the query according to the value of the variable Parameter,
+    which can be one of the following.
+    """
 
     def topology_read_branchname(self):
         """Gets the name of the active branch."""
@@ -31,23 +37,3 @@ class Topology(Base):
         """Sets the Bus active by name."""
         result = ctypes.c_char_p(self.dss_obj.TopologyS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
-
-        # TopologyV (Variant)
-
-    def topology_allloopedpairs(self):
-        """Gets a variant array of all looped element names, by pairs."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.TolopolgyV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
-
-    def topology_allisolatedbranches(self):
-        """Gets a variant array of all isolated branch names."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.TolopolgyV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
-
-    def topology_allisolatedloads(self):
-        """Gets a variant array of all isolated load names."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.TolopolgyV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value

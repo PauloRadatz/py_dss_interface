@@ -4,14 +4,17 @@ import os
 import json
 import pathlib
 
-from . import Bus, Circuit, DSSInterface, Loads, LoadShapes, Solution, Text, Topology, Transformers, XYCurves
+from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, DSSInterface, Loads, LoadShapes, Solution, Text
+from . import Topology, Transformers, XYCurves
+
 from .utils.System import System
 # from py_dss_interface import Circuit, DSSInterface, Loads, LoadShapes, Solution, Topology, Transformers, XYCurves
 
 DLL_NAME = "OpenDSSDirect.dll"
 
 
-class DSS(Bus, Circuit, DSSInterface, Loads, LoadShapes, Solution, Text, Topology, Transformers, XYCurves):
+class DSS(ActiveClass, Bus, CapControls, Capacitors, Circuit, DSSInterface, Loads, LoadShapes, Solution, Text,
+          Topology, Transformers, XYCurves):
     dll_folder: str
     dll_path: str
     dss_version: ctypes.c_char_p

@@ -7,9 +7,18 @@ import ctypes
 from py_dss_interface.models.Base import Base
 
 
-class PDElements(Base):
+class PDElementsS(Base):
+    """
+    This interface can be used to read/write certain properties of the active DSS object.
 
-    # PDElementsS (String)
+    The structure of the interface is as follows:
+        CStr PDElementsF(int32_t Parameter, CStr Argument);
+
+    This interface returns a string with the result of the query according to the value of the variable Parameter,
+    which can be one of the following.
+
+    """
+
     def pdelements_read_name(self):
         """Gets the name of the active PDElement, returns null string if active element id not PDElement."""
         result = ctypes.c_char_p(self.dss_obj.PDElementsS(ctypes.c_int32(0), ctypes.c_int32(0)))
