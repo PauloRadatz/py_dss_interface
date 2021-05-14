@@ -3,7 +3,6 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
-from comtypes import automation
 from py_dss_interface.models.Base import Base
 
 
@@ -44,9 +43,13 @@ class CktElementS(Base):
         result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def cktelement_controller(self) -> str:
+    def cktelement_controller(self, argument) -> str:
         """Delivers the Full name of the i-th controller attached to the active circuit element.
         The i-th controller index must be specified in the argument arg. Ex: Str = Controller(2).
         See NumControls to determine valid index range."""
-        result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(5), ctypes.c_int32(0)))
-        return result.value.decode('ascii')
+        try:
+            result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(5), ctypes.c_int32(argument)))
+            result = result.value.decode('ascii')
+        except Exception as e:
+            result = Base.warn_msg("Check if exist at least one *Controller* in your circuit", e)
+        return result

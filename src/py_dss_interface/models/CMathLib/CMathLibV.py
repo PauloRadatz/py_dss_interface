@@ -2,10 +2,12 @@
 """
  Created by eniocc at 11/10/2020
 """
+import cmath
 import ctypes
-from typing import List
+from typing import Tuple
 
 from comtypes import automation
+
 from py_dss_interface.models.Base import Base
 
 
@@ -20,22 +22,18 @@ class CMathLibV(Base):
     which can be one of the following.
     """
 
-    def cmathlib_cmplx(self):
+    def cmathlib_cmplx(self, real_part, imag_part):
         """Convert real (Argument1) and imaginary (Argument1) doubles to variant array of doubles."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.CmathLibV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return complex(real_part, imag_part)
 
-    def cmathlib_ctopolardeg(self) -> List[float]:
+    def cmathlib_ctopolardeg(self, double_real, double_imag) -> Tuple[float, float]:
         """Convert complex number (Argument1 and Argument2) to magnitude and angle, degrees. Returns variant array of
          two doubles."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.CmathLibV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        z = complex(double_real, double_imag)
+        r, theta = cmath.polar(z)
+        return r, theta
 
-    def cmathlib_pdegtocomplex(self):
+    def cmathlib_pdegtocomplex(self, double_real, double_imag):
         """Convert magnitude, angle in degrees (Argument1 and Argument2) to a complex number. Returns variant array of
          two doubles."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.CmathLibV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
+        return cmath.rect(double_real, double_imag)
