@@ -6,6 +6,8 @@ __pycache__
 # OpenDSS
 *.DSV
 *.dbl
+# Text File
+*.csv
 # Packages
 *.egg
 *.egg-info
