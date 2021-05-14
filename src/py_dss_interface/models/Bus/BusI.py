@@ -2,8 +2,6 @@
 """
  Created by eniocc at 11/10/2020
 """
-import warnings
-from typing import Optional
 
 from py_dss_interface.models.Base import Base
 

@@ -2,8 +2,10 @@
 """
  Created by eniocc at 11/10/2020
 """
-from py_dss_interface.models.Base import Base
 import ctypes
+
+from py_dss_interface.models.Base import Base
+
 
 class CapacitorsF(Base):
     """
@@ -18,6 +20,7 @@ class CapacitorsF(Base):
 
     The properties (parameter) are integer numbers and are described as follows.
     """
+
     def capacitors_read_kv(self) -> float:
         """Gets the bank rating. Use LL for 2 or 3 phases, or actual can rating for 1 phase."""
         return self.dss_obj.CapacitorsF(0, 0)
