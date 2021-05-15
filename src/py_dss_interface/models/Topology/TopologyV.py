@@ -6,6 +6,7 @@ import ctypes
 
 from comtypes import automation
 
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -22,18 +23,12 @@ class TopologyV(Base):
 
     def topology_allloopedpairs(self):
         """Gets a variant array of all looped element names, by pairs."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.TolopolgyV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.TolopolgyV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     def topology_allisolatedbranches(self):
         """Gets a variant array of all isolated branch names."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.TolopolgyV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.TolopolgyV, ctypes.c_int(1), ctypes.c_int(0), None)
 
     def topology_allisolatedloads(self):
         """Gets a variant array of all isolated load names."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.TolopolgyV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.TolopolgyV, ctypes.c_int(2), ctypes.c_int(0), None)

@@ -2,8 +2,8 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
-from comtypes import automation
+
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -23,6 +23,4 @@ class CtrlQueueV(Base):
 
     def ctrlqueue_ctrlqueue(self):
         """Delivers the control actions contained in the CtrlQueue after the latest solve command."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.CtrlQueueV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.CtrlQueueV, 0, None, '')

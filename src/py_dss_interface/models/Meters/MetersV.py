@@ -6,7 +6,10 @@ import ctypes
 
 from comtypes import automation
 
+from py_dss_interface.models.Text.Text import Text
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
+from py_dss_interface.models.Meters.MetersS import MetersS
 
 
 class MetersV(Base):
@@ -22,62 +25,48 @@ class MetersV(Base):
 
     def meters_allnames(self):
         """Returns an array of all Energy Meter names."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MetersV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     def meters_registernames(self):
         """Returns an array of strings containing the names of the registers."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MetersV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(1), ctypes.c_int(0), None)
 
     def meters_registervalues(self):
         """Returns an array of values contained in the Meter registers for the active Meter."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MetersV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(2), ctypes.c_int(0), None)
 
     def meters_totals(self):
         """Returns the totals for all registers of all Meters."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MetersV(ctypes.c_int(3), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(3), ctypes.c_int(0), None)
 
     def meters_read_peakcurrent(self):
         """Returns an array of doubles with the Peak Current Property."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MetersV(ctypes.c_int(4), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(4), ctypes.c_int(0), None)
 
     def meters_write_peakcurrent(self, argument):
         """Receives an array of doubles to set values of Peak Current Property."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.MetersV(ctypes.c_int(5), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        mt = MetersS(self.dss_obj)
+        mt_name = mt.meters_read_name()
+        return t.text(f'edit EnergyMeter.{mt_name} peakcurrent = {argument}')
 
     def meters_read_calcurrent(self):
         """Returns the magnitude of the real part of the Calculated Current (normally determined by solution)
         for the meter to force some behavior on Load Allocation."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MetersV(ctypes.c_int(6), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(6), ctypes.c_int(0), None)
 
-    def meters_write_calcurrent(self, argument):
-        """Sets the magnitude of the real part of the Calculated Current (normally determined by solution)
-        for the meter to force some behavior on Load Allocation."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.MetersV(ctypes.c_int(7), variant_pointer)
-        return variant_pointer.contents.value
+    # TODO: test in the future with a presence of an energymeter
+    # def meters_write_calcurrent(self, argument):
+    #     """Sets the magnitude of the real part of the Calculated Current (normally determined by solution)
+    #     for the meter to force some behavior on Load Allocation."""
+    #     return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(7), argument, None)
 
     def meters_read_allocfactors(self):
         """Returns an array of doubles: allocation factors for the active Meter."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MetersV(ctypes.c_int(8), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(8), ctypes.c_int(0), None)
 
+    # How to do it with text?
     def meters_write_allocfactors(self, argument):
         """Receives an array of doubles to set the phase allocation factors for the active Meter."""
         variant_pointer = ctypes.pointer(automation.VARIANT())
@@ -87,12 +76,8 @@ class MetersV(Base):
 
     def meters_allendelements(self):
         """Returns a variant array of names of all zone end elements."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MetersV(ctypes.c_int(10), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(10), ctypes.c_int(0), None)
 
     def meters_allbranchesinzone(self):
         """Returns a wide string list of all branches in zone of the active Energy Meter object."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MetersV(ctypes.c_int(11), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(11), ctypes.c_int(0), None)

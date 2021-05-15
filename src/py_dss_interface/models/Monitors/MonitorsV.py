@@ -6,6 +6,7 @@ import ctypes
 
 from comtypes import automation
 
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -22,36 +23,26 @@ class MonitorsV(Base):
 
     def monitors_allnames(self):
         """Returns an array of all Monitor names (array of strings)."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MonitorsV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     def monitors_bytestream(self):
         """Returns a byte array containing monitor stream values. Make sure a "save" is done first (standard solution
         modes do this automatically). """
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MonitorsV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(1), ctypes.c_int(0), None)
 
     def monitors_header(self):
         """Returns the header string; Variant array of strings containing Channel Names."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MonitorsV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(2), ctypes.c_int(0), None)
 
     def monitors_dblhour(self):
         """Returns returns a variant array of doubles containing time value in hours for the time-sampled monitor
         values; empty if frequency-sampled values for harmonics solution (see dblFreq)."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MonitorsV(ctypes.c_int(3), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(3), ctypes.c_int(0), None)
 
     def monitors_dblfreq(self):
         """Returns a variant array of doubles containing time values for harmonics mode solutions; empty for time
         mode solutions (use dblHour). """
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.MonitorsV(ctypes.c_int(4), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(4), ctypes.c_int(0), None)
 
     def monitors_channel(self, argument):
         """Returns a variant array of doubles for the specified channel (usage: MyArray = DSSmonitor. Channel(i)) A

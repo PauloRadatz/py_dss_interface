@@ -4,7 +4,11 @@
 """
 import ctypes
 from comtypes import automation
+
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
+from py_dss_interface.models.LineCodes import LineCodesS
+from py_dss_interface.models.Text.Text import Text
 
 
 class LineCodesV(Base):
@@ -20,50 +24,52 @@ class LineCodesV(Base):
 
     The properties (parameter) are integer numbers and are described as follows.
     """
+
     def linecodes_read_rmatrix(self):
         """Gets the resistance matrix in ohms per unit length of the active LineCode."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.LineCodesV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.LineCodesV, 0, None, '')
 
     def linecodes_write_rmatrix(self, argument):
         """Sets the resistance matrix in ohms per unit length of the active LineCode. The new values must be entered as
-         a vector of doubles using the argument."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.LineCodesV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+         a vector of doubles using the argument.
+         :param argument: must be a string like that [0.791721 | 0.318476 0.781649 | 0.28345, 0.318476, 0.791721]
+         """
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        lc = LineCodesS.LineCodesS(self.dss_obj)
+        lc_name = lc.linecodes_read_name()
+        t.text(f'edit Linecode.{lc_name} Rmatrix = {argument}')
 
     def linecodes_read_xmatrix(self):
         """Gets the reactance matrix in ohms per unit length of the active LineCode."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.LineCodesV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.LineCodesV, 2, None, '')
 
     def linecodes_write_xmatrix(self, argument):
         """Sets the reactance matrix in ohms per unit length of the active LineCode. The new values must be entered as
-         a vector of doubles using the argument."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.LineCodesV(ctypes.c_int(3), variant_pointer)
-        return variant_pointer.contents.value
+         a vector of doubles using the argument.
+
+         """
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        lc = LineCodesS.LineCodesS(self.dss_obj)
+        lc_name = lc.linecodes_read_name()
+        t.text(f'edit Linecode.{lc_name} Xmatrix = {argument}')
 
     def linecodes_read_cmatrix(self):
         """Gets the capacitance matrix in ohms per unit length of the active LineCode."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.LineCodesV(ctypes.c_int(4), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.LineCodesV, 4, None, '')
 
     def linecodes_write_cmatrix(self, argument):
         """Sets the capacitance matrix in ohms per unit length of the active LineCode. The new values must be entered as
-         a vector of doubles using the argument."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.LineCodesV(ctypes.c_int(5), variant_pointer)
-        return variant_pointer.contents.value
+         a vector of doubles using the argument.
+         :param argument: must be a string like that [383.948  |0  383.948  |0  0  383.948 ]
+         """
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        lc = LineCodesS.LineCodesS(self.dss_obj)
+        lc_name = lc.linecodes_read_name()
+        t.text(f'edit Linecode.{lc_name} Cmatrix = {argument}')
 
     def linecodes_allnames(self):
         """Gets the capacitance matrix in ohms per unit length of the active LineCode."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.LineCodesV(ctypes.c_int(6), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.LineCodesV, 6, None, '')

@@ -4,8 +4,7 @@
 """
 import ctypes
 
-from comtypes import automation
-
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -25,20 +24,14 @@ class TransformersV(Base):
 
     def transformers_allNames(self):
         """Gets a variant array of strings with all Transformer names in the active circuit."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.TransformersV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.TransformersV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     def transformers_wdgvoltages(self):
         """Gets a variant array of doubles containing the voltages at the active winding on the active transformer.
         These voltages come as complex pairs."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.TransformersV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.TransformersV, ctypes.c_int(1), ctypes.c_int(0), None)
 
     def transformers_wdgcurrents(self):
         """Gets a a variant array of doubles containing the currents at the active winding on the active transformer.
         These currents come as complex pairs."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.TransformersV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.TransformersV, ctypes.c_int(2), ctypes.c_int(0), None)

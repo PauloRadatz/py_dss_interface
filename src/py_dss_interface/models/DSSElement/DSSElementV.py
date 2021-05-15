@@ -2,10 +2,9 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
 from typing import List
 
-from comtypes import automation
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -25,6 +24,4 @@ class DSSElementV(Base):
 
     def dsselement_allpropertynames(self) -> List[str]:
         """Gets a variant array of strings containing the names of all properties for the active DSS object."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.DSSElementV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.DSSElementV, 0, None, '')

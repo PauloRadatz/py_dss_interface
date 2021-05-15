@@ -2,10 +2,9 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
 from typing import List
 
-from comtypes import automation
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -22,6 +21,4 @@ class FusesV(Base):
 
     def fuses_allnames(self) -> List[str]:
         """Gets the variant array of string containing names of all fuses in the circuit."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.FusesV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.FusesV, 0, None, '')
