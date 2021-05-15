@@ -2,10 +2,9 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
 from typing import List
 
-from comtypes import automation
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -22,12 +21,8 @@ class DSSInterfaceV(Base):
 
     def dss_classes(self) -> List[str]:
         """Gets the list of DSS intrinsic classes (names of the classes)."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.DSSV(ctypes.c_int32(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.DSSV, 0, None, '')
 
     def dss_user_classes(self) -> List[str]:
         """Gets list of user-defined classes (names of the classes)."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.DSSV(ctypes.c_int32(1), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.DSSV, 1, None, '')

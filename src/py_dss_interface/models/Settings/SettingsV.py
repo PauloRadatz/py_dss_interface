@@ -6,6 +6,7 @@ import ctypes
 
 from comtypes import automation
 
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -22,9 +23,7 @@ class SettingsV(Base):
 
     def settings_read_ueregs(self):
         """Gets the array of Integers defining Energy Meter registers to use for computing UE."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SettingsV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.SettingsV, 0, None, '')
 
     def settings_write_ueregs(self, argument):
         """Sets the array of Integers defining Energy Meter registers to use for computing UE."""
@@ -35,9 +34,7 @@ class SettingsV(Base):
 
     def settings_read_lossregs(self):
         """Gets the array of Integers defining Energy Meter registers to use for computing Losses."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SettingsV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.SettingsV, 2, None, '')
 
     def settings_write_lossregs(self, argument):
         """Sets the array of Integers defining Energy Meter registers to use for computing Losses."""
@@ -48,9 +45,7 @@ class SettingsV(Base):
 
     def settings_read_voltagebases(self):
         """Gets the array of doubles defining the legal voltage bases in kV L-L."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SettingsV(ctypes.c_int(4), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.SettingsV, 4, None, '')
 
     def settings_write_voltagebases(self, argument):
         """Sets the array of doubles defining the legal voltage bases in kV L-L."""

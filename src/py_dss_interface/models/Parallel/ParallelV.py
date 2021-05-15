@@ -4,8 +4,7 @@
 """
 import ctypes
 
-from comtypes import automation
-
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -22,14 +21,10 @@ class ParallelV(Base):
 
     def parallel_actorprogress(self):
         """Returns an array of integers containing the progress in percentage for each active actor."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.ParallelV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.ParallelV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     def parallel_actorstatus(self):
         """Returns an array of integers containing the status of each active actor. If 1, the actor is ready to
         receive new commands, if 0, the actor is busy performing a simulation and cannot take new ?solve? commands at
         this time. However, the actor is capable to deliver values while the simulation is being performed. """
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.ParallelV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.ParallelV, ctypes.c_int(1), ctypes.c_int(0), None)

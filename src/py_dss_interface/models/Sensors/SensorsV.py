@@ -4,9 +4,10 @@
 """
 import ctypes
 
-from comtypes import automation
-
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
+from py_dss_interface.models.Sensors.SensorsS import SensorsS
+from py_dss_interface.models.Text.Text import Text
 
 
 class SensorsV(Base):
@@ -22,45 +23,40 @@ class SensorsV(Base):
 
     def sensors_allnames(self):
         """Returns a variant array of sensor names."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SensorsV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.SensorsV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     def sensors_read_currents(self):
         """Gets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SensorsV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.SensorsV, ctypes.c_int(1), ctypes.c_int(0), None)
 
     def sensors_write_currents(self, argument):
         """Sets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.SensorsV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        sen = SensorsS(self.dss_obj)
+        sen_name = sen.sensors_read_name()
+        return t.text(f'edit Sensor.{sen_name} currents = {argument}')
 
     def sensors_read_kvars(self):
         """Gets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SensorsV(ctypes.c_int(3), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.SensorsV, ctypes.c_int(3), ctypes.c_int(0), None)
 
     def sensors_write_kvars(self, argument):
         """Sets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.SensorsV(ctypes.c_int(4), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        sen = SensorsS(self.dss_obj)
+        sen_name = sen.sensors_read_name()
+        return t.text(f'edit Sensor.{sen_name} kvars = {argument}')
 
     def sensors_read_kws(self):
         """Gets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SensorsV(ctypes.c_int(5), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.SensorsV, ctypes.c_int(5), ctypes.c_int(0), None)
 
     def sensors_write_kws(self, argument):
         """Sets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.SensorsV(ctypes.c_int(6), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        sen = SensorsS(self.dss_obj)
+        sen_name = sen.sensors_read_name()
+        return t.text(f'edit Sensor.{sen_name} kws = {argument}')

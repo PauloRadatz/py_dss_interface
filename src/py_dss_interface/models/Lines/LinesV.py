@@ -6,7 +6,12 @@ import ctypes
 from typing import List
 
 from comtypes import automation
+
+from py_dss_interface.models.Text.Text import Text
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
+
+from py_dss_interface.models.Lines import Lines
 
 
 class LinesV(Base):
@@ -26,55 +31,49 @@ class LinesV(Base):
 
     def lines_allnames(self) -> List[str]:
         """Gets the name of all Line Objects."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.LinesV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.LinesV, 0, None, '')
 
     def lines_read_rmatrix(self):
         """Gets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.LinesV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.LinesV, 1, None, '')
 
-    def lines_write_rmatrix(self, argument) -> List[float]:
+    def lines_write_rmatrix(self, argument) -> int:
         """Sets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.LinesV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        lc = Lines.LinesS(self.dss_obj)
+        lc_name = lc.lines_read_name()
+        return t.text(f'edit Line.{lc_name} Rmatrix = {argument}')
 
     def lines_read_xmatrix(self) -> List[float]:
         """Gets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.LinesV(ctypes.c_int(3), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.LinesV, 3, None, '')
 
     def lines_write_xmatrix(self, argument) -> List[float]:
         """Sets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.LinesV(ctypes.c_int(4), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        lc = Lines.LinesS(self.dss_obj)
+        lc_name = lc.lines_read_name()
+        return t.text(f'edit Line.{lc_name} Xmatrix = {argument}')
 
     def lines_read_cmatrix(self) -> List[float]:
         """Gets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.LinesV(ctypes.c_int(5), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.LinesV, 5, None, '')
 
-    def lines_write_cmatrix(self, argument) -> List[float]:
+    def lines_write_cmatrix(self, argument) -> int:
         """Sets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.LinesV(ctypes.c_int(6), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        lc = Lines.LinesS(self.dss_obj)
+        lc_name = lc.lines_read_name()
+        return t.text(f'edit Line.{lc_name} Cmatrix = {argument}')
 
     def lines_read_yprim(self) -> List[float]:
         """Gets the YPrimitive of the active Line."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.LinesV(ctypes.c_int(7), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.LinesV, 7, None, '')
 
+    # TODO: check later
     def lines_write_yprim(self, argument) -> List[float]:
         """Does nothing at present."""
         variant_pointer = ctypes.pointer(automation.VARIANT())

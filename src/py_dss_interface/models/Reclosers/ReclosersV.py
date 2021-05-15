@@ -2,8 +2,7 @@
 
 import ctypes
 
-from comtypes import automation
-
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -20,12 +19,8 @@ class ReclosersV(Base):
 
     def reclosers_allnames(self):
         """Gets a variant array of strings with names of all reclosers in active circuit."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.ReclosersV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.ReclosersV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     def reclosers_recloseintervals(self):
         """Gets a variant array of doubles: reclose intervals (s) between shots."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.ReclosersV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.ReclosersV, ctypes.c_int(1), ctypes.c_int(0), None)

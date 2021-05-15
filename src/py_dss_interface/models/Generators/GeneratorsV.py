@@ -2,10 +2,9 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
 from typing import List
 
-from comtypes import automation
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -22,18 +21,12 @@ class GeneratorsV(Base):
 
     def generators_allnames(self) -> List[str]:
         """Gets the array of names of all Generator objects."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.GeneratorsV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.GeneratorsV, 0, None, '')
 
     def generators_registernames(self) -> List[str]:
         """Gets the array of names of all generator Energy Meter registers."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.GeneratorsV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.GeneratorsV, 1, None, '')
 
     def generators_registervalues(self) -> List[float]:
         """Gets the array of values in generator Energy Meter registers."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.GeneratorsV(ctypes.c_int(2), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.GeneratorsV, 2, None, '')

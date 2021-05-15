@@ -5,8 +5,7 @@
 
 import ctypes
 
-from comtypes import automation
-
+from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
@@ -23,6 +22,4 @@ class SWTControlsV(Base):
 
     def swtcontrols_allnames(self):
         """Gets a variant array of strings with all SwtControl names in the active circuit."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.SwtControlsV(ctypes.c_int(0), variant_pointer)
-        return variant_pointer.contents.value
+        return Bridge.VarArrayFunction(self.dss_obj.SwtControlsV, ctypes.c_int(0), ctypes.c_int(0), None)
