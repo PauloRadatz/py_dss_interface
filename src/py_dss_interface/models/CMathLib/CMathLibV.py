@@ -3,10 +3,7 @@
  Created by eniocc at 11/10/2020
 """
 import cmath
-import ctypes
 from typing import Tuple
-
-from comtypes import automation
 
 from py_dss_interface.models.Base import Base
 

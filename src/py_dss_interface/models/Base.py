@@ -5,8 +5,9 @@
 import ctypes
 import warnings
 from typing import Optional
-from comtypes import automation
+
 from colorama import Fore, Back
+
 
 class Base:
 
@@ -22,10 +23,10 @@ class Base:
         second = Base.check_int_param(second)
         return int(self.dss_obj.type(self).__name__(ctypes.c_int32(first), ctypes.c_int32(second)))
 
-    def get_variant(self, first):
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        self.dss_obj.type(self).__name__(ctypes.c_int32(first), variant_pointer)
-        return variant_pointer.contents.value
+    # def get_variant(self, first):
+    #     variant_pointer = ctypes.pointer(automation.VARIANT())
+    #     self.dss_obj.type(self).__name__(ctypes.c_int32(first), variant_pointer)
+    #     return variant_pointer.contents.value
 
     def get_float(self, first, second):
         first = Base.check_int_param(first)

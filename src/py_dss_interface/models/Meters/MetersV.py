@@ -3,13 +3,10 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
-
-from comtypes import automation
-
-from py_dss_interface.models.Text.Text import Text
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 from py_dss_interface.models.Meters.MetersS import MetersS
+from py_dss_interface.models.Text.Text import Text
 
 
 class MetersV(Base):
@@ -56,7 +53,8 @@ class MetersV(Base):
         for the meter to force some behavior on Load Allocation."""
         return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(6), ctypes.c_int(0), None)
 
-    # TODO: test in the future with a presence of an energymeter
+    # # TODO: test in the future with a presence of an energymeter
+    # TODO: comtypes
     # def meters_write_calcurrent(self, argument):
     #     """Sets the magnitude of the real part of the Calculated Current (normally determined by solution)
     #     for the meter to force some behavior on Load Allocation."""
@@ -66,13 +64,14 @@ class MetersV(Base):
         """Returns an array of doubles: allocation factors for the active Meter."""
         return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(8), ctypes.c_int(0), None)
 
-    # How to do it with text?
+    # TODO: comtypes
     def meters_write_allocfactors(self, argument):
         """Receives an array of doubles to set the phase allocation factors for the active Meter."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.MetersV(ctypes.c_int(9), variant_pointer)
-        return variant_pointer.contents.value
+        # argument = Base.check_string_param(argument)
+        # return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(9), ctypes.c_int(1), None)
+        t = Text(self.dss_obj)
+        a = t.text("get mode ")
+        return t.text(f'Allocateload {argument}')
 
     def meters_allendelements(self):
         """Returns a variant array of names of all zone end elements."""

@@ -4,12 +4,10 @@
 """
 import ctypes
 
-from comtypes import automation
-
-from py_dss_interface.models.LoadShapes.LoadShapesS import LoadShapesS
-from py_dss_interface.models.Text.Text import Text
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
+from py_dss_interface.models.LoadShapes.LoadShapesS import LoadShapesS
+from py_dss_interface.models.Text.Text import Text
 
 
 class LoadShapesV(Base):

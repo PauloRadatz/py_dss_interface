@@ -22,9 +22,6 @@ class CircuitV(Base):
     def circuit_losses(self) -> List[float]:
         """Returns an array of doubles (two doubles for representing a complex number) with the total losses of the
         active circuit. Argument2 must be 0."""
-        # variant_pointer = ctypes.pointer(automation.VARIANT())
-        # self.dss_obj.CircuitV(ctypes.c_int32(0), variant_pointer, ctypes.c_int32(0))
-        # # return variant_pointer.contents.value
         return Bridge.VarArrayFunction(self.dss_obj.CircuitV, 0, None, '')
 
     def circuit_line_losses(self) -> List[float]:

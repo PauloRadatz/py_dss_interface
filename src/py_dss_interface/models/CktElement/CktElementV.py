@@ -2,10 +2,7 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
 from typing import List
-
-from comtypes import automation
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
