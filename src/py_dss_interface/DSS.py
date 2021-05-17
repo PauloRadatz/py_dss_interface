@@ -1,16 +1,16 @@
 # -*- coding: iso-8859-15 -*-
 import ctypes
-import os
 import json
+import os
 import pathlib
 
 from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement
 from . import DSSInterface, Fuses, Generators, ISources, LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Sensors
 from . import Solution, Text, Topology, Transformers, XYCurves
-
 from .utils.System import System
 
-DLL_NAME = "OpenDSSDirect.dll"
+DLL_NAME_WIN = "OpenDSSDirect.dll"
+DLL_NAME_LINUX = "libopendssdirect.so"
 
 
 class DSS(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, DSSInterface,
@@ -24,15 +24,25 @@ class DSS(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathL
     memory_commands = []
     class_commands = []
 
-    def __init__(self, dll_folder_param=None, dll_name=DLL_NAME):
+    def __init__(self, dll_folder_param=None):
         # TODO: dss_write_allowforms
         """
         Class to create an OpenDSS object
         :param dll_folder_param: None will use the OpenDSS available within the package. The dll path allows to use a
         different OpenDSS
         """
+
+        # TODO: refactor this entrance
+        base_folder = dll_folder_param
+        dll_name = DLL_NAME_WIN
+
         if dll_folder_param is None:
             base_folder = os.path.dirname(os.path.abspath(__file__))
+
+            if System.detect_platform() == 'Linux':
+                dll_name = DLL_NAME_LINUX
+                self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll/linux")
+        else:
             self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll")
 
         self.dll_path = System.get_architecture_path(self.dll_folder)
@@ -50,16 +60,6 @@ class DSS(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathL
             print("OpenDSS Started successfully! \nOpenDSS {}\n\n".format(self.dss_version.value.decode('ascii')))
         else:
             print("OpenDSS Failed to Start")
-
-        # self.Circuit = Circuit(self.dss_obj)
-        # self.DSSInterface = DSSInterface(self.dss_obj)
-        # self.Loads = Loads(self.dss_obj)
-        # self.LoadShapes = LoadShapes(self.dss_obj)
-        # self.Text = Text(self.dss_obj)
-        # self.Topology = Topology(self.dss_obj)
-        # self.Transformers = Transformers(self.dss_obj)
-        # self.Solution = Solution(self.dss_obj)
-        # self.XYCurves = XYCurves(self.dss_obj)
 
     def check_started(self):
         if int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0))) == 1:
