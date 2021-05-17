@@ -42,8 +42,8 @@ class DSS(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathL
             if System.detect_platform() == 'Linux':
                 dll_name = DLL_NAME_LINUX
                 self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll/linux")
-        else:
-            self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll")
+            else:
+                self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll")
 
         self.dll_path = System.get_architecture_path(self.dll_folder)
         os.chdir(self.dll_path)
