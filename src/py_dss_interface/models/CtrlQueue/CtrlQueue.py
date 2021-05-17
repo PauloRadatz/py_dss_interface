@@ -2,8 +2,6 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
-from comtypes import automation
 from py_dss_interface.models.CtrlQueue.CtrlQueueI import CtrlQueueI
 from py_dss_interface.models.CtrlQueue.CtrlQueueV import CtrlQueueV
 

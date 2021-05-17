@@ -5,8 +5,8 @@ import json
 import pathlib
 
 from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement
-from . import DSSInterface, Fuses, Generators, ISources, LineCodes, Lines, Loads, LoadShapes, Meters, Sensors, Solution
-from . import Text, Topology, Transformers, XYCurves
+from . import DSSInterface, Fuses, Generators, ISources, LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Sensors
+from . import Solution, Text, Topology, Transformers, XYCurves
 
 from .utils.System import System
 
@@ -14,8 +14,8 @@ DLL_NAME = "OpenDSSDirect.dll"
 
 
 class DSS(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, DSSInterface,
-          Fuses, Generators, Lines, Loads, ISources, LineCodes, LoadShapes, Meters, Sensors, Solution, Text, Topology,
-          Transformers, XYCurves):
+          Fuses, Generators, Lines, Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, Sensors, Solution, Text,
+          Topology, Transformers, XYCurves):
     dll_folder: str
     dll_path: str
     dss_version: ctypes.c_char_p

@@ -2,16 +2,12 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
 from typing import List
 
-from comtypes import automation
-
-from py_dss_interface.models.Text.Text import Text
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
-
 from py_dss_interface.models.Lines import Lines
+from py_dss_interface.models.Text.Text import Text
 
 
 class LinesV(Base):
@@ -73,10 +69,10 @@ class LinesV(Base):
         """Gets the YPrimitive of the active Line."""
         return Bridge.VarArrayFunction(self.dss_obj.LinesV, 7, None, '')
 
-    # TODO: check later
-    def lines_write_yprim(self, argument) -> List[float]:
-        """Does nothing at present."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.LinesV(ctypes.c_int(8), variant_pointer)
-        return variant_pointer.contents.value
+    # # TODO: check later
+    # def lines_write_yprim(self, argument) -> List[float]:
+    #     """Does nothing at present."""
+    #     variant_pointer = ctypes.pointer(automation.VARIANT())
+    #     variant_pointer.contents.value = argument
+    #     self.dss_obj.LinesV(ctypes.c_int(8), variant_pointer)
+    #     return variant_pointer.contents.value

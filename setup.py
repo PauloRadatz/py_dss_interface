@@ -27,7 +27,8 @@ setup(
     name='py-dss-interface',
     version='0.1.0',
     license='MIT',
-    description='opendsspy is a Windows Python package providing access to OpenDSS direct dll version of OpenDSS.',
+    description='opendsspy is a Windows/Linux Python package providing access to OpenDSS direct dll version of'
+                ' OpenDSS.',
     long_description='%s\n%s' % (
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
@@ -73,7 +74,7 @@ setup(
         # eg: 'keyword1', 'keyword2', 'keyword3',
     ],
     python_requires='>=3.6',
-    install_requires=["comtypes", "numpy", "pandas"
+    install_requires=["numpy", "pandas"
                       # eg: 'aspectlib==1.1.1', 'six>=1.7',
                       ],
     extras_require={

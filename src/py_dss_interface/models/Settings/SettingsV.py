@@ -2,12 +2,10 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
-
-from comtypes import automation
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
+from py_dss_interface.models.Text.Text import Text
 
 
 class SettingsV(Base):
@@ -27,10 +25,9 @@ class SettingsV(Base):
 
     def settings_write_ueregs(self, argument):
         """Sets the array of Integers defining Energy Meter registers to use for computing UE."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.SettingsV(ctypes.c_int(1), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        return t.text(f'UEregs = {argument}')
 
     def settings_read_lossregs(self):
         """Gets the array of Integers defining Energy Meter registers to use for computing Losses."""
@@ -38,10 +35,9 @@ class SettingsV(Base):
 
     def settings_write_lossregs(self, argument):
         """Sets the array of Integers defining Energy Meter registers to use for computing Losses."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.SettingsV(ctypes.c_int(3), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        return t.text(f'Lossregs = {argument}')
 
     def settings_read_voltagebases(self):
         """Gets the array of doubles defining the legal voltage bases in kV L-L."""
@@ -49,7 +45,6 @@ class SettingsV(Base):
 
     def settings_write_voltagebases(self, argument):
         """Sets the array of doubles defining the legal voltage bases in kV L-L."""
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.SettingsV(ctypes.c_int(5), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_string_param(argument)
+        t = Text(self.dss_obj)
+        return t.text(f'Voltagebases = {argument}')

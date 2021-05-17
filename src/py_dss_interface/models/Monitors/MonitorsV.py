@@ -4,8 +4,6 @@
 """
 import ctypes
 
-from comtypes import automation
-
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
@@ -44,10 +42,9 @@ class MonitorsV(Base):
         mode solutions (use dblHour). """
         return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(4), ctypes.c_int(0), None)
 
+    # TODO: check
     def monitors_channel(self, argument):
         """Returns a variant array of doubles for the specified channel (usage: MyArray = DSSmonitor. Channel(i)) A
         save or SaveAll should be executed first. Done automatically by most standard solution modes. """
-        variant_pointer = ctypes.pointer(automation.VARIANT())
-        variant_pointer.contents.value = argument
-        self.dss_obj.MonitorsV(ctypes.c_int(5), variant_pointer)
-        return variant_pointer.contents.value
+        argument = Base.check_string_param(argument)
+        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(5), argument, None)
