@@ -13,7 +13,7 @@ dss.text("compile {}".format(dss_file))
 overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.circuit_name()}_EXP_OVERLOADS.CSV")
 
 # Solve
-dss.text('export overloads')
+# dss.text('export overloads')
 dss.text("? Load.611.kw")
 dss.solution_solve()
 
@@ -32,7 +32,8 @@ dss.text("show voltages")
 
 print(dss.dss_read_datapath())
 # Get all buses voltages
-allbusvolts = dss.circuit_allbusvolts()
 
-print(dss.circuit_allbusvolts())
+allbusvolts = dss.circuit_all_bus_volts()
+
+print(dss.circuit_all_bus_volts())
 

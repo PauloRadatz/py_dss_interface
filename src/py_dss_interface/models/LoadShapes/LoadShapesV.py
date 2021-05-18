@@ -30,7 +30,6 @@ class LoadShapesV(Base):
 
     def loadshapes_write_pmult(self, argument):
         """Sets a variant array of doubles for the P multiplier in the LoadShape."""
-        argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
         ls = LoadShapesS(self.dss_obj)
         ls_name = ls.loadshapes_read_name()
@@ -42,7 +41,6 @@ class LoadShapesV(Base):
 
     def loadshapes_write_qmult(self, argument):
         """Sets a variant array of doubles for the Q multiplier in the LoadShape."""
-        argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
         ls = LoadShapesS(self.dss_obj)
         ls_name = ls.loadshapes_read_name()
@@ -54,7 +52,6 @@ class LoadShapesV(Base):
 
     def loadshapes_write_timearray(self, argument):
         """Sets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
-        argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
         ls = LoadShapesS(self.dss_obj)
         ls_name = ls.loadshapes_read_name()
