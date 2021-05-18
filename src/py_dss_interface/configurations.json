@@ -1,0 +1,209 @@
+{
+    "structured_data": [
+        {
+            "name": "ActiveClass",
+            "types": [
+                "S"
+            ]
+        },
+        {
+            "name": "BUS",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Capacitors",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Circuit",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "CapControls",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "CktElement",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "DSS",
+            "types": [
+                "S"
+            ]
+        },
+        {
+            "name": "DSSElement",
+            "types": [
+                "S"
+            ]
+        },
+        {
+            "name": "DSSLoads",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "DSSProgress",
+            "types": [
+                "S"
+            ]
+        },
+        {
+            "name": "DSSExecutive",
+            "types": [
+                "S"
+            ]
+        },
+        {
+            "name": "Fuses",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Generators",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Isource",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Lines",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "LineCodes",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "LoadShape",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Meters",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Monitors",
+            "types": [
+                "S"
+            ]
+        },
+        {
+            "name": "Parser",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "PDElements",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "PVsystems",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Reclosers",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "RegControls",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Relays",
+            "types": [
+                "S"
+            ]
+        },
+        {
+            "name": "Sensors",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Settings",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Solution",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "SwtControls",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Topology",
+            "types": [
+                "S"
+            ]
+        },
+        {
+            "name": "Transformers",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "Vsources",
+            "types": [
+                "S", "F"
+            ]
+        },
+        {
+            "name": "XYCurves",
+            "types": [
+                "S", "F"
+            ]
+        }
+
+
+    ],
+    "models": [
+        "ActiveClass",
+        "BUS",
+        "Capacitors"
+    ]
+}
