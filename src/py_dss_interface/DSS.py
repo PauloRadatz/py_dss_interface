@@ -5,7 +5,8 @@ import os
 import pathlib
 
 from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement
-from . import DSSInterface, Fuses, Generators, ISources, LineCodes, Lines, Loads, LoadShapes, Meters, PVSystems, Monitors, Sensors
+from . import DSSInterface, DSSProperties, Fuses, Generators, ISources, LineCodes, Lines, Loads
+from . import LoadShapes, Meters, Monitors, PVSystems, Sensors, VSources
 from . import Solution, Text, Topology, Transformers, XYCurves
 from .utils.System import System
 
@@ -14,8 +15,8 @@ DLL_NAME_LINUX = "libopendssdirect.so"
 
 
 class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, DSSInterface,
-             Fuses, Generators, Lines, Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, PVSystems, Sensors, Solution, Text,
-             Topology, Transformers, XYCurves):
+             DSSProperties, Fuses, Generators, Lines, Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, PVSystems, Sensors, Solution, Text,
+             Topology, Transformers, VSources, XYCurves):
     dll_folder: str
     dll_path: str
     dss_version: ctypes.c_char_p
