@@ -24,7 +24,7 @@ class CapacitorsI(Base):
         """Gets the number of steps (defaults 1) for distributing and switching the total bank kvar."""
         return self.dss_obj.CapacitorsI(0, 0)
 
-    def capacitors_write_num_steps(self, argument) -> int:
+    def capacitors_write_num_steps(self, argument: int) -> int:
         """Sets the number of steps (defaults 1) for distributing and switching the total bank kvar."""
         argument = Base.check_int_param(argument, default=1)
         return self.dss_obj.CapacitorsI(1, argument)
@@ -33,7 +33,7 @@ class CapacitorsI(Base):
         """Gets 1 if delta connection, otherwise will return 0 for distributing and switching the total kvar."""
         return self.dss_obj.CapacitorsI(2, 0)
 
-    def capacitors_write_is_delta(self, argument=1) -> int:
+    def capacitors_write_is_delta(self, argument: int = 1) -> int:
         """Sets (Argument) 1 if delta connection, otherwise will return 0 for distributing and switching the total
         kvar. """
         argument = Base.check_int_param(argument, default=1)

@@ -40,7 +40,7 @@ class BusF(Base):
         """Returns the X coordinate for the bus."""
         return self.dss_obj.BUSF(3, 0)
 
-    def bus_write_y(self, param_coordinate) -> int:
+    def bus_write_y(self, param_coordinate: float) -> int:
         """Allows to write the Y coordinate for the bus. Returns 0.
         :param param_coordinate: The Y coordinate, if it's None, Y will be 0.0
         """
@@ -83,7 +83,7 @@ class BusF(Base):
         """This parameter returns the GIS latitude assigned to the active bus (if any)."""
         return self.dss_obj.BUSF(12, 0)
 
-    def bus_latitude_write(self, latitude_param) -> float:
+    def bus_latitude_write(self, latitude_param: float) -> float:
         """This parameter sets the GIS latitude to the active bus using the value given at the argument.."""
         latitude_param = Base.check_float_param(latitude_param)
         return self.dss_obj.BUSF(13, ctypes.c_double(latitude_param))
@@ -92,7 +92,7 @@ class BusF(Base):
         """This parameter returns the GIS longitude assigned to the active bus (if any)."""
         return self.dss_obj.BUSF(14, 0)
 
-    def bus_longitude_write(self, longitude_param) -> float:
+    def bus_longitude_write(self, longitude_param: float) -> float:
         """This parameter sets the GIS longitude to the active bus using the value given at the argument.."""
         longitude_param = Base.check_float_param(longitude_param)
         return self.dss_obj.BUSF(15, ctypes.c_double(longitude_param))

@@ -36,7 +36,7 @@ class BusI(Base):
                                     expected_value=1)
         return result
 
-    def bus_get_unique_node_number(self, start_number=0) -> int:
+    def bus_get_unique_node_number(self, start_number: int = 0) -> int:
         """Returns a unique node number at the active bus to avoid node collisions and adds it to the node list for
         the bus. The start number can be specified in the second parameter.
 
