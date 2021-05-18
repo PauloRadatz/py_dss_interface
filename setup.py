@@ -74,7 +74,7 @@ setup(
         # eg: 'keyword1', 'keyword2', 'keyword3',
     ],
     python_requires='>=3.6',
-    install_requires=["numpy", "pandas"
+    install_requires=["numpy", "pandas", "colorama"
                       # eg: 'aspectlib==1.1.1', 'six>=1.7',
                       ],
     extras_require={
