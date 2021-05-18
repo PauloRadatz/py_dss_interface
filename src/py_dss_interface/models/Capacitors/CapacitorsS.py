@@ -23,7 +23,7 @@ class CapacitorsS(Base):
         """Gets the name of the active Capacitor element."""
         return (self.dss_obj.CapacitorsS(0, 0)).decode('ascii')
 
-    def capacitors_write_name(self, capacitor_name):
+    def capacitors_write_name(self, capacitor_name: str) -> str:
         """Sets the name of the Capacitor element to set it active.
         :param capacitor_name: the desired name to the capacitor
         """
