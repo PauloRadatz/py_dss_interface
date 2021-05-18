@@ -18,15 +18,15 @@ class TopologyI(Base):
     which can be one of the following.
     """
 
-    def topology_numloops(self) -> int:
+    def topology_num_loops(self) -> int:
         """Gets the number of loops."""
         return self.dss_obj.TopologyI(ctypes.c_int32(0), ctypes.c_int32(0))
 
-    def topology_numisolatedbranches(self) -> int:
+    def topology_num_isolated_branches(self) -> int:
         """Gets the number of isolated branches (PD elements and capacitors)."""
         return self.dss_obj.TopologyI(ctypes.c_int32(1), ctypes.c_int32(0))
 
-    def topology_numisolatedloadss(self) -> int:
+    def topology_num_isolated_loadss(self) -> int:
         """Gets the number of isolated loads."""
         return self.dss_obj.TopologyI(ctypes.c_int32(2), ctypes.c_int32(0))
 
@@ -38,34 +38,34 @@ class TopologyI(Base):
         """Sets the next branch active, returns 0 if none."""
         return self.dss_obj.TopologyI(ctypes.c_int32(4), ctypes.c_int32(0))
 
-    def topology_activebranch(self) -> int:
+    def topology_active_branch(self) -> int:
         """Returns the index of the active Branch."""
         return self.dss_obj.TopologyI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def topology_forwardbranch(self) -> int:
+    def topology_forward_branch(self) -> int:
         """Moves forward in the tree, return index of new active branch or 0 if no more."""
         return self.dss_obj.TopologyI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    def topology_backwardbranch(self) -> int:
+    def topology_backward_branch(self) -> int:
         """Moves back toward the source, return index of new active branch or 0 if no more."""
         return self.dss_obj.TopologyI(ctypes.c_int32(7), ctypes.c_int32(0))
 
-    def topology_loopedbranch(self) -> int:
+    def topology_looped_branch(self) -> int:
         """Moves to looped branch, return index or 0 if none."""
         return self.dss_obj.TopologyI(ctypes.c_int32(8), ctypes.c_int32(0))
 
-    def topology_parallelbranch(self) -> int:
+    def topology_parallel_branch(self) -> int:
         """Mode to directly parallel branch, return index or 0 if none."""
         return self.dss_obj.TopologyI(ctypes.c_int32(9), ctypes.c_int32(0))
 
-    def topology_firstload(self) -> int:
+    def topology_first_load(self) -> int:
         """Sets as active load the first load at the active branch, return index or 0 if none."""
         return self.dss_obj.TopologyI(ctypes.c_int32(10), ctypes.c_int32(0))
 
-    def topology_nextload(self) -> int:
+    def topology_next_load(self) -> int:
         """Sets as active load the next load at the active branch, return index or 0 if none."""
         return self.dss_obj.TopologyI(ctypes.c_int32(11), ctypes.c_int32(0))
 
-    def topology_activelevel(self) -> int:
+    def topology_active_level(self) -> int:
         """Gets the topological depth of the active branch."""
         return self.dss_obj.TopologyI(ctypes.c_int32(12), ctypes.c_int32(0))

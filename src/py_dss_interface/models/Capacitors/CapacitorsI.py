@@ -29,11 +29,11 @@ class CapacitorsI(Base):
         argument = Base.check_int_param(argument, default=1)
         return self.dss_obj.CapacitorsI(1, argument)
 
-    def capacitors_read_isdelta(self) -> int:
+    def capacitors_read_is_delta(self) -> int:
         """Gets 1 if delta connection, otherwise will return 0 for distributing and switching the total kvar."""
         return self.dss_obj.CapacitorsI(2, 0)
 
-    def capacitors_write_isdelta(self, argument=1) -> int:
+    def capacitors_write_is_delta(self, argument=1) -> int:
         """Sets (Argument) 1 if delta connection, otherwise will return 0 for distributing and switching the total
         kvar. """
         argument = Base.check_int_param(argument, default=1)

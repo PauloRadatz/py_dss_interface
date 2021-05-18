@@ -33,7 +33,7 @@ class MonitorsI(Base):
         result = self.dss_obj.MonitorsI(ctypes.c_int32(2), ctypes.c_int32(0))
         return result
 
-    def monitors_resetall(self):
+    def monitors_reset_all(self):
         """Resets all Monitor object."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(3), ctypes.c_int32(0))
         return result
@@ -64,17 +64,17 @@ class MonitorsI(Base):
         result = self.dss_obj.MonitorsI(ctypes.c_int32(8), ctypes.c_int32(argument))
         return result
 
-    def monitors_samplecount(self):
+    def monitors_sample_count(self):
         """Returns number of examples in Monitor at present."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(9), ctypes.c_int32(0))
         return result
 
-    def monitors_sampleall(self):
+    def monitors_sample_all(self):
         """Causes all Monitors to take a sample of the present state. Returns 0."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(10), ctypes.c_int32(0))
         return result
 
-    def monitors_saveall(self):
+    def monitors_save_all(self):
         """Save all Monitor buffers to their respective file streams. Returns 0."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(11), ctypes.c_int32(0))
         return result
@@ -89,22 +89,22 @@ class MonitorsI(Base):
         result = self.dss_obj.MonitorsI(ctypes.c_int32(13), ctypes.c_int32(0))
         return result
 
-    def monitors_processall(self):
+    def monitors_process_all(self):
         """Makes that all monitors post-process the data taken so far."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(14), ctypes.c_int32(0))
         return result
 
-    def monitors_fileversion(self):
+    def monitors_file_version(self):
         """Returns the Monitor File version (integer)."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(15), ctypes.c_int32(0))
         return result
 
-    def monitors_recordsize(self):
+    def monitors_record_size(self):
         """Returns the size of each record in ByteStream."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(16), ctypes.c_int32(0))
         return result
 
-    def monitors_numchannels(self):
+    def monitors_num_channels(self):
         """Returns the number of Channels on the active Monitor."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(17), ctypes.c_int32(0))
         return result

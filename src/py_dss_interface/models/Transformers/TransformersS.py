@@ -21,12 +21,12 @@ class TransformersS(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def transformers_read_xfmrcode(self):
+    def transformers_read_xfmr_code(self):
         """Gets the name of an XfrmCode that supplies electrical parameters for this transformer."""
         result = ctypes.c_char_p(self.dss_obj.TransformersS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def transformers_write_xfmrcode(self, argument):
+    def transformers_write_xfmr_code(self, argument):
         """Sets the name of an XfrmCode that supplies electrical parameters for this transformer."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.TransformersS(ctypes.c_int32(1), argument.encode('ascii')))
@@ -43,7 +43,7 @@ class TransformersS(Base):
         result = ctypes.c_char_p(self.dss_obj.TransformersS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def transformers_strwdgvoltages(self):
+    def transformers_str_wdg_voltages(self):
         """Gets the voltages at the active winding of the active transformer in string format."""
         result = ctypes.c_char_p(self.dss_obj.TransformersS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')

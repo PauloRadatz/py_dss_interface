@@ -17,10 +17,10 @@ class DSSExecutiveI(Base):
     which can be one of the following.
     """
 
-    def executive_numcommands(self) -> int:
+    def executive_num_commands(self) -> int:
         """Gets the number of DSS Executive Commands."""
         return int(self.dss_obj.DSSExecutiveI(ctypes.c_int32(0), ctypes.c_int32(0)))
 
-    def executive_numoptions(self) -> int:
+    def executive_num_options(self) -> int:
         """Gets the number of DSS Executive Options."""
         return int(self.dss_obj.DSSExecutiveI(ctypes.c_int32(1), ctypes.c_int32(0)))

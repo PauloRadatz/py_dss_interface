@@ -47,11 +47,11 @@ class PVSystemsF(Base):
         """Sets the power factor value."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(6), ctypes.c_double(argument)))
 
-    def pvsystems_read_kvarated(self) -> float:
+    def pvsystems_read_kva_rated(self) -> float:
         """Gets the rated kVA of the PVSystem."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(7), ctypes.c_double(0)))
 
-    def pvsystems_write_kvarated(self, argument) -> float:
+    def pvsystems_write_kva_rated(self, argument) -> float:
         """Sets the rated kVA of the PVSystem."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(8), ctypes.c_double(argument)))
 

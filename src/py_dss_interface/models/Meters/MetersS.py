@@ -28,12 +28,12 @@ class MetersS(Base):
         result = ctypes.c_char_p(self.dss_obj.MetersS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def meters_read_meteredelement(self):
+    def meters_read_metered_element(self):
         """Returns the name of the metered element (considering the active Energy Meter)."""
         result = ctypes.c_char_p(self.dss_obj.MetersS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def meters_write_meteredelement(self, argument):
+    def meters_write_metered_element(self, argument):
         """Sets the name of the metered element (considering the active Energy Meter)."""
         result = ctypes.c_char_p(self.dss_obj.MetersS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')

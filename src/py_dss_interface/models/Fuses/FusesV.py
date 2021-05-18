@@ -19,6 +19,6 @@ class FusesV(Base):
     which can be one of the following.
     """
 
-    def fuses_allnames(self) -> List[str]:
+    def fuses_all_names(self) -> List[str]:
         """Gets the variant array of string containing names of all fuses in the circuit."""
         return Bridge.VarArrayFunction(self.dss_obj.FusesV, 0, None, '')

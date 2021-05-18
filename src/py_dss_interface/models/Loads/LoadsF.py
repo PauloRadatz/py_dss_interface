@@ -63,62 +63,62 @@ class LoadsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(7), ctypes.c_double(argument)))
 
-    def loads_read_pctmean(self) -> float:
+    def loads_read_pct_mean(self) -> float:
         """Allows to read the PctMean property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(8), ctypes.c_double(0)))
 
-    def loads_write_pctmean(self, argument) -> float:
+    def loads_write_pct_mean(self, argument) -> float:
         """Allows to write the PctMean property of the active load. The parameter argument must contain the new value
         in PctMean for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(9), ctypes.c_double(argument)))
 
-    def loads_read_pctstddev(self) -> float:
+    def loads_read_pct_std_dev(self) -> float:
         """Allows to read the PctStdDev property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(10), ctypes.c_double(0)))
 
-    def loads_write_pctstddev(self, argument) -> float:
+    def loads_write_pct_std_dev(self, argument) -> float:
         """Allows to write the PctStdDev property of the active load. The parameter argument must contain the new
         value in PctStdDev for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(11), ctypes.c_double(argument)))
 
-    def loads_read_allocationfactor(self) -> float:
+    def loads_read_allocation_factor(self) -> float:
         """Allows to read the AllocationFactor property of the active load. The parameter argument can be filled with
         a 0. """
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(12), ctypes.c_double(0)))
 
-    def loads_write_allocationfactor(self, argument) -> float:
+    def loads_write_allocation_factor(self, argument) -> float:
         """Allows to write the AllocationFactor property of the active load. The parameter argument must contain the
         new value in AllocationFactor for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(13), ctypes.c_double(argument)))
 
-    def loads_read_cfactor(self) -> float:
+    def loads_read_c_factor(self) -> float:
         """Allows to read the CFactor property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(14), ctypes.c_double(0)))
 
-    def loads_write_cfactor(self, argument) -> float:
+    def loads_write_c_factor(self, argument) -> float:
         """Allows to write the CFactor property of the active load. The parameter argument must contain the new value
         in CFactor for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(15), ctypes.c_double(argument)))
 
-    def loads_read_cvrwatts(self) -> float:
+    def loads_read_cvr_watts(self) -> float:
         """Allows to read the CVRWatts property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(16), ctypes.c_double(0)))
 
-    def loads_write_cvrwatts(self, argument) -> float:
+    def loads_write_cvr_watts(self, argument) -> float:
         """Allows to write the CVRWatts property of the active load. The parameter argument must contain the new
         value in CVRWatts for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(17), ctypes.c_double(argument)))
 
-    def loads_read_cvrvars(self) -> float:
+    def loads_read_cvr_vars(self) -> float:
         """Allows to read the CVRvars property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(18), ctypes.c_double(0)))
 
-    def loads_write_cvrvars(self, argument) -> float:
+    def loads_write_cvr_vars(self, argument) -> float:
         """Allows to write the CVRvars property of the active load. The parameter argument must contain the new value
         in CVRWatts for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
@@ -144,63 +144,63 @@ class LoadsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(23), ctypes.c_double(argument)))
 
-    def loads_read_kwhdays(self) -> float:
+    def loads_read_kwh_days(self) -> float:
         """Allows to read the kWhdays property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(24), ctypes.c_double(0)))
 
-    def loads_write_kwhdays(self, argument) -> float:
+    def loads_write_kwh_days(self, argument) -> float:
         """Allows to write the kWhdays property of the active load. The parameter argument must contain the new value
         in kWhdays for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(25), ctypes.c_double(argument)))
 
-    def loads_read_rneut(self) -> float:
+    def loads_read_r_neut(self) -> float:
         """Allows to read the RNeut (neutral resistance for wye connected loads) property of the active load. The
         parameter argument can be filled with a 0. """
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(26), ctypes.c_double(0)))
 
-    def loads_write_rneut(self, argument) -> float:
+    def loads_write_r_neut(self, argument) -> float:
         """Allows to write the RNeut (neutral resistance for wye connected loads) property of the active load. The
         parameter argument must contain the new value in RNeut for the desired active load. The return value will be
         equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(27), ctypes.c_double(argument)))
 
-    def loads_read_vmaxpu(self) -> float:
+    def loads_read_vmax_pu(self) -> float:
         """Allows to read the VMaxpu property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(28), ctypes.c_double(0)))
 
-    def loads_write_vmaxpu(self, argument) -> float:
+    def loads_write_vmax_pu(self, argument) -> float:
         """Allows to write the VMaxpu property of the active load. The parameter argument must contain the new value
         in VMaxpu for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(29), ctypes.c_double(argument)))
 
-    def loads_read_vminemerg(self) -> float:
+    def loads_read_vmin_emerg(self) -> float:
         """Allows to read the VMinemerg property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(30), ctypes.c_double(0)))
 
-    def loads_write_vminemerg(self, argument) -> float:
+    def loads_write_vmin_emerg(self, argument) -> float:
         """Allows to write the VMinemerg property of the active load. The parameter argument must contain the new
         value in VMinemerg for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(31), ctypes.c_double(argument)))
 
-    def loads_read_vminnorm(self) -> float:
+    def loads_read_vmin_norm(self) -> float:
         """Allows to read the VMinnorm property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(32), ctypes.c_double(0)))
 
-    def loads_write_vminnorm(self, argument) -> float:
+    def loads_write_vmin_norm(self, argument) -> float:
         """Allows to write the VMinnorm property of the active load. The parameter argument must contain the new
         value in VMinnorm for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(33), ctypes.c_double(argument)))
 
-    def loads_read_vminpu(self) -> float:
+    def loads_read_vmin_pu(self) -> float:
         """Allows to read the VMinpu property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(34), ctypes.c_double(0)))
 
-    def loads_write_vminpu(self, argument) -> float:
+    def loads_write_vmin_pu(self, argument) -> float:
         """Allows to write the VMinpu property of the active load. The parameter argument must contain the new value
         in VMinpu for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
@@ -218,34 +218,34 @@ class LoadsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(37), ctypes.c_double(argument)))
 
-    def loads_read_xneut(self) -> float:
+    def loads_read_x_neut(self) -> float:
         """Allows to read the Xneut property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(38), ctypes.c_double(0)))
 
-    def loads_write_xneut(self, argument) -> float:
+    def loads_write_x_neut(self, argument) -> float:
         """Allows to write the Xneut property of the active load. The parameter argument must contain the new value
         in Xneut for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(39), ctypes.c_double(argument)))
 
-    def loads_read_pctseriesrl(self) -> float:
+    def loads_read_pct_series_rl(self) -> float:
         """allows to read the PctSeriesRL (Percent of Load that is modeled as series R-L for harmonic studies)
         property of the active load. The parameter argument can be filled with a 0. """
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(40), ctypes.c_double(0)))
 
-    def loads_write_pctseriesrl(self, argument) -> float:
+    def loads_write_pct_series_rl(self, argument) -> float:
         """allows to write the PctSeriesRL (Percent of Load that is modeled as series R-L for harmonic studies)
         property of the active load. The parameter argument must contain the new value in PctSeriesRL for the desired
         active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(41), ctypes.c_double(argument)))
 
-    def loads_read_relweight(self) -> float:
+    def loads_read_rel_weight(self) -> float:
         """Allows to read the RelWeight (relative weighting factor) property of the active load. The parameter
         argument can be filled with a 0. """
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(42), ctypes.c_double(0)))
 
-    def loads_write_relweight(self, argument) -> float:
+    def loads_write_rel_weight(self, argument) -> float:
         """Allows to write the RelWeight (relative weighting factor) property of the active load. The parameter
         argument must contain the new value in RelWeight for the desired active load. The return value will be equal
         to 0. """

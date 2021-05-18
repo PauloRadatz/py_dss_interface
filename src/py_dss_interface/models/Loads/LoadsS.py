@@ -31,13 +31,13 @@ class LoadsS(Base):
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def loads_read_cvrcurve(self) -> str:
+    def loads_read_cvr_curve(self) -> str:
         """Allows to read the CVRCurve property of the active load. The parameter argument can be filled with an
         empty string. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def loads_write_cvrcurve(self, argument) -> str:
+    def loads_write_cvr_curve(self, argument) -> str:
         """Allows to set the CVRCurve property for the active load. The parameter argument must contain the Name of
         the new CVRCurve to be linked to the active load. The return value will be equal to empty. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(3), argument.encode('ascii')))

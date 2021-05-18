@@ -55,29 +55,29 @@ class GeneratorsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(7), ctypes.c_double(argument)))
 
-    def generators_read_kvarated(self) -> float:
+    def generators_read_kva_rated(self) -> float:
         """Gets the KVA rating of the generator."""
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(8), ctypes.c_double(0)))
 
-    def generators_write_kvarated(self, argument) -> float:
+    def generators_write_kva_rated(self, argument) -> float:
         """Sets the KVA rating of the generator."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(9), ctypes.c_double(argument)))
 
-    def generators_read_vmaxpu(self) -> float:
+    def generators_read_vmax_pu(self) -> float:
         """Gets the Vmaxpu for Generator Model."""
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(10), ctypes.c_double(0)))
 
-    def generators_write_vmaxpu(self, argument) -> float:
+    def generators_write_vmax_pu(self, argument) -> float:
         """Sets the Vmaxpu for Generator Model."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(11), ctypes.c_double(argument)))
 
-    def generators_read_vminpu(self) -> float:
+    def generators_read_vmin_pu(self) -> float:
         """Gets the Vminpu for Generator Model."""
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(12), ctypes.c_double(0)))
 
-    def generators_write_vminpu(self, argument) -> float:
+    def generators_write_vmin_pu(self, argument) -> float:
         """Sets the Vminpu for Generator Model."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(13), ctypes.c_double(argument)))

@@ -37,7 +37,7 @@ class LinesI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.LinesI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
-    def lines_numcust(self) -> int:
+    def lines_num_cust(self) -> int:
         """Gets the number of customers on this line section."""
         return self.dss_obj.LinesI(ctypes.c_int32(4), ctypes.c_int32(0))
 

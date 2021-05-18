@@ -20,15 +20,15 @@ class MetersV(Base):
     one of the following.
     """
 
-    def meters_allnames(self):
+    def meters_all_names(self):
         """Returns an array of all Energy Meter names."""
         return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(0), ctypes.c_int(0), None)
 
-    def meters_registernames(self):
+    def meters_register_names(self):
         """Returns an array of strings containing the names of the registers."""
         return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(1), ctypes.c_int(0), None)
 
-    def meters_registervalues(self):
+    def meters_register_values(self):
         """Returns an array of values contained in the Meter registers for the active Meter."""
         return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(2), ctypes.c_int(0), None)
 
@@ -36,11 +36,11 @@ class MetersV(Base):
         """Returns the totals for all registers of all Meters."""
         return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(3), ctypes.c_int(0), None)
 
-    def meters_read_peakcurrent(self):
+    def meters_read_peak_current(self):
         """Returns an array of doubles with the Peak Current Property."""
         return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(4), ctypes.c_int(0), None)
 
-    def meters_write_peakcurrent(self, argument):
+    def meters_write_peak_current(self, argument):
         """Receives an array of doubles to set values of Peak Current Property."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
@@ -48,7 +48,7 @@ class MetersV(Base):
         mt_name = mt.meters_read_name()
         return t.text(f'edit EnergyMeter.{mt_name} peakcurrent = {argument}')
 
-    def meters_read_calcurrent(self):
+    def meters_read_cal_current(self):
         """Returns the magnitude of the real part of the Calculated Current (normally determined by solution)
         for the meter to force some behavior on Load Allocation."""
         return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(6), ctypes.c_int(0), None)
@@ -60,12 +60,12 @@ class MetersV(Base):
     #     for the meter to force some behavior on Load Allocation."""
     #     return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(7), argument, None)
 
-    def meters_read_allocfactors(self):
+    def meters_read_alloc_factors(self):
         """Returns an array of doubles: allocation factors for the active Meter."""
         return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(8), ctypes.c_int(0), None)
 
     # TODO: comtypes
-    def meters_write_allocfactors(self, argument):
+    def meters_write_alloc_factors(self, argument):
         """Receives an array of doubles to set the phase allocation factors for the active Meter."""
         # argument = Base.check_string_param(argument)
         # return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(9), ctypes.c_int(1), None)
@@ -73,10 +73,10 @@ class MetersV(Base):
         a = t.text("get mode ")
         return t.text(f'Allocateload {argument}')
 
-    def meters_allendelements(self):
+    def meters_all_end_elements(self):
         """Returns a variant array of names of all zone end elements."""
         return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(10), ctypes.c_int(0), None)
 
-    def meters_allbranchesinzone(self):
+    def meters_all_branches_in_zone(self):
         """Returns a wide string list of all branches in zone of the active Energy Meter object."""
         return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(11), ctypes.c_int(0), None)

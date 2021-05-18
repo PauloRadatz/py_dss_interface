@@ -21,7 +21,7 @@ class SensorsV(Base):
     which can be one of the following.
     """
 
-    def sensors_allnames(self):
+    def sensors_all_names(self):
         """Returns a variant array of sensor names."""
         return Bridge.VarArrayFunction(self.dss_obj.SensorsV, ctypes.c_int(0), ctypes.c_int(0), None)
 

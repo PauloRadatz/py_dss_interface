@@ -16,37 +16,37 @@ class ReclosersF(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def reclosers_read_phasetrip(self) -> float:
+    def reclosers_read_phase_trip(self) -> float:
         """Gets the phase trip curve multiplier or actual amps."""
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def reclosers_write_phasetrip(self, argument) -> float:
+    def reclosers_write_phase_trip(self, argument) -> float:
         """Sets the phase trip curve multiplier or actual amps."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
-    def reclosers_read_phaseins(self) -> float:
+    def reclosers_read_phase_inst(self) -> float:
         """Gets the phase instantaneous curve multiplier or actual amps."""
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def reclosers_write_phaseins(self, argument) -> float:
+    def reclosers_write_phase_inst(self, argument) -> float:
         """Sets the phase instantaneous curve multiplier or actual amps."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    def reclosers_read_groundtrip(self) -> float:
+    def reclosers_read_ground_trip(self) -> float:
         """Gets the ground (3I0) trip multiplier or actual amps."""
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def reclosers_write_groundtrip(self, argument) -> float:
+    def reclosers_write_ground_trip(self, argument) -> float:
         """Sets the ground (3I0) trip multiplier or actual amps."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(5), ctypes.c_double(argument)))
 
-    def reclosers_read_groundinst(self) -> float:
+    def reclosers_read_ground_inst(self) -> float:
         """Gets the ground (3I0) instantaneous trip setting - curve multiplier or actual amps."""
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(6), ctypes.c_double(0)))
 
-    def reclosers_write_groundinst(self, argument) -> float:
+    def reclosers_write_ground_inst(self, argument) -> float:
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(7), ctypes.c_double(argument)))

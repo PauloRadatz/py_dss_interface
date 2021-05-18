@@ -18,69 +18,69 @@ class SettingsF(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def settings_allocationfactors(self) -> float:
+    def settings_allocation_factors(self) -> float:
         """Sets all load allocation factors for all loads defined by XFKVA property to this value."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def settings_read_normvminpu(self) -> float:
+    def settings_read_norm_vmin_pu(self) -> float:
         """Gets the per unit minimum voltage for Normal conditions."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(1), ctypes.c_double(0)))
 
-    def settings_write_normvminpu(self, argument) -> float:
+    def settings_write_norm_vmin_pu(self, argument) -> float:
         """Sets the per unit minimum voltage for Normal conditions."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(2), ctypes.c_double(argument)))
 
-    def settings_read_normvmaxpu(self) -> float:
+    def settings_read_norm_vmax_pu(self) -> float:
         """Gets the per unit maximum voltage for Normal conditions."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(3), ctypes.c_double(0)))
 
-    def settings_write_normvmaxpu(self, argument) -> float:
+    def settings_write_norm_vmax_pu(self, argument) -> float:
         """Sets the per unit maximum voltage for Normal conditions."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(4), ctypes.c_double(argument)))
 
-    def settings_read_emergvminpu(self) -> float:
+    def settings_read_emerg_vmin_pu(self) -> float:
         """Gets the per unit minimum voltage for Emergency conditions."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(5), ctypes.c_double(0)))
 
-    def settings_write_emergvminpu(self, argument) -> float:
+    def settings_write_emerg_vmin_pu(self, argument) -> float:
         """Sets the per unit minimum voltage for Emergency conditions."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(6), ctypes.c_double(argument)))
 
-    def settings_read_emergvmaxpu(self) -> float:
+    def settings_read_emerg_vmax_pu(self) -> float:
         """Gets the per unit maximum voltage for Emergency conditions."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(7), ctypes.c_double(0)))
 
-    def settings_write_emergvmaxpu(self, argument) -> float:
+    def settings_write_emerg_vmax_pu(self, argument) -> float:
         """Sets the per unit maximum voltage for Emergency conditions."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(8), ctypes.c_double(argument)))
 
-    def settings_read_ueweight(self) -> float:
+    def settings_read_ue_weight(self) -> float:
         """Gets the weighting factor applied to UE register values."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(9), ctypes.c_double(0)))
 
-    def settings_write_ueweight(self, argument) -> float:
+    def settings_write_ue_weight(self, argument) -> float:
         """Sets the weighting factor applied to UE register values."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(10), ctypes.c_double(argument)))
 
-    def settings_read_lossweight(self) -> float:
+    def settings_read_loss_weight(self) -> float:
         """Gets the weighting factor applied to Loss register values."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(11), ctypes.c_double(0)))
 
-    def settings_write_lossweight(self, argument) -> float:
+    def settings_write_loss_weight(self, argument) -> float:
         """Sets the weighting factor applied to Loss register values."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(12), ctypes.c_double(argument)))
 
-    def settings_read_pricesignal(self) -> float:
+    def settings_read_price_signal(self) -> float:
         """Gets the price signal for the circuit."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(13), ctypes.c_double(0)))
 
-    def settings_write_pricesignal(self, argument) -> float:
+    def settings_write_price_signal(self, argument) -> float:
         """Sets the price signal for the circuit."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(14), ctypes.c_double(argument)))

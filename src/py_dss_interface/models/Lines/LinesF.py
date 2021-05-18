@@ -84,20 +84,20 @@ class LinesF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(13), ctypes.c_double(argument)))
 
-    def lines_read_normamps(self) -> float:
+    def lines_read_norm_amps(self) -> float:
         """Gets the normal ampere rating of line section."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(14), ctypes.c_double(0)))
 
-    def lines_write_normamps(self, argument) -> float:
+    def lines_write_norm_amps(self, argument) -> float:
         """Sets the normal ampere rating of Line."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(15), ctypes.c_double(argument)))
 
-    def lines_read_emergamps(self) -> float:
+    def lines_read_emerg_amps(self) -> float:
         """Gets the emergency (maximum) ampere rating of Line."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(16), ctypes.c_double(0)))
 
-    def lines_write_emergamps(self, argument) -> float:
+    def lines_write_emerg_amps(self, argument) -> float:
         """Sets the emergency (maximum) ampere rating of Line."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(17), ctypes.c_double(argument)))
@@ -129,6 +129,6 @@ class LinesF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(23), ctypes.c_double(argument)))
 
-    def lines_read_seasonrating(self) -> float:
+    def lines_read_season_rating(self) -> float:
         """Returns the rating for the current season (in Amps) if the SeasonalRatings option is active."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(24), ctypes.c_double(0)))

@@ -17,7 +17,7 @@ class DSSProgressI(Base):
     which can be one of the following.
     """
 
-    def dssprogress_pctprogress(self):
+    def dssprogress_pct_progress(self):
         """Sets the percent progress to indicate [0..100]."""
         return int(self.dss_obj.DSSProgressI(ctypes.c_int32(0), ctypes.c_int32(0)))
 

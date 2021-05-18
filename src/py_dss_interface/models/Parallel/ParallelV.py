@@ -19,11 +19,11 @@ class ParallelV(Base):
     which can be one of the following.
     """
 
-    def parallel_actorprogress(self):
+    def parallel_actor_progress(self):
         """Returns an array of integers containing the progress in percentage for each active actor."""
         return Bridge.VarArrayFunction(self.dss_obj.ParallelV, ctypes.c_int(0), ctypes.c_int(0), None)
 
-    def parallel_actorstatus(self):
+    def parallel_actor_status(self):
         """Returns an array of integers containing the status of each active actor. If 1, the actor is ready to
         receive new commands, if 0, the actor is busy performing a simulation and cannot take new ?solve? commands at
         this time. However, the actor is capable to deliver values while the simulation is being performed. """

@@ -17,15 +17,15 @@ class DSSInterfaceI(Base):
     which can be one of the following.
     """
 
-    def dss_numcircuits(self) -> int:
+    def dss_num_circuits(self) -> int:
         """Gets the number of circuits currently defined."""
         return int(self.dss_obj.DSSI(ctypes.c_int32(0), ctypes.c_int32(0)))
 
-    def dss_clearall(self):
+    def dss_clear_all(self):
         """Clears all circuit definitions."""
         self.dss_obj.DSSI(ctypes.c_int32(1), ctypes.c_int32(0))
 
-    def dss_showpanel(self):
+    def dss_show_panel(self):
         """Shows non-MDI child form of the Main DSS Edit form."""
         self.dss_obj.DSSI(ctypes.c_int32(2), ctypes.c_int32(0))
 
@@ -33,11 +33,11 @@ class DSSInterfaceI(Base):
         """Validates the user and starts the DSS. Returns TRUE (1) if successful."""
         return int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0)))
 
-    def dss_numclasses(self):
+    def dss_num_classes(self):
         """Gets the number of DSS intrinsic classes."""
         return int(self.dss_obj.DSSI(ctypes.c_int32(4), ctypes.c_int32(0)))
 
-    def dss_numuserclasses(self) -> int:
+    def dss_num_user_classes(self) -> int:
         """Gets the number of user-defined classes."""
         return int(self.dss_obj.DSSI(ctypes.c_int32(5), ctypes.c_int32(0)))
 
@@ -45,10 +45,10 @@ class DSSInterfaceI(Base):
         """Resets DSS initialization for restarts, etc. from applets."""
         self.dss_obj.DSSI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    def dss_read_allow_forms(self) -> int:
+    def dss_read_allow_forms(self):
         """Gets if the DSS allows forms (1) or not (0), default (1)."""
         self.dss_obj.DSSI(ctypes.c_int32(7), ctypes.c_int32(0))
 
-    def dss_write_allowforms(self, argument) -> int:
+    def dss_write_allow_forms(self, argument):
         """Sets if the DSS allows forms (1) or not (0), default (1)."""
         self.dss_obj.DSSI(ctypes.c_int32(8), ctypes.c_int32(argument))

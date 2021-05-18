@@ -21,11 +21,11 @@ class TransformersI(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def transformers_read_numwindings(self) -> int:
+    def transformers_read_num_windings(self) -> int:
         """Gets the number of windings on this transformer. Allocates memory; set or change this property first."""
         return self.dss_obj.TransformersI(ctypes.c_int32(0), ctypes.c_int32(0))
 
-    def transformers_write_numwindings(self, argument) -> int:
+    def transformers_write_num_windings(self, argument) -> int:
         """Sets the number of windings on this transformer. Allocates memory; set or change this property first."""
         return self.dss_obj.TransformersI(ctypes.c_int32(1), ctypes.c_int32(argument))
 
@@ -39,19 +39,19 @@ class TransformersI(Base):
         Update this before reading or setting a sequence of winding properties (R, Tap, kV, kVA, etc.)."""
         return self.dss_obj.TransformersI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
-    def transformers_read_numtaps(self) -> int:
+    def transformers_read_num_taps(self) -> int:
         """Gets the active winding number of tap steps between MinTap and MaxTap."""
         return self.dss_obj.TransformersI(ctypes.c_int32(4), ctypes.c_int32(0))
 
-    def transformers_write_numtaps(self, argument) -> int:
+    def transformers_write_num_taps(self, argument) -> int:
         """Sets the active winding number of tap steps between MinTap and MaxTap."""
         return self.dss_obj.TransformersI(ctypes.c_int32(5), ctypes.c_int32(argument))
 
-    def transformers_read_isdelta(self) -> int:
+    def transformers_read_is_delta(self) -> int:
         """Gets the information about if the active winding is delta (1) or wye (0) connection."""
         return self.dss_obj.TransformersI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    def transformers_write_isdelta(self, argument) -> int:
+    def transformers_write_is_delta(self, argument) -> int:
         """Sets the information about if the active winding is delta (1) or wye (0) connection."""
         return self.dss_obj.TransformersI(ctypes.c_int32(7), ctypes.c_int32(argument))
 

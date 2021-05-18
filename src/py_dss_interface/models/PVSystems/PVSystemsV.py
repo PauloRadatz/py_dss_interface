@@ -19,6 +19,6 @@ class PVSystemsV(Base):
     which can be one of the following.
     """
 
-    def pvsystems_allnames(self):
+    def pvsystems_all_names(self):
         """Gets the variant array of string containing names of all PVSystems in the circuit."""
         return Bridge.VarArrayFunction(self.dss_obj.PVsystemsV, ctypes.c_int(0), ctypes.c_int(0), None)

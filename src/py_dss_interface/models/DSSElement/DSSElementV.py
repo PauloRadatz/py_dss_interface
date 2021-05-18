@@ -22,6 +22,6 @@ class DSSElementV(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def dsselement_allpropertynames(self) -> List[str]:
+    def dsselement_all_property_names(self) -> List[str]:
         """Gets a variant array of strings containing the names of all properties for the active DSS object."""
         return Bridge.VarArrayFunction(self.dss_obj.DSSElementV, 0, None, '')
