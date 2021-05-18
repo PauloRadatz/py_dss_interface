@@ -13,9 +13,9 @@ DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
 
 
-class DSS(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, DSSInterface,
-          Fuses, Generators, Lines, Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, Sensors, Solution, Text,
-          Topology, Transformers, XYCurves):
+class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, DSSInterface,
+             Fuses, Generators, Lines, Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, Sensors, Solution, Text,
+             Topology, Transformers, XYCurves):
     dll_folder: str
     dll_path: str
     dss_version: ctypes.c_char_p
