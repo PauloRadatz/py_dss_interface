@@ -25,6 +25,7 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
     memory_commands = []
     class_commands = []
 
+    # TODO need to be able to get different dll names: https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
     def __init__(self, dll_folder_param=None):
         # TODO: dss_write_allowforms
         """
