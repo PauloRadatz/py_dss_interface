@@ -21,7 +21,7 @@ class LoadsV(Base):
     to be used and the variable “argument” (Variant) is used to return the variant structure.
     """
 
-    def loads_allnames(self):
+    def loads_all_names(self):
         """Allows to read the names of all the loads present in the active circuit. The result is delivered as
         variant, however, the content of this variant is an array of strings. """
         return Bridge.VarArrayFunction(self.dss_obj.DSSLoadsV, 0, None, '')

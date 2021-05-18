@@ -26,11 +26,11 @@ class ISourcesF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.IsourceF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
-    def isources_read_angledeg(self) -> float:
+    def isources_read_angle_deg(self) -> float:
         """Gets the phase angle of the Isource in degrees."""
         return float(self.dss_obj.IsourceF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def isources_write_angledeg(self, argument) -> float:
+    def isources_write_angle_deg(self, argument) -> float:
         """Sets the phase angle of the Isource in degrees."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.IsourceF(ctypes.c_int32(3), ctypes.c_double(argument)))

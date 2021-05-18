@@ -19,31 +19,31 @@ class SettingsV(Base):
     which can be one of the following.
     """
 
-    def settings_read_ueregs(self):
+    def settings_read_ue_regs(self):
         """Gets the array of Integers defining Energy Meter registers to use for computing UE."""
         return Bridge.VarArrayFunction(self.dss_obj.SettingsV, 0, None, '')
 
-    def settings_write_ueregs(self, argument):
+    def settings_write_ue_regs(self, argument):
         """Sets the array of Integers defining Energy Meter registers to use for computing UE."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
         return t.text(f'UEregs = {argument}')
 
-    def settings_read_lossregs(self):
+    def settings_read_loss_regs(self):
         """Gets the array of Integers defining Energy Meter registers to use for computing Losses."""
         return Bridge.VarArrayFunction(self.dss_obj.SettingsV, 2, None, '')
 
-    def settings_write_lossregs(self, argument):
+    def settings_write_loss_regs(self, argument):
         """Sets the array of Integers defining Energy Meter registers to use for computing Losses."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
         return t.text(f'Lossregs = {argument}')
 
-    def settings_read_voltagebases(self):
+    def settings_read_voltage_bases(self):
         """Gets the array of doubles defining the legal voltage bases in kV L-L."""
         return Bridge.VarArrayFunction(self.dss_obj.SettingsV, 4, None, '')
 
-    def settings_write_voltagebases(self, argument):
+    def settings_write_voltage_bases(self, argument):
         """Sets the array of doubles defining the legal voltage bases in kV L-L."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)

@@ -27,12 +27,12 @@ class SensorsS(Base):
         result = ctypes.c_char_p(self.dss_obj.SensorsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def sensors_read_meteredelement(self):
+    def sensors_read_metered_element(self):
         """Gets the full name of the measured element."""
         result = ctypes.c_char_p(self.dss_obj.SensorsS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def sensors_write_meteredelement(self, argument):
+    def sensors_write_metered_element(self, argument):
         """Sets the full name of the measured element."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.SensorsS(ctypes.c_int32(3), argument.encode('ascii')))

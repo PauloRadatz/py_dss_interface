@@ -18,11 +18,11 @@ class VSourcesF(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def vsources_read_basekv(self) -> float:
+    def vsources_read_base_kv(self) -> float:
         """Gets the source voltage in kV."""
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def vsources_write_basekv(self, argument) -> float:
+    def vsources_write_base_kv(self, argument) -> float:
         """Sets the source voltage in kV."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(1), ctypes.c_double(argument)))
@@ -36,11 +36,11 @@ class VSourcesF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    def vsources_read_angledeg(self) -> float:
+    def vsources_read_angle_deg(self) -> float:
         """Gets the source phase angle of first phase in degrees."""
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def vsources_write_angledeg(self, argument) -> float:
+    def vsources_write_angle_deg(self, argument) -> float:
         """Sets the source phase angle of first phase in degrees."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(5), ctypes.c_double(argument)))

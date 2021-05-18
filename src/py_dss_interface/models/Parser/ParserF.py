@@ -17,6 +17,6 @@ class ParserF(Base):
     This interface returns a floating point number with the result of the query according to the value of the
     variable Parameter, which can be one of the following. """
 
-    def parser_dblvalue(self) -> float:
+    def parser_dbl_value(self) -> float:
         """Returns next parameter as a double."""
         return float(self.dss_obj.ParserF(ctypes.c_int32(0), ctypes.c_double(0)))

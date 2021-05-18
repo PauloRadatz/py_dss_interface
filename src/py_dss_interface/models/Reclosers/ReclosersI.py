@@ -28,27 +28,27 @@ class ReclosersI(Base):
         """Sets next recloser to be active Circuit Element. Returns 0 if none."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def reclosers_read_monitoredterm(self) -> int:
+    def reclosers_read_monitored_term(self) -> int:
         """Gets the terminal number of Monitored Object for the Recloser."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(3), ctypes.c_int32(0))
 
-    def reclosers_write_monitoredterm(self, argument) -> int:
+    def reclosers_write_monitored_term(self, argument) -> int:
         """Sets the terminal number of Monitored Object for the Recloser."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
-    def reclosers_read_switchedterm(self) -> int:
+    def reclosers_read_switched_term(self) -> int:
         """Gets the terminal of the controlled device being switched by the Recloser."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def reclosers_write_switchedterm(self, argument) -> int:
+    def reclosers_write_switched_term(self, argument) -> int:
         """Sets the terminal of the controlled device being switched by the Recloser."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
-    def reclosers_read_numfast(self) -> int:
+    def reclosers_read_num_fast(self) -> int:
         """Gets the number of fast shots."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(7), ctypes.c_int32(0))
 
-    def reclosers_write_numfast(self, argument) -> int:
+    def reclosers_write_num_fast(self, argument) -> int:
         """Sets the number of fast shots."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(8), ctypes.c_int32(argument))
 

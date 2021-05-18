@@ -29,12 +29,12 @@ class RegControlsS(Base):
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def regcontrols_read_monitoredbus(self):
+    def regcontrols_read_monitored_bus(self):
         """Gets the name of the remote regulated bus, in lieu of LDC settings."""
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def regcontrols_write_monitoredbus(self, argument):
+    def regcontrols_write_monitored_bus(self, argument):
         """Sets the name of the remote regulated bus, in lieu of LDC settings."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(3), argument.encode('ascii')))

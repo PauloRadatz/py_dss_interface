@@ -18,11 +18,11 @@ class SensorsF(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def sensors_read_pcterror(self) -> float:
+    def sensors_read_pct_error(self) -> float:
         """Gets the assumed percent error in the Sensor measurement. Default is 1."""
         return float(self.dss_obj.SensorsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def sensors_write_pcterror(self, argument) -> float:
+    def sensors_write_pct_error(self, argument) -> float:
         """Sets the assumed percent error in the Sensor measurement. Default is 1."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SensorsF(ctypes.c_int32(1), ctypes.c_double(argument)))
@@ -36,11 +36,11 @@ class SensorsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SensorsF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    def sensors_read_kvbase(self) -> float:
+    def sensors_read_kv_base(self) -> float:
         """Gets the voltage base for the sensor measurements. LL for 2 and 3 - phase sensors, LN for 1-phase sensors."""
         return float(self.dss_obj.SensorsF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def sensors_write_kvbase(self, argument) -> float:
+    def sensors_write_kv_base(self, argument) -> float:
         """Sets the voltage base for the sensor measurements. LL for 2 and 3 - phase sensors, LN for 1-phase sensors."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SensorsF(ctypes.c_int32(5), ctypes.c_double(argument)))

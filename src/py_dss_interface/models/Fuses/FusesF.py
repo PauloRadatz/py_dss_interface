@@ -17,13 +17,13 @@ class FusesF(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def fuses_read_ratedcurrent(self) -> float:
+    def fuses_read_rated_current(self) -> float:
         """Gets the multiplier or actual amps for the TCCcurve object. Defaults to 1.0, Multiply current values of
         TCC curve by this to get actual amps. """
         result = float(self.dss_obj.FusesF(ctypes.c_int32(0), ctypes.c_double(0)))
         return result
 
-    def fuses_write_ratedcurrent(self, argument):
+    def fuses_write_rated_current(self, argument):
         """Sets the multiplier or actual amps for the TCCcurve object. Defaults to 1.0, Multiply current values of
         TCC curve by this to get actual amps. """
         argument = Base.check_float_param(argument, 1.0)

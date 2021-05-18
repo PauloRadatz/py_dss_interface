@@ -42,12 +42,12 @@ class LoadShapesI(Base):
         """Normalizes the P and Q curves based on either Pbase, Qbase or simply the peak value of the curve."""
         return self.dss_obj.LoadShapeI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def loadshapes_read_useactual(self) -> int:
+    def loadshapes_read_use_actual(self) -> int:
         """Gets a TRUE/FALSE (1/0) to let Loads know to use the actual value in the curve rather than use the value as
          a multiplier."""
         return self.dss_obj.LoadShapeI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    def loadshapes_write_useactual(self, argument) -> int:
+    def loadshapes_write_use_actual(self, argument) -> int:
         """Sets a TRUE/FALSE (1/0 - Argument) to let Loads know to use the actual value in the curve rather than use
          the value as a multiplier."""
         return self.dss_obj.LoadShapeI(ctypes.c_int32(7), ctypes.c_int32(argument))

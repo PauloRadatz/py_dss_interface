@@ -36,38 +36,38 @@ class XYCurvesF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.XYCurvesF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    def read_xshift(self) -> float:
+    def read_x_shift(self) -> float:
         """Gets the amount to shift X value from original curve."""
         return float(self.dss_obj.XYCurvesF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def write_xshift(self, argument) -> float:
+    def write_x_shift(self, argument) -> float:
         """Sets the amount to shift X value from original curve."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.XYCurvesF(ctypes.c_int32(5), ctypes.c_double(argument)))
 
-    def read_yshift(self) -> float:
+    def read_y_shift(self) -> float:
         """Gets the amount to shift Y value from original curve."""
         return float(self.dss_obj.XYCurvesF(ctypes.c_int32(6), ctypes.c_double(0)))
 
-    def write_yshift(self, argument) -> float:
+    def write_y_shift(self, argument) -> float:
         """Sets the amount to shift Y value from original curve."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.XYCurvesF(ctypes.c_int32(7), ctypes.c_double(argument)))
 
-    def read_xscale(self) -> float:
+    def read_x_scale(self) -> float:
         """Gets the factor to scale X values from original curve."""
         return float(self.dss_obj.XYCurvesF(ctypes.c_int32(8), ctypes.c_double(0)))
 
-    def write_xscale(self, argument) -> float:
+    def write_x_scale(self, argument) -> float:
         """Sets the factor to scale X values from original curve."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.XYCurvesF(ctypes.c_int32(9), ctypes.c_double(argument)))
 
-    def read_yscale(self) -> float:
+    def read_y_scale(self) -> float:
         """Gets the factor to scale Y values from original curve."""
         return float(self.dss_obj.XYCurvesF(ctypes.c_int32(10), ctypes.c_double(0)))
 
-    def write_yscale(self, argument) -> float:
+    def write_y_scale(self, argument) -> float:
         """Sets the factor to scale Y values from original curve."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.XYCurvesF(ctypes.c_int32(11), ctypes.c_double(argument)))

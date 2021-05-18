@@ -39,20 +39,20 @@ class TransformersF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.TransformersF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    def transformers_read_mintap(self) -> float:
+    def transformers_read_min_tap(self) -> float:
         """Gets the active winding minimum tap in per-unit."""
         return float(self.dss_obj.TransformersF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def transformers_write_mintap(self, argument) -> float:
+    def transformers_write_min_tap(self, argument) -> float:
         """Sets the active winding minimum tap in per-unit."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.TransformersF(ctypes.c_int32(5), ctypes.c_double(argument)))
 
-    def transformers_read_maxtap(self) -> float:
+    def transformers_read_max_tap(self) -> float:
         """Gets the active winding maximum tap in per-unit."""
         return float(self.dss_obj.TransformersF(ctypes.c_int32(6), ctypes.c_double(0)))
 
-    def transformers_write_maxtap(self, argument) -> float:
+    def transformers_write_max_tap(self, argument) -> float:
         """Sets the active winding maximum tap in per-unit."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.TransformersF(ctypes.c_int32(7), ctypes.c_double(argument)))
@@ -77,20 +77,20 @@ class TransformersF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.TransformersF(ctypes.c_int32(11), ctypes.c_double(argument)))
 
-    def transformers_read_xneut(self) -> float:
+    def transformers_read_x_neut(self) -> float:
         """Gets the active winding neutral reactance [ohms] for wye connections."""
         return float(self.dss_obj.TransformersF(ctypes.c_int32(12), ctypes.c_double(0)))
 
-    def transformers_write_xneut(self, argument) -> float:
+    def transformers_write_x_neut(self, argument) -> float:
         """Sets the active winding neutral reactance [ohms] for wye connections."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.TransformersF(ctypes.c_int32(13), ctypes.c_double(argument)))
 
-    def transformers_read_rneut(self) -> float:
+    def transformers_read_r_neut(self) -> float:
         """Gets the active winding neutral resistance [ohms] for wye connections. Set less than zero ungrounded wye."""
         return float(self.dss_obj.TransformersF(ctypes.c_int32(14), ctypes.c_double(0)))
 
-    def transformers_write_rneut(self, argument) -> float:
+    def transformers_write_r_neut(self, argument) -> float:
         """Sets the active winding neutral resistance [ohms] for wye connections. Set less than zero ungrounded wye."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.TransformersF(ctypes.c_int32(15), ctypes.c_double(argument)))

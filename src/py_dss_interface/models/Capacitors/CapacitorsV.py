@@ -22,7 +22,7 @@ class CapacitorsV(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def capacitors_allnames(self) -> List[str]:
+    def capacitors_all_names(self) -> List[str]:
         """Gets a variant array of strings with all Capacitor names in the circuit."""
         # return Bridge.VarArrayFunction(self.dss_obj.CapacitorsV, 0, None, '')
         return Bridge.VarArrayFunction(self.dss_obj.CapacitorsV, 0, None, '')
@@ -44,5 +44,5 @@ class CapacitorsV(Base):
         dss.capacitors_write_name(dss.capacitors_read_name())
         result = dss.text(f'edit Capacitor.{dss.capacitors_read_name()} states={argument}')
         if not result == '':
-            raise ValueError("An error ocurred when tries to WRITE Capacitors states! ")
+            raise ValueError("An error occurred when tries to WRITE Capacitors states! ")
         return result

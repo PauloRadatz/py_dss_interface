@@ -25,7 +25,7 @@ class LinesV(Base):
 
     """
 
-    def lines_allnames(self) -> List[str]:
+    def lines_all_names(self) -> List[str]:
         """Gets the name of all Line Objects."""
         return Bridge.VarArrayFunction(self.dss_obj.LinesV, 0, None, '')
 

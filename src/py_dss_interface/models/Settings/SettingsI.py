@@ -18,31 +18,31 @@ class SettingsI(Base):
     which can be one of the following.
     """
 
-    def settings_read_allowduplicates(self) -> int:
+    def settings_read_allow_duplicates(self) -> int:
         """Gets if OpenDSS allows duplicate names of objects: {1 allow, 0 not allow}."""
         return self.dss_obj.SettingsI(ctypes.c_int32(0), ctypes.c_int32(0))
 
-    def settings_write_allowduplicates(self, argument) -> int:
+    def settings_write_allowd_uplicates(self, argument) -> int:
         """Sets if OpenDSS allows duplicate names of objects: {1 allow, 0 not allow}."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.SettingsI(ctypes.c_int32(1), ctypes.c_int32(argument))
 
-    def settings_read_zonelock(self) -> int:
+    def settings_read_zone_lock(self) -> int:
         """Gets the status of Lock zones on energy meters to prevent rebuilding if a circuit
         change occurs: {1= true, 0= False}."""
         return self.dss_obj.SettingsI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def settings_write_zonelock(self, argument) -> int:
+    def settings_write_zone_lock(self, argument) -> int:
         """Sets the status of Lock zones on energy meters to prevent rebuilding if a circuit change occurs: {1= true,
         0= False}. """
         argument = Base.check_int_param(argument)
         return self.dss_obj.SettingsI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
-    def settings_read_cktmodel(self) -> int:
+    def settings_read_ckt_model(self) -> int:
         """Gets {dssMultiphase* | dssPositiveSeq} Indicate if the circuit model is positive sequence."""
         return self.dss_obj.SettingsI(ctypes.c_int32(4), ctypes.c_int32(0))
 
-    def settings_write_cktmodel(self, argument) -> int:
+    def settings_write_ckt_model(self, argument) -> int:
         """Sets {dssMultiphase* | dssPositiveSeq} Indicate if the circuit model is positive sequence."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.SettingsI(ctypes.c_int32(5), ctypes.c_int32(argument))

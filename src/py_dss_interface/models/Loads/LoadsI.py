@@ -66,11 +66,11 @@ class LoadsI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.DSSLoads(ctypes.c_int32(8), ctypes.c_int32(argument))
 
-    def loads_read_numcust(self) -> int:
+    def loads_read_num_cust(self) -> int:
         """Allows to read the number of customer of the active load. The parameter argument can be filled with a 0."""
         return self.dss_obj.DSSLoads(ctypes.c_int32(9), ctypes.c_int32(0))
 
-    def loads_write_numcust(self, argument) -> int:
+    def loads_write_num_cust(self, argument) -> int:
         """Allows to write the number of customers of the active load using the parameter argument. This parameter
         will return a 0. """
         argument = Base.check_int_param(argument)
@@ -87,12 +87,12 @@ class LoadsI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.DSSLoads(ctypes.c_int32(12), ctypes.c_int32(argument))
 
-    def loads_read_isdelta(self) -> int:
+    def loads_read_is_delta(self) -> int:
         """Allows to read if the active load is connected in delta, if the answer is positive, this function will
         deliver a 1; otherwise, the answer will be 0. The parameter argument can be filled with a 0. """
         return self.dss_obj.DSSLoads(ctypes.c_int32(13), ctypes.c_int32(0))
 
-    def loads_write_isdelta(self, argument) -> int:
+    def loads_write_is_delta(self, argument) -> int:
         """Allows to read if the active load is connected in delta, if the answer is positive, this function will
         deliver a 1; otherwise, the answer will be 0. This parameter will return a 0. """
         argument = Base.check_int_param(argument)

@@ -29,19 +29,19 @@ class FusesI(Base):
         """Sets the next Fuse to be the active Fuse. Returns 0 if none."""
         return self.dss_obj.FusesI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def fuses_read_monitoredterm(self) -> int:
+    def fuses_read_monitored_term(self) -> int:
         """Gets the terminal number to switch the fuse is connected."""
         return self.dss_obj.FusesI(ctypes.c_int32(3), ctypes.c_int32(0))
 
-    def fuses_write_monitoredterm(self, argument):
+    def fuses_write_monitored_term(self, argument):
         """Sets the terminal number to switch the fuse is connected."""
         return self.dss_obj.FusesI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
-    def fuses_read_switchedterm(self) -> int:
+    def fuses_read_switched_term(self) -> int:
         """Gets the terminal number of the terminal containing the switch controlled by the fuse."""
         return self.dss_obj.FusesI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def fuses_write_switchedterm(self, argument):
+    def fuses_write_switched_term(self, argument):
         """Sets the terminal number of the terminal containing the switch controlled by the fuse."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.FusesI(ctypes.c_int32(6), ctypes.c_int32(argument))
@@ -54,7 +54,7 @@ class FusesI(Base):
         """Closing of fuse."""
         return self.dss_obj.FusesI(ctypes.c_int32(8), ctypes.c_int32(0))
 
-    def fuses_isblown(self) -> int:
+    def fuses_is_blown(self) -> int:
         """Returns the current state of the fuses. TRUE (1) if any on any phase is blown. Else FALSE (0)."""
         return self.dss_obj.FusesI(ctypes.c_int32(9), ctypes.c_int32(0))
 
@@ -67,6 +67,6 @@ class FusesI(Base):
         argument = Base.check_int_param(argument, default=1)
         return self.dss_obj.FusesI(ctypes.c_int32(11), ctypes.c_int32(argument))
 
-    def fuses_numphases(self) -> int:
+    def fuses_num_phases(self) -> int:
         """Gets the number of phases of the active fuse."""
         return self.dss_obj.FusesI(ctypes.c_int32(12), ctypes.c_int32(0))

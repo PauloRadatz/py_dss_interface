@@ -18,7 +18,7 @@ class MonitorsS(Base):
     one of the following.
     """
 
-    def monitors_filename(self) -> str:
+    def monitors_file_name(self) -> str:
         """Returns the name of the CSV file associated with active monitor."""
         result = ctypes.c_char_p(self.dss_obj.MonitorsS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')

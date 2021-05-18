@@ -68,6 +68,6 @@ class LineCodesV(Base):
         lc_name = lc.linecodes_read_name()
         t.text(f'edit Linecode.{lc_name} Cmatrix = {argument}')
 
-    def linecodes_allnames(self):
+    def linecodes_all_names(self):
         """Gets the capacitance matrix in ohms per unit length of the active LineCode."""
         return Bridge.VarArrayFunction(self.dss_obj.LineCodesV, 6, None, '')

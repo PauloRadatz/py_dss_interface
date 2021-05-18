@@ -80,21 +80,21 @@ class LineCodesF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(11), ctypes.c_double(argument)))
 
-    def linecodes_read_normamps(self) -> float:
+    def linecodes_read_norm_amps(self) -> float:
         """Gets the normal ampere rating for the active LineCode."""
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(12), ctypes.c_double(0)))
 
-    def linecodes_write_normamps(self, argument) -> float:
+    def linecodes_write_norm_amps(self, argument) -> float:
         """Sets the normal ampere rating for the active LineCode. This value must be specified in the argument
         as a double."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(13), ctypes.c_double(argument)))
 
-    def linecodes_read_emergamps(self) -> float:
+    def linecodes_read_emerg_amps(self) -> float:
         """Gets the Emergency ampere rating for the active LineCode."""
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(14), ctypes.c_double(0)))
 
-    def linecodes_write_emergamps(self, argument) -> float:
+    def linecodes_write_emerg_amps(self, argument) -> float:
         """Sets the Emergency ampere rating for the active LineCode. This value must be specified in the argument
         as a double."""
         argument = Base.check_float_param(argument)

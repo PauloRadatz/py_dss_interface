@@ -38,20 +38,20 @@ class SWTControlsI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.SwtControlsI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
-    def swtcontrols_read_islocked(self) -> int:
+    def swtcontrols_read_is_locked(self) -> int:
         """Gets the lock state: {1 locked | 0 not locked}."""
         return self.dss_obj.SwtControlsI(ctypes.c_int32(4), ctypes.c_int32(0))
 
-    def swtcontrols_write_islocked(self, argument) -> int:
+    def swtcontrols_write_is_locked(self, argument) -> int:
         """Sets the lock to prevent both manual and automatic switch operation. """
         argument = Base.check_int_param(argument)
         return self.dss_obj.SwtControlsI(ctypes.c_int32(5), ctypes.c_int32(argument))
 
-    def swtcontrols_read_switchedterm(self) -> int:
+    def swtcontrols_read_switched_term(self) -> int:
         """Gets the terminal number where the switch is located on the SwitchedObj."""
         return self.dss_obj.SwtControlsI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    def swtcontrols_write_switchedterm(self, argument) -> int:
+    def swtcontrols_write_switched_term(self, argument) -> int:
         """Sets the terminal number where the switch is located on the SwitchedObj. """
         argument = Base.check_int_param(argument)
         return self.dss_obj.SwtControlsI(ctypes.c_int32(7), ctypes.c_int32(argument))

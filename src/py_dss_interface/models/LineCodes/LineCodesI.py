@@ -56,6 +56,6 @@ class LineCodesI(Base):
         argument. """
         return self.dss_obj.LineCodesI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
-    def linecodes_isz1z0(self) -> int:
+    def linecodes_is_z1z0(self) -> int:
         """Gets the flag (Boolean 1/0) denoting whether the impedance data were entered in symmetrical components."""
         return self.dss_obj.LineCodesI(ctypes.c_int32(7), ctypes.c_int32(0))

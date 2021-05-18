@@ -27,17 +27,17 @@ class DSSExecutiveS(Base):
         result = ctypes.c_char_p(self.dss_obj.DSSExecutiveS(ctypes.c_int32(1), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def executive_commandhelp(self):
+    def executive_command_help(self):
         """Gets help string for i-th command (specified in the argument as string)."""
         result = ctypes.c_char_p(self.dss_obj.DSSExecutiveS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def executive_optionhelp(self):
+    def executive_option_help(self):
         """Gets help string for i-th option (specified in the argument as string)."""
         result = ctypes.c_char_p(self.dss_obj.DSSExecutiveS(ctypes.c_int32(3), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def executive_optionvalue(self):
+    def executive_option_value(self):
         """Gets present value for i-th option (specified in the argument as string)."""
         result = ctypes.c_char_p(self.dss_obj.DSSExecutiveS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')

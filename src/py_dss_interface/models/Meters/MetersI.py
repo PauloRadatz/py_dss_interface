@@ -29,7 +29,7 @@ class MetersI(Base):
         """Resets the active Meter object."""
         return self.dss_obj.MetersI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def meters_resetall(self) -> int:
+    def meters_reset_all(self) -> int:
         """Resets all Meter object."""
         return self.dss_obj.MetersI(ctypes.c_int32(3), ctypes.c_int32(0))
 
@@ -42,36 +42,36 @@ class MetersI(Base):
         Bytestream or channel data. Most standard solution modes do this automatically. """
         return self.dss_obj.MetersI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def meters_read_meteredterminal(self) -> int:
+    def meters_read_metered_terminal(self) -> int:
         """Returns the number of metered terminal by the active Energy Meter."""
         return self.dss_obj.MetersI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    def meters_write_meteredterminal(self, argument) -> int:
+    def meters_write_metered_terminal(self, argument) -> int:
         """Sets the number of metered terminal by the active Energy Meter."""
         return self.dss_obj.MetersI(ctypes.c_int32(7), ctypes.c_int32(argument))
 
-    def meters_difilesareopen(self) -> int:
+    def meters_di_files_are_open(self) -> int:
         """Returns a global flag (1=true, 0=false) to indicate if Demand Interval (DI) files have been properly
         opened. """
         return self.dss_obj.MetersI(ctypes.c_int32(8), ctypes.c_int32(0))
 
-    def meters_sampleall(self) -> int:
+    def meters_sample_all(self) -> int:
         """Causes all Energy Meters to take a sample of the present state. Returns 0."""
         return self.dss_obj.MetersI(ctypes.c_int32(9), ctypes.c_int32(0))
 
-    def meters_saveall(self) -> int:
+    def meters_save_all(self) -> int:
         """Save all Energy Meter buffers to their respective file streams. Returns 0."""
         return self.dss_obj.MetersI(ctypes.c_int32(10), ctypes.c_int32(0))
 
-    def meters_openalldifiles(self) -> int:
+    def meters_open_all_di_files(self) -> int:
         """Opens Demand Interval (DI) files. Returns 0."""
         return self.dss_obj.MetersI(ctypes.c_int32(11), ctypes.c_int32(0))
 
-    def meters_closealldifiles(self) -> int:
+    def meters_close_all_di_files(self) -> int:
         """Closes all Demand Interval (DI) files. Necessary at the end of a run."""
         return self.dss_obj.MetersI(ctypes.c_int32(12), ctypes.c_int32(0))
 
-    def meters_countendelements(self) -> int:
+    def meters_count_end_elements(self) -> int:
         """Returns the number of zone end elements in the active meter zone."""
         return self.dss_obj.MetersI(ctypes.c_int32(13), ctypes.c_int32(0))
 
@@ -79,57 +79,57 @@ class MetersI(Base):
         """Returns the number of Energy Meters in the Active Circuit."""
         return self.dss_obj.MetersI(ctypes.c_int32(14), ctypes.c_int32(0))
 
-    def meters_countbranches(self) -> int:
+    def meters_count_branches(self) -> int:
         """Returns the number of branches in active Energy Meter zone (same as sequencelist size)."""
         return self.dss_obj.MetersI(ctypes.c_int32(15), ctypes.c_int32(0))
 
-    def meters_read_sequenceindex(self) -> int:
+    def meters_read_sequence_index(self) -> int:
         """Returns the index into meter's SequenceList that contains branch pointers in lexical order. Earlier index
         guaranteed to be up line from later index. Sets PDElement active. """
         return self.dss_obj.MetersI(ctypes.c_int32(16), ctypes.c_int32(0))
 
-    def meters_write_sequenceindex(self, argument) -> int:
+    def meters_write_sequence_index(self, argument) -> int:
         """Sets the index into meter's SequenceList that contains branch pointers in lexical order. Earlier index
         guaranteed to be up line from later index. Sets PDElement active. """
         return self.dss_obj.MetersI(ctypes.c_int32(17), ctypes.c_int32(argument))
 
-    def meters_doreliabilitycalc(self) -> int:
+    def meters_do_reliability_calc(self) -> int:
         """Calculates SAIFI, etc. if the Argument is equal to 1 this parameter will assume restoration, otherwise it
         will not. """
         return self.dss_obj.MetersI(ctypes.c_int32(18), ctypes.c_int32(0))
 
-    def meters_seqlistsize(self) -> int:
+    def meters_seq_list_size(self) -> int:
         """Returns the size of Sequence List."""
         return self.dss_obj.MetersI(ctypes.c_int32(19), ctypes.c_int32(0))
 
-    def meters_totalcustomers(self) -> int:
+    def meters_total_customers(self) -> int:
         """Returns the total number of customers in this zone (down line from the Energy Meter)."""
         return self.dss_obj.MetersI(ctypes.c_int32(20), ctypes.c_int32(0))
 
-    def meters_numsections(self) -> int:
+    def meters_num_sections(self) -> int:
         """Returns the number of feeder sections in this meter's zone."""
         return self.dss_obj.MetersI(ctypes.c_int32(21), ctypes.c_int32(0))
 
-    def meters_setactivesection(self) -> int:
+    def meters_set_active_section(self) -> int:
         """Sets the designated section (argument) if the index is valid."""
         return self.dss_obj.MetersI(ctypes.c_int32(22), ctypes.c_int32(0))
 
-    def meters_ocpdevicetype(self) -> int:
+    def meters_ocp_device_type(self) -> int:
         """Returns the type of OCP device: {1=fuse | 2+ recloser | 3= relay}."""
         return self.dss_obj.MetersI(ctypes.c_int32(23), ctypes.c_int32(0))
 
-    def meters_numsectioncustomers(self) -> int:
+    def meters_num_section_customers(self) -> int:
         """Returns the number of customers in the active section."""
         return self.dss_obj.MetersI(ctypes.c_int32(24), ctypes.c_int32(0))
 
-    def meters_numsectionbranches(self) -> int:
+    def meters_num_section_branches(self) -> int:
         """Returns the number of branches (lines) in the active section."""
         return self.dss_obj.MetersI(ctypes.c_int32(25), ctypes.c_int32(0))
 
-    def meters_sectseqidx(self) -> int:
+    def meters_sect_seq_idx(self) -> int:
         """Returns the Sequence Index of the branch at the head of this section."""
         return self.dss_obj.MetersI(ctypes.c_int32(26), ctypes.c_int32(0))
 
-    def meters_secttotalcust(self) -> int:
+    def meters_sect_total_cust(self) -> int:
         """Returns the total customers down line from this section."""
         return self.dss_obj.MetersI(ctypes.c_int32(27), ctypes.c_int32(0))

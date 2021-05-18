@@ -17,7 +17,7 @@ class DSSInterfaceS(Base):
     which can be one of the following.
     """
 
-    def dss_newcircuit(self, argument):
+    def dss_new_circuit(self, argument):
         """Makes a new circuit, the name of the circuit must be specified in the Argument."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(0), argument.encode('ascii')))

@@ -25,11 +25,11 @@ class GeneratorsI(Base):
         """Sets next generator to be active. Returns 0 if None."""
         return self.dss_obj.GeneratorsI(ctypes.c_int32(1), ctypes.c_int32(0))
 
-    def generators_read_forcedon(self) -> int:
+    def generators_read_forced_on(self) -> int:
         """Returns 1 if the generator is forced ON regardless of other dispatch criteria; otherwise, returns 0."""
         return self.dss_obj.GeneratorsI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def generators_write_forcedon(self, argument) -> int:
+    def generators_write_forced_on(self, argument) -> int:
         """Allows to force ON regardless of other dispatch criteria. To force ON put 1 in the argument, otherwise put
         0. """
         return self.dss_obj.GeneratorsI(ctypes.c_int32(3), ctypes.c_int32(argument))

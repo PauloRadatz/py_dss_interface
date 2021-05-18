@@ -27,23 +27,23 @@ class ReclosersS(Base):
         result = ctypes.c_char_p(self.dss_obj.ReclosersS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def reclosers_read_monitoredobj(self):
+    def reclosers_read_monitored_obj(self):
         """Gets the full name of object this Recloser is monitoring."""
         result = ctypes.c_char_p(self.dss_obj.ReclosersS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def reclosers_write_monitoredobj(self, argument):
+    def reclosers_write_monitored_obj(self, argument):
         """Sets the full name of object this Recloser is monitoring."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.ReclosersS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def reclosers_read_switchedobj(self):
+    def reclosers_read_switched_obj(self):
         """Gets the full name of the circuit element that is being switched by this Recloser."""
         result = ctypes.c_char_p(self.dss_obj.ReclosersS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def reclosers_write_switchedobj(self, argument):
+    def reclosers_write_switched_obj(self, argument):
         """Sets the full name of the circuit element that is being switched by this Recloser."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.ReclosersS(ctypes.c_int32(5), argument.encode('ascii')))
