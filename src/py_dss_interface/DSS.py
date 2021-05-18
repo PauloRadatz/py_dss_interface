@@ -5,7 +5,7 @@ import os
 import pathlib
 
 from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement
-from . import DSSInterface, Fuses, Generators, ISources, LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Sensors
+from . import DSSInterface, Fuses, Generators, ISources, LineCodes, Lines, Loads, LoadShapes, Meters, PVSystems, Monitors, Sensors
 from . import Solution, Text, Topology, Transformers, XYCurves
 from .utils.System import System
 
@@ -14,7 +14,7 @@ DLL_NAME_LINUX = "libopendssdirect.so"
 
 
 class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, DSSInterface,
-             Fuses, Generators, Lines, Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, Sensors, Solution, Text,
+             Fuses, Generators, Lines, Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, PVSystems, Sensors, Solution, Text,
              Topology, Transformers, XYCurves):
     dll_folder: str
     dll_path: str
@@ -44,6 +44,9 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
                 self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll/linux")
             else:
                 self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll")
+
+        else:
+            self.dll_folder = pathlib.Path(dll_folder_param)
 
         self.dll_path = System.get_architecture_path(self.dll_folder)
         os.chdir(self.dll_path)
