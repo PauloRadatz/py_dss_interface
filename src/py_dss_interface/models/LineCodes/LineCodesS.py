@@ -24,7 +24,7 @@ class LineCodesS(Base):
         result = ctypes.c_char_p(self.dss_obj.LineCodesS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def linecodes_write_name(self, argument) -> str:
+    def linecodes_write_name(self, argument: str) -> str:
         """Sets the name of the active LineCode element. The new value must be specified in the argument as a string."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.LineCodesS(ctypes.c_int32(1), argument.encode('ascii')))

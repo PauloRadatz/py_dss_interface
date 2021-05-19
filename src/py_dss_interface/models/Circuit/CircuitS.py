@@ -34,21 +34,21 @@ class CircuitS(Base):
         result = ctypes.c_char_p(self.dss_obj.CircuitS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def circuit_set_active_element(self, argument) -> str:
+    def circuit_set_active_element(self, argument: str) -> str:
         """Allows to activate an element of the active circuit, the element must be specified by name.
         As a result, this parameter will deliver a string with the index of the active element."""
         argument = Base.check_string_param(argument, default="")
         result = ctypes.c_char_p(self.dss_obj.CircuitS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def circuit_set_active_bus(self, argument) -> str:
+    def circuit_set_active_bus(self, argument: str) -> str:
         """Allows to activate a bus of the active circuit, the bus must be specified by name.
         As a result, this parameter will deliver a string with the index of the active Bus."""
         argument = Base.check_string_param(argument, default="")
         result = ctypes.c_char_p(self.dss_obj.CircuitS(ctypes.c_int32(4), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def circuit_set_active_class(self, argument) -> str:
+    def circuit_set_active_class(self, argument: str) -> str:
         """Allows tto activate a Class of the active circuit, the Class must be specified by name.
         As a result, this parameter will deliver a string with the index of the active Class."""
         argument = Base.check_string_param(argument, default="")

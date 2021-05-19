@@ -21,7 +21,7 @@ class ISourcesF(Base):
         """Gets the magnitude of the Isource in Amps."""
         return float(self.dss_obj.IsourceF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def isources_write_amps(self, argument) -> float:
+    def isources_write_amps(self, argument: float) -> float:
         """Sets the magnitude of the Isource in Amps."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.IsourceF(ctypes.c_int32(1), ctypes.c_double(argument)))
@@ -30,7 +30,7 @@ class ISourcesF(Base):
         """Gets the phase angle of the Isource in degrees."""
         return float(self.dss_obj.IsourceF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def isources_write_angle_deg(self, argument) -> float:
+    def isources_write_angle_deg(self, argument: float) -> float:
         """Sets the phase angle of the Isource in degrees."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.IsourceF(ctypes.c_int32(3), ctypes.c_double(argument)))
@@ -39,7 +39,7 @@ class ISourcesF(Base):
         """Gets the frequency of the Isource in Hz."""
         return float(self.dss_obj.IsourceF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def isources_write_frequency(self, argument) -> float:
+    def isources_write_frequency(self, argument: float) -> float:
         """Sets the frequency of the Isource in Hz."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.IsourcesF(ctypes.c_int32(5), ctypes.c_double(argument)))

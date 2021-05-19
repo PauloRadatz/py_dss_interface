@@ -17,7 +17,7 @@ class CircuitI(Base):
     one of the following.
     """
 
-    def circuit_integer(self, first, second) -> int:
+    def circuit_integer(self, first: int, second: int) -> int:
         return int(self.dss_obj.CircuitI(ctypes.c_int32(first), ctypes.c_int32(second)))
 
     def circuit_num_ckt_elements(self) -> int:
@@ -60,7 +60,7 @@ class CircuitI(Base):
         """Forces all meters and monitors to save their sample buffers, returns 0."""
         return self.circuit_integer(8, 0)
 
-    def circuit_set_active_bus_i(self, i) -> int:
+    def circuit_set_active_bus_i(self, i: int) -> int:
         """Sets active the bus specified by index, which is compatible with the index delivered by AllBusNames,
         returns 0 it everything ok."""
         i = Base.check_int_param(i, 1)

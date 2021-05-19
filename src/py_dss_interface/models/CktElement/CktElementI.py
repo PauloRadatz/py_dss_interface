@@ -71,7 +71,7 @@ class CktElementI(Base):
         enabled."""
         return self.dss_obj.CktElementI(ctypes.c_int32(12), ctypes.c_int32(0))
 
-    def cktelement_write_enabled(self, argument) -> int:
+    def cktelement_write_enabled(self, argument: int) -> int:
         """Returns one of the following values: 0 if the active element is disabled or 1 if the active element is
         enabled."""
         return self.dss_obj.CktElementI(ctypes.c_int32(13), ctypes.c_int32(argument))

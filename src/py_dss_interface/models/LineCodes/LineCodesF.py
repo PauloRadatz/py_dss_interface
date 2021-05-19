@@ -24,7 +24,7 @@ class LineCodesF(Base):
         """Gets the Positive-sequence resistance in ohms per unit length for the active LineCode."""
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def linecodes_write_r1(self, argument) -> float:
+    def linecodes_write_r1(self, argument: float) -> float:
         """Sets the Positive-sequence resistance in ohms per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
         argument = Base.check_float_param(argument)
@@ -34,7 +34,7 @@ class LineCodesF(Base):
         """Gets the Positive-sequence reactance in ohms per unit length for the active LineCode."""
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def linecodes_write_x1(self, argument) -> float:
+    def linecodes_write_x1(self, argument: float) -> float:
         """Sets the Positive-sequence reactance in ohms per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
         argument = Base.check_float_param(argument)
@@ -44,7 +44,7 @@ class LineCodesF(Base):
         """Gets the Zero-sequence resistance in ohms per unit length for the active LineCode."""
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def linecodes_write_r0(self, argument) -> float:
+    def linecodes_write_r0(self, argument: float) -> float:
         """Sets the Zero-sequence resistance in ohms per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
         argument = Base.check_float_param(argument)
@@ -54,7 +54,7 @@ class LineCodesF(Base):
         """Gets the Zero-sequence reactance in ohms per unit length for the active LineCode."""
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(6), ctypes.c_double(0)))
 
-    def linecodes_write_x0(self, argument) -> float:
+    def linecodes_write_x0(self, argument: float) -> float:
         """Sets the Zero-sequence reactance in ohms per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
         argument = Base.check_float_param(argument)
@@ -64,7 +64,7 @@ class LineCodesF(Base):
         """Gets the Positive-sequence capacitance in ohms per unit length for the active LineCode."""
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(8), ctypes.c_double(0)))
 
-    def linecodes_write_c1(self, argument) -> float:
+    def linecodes_write_c1(self, argument: float) -> float:
         """Sets the Positive-sequence capacitance in ohms per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
         argument = Base.check_float_param(argument)
@@ -74,7 +74,7 @@ class LineCodesF(Base):
         """Gets the Zero-sequence capacitance in ohms per unit length for the active LineCode."""
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(10), ctypes.c_double(0)))
 
-    def linecodes_write_c0(self, argument) -> float:
+    def linecodes_write_c0(self, argument: float) -> float:
         """Sets the Zero-sequence capacitance in ohms per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
         argument = Base.check_float_param(argument)
@@ -84,7 +84,7 @@ class LineCodesF(Base):
         """Gets the normal ampere rating for the active LineCode."""
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(12), ctypes.c_double(0)))
 
-    def linecodes_write_norm_amps(self, argument) -> float:
+    def linecodes_write_norm_amps(self, argument: float) -> float:
         """Sets the normal ampere rating for the active LineCode. This value must be specified in the argument
         as a double."""
         argument = Base.check_float_param(argument)
@@ -94,7 +94,7 @@ class LineCodesF(Base):
         """Gets the Emergency ampere rating for the active LineCode."""
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(14), ctypes.c_double(0)))
 
-    def linecodes_write_emerg_amps(self, argument) -> float:
+    def linecodes_write_emerg_amps(self, argument: float) -> float:
         """Sets the Emergency ampere rating for the active LineCode. This value must be specified in the argument
         as a double."""
         argument = Base.check_float_param(argument)

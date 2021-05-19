@@ -32,7 +32,7 @@ class LinesI(Base):
         """Gets the number of phases of the active line object."""
         return self.dss_obj.LinesI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def lines_write_phases(self, argument):
+    def lines_write_phases(self, argument: int) -> int:
         """Sets the number of phases of the active line object."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.LinesI(ctypes.c_int32(3), ctypes.c_int32(argument))
@@ -49,10 +49,10 @@ class LinesI(Base):
         """Gets the number of Line Objects in Active Circuit."""
         return self.dss_obj.LinesI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    def lines_read_units(self):
+    def lines_read_units(self) -> int:
         """Gets the units of the line (distance, check manual for details)."""
         return self.dss_obj.LinesI(ctypes.c_int32(7), ctypes.c_int32(0))
 
-    def lines_write_units(self, argument):
+    def lines_write_units(self, argument: int) -> int:
         """Sets the units of the line (distance, check manual for details)."""
         return self.dss_obj.LinesI(ctypes.c_int32(8), ctypes.c_int32(argument))

@@ -21,6 +21,7 @@ class CtrlQueueV(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
+    # TODO add type
     def ctrlqueue_ctrlqueue(self):
         """Delivers the control actions contained in the CtrlQueue after the latest solve command."""
         return Bridge.VarArrayFunction(self.dss_obj.CtrlQueueV, 0, None, '')

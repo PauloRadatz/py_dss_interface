@@ -17,14 +17,14 @@ class DSSProgressI(Base):
     which can be one of the following.
     """
 
-    def dssprogress_pct_progress(self):
+    def dssprogress_pct_progress(self) -> int:
         """Sets the percent progress to indicate [0..100]."""
         return int(self.dss_obj.DSSProgressI(ctypes.c_int32(0), ctypes.c_int32(0)))
 
-    def dssprogress_show(self):
+    def dssprogress_show(self) -> int:
         """Shows progress form with null caption and progress set to zero."""
         return int(self.dss_obj.DSSProgressI(ctypes.c_int32(1), ctypes.c_int32(0)))
 
-    def dssprogress_close(self):
+    def dssprogress_close(self) -> int:
         """Closes (hides) DSS Progress form."""
         return int(self.dss_obj.DSSProgressI(ctypes.c_int32(2), ctypes.c_int32(0)))

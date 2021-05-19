@@ -25,7 +25,7 @@ class LinesF(Base):
         """Gets the length of line section in units compatible with the LineCode definition."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def lines_write_length(self, argument) -> float:
+    def lines_write_length(self, argument: float) -> float:
         """Sets the length of line section in units compatible with the LineCode definition."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(1), ctypes.c_double(argument)))
@@ -34,7 +34,7 @@ class LinesF(Base):
         """Gets the positive sequence resistance, ohm per unit length."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def lines_write_r1(self, argument) -> float:
+    def lines_write_r1(self, argument: float) -> float:
         """Sets the positive sequence resistance, ohm per unit length."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(3), ctypes.c_double(argument)))
@@ -43,7 +43,7 @@ class LinesF(Base):
         """Gets the positive sequence reactance, ohm per unit length."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def lines_write_x1(self, argument) -> float:
+    def lines_write_x1(self, argument: float) -> float:
         """Sets the positive sequence reactance, ohm per unit length."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(5), ctypes.c_double(argument)))
@@ -52,7 +52,7 @@ class LinesF(Base):
         """Gets the zero sequence resistance, ohm per unit length."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(6), ctypes.c_double(0)))
 
-    def lines_write_r0(self, argument) -> float:
+    def lines_write_r0(self, argument: float) -> float:
         """Sets the zero sequence resistance, ohm per unit length."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(7), ctypes.c_double(argument)))
@@ -61,7 +61,7 @@ class LinesF(Base):
         """Gets the zero sequence reactance, ohm per unit length."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(8), ctypes.c_double(0)))
 
-    def lines_write_x0(self, argument) -> float:
+    def lines_write_x0(self, argument: float) -> float:
         """Sets the zero sequence reactance, ohm per unit length."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(9), ctypes.c_double(argument)))
@@ -70,7 +70,7 @@ class LinesF(Base):
         """Gets the positive sequence capacitance, nanofarads per unit length."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(10), ctypes.c_double(0)))
 
-    def lines_write_c1(self, argument) -> float:
+    def lines_write_c1(self, argument: float) -> float:
         """Sets the positive sequence capacitance, nanofarads per unit length."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(11), ctypes.c_double(argument)))
@@ -79,7 +79,7 @@ class LinesF(Base):
         """Gets the zero sequence capacitance, nanofarads per unit length."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(12), ctypes.c_double(0)))
 
-    def lines_write_c0(self, argument) -> float:
+    def lines_write_c0(self, argument: float) -> float:
         """Sets the zero sequence capacitance, nanofarads per unit length."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(13), ctypes.c_double(argument)))
@@ -88,7 +88,7 @@ class LinesF(Base):
         """Gets the normal ampere rating of line section."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(14), ctypes.c_double(0)))
 
-    def lines_write_norm_amps(self, argument) -> float:
+    def lines_write_norm_amps(self, argument: float) -> float:
         """Sets the normal ampere rating of Line."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(15), ctypes.c_double(argument)))
@@ -97,7 +97,7 @@ class LinesF(Base):
         """Gets the emergency (maximum) ampere rating of Line."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(16), ctypes.c_double(0)))
 
-    def lines_write_emerg_amps(self, argument) -> float:
+    def lines_write_emerg_amps(self, argument: float) -> float:
         """Sets the emergency (maximum) ampere rating of Line."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(17), ctypes.c_double(argument)))
@@ -106,7 +106,7 @@ class LinesF(Base):
         """Gets the earth return value used to compute line impedances at power frequency."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(18), ctypes.c_double(0)))
 
-    def lines_write_rg(self, argument) -> float:
+    def lines_write_rg(self, argument: float) -> float:
         """Sets the earth return value used to compute line impedances at power frequency."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(19), ctypes.c_double(argument)))
@@ -115,7 +115,7 @@ class LinesF(Base):
         """Gets the earth return reactance value used to compute line impedances at power frequency."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(20), ctypes.c_double(0)))
 
-    def lines_write_xg(self, argument) -> float:
+    def lines_write_xg(self, argument: float) -> float:
         """Sets the earth return reactance value used to compute line impedances at power frequency."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(21), ctypes.c_double(argument)))
@@ -124,7 +124,7 @@ class LinesF(Base):
         """Gets the earth resistivity, m-ohms."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(22), ctypes.c_double(0)))
 
-    def lines_write_rho(self, argument) -> float:
+    def lines_write_rho(self, argument: float) -> float:
         """Sets the earth resistivity, m-ohms."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LinesF(ctypes.c_int32(23), ctypes.c_double(argument)))
