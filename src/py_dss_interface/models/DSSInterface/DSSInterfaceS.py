@@ -17,7 +17,7 @@ class DSSInterfaceS(Base):
     which can be one of the following.
     """
 
-    def dss_new_circuit(self, argument):
+    def dss_new_circuit(self, argument: str) -> str:
         """Makes a new circuit, the name of the circuit must be specified in the Argument."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(0), argument.encode('ascii')))
@@ -33,7 +33,7 @@ class DSSInterfaceS(Base):
         result = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def dss_write_datapath(self, argument) -> str:
+    def dss_write_datapath(self, argument: str) -> str:
         """Gets the Data File Path. Default for reports, etc. from DSS."""
         result = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')

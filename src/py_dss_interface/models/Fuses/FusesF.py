@@ -23,7 +23,7 @@ class FusesF(Base):
         result = float(self.dss_obj.FusesF(ctypes.c_int32(0), ctypes.c_double(0)))
         return result
 
-    def fuses_write_rated_current(self, argument):
+    def fuses_write_rated_current(self, argument: float) -> float:
         """Sets the multiplier or actual amps for the TCCcurve object. Defaults to 1.0, Multiply current values of
         TCC curve by this to get actual amps. """
         argument = Base.check_float_param(argument, 1.0)
@@ -34,7 +34,7 @@ class FusesF(Base):
         is 0. """
         return float(self.dss_obj.FusesF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def fuses_write_delay(self, argument):
+    def fuses_write_delay(self, argument: float) -> float:
         """Sets the fixed delay time in seconds added to the fuse blowing time determined by the TCC curve. Default
         is 0. """
         argument = Base.check_float_param(argument, 0.0)

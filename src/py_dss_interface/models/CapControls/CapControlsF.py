@@ -22,7 +22,7 @@ class CapControlsF(Base):
         """Gets the transducer ratio current to control current."""
         return self.dss_obj.CapControlsF(0, 0)
 
-    def cap_controls_write_ct_ratio(self, argument):
+    def cap_controls_write_ct_ratio(self, argument: float) -> float:
         """Sets the transducer ratio current to control current."""
         try:
             result = self.dss_obj.CapControlsF(1, argument)
@@ -34,7 +34,7 @@ class CapControlsF(Base):
         """Gets the transducer ratio from primary feeder to control voltage."""
         return self.dss_obj.CapControlsF(2, 0)
 
-    def cap_controls_write_pt_ratio(self, argument):
+    def cap_controls_write_pt_ratio(self, argument: float) -> float:
         """Sets the transducer ratio from primary feeder to control voltage."""
         try:
             result = self.dss_obj.CapControlsF(3, argument)
@@ -46,7 +46,7 @@ class CapControlsF(Base):
         """Gets the threshold to arm or switch on a step. See Mode for Units."""
         return self.dss_obj.CapControlsF(4, 0)
 
-    def cap_controls_write_on_setting(self, argument):
+    def cap_controls_write_on_setting(self, argument: float) -> float:
         """Sets the threshold to arm or switch on a step. See Mode for Units."""
         try:
             result = self.dss_obj.CapControlsF(5, ctypes.c_double(argument))
@@ -58,7 +58,7 @@ class CapControlsF(Base):
         """Gets the threshold to switch off a step. See Mode for Units."""
         return self.dss_obj.CapControlsF(6, 0)
 
-    def cap_controls_write_off_setting(self, argument):
+    def cap_controls_write_off_setting(self, argument: float) -> float:
         """Sets the threshold to switch off a step. See Mode for Units."""
         try:
             result = self.dss_obj.CapControlsF(7, ctypes.c_double(argument))
@@ -70,7 +70,7 @@ class CapControlsF(Base):
         """Gets the Vmax, this reference with VoltOverride, switch off whenever PT voltage exceeds this level."""
         return self.dss_obj.CapControlsF(8, 0)
 
-    def cap_controls_write_vmax(self, argument):
+    def cap_controls_write_vmax(self, argument: float) -> float:
         """Sets the Vmax, this reference with VoltOverride, switch off whenever PT voltage exceeds this level."""
         try:
             result = self.dss_obj.CapControlsF(9, ctypes.c_double(argument))
@@ -82,7 +82,7 @@ class CapControlsF(Base):
         """Gets the Vmin, this reference with VoltOverride, switch ON whenever PT voltage drops below this level."""
         return self.dss_obj.CapControlsF(10, 0)
 
-    def cap_controls_write_vmin(self, argument):
+    def cap_controls_write_vmin(self, argument: float) -> float:
         """Sets the Vmin, this reference with VoltOverride, switch ON whenever PT voltage drops below this level."""
         try:
             result = self.dss_obj.CapControlsF(11, ctypes.c_double(argument))
@@ -94,7 +94,7 @@ class CapControlsF(Base):
         """Gets the time delay [s] to switch on after arming. Control may reset before actually switching."""
         return self.dss_obj.CapControlsF(12, 0)
 
-    def cap_controls_write_delay(self, argument):
+    def cap_controls_write_delay(self, argument: float) -> float:
         """Sets the time delay [s] to switch on after arming. Control may reset before actually switching."""
         try:
             result = self.dss_obj.CapControlsF(13, ctypes.c_double(argument))
@@ -106,7 +106,7 @@ class CapControlsF(Base):
         """Gets the time delay [s] before switching off a step. Control may reset before actually switching."""
         return self.dss_obj.CapControlsF(14, 0)
 
-    def cap_controls_write_delay_off(self, argument):
+    def cap_controls_write_delay_off(self, argument: float) -> float:
         """Sets the time delay [s] before switching off a step. Control may reset before actually switching."""
         try:
             result = self.dss_obj.CapControlsF(15, ctypes.c_double(argument))
@@ -118,7 +118,7 @@ class CapControlsF(Base):
         """Gets the time delay [s] after switching off a step. Control may reset before actually switching."""
         return self.dss_obj.CapControlsF(16, 0)
 
-    def cap_controls_write_dead_time(self, argument):
+    def cap_controls_write_dead_time(self, argument: float) -> float:
         """Sets the time delay [s] after switching off a step. Control may reset before actually switching.."""
         try:
             result = self.dss_obj.CapControlsF(17, ctypes.c_double(argument))

@@ -23,6 +23,7 @@ class LineCodesV(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
+    # TODO include types here
     def linecodes_read_rmatrix(self):
         """Gets the resistance matrix in ohms per unit length of the active LineCode."""
         return Bridge.VarArrayFunction(self.dss_obj.LineCodesV, 0, None, '')

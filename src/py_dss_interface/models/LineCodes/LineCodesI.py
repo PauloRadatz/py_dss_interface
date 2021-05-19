@@ -41,7 +41,7 @@ class LineCodesI(Base):
         """Delivers the units of the active LineCode as an integer."""
         return self.dss_obj.LineCodesI(ctypes.c_int32(3), ctypes.c_int32(0))
 
-    def linecodes_write_units(self, argument) -> int:
+    def linecodes_write_units(self, argument: int) -> int:
         """Sets the units of the active LineCode. The units must be specified as an integer in the argument.
         Please refer to the OpenDSS User manual for more information."""
         argument = Base.check_int_param(argument)

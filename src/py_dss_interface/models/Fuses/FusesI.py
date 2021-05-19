@@ -33,7 +33,7 @@ class FusesI(Base):
         """Gets the terminal number to switch the fuse is connected."""
         return self.dss_obj.FusesI(ctypes.c_int32(3), ctypes.c_int32(0))
 
-    def fuses_write_monitored_term(self, argument):
+    def fuses_write_monitored_term(self, argument: int) -> int:
         """Sets the terminal number to switch the fuse is connected."""
         return self.dss_obj.FusesI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
@@ -41,16 +41,16 @@ class FusesI(Base):
         """Gets the terminal number of the terminal containing the switch controlled by the fuse."""
         return self.dss_obj.FusesI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def fuses_write_switched_term(self, argument):
+    def fuses_write_switched_term(self, argument: int) -> int:
         """Sets the terminal number of the terminal containing the switch controlled by the fuse."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.FusesI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
-    def fuses_open(self):
+    def fuses_open(self) -> int:
         """Opening of fuse."""
         return self.dss_obj.FusesI(ctypes.c_int32(7), ctypes.c_int32(0))
 
-    def fuses_close(self):
+    def fuses_close(self) -> int:
         """Closing of fuse."""
         return self.dss_obj.FusesI(ctypes.c_int32(8), ctypes.c_int32(0))
 
@@ -62,7 +62,7 @@ class FusesI(Base):
         """Gets the active fuse by index into the list of fuses. 1 based: 1..count."""
         return self.dss_obj.FusesI(ctypes.c_int32(10), ctypes.c_int32(0))
 
-    def fuses_write_idx(self, argument):
+    def fuses_write_idx(self, argument: int) -> int:
         """Sets the active fuse by index into the list of fuses. 1 based: 1..count."""
         argument = Base.check_int_param(argument, default=1)
         return self.dss_obj.FusesI(ctypes.c_int32(11), ctypes.c_int32(argument))

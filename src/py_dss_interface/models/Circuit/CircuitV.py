@@ -89,25 +89,25 @@ class CircuitV(Base):
         must be 0. """
         return Bridge.VarArrayFunction(self.dss_obj.CircuitV, 13, None, '')
 
-    def circuit_all_node_vmag_by_phase(self, argument=1) -> List[float]:
+    def circuit_all_node_vmag_by_phase(self, argument: int = 1) -> List[float]:
         """Returns array of doubles representing the voltage magnitudes for nodes on the specified phase. The phase
         must be specified in the Argument2. """
         argument = Base.check_int_param(argument, default=1)  # Phase 1 as default
         return Bridge.VarArrayFunction(self.dss_obj.CircuitV, 14, argument, '')
 
-    def circuit_all_node_vmag_pu_by_phase(self, argument=1) -> List[float]:
+    def circuit_all_node_vmag_pu_by_phase(self, argument: int = 1) -> List[float]:
         """Returns array of doubles representing the voltage magnitudes (in per unit) for nodes on the specified phase.
         The phase must be specified in the Argument2."""
         argument = Base.check_int_param(argument, default=1)  # Phase 1 as default
         return Bridge.VarArrayFunction(self.dss_obj.CircuitV, 15, argument, '')
 
-    def circuit_all_node_distances_by_phase(self, argument=1) -> List[float]:
+    def circuit_all_node_distances_by_phase(self, argument: int = 1) -> List[float]:
         """Returns array of doubles representing the distances to parent EnergyMeter. Sequence of array corresponds to
         other node ByPhase properties. Argument2 must contain the number of the phase to return."""
         argument = Base.check_int_param(argument, default=1)  # Phase 1 as default
         return Bridge.VarArrayFunction(self.dss_obj.CircuitV, 16, argument, '')
 
-    def circuit_all_node_names_by_phase(self, argument=1) -> List[str]:
+    def circuit_all_node_names_by_phase(self, argument: int = 1) -> List[str]:
         """Returns array of strings of the node names by Phase criteria. Sequence corresponds to other ByPhase
         properties. Argument2 must contain the number of the phase to return. """
         argument = Base.check_int_param(argument, default=1)  # Phase 1 as default

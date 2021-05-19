@@ -33,7 +33,7 @@ class DSSInterfaceI(Base):
         """Validates the user and starts the DSS. Returns TRUE (1) if successful."""
         return int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0)))
 
-    def dss_num_classes(self):
+    def dss_num_classes(self) -> int:
         """Gets the number of DSS intrinsic classes."""
         return int(self.dss_obj.DSSI(ctypes.c_int32(4), ctypes.c_int32(0)))
 
@@ -49,6 +49,6 @@ class DSSInterfaceI(Base):
         """Gets if the DSS allows forms (1) or not (0), default (1)."""
         self.dss_obj.DSSI(ctypes.c_int32(7), ctypes.c_int32(0))
 
-    def dss_write_allow_forms(self, argument):
+    def dss_write_allow_forms(self, argument: int):
         """Sets if the DSS allows forms (1) or not (0), default (1)."""
         self.dss_obj.DSSI(ctypes.c_int32(8), ctypes.c_int32(argument))
