@@ -21,11 +21,12 @@ class CktElementF(Base):
         """Deliver the Emergency ampere rating for the active PDElement."""
         return float(self.dss_obj.CktElementF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def cktelement_write_emerg_amp(self, argument: float) -> float:
+    def cktelement_write_emerg_amps(self, argument: float) -> float:
         """Allows to fix the Emergency ampere rating for the active PDElement. The new value must be defined in the
         variable ?Argument?."""
         return float(self.dss_obj.CktElementF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    def cktelement_variable_i(self) -> float:
+    def cktelement_variable_i(self, argument: float) -> float:
+        # TODO it does not work
         """Delivers get the value of a variable by index for the active PCElement."""
-        return float(self.dss_obj.CktElementF(ctypes.c_int32(4), ctypes.c_double(0)))
+        return float(self.dss_obj.CktElementF(ctypes.c_int32(4), ctypes.c_double(argument)))

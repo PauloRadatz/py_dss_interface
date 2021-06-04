@@ -6,8 +6,6 @@ from py_dss_interface import DSSDLL
 import os
 import pathlib
 
-# import pathlib
-
 dss = DSSDLL()
 
 script_path = os.path.dirname(os.path.abspath(__file__))
