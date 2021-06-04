@@ -11,7 +11,7 @@ dss13_path = os.path.join(pathlib.Path(script_path), "13Bus", "IEEE13Nodeckt.dss
 
 @pytest.fixture
 def DSS():
-    dss = py_dss_interface.DSS()
+    dss = py_dss_interface.DSSDLL()
     actual = dss.started
     expected = True
 
@@ -42,4 +42,4 @@ class TestDSS(object):
     def test_solution_totaliterations(self):
         self.dss.text("compile " + dss13_path)
 
-        assert self.dss.solution_totaliterations() == 11
+        assert self.dss.solution_total_iterations() == 11

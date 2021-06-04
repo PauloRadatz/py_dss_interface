@@ -5,7 +5,7 @@
 import ctypes
 
 from py_dss_interface.models.Base import Base
-from ... import DSSDLL
+
 
 class CtrlQueueI(Base):
     """
@@ -54,7 +54,7 @@ class CtrlQueueI(Base):
         Control Queue handle. """
         return self.dss_obj.CtrlQueueI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    def ctrlqueue_show(self, dss: DSSDLL) -> int:
+    def ctrlqueue_show(self, dss) -> int:
         """Shows the entire control queue in CSV format."""
         try:
             return self.dss_obj.CtrlQueueI(ctypes.c_int32(7), ctypes.c_int32(0))

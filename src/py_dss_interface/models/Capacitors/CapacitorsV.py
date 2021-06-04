@@ -6,7 +6,7 @@ from typing import List
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
-from ... import DSSDLL
+
 
 class CapacitorsV(Base):
     """
@@ -36,7 +36,7 @@ class CapacitorsV(Base):
         return result
 
     # TODO the argument is really a list or can be also a tuple?
-    def capacitors_write_states(self, dss: DSSDLL, argument: list) -> int:
+    def capacitors_write_states(self, dss, argument: list) -> int:
         """Sets a variant array of integers [0..numsteps-1] indicating the state of each step. If value is -1 and
         error has occurred.
         :param argument: list with status of Capacitor states
