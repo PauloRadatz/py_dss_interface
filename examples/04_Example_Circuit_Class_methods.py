@@ -2,14 +2,16 @@
 """
  Created by eniocc at 12/05/2021
 """
-from py_dss_interface import DSS
+from py_dss_interface import DSSDLL
+import os
+import pathlib
 
 # import pathlib
 
-dss = DSS()
+dss = DSSDLL()
 
-dss_file = r"C:\eniocc\EPRI\py_dss_interface-master\src\py_dss_interface\tests\py_dss_interface\13Bus\IEEE13Nodeckt" \
-           r".dss "
+script_path = os.path.dirname(os.path.abspath(__file__))
+dss_file = os.path.join(pathlib.Path(script_path).parent, "tests", "py_dss_interface", "13Bus", "IEEE13Nodeckt.dss")
 
 dss.text("compile {0}".format(dss_file))
 
