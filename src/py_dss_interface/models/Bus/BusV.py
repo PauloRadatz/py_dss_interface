@@ -24,7 +24,7 @@ class BusV(Base):
         return Bridge.VarArrayFunction(self.dss_obj.BUSV, 0, None, '')
 
     # TODO: Checar duplicidade com o método desta classe nomeado sequence_voltages
-    def bus_seqvoltages(self):
+    def bus_seq_voltages(self):
         """Returns a complex array of Sequence voltages at this bus."""
         return Bridge.VarArrayFunction(self.dss_obj.BUSV, 1, None, '')
 
