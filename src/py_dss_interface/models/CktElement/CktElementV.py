@@ -6,7 +6,7 @@ from typing import List
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
-from ... import DSSDLL
+
 
 class CktElementV(Base):
     """
@@ -24,7 +24,7 @@ class CktElementV(Base):
         return Bridge.VarArrayFunction(self.dss_obj.CktElementV, 0, None, '')
 
     # TODO what does it return?
-    def cktelement_write_bus_names(self, dss: DSSDLL, argument: List[str]):
+    def cktelement_write_bus_names(self, dss, argument: List[str]):
         """Allows to fix an array of strings with the names of all the buses connected to the active circuit element."""
         # 1 get size of number of elements conected to the active circuit
         total_connected = len(self.cktelement_read_bus_names())

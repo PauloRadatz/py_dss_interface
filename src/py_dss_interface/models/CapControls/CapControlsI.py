@@ -3,7 +3,7 @@
  Created by eniocc at 11/10/2020
 """
 from py_dss_interface.models.Base import Base
-from ... import DSSDLL
+
 
 class CapControlsI(Base):
     """
@@ -44,7 +44,7 @@ class CapControlsI(Base):
         """Gets the terminal number on the element that PT and CT are connected to."""
         return self.dss_obj.CapControlsI(4, 0)
 
-    def cap_controls_write_monitored_term(self, dss: DSSDLL, argument: int) -> int:
+    def cap_controls_write_monitored_term(self, dss, argument: int) -> int:
         """Sets the terminal number on the element that PT and CT are connected to."""
         # TODO: what is the return type and values?
         # self.dss_obj.CapControlsI(5, argument)
@@ -58,7 +58,7 @@ class CapControlsI(Base):
         # TODO: what is the return type and values?
         return self.dss_obj.CapControlsI(6, 0)
 
-    def cap_controls_write_use_volt_override(self, dss: DSSDLL, argument: int) -> int:
+    def cap_controls_write_use_volt_override(self, dss, argument: int) -> int:
         """Sets if enables Vmin and Vmax to override the control Mode."""
         # TODO: what is the return type?
         # return self.dss_obj.CapControlsI(7, argument)
