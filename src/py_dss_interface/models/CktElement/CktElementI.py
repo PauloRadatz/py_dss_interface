@@ -29,13 +29,13 @@ class CktElementI(Base):
         """Delivers the number of phases of the active DSS object."""
         return int(self.dss_obj.CktElementI(ctypes.c_int32(2), ctypes.c_int32(0)))
 
-    def cktelement_open(self) -> int:
+    def cktelement_open(self, argument: int) -> int:
         """Open the specified terminal (Argument) of the active DSS object."""
-        return int(self.dss_obj.CktElementI(ctypes.c_int32(3), ctypes.c_int32(0)))
+        return int(self.dss_obj.CktElementI(ctypes.c_int32(3), ctypes.c_int32(argument)))
 
-    def cktelement_close(self) -> int:
+    def cktelement_close(self, argument: int) -> int:
         """Close the specified terminal (Argument) of the active DSS object."""
-        return self.dss_obj.CktElementI(ctypes.c_int32(4), ctypes.c_int32(0))
+        return self.dss_obj.CktElementI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
     def cktelement_is_open(self) -> int:
         """Return a 1 if any terminal of the active DSS object is open, otherwise, it will return a 0."""

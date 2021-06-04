@@ -43,7 +43,7 @@ class CktElementS(Base):
         result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def cktelement_controller(self, argument: str) -> str:
+    def cktelement_controller(self, argument: int) -> str:
         """Delivers the Full name of the i-th controller attached to the active circuit element.
         The i-th controller index must be specified in the argument arg. Ex: Str = Controller(2).
         See NumControls to determine valid index range."""
