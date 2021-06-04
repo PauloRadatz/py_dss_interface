@@ -55,8 +55,8 @@ print(f'dss.active_class_get_name(): {dss.active_class_get_name()}')
 
 print(f'dss.circuit_set_active_bus(): {dss.circuit_set_active_bus("692")}')
 
-print(f'dss.circuit_name(): {dss.circuit_set_active_class("Capacitor")}')
-print(f'dss.circuit_name(): {dss.active_class_get_name()}')
+print(f'circuit_set_active_class(): {dss.circuit_set_active_class("Capacitor")}')
+print(f'dss.active_class_get_name(): {dss.active_class_get_name()}')
 
 # Variant methods
 print(45 * '=' + ' Variant Methods ' + 45 * '=')

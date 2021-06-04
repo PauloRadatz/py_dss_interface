@@ -122,3 +122,45 @@ class TestCircuit13Bus:
         expected = 0
         actual = self.dss.circuit_end_of_time_step_update()
         assert actual == expected
+
+    def test_circuit_name(self):
+        expected = 'ieee13nodeckt'
+        actual = self.dss.circuit_name()
+        assert actual == expected
+
+    def test_circuit_disable(self):
+        pass
+
+    def test_circuit_enable(self):
+        pass
+
+    def test_circuit_set_active_element(self):
+        expected = '26'
+        actual = self.dss.circuit_set_active_element("Line.650632")
+        assert actual == expected
+
+        expected = 'Line.650632'
+        actual = self.dss.cktelement_name()
+        assert actual == expected
+
+    def test_active_class_get_name(self):
+        expected = '650632'
+        self.dss.circuit_set_active_element("Line.650632")
+        actual = self.dss.active_class_get_name()
+        assert actual == expected
+
+    def test_circuit_set_active_bus(self):
+        expected = '8'
+        actual = self.dss.circuit_set_active_bus("692")
+        assert actual == expected
+
+        expected = '692'
+        actual = self.dss.bus_name()
+        assert actual == expected
+
+    def test_circuit_set_active_class(self):
+        # Not sure how to use it
+        expected = '23'
+        actual = self.dss.circuit_set_active_class("Capacitor")
+        assert actual == expected
+
