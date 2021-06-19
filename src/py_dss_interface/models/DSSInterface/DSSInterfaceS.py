@@ -28,13 +28,15 @@ class DSSInterfaceS(Base):
         result = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(1), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
+    # TODO: Ênio = not working
     def dss_read_datapath(self) -> str:
         """Gets the Data File Path. Default for reports, etc. from DSS."""
         result = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
+    # TODO: Ênio = not working
     def dss_write_datapath(self, argument: str) -> str:
-        """Gets the Data File Path. Default for reports, etc. from DSS."""
+        """Sets the Data File Path. Default for reports, etc. from DSS."""
         result = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
