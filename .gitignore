@@ -5,7 +5,12 @@ env
 
 # C extensions
 *.so
-
+# OpenDSS
+*.DSV
+*.dbl
+# Results Generated in Text File
+tests/py_dss_interface/13Bus/*.csv
+tests/py_dss_interface/13Bus/*.txt
 # Packages
 *.egg
 *.egg-info
@@ -71,3 +76,6 @@ docs/_build
 
 # Mypy Cache
 .mypy_cache/
+
+# Environment
+env
