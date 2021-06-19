@@ -15,4 +15,4 @@ class ErrorCode(Base):
 
     def error_code(self) -> int:
         """"This interface returns an integer with latest error code delivered by OpenDSS."""
-        return int(self.dss_obj.DSSErrorCode())
+        return int(self.dss_obj.ErrorCode())
