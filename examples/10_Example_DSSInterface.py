@@ -2,29 +2,41 @@
 """
  Created by eniocc at 15/05/2021
 """
-from py_dss_interface import DSS
+from py_dss_interface import DSSDLL as DSS
 
 dss = DSS()
 
-dss_file = r"C:\eniocc\EPRI\py_dss_interface-master\src\py_dss_interface\tests\py_dss_interface\13Bus\IEEE13Nodeckt" \
+dss_file = r"C:\Users\eniocc\Desktop\epri_projects\fork\py_dss_interface\tests\py_dss_interface\13Bus\IEEE13Nodeckt" \
            r".dss "
 
 dss.text("compile {0}".format(dss_file))
-print(f'dss.meters_allnames(): {dss.meters_allnames()}')
-print(f'dss.meters_registernames(): {dss.meters_registernames()}')
-print(f'dss.meters_registervalues(): {dss.meters_registervalues()}')
-print(f'dss.meters_totals(): {dss.meters_totals()}')
-print(f'dss.meters_read_peakcurrent(): {dss.meters_read_peakcurrent()}')
-print(f'dss.meters_write_peakcurrent(): {dss.meters_write_peakcurrent("[550,600,680]")}')
-print(f'dss.meters_read_peakcurrent(): {dss.meters_read_peakcurrent()}')
-print(f'dss.meters_read_calcurrent(): {dss.meters_read_calcurrent()}')
 
-print(f'dss.meters_read_allocfactors(): {dss.meters_read_allocfactors()}')
-print(f'dss.meters_write_allocfactors(): {dss.meters_write_allocfactors("[0.1]")}')
+# Integer methods
+print(45 * '=' + ' Integer Methods' + 45 * '=')
+print(f'dss.dss_num_circuits(): {dss.dss_num_circuits()}')
+print(f'dss.dss_clear_all(): {dss.dss_clear_all()}')
+print(f'dss.dss_show_panel(): {dss.dss_show_panel()}')
+print(f'dss.dss_start(): {dss.dss_start()}')
+print(f'dss.dss_num_classes(): {dss.dss_num_classes()}')
+print(f'dss.dss_num_user_classes(): {dss.dss_num_user_classes()}')
+print(f'dss.dss_reset(): {dss.dss_reset()}')
+print(f'dss.dss_read_allow_forms(): {dss.dss_read_allow_forms()}')
+print(f'dss.dss_write_allow_forms(): {dss.dss_write_allow_forms(0)}')
+print(f'dss.dss_read_allow_forms(): {dss.dss_read_allow_forms()}')
 
-print(f'dss.meters_allendelements(): {dss.meters_allendelements()}')
-print(f'dss.meters_allbranchesinzone(): {dss.meters_allbranchesinzone()}')
+# Float methods
+print(45 * '=' + ' Float Methods ' + 45 * '=')
 
-print(f'dss.monitors_channel(): {dss.monitors_channel("2")}')
-print(f'dss.monitors_allnames(): {dss.monitors_allnames()}')
+# String methods
+print(45 * '=' + ' String Methods ' + 45 * '=')
+print(f'dss.dss_new_circuit(): {dss.dss_new_circuit("new_rest_circuit")}')
+print(f'dss.dss_version(): {dss.dss_version()}')
+# print(f'dss.dss_read_datapath(): {dss.dss_read_datapath()}')
+# dss.dss_write_datapath("D:")
+# print(f'dss.dss_read_datapath(): {dss.dss_read_datapath()}')
+print(f'dss.dss_default_editor(): {dss.dss_default_editor()}')
 
+# Variant methods
+print(45 * '=' + ' Variant Methods ' + 45 * '=')
+print(f'dss.dss_classes(): {dss.dss_classes()}')
+print(f'dss.dss_user_classes(): {dss.dss_user_classes()}')

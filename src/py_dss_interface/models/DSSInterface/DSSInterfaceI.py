@@ -23,11 +23,11 @@ class DSSInterfaceI(Base):
 
     def dss_clear_all(self):
         """Clears all circuit definitions."""
-        self.dss_obj.DSSI(ctypes.c_int32(1), ctypes.c_int32(0))
+        return self.dss_obj.DSSI(ctypes.c_int32(1), ctypes.c_int32(0))
 
     def dss_show_panel(self):
         """Shows non-MDI child form of the Main DSS Edit form."""
-        self.dss_obj.DSSI(ctypes.c_int32(2), ctypes.c_int32(0))
+        return self.dss_obj.DSSI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def dss_start(self) -> int:
         """Validates the user and starts the DSS. Returns TRUE (1) if successful."""
@@ -41,14 +41,16 @@ class DSSInterfaceI(Base):
         """Gets the number of user-defined classes."""
         return int(self.dss_obj.DSSI(ctypes.c_int32(5), ctypes.c_int32(0)))
 
+    # TODO: Ênio - nothing implemented in the OpenDSS Original Source Code
     def dss_reset(self):
         """Resets DSS initialization for restarts, etc. from applets."""
-        self.dss_obj.DSSI(ctypes.c_int32(6), ctypes.c_int32(0))
+        return self.dss_obj.DSSI(ctypes.c_int32(6), ctypes.c_int32(0))
 
     def dss_read_allow_forms(self):
         """Gets if the DSS allows forms (1) or not (0), default (1)."""
-        self.dss_obj.DSSI(ctypes.c_int32(7), ctypes.c_int32(0))
+        return self.dss_obj.DSSI(ctypes.c_int32(7), ctypes.c_int32(0))
 
+    # TODO: Ênio - need validate the argument
     def dss_write_allow_forms(self, argument: int):
         """Sets if the DSS allows forms (1) or not (0), default (1)."""
-        self.dss_obj.DSSI(ctypes.c_int32(8), ctypes.c_int32(argument))
+        return self.dss_obj.DSSI(ctypes.c_int32(8), ctypes.c_int32(argument))
