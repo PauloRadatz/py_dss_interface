@@ -3,6 +3,7 @@
  Created by eniocc at 11/10/2020
 """
 from py_dss_interface.models.Base import Base
+import ctypes
 
 
 class ErrorDesc(Base):
@@ -15,6 +16,9 @@ class ErrorDesc(Base):
     This interface returns a string with description of the latest error code delivered by OpenDSS.
     """
 
+    # TODO: Ênio - I guess the error desc output is wrong
     def error_desc(self) -> str:
-        """"This interface returns an integer with latest error code delivered by OpenDSS."""
-        return str(self.dss_obj.DSSErrorDesc())
+        """"This interface returns a string with description of the latest error code delivered by OpenDSS."""
+        result = ctypes.c_char_p(self.dss_obj.ErrorDesc())
+        return result.value.decode('ascii')
+
