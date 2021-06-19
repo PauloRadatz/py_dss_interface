@@ -2,7 +2,7 @@
 """
  Created by eniocc at 12/05/2021
 """
-from py_dss_interface import DSS
+from py_dss_interface import DSSDLL as DSS
 
 # import pathlib
 
