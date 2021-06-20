@@ -2,14 +2,15 @@
 """
  Created by eniocc at 12/05/2021
 """
-from py_dss_interface import DSS
-
-# import pathlib
+import os
+import pathlib
+from py_dss_interface import DSSDLL as DSS
 
 dss = DSS()
 
-dss_file = r"C:\eniocc\EPRI\py_dss_interface-master\src\py_dss_interface\tests\py_dss_interface\13Bus\IEEE13Nodeckt" \
-           r".dss "
+my_path = pathlib.Path(__file__).parents[1] # one level above
+my_path = os.path.join(my_path, r"tests\py_dss_interface\13Bus")
+dss_file = os.path.join(my_path, "IEEE13Nodeckt.dss")
 
 dss.text("compile {0}".format(dss_file))
 
@@ -21,9 +22,9 @@ print(f'dss.capacitors_write_num_steps(): {dss.capacitors_write_num_steps(5)}')
 print(f'dss.capacitors_read_nums_step(): {dss.capacitors_read_nums_steps()}')
 print(f'dss.capacitors_available_steps(): {dss.capacitors_available_steps()}')
 print()
-print(f'dss.capacitors_read_isdelta(): {dss.capacitors_read_isdelta()}')
-print(f'dss.capacitors_write_isdelta(): {dss.capacitors_write_isdelta()}')
-print(f'dss.capacitors_read_isdelta(): {dss.capacitors_read_isdelta()}')
+print(f'dss.capacitors_read_isdelta(): {dss.capacitors_read_is_delta()}')
+print(f'dss.capacitors_write_isdelta(): {dss.capacitors_write_is_delta()}')
+print(f'dss.capacitors_read_isdelta(): {dss.capacitors_read_is_delta()}')
 print()
 print(f'dss.capacitors_count(): {dss.capacitors_count()}')
 print(f'dss.capacitors_first(): {dss.capacitors_first()}')
@@ -77,7 +78,7 @@ print(f'dss.capacitors_read_name(): {dss.capacitors_read_name()}')
 
 # Variant methods
 print(45 * '=' + ' Variant Methods ' + 45 * '=')
-print(f'dss.capacitors_allnames(): {dss.capacitors_allnames()}')
+print(f'dss.capacitors_allnames(): {dss.capacitors_all_names()}')
 dss.capacitors_first()
 print(f'dss.capacitors_read_states(): {dss.capacitors_read_states()}')
 print(f'dss.capacitors_write_states(): {dss.capacitors_write_states(dss, [0, 1, 0, 1, 1])}')
