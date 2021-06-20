@@ -31,7 +31,7 @@ class Case:
                     else:
                         if not c['dss_file_alternative'] == '':
                             self.dss_file = c['dss_file_alternative']
-                    self.path = os.path.join(self.path, r"../../../tests/py_dss_interface/cases")
+                    self.path = os.path.join(self.path, r"cases")
                     self.path = os.path.join(self.path, c['case_folder'])
                     self.dss_file = os.path.join(self.path, self.dss_file)
                     break
