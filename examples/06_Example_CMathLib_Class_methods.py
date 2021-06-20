@@ -2,7 +2,7 @@
 """
  Created by Ênio Viana at 12/05/2021
 """
-from py_dss_interface.models.example.ExampleBase import ExampleBase
+from py_dss_interface.models.Example.ExampleBase import ExampleBase
 
 dss = ExampleBase("13").dss
 
