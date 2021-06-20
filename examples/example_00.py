@@ -1,20 +1,12 @@
 # -*- encoding: utf-8 -*-
 """
- Created by eniocc at 11/10/2020
+ Created by Ênio Viana at 11/10/2020
 """
-import os
-import pathlib
-from py_dss_interface import DSSDLL as DSS
+from py_dss_interface.models.example.ExampleBase import ExampleBase
 
-dss = DSS()
+dss = ExampleBase("13").dss
 
-my_path = pathlib.Path(__file__).parents[1] # one level above
-my_path = os.path.join(my_path, r"test\py_dss_interface\13Bus")
-dss_file = os.path.join(my_path, "IEEE13Nodeckt.dss")
-
-dss.text("compile {0}".format(dss_file))
-
-overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.circuit_name()}_EXP_OVERLOADS.CSV")
+# overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.circuit_name()}_EXP_OVERLOADS.CSV")
 
 # Solve
 # dss.text('export overloads')
