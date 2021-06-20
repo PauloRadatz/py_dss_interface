@@ -2,14 +2,14 @@
 """
  Created by eniocc at 12/05/2021
 """
-from py_dss_interface import DSS
+from py_dss_interface import DSSDLL as DSS
 
 # import pathlib
 
 dss = DSS()
 
-dss_file = r"C:\eniocc\EPRI\py_dss_interface-master\src\py_dss_interface\tests\py_dss_interface\13Bus\IEEE13Nodeckt" \
-           r".dss "
+dss_file = r"C:\Users\eniocc\Desktop\epri_projects\fork\py_dss_interface\tests\py_dss_interface\13Bus\IEEE13Nodeckt.dss"
+
 
 dss.text("compile {0}".format(dss_file))
 
@@ -17,20 +17,20 @@ dss.text("compile {0}".format(dss_file))
 print(f'dss.ctrlqueue_ctrlqueue(): {dss.ctrlqueue_ctrlqueue()}')
 
 # DSSElement
-print(f'dss.dsselement_allpropertynames(): {dss.dsselement_allpropertynames()}')
+print(f'dss.dsselement_allpropertynames(): {dss.dsselement_all_property_names()}')
 print(f'dss.dss_classes(): {dss.dss_classes()}')
 print(f'dss.dss_user_classes(): {dss.dss_user_classes()}')
 
 # Fuses
-print(f'dss.fuses_allnames(): {dss.fuses_allnames()}')
+print(f'dss.fuses_allnames(): {dss.fuses_all_names()}')
 
 # Generators
-print(f'dss.generators_allnames(): {dss.generators_allnames()}')
-print(f'dss.generators_registernames(): {dss.generators_registernames()}')
-print(f'dss.generators_registervalues(): {dss.generators_registervalues()}')
+print(f'dss.generators_allnames(): {dss.generators_all_names()}')
+print(f'dss.generators_registernames(): {dss.generators_register_names()}')
+print(f'dss.generators_registervalues(): {dss.generators_register_values()}')
 
 # ISources
-print(f'dss.isources_allnames(): {dss.isources_allnames()}')
+print(f'dss.isources_allnames(): {dss.isources_all_names()}')
 
 # LineCodes
 print(f'dss.linecodes_read_rmatrix(): {dss.linecodes_read_rmatrix()}')
@@ -48,10 +48,10 @@ cmatrix = "[257 | 0 257 | 0 0 257]"
 print(f'dss.linecodes_write_cmatrix(): {dss.linecodes_write_cmatrix(cmatrix)}')
 print(f'dss.linecodes_read_cmatrix(): {dss.linecodes_read_cmatrix()}')
 
-print(f'dss.linecodes_allnames(): {dss.linecodes_allnames()}')
+print(f'dss.linecodes_allnames(): {dss.linecodes_all_names()}')
 
 # Lines
-print(f'dss.lines_allnames(): {dss.lines_allnames()}')
+print(f'dss.lines_allnames(): {dss.lines_all_names()}')
 
 print(f'dss.lines_read_rmatrix(): {dss.lines_read_rmatrix()}')
 print(f'dss.lines_write_rmatrix(): {dss.lines_write_rmatrix(rmatrix)}')
@@ -65,7 +65,7 @@ print(f'dss.lines_read_yprim(): {dss.lines_read_yprim()}')
 
 # Loads
 print()
-print(f'dss.loads_allnames(): {dss.loads_allnames()}')
+print(f'dss.loads_allnames(): {dss.loads_all_names()}')
 print(f'dss.loads_read_zipv(): {dss.loads_read_zipv()}')
 zipv = "[0 1 2 3 4 5 6]"
 print(f'dss.loads_write_zipv(): {dss.loads_write_zipv(zipv)}')
@@ -87,21 +87,21 @@ print(f'dss.loads_read_zipv(): {dss.loads_read_zipv()}')
 
 # Meters
 print()
-print(f'dss.meters_allnames(): {dss.meters_allnames()}')
-print(f'dss.meters_registernames(): {dss.meters_registernames()}')
-print(f'dss.meters_registervalues(): {dss.meters_registervalues()}')
-print(f'dss.meters_read_peakcurrent(): {dss.meters_read_peakcurrent()}')
+print(f'dss.meters_allnames(): {dss.meters_all_names()}')
+print(f'dss.meters_registernames(): {dss.meters_register_names()}')
+print(f'dss.meters_registervalues(): {dss.meters_register_values()}')
+print(f'dss.meters_read_peakcurrent(): {dss.meters_read_peak_current()}')
 print(f'dss.meters_totals(): {dss.meters_totals()}')
 peak_current = "[400 400 400 ]"
-print(f'dss.meters_write_peakcurrent(): {dss.meters_write_peakcurrent(peak_current)}')
-print(f'dss.meters_read_peakcurrent(): {dss.meters_read_peakcurrent()}')
-print(f'dss.meters_read_calcurrent(): {dss.meters_read_calcurrent()}')
+print(f'dss.meters_write_peakcurrent(): {dss.meters_write_peak_current(peak_current)}')
+print(f'dss.meters_read_peakcurrent(): {dss.meters_read_peak_current()}')
+print(f'dss.meters_read_calcurrent(): {dss.meters_read_cal_current()}')
 # print(f'dss.meters_write_calcurrent(): {dss.meters_write_calcurrent(12.5)}')
-print(f'dss.meters_read_calcurrent(): {dss.meters_read_calcurrent()}')
-print(f'dss.meters_read_allocfactors(): {dss.meters_read_allocfactors()}')
+print(f'dss.meters_read_calcurrent(): {dss.meters_read_cal_current()}')
+print(f'dss.meters_read_allocfactors(): {dss.meters_read_alloc_factors()}')
 
 # Sensors
-print(f'dss.sensors_allnames(): {dss.sensors_allnames()}')
+print(f'dss.sensors_allnames(): {dss.sensors_all_names()}')
 print(f'dss.sensors_read_currents(): {dss.sensors_read_currents()}')
 currents = "[12 58 96 36]"
 print(f'dss.sensors_write_currents(): {dss.sensors_write_currents(currents)}')
@@ -115,4 +115,4 @@ print(f'dss.sensors_write_kws(): {dss.sensors_write_kws(kws)}')
 print(f'dss.sensors_read_kws(): {dss.sensors_read_kws()}')
 
 # XYCurves
-print(f'dss.read_xarray(): {dss.read_xarray()}')
+print(f'dss.read_xarray(): {dss.read_x_array()}')
