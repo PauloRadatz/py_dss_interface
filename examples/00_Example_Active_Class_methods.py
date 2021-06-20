@@ -9,7 +9,7 @@ from py_dss_interface import DSSDLL as DSS
 dss = DSS()
 
 my_path = pathlib.Path(__file__).parents[1] # one level above
-my_path = os.path.join(my_path, r"tests\py_dss_interface\13Bus")
+my_path = os.path.join(my_path, r"test\13Bus")
 dss_file = os.path.join(my_path, "IEEE13Nodeckt.dss")
 
 dss.text("compile {0}".format(dss_file))
