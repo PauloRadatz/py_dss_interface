@@ -6,7 +6,7 @@ import py_dss_interface
 
 script_path = os.path.dirname(os.path.abspath(__file__))
 ddll_path = os.path.join(pathlib.Path(script_path), "DDLL")
-dss13_path = os.path.join(pathlib.Path(script_path), "13Bus", "IEEE13Nodeckt.dss")
+dss13_path = os.path.join(pathlib.Path(script_path), "cases/13Bus", "IEEE13Nodeckt.dss")
 
 
 @pytest.fixture

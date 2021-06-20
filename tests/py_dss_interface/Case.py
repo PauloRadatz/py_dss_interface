@@ -10,6 +10,7 @@ from py_dss_interface import DSSDLL as DSS
 class Case:
     def __init__(self, case="13"):
         self.path = os.path.dirname(__file__)
+        self.dss_file = ""
         self.dss = DSS()
         self.actual = self.dss.started
         self.message = ("OpenDSSDirectDLL has been loaded: {}".format(self.actual))
