@@ -10,7 +10,7 @@ dss13_path = os.path.join(pathlib.Path(script_path), "cases/13Bus", "IEEE13Nodec
 
 
 @pytest.fixture
-def DSS():
+def dss():
     dss = py_dss_interface.DSSDLL()
     actual = dss.started
     expected = True
@@ -25,10 +25,10 @@ def DSS():
 class TestDSS(object):
 
     @pytest.fixture(autouse=True)
-    def _request_dss(self, DSS):
+    def _request_dss(self, dss):
         self.dss = DSS
 
-    def test_DSS(self):
+    def test_dss(self):
         actual = self.dss.started
         expected = True
 
@@ -36,7 +36,7 @@ class TestDSS(object):
 
         assert actual is expected, message
 
-    def test_DSS_version(self):
+    def test_dss_version(self):
         assert self.dss.dss_version is not None
 
     def test_solution_totaliterations(self):
