@@ -4,7 +4,6 @@
  Project: py_dss_interface [jun, 2021]
 """
 import pathlib
-import os
 import json
 
 from py_dss_interface import DSSDLL as DSS
@@ -26,7 +25,7 @@ class ExampleBase:
         self.dss.text("compile {0}".format(self.dss_file_full_path))
 
     def load_json_(self, case_param: str, default_file: bool) -> None:
-        self.dir_path = pathlib.Path(__file__).resolve().parents[4]  # os.path.dirname(os.path.realpath(__file__))
+        self.dir_path = pathlib.Path(__file__).resolve().parents[4]
         self.dir_path = self.dir_path.joinpath('tests/py_dss_interface')
         config_path = self.dir_path.joinpath('configurations.json')
         with open(config_path) as json_f:
