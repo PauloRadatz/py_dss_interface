@@ -2,14 +2,15 @@
 """
  Created by eniocc at 12/05/2021
 """
-from py_dss_interface import DSS
-
-# import pathlib
+import os
+import pathlib
+from py_dss_interface import DSSDLL as DSS
 
 dss = DSS()
 
-dss_file = r"C:\eniocc\EPRI\py_dss_interface-master\src\py_dss_interface\tests\py_dss_interface\13Bus\IEEE13Nodeckt" \
-           r".dss "
+my_path = pathlib.Path(__file__).parents[1] # one level above
+my_path = os.path.join(my_path, r"tests\py_dss_interface\13Bus")
+dss_file = os.path.join(my_path, "IEEE13Nodeckt.dss")
 
 dss.text("compile {0}".format(dss_file))
 
@@ -35,7 +36,7 @@ print(45 * '=' + ' String Methods ' + 45 * '=')
 
 # Variant methods
 print(45 * '=' + ' Variant Methods ' + 45 * '=')
-# TODO: we need validate these methods below
+# TODO: Ênio - we need validate these methods below
 print(f'dss.cmathlib_cmplx(): {dss.cmathlib_cmplx(1.3, 1.8)}')
 print(f'dss.cmathlib_ctopolardeg(): {dss.cmathlib_ctopolardeg(2, 3)}')
 print(f'dss.cmathlib_pdegtocomplex(): {dss.cmathlib_pdegtocomplex(3.605551275463989, 0.982793723247329)}')
