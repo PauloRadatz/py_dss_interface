@@ -26,7 +26,7 @@ class TestDSS(object):
 
     @pytest.fixture(autouse=True)
     def _request_dss(self, dss):
-        self.dss = DSS
+        self.dss = dss
 
     def test_dss(self):
         actual = self.dss.started
