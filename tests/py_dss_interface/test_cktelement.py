@@ -6,19 +6,25 @@
 # @Software: PyCharm
 
 import pytest
+from ..test.Case import Case
+from ..test.test_base import TestBase
 
 
-class TestCktElement13Bus:
+class TestCktElement13Bus(TestBase):
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
+    @pytest.fixture
+    def dss(self, case="13"):
+        self.activate_element()
+        c = Case(case)
+        return c.dss
+
+    def activate_element(self) -> None:
         self.dss.circuit_set_active_element('Line.671692')
 
     def test_cktelement_num_terminals(self):
         expected = 2
         actual = self.dss.cktelement_num_terminals()
-        assert actual == expected
+        assert actual, expected
 
     def test_cktelement_num_conductors(self):
         expected = 3
@@ -299,5 +305,3 @@ class TestCktElement13Bus:
                     2317.410394319708, 115.98663893302955]
         actual = self.dss.cktelement_voltages_mag_ang()
         assert actual == expected
-
-
