@@ -172,7 +172,7 @@ class TestCktElement13Bus:
         # methods below
         self.dss.circuit_set_active_element('Line.650632')
         expected = "Fuse.f1"
-        actual = self.dss.cktelement_controller(1)
+        actual = self.dss.cktelement_controller("1")
         assert actual == expected
 
     def test_cktelement_read_bus_names(self):
@@ -217,7 +217,7 @@ class TestCktElement13Bus:
             actual = self.dss.cktelement_powers()
             assert actual == expected
         else:
-            assert  1 == 1
+            assert 1 == 1
 
     def test_cktelement_losses(self):
         if platform.architecture()[0] == "64bit":
@@ -225,7 +225,7 @@ class TestCktElement13Bus:
             actual = self.dss.cktelement_losses()
             assert actual == expected
         else:
-            assert  1 == 1
+            assert 1 == 1
 
     def test_cktelement_phase_losses(self):
         if platform.architecture()[0] == "64bit":
@@ -234,7 +234,7 @@ class TestCktElement13Bus:
             actual = self.dss.cktelement_phase_losses()
             assert actual == expected
         else:
-            assert  1 == 1
+            assert 1 == 1
 
     def test_cktelement_seq_voltages(self):
         if platform.architecture()[0] == "64bit":
@@ -243,7 +243,7 @@ class TestCktElement13Bus:
             actual = self.dss.cktelement_seq_voltages()
             assert actual == expected
         else:
-            assert  1 == 1
+            assert 1 == 1
 
     def test_cktelement_seq_currents(self):
         if platform.architecture()[0] == "64bit":
@@ -252,7 +252,7 @@ class TestCktElement13Bus:
             actual = self.dss.cktelement_seq_currents()
             assert actual == expected
         else:
-            assert  1 == 1
+            assert 1 == 1
 
     def test_cktelement_seq_powers(self):
         if platform.architecture()[0] == "64bit":
@@ -264,7 +264,7 @@ class TestCktElement13Bus:
             actual = self.dss.cktelement_seq_powers()
             assert actual == expected
         else:
-            assert  1 == 1
+            assert 1 == 1
 
     def test_cktelement_all_property_names(self):
         expected = ['bus1', 'bus2', 'linecode', 'length', 'phases', 'r1', 'x1', 'r0', 'x0', 'C1', 'C0', 'rmatrix',
@@ -280,7 +280,7 @@ class TestCktElement13Bus:
             actual = self.dss.cktelement_residuals()
             assert actual == expected
         else:
-            assert  1 == 1
+            assert 1 == 1
 
     def test_cktelement_y_prim(self):
         if platform.architecture()[0] == "64bit":
@@ -295,7 +295,7 @@ class TestCktElement13Bus:
             actual = self.dss.cktelement_y_prim()
             assert actual == expected
         else:
-            assert  1 == 1
+            assert 1 == 1
 
     def test_cktelement_cplx_seq_voltages(self):
         if platform.architecture()[0] == "64bit":
@@ -307,7 +307,7 @@ class TestCktElement13Bus:
             actual = self.dss.cktelement_cplx_seq_voltages()
             assert actual == expected
         else:
-            assert  1 == 1
+            assert 1 == 1
 
     def test_cktelement_cplx_seq_currents(self):
         if platform.architecture()[0] == "64bit":
