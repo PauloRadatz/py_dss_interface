@@ -21,4 +21,4 @@ class VSourcesV(Base):
 
     def vsources_all_names(self):
         """Gets the name of the active VSource."""
-        return Bridge.VarArrayFunction(self.dss_obj.VsourcesV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.VsourcesV, ctypes.c_int(0), ctypes.c_int(0), None)

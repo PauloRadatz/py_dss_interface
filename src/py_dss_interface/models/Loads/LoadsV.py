@@ -24,11 +24,11 @@ class LoadsV(Base):
     def loads_all_names(self):
         """Allows to read the names of all the loads present in the active circuit. The result is delivered as
         variant, however, the content of this variant is an array of strings. """
-        return Bridge.VarArrayFunction(self.dss_obj.DSSLoadsV, 0, None, '')
+        return Bridge.var_array_function(self.dss_obj.DSSLoadsV, 0, None, '')
 
     def loads_read_zipv(self):
         """Allows to read the array of 7 elements (doubles) for ZIP property of the active Load object."""
-        return Bridge.VarArrayFunction(self.dss_obj.DSSLoadsV, 1, None, '')
+        return Bridge.var_array_function(self.dss_obj.DSSLoadsV, 1, None, '')
 
     def loads_write_zipv(self, argument):
         """Allows to write the array of 7 elements (doubles) for ZIP property of the active Load object.

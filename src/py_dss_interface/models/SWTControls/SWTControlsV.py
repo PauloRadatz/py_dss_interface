@@ -22,4 +22,4 @@ class SWTControlsV(Base):
 
     def swtcontrols_all_names(self):
         """Gets a variant array of strings with all SwtControl names in the active circuit."""
-        return Bridge.VarArrayFunction(self.dss_obj.SwtControlsV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.SwtControlsV, ctypes.c_int(0), ctypes.c_int(0), None)

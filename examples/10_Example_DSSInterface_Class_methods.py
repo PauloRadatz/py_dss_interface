@@ -19,16 +19,16 @@ print(f'dss.dss_read_allow_forms(): {dss.dss_read_allow_forms()}')
 print(f'dss.dss_write_allow_forms(): {dss.dss_write_allow_forms(0)}')
 print(f'dss.dss_read_allow_forms(): {dss.dss_read_allow_forms()}')
 
-# Float methods
-print(45 * '=' + ' Float Methods ' + 45 * '=')
-
 # String methods
 print(45 * '=' + ' String Methods ' + 45 * '=')
 print(f'dss.dss_new_circuit(): {dss.dss_new_circuit("new_rest_circuit")}')
 print(f'dss.dss_version(): {dss.dss_version()}')
-# print(f'dss.dss_read_datapath(): {dss.dss_read_datapath()}')
-# dss.dss_write_datapath("D:")
-# print(f'dss.dss_read_datapath(): {dss.dss_read_datapath()}')
+
+print(f'dss.dss_read_datapath(): {dss.dss_read_datapath()}')
+# PAY ATTENTION: According with the OpenDSS original source there is no error here,
+dss.dss_write_datapath(r"C:\Users\eniocc\Desktop\epri_projects\fork\py_dss_interface\src\py_dss_interface\models"
+                       r"\Capacitors\CapacitorsS.py")
+print(f'dss.dss_read_datapath(): {dss.dss_read_datapath()}')
 print(f'dss.dss_default_editor(): {dss.dss_default_editor()}')
 
 # Variant methods

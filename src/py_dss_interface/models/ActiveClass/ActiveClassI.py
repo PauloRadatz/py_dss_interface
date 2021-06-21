@@ -19,9 +19,6 @@ class ActiveClassI(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    # TODO: check returns, [if -1, an error occur]; [if 0, nothing wrong but can't get the correct answer,
-    #  probably end of results]
-
     def active_class_first(self) -> int:
         """Sets first element in the active class to be the active DSS object. If object is a CktElement,
         ActiveCktElement also points to this element. Returns 0 if none."""

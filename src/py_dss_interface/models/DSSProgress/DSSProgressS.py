@@ -17,7 +17,9 @@ class DSSProgressS(Base):
     which can be one of the following.
     """
 
-    def dssprogress_caption(self) -> str:
+    def dssprogress_caption(self, arg: str) -> str:
         """Sets the caption to appear on the bottom of the DSS Progress form."""
-        result = ctypes.c_char_p(self.dss_obj.DSSProgressS(ctypes.c_int32(0), ctypes.c_int32(0)))
-        return result.value.decode('ascii')
+
+        arg = Base.check_string_param(arg)
+        ctypes.c_char_p(arg.encode('utf-8'))
+        return (self.dss_obj.DSSProgressS(0, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')

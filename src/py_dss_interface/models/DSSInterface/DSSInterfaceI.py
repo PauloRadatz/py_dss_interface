@@ -41,16 +41,16 @@ class DSSInterfaceI(Base):
         """Gets the number of user-defined classes."""
         return int(self.dss_obj.DSSI(ctypes.c_int32(5), ctypes.c_int32(0)))
 
-    # TODO: Ênio - nothing implemented in the OpenDSS Original Source Code
     def dss_reset(self):
-        """Resets DSS initialization for restarts, etc. from applets."""
+        """Resets DSS initialization for restarts, etc. from applets. Nothing implemented in the OpenDSS Original
+        Source Code """
         return self.dss_obj.DSSI(ctypes.c_int32(6), ctypes.c_int32(0))
 
     def dss_read_allow_forms(self):
         """Gets if the DSS allows forms (1) or not (0), default (1)."""
         return self.dss_obj.DSSI(ctypes.c_int32(7), ctypes.c_int32(0))
 
-    # TODO: Ênio - need validate the argument
     def dss_write_allow_forms(self, argument: int):
-        """Sets if the DSS allows forms (1) or not (0), default (1)."""
-        return self.dss_obj.DSSI(ctypes.c_int32(8), ctypes.c_int32(argument))
+        """Sets if the DSS allows forms (1) or not (0), default (1). PAY ATTENTION: If arg=0 Then NoFormsAllowed :=
+        TRUE (Only set to False) else NoFormsAllowed := FALSE; """
+        return self.dss_obj.DSSI(ctypes.c_int32(8), argument)

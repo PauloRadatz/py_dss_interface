@@ -30,7 +30,7 @@ class CMathLibV(Base):
         r, theta = cmath.polar(z)
         return r, theta
 
-    def cmathlib_pdegtocomplex(self, double_real: float, double_imag: float) -> Tuple[float, float]:
+    def cmathlib_pdegtocomplex(self, double_real: float, double_imag: float) -> complex:
         """Convert magnitude, angle in degrees (Argument1 and Argument2) to a complex number. Returns variant array of
          two doubles."""
         return cmath.rect(double_real, double_imag)

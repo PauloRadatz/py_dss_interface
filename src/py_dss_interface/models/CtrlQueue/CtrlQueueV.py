@@ -24,4 +24,4 @@ class CtrlQueueV(Base):
     # TODO add type
     def ctrlqueue_ctrlqueue(self):
         """Delivers the control actions contained in the CtrlQueue after the latest solve command."""
-        return Bridge.VarArrayFunction(self.dss_obj.CtrlQueueV, 0, None, '')
+        return Bridge.var_array_function(self.dss_obj.CtrlQueueV, 0, None, '')

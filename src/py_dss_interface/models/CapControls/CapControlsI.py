@@ -25,8 +25,14 @@ class CapControlsI(Base):
         return self.dss_obj.CapControlsI(1, 0)
 
     def cap_controls_read_mode(self) -> int:
-        """Gets the type of automatic controller (see manual for details)."""
-        # TODO: what is the return type?
+        """Gets the type of automatic controller (see manual for details).
+        CURRENTCONTROL: Result := 0;
+        VOLTAGECONTROL: Result := 1;
+        VARCONTROL: Result := 2;
+        TIMECONTROL: Result := 3;
+        PFCONTROL: Result := 4;
+        USERCONTROL: Result := 4;
+        """
         return self.dss_obj.CapControlsI(2, 0)
 
     def cap_controls_write_mode(self, argument: int) -> int:
@@ -37,7 +43,6 @@ class CapControlsI(Base):
         3: elem.CapControlType := TIMECONTROL;
         4: elem.CapControlType := PFCONTROL;
         """
-        # TODO: what is the return type?
         return self.dss_obj.CapControlsI(3, argument)
 
     def cap_controls_read_monitored_term(self) -> int:
@@ -45,25 +50,26 @@ class CapControlsI(Base):
         return self.dss_obj.CapControlsI(4, 0)
 
     def cap_controls_write_monitored_term(self, dss, argument: int) -> int:
-        """Sets the terminal number on the element that PT and CT are connected to."""
-        # TODO: what is the return type and values?
+        """Sets the terminal number on the element that PT and CT are connected to. There is not a explicit return
+        type in the oficial documentation, because of this we choose not put a explicit return too. """
         # self.dss_obj.CapControlsI(5, argument)
         result = 0
-        if not dss.cap_controls_count() == 0:
+        if not self.cap_controls_count() == 0:
             result = dss.text(f'CapControls.{dss.cap_controls_read_name()} Terminal={argument}')
         return result
 
     def cap_controls_read_use_volt_override(self) -> int:
-        """Gets if Vmin and Vmax are enabled to override the control Mode."""
-        # TODO: what is the return type and values?
-        return self.dss_obj.CapControlsI(6, 0)
+        """Gets if Vmin and Vmax are enabled to override the control Mode. There is not a explicit return type in the
+        oficial documentation, because of this we choose not put a explicit return too."
+        return self.dss_obj.CapControlsI(6, 0). """
 
     def cap_controls_write_use_volt_override(self, dss, argument: int) -> int:
-        """Sets if enables Vmin and Vmax to override the control Mode."""
-        # TODO: what is the return type?
+        """Sets if enables Vmin and Vmax to override the control Mode. There is not a explicit return type in the
+        oficial documentation, because of this we choose not put a explicit return too. """
         # return self.dss_obj.CapControlsI(7, argument)
         result = 0
-        if not dss.cap_controls_count() == 0:
+
+        if not self.cap_controls_count() == 0:
             result = dss.text(f'CapControls.{dss.cap_controls_read_name()} VoltOverride={argument}')
         return result
 
