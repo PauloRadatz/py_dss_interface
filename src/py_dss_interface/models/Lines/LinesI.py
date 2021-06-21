@@ -54,5 +54,17 @@ class LinesI(Base):
         return self.dss_obj.LinesI(ctypes.c_int32(7), ctypes.c_int32(0))
 
     def lines_write_units(self, argument: int) -> int:
-        """Sets the units of the line (distance, check manual for details)."""
+        """Sets the units of the line (distance, check manual for details).
+        units: {none | mi|kft|km|m|Ft|in|cm }
+        UNITS_MAXNUM =9;
+        UNITS_NONE   =0;
+        UNITS_MILES =1;
+        UNITS_KFT   =2;
+        UNITS_KM    =3;
+        UNITS_M     =4;
+        UNITS_FT    =5;
+        UNITS_IN    =6;
+        UNITS_CM    =7;
+        UNITS_MM    =8;
+        """
         return self.dss_obj.LinesI(ctypes.c_int32(8), ctypes.c_int32(argument))

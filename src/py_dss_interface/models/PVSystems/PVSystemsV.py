@@ -21,4 +21,4 @@ class PVSystemsV(Base):
 
     def pvsystems_all_names(self):
         """Gets the variant array of string containing names of all PVSystems in the circuit."""
-        return Bridge.VarArrayFunction(self.dss_obj.PVsystemsV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.PVsystemsV, ctypes.c_int(0), ctypes.c_int(0), None)

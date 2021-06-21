@@ -21,30 +21,30 @@ class MonitorsV(Base):
 
     def monitors_all_names(self):
         """Returns an array of all Monitor names (array of strings)."""
-        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     def monitors_byte_stream(self):
         """Returns a byte array containing monitor stream values. Make sure a "save" is done first (standard solution
         modes do this automatically). """
-        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(1), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(1), ctypes.c_int(0), None)
 
     def monitors_header(self):
         """Returns the header string; Variant array of strings containing Channel Names."""
-        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(2), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(2), ctypes.c_int(0), None)
 
     def monitors_dbl_hour(self):
         """Returns returns a variant array of doubles containing time value in hours for the time-sampled monitor
         values; empty if frequency-sampled values for harmonics solution (see dblFreq)."""
-        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(3), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(3), ctypes.c_int(0), None)
 
     def monitors_dbl_freq(self):
         """Returns a variant array of doubles containing time values for harmonics mode solutions; empty for time
         mode solutions (use dblHour). """
-        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(4), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(4), ctypes.c_int(0), None)
 
-    # TODO: check
-    def monitors_channel(self, argument):
+    # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/16
+    def monitors_channel(self, argument) -> str:
         """Returns a variant array of doubles for the specified channel (usage: MyArray = DSSmonitor. Channel(i)) A
         save or SaveAll should be executed first. Done automatically by most standard solution modes. """
         argument = Base.check_string_param(argument)
-        return Bridge.VarArrayFunction(self.dss_obj.MonitorsV, ctypes.c_int(5), argument, None)
+        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(5), argument, None)

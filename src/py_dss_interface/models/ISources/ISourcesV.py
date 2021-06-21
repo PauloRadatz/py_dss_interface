@@ -21,4 +21,4 @@ class ISourcesV(Base):
 
     def isources_all_names(self) -> List[str]:
         """Gets the variant array of string containing names of all ISources in the circuit."""
-        return Bridge.VarArrayFunction(self.dss_obj.IsourceV, 0, None, '')
+        return Bridge.var_array_function(self.dss_obj.IsourceV, 0, None, '')
