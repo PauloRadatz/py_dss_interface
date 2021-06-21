@@ -21,8 +21,8 @@ class DSSInterfaceV(Base):
 
     def dss_classes(self) -> List[str]:
         """Gets the list of DSS intrinsic classes (names of the classes)."""
-        return Bridge.VarArrayFunction(self.dss_obj.DSSV, 0, None, '')
+        return Bridge.var_array_function(self.dss_obj.DSSV, 0, None, '')
 
     def dss_user_classes(self) -> List[str]:
         """Gets list of user-defined classes (names of the classes)."""
-        return Bridge.VarArrayFunction(self.dss_obj.DSSV, 1, None, '')
+        return Bridge.var_array_function(self.dss_obj.DSSV, 1, None, '')

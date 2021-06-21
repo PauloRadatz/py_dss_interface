@@ -43,15 +43,26 @@ class LineCodesI(Base):
 
     def linecodes_write_units(self, argument: int) -> int:
         """Sets the units of the active LineCode. The units must be specified as an integer in the argument.
-        Please refer to the OpenDSS User manual for more information."""
+        Please refer to the OpenDSS User manual for more information.
+        UNITS_MAXNUM =9;
+        UNITS_NONE   =0;
+        UNITS_MILES =1;
+        UNITS_KFT   =2;
+        UNITS_KM    =3;
+        UNITS_M     =4;
+        UNITS_FT    =5;
+        UNITS_IN    =6;
+        UNITS_CM    =7;
+        UNITS_MM    =8;
+        """
         argument = Base.check_int_param(argument)
         return self.dss_obj.LineCodesI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
-    def linecodes_read_phasess(self) -> int:
+    def linecodes_read_phases(self) -> int:
         """Delivers the number of phases of the active LineCode as an integer."""
         return self.dss_obj.LineCodesI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def linecodes_write_phasess(self, argument) -> int:
+    def linecodes_write_phases(self, argument) -> int:
         """Sets the number of phases of the active LineCode. The units must be specified as an integer in the
         argument. """
         return self.dss_obj.LineCodesI(ctypes.c_int32(6), ctypes.c_int32(argument))

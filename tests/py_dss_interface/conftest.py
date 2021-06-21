@@ -23,7 +23,7 @@ def solve_snap_13bus():
 
     assert actual is expected, message
 
-    dss13_path = os.path.join(pathlib.Path(script_path), "13Bus", "IEEE13Nodeckt.dss")
+    dss13_path = os.path.join(pathlib.Path(script_path), "cases", "13Bus", "IEEE13Nodeckt.dss")
     dss.text("compile " + dss13_path)  # It already performs power flow
 
     return dss

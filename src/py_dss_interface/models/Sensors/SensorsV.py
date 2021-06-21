@@ -23,11 +23,11 @@ class SensorsV(Base):
 
     def sensors_all_names(self):
         """Returns a variant array of sensor names."""
-        return Bridge.VarArrayFunction(self.dss_obj.SensorsV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     def sensors_read_currents(self):
         """Gets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
-        return Bridge.VarArrayFunction(self.dss_obj.SensorsV, ctypes.c_int(1), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(1), ctypes.c_int(0), None)
 
     def sensors_write_currents(self, argument):
         """Sets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
@@ -39,7 +39,7 @@ class SensorsV(Base):
 
     def sensors_read_kvars(self):
         """Gets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
-        return Bridge.VarArrayFunction(self.dss_obj.SensorsV, ctypes.c_int(3), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(3), ctypes.c_int(0), None)
 
     def sensors_write_kvars(self, argument):
         """Sets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
@@ -51,7 +51,7 @@ class SensorsV(Base):
 
     def sensors_read_kws(self):
         """Gets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""
-        return Bridge.VarArrayFunction(self.dss_obj.SensorsV, ctypes.c_int(5), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(5), ctypes.c_int(0), None)
 
     def sensors_write_kws(self, argument):
         """Sets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""

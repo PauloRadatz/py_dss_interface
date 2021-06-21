@@ -98,7 +98,7 @@ class LoadsF(Base):
         """Allows to read the CFactor property of the active load. The parameter argument can be filled with a 0."""
         return float(self.dss_obj.DSSLoadsF(ctypes.c_int32(14), ctypes.c_double(0)))
 
-    def loads_write_c_factor(self, argument) -> float:
+    def loads_write_c_factor(self, argument: float) -> float:
         """Allows to write the CFactor property of the active load. The parameter argument must contain the new value
         in CFactor for the desired active load. The return value will be equal to 0. """
         argument = Base.check_float_param(argument)

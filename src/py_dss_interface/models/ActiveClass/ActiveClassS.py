@@ -20,24 +20,16 @@ class ActiveClassS(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    # TODO: if return is str:'0' we can't get the name
     def active_class_get_name(self) -> str:
         """Gets the name of the active Element of the Active class."""
         return (self.dss_obj.ActiveClassS(0, 0)).decode('ascii')
 
-    # TODO: need more research about this method
-    # def active_class_write_name(self, argument) -> str:
-    #     """Sets the name of the active Element of the Active class.
-    #     : TODO: After sets the name what is the return type? str or int? How can I treat this? >=0 is ok?
-    #     """
-    #     return (self.dss_obj.ActiveClassS(1, argument.encode('ascii'))).decode('ascii')
-    #     # result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(1), ))
-    #     # return result.value.decode('ascii')
+    def active_class_write_name(self, argument) -> str:
+        """Sets the name of the active Element of the Active class. """
+        return (self.dss_obj.ActiveClassS(1, argument.encode('ascii'))).decode('ascii')
 
     def active_class_get_class_name(self) -> str:
-        """Sets the name of the active Element of the Active class.
-         TODO: After sets the name what is the return type? str or int? How can I treat this? >=0 is ok?
-         """
+        """Sets the name of the active Element of the Active class."""
         return (self.dss_obj.ActiveClassS(2, 0)).decode('ascii')
 
     def active_class_parent_class_name(self) -> str:

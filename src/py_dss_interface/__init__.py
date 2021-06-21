@@ -11,10 +11,11 @@ from py_dss_interface.models.CMathLib.CMathLib import CMathLib
 from py_dss_interface.models.CtrlQueue.CtrlQueue import CtrlQueue
 from py_dss_interface.models.DSSElement.DSSElement import DSSElement
 from py_dss_interface.models.DSSInterface.DSSInterface import DSSInterface
-from py_dss_interface.models.DSSLoads.DSSLoads import DSSLoads
 from py_dss_interface.models.DSSProgress.DSSProgress import DSSProgress
 from py_dss_interface.models.DSSProperties.DSSProperties import DSSProperties
-from py_dss_interface.models.DSSExecutive import DSSExecutive
+from py_dss_interface.models.DSSExecutive.DSSExecutive import DSSExecutive
+from py_dss_interface.models.DSSInterface.DSSInterface import DSSInterface
+from py_dss_interface.models.ErrorInterface.ErrorInterface import ErrorOpenDSS
 from py_dss_interface.models.Fuses.Fuses import Fuses
 from py_dss_interface.models.Generators.Generators import Generators
 from py_dss_interface.models.ISources.ISources import ISources
@@ -27,6 +28,7 @@ from py_dss_interface.models.Monitors.Monitors import Monitors
 from py_dss_interface.models.Parallel.Parallel import Parallel
 from py_dss_interface.models.Parser.Parser import Parser
 from py_dss_interface.models.PDElements.PDElements import PDElements
+from py_dss_interface.models.Parallel.Parallel import Parallel
 from py_dss_interface.models.PVSystems.PVSystems import PVSystems
 from py_dss_interface.models.Reclosers.Reclosers import Reclosers
 from py_dss_interface.models.RegControls.RegControls import RegControls

@@ -5,8 +5,8 @@ import os
 import pathlib
 
 from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement
-from . import DSSInterface, DSSProperties, Fuses, Generators, ISources, LineCodes, Lines, Loads
-from . import LoadShapes, Meters, Monitors, PVSystems, Sensors, VSources
+from . import DSSExecutive, DSSInterface, DSSProgress, DSSProperties, ErrorOpenDSS, Fuses, Generators, ISources
+from . import LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Parallel, Parser, PVSystems, Sensors, VSources
 from . import Solution, Text, Topology, Transformers, XYCurves
 from .utils.System import System
 
@@ -14,18 +14,20 @@ DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
 
 
-class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, DSSInterface,
-             DSSProperties, Fuses, Generators, Lines, Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, PVSystems, Sensors, Solution, Text,
+class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement,
+             DSSExecutive, DSSInterface, DSSProgress, DSSProperties, ErrorOpenDSS, Fuses, Generators, Lines, Loads,
+             ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel, Parser, PVSystems, Sensors, Solution, Text,
              Topology, Transformers, VSources, XYCurves):
     dll_folder: str
     dll_path: str
-    dss_version: ctypes.c_char_p
+    my_dss_version: ctypes.c_char_p
     dss_obj: ctypes.cdll
     started = False
     memory_commands = []
     class_commands = []
 
-    # TODO need to be able to get different dll names: https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
+    # TODO need to be able to get different dll names:
+    #  https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
     def __init__(self, dll_folder_param=None):
         # TODO: dss_write_allowforms
         """
@@ -44,8 +46,8 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
             if System.detect_platform() == 'Linux':
                 dll_name = DLL_NAME_LINUX
                 self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll/linux")
-            else:
-                self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll")
+            elif System.detect_platform() == 'Windows':
+                self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll/windows")
 
         else:
             self.dll_folder = pathlib.Path(dll_folder_param)
@@ -62,13 +64,14 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
         self._allocate_memory()
 
         if self.check_started():
-            print("OpenDSS Started successfully! \nOpenDSS {}\n\n".format(self.dss_version.value.decode('ascii')))
+            print("OpenDSS Started successfully! \nOpenDSS {}\n\n".format(self.my_dss_version.value.decode('ascii')))
         else:
             print("OpenDSS Failed to Start")
 
     def check_started(self):
         if int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0))) == 1:
-            self.dss_version = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(1), "".encode('ascii')))
+            # TODO: Need refactor this call to use a method that already exists
+            self.my_dss_version = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(1), "".encode('ascii')))
             return True
         else:
             return False

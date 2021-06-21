@@ -54,7 +54,7 @@ class CtrlQueueI(Base):
         Control Queue handle. """
         return self.dss_obj.CtrlQueueI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    def ctrlqueue_show(self, dss) -> int:
+    def ctrlqueue_show(self) -> int:
         """Shows the entire control queue in CSV format."""
         try:
             return self.dss_obj.CtrlQueueI(ctypes.c_int32(7), ctypes.c_int32(0))
@@ -83,4 +83,3 @@ class CtrlQueueI(Base):
         except Exception as e:
             Base.warn_msg("An error occur when tried to *Do All Control Actions of CrlQueue* check if *Queue* is NOT "
                           "empty", e)
-

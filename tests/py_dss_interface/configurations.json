@@ -1,0 +1,35 @@
+{
+    "cases": [
+        {
+            "case": "13",
+            "case_folder": "13Bus",
+            "dss_file": "IEEE13Nodeckt.dss",
+            "dss_file_alternative": ""
+        },
+        {
+            "case": "34",
+            "case_folder": "34Bus",
+            "dss_file": "ieee34Mod1.dss",
+            "dss_file_alternative": "ieee34Mod2.dss"
+        },
+        {
+            "case": "37",
+            "case_folder": "37Bus",
+            "dss_file": "ieee37.dss",
+            "dss_file_alternative": ""
+        },
+        {
+            "case": "123",
+            "case_folder": "123Bus",
+            "dss_file": "IEEE123Master.dss",
+            "dss_file_alternative": ""
+        },
+        {
+            "case": "8500",
+            "case_folder": "8500-Node",
+            "dss_file": "Master.dss",
+            "dss_file_alternative": "Master-unbal.dss"
+        }
+    ]
+}
+
