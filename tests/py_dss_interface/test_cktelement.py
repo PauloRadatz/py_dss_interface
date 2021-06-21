@@ -322,14 +322,14 @@ class TestCktElement13Bus:
             assert 1 == 1
 
     def test_cktelement_all_variables_names(self):
-        # TODO: https://github.com/PauloRadatz/py_dss_interface/issues/3
+        # TODO: Paulo - https://github.com/PauloRadatz/py_dss_interface/issues/3
         self.dss.circuit_set_active_element("Load.611")
         expected = []
         actual = self.dss.cktelement_all_variables_names()
         assert actual == expected
 
     def test_cktelement_all_variables_values(self):
-        # TODO: https://github.com/PauloRadatz/py_dss_interface/issues/4
+        # TODO: Paulo - https://github.com/PauloRadatz/py_dss_interface/issues/4
         expected = [0.0]
         actual = self.dss.cktelement_all_variables_values()
         assert actual == expected
