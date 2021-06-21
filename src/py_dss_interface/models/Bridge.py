@@ -76,9 +76,7 @@ def c_types_function(f, param, dss_arg, name):
 
 def var_array_function(f, param, optional, name):
     varg = VArg(0, None, 0, 0)
-
     p = ctypes.POINTER(VArg)(varg)
-
     if optional is not None:
         f(param, p, optional)
     else:
@@ -86,17 +84,12 @@ def var_array_function(f, param, optional, name):
         f(param, p)
 
     logger.debug("Successively called and returned from function {}".format(name))
-
     var_arr = ctypes.cast(varg.p, ctypes.POINTER(VarArray)).contents
 
     l_ = list()
-
     if varg.dtype == 0x2008 and var_arr.length != 0:  # CString
-
         data = ctypes.cast(var_arr.data, ctypes.POINTER(POINTER * var_arr.length))
-
         for s in data.contents:
-
             if s == 0:
                 continue
             else:
@@ -109,25 +102,18 @@ def var_array_function(f, param, optional, name):
                     l_.append(s)
 
     elif varg.dtype == 0x2005 and var_arr.length != 0:  # Float64
-
         data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_double * var_arr.length))
-
         # Converting CFloat to Python float, more efficiency could be gained by using NumPy
-        # TODO: Consider making numpy/pandas a dependency?
         for i in data.contents:
             l_.append(i)
 
     elif varg.dtype == 0x2003 and var_arr.length != 0:  # Int32
-
         data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_int32 * var_arr.length))
-
         # Converting CInt32 to Python float, more efficiency could be gained by using NumPy
-        # TODO: Consider making numpy/pandas a dependency?
         for i in data.contents:
             l_.append(i)
 
     elif varg.dtype == 0x2011 and var_arr.length != 0:
-
         signature = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_int32)).contents.value
 
         if signature != 43756:
@@ -138,18 +124,13 @@ def var_array_function(f, param, optional, name):
             # signature, version, size, param = data.contents
 
             p = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_int32))
-
             a_ptr = ctypes.cast(p, ctypes.c_void_p)
-
             a_ptr.value += ctypes.sizeof(p._type_)
             version = ctypes.cast(a_ptr, ctypes.POINTER(ctypes.c_int32)).contents.value
-
             a_ptr.value += ctypes.sizeof(p._type_)
             size = ctypes.cast(a_ptr, ctypes.POINTER(ctypes.c_int32)).contents.value
-
             a_ptr.value += ctypes.sizeof(p._type_)
             param = ctypes.cast(a_ptr, ctypes.POINTER(ctypes.c_int32)).contents.value
-
             logger.debug(
                 "version={version}, size={size}, param={param}".format(version=version, size=size, param=param))
 
@@ -182,11 +163,7 @@ def var_array_function(f, param, optional, name):
                 l_ = [l_, header]
 
     elif var_arr.length == 0:
-
         logger.warning("Empty var_arr found")
-
     else:
-
         logger.warning("Unsupported dtype {} returned for {}. Please contact developer".format(varg.dtype, name))
-
     return l_
