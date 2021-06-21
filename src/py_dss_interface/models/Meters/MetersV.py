@@ -53,12 +53,10 @@ class MetersV(Base):
         for the meter to force some behavior on Load Allocation."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(6), ctypes.c_int(0), None)
 
-    # # TODO: test in the future with a presence of an energymeter
-    # TODO: Ênio - comtypes
-    # def meters_write_calcurrent(self, argument):
-    #     """Sets the magnitude of the real part of the Calculated Current (normally determined by solution)
-    #     for the meter to force some behavior on Load Allocation."""
-    #     return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(7), argument, None)
+    def meters_write_calcurrent(self, argument: str):
+        """Sets the magnitude of the real part of the Calculated Current (normally determined by solution)
+        for the meter to force some behavior on Load Allocation."""
+        return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(7), argument, None)
 
     def meters_read_alloc_factors(self):
         """Returns an array of doubles: allocation factors for the active Meter."""
