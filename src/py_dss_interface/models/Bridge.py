@@ -62,7 +62,7 @@ class VarArray(ctypes.Structure):
     ]
 
 
-def CtypesFunction(f, param, dss_arg, name):
+def c_types_function(f, param, dss_arg, name):
     if isinstance(dss_arg, str):
         dss_arg = dss_arg.encode('ascii')
 
@@ -74,7 +74,7 @@ def CtypesFunction(f, param, dss_arg, name):
     return r
 
 
-def VarArrayFunction(f, param, optional, name):
+def var_array_function(f, param, optional, name):
     varg = VArg(0, None, 0, 0)
 
     p = ctypes.POINTER(VArg)(varg)
@@ -89,7 +89,7 @@ def VarArrayFunction(f, param, optional, name):
 
     var_arr = ctypes.cast(varg.p, ctypes.POINTER(VarArray)).contents
 
-    l = list()
+    l_ = list()
 
     if varg.dtype == 0x2008 and var_arr.length != 0:  # CString
 
@@ -106,7 +106,7 @@ def VarArrayFunction(f, param, optional, name):
                 s = ctypes.cast(s, ctypes.POINTER(ctypes.c_int16 * length))
                 s = u''.join([chr(x) for x in s.contents[:]])
                 if s.lower() != 'none':
-                    l.append(s)
+                    l_.append(s)
 
     elif varg.dtype == 0x2005 and var_arr.length != 0:  # Float64
 
@@ -115,7 +115,7 @@ def VarArrayFunction(f, param, optional, name):
         # Converting CFloat to Python float, more efficiency could be gained by using NumPy
         # TODO: Consider making numpy/pandas a dependency?
         for i in data.contents:
-            l.append(i)
+            l_.append(i)
 
     elif varg.dtype == 0x2003 and var_arr.length != 0:  # Int32
 
@@ -124,7 +124,7 @@ def VarArrayFunction(f, param, optional, name):
         # Converting CInt32 to Python float, more efficiency could be gained by using NumPy
         # TODO: Consider making numpy/pandas a dependency?
         for i in data.contents:
-            l.append(i)
+            l_.append(i)
 
     elif varg.dtype == 0x2011 and var_arr.length != 0:
 
@@ -173,13 +173,13 @@ def VarArrayFunction(f, param, optional, name):
 
             for row in data.contents[:]:
                 for i, v in enumerate(row[:]):
-                    l.append(v)
+                    l_.append(v)
 
             try:
-                l = np.array(l).reshape([-1, len(header)])
-                l = pd.DataFrame(l, columns=header)
+                l_ = np.array(l_).reshape([-1, len(header)])
+                l_ = pd.DataFrame(l_, columns=header)
             except NameError:
-                l = [l, header]
+                l_ = [l_, header]
 
     elif var_arr.length == 0:
 
@@ -189,4 +189,4 @@ def VarArrayFunction(f, param, optional, name):
 
         logger.warning("Unsupported dtype {} returned for {}. Please contact developer".format(varg.dtype, name))
 
-    return l
+    return l_

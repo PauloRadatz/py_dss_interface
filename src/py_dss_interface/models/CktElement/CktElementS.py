@@ -19,7 +19,7 @@ class CktElementS(Base):
 
     def cktelement_name(self) -> str:
         """Delivers the full name of the active circuit element."""
-        result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self.dss_obj.CktElementS(0,0))
         return result.value.decode('ascii')
 
     def cktelement_read_display(self) -> str:

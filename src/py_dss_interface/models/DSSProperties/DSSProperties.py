@@ -26,14 +26,37 @@ class DSSProperties(Base):
         return result.value.decode('ascii')
 
     def dssproperties_description(self, argument: str) -> str:
+        """This parameter will deliver the description of the active property. This parameter will deliver the name of
+        the active property. The index of the property must be specified in the argument. The index minimum value is
+        1. This value must be entered as string.
+        """
+        to_int = int(argument)
+        if to_int < 1:
+            return "ERROR: The value must be greater than 1!"
         result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     def dssproperties_read_value(self, argument: str) -> str:
+        """This parameter will deliver the value of the active property. This parameter will deliver the name of the
+        active property. The index of the property must be specified in the argument. The index minimum value is 1.
+        This value must be entered as string.
+        """
+        to_int = int(argument)
+        if to_int < 1:
+            return "ERROR: The value must be greater than 1!"
         result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    # todo could you use this one?
     def dssproperties_write_value(self, argument: str) -> str:
+        """This parameter will allow to set the value of the active property. The new value must be specified in the
+        variable “argument” as string. This parameter will deliver the name of the active property. The index of the
+        property must be specified in the argument. The index minimum value is 1. This value must be entered as string.
+        """
+        to_int = int(argument)
+        if to_int < 1:
+            return "ERROR: The value must be greater than 1!"
         result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(3), argument.encode('ascii')))
-        return result.value.decode('ascii')
+        result = result.value.decode('ascii')
+        if result == '':
+            print("Value written succesfully!")
+        return result

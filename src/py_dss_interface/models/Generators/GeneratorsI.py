@@ -57,9 +57,25 @@ class GeneratorsI(Base):
         return self.dss_obj.GeneratorsI(ctypes.c_int32(8), ctypes.c_int32(argument))
 
     def generators_read_model(self) -> int:
-        """Gets the active generator Model (see Manual for details)."""
+        """Gets the active generator Model (see Manual for details).
+        1:Generator injects a constant kW at specified power factor.
+        2:Generator is modeled as a constant admittance.
+        3:Const kW, constant kV.  Somewhat like a conventional transmission power flow P-V generator.
+        4:Const kW, Fixed Q (Q never varies)
+        5:Const kW, Fixed Q(as a constant reactance)
+        6:Compute load injection from User-written Model.(see usage of Xd, Xdp)
+        7:Constant kW, kvar, but current-limited below Vminpu. Approximates a simple inverter. See also Balanced.
+        """
         return self.dss_obj.GeneratorsI(ctypes.c_int32(9), ctypes.c_int32(0))
 
     def generators_write_model(self, argument: int) -> int:
-        """Sets the active generator Model (see Manual for details)."""
+        """Sets the active generator Model (see Manual for details).
+        1:Generator injects a constant kW at specified power factor.
+        2:Generator is modeled as a constant admittance.
+        3:Const kW, constant kV.  Somewhat like a conventional transmission power flow P-V generator.
+        4:Const kW, Fixed Q (Q never varies)
+        5:Const kW, Fixed Q(as a constant reactance)
+        6:Compute load injection from User-written Model.(see usage of Xd, Xdp)
+        7:Constant kW, kvar, but current-limited below Vminpu. Approximates a simple inverter. See also Balanced.
+        """
         return self.dss_obj.GeneratorsI(ctypes.c_int32(10), ctypes.c_int32(argument))

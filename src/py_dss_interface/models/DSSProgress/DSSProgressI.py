@@ -17,9 +17,9 @@ class DSSProgressI(Base):
     which can be one of the following.
     """
 
-    def dssprogress_pct_progress(self) -> int:
+    def dssprogress_pct_progress(self, arg: float) -> int:
         """Sets the percent progress to indicate [0..100]."""
-        return int(self.dss_obj.DSSProgressI(ctypes.c_int32(0), ctypes.c_int32(0)))
+        return int(self.dss_obj.DSSProgressI(ctypes.c_int32(0), ctypes.c_float(arg)))
 
     def dssprogress_show(self) -> int:
         """Shows progress form with null caption and progress set to zero."""

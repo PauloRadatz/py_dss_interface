@@ -24,14 +24,14 @@ class TransformersV(Base):
 
     def transformers_all_Names(self):
         """Gets a variant array of strings with all Transformer names in the active circuit."""
-        return Bridge.VarArrayFunction(self.dss_obj.TransformersV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.TransformersV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     def transformers_wdg_voltages(self):
         """Gets a variant array of doubles containing the voltages at the active winding on the active transformer.
         These voltages come as complex pairs."""
-        return Bridge.VarArrayFunction(self.dss_obj.TransformersV, ctypes.c_int(1), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.TransformersV, ctypes.c_int(1), ctypes.c_int(0), None)
 
     def transformers_wdg_currents(self):
         """Gets a a variant array of doubles containing the currents at the active winding on the active transformer.
         These currents come as complex pairs."""
-        return Bridge.VarArrayFunction(self.dss_obj.TransformersV, ctypes.c_int(2), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.TransformersV, ctypes.c_int(2), ctypes.c_int(0), None)
