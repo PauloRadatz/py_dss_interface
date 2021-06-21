@@ -55,6 +55,7 @@ class MetersI(Base):
         opened. """
         return self.dss_obj.MetersI(ctypes.c_int32(8), ctypes.c_int32(0))
 
+    # TODO: Ênio
     def meters_sample_all(self) -> int:
         """Causes all Energy Meters to take a sample of the present state. Returns 0."""
         return self.dss_obj.MetersI(ctypes.c_int32(9), ctypes.c_int32(0))
@@ -71,6 +72,7 @@ class MetersI(Base):
         """Closes all Demand Interval (DI) files. Necessary at the end of a run."""
         return self.dss_obj.MetersI(ctypes.c_int32(12), ctypes.c_int32(0))
 
+    # TODO: Ênio
     def meters_count_end_elements(self) -> int:
         """Returns the number of zone end elements in the active meter zone."""
         return self.dss_obj.MetersI(ctypes.c_int32(13), ctypes.c_int32(0))
