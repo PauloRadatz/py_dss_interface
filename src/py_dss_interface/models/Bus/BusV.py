@@ -23,8 +23,7 @@ class BusV(Base):
         """Returns a complex array of voltages at this bus."""
         return Bridge.var_array_function(self.dss_obj.BUSV, 0, None, '')
 
-    # TODO: Paulo - Check duplicity with the method of this class named sequence_voltages, if ok, just delete this
-    #  todo and push
+    # TODO: Paulo - https://github.com/PauloRadatz/py_dss_interface/issues/17
     def bus_seq_voltages(self):
         """Returns a complex array of Sequence voltages at this bus."""
         return Bridge.var_array_function(self.dss_obj.BUSV, 1, None, '')

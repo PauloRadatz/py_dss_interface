@@ -16,7 +16,7 @@ class ErrorDesc(Base):
     This interface returns a string with description of the latest error code delivered by OpenDSS.
     """
 
-    # TODO: Ênio - I guess the error desc output is wrong
+    # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/12
     def error_desc(self) -> str:
         """"This interface returns a string with description of the latest error code delivered by OpenDSS."""
         result = ctypes.c_char_p(self.dss_obj.ErrorDesc())

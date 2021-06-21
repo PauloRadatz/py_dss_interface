@@ -52,6 +52,7 @@ class LoadShapesV(Base):
 
     # TODO: Paulo - All is according to documentation but I think we need to test it with a presence with a load
     #  shape in the case
+    # https://github.com/PauloRadatz/py_dss_interface/issues/13
     def loadshapes_write_time_array(self, argument):
         """Sets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
         t = Text(self.dss_obj)
