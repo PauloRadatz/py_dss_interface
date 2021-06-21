@@ -22,13 +22,6 @@ print(f'dss.ctrlqueue_queuesize(): {dss.ctrlqueue_queue_size()}')
 print(f'dss.ctrlqueue_doallqueue(): {dss.ctrlqueue_do_all_queue()}')
 
 
-# Float methods
-print(45 * '=' + ' Float Methods ' + 45 * '=')
-
-
-# String methods
-print(45 * '=' + ' String Methods ' + 45 * '=')
-
-
 # Variant methods
 print(45 * '=' + ' Variant Methods ' + 45 * '=')
+print(f'dss.ctrlqueue_ctrlqueue(): {dss.ctrlqueue_ctrlqueue()}')

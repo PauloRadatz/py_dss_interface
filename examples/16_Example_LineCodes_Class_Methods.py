@@ -8,28 +8,65 @@ dss = ExampleBase("13").dss
 
 # Integer methods
 print(45 * '=' + ' Integer Methods' + 45 * '=')
-print(f'dss.isources_count(): {dss.isources_count()}')
-print(f'dss.isources_first(): {dss.isources_first()}')
-print(f'dss.isources_next(): {dss.isources_next()}')
+print(f'dss.linecodes_count(): {dss.linecodes_count()}')
+print(f'dss.linecodes_first(): {dss.linecodes_first()}')
+print(f'dss.linecodes_next(): {dss.linecodes_next()}')
+print(f'dss.linecodes_read_units(): {dss.linecodes_read_units()}')
+print(f'dss.linecodes_write_units(): {dss.linecodes_write_units(5)}')
+print(f'dss.linecodes_read_units(): {dss.linecodes_read_units()}')
+print(f'dss.linecodes_read_phases(): {dss.linecodes_read_phases()}')
+print(f'dss.linecodes_is_z1z0(): {dss.linecodes_is_z1z0()}')
 
 # String methods
 print(45 * '=' + ' String Methods' + 45 * '=')
-print(f'dss.isources_read_name(): {dss.isources_read_name()}')
-print(f'dss.isources_write_name(): {dss.isources_write_name("MyISource")}')
-print(f'dss.isources_read_name(): {dss.isources_read_name()}')
+print(f'dss.linecodes_read_name(): {dss.linecodes_read_name()}')
+print(f'dss.linecodes_write_name(): {dss.linecodes_write_name("302")}')
+print(f'dss.linecodes_read_name(): {dss.linecodes_read_name()}')
 
 # Float methods
 print(45 * '=' + ' Float Methods' + 45 * '=')
-print(f'dss.isources_read_amps(): {dss.isources_read_amps()}')
-print(f'dss.isources_write_amps(): {dss.isources_write_amps(12)}')
-print(f'dss.isources_read_amps(): {dss.isources_read_amps()}')
-print(f'dss.isources_read_angle_deg(): {dss.isources_read_angle_deg()}')
-print(f'dss.isources_write_angle_deg(): {dss.isources_write_angle_deg(5)}')
-print(f'dss.isources_read_angle_deg(): {dss.isources_read_angle_deg()}')
-print(f'dss.isources_read_frequency(): {dss.isources_read_frequency()}')
-print(f'dss.isources_write_frequency(): {dss.isources_write_frequency(22)}')
-print(f'dss.isources_read_frequency(): {dss.isources_read_frequency()}')
+print(f'dss.linecodes_read_r1(): {dss.linecodes_read_r1()}')
+print(f'dss.linecodes_write_r1(): {dss.linecodes_write_r1(12.2)}')
+print(f'dss.linecodes_read_r1(): {dss.linecodes_read_r1()}')
+
+print(f'dss.linecodes_read_x1(): {dss.linecodes_read_x1()}')
+print(f'dss.linecodes_write_x1(): {dss.linecodes_write_x1(21.0)}')
+print(f'dss.linecodes_read_x1(): {dss.linecodes_read_x1()}')
+
+print(f'dss.linecodes_read_r0(): {dss.linecodes_read_r0()}')
+print(f'dss.linecodes_write_r0(): {dss.linecodes_write_r0(22.1)}')
+print(f'dss.linecodes_read_r0(): {dss.linecodes_read_r0()}')
+
+print(f'dss.linecodes_read_x0(): {dss.linecodes_read_x0()}')
+print(f'dss.linecodes_write_x0(): {dss.linecodes_write_x0(31.1)}')
+print(f'dss.linecodes_read_x0(): {dss.linecodes_read_x0()}')
+
+print(f'dss.linecodes_read_c1(): {dss.linecodes_read_c1()}')
+print(f'dss.linecodes_write_c1(): {dss.linecodes_write_c1(13.1)}')
+print(f'dss.linecodes_read_c1(): {dss.linecodes_read_c1()}')
+
+print(f'dss.linecodes_read_c0(): {dss.linecodes_read_c0()}')
+print(f'dss.linecodes_write_c0(): {dss.linecodes_write_c0(11.1)}')
+print(f'dss.linecodes_read_c0(): {dss.linecodes_read_c0()}')
+
+print(f'dss.linecodes_read_norm_amps(): {dss.linecodes_read_norm_amps()}')
+print(f'dss.linecodes_write_norm_amps(): {dss.linecodes_write_norm_amps(700.2)}')
+print(f'dss.linecodes_read_norm_amps(): {dss.linecodes_read_norm_amps()}')
+
+print(f'dss.linecodes_read_emerg_amps(): {dss.linecodes_read_emerg_amps()}')
+print(f'dss.linecodes_write_emerg_amps(): {dss.linecodes_write_emerg_amps(800.1)}')
+print(f'dss.linecodes_read_emerg_amps(): {dss.linecodes_read_emerg_amps()}')
+
 
 # Variant methods
 print(45 * '=' + ' Variant Methods' + 45 * '=')
-print(f'dss.isources_all_names(): {dss.isources_all_names()}')
+print(f'dss.linecodes_read_rmatrix(): {dss.linecodes_read_rmatrix()}')
+print(f'dss.linecodes_write_rmatrix(): {dss.linecodes_write_rmatrix("[0.791721 | 0.318476 | 0.781649 | 0.28345]")}')
+print(f'dss.linecodes_read_rmatrix(): {dss.linecodes_read_rmatrix()}')
+print(f'dss.linecodes_read_xmatrix(): {dss.linecodes_read_xmatrix()}')
+print(f'dss.linecodes_write_xmatrix(): {dss.linecodes_write_xmatrix("[1.3569 | 0.4591 1.3471]")}')
+print(f'dss.linecodes_read_xmatrix(): {dss.linecodes_read_xmatrix()}')
+print(f'dss.linecodes_read_cmatrix(): {dss.linecodes_read_cmatrix()}')
+print(f'dss.linecodes_write_cmatrix(): {dss.linecodes_write_cmatrix("[1.3569 | 0.4591 1.3471]")}')
+print(f'dss.linecodes_read_cmatrix(): {dss.linecodes_read_cmatrix()}')
+print(f'dss.linecodes_all_names(): {dss.linecodes_all_names()}')
