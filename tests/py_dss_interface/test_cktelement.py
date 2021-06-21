@@ -165,12 +165,15 @@ class TestCktElement13Bus:
         actual = self.dss.cktelement_energymeter()
         assert actual == expected
 
-    # def test_cktelement_controller(self):
-    #     # TODO does not work
-    #     expected = "Energymeter.em1"
-    #     self.dss.circuit_set_active_element('Line.650632')
-    #     actual = self.dss.cktelement_controller(1)
-    #     assert actual == expected
+    def test_cktelement_controller(self):
+        # https://github.com/PauloRadatz/py_dss_interface/issues/2 - Issue solved =)
+        self.dss.text("New 'Fuse.f1' MonitoredObj=Line.650632 MonitoredTerm=1 FuseCurve=Klink RatedCurrent=65")
+        # After include a new element it become the active element. So, we need activate another element to test the
+        # methods below
+        self.dss.circuit_set_active_element('Line.650632')
+        expected = "Fuse.f1"
+        actual = self.dss.cktelement_controller(1)
+        assert actual == expected
 
     def test_cktelement_read_bus_names(self):
         expected = ['671', '692']
@@ -319,13 +322,14 @@ class TestCktElement13Bus:
             assert 1 == 1
 
     def test_cktelement_all_variables_names(self):
-        # TODO does not work
+        # TODO: https://github.com/PauloRadatz/py_dss_interface/issues/3
+        self.dss.circuit_set_active_element("Load.611")
         expected = []
         actual = self.dss.cktelement_all_variables_names()
         assert actual == expected
 
     def test_cktelement_all_variables_values(self):
-        # TODO does not work
+        # TODO: https://github.com/PauloRadatz/py_dss_interface/issues/4
         expected = [0.0]
         actual = self.dss.cktelement_all_variables_values()
         assert actual == expected
