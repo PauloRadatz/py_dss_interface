@@ -4,6 +4,7 @@
 """
 import ctypes
 from py_dss_interface.models.Base import Base
+import numpy as np
 
 
 class CMathLibF(Base):
@@ -17,11 +18,13 @@ class CMathLibF(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def cmathlib_cabs(self) -> float:
+    def cmathlib_cabs(self, arg_real: float, arg_imaginary: float) -> float:
         """Returns the absolute value of complex number given in real (Argument1) and imaginary (Argument2) doubles."""
-        return float(self.dss_obj.CmathLibF(ctypes.c_int32(0), ctypes.c_double(0)))
+        c_number = complex(arg_real, arg_imaginary)
+        return float(abs(c_number))
 
-    def cmathlib_cdang(self) -> float:
+    def cmathlib_cdang(self, arg_real: float, arg_imaginary: float) -> float:
         """Returns the angle, in degrees, of a complex number specified as two doubles: Real part (Argument1) and
         imaginary part (Argument2)."""
-        return float(self.dss_obj.CmathLibF(ctypes.c_int32(1), ctypes.c_double(0)))
+        c_number = complex(arg_real, arg_imaginary)
+        return np.angle([c_number], deg=True)

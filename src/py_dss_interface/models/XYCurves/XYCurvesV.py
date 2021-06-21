@@ -23,7 +23,7 @@ class XYCurvesV(Base):
 
     def read_x_array(self):
         """Gets the X values as a variant array of doubles. Set Npts to max number expected if setting."""
-        return Bridge.VarArrayFunction(self.dss_obj.XYCurvesV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.XYCurvesV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     def write_x_array(self, argument):
         """Sets the X values as a variant array of doubles specified in Argument. Set Npts to max number expected
@@ -36,7 +36,7 @@ class XYCurvesV(Base):
 
     def read_y_array(self):
         """Gets the Y values as a variant array of doubles. Set Npts to max number expected if setting.."""
-        return Bridge.VarArrayFunction(self.dss_obj.XYCurvesV, ctypes.c_int(2), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.XYCurvesV, ctypes.c_int(2), ctypes.c_int(0), None)
 
     def write_y_array(self, argument):
         """Sets the Y values as a variant array of doubles specified in Argument. Set Npts to max number expected

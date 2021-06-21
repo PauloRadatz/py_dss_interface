@@ -22,11 +22,11 @@ class LoadShapesV(Base):
 
     def loadshapes_all_names(self):
         """Gets a variant array of strings containing names of all LoadShape objects currently defined."""
-        return Bridge.VarArrayFunction(self.dss_obj.LoadShapeV, 0, None, '')
+        return Bridge.var_array_function(self.dss_obj.LoadShapeV, 0, None, '')
 
     def loadshapes_read_p_mult(self):
         """Gets a variant array of doubles for the P multiplier in the LoadShape."""
-        return Bridge.VarArrayFunction(self.dss_obj.LoadShapeV, 1, None, '')
+        return Bridge.var_array_function(self.dss_obj.LoadShapeV, 1, None, '')
 
     def loadshapes_write_p_mult(self, argument):
         """Sets a variant array of doubles for the P multiplier in the LoadShape."""
@@ -37,7 +37,7 @@ class LoadShapesV(Base):
 
     def loadshapes_read_q_mult(self):
         """Gets a variant array of doubles for the Q multiplier in the LoadShape."""
-        return Bridge.VarArrayFunction(self.dss_obj.LoadShapeV, 3, None, '')
+        return Bridge.var_array_function(self.dss_obj.LoadShapeV, 3, None, '')
 
     def loadshapes_write_q_mult(self, argument):
         """Sets a variant array of doubles for the Q multiplier in the LoadShape."""
@@ -48,8 +48,9 @@ class LoadShapesV(Base):
 
     def loadshapes_read_time_array(self):
         """Gets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
-        return Bridge.VarArrayFunction(self.dss_obj.LoadShapeV, ctypes.c_int(5), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.LoadShapeV, ctypes.c_int(5), ctypes.c_int(0), None)
 
+    # TODO: Paulo - https://github.com/PauloRadatz/py_dss_interface/issues/13
     def loadshapes_write_time_array(self, argument):
         """Sets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
         t = Text(self.dss_obj)

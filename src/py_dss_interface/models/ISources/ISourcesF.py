@@ -42,4 +42,4 @@ class ISourcesF(Base):
     def isources_write_frequency(self, argument: float) -> float:
         """Sets the frequency of the Isource in Hz."""
         argument = Base.check_float_param(argument)
-        return float(self.dss_obj.IsourcesF(ctypes.c_int32(5), ctypes.c_double(argument)))
+        return float(self.dss_obj.IsourceF(ctypes.c_int32(5), ctypes.c_double(argument)))

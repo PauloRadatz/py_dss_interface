@@ -3,6 +3,7 @@
  Created by eniocc at 11/10/2020
 """
 from py_dss_interface.models.Base import Base
+import ctypes
 
 
 class CapacitorsS(Base):
@@ -24,11 +25,10 @@ class CapacitorsS(Base):
         return (self.dss_obj.CapacitorsS(0, 0)).decode('ascii')
 
     def capacitors_write_name(self, capacitor_name: str) -> str:
-        """Sets the name of the Capacitor element to set it active.
-        :param capacitor_name: the desired name to the capacitor
+        """Sets the name of the Capacitor element to set it active. There is not a explicit return type in the
+        oficial documentation, because of this we choose not put a explicit return too.
+        :param capacitor_name: the intended name to the capacitor
         """
-        # TODO: what is the the return type?
         capacitor_name = Base.check_string_param(capacitor_name)
-        import ctypes
         ctypes.c_char_p(capacitor_name.encode('utf-8'))
         return (self.dss_obj.CapacitorsS(1, ctypes.c_char_p(capacitor_name.encode('utf-8')))).decode('ascii')
