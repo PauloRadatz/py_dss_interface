@@ -31,6 +31,8 @@ for i in range(dss.active_class_num_elements()):
 print(45 * '=' + ' String Methods' + 45 * '=')
 dss.active_class_first()
 print(f'dss.active_class_get_name(): {dss.active_class_get_name()}')
+print(f'dss.active_class_write_name(): {dss.active_class_write_name("645646")}')
+print(f'dss.active_class_get_name(): {dss.active_class_get_name()}')
 print(f'dss.active_class_get_class_name(): {dss.active_class_get_class_name()} \n')
 print(f'dss.active_class_parent_class_name(): {dss.active_class_parent_class_name()} \n')
 

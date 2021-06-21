@@ -33,7 +33,7 @@ print(f'dss.circuit_end_of_time_step_update(): {dss.circuit_end_of_time_step_upd
 
 # Float methods
 print(45 * '=' + ' Float Methods ' + 45 * '=')
-# print(f'dss.circuit_capacity(): {dss.circuit_capacity()}')
+print(f'dss.circuit_capacity(): {dss.circuit_capacity()}')
 
 # String methods
 print(45 * '=' + ' String Methods ' + 45 * '=')
