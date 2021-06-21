@@ -31,7 +31,6 @@ class DSSInterfaceS(Base):
     def dss_read_datapath(self) -> str:
         """Gets the Data File Path. Default for reports, etc. from DSS."""
         result = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(2), ctypes.c_int32(0)))
-        print(result.value)
         return result.value.decode('ascii')
 
     def dss_write_datapath(self, argument: str) -> str:

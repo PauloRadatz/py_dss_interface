@@ -110,9 +110,9 @@ class MetersI(Base):
         """Returns the number of feeder sections in this meter's zone."""
         return self.dss_obj.MetersI(ctypes.c_int32(21), ctypes.c_int32(0))
 
-    def meters_set_active_section(self) -> int:
+    def meters_set_active_section(self, argument) -> int:
         """Sets the designated section (argument) if the index is valid."""
-        return self.dss_obj.MetersI(ctypes.c_int32(22), ctypes.c_int32(0))
+        return self.dss_obj.MetersI(ctypes.c_int32(22), ctypes.c_int32(argument))
 
     def meters_ocp_device_type(self) -> int:
         """Returns the type of OCP device: {1=fuse | 2+ recloser | 3= relay}."""
