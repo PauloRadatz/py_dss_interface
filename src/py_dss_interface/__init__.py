@@ -28,6 +28,7 @@ from py_dss_interface.models.Monitors.Monitors import Monitors
 from py_dss_interface.models.Parallel.Parallel import Parallel
 from py_dss_interface.models.Parser.Parser import Parser
 from py_dss_interface.models.PDElements.PDElements import PDElements
+from py_dss_interface.models.Parallel.Parallel import Parallel
 from py_dss_interface.models.PVSystems.PVSystems import PVSystems
 from py_dss_interface.models.Reclosers.Reclosers import Reclosers
 from py_dss_interface.models.RegControls.RegControls import RegControls
