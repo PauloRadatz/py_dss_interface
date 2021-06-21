@@ -7,6 +7,8 @@ from py_dss_interface.models.ActiveClass.ActiveClassI import ActiveClassI
 from py_dss_interface.models.ActiveClass.ActiveClassV import ActiveClassV
 
 
+
+
 class ActiveClass(ActiveClassS, ActiveClassI, ActiveClassV):
     """
     This interface implements the ActiveClass (IActiveClass) interface of OpenDSS by declaring 3 procedures for

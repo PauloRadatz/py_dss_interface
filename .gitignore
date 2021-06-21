@@ -1,5 +1,7 @@
 *.py[cod]
 __pycache__
+# PyCharm
+env
 
 # C extensions
 *.so

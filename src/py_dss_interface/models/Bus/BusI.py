@@ -27,7 +27,7 @@ class BusI(Base):
         Base.check_assertion_result(result, "Zsc recomputes failed!", "Zsc can not be recomputed!", expected_value=1)
         return result
 
-    # TODO: define a global option warning_messages: default False
+    # TODO: Paulo - https://github.com/PauloRadatz/py_dss_interface/issues/11
     def bus_coord_defined(self) -> int:
         """Returns 1 if a coordinate has been defined for this bus; otherwise, it will return 0."""
         result = self.dss_obj.BUSI(2, 0)

@@ -27,6 +27,5 @@ class CktElementF(Base):
         return float(self.dss_obj.CktElementF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
     def cktelement_variable_i(self, argument: float) -> float:
-        # TODO it does not work
         """Delivers get the value of a variable by index for the active PCElement."""
         return float(self.dss_obj.CktElementF(ctypes.c_int32(4), ctypes.c_double(argument)))

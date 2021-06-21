@@ -21,4 +21,4 @@ class RegControlsV(Base):
 
     def regcontrols_all_names(self):
         """Gets a variant array of strings containing all RegControl names."""
-        return Bridge.VarArrayFunction(self.dss_obj.RegControlsV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.var_array_function(self.dss_obj.RegControlsV, ctypes.c_int(0), ctypes.c_int(0), None)

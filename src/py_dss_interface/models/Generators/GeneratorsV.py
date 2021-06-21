@@ -21,12 +21,12 @@ class GeneratorsV(Base):
 
     def generators_all_names(self) -> List[str]:
         """Gets the array of names of all Generator objects."""
-        return Bridge.VarArrayFunction(self.dss_obj.GeneratorsV, 0, None, '')
+        return Bridge.var_array_function(self.dss_obj.GeneratorsV, 0, None, '')
 
     def generators_register_names(self) -> List[str]:
         """Gets the array of names of all generator Energy Meter registers."""
-        return Bridge.VarArrayFunction(self.dss_obj.GeneratorsV, 1, None, '')
+        return Bridge.var_array_function(self.dss_obj.GeneratorsV, 1, None, '')
 
     def generators_register_values(self) -> List[float]:
         """Gets the array of values in generator Energy Meter registers."""
-        return Bridge.VarArrayFunction(self.dss_obj.GeneratorsV, 2, None, '')
+        return Bridge.var_array_function(self.dss_obj.GeneratorsV, 2, None, '')

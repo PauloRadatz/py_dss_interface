@@ -101,7 +101,7 @@ class Base:
     @classmethod
     def warn_msg(cls, msg, error):
         count_ = msg.count("*")
-        it = count_/2
+        it = count_ / 2
         for _ in range(int(it)):
             msg = msg.replace("*", "\033[1m", 1)
             msg = msg.replace("*", "\033[22m", 1)

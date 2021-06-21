@@ -34,9 +34,12 @@ class DSSInterfaceS(Base):
         return result.value.decode('ascii')
 
     def dss_write_datapath(self, argument: str) -> str:
-        """Gets the Data File Path. Default for reports, etc. from DSS."""
+        """Sets the Data File Path. Default for reports, etc. from DSS."""
         result = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(3), argument.encode('ascii')))
-        return result.value.decode('ascii')
+        result = result.value.decode('ascii')
+        if result == '0':
+            print("Path writen succesfully!")
+        return result
 
     def dss_default_editor(self) -> str:
         """Gets the path name for the default text editor."""
