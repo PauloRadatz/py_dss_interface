@@ -43,7 +43,7 @@ class MonitorsV(Base):
         return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(4), ctypes.c_int(0), None)
 
     # TODO: check
-    def monitors_channel(self, argument):
+    def monitors_channel(self, argument) -> str:
         """Returns a variant array of doubles for the specified channel (usage: MyArray = DSSmonitor. Channel(i)) A
         save or SaveAll should be executed first. Done automatically by most standard solution modes. """
         argument = Base.check_string_param(argument)
