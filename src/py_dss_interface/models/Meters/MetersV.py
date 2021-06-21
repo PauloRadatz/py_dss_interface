@@ -53,6 +53,7 @@ class MetersV(Base):
         for the meter to force some behavior on Load Allocation."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(6), ctypes.c_int(0), None)
 
+    # TODO: Ênio
     def meters_write_calcurrent(self, argument: str):
         """Sets the magnitude of the real part of the Calculated Current (normally determined by solution)
         for the meter to force some behavior on Load Allocation."""
@@ -62,7 +63,7 @@ class MetersV(Base):
         """Returns an array of doubles: allocation factors for the active Meter."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(8), ctypes.c_int(0), None)
 
-    # TODO: Ênio - comtypes
+    # TODO: Ênio
     def meters_write_alloc_factors(self, argument):
         """Receives an array of doubles to set the phase allocation factors for the active Meter."""
         # argument = Base.check_string_param(argument)
@@ -71,10 +72,12 @@ class MetersV(Base):
         a = t.text("get mode ")
         return t.text(f'Allocateload {argument}')
 
+    # TODO: Ênio
     def meters_all_end_elements(self):
         """Returns a variant array of names of all zone end elements."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(10), ctypes.c_int(0), None)
 
+    # TODO: Ênio
     def meters_all_branches_in_zone(self):
         """Returns a wide string list of all branches in zone of the active Energy Meter object."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(11), ctypes.c_int(0), None)
