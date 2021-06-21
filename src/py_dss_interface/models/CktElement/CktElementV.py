@@ -23,12 +23,11 @@ class CktElementV(Base):
         """Delivers an array of strings with the names of all the buses connected to the active circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 0, None, '')
 
-    # TODO what does it return?
-    def cktelement_write_bus_names(self, dss, argument: List[str]):
+    def cktelement_write_bus_names(self, dss, argument: List[str]) -> str:
         """Allows to fix an array of strings with the names of all the buses connected to the active circuit element."""
         # 1 get size of number of elements conected to the active circuit
         total_connected = len(self.cktelement_read_bus_names())
-        result = 0
+        result = '0'
         for _ in range(total_connected):
             result = dss.text(f"Edit {dss.cktelement_name()} Bus1={argument[0]} Bus2={argument[1]}")
             if result is not '':
@@ -95,11 +94,13 @@ class CktElementV(Base):
         element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 14, None, '')
 
+    # https://github.com/PauloRadatz/py_dss_interface/issues/3
     def cktelement_all_variables_names(self) -> List[str]:
         """Delivers a Variant array of strings listing all the published state variable names, if the active circuit
         element is a PCElement. Otherwise, null string."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 15, None, '')
 
+    # https://github.com/PauloRadatz/py_dss_interface/issues/4
     def cktelement_all_variables_values(self) -> List[float]:
         """Delivers a Variant array of doubles listing all the values of the state variables, if the active circuit
         element is a PCElement. Otherwise, null string."""
