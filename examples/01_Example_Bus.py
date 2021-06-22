@@ -6,48 +6,52 @@ from py_dss_interface.models.Example.ExampleBase import ExampleBase
 
 dss = ExampleBase("13").dss
 
-# Integer methods
-print(45 * '=' + ' Integer Methods ' + 45 * '=')
-print(f'dss.bus_num_nodes(): {dss.bus_num_nodes()}')
-print(f'dss.bus_zsc_refresh(): {dss.bus_zsc_refresh()}')
-print(f'dss.bus_coord_defined(): {dss.bus_coord_defined()}')
-print(f'dss.bus_get_unique_node_number(): {dss.bus_get_unique_node_number()}')
-print(f'dss.bus_total_customers(): {dss.bus_total_customers()}')
-print(f'dss.bus_section_id(): {dss.bus_section_id()}')
-print()
 
-# Float methods
-print(45 * '=' + ' Float Methods ' + 45 * '=')
-print(f'dss.bus_kv_base(): {dss.bus_kv_base()}')
+dss.circuit_set_active_bus('692')
+print(dss.bus_name())
 
-print(f'dss.bus_read_x(): {dss.bus_read_x()}')
-print(f'dss.bus_write_x(): {dss.bus_write_x(35.921882)}')
-print(f'dss.bus_read_x(): {dss.bus_read_x()}')
-
-print(f'dss.bus_read_y(): {dss.bus_read_y()}')
-print(f'dss.bus_write_y(): {dss.bus_write_y(-84.141987)}')
-print(f'dss.bus_read_y(): {dss.bus_read_y()}')
-
-print(f'dss.bus_distance(): {dss.bus_distance()}')
-print(f'dss.bus_accumulated_failure_rate(): {dss.bus_accumulated_failure_rate()}')
-print()
-print(f'dss.bus_interruptions_num(): {dss.bus_interruptions_num()}')
-print(f'dss.bus_interruptions_avg_duration(): {dss.bus_interruptions_avg_duration()}')
-print(f'dss.bus_interruptions_total_customers_(): {dss.bus_interruptions_total_customers_()}')
-print(f'dss.bus_outage_customer_accum_duration(): {dss.bus_outage_customer_accum_duration()}')
-print(f'dss.bus_line_total_miles(): {dss.bus_line_total_miles()}')
-print()
-print(f'dss.bus_latitude_read(): {dss.bus_latitude_read()}')
-print(f'dss.bus_latitude_write(): {dss.bus_latitude_write(35.921882)}')
-print(f'dss.bus_latitude_read(): {dss.bus_latitude_read()}')
-print()
-print(f'dss.bus_latitude_read(): {dss.bus_longitude_read()}')
-print(f'dss.bus_latitude_read(): {dss.bus_longitude_write(-84.141987)}')
-print(f'dss.bus_latitude_read(): {dss.bus_longitude_read()}')
-
-# String methods
-print(45 * '=' + ' String Methods ' + 45 * '=')
-print(f'dss.bus_name(): {dss.bus_name()}')
+# # Integer methods
+# print(45 * '=' + ' Integer Methods ' + 45 * '=')
+# print(f'dss.bus_num_nodes(): {dss.bus_num_nodes()}')
+# print(f'dss.bus_zsc_refresh(): {dss.bus_zsc_refresh()}')
+# print(f'dss.bus_coord_defined(): {dss.bus_coord_defined()}')
+# print(f'dss.bus_get_unique_node_number(): {dss.bus_get_unique_node_number()}')
+# print(f'dss.bus_total_customers(): {dss.bus_total_customers()}')
+# print(f'dss.bus_section_id(): {dss.bus_section_id()}')
+# print()
+#
+# # Float methods
+# print(45 * '=' + ' Float Methods ' + 45 * '=')
+# print(f'dss.bus_kv_base(): {dss.bus_kv_base()}')
+#
+# print(f'dss.bus_read_x(): {dss.bus_read_x()}')
+# print(f'dss.bus_write_x(): {dss.bus_write_x(35.921882)}')
+# print(f'dss.bus_read_x(): {dss.bus_read_x()}')
+#
+# print(f'dss.bus_read_y(): {dss.bus_read_y()}')
+# print(f'dss.bus_write_y(): {dss.bus_write_y(-84.141987)}')
+# print(f'dss.bus_read_y(): {dss.bus_read_y()}')
+#
+# print(f'dss.bus_distance(): {dss.bus_distance()}')
+# print(f'dss.bus_accumulated_failure_rate(): {dss.bus_accumulated_failure_rate()}')
+# print()
+# print(f'dss.bus_interruptions_num(): {dss.bus_interruptions_num()}')
+# print(f'dss.bus_interruptions_avg_duration(): {dss.bus_interruptions_avg_duration()}')
+# print(f'dss.bus_interruptions_total_customers_(): {dss.bus_interruptions_total_customers_()}')
+# print(f'dss.bus_outage_customer_accum_duration(): {dss.bus_outage_customer_accum_duration()}')
+# print(f'dss.bus_line_total_miles(): {dss.bus_line_total_miles()}')
+# print()
+# print(f'dss.bus_latitude_read(): {dss.bus_latitude_read()}')
+# print(f'dss.bus_latitude_write(): {dss.bus_latitude_write(35.921882)}')
+# print(f'dss.bus_latitude_read(): {dss.bus_latitude_read()}')
+# print()
+# print(f'dss.bus_longitude_read(): {dss.bus_longitude_read()}')
+# print(f'dss.bus_longitude_read(): {dss.bus_longitude_write(-84.141987)}')
+# print(f'dss.bus_longitude_read(): {dss.bus_longitude_read()}')
+#
+# # String methods
+# print(45 * '=' + ' String Methods ' + 45 * '=')
+# print(f'dss.bus_name(): {dss.bus_name()}')
 
 # Variant methods
 print(45 * '=' + ' Variant Methods ' + 45 * '=')

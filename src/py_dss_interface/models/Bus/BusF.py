@@ -67,7 +67,7 @@ class BusF(Base):
         """Returns the average interruption duration in hours."""
         return self.dss_obj.BUSF(8, 0)
 
-    def bus_interruptions_total_customers_(self) -> float:
+    def bus_interruptions_total_customers(self) -> float:
         """Returns the annual number of customer interruptions from this bus."""
         return self.dss_obj.BUSF(9, 0)
 
@@ -79,20 +79,20 @@ class BusF(Base):
         """Returns the total length of line downline from this bus, in miles. For recloser siting algorithm."""
         return self.dss_obj.BUSF(11, 0)
 
-    def bus_latitude_read(self) -> float:
+    def bus_read_latitude(self) -> float:
         """This parameter returns the GIS latitude assigned to the active bus (if any)."""
         return self.dss_obj.BUSF(12, 0)
 
-    def bus_latitude_write(self, latitude_param: float) -> float:
+    def bus_write_latitude(self, latitude_param: float) -> float:
         """This parameter sets the GIS latitude to the active bus using the value given at the argument.."""
         latitude_param = Base.check_float_param(latitude_param)
         return self.dss_obj.BUSF(13, ctypes.c_double(latitude_param))
 
-    def bus_longitude_read(self) -> float:
+    def bus_read_longitude(self) -> float:
         """This parameter returns the GIS longitude assigned to the active bus (if any)."""
         return self.dss_obj.BUSF(14, 0)
 
-    def bus_longitude_write(self, longitude_param: float) -> float:
+    def bus_write_longitude(self, longitude_param: float) -> float:
         """This parameter sets the GIS longitude to the active bus using the value given at the argument.."""
         longitude_param = Base.check_float_param(longitude_param)
         return self.dss_obj.BUSF(15, ctypes.c_double(longitude_param))
