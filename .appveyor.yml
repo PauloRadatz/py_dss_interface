@@ -3,15 +3,30 @@ build: off
 environment:
   matrix:
     - TOXENV: py36,codecov
+      TOXPYTHON: C:\Python36\python.exe
+      PYTHON_HOME: C:\Python36
+      PYTHON_VERSION: '3.6'
+      PYTHON_ARCH: '32'
+    - TOXENV: py36,codecov
       TOXPYTHON: C:\Python36-x64\python.exe
       PYTHON_HOME: C:\Python36-x64
       PYTHON_VERSION: '3.6'
       PYTHON_ARCH: '64'
     - TOXENV: py37,codecov
+      TOXPYTHON: C:\Python37\python.exe
+      PYTHON_HOME: C:\Python37
+      PYTHON_VERSION: '3.7'
+      PYTHON_ARCH: '32'
+    - TOXENV: py37,codecov
       TOXPYTHON: C:\Python37-x64\python.exe
       PYTHON_HOME: C:\Python37-x64
       PYTHON_VERSION: '3.7'
       PYTHON_ARCH: '64'
+    - TOXENV: py38,codecov
+      TOXPYTHON: C:\Python38\python.exe
+      PYTHON_HOME: C:\Python38
+      PYTHON_VERSION: '3.8'
+      PYTHON_ARCH: '32'
     - TOXENV: py38,codecov
       TOXPYTHON: C:\Python38-x64\python.exe
       PYTHON_HOME: C:\Python38-x64
@@ -31,7 +46,6 @@ test_script:
 on_failure:
   - ps: dir "env:"
   - ps: get-content .tox\*\log\*
-
 ### To enable remote debugging uncomment this (also, see: http://www.appveyor.com/docs/how-to/rdp-to-build-worker):
 # on_finish:
 #   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
