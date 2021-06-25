@@ -20,7 +20,7 @@ class CapacitorsI(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def capacitors_read_nums_steps(self) -> int:
+    def capacitors_read_num_steps(self) -> int:
         """Gets the number of steps (defaults 1) for distributing and switching the total bank kvar."""
         return self.dss_obj.CapacitorsI(0, 0)
 
