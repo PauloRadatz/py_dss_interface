@@ -5,6 +5,7 @@
 from py_dss_interface.models.Example.ExampleBase import ExampleBase
 
 dss = ExampleBase("13").dss
+dss.text("new isource.MyISource phases=3 amps=100 bus1=692 angle=30")
 
 # Integer methods
 print(45 * '=' + ' Integer Methods' + 45 * '=')
