@@ -125,11 +125,11 @@ class SolutionI(Base):
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(23), ctypes.c_int32(argument)))
 
-    def solution_read_maxcontrol_iterations(self) -> int:
+    def solution_read_max_control_iterations(self) -> int:
         """Returns the maximum allowable control iterations."""
         return int(self.dss_obj.SolutionI(ctypes.c_int32(24), ctypes.c_int32(0)))
 
-    def solution_write_maxcontrol_iterations(self, argument) -> int:
+    def solution_write_max_control_iterations(self, argument) -> int:
         """Modifies the maximum allowable control iterations. """
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(25), ctypes.c_int32(argument)))
@@ -148,7 +148,7 @@ class SolutionI(Base):
         (includes Yprim only)."""
         return int(self.dss_obj.SolutionI(ctypes.c_int32(28), ctypes.c_int32(0)))
 
-    def solution_solve_pflow(self) -> int:
+    def solution_solve_power_flow(self) -> int:
         """Solves using present power flow method. Iterative solution rather than direct solution. """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(29), ctypes.c_int32(0)))
 
