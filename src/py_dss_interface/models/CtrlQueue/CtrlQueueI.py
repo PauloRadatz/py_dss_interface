@@ -25,9 +25,9 @@ class CtrlQueueI(Base):
         """Clears the control queue."""
         return self.dss_obj.CtrlQueueI(ctypes.c_int32(0), ctypes.c_int32(0))
 
-    def ctrlqueue_delete(self) -> int:
+    def ctrlqueue_delete(self, argument: int) -> int:
         """Deletes a control action from the DSS control queue by referencing the handle of the action (Argument)."""
-        return self.dss_obj.CtrlQueueI(ctypes.c_int32(1), ctypes.c_int32(0))
+        return self.dss_obj.CtrlQueueI(ctypes.c_int32(1), ctypes.c_int32(argument))
 
     def ctrlqueue_num_actions(self) -> int:
         """Gets the number of actions on the current action list (that have been popped off the control queue by
