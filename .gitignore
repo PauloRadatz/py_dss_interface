@@ -77,6 +77,9 @@ docs/_build
 # Mypy Cache
 .mypy_cache/
 
+# VSCode
+.vscode
+
 # Environment
 env
 tests/py_dss_interface/cases/13Bus/IEEE13Node_BusXY.csv
