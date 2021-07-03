@@ -121,8 +121,13 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_cvr_curve(self):
-        # TODO What values should be used to test?
-        expected = '1'
+        self.dss.text("New Loadshape.Test npts=24 interval=1 "
+                      "mult= "
+                      "(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 "
+                      "0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 "
+                      "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
+                      "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
+        expected = 'Test'
         actual = self.dss.loads_write_cvr_curve(expected)
         actual = self.dss.loads_read_cvr_curve()
         assert actual == expected
@@ -133,8 +138,13 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_daily(self):
-        self.dss.text("New Loadshape.Teste npts=24 interval=1 mult=(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
-        expected = 'Teste'
+        self.dss.text("New Loadshape.Test npts=24 interval=1 "
+                      "mult= "
+                      "(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 "
+                      "0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 "
+                      "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
+                      "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
+        expected = 'Test'
         actual = self.dss.loads_write_daily(expected)
         actual = self.dss.loads_read_daily()
         assert actual == expected
@@ -150,8 +160,12 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_spectrum(self):
-        # TODO What values should be used to test?
-        expected = 'test'
+        self.dss.text("New Spectrum.Test "
+                      "NumHarm=7 "
+                      "harmonic=(1, 3, 5, 7, 9, 11, 13, ) "
+                      "%mag=(100, 1.5, 20, 14, 1, 9, 7, ) "
+                      "angle=(0, 180, 180, 180, 180, 180, 180, )")
+        expected = 'Test'
         self.dss.loads_write_spectrum(expected)
         actual = self.dss.loads_read_spectrum()
         assert actual == expected
@@ -162,8 +176,13 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_yearly(self):
-        self.dss.text("New Loadshape.Teste npts=24 interval=1 mult=(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
-        expected = 'Teste'
+        self.dss.text("New Loadshape.Test npts=24 interval=1 "
+                      "mult= "
+                      "(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 "
+                      "0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 "
+                      "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
+                      "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
+        expected = 'Test'
         actual = self.dss.loads_write_yearly(expected)
         actual = self.dss.loads_read_yearly()
         assert actual == expected
@@ -200,7 +219,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_kw(self):
-        expected = 1000.0   # TODO it only works when we set decimal number. Like in capacitors.
+        expected = 1000.0  # TODO it only works when we set decimal number. Like in capacitors.
         self.dss.loads_write_kw(expected)
         actual = self.dss.loads_read_kw()
         assert actual == expected
@@ -211,7 +230,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_kvar(self):
-        expected = 600.0   # TODO it only works when we set decimal number.
+        expected = 600.0  # TODO it only works when we set decimal number.
         self.dss.loads_write_kvar(expected)
         actual = self.dss.loads_read_kvar()
         assert actual == expected
@@ -236,7 +255,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_pct_mean(self):
-        expected = 123.0    # TODO it only works when we set decimal number.
+        expected = 123.0  # TODO it only works when we set decimal number.
         self.dss.loads_write_pct_mean(expected)
         actual = self.dss.loads_read_pct_mean()
         assert actual == expected
@@ -247,7 +266,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_pct_std_dev(self):
-        expected = 123.0    # TODO it only works when we set decimal number.
+        expected = 123.0  # TODO it only works when we set decimal number.
         self.dss.loads_write_pct_std_dev(expected)
         actual = self.dss.loads_read_pct_std_dev()
         assert actual == expected
@@ -258,7 +277,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_pct_series_rl(self):
-        expected = 123    # TODO it only works when we set decimal number.
+        expected = 123.0  # TODO it only works when we set decimal number.
         self.dss.loads_write_pct_series_rl(expected)
         actual = self.dss.loads_read_pct_series_rl()
         assert actual == expected
@@ -269,7 +288,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_allocation_factor(self):
-        expected = 123.1   # TODO it only works when we set decimal number.
+        expected = 123.1  # TODO it only works when we set decimal number.
         self.dss.loads_write_allocation_factor(expected)
         actual = self.dss.loads_read_allocation_factor()
         assert actual == expected
@@ -309,14 +328,14 @@ class TestLoad13Bus:
 
     def test_loads_read_kva(self):
         if platform.architecture()[0] == "64bit":
-            expected = (self.dss.loads_read_kw()**2 + self.dss.loads_read_kvar()**2)**(1/2)
+            expected = (self.dss.loads_read_kw() ** 2 + self.dss.loads_read_kvar() ** 2) ** (1 / 2)
             actual = self.dss.loads_read_kva()
             assert actual == expected
         else:
             assert 1 == 1
 
     def test_loads_write_kva(self):
-        expected = 1500.0   # TODO it only works when we set decimal number.
+        expected = 1500.0  # TODO it only works when we set decimal number.
         self.dss.loads_write_kva(expected)
         actual = self.dss.loads_read_kva()
         assert actual == expected
@@ -327,7 +346,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_kwh(self):
-        expected = 123.0    # TODO it only works when we set decimal number.
+        expected = 123.0  # TODO it only works when we set decimal number.
         self.dss.loads_write_kwh(expected)
         actual = self.dss.loads_read_kwh()
         assert actual == expected
@@ -338,7 +357,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_kwh_days(self):
-        expected = 60.0    # TODO it only works when we set decimal number.
+        expected = 60.0  # TODO it only works when we set decimal number.
         self.dss.loads_write_kwh_days(expected)
         actual = self.dss.loads_read_kwh_days()
         assert actual == expected
@@ -349,7 +368,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_r_neut(self):
-        expected = 60.0    # TODO it only works when we set decimal number.
+        expected = 60.0  # TODO it only works when we set decimal number.
         self.dss.loads_write_r_neut(expected)
         actual = self.dss.loads_read_r_neut()
         assert actual == expected
@@ -360,7 +379,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_x_neut(self):
-        expected = 60.0    # TODO it only works when we set decimal number.
+        expected = 60.0  # TODO it only works when we set decimal number.
         self.dss.loads_write_x_neut(expected)
         actual = self.dss.loads_read_x_neut()
         assert actual == expected
@@ -371,7 +390,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_vmax_pu(self):
-        expected = 1.1    # TODO it only works when we set decimal number.
+        expected = 1.1  # TODO it only works when we set decimal number.
         self.dss.loads_write_vmax_pu(expected)
         actual = self.dss.loads_read_vmax_pu()
         assert actual == expected
@@ -382,7 +401,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_vmin_pu(self):
-        expected = 0.9    # TODO it only works when we set decimal number.
+        expected = 0.9  # TODO it only works when we set decimal number.
         self.dss.loads_write_vmin_pu(expected)
         actual = self.dss.loads_read_vmin_pu()
         assert actual == expected
@@ -393,7 +412,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_vmin_emerg(self):
-        expected = 0.5   # TODO it only works when we set decimal number.
+        expected = 0.5  # TODO it only works when we set decimal number.
         self.dss.loads_write_vmin_emerg(expected)
         actual = self.dss.loads_read_vmin_emerg()
         assert actual == expected
@@ -404,7 +423,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_vmin_norm(self):
-        expected = 0.8   # TODO it only works when we set decimal number.
+        expected = 0.8  # TODO it only works when we set decimal number.
         self.dss.loads_write_vmin_norm(expected)
         actual = self.dss.loads_read_vmin_norm()
         assert actual == expected
@@ -415,7 +434,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_xfkva(self):
-        expected = 123.1   # TODO it only works when we set decimal number.
+        expected = 123.1  # TODO it only works when we set decimal number.
         self.dss.loads_write_xfkva(expected)
         actual = self.dss.loads_read_xfkva()
         assert actual == expected
@@ -426,7 +445,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_rel_weight(self):
-        expected = 123.1   # TODO it only works when we set decimal number.
+        expected = 123.1  # TODO it only works when we set decimal number.
         self.dss.loads_write_rel_weight(expected)
         actual = self.dss.loads_read_rel_weight()
         assert actual == expected
@@ -448,6 +467,6 @@ class TestLoad13Bus:
 
     def test_loads_write_zipv(self):
         expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
-        self.dss.loads_write_zipv(str(expected))    # TODO it works only when we convert the number array to a string
+        self.dss.loads_write_zipv(str(expected))  # TODO it works only when we convert the number array to a string
         actual = self.dss.loads_read_zipv()
         assert actual == expected
