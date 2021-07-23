@@ -58,13 +58,15 @@ class Base:
         :param default: self explained
         :param param: any int number
         """
-        if default is None:
-            default = 0
-        if not isinstance(default, int):
-            default = 0
-        if param is None:
+        if type(param) is None:
+            print("Param not defined, param is 0")
             param = default
-        elif not isinstance(param, int):
+        elif type(param) is str:
+            param = default
+        elif type(param) is float:
+            print("Your parameter will be truncated")
+            param = int(param)
+        else:
             param = default
         return param
 
@@ -75,11 +77,14 @@ class Base:
         :param default: self explained
         :param param: any float number, positive or negative or just 0.0
         """
-        if not isinstance(default, float):
-            default = 0.0
-        if param is None:
+        if type(param) is None:
+            print("Param not defined, param is 0.0")
             param = default
-        elif not isinstance(param, float):
+        elif type(param) is str:
+            param = default
+        elif type(param) is int:
+            param = float(param)
+        else:
             param = default
         return param
 
