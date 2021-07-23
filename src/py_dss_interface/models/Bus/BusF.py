@@ -54,7 +54,7 @@ class BusF(Base):
         """Returns the distance from the energymeter (if non-zero)."""
         return self.dss_obj.BUSF(5, 0)
 
-    # TODO: rever nome do método
+    # TODO: Paulo - rever nome do método
     def bus_accumulated_failure_rate(self) -> float:
         """Returns the accumulated failure rate downstream from this bus, faults per year."""
         return self.dss_obj.BUSF(6, 0)
