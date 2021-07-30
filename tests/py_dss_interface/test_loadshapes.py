@@ -115,7 +115,8 @@ class TestLoadShapes13Bus:
 
     # TODO: method not writing
     def test_loadshapes_write_min_interval(self):
-        expected = 1
+        self.new_loadshape(True)
+        expected = 120
         self.dss.loadshapes_write_min_interval(expected)
         actual = self.dss.loadshapes_read_min_interval()
         assert actual == expected
@@ -126,11 +127,9 @@ class TestLoadShapes13Bus:
         actual = self.dss.loadshapes_read_s_interval()
         assert actual == expected
 
-    # TODO: check this
     def test_loadshapes_write_s_interval(self):
         self.new_loadshape(True)
-
-        expected = 3800
+        expected = 4800
         self.dss.loadshapes_write_s_interval(expected)
         actual = self.dss.loadshapes_read_s_interval()
         assert actual == expected
