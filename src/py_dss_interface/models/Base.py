@@ -81,9 +81,12 @@ class Base:
             print("Param not defined, param is 0.0")
             param = default
         elif type(param) is str:
+            print("Param not defined, param is 0.0")
             param = default
         elif type(param) is int:
             param = float(param)
+        elif type(param) is float:
+            return param
         else:
             param = default
         return param
