@@ -87,6 +87,8 @@ class Base:
             param = default
         elif type(param) is int:
             param = float(param)
+        elif type(param) is float:
+            return param
         else:
             param = default
         return param
