@@ -58,6 +58,7 @@ class Base:
         :param default: self explained
         :param param: any int number
         """
+        print(type(param))
         if type(param) is None:
             print("Param not defined, param is 0")
             param = default
@@ -66,6 +67,8 @@ class Base:
         elif type(param) is float:
             print("Your parameter will be truncated")
             param = int(param)
+        elif type(param) is int:
+            return param
         else:
             param = default
         return param
