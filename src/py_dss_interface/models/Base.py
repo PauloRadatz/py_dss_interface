@@ -58,7 +58,6 @@ class Base:
         :param default: self explained
         :param param: any int number
         """
-        print(type(param))
         if type(param) is None:
             print("Param not defined, param is 0")
             param = default
