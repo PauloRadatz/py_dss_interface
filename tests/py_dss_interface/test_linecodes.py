@@ -225,7 +225,6 @@ class TestLineCodes13Bus:
         expected_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
         expected = format_matrix(expected_list)
         expected_str = format_matrix_str(expected)
-
         self.dss.linecodes_write_cmatrix(expected_str)
         actual = self.dss.linecodes_read_cmatrix()        
 
@@ -240,7 +239,7 @@ class TestLineCodes13Bus:
                     'mtx602', 'mtx603', 'mtx604', 'mtx605', 'mtx606', 'mtx607']
         actual = self.dss.linecodes_all_names()
         assert expected == actual
-    # print(f'dss.linecodes_all_names(): {dss.linecodes_all_names()}')
+    
 
 def truncate(num,n):
     # Return a truncated version of a floating point number
