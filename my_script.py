@@ -5,6 +5,10 @@ import os
 # Creates an OpenDSS object
 dss = py_dss_interface.DSSDLL()
 
+# If specific DLL Version, use this line below
+# dss = py_dss_interface.DSSDLL(dll_folder_param=r"C:\Users\eniocc\Downloads\py_dss_interface-master\src"
+#                                                r"\py_dss_interface\dll/windows\x64", dll_by_user="OpenDSSDirect.dll")
+
 # Select the DSS model
 dss_file = r"C:\MeuTCC\Paulo_Example\DSSFiles\MASTER_RedeTeste13Barras.dss"
 dss_file = r"C:\Program Files\OpenDSS\IEEETestCases\13Bus\IEEE13Nodeckt.dss"
