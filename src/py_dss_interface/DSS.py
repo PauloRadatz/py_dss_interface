@@ -28,45 +28,52 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
 
     # TODO need to be able to get different dll names:
     #  https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
-    def __init__(self, dll_folder_param=None):
+    def __init__(self, dll_folder_param=None, dll_by_user=None):
         # TODO: dss_write_allowforms
         """
         Class to create an OpenDSS object
         :param dll_folder_param: None will use the OpenDSS available within the package. The dll path allows to use a
         different OpenDSS
         """
-
-        # TODO: refactor this entrance
-        base_folder = dll_folder_param
-        dll_name = DLL_NAME_WIN
-
-        if dll_folder_param is None:
-            base_folder = os.path.dirname(os.path.abspath(__file__))
-
+        self.started = False
+        if dll_folder_param is not None and dll_by_user is not None:
+            os.chdir(dll_folder_param)
+            self.dss_obj = ctypes.cdll.LoadLibrary(os.path.join(dll_folder_param, dll_by_user))
+            self.started = True
+        elif dll_folder_param is None and dll_by_user is None:
+            dll_folder_param = os.path.dirname(os.path.abspath(__file__))
             if System.detect_platform() == 'Linux':
-                dll_name = DLL_NAME_LINUX
-                self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll/linux")
+                dll_folder_param = os.path.join(pathlib.Path(dll_folder_param), "dll/linux")
+                dll_by_user = DLL_NAME_LINUX
             elif System.detect_platform() == 'Windows':
-                self.dll_folder = os.path.join(pathlib.Path(base_folder), "dll/windows")
+                dll_folder_param = os.path.join(pathlib.Path(dll_folder_param), "dll/windows")
+                dll_by_user = DLL_NAME_WIN
 
+            self.dll_path = System.get_architecture_path(dll_folder_param)
+            self.dll_file_path = os.path.join(self.dll_path, dll_by_user)
+            self.dss_obj = ctypes.cdll.LoadLibrary(self.dll_file_path)
+            self.started = True
+        elif dll_folder_param is None and dll_by_user is not None:
+            print("To specific a dll you MUST define the base folder")
+            exit()
+        elif dll_folder_param is not None and dll_by_user is None:
+            print("Please specify a DLL in the defined folder.")
+            exit()
+
+        if self.started:
+            self.load_json()
+            self._allocate_memory()
+
+            if self.check_started():
+                print(
+                    "OpenDSS Started successfully! \nOpenDSS {}\n\n".format(self.my_dss_version.value.decode('ascii')))
+            else:
+                print("OpenDSS Failed to Start")
+                exit()
         else:
-            self.dll_folder = pathlib.Path(dll_folder_param)
-
-        self.dll_path = System.get_architecture_path(self.dll_folder)
-        os.chdir(self.dll_path)
-
-        self.dll_file_path = os.path.join(self.dll_path, dll_name)
-
-        self.dss_obj = ctypes.cdll.LoadLibrary(self.dll_file_path)
-        self.started = True
-
-        self.load_json()
-        self._allocate_memory()
-
-        if self.check_started():
-            print("OpenDSS Started successfully! \nOpenDSS {}\n\n".format(self.my_dss_version.value.decode('ascii')))
-        else:
-            print("OpenDSS Failed to Start")
+            print("An error occur!")
+            exit()
+        
 
     def check_started(self):
         if int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0))) == 1:
