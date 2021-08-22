@@ -186,7 +186,7 @@ class TestGenerators13Bus:
         self.include_generator()
         expected = ["g1", "g2"]
         actual = self.dss.generators_all_names()
-        assert expected == pytest. actual
+        assert expected == actual
 
     def test_generators_register_names(self):
         expected = ['kWh', 'kvarh', 'Max kW', 'Max kVA', 'Hours', '$']
