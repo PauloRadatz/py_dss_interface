@@ -45,7 +45,7 @@ class TestGenerators13Bus:
 
     def test_generators_write_forced_on(self):
         expected = 1
-        self.dss.generators_write_forced_on(1)
+        self.dss.generators_write_forced_on(expected)
         actual = self.dss.generators_read_forced_on()
         assert expected == actual
 
