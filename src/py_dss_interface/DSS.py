@@ -40,22 +40,23 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
             os.chdir(dll_folder_param)
             self.dss_obj = ctypes.cdll.LoadLibrary(os.path.join(dll_folder_param, dll_by_user))
             self.started = True
-        elif dll_folder_param is None and dll_by_user is None:
-            dll_folder_param = os.path.dirname(os.path.abspath(__file__))
+        elif dll_by_user is None:
+            if dll_folder_param is None:
+                dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))), "dll")
             if System.detect_platform() == 'Linux':
-                dll_folder_param = os.path.join(pathlib.Path(dll_folder_param), "dll/linux")
+                dll_folder_param = pathlib.Path(dll_folder_param)
                 dll_by_user = DLL_NAME_LINUX
             elif System.detect_platform() == 'Windows':
-                dll_folder_param = os.path.join(pathlib.Path(dll_folder_param), "dll/windows")
+                dll_folder_param = pathlib.Path(dll_folder_param)
                 dll_by_user = DLL_NAME_WIN
 
             self.dll_path = System.get_architecture_path(dll_folder_param)
             self.dll_file_path = os.path.join(self.dll_path, dll_by_user)
             self.dss_obj = ctypes.cdll.LoadLibrary(self.dll_file_path)
             self.started = True
-        elif dll_folder_param is None and dll_by_user is not None:
-            print("To specific a dll you MUST define the base folder")
-            exit()
+        # elif dll_folder_param is None and dll_by_user is not None:
+        #     print("To specific a dll you MUST define the base folder")
+        #     exit()
         elif dll_folder_param is not None and dll_by_user is None:
             print("Please specify a DLL in the defined folder.")
             exit()
@@ -73,7 +74,7 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
         else:
             print("An error occur!")
             exit()
-        
+
 
     def check_started(self):
         if int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0))) == 1:
