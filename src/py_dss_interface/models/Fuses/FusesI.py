@@ -70,3 +70,8 @@ class FusesI(Base):
     def fuses_num_phases(self) -> int:
         """Gets the number of phases of the active fuse."""
         return self.dss_obj.FusesI(ctypes.c_int32(12), ctypes.c_int32(0))
+
+    def fuses_reset(self):
+        """Resets the state of the fuse object to the normal state."""
+        result = self.dss_obj.FusesI(ctypes.c_int32(13), ctypes.c_int32(0))
+        return result
