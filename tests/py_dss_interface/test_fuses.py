@@ -55,7 +55,7 @@ class TestFuses13Bus:
         assert expected == actual
 
     def test_fuses_read_monitored_term(self):
-        expected = 0
+        expected = 1
         actual = self.dss.fuses_read_monitored_term()
         assert expected == actual
 
