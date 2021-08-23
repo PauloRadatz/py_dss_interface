@@ -96,7 +96,7 @@ class TestMeters13Bus:
         expected = 1
         actual = self.dss.meters_read_sequence_index()
         assert expected == actual
-        
+
     def test_meters_write_sequence_index(self):
         expected = 2
         self.dss.meters_write_sequence_index(expected)
@@ -104,6 +104,7 @@ class TestMeters13Bus:
         assert expected == actual
 
     def test_meters_do_reliability_calc(self):
+        self.dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
         expected = 0
         actual = self.dss.meters_do_reliability_calc()
         assert expected == actual
@@ -180,12 +181,12 @@ class TestMeters13Bus:
         expected = 0
         actual = self.dss.meters_saifi()
         assert expected == actual
-    
+
     def test_meters_saifi_kw(self):
         expected = 0
         actual = self.dss.meters_saifi_kw()
         assert expected == actual
-    
+
     def test_meters_cust_interrupts(self):
         expected = 0
         actual = self.dss.meters_cust_interrupts()
@@ -195,12 +196,12 @@ class TestMeters13Bus:
         expected = 0
         actual = self.dss.meters_avg_repair_time()
         assert expected == actual
-    
+
     def test_meters_fault_rate_x_repair_hrs(self):
         expected = 0
         actual = self.dss.meters_fault_rate_x_repair_hrs()
         assert expected == actual
-    
+
     def test_meters_sum_branch_flt_rates(self):
         expected = 0
         actual = self.dss.meters_sum_branch_flt_rates()
@@ -215,16 +216,16 @@ class TestMeters13Bus:
         assert expected == actual
 
     def test_meters_register_names(self):
-        expected = ['kWh', 'kvarh', 'Max kW', 'Max kVA', 'Zone kWh', 'Zone kvarh', 'Zone Max kW', 'Zone Max kVA', 
-                    'Overload kWh Normal', 'Overload kWh Emerg', 'Load EEN', 'Load UE', 'Zone Losses kWh', 
-                    'Zone Losses kvarh', 'Zone Max kW Losses', 'Zone Max kvar Losses', 'Load Losses kWh', 
-                    'Load Losses kvarh', 'No Load Losses kWh', 'No Load Losses kvarh', 'Max kW Load Losses', 
-                    'Max kW No Load Losses', 'Line Losses', 'Transformer Losses', 'Line Mode Line Losses', 
-                    'Zero Mode Line Losses', '3-phase Line Losses', '1- and 2-phase Line Losses', 'Gen kWh', 
-                    'Gen kvarh', 'Gen Max kW', 'Gen Max kVA', '4.16 kV Losses', 'Aux1', 'Aux6', 'Aux11', 'Aux16', 
-                    'Aux21', 'Aux26', '4.16 kV Line Loss', 'Aux2', 'Aux7', 'Aux12', 'Aux17', 'Aux22', 'Aux27', 
-                    '4.16 kV Load Loss', 'Aux3', 'Aux8', 'Aux13', 'Aux18', 'Aux23', 'Aux28', '4.16 kV No Load Loss', 
-                    'Aux4', 'Aux9', 'Aux14', 'Aux19', 'Aux24', 'Aux29', '4.16 kV Load Energy', 'Aux5', 'Aux10', 'Aux15', 
+        expected = ['kWh', 'kvarh', 'Max kW', 'Max kVA', 'Zone kWh', 'Zone kvarh', 'Zone Max kW', 'Zone Max kVA',
+                    'Overload kWh Normal', 'Overload kWh Emerg', 'Load EEN', 'Load UE', 'Zone Losses kWh',
+                    'Zone Losses kvarh', 'Zone Max kW Losses', 'Zone Max kvar Losses', 'Load Losses kWh',
+                    'Load Losses kvarh', 'No Load Losses kWh', 'No Load Losses kvarh', 'Max kW Load Losses',
+                    'Max kW No Load Losses', 'Line Losses', 'Transformer Losses', 'Line Mode Line Losses',
+                    'Zero Mode Line Losses', '3-phase Line Losses', '1- and 2-phase Line Losses', 'Gen kWh',
+                    'Gen kvarh', 'Gen Max kW', 'Gen Max kVA', '4.16 kV Losses', 'Aux1', 'Aux6', 'Aux11', 'Aux16',
+                    'Aux21', 'Aux26', '4.16 kV Line Loss', 'Aux2', 'Aux7', 'Aux12', 'Aux17', 'Aux22', 'Aux27',
+                    '4.16 kV Load Loss', 'Aux3', 'Aux8', 'Aux13', 'Aux18', 'Aux23', 'Aux28', '4.16 kV No Load Loss',
+                    'Aux4', 'Aux9', 'Aux14', 'Aux19', 'Aux24', 'Aux29', '4.16 kV Load Energy', 'Aux5', 'Aux10', 'Aux15',
                     'Aux20', 'Aux25', 'Aux30']
         actual = self.dss.meters_register_names()
         assert expected == actual
@@ -232,53 +233,53 @@ class TestMeters13Bus:
     def test_meters_register_values(self):
         self.dss.meters_write_metered_element("Line.650632")
 
-        expected = [0.0, 0.0, -1e+50, -1e+50, 0.0, 0.0, -1e+50, -1e+50, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
-                    -1e+50, -1e+50, 0.0, 0.0, 0.0, 0.0, -1e+50, -1e+50, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
-                    -1e+50, -1e+50, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
+        expected = [0.0, 0.0, -1e+50, -1e+50, 0.0, 0.0, -1e+50, -1e+50, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    -1e+50, -1e+50, 0.0, 0.0, 0.0, 0.0, -1e+50, -1e+50, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    -1e+50, -1e+50, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-                    
+
         actual = self.dss.meters_register_values()
         assert expected == actual
 
     def test_meters_totals(self):
-        expected = [0.0, 0.0, -2e+50, -2e+50, 0.0, 0.0, -2e+50, -2e+50, 0.0, 0.0, 0.0, 0.0, 0.0, 
-                    0.0, -2e+50, -2e+50, 0.0, 0.0, 0.0, 0.0, -2e+50, -2e+50, 0.0, 0.0, 0.0, 0.0, 
-                    0.0, 0.0, 0.0, 0.0, -2e+50, -2e+50, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
-                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
+        expected = [0.0, 0.0, -2e+50, -2e+50, 0.0, 0.0, -2e+50, -2e+50, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    0.0, -2e+50, -2e+50, 0.0, 0.0, 0.0, 0.0, -2e+50, -2e+50, 0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0, -2e+50, -2e+50, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         actual = self.dss.meters_totals()
         assert expected == actual
 
     def test_meters_read_peak_current(self):
-        expected = [400.0, 400.0, 400.0]                 
+        expected = [400.0, 400.0, 400.0]
         actual = self.dss.meters_read_peak_current()
         assert expected == actual
 
     def test_meters_write_peak_current(self):
         expected = [550.0, 600.0, 680.0]
         expected_str = '(' + str(expected[0]) + ',' + str(expected[1]) + ',' + str(expected[2]) + ')'
-        self.dss.meters_write_peak_current(expected_str)                
+        self.dss.meters_write_peak_current(expected_str)
         actual = self.dss.meters_read_peak_current()
         assert expected == actual
 
     def test_meters_read_cal_current(self):
-        expected = [0, 0, 0]                    
+        expected = [2.806806272625585e-309, 2.121995791e-314, 680.0000000000089]
         actual = self.dss.meters_read_cal_current()
         assert expected == actual
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/6
     # def test_meters_write_calcurrent(self):
     #     expected = [1, 2, 3]
-    #     self.dss.meters_write_calcurrent(expected)                
+    #     self.dss.meters_write_calcurrent(expected)
     #     actual = self.dss.meters_read_cal_current()
     #     assert expected == actual
 
     def test_meters_read_alloc_factors(self):
-        expected = [0, 0, 0]                    
+        expected = [0, 0, 0]
         actual = self.dss.meters_read_alloc_factors()
         assert expected == actual
 
     def test_meters_all_end_elements(self):
-        expected = ['Line.645646', 'Transformer.xfm1', 'Line.632670']          
+        expected = ['Line.645646', 'Transformer.xfm1', 'Line.632670']
         actual = self.dss.meters_all_end_elements()
         assert expected == actual
