@@ -282,24 +282,3 @@ class TestMeters13Bus:
         expected = ['Line.645646', 'Transformer.xfm1', 'Line.632670']          
         actual = self.dss.meters_all_end_elements()
         assert expected == actual
-
-# print(f'dss.meters_allnames(): {dss.meters_all_names()}')
-# print(f'dss.meters_registernames(): {dss.meters_register_names()}')
-# print(f'dss.meters_registervalues(): {dss.meters_register_values()}')
-# print(f'dss.meters_totals(): {dss.meters_totals()}')
-# print(f'dss.meters_read_peakcurrent(): {dss.meters_read_peak_current()}')
-# print(f'dss.meters_write_peakcurrent(): {dss.meters_write_peak_current("[550,600,680]")}')
-# print(f'dss.meters_read_peakcurrent(): {dss.meters_read_peak_current()}')
-
-# print(f'dss.meters_read_calcurrent(): {dss.meters_read_cal_current()}')
-# # print(f'dss.meters_write_calcurrent(): {dss.meters_write_calcurrent("[1. 2. 3.]")}')
-
-# # print(f'dss.meters_write_calcurrent(): {dss.meters_write_calcurrent("[1.1, 2.2, 3.3]")}')
-# print(f'dss.meters_read_calcurrent(): {dss.meters_read_cal_current()}')
-# #
-# print(f'dss.meters_read_allocfactors(): {dss.meters_read_alloc_factors()}')
-# # print(f'dss.meters_write_allocfactors(): {dss.meters_write_alloc_factors("[0.1]")}')
-# #
-# # print(f'dss.meters_allendelements(): {dss.meters_all_end_elements()}')
-# # print(f'dss.meters_allbranchesinzone(): {dss.meters_all_branches_in_zone()}')
-
