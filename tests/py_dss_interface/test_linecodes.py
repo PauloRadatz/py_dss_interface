@@ -31,7 +31,7 @@ class TestLineCodes13Bus:
     def test_linecodes_next(self):
         expected = 2
         actual = self.dss.linecodes_next()
-        assert expected == actual 
+        assert expected == actual
 
     def test_linecodes_read_units(self):
         expected = 0
@@ -39,11 +39,11 @@ class TestLineCodes13Bus:
         assert expected == actual
 
     def test_linecodes_write_units(self):
-        expected = 5        
+        expected = 5
         self.dss.linecodes_write_units(expected)
         actual = self.dss.linecodes_read_units()
         assert expected == actual
-        
+
     def test_linecodes_read_phases(self):
         expected = 3
         actual = self.dss.linecodes_read_phases()
@@ -100,7 +100,7 @@ class TestLineCodes13Bus:
         assert expected == actual
 
     def test_linecodes_read_c1(self):
-        expected = 3.4e-09
+        expected = 3.4
         actual = self.dss.linecodes_read_c1()
         assert expected == actual
 
@@ -134,7 +134,7 @@ class TestLineCodes13Bus:
         assert expected == actual
 
     def test_linecodes_read_c0(self):
-        expected = 1.6e-09
+        expected = 1.6
         actual = self.dss.linecodes_read_c0()
         assert expected == actual
 
@@ -155,7 +155,7 @@ class TestLineCodes13Bus:
         self.dss.linecodes_write_norm_amps(expected)
         actual = self.dss.linecodes_read_norm_amps()
         assert expected == actual
-    
+
     def test_linecodes_read_emerg_amps(self):
         expected = 600
         actual = self.dss.linecodes_read_emerg_amps()
@@ -176,9 +176,9 @@ class TestLineCodes13Bus:
         actual = self.dss.linecodes_read_rmatrix()
         actual = [truncate(x, 6) for x in actual]
         assert expected == actual
-    
+
     def test_linecodes_write_rmatrix(self):
-        expected_list = [0.791721, 0.31, 0.781649, 0.28345, 0.32, 0.791721]       
+        expected_list = [0.791721, 0.31, 0.781649, 0.28345, 0.32, 0.791721]
         expected = format_matrix(expected_list)
         expected_str = format_matrix_str(expected)
 
@@ -193,19 +193,19 @@ class TestLineCodes13Bus:
     def test_linecodes_read_xmatrix(self):
         expected = [0.20416667, 0.09501894, 0.07289773, 0.09501894, 0.19852273, 0.08022727, 0.07289773, 0.08022727, 0.20172349]
         expected = [truncate(x, 6) for x in expected]
-        
+
         actual = self.dss.linecodes_read_xmatrix()
         actual = [truncate(x, 6) for x in actual]
-        
+
         assert expected == actual
-    
+
     def test_linecodes_write_xmatrix(self):
         expected_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
         expected = format_matrix(expected_list)
         expected_str = format_matrix_str(expected)
 
         self.dss.linecodes_write_xmatrix(expected_str)
-        actual = self.dss.linecodes_read_xmatrix() 
+        actual = self.dss.linecodes_read_xmatrix()
 
         actual   = [truncate(x, 9) for x in actual]
         expected = [truncate(x, 9) for x in expected]
@@ -214,19 +214,19 @@ class TestLineCodes13Bus:
 
     def test_linecodes_read_cmatrix(self):
         expected = [2.85171007, -0.92029379, -0.35075557, -0.92029379, 3.00463186, -0.58501125, -0.35075557, -0.58501125, 2.71134756]
-        
+
         actual = self.dss.linecodes_read_cmatrix()
         actual   = [truncate(x, 6) for x in actual]
         expected = [truncate(x, 6) for x in expected]
 
         assert expected == actual
-    
+
     def test_linecodes_write_cmatrix(self):
         expected_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
         expected = format_matrix(expected_list)
         expected_str = format_matrix_str(expected)
         self.dss.linecodes_write_cmatrix(expected_str)
-        actual = self.dss.linecodes_read_cmatrix()        
+        actual = self.dss.linecodes_read_cmatrix()
 
         actual   = [truncate(x, 9) for x in actual]
         expected = [truncate(x, 9) for x in expected]
@@ -234,12 +234,12 @@ class TestLineCodes13Bus:
         assert expected == actual
 
     def test_linecodes_all_names(self):
-        expected = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '300', '301', '302', '303', '304', 
-                    '400', '601', '602', '603', '604', '605', '606', '607', '721', '722', '723', '724', 'mtx601', 
+        expected = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '300', '301', '302', '303', '304',
+                    '400', '601', '602', '603', '604', '605', '606', '607', '721', '722', '723', '724', 'mtx601',
                     'mtx602', 'mtx603', 'mtx604', 'mtx605', 'mtx606', 'mtx607']
         actual = self.dss.linecodes_all_names()
         assert expected == actual
-    
+
 
 def truncate(num,n):
     # Return a truncated version of a floating point number
@@ -249,7 +249,7 @@ def truncate(num,n):
             try:
                 return float(temp[:x+n+1])
             except:
-                return float(temp)      
+                return float(temp)
     return float(temp)
 
 def format_matrix(expected_list):
@@ -267,7 +267,7 @@ def format_matrix(expected_list):
         else:
             matrix.append(expected_list[3])
             matrix.append(expected_list[4])
-            matrix.append(expected_list[5]) 
+            matrix.append(expected_list[5])
     return matrix
 
 def format_matrix_str(expected_list):

@@ -157,22 +157,60 @@ class TestLines13Bus:
         assert expected == actual
 
     def test_lines_read_r1(self):
-        expected = 0.058
+
+        self.dss.text("New linecode.Sequences nphases=3 "
+                      "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
+                      "c1=10.4308823411236  c0=4.48501282215346  "
+                      "units=km baseFreq=60 normamps=310  emergamps=310  "
+                      "faultrate=0.1 pctperm=20 repair=3")
+
+        self.dss.text("New line.MyLine linecode=Sequences length=1")
+        self.dss.lines_write_name('MyLine')
+
+        expected = 0.3489
         actual = self.dss.lines_read_r1()
         assert expected == actual
 
     def test_lines_write_r1(self):
+        # TODO issue with changing from liecodes
+        self.dss.text("New linecode.Sequences nphases=3 "
+                      "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
+                      "c1=10.4308823411236  c0=4.48501282215346  "
+                      "units=km baseFreq=60 normamps=310  emergamps=310  "
+                      "faultrate=0.1 pctperm=20 repair=3")
+
+        self.dss.text("New line.MyLine linecode=Sequences length=1")
+        self.dss.lines_write_name('MyLine')
+
         expected = 0.1
         self.dss.lines_write_r1(expected)
         actual = self.dss.lines_read_r1()
         assert expected == actual
 
     def test_lines_read_x1(self):
-        expected = 0.1206
+        self.dss.text("New linecode.Sequences nphases=3 "
+                      "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
+                      "c1=10.4308823411236  c0=4.48501282215346  "
+                      "units=km baseFreq=60 normamps=310  emergamps=310  "
+                      "faultrate=0.1 pctperm=20 repair=3")
+
+        self.dss.text("New line.MyLine linecode=Sequences length=1")
+        self.dss.lines_write_name('MyLine')
+
+        expected = 0.426198
         actual = self.dss.lines_read_x1()
         assert expected == actual
 
     def test_lines_write_x1(self):
+        self.dss.text("New linecode.Sequences nphases=3 "
+                      "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
+                      "c1=10.4308823411236  c0=4.48501282215346  "
+                      "units=km baseFreq=60 normamps=310  emergamps=310  "
+                      "faultrate=0.1 pctperm=20 repair=3")
+
+        self.dss.text("New line.MyLine linecode=Sequences length=1")
+        self.dss.lines_write_name('MyLine')
+
         expected = 0.12
         self.dss.lines_write_x1(expected)
         actual = self.dss.lines_read_x1()
