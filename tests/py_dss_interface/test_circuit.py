@@ -169,7 +169,7 @@ class TestCircuit13Bus:
         if platform.architecture()[0] == "64bit":
             expected = [112408.53740410128, 327911.6070437507]
             actual = self.dss.circuit_losses()
-            assert actual == expected
+            assert [round(value, 5) for value in actual] == [round(value, 5) for value in expected]
         else:
             assert 1 == 1
 
@@ -177,7 +177,7 @@ class TestCircuit13Bus:
         if platform.architecture()[0] == "64bit":
             expected = [106.50104684552127, 317.225075181265]
             actual = self.dss.circuit_line_losses()
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -190,7 +190,7 @@ class TestCircuit13Bus:
         if platform.architecture()[0] == "64bit":
             expected = [-3567.2130572232213, -1736.5876246039768]
             actual = self.dss.circuit_total_power()
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -224,7 +224,7 @@ class TestCircuit13Bus:
                         -1015.4001197194411,
                         2083.111559417907, 2345.3836609834, -221.6058883507038, -1009.5621391710984, 2080.528335732233]
             actual = self.dss.circuit_all_bus_volts()
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -243,7 +243,7 @@ class TestCircuit13Bus:
                         2411.831213881805, 2360.449280141501, 2498.516197081946, 2317.410445326153, 2355.829723676905,
                         2312.5340794532]
             actual = self.dss.circuit_all_bus_vmag()
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -291,7 +291,7 @@ class TestCircuit13Bus:
                         0.7998259198180458,
                         0.23087894134466477, 0.0, 0.0, 9.054620692040771e-06, 2.9103830456733704e-14]
             actual = self.dss.circuit_all_element_losses()
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -314,7 +314,7 @@ class TestCircuit13Bus:
                         0.9808694171609009,
                         0.9628429134248714]
             actual = self.dss.circuit_all_bus_vmag_pu()
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -776,7 +776,7 @@ class TestCircuit13Bus:
                         -2.407667691776556,
                         0.9993153679365236, 13.754563774366268, -13.264485462472015]
             actual = self.dss.circuit_system_y()
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -796,7 +796,7 @@ class TestCircuit13Bus:
                         1.40208, 1.55448, 0.8129016, 0.8129016, 0.8129016, 0.6096, 0.6096, 0.6096, 1.524, 1.524, 1.524,
                         1.31064, 1.31064]
             actual = self.dss.circuit_all_node_distances()
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -807,7 +807,7 @@ class TestCircuit13Bus:
                         2504.1765204055864,
                         2478.3265992504193, 2471.298754509891, 2498.516197081946]
             actual = self.dss.circuit_all_node_vmag_by_phase(2)
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -819,7 +819,7 @@ class TestCircuit13Bus:
                         1.042634847226807,
                         1.0318720162622879, 1.028945914301158, 1.0402781242499288]
             actual = self.dss.circuit_all_node_vmag_pu_by_phase(2)
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -828,7 +828,7 @@ class TestCircuit13Bus:
             expected = [0.0, 0.0, 0.0, 0.762, 0.762, 1.2192, 0.762, 0.85344, 1.2202, 1.3726, 1.40208, 0.8129016, 0.6096,
                         1.524, 1.31064]
             actual = self.dss.circuit_all_node_distances_by_phase(3)
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -869,7 +869,7 @@ class TestCircuit13Bus:
                         -2109.7992630653525, 2345.3836609834, -221.6058883507038, -1009.5621391710984,
                         2080.528335732233]
             actual = self.dss.circuit_y_node_varray()
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
 
@@ -901,6 +901,6 @@ class TestCircuit13Bus:
                         0.0,
                         0.0, 0.0, 0.0, 0.0]
             actual = self.dss.circuit_y_currents()
-            assert actual == expected
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
         else:
             assert 1 == 1
