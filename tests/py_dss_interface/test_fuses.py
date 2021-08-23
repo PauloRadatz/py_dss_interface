@@ -44,13 +44,13 @@ class TestFuses13Bus:
         assert expected == actual
 
     def test_fuses_close(self):
-        expected = 1
-        actual = self.dss.fuses_close()
+        expected = ['closed']
+        self.dss.fuses_close()
+        actual = self.dss.fuses_read_state()
         assert expected == actual
 
-    # TODO: why always return -1 ?
     def test_fuses_num_phases(self):
-        expected = -1
+        expected = 1
         actual = self.dss.fuses_num_phases()
         assert expected == actual
 
@@ -66,7 +66,7 @@ class TestFuses13Bus:
         assert expected == actual
 
     def test_fuses_read_switched_term(self):
-        expected = 0
+        expected = 1
         actual = self.dss.fuses_read_switched_term()
         assert expected == actual
 
@@ -81,7 +81,7 @@ class TestFuses13Bus:
         expected = 1
         actual = self.dss.fuses_read_idx()
         assert expected == actual
-        
+
     # TODO: not writing idx, always return 1
     def test_fuses_write_idx(self):
         expected = 2
@@ -138,9 +138,9 @@ class TestFuses13Bus:
         self.dss.fuses_write_rated_current(expected)
         actual = self.dss.fuses_read_rated_current()
         assert expected == actual
-    
+
     def test_fuses_read_delay(self):
-        expected = -1
+        expected = 0
         actual = self.dss.fuses_read_delay()
         assert expected == actual
 
