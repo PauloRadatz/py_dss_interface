@@ -56,4 +56,4 @@ class LoadShapesV(Base):
         t = Text(self.dss_obj)
         ls = LoadShapesS(self.dss_obj)
         ls_name = ls.loadshapes_read_name()
-        return t.text(f'edit LoadShape.{ls_name} npts = {argument}')
+        return t.text(f'edit LoadShape.{ls_name} hour = {argument}')
