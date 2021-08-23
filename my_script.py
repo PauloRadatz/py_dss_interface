@@ -3,7 +3,8 @@ import py_dss_interface
 import pathlib
 import os
 # Creates an OpenDSS object
-dss = py_dss_interface.DSSDLL()
+dss = py_dss_interface.DSSDLL("C:\OpenDSS_svn\Version8\Source")
+# dss = py_dss_interface.DSSDLL(r"C:\Program Files\OpenDSS")
 
 # If specific DLL Version, use this line below
 # dss = py_dss_interface.DSSDLL(dll_folder_param=r"C:\Users\eniocc\Downloads\py_dss_interface-master\src"
@@ -20,6 +21,13 @@ overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.circuit_name(
 # dss.text('export overloads')
 dss.text("? Load.611.kw")
 dss.solution_solve()
+
+dss.lines_write_name('650632')
+
+dss.linecodes_write_name('1')
+expected = 1.0
+dss.linecodes_write_c1(expected)
+dss.linecodes_read_c1()
 
 dss.loadshapes_first()
 dss.loadshapes_read_p_mult()
