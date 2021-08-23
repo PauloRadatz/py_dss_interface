@@ -26,13 +26,13 @@ class LoadShapesF(Base):
 
     def loadshapes_write_hr_interval(self, argument: float) -> float:
         """Sets the fixed interval time value, hours."""
-        # argument = Base.check_float_param(argument)
-        # return float(self.dss_obj.LoadShapeI(ctypes.c_int32(1), ctypes.c_double(argument)))
         argument = Base.check_float_param(argument)
-        t = Text(self.dss_obj)
-        lc = LoadShapesS.LoadShapesS(self.dss_obj)
-        lc_name = lc.loadshapes_read_name()
-        return t.text(f'edit LoadShape.{lc_name} hour = {argument}')
+        return float(self.dss_obj.LoadShapeF(ctypes.c_int32(1), ctypes.c_double(argument)))
+        # argument = Base.check_float_param(argument)
+        # t = Text(self.dss_obj)
+        # lc = LoadShapesS.LoadShapesS(self.dss_obj)
+        # lc_name = lc.loadshapes_read_name()
+        # return t.text(f'edit LoadShape.{lc_name} hour = {argument}')
 
     def loadshapes_read_min_interval(self) -> float:
         """Gets the fixed interval time value, in minutes."""
@@ -41,7 +41,7 @@ class LoadShapesF(Base):
     def loadshapes_write_min_interval(self, argument: float) -> float:
         """Sets the fixed interval time value, in minutes."""
         argument = Base.check_float_param(argument)
-        return float(self.dss_obj.LoadShapeI(ctypes.c_int32(3), ctypes.c_double(argument)))
+        return float(self.dss_obj.LoadShapeF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
     def loadshapes_read_p_base(self) -> float:
         """Gets the base for normalizing P curve. If left at zero, the peak value is used."""
@@ -50,7 +50,7 @@ class LoadShapesF(Base):
     def loadshapes_write_p_base(self, argument: float) -> float:
         """Sets the base for normalizing P curve. If left at zero, the peak value is used."""
         argument = Base.check_float_param(argument)
-        return float(self.dss_obj.LoadShapeI(ctypes.c_int32(5), ctypes.c_double(argument)))
+        return float(self.dss_obj.LoadShapeF(ctypes.c_int32(5), ctypes.c_double(argument)))
 
     def loadshapes_read_q_base(self) -> float:
         """Gets the base for normalizing Q curve. If left at zero, the peak value is used."""
@@ -59,7 +59,7 @@ class LoadShapesF(Base):
     def loadshapes_write_q_base(self, argument: float) -> float:
         """Sets the base for normalizing Q curve. If left at zero, the peak value is used."""
         argument = Base.check_float_param(argument)
-        return float(self.dss_obj.LoadShapeI(ctypes.c_int32(7), ctypes.c_double(argument)))
+        return float(self.dss_obj.LoadShapeF(ctypes.c_int32(7), ctypes.c_double(argument)))
 
     def loadshapes_read_s_interval(self) -> float:
         """Gets the fixed interval data time interval, seconds."""
