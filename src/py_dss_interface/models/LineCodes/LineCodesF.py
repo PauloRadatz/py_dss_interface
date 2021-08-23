@@ -61,11 +61,11 @@ class LineCodesF(Base):
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(7), ctypes.c_double(argument)))
 
     def linecodes_read_c1(self) -> float:
-        """Gets the Positive-sequence capacitance in ohms per unit length for the active LineCode."""
+        """Gets the Positive-sequence capacitance in nF per unit length for the active LineCode."""
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(8), ctypes.c_double(0)))
 
     def linecodes_write_c1(self, argument: float) -> float:
-        """Sets the Positive-sequence capacitance in ohms per unit length for the active LineCode.
+        """Sets the Positive-sequence capacitance in nF per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LineCodesF(ctypes.c_int32(9), ctypes.c_double(argument)))
