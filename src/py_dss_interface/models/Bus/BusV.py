@@ -23,7 +23,6 @@ class BusV(Base):
         """Returns a complex array of voltages at this bus."""
         return Bridge.var_array_function(self.dss_obj.BUSV, 0, None, '')
 
-    # TODO: Paulo - https://github.com/PauloRadatz/py_dss_interface/issues/17
     def bus_seq_voltages(self):
         """Returns a complex array of Sequence voltages at this bus."""
         return Bridge.var_array_function(self.dss_obj.BUSV, 1, None, '')
@@ -60,7 +59,7 @@ class BusV(Base):
         """Returns the complex array of Ysc matrix at bus, column by column."""
         return Bridge.var_array_function(self.dss_obj.BUSV, 9, None, '')
 
-    def bus_sequence_voltages(self):
+    def bus_cplx_sequence_voltages(self):
         """Returns the complex double array of sequence voltages (0, 1, 2) at this bus."""
         return Bridge.var_array_function(self.dss_obj.BUSV, 10, None, '')
 

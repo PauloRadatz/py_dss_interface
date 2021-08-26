@@ -81,11 +81,11 @@ class TestBus13Bus:
         actual = self.dss.bus_distance()
         assert actual == expected
 
-    def test_bus_accumulated_failure_rate(self):
+    def test_bus_lambda(self):
         self.dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
         self.dss.text("Relcalc restore=n")
         expected = 10
-        actual = self.dss.bus_accumulated_failure_rate()
+        actual = self.dss.bus_lambda()
         assert actual == expected
 
     def test_bus_interruptions_num(self):
@@ -234,10 +234,10 @@ class TestBus13Bus:
             assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
 
 
-    def test_bus_sequence_voltages(self):
+    def test_bus_cplx_sequence_voltages(self):
         if platform.architecture()[0] == "64bit":
             expected = [-1.244403511636449, -82.59116260128519, 2386.0476296014167, -162.49099388261294, -34.730534726534245, 23.99642413931997]
-            actual = self.dss.bus_sequence_voltages()
+            actual = self.dss.bus_cplx_sequence_voltages()
             assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
 
 
