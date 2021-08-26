@@ -50,7 +50,6 @@ class LoadShapesV(Base):
         """Gets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
         return Bridge.var_array_function(self.dss_obj.LoadShapeV, ctypes.c_int(5), ctypes.c_int(0), None)
 
-    # TODO: Paulo - https://github.com/PauloRadatz/py_dss_interface/issues/13
     def loadshapes_write_time_array(self, argument):
         """Sets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
         t = Text(self.dss_obj)

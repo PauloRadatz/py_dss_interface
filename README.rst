@@ -70,21 +70,17 @@ Documentation
 =============
 You can access the documentation through:
 
-1 - The Read the Docs (the only problem is that it could not generate the doc using the docstring from the DSSDLL class. This class uses ctypes in a way that just works with Windows, but the Read the Docs uses linux to create it - Any help would be great!)
+1 - The Read the Docs.
 
 https://py_dss_interface.readthedocs.io/
 
-2 - Well, there is a solution (I hate it, but works), you can download the docs created offline and open that in your browser.
-
-https://github.com/PauloRadatz/py_dss_interface/tree/master/docs/my_doc
-
-3 - Another good resource is the OpenDSS_Direct_DLL.pdf doc created by Davis Montenegro. The package has been done based on this documentation.
+2 - Another good resource is the OpenDSS_Direct_DLL.pdf doc created by Davis Montenegro. The package has been done based on this documentation.
 
 https://sourceforge.net/p/electricdss/code/HEAD/tree/trunk/Version8/Distrib/Doc/OpenDSS_Direct_DLL.pdf
 
 
 Thanks
 =============
-Thanks to Celso Rocha for starting the main script with me back in 2016/2017.
+I want to thank Ênio Viana and Rodolfo Pilar Londero for all their contribution to the new version of the tool.
 
 

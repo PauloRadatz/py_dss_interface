@@ -17,6 +17,7 @@ include *.py
 include *.dss
 recursive-include src\py_dss_interface\DDLL *.dll
 recursive-include src\py_dss_interface\DDLL *.exe
+recursive-include src\py_dss_interface\DDLL *.so
 recursive-include tests\py_dss_interface\DDLL *.dll
 recursive-include tests\py_dss_interface\DDLL *.exe
 

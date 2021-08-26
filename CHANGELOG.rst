@@ -2,6 +2,14 @@
 Changelog
 =========
 
+1.0.0 (2021-01-21)
+------------------
+
+* Code refactored
+* Works on Linux version of OpenDSS provided in the package. This version is from 2020.
+* Tests included
+* Methods renamed to satisfy PEP 8 -- Style Guide for Python Code
+
 0.1.0 (2021-01-21)
 ------------------
 
