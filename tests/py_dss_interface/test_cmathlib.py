@@ -21,7 +21,7 @@ class TestCMathLib13Bus:
     # ===================================================================
     def test_cmathlib_cabs(self):
         real, imag = -3, 4
-        expected = (real**2 + imag**2)**0.5
+        expected = (real ** 2 + imag ** 2) ** 0.5
         actual = self.dss.cmathlib_cabs(real, imag)
         assert expected == actual
 
