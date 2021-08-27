@@ -7,8 +7,6 @@
 
 
 import pytest
-import platform
-import os
 
 
 class TestDSSInterface13Bus:
@@ -101,8 +99,14 @@ class TestDSSInterface13Bus:
     # Variant methods
     # ===================================================================
     def test_dss_classes(self):
-        expected = ['Solution', 'LineCode', 'LoadShape', 'TShape', 'PriceShape', 'XYcurve', 'GrowthShape', 'TCC_Curve', 'Spectrum', 'WireData', 'CNData', 'TSData', 'LineGeometry', 'LineSpacing', 'XfmrCode', 'Line', 'Vsource', 'Isource', 'VCCS', 'Load', 'Transformer', 'RegControl', 'Capacitor', 'Reactor', 'CapControl', 'Fault', 'Generator',
-                    'WindGen', 'GenDispatcher', 'Storage', 'StorageController', 'Relay', 'Recloser', 'Fuse', 'SwtControl', 'PVSystem', 'UPFC', 'UPFCControl', 'ESPVLControl', 'IndMach012', 'GICsource', 'AutoTrans', 'InvControl', 'ExpControl', 'GICLine', 'GICTransformer', 'VSConverter', 'Monitor', 'EnergyMeter', 'Sensor', 'FMonitor', 'Generic5']
+        expected = ['Solution', 'LineCode', 'LoadShape', 'TShape', 'PriceShape', 'XYcurve', 'GrowthShape', 'TCC_Curve',
+                    'Spectrum', 'WireData', 'CNData', 'TSData', 'LineGeometry', 'LineSpacing', 'XfmrCode', 'Line',
+                    'Vsource', 'Isource', 'VCCS', 'Load', 'Transformer', 'RegControl', 'Capacitor', 'Reactor',
+                    'CapControl', 'Fault', 'Generator',
+                    'WindGen', 'GenDispatcher', 'Storage', 'StorageController', 'Relay', 'Recloser', 'Fuse',
+                    'SwtControl', 'PVSystem', 'UPFC', 'UPFCControl', 'ESPVLControl', 'IndMach012', 'GICsource',
+                    'AutoTrans', 'InvControl', 'ExpControl', 'GICLine', 'GICTransformer', 'VSConverter', 'Monitor',
+                    'EnergyMeter', 'Sensor', 'FMonitor', 'Generic5']
         actual = self.dss.dss_classes()
         assert expected == actual
 
