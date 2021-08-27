@@ -93,18 +93,18 @@ class TestCapControls13Bus:
         expected = 'CAPBank2C'.lower()
         actual = self.dss.cap_controls_read_capacitor()
         assert expected == actual
-        
+
     def test_cap_controls_write_capacitor(self):
         expected = 'CAPBank2B'.lower()
         self.dss.cap_controls_write_capacitor(expected)
         actual = self.dss.cap_controls_read_capacitor()
         assert expected == actual
-        
+
     def test_cap_controls_read_monitored_obj(self):
         expected = 'line.670671'
         actual = self.dss.cap_controls_read_monitored_obj()
         assert expected == actual
-        
+
     def test_cap_controls_write_monitored_obj(self):
         expected = 'line.671680'
         self.dss.cap_controls_write_monitored_obj(expected)
@@ -135,7 +135,7 @@ class TestCapControls13Bus:
         self.dss.cap_controls_write_pt_ratio(expected)
         actual = self.dss.cap_controls_read_pt_ratio()
         assert expected == actual
-        
+
     def test_cap_controls_read_on_setting(self):
         expected = 150.0
         actual = self.dss.cap_controls_read_on_setting()
