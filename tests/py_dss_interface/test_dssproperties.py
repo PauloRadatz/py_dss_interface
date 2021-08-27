@@ -6,7 +6,6 @@
 # @Software: PyCharm
 
 import pytest
-import platform
 
 
 class TestBus13DSSProperties:
@@ -26,7 +25,7 @@ class TestBus13DSSProperties:
         assert actual == expected
 
     def test_dssproperties_description(self):
-        expected = 'Length of line. Default is 1.0. If units do not match the impedance data, specify "units" property. '
+        expected = 'Length of line. Default is 1.0. If units do not match the impedance data, specify "units" property.'
         actual = self.dss.dssproperties_description("4")
         assert actual == expected
 
@@ -36,7 +35,5 @@ class TestBus13DSSProperties:
         assert actual == expected
 
     def test_dssproperties_write_value(self):
-        #todo
+        # todo
         pass
-
-
