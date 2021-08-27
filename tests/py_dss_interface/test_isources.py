@@ -71,5 +71,3 @@ class TestBus13ISources:
         self.dss.isources_write_frequency(expected)
         actual = self.dss.isources_read_frequency()
         assert actual == expected
-
-
