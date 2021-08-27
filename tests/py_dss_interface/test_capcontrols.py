@@ -7,7 +7,6 @@
 
 
 import pytest
-import platform
 
 
 class TestCapControls13Bus:
@@ -18,9 +17,12 @@ class TestCapControls13Bus:
         self.dss.text("New Capacitor.CAPBank2A  Bus1=670.1  kv=2.4  kvar=300  phases=1 conn=wye")
         self.dss.text("New Capacitor.CAPBank2B  Bus1=670.2  kv=2.4  kvar=300  phases=1 conn=wye")
         self.dss.text("New Capacitor.CAPBank2C  Bus1=670.3  kv=2.4  kvar=300  phases=1 conn=wye")
-        self.dss.text("New CapControl.CAPBank2A_Ctrl Capacitor=CAPBank2A element=line.670671   terminal=1 type=kvar ptratio=1 ctratio=1 ONsetting=150 OFFsetting=-225 VoltOverride=Y Vmin=7110 Vmax=7740 Delay=100 Delayoff=100")
-        self.dss.text("New CapControl.CAPBank2B_Ctrl Capacitor=CAPBank2B element=line.670671  terminal=1 type=kvar ptratio=1 ctratio=1 ONsetting=150 OFFsetting=-225 VoltOverride=Y Vmin=7110 Vmax=7740 Delay=101 Delayoff=101")
-        self.dss.text("New CapControl.CAPBank2C_Ctrl Capacitor=CAPBank2C element=line.670671  terminal=1 type=kvar ptratio=1 ctratio=1 ONsetting=150 OFFsetting=-225 VoltOverride=Y Vmin=7110 Vmax=7740 Delay=102 Delayoff=102")
+        self.dss.text(
+            "New CapControl.CAPBank2A_Ctrl Capacitor=CAPBank2A element=line.670671   terminal=1 type=kvar ptratio=1 ctratio=1 ONsetting=150 OFFsetting=-225 VoltOverride=Y Vmin=7110 Vmax=7740 Delay=100 Delayoff=100")
+        self.dss.text(
+            "New CapControl.CAPBank2B_Ctrl Capacitor=CAPBank2B element=line.670671  terminal=1 type=kvar ptratio=1 ctratio=1 ONsetting=150 OFFsetting=-225 VoltOverride=Y Vmin=7110 Vmax=7740 Delay=101 Delayoff=101")
+        self.dss.text(
+            "New CapControl.CAPBank2C_Ctrl Capacitor=CAPBank2C element=line.670671  terminal=1 type=kvar ptratio=1 ctratio=1 ONsetting=150 OFFsetting=-225 VoltOverride=Y Vmin=7110 Vmax=7740 Delay=102 Delayoff=102")
         self.dss.solution_solve()
 
     # ===================================================================

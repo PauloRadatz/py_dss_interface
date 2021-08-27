@@ -7,7 +7,6 @@
 
 
 import pytest
-import platform
 
 
 class TestActiveClass13Bus:
@@ -69,6 +68,7 @@ class TestActiveClass13Bus:
     # Variant methods
     # ===================================================================
     def test_active_class_all_names(self):
-        expected = ['650632', '632670', '670671', '671680', '632633', '632645', '645646', '692675', '671684', '684611', '684652', '671692']
+        expected = ['650632', '632670', '670671', '671680', '632633', '632645', '645646', '692675', '671684', '684611',
+                    '684652', '671692']
         actual = self.dss.active_class_all_names()
         assert expected == actual

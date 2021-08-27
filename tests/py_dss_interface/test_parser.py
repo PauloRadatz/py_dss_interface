@@ -7,7 +7,7 @@
 
 
 import pytest
-import platform
+
 
 # TODO: Error in all tests
 
