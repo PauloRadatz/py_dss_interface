@@ -6,7 +6,6 @@
 # @Software: PyCharm
 
 import pytest
-import platform
 
 
 class TestBus13DSSProperties:
@@ -36,7 +35,5 @@ class TestBus13DSSProperties:
         assert actual == expected
 
     def test_dssproperties_write_value(self):
-        #todo
+        # todo
         pass
-
-
