@@ -6,7 +6,6 @@
 # @Software: PyCharm
 
 import pytest
-import platform
 
 
 class TestBus13CtrlQueue:
@@ -20,7 +19,6 @@ class TestBus13CtrlQueue:
         self.dss.solution_sample_control_devices()
 
     def test_ctrlqueue_ctrlqueue(self):
-
         actual_0 = self.dss.ctrlqueue_ctrlqueue()[0]
         actual_1 = self.dss.ctrlqueue_ctrlqueue()[1]
         actual_2 = self.dss.ctrlqueue_ctrlqueue()[2]
@@ -66,18 +64,18 @@ class TestBus13CtrlQueue:
 
     def test_ctrlqueue_num_actions(self):
         pass
-        # todo
+        # TODO
         # expected = 3
         # actual = self.dss.ctrlqueue_num_actions()
         # assert actual == expected
 
     def test_ctrlqueue_action(self):
-        #todo
+        # TODO
         pass
         # self.dss.ctrlqueue_action()
 
     def test_ctrlqueue_action_code(self):
-        #todo
+        # TODO
         pass
         # self.dss.ctrlqueue_action_code()
 
@@ -91,7 +89,7 @@ class TestBus13CtrlQueue:
         assert actual == expected
 
     def test_ctrlqueue_pop_action(self):
-        #todo
+        # TODO
         pass
         # self.dss.ctrlqueue_pop_action()
 
@@ -107,8 +105,3 @@ class TestBus13CtrlQueue:
 
     def test_ctrlqueue_clear_actions(self):
         pass
-
-
-
-
-

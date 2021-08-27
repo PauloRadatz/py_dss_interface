@@ -7,7 +7,6 @@
 
 
 import pytest
-import platform
 
 
 class TestMeters13Bus:
@@ -91,11 +90,6 @@ class TestMeters13Bus:
     def test_meters_close_all_di_files(self):
         expected = 0
         actual = self.dss.meters_close_all_di_files()
-        assert expected == actual
-
-    def test_meters_count_end_elements(self):
-        expected = 3
-        actual = self.dss.meters_count_end_elements()
         assert expected == actual
 
     def test_meters_read_sequence_index(self):

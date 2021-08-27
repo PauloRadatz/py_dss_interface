@@ -28,10 +28,11 @@ class TestDSSInterface13Bus:
         actual = self.dss.dss_clear_all()
         assert expected == actual
 
-    def test_dss_show_panel(self):
-        expected = 0
-        actual = self.dss.dss_show_panel()
-        assert expected == actual
+    # Todo we might not need this one here.
+    # def test_dss_show_panel(self):
+    #     expected = 0
+    #     actual = self.dss.dss_show_panel()
+    #     assert expected == actual
 
     def test_dss_start(self):
         expected = 1
@@ -68,10 +69,11 @@ class TestDSSInterface13Bus:
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_dss_new_circuit(self):
-        expected = 'New Circuit'
-        actual = self.dss.dss_new_circuit('new_rest_circuit')
-        assert expected == actual
+    # TODO check it later
+    # def test_dss_new_circuit(self):
+    #     expected = 'New Circuit'
+    #     actual = self.dss.dss_new_circuit('new_rest_circuit')
+    #     assert expected == actual
 
     def test_dss_version(self):
         expected = 'Version 9.3.0.1 (64-bit build); License Status: Open '

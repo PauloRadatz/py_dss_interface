@@ -3,7 +3,7 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
-
+import numpy as np
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
@@ -45,5 +45,7 @@ class MonitorsV(Base):
     def monitors_channel(self, argument) -> str:
         """Returns a variant array of doubles for the specified channel (usage: MyArray = DSSmonitor. Channel(i)) A
         save or SaveAll should be executed first. Done automatically by most standard solution modes. """
-        argument = Base.check_int_param(argument)
-        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(5), ctypes.c_int(argument), None)
+        r = np.array(self.monitors_byte_stream())
+        r = np.reshape(r, (len(self.monitors_dbl_hour()), len(self.monitors_header()) + 2))
+        # return r[:, [0, 1, argument+1]]
+        return list(r[:, argument+1])
