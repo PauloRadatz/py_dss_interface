@@ -42,9 +42,10 @@ class MonitorsV(Base):
         mode solutions (use dblHour). """
         return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(4), ctypes.c_int(0), None)
 
-    # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/16
     def monitors_channel(self, argument) -> str:
         """Returns a variant array of doubles for the specified channel (usage: MyArray = DSSmonitor. Channel(i)) A
         save or SaveAll should be executed first. Done automatically by most standard solution modes. """
-        argument = Base.check_string_param(argument)
-        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(5), argument, None)
+        import numpy as np
+        r = np.array(self.monitors_byte_stream())
+        r = np.reshape(r, (len(self.monitors_dbl_hour()), len(self.monitors_header()) + 2))
+        return r[:, [0, 1, argument+1]]
