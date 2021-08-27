@@ -265,9 +265,10 @@ class TestMonitors13Bus:
         assert expected == actual
 
     def test_monitors_channel(self):
-        expected = [261.018, 260.978, 260.775, 260.407, 260.162, 260.081, 259.103, 256.777, 254.23, 254.23, 253.965,
-                    253.889, 255.916, 255.26, 254.23, 254.572, 254.61, 256.935, 258.493, 259.062, 259.632, 260.122,
-                    260.612, 260.816]
-        self.dss.monitors_save_all()
+        expected = [2421.03, 2421.12, 2421.59, 2422.46, 2423.02, 2423.22, 2425.52, 2431.14, 2437.59, 2437.59, 2438.28,
+                    2438.47, 2433.29, 2434.94, 2437.58, 2436.71, 2436.61, 2430.76, 2427, 2425.64, 2424.29, 2423.14,
+                    2421.99, 2421.52]
+        # self.dss.monitors_save_all()
         actual = self.dss.monitors_channel(1)
-        assert expected == actual
+        assert [round(value, 2) for value in actual] == [round(value, 2) for value in expected]
+
