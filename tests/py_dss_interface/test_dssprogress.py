@@ -7,8 +7,6 @@
 
 
 import pytest
-import platform
-import os
 
 
 class TestDSSProgress13Bus:

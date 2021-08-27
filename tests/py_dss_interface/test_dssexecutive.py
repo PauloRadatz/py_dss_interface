@@ -7,7 +7,6 @@
 
 
 import pytest
-import platform
 
 
 class TestDSSExecutive13Bus:

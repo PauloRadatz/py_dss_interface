@@ -6,9 +6,8 @@
 # @Software: PyCharm
 
 
-import pytest
-import platform
 import math
+import pytest
 
 
 class TestCMathLib13Bus:
