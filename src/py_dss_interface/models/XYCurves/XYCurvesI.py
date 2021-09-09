@@ -20,21 +20,21 @@ class XYCurvesI(Base):
 
     def xycurves_count(self) -> int:
         """Gets number of XYCurves in active circuit."""
-        return self.dss_obj.XYCurveI(ctypes.c_int32(0), ctypes.c_int32(0))
+        return self.dss_obj.XYCurvesI(ctypes.c_int32(0), ctypes.c_int32(0))
 
     def xycurves_first(self) -> int:
         """Sets first XYCurves object active; returns 0 if none."""
-        return self.dss_obj.XYCurveI(ctypes.c_int32(1), ctypes.c_int32(0))
+        return self.dss_obj.XYCurvesI(ctypes.c_int32(1), ctypes.c_int32(0))
 
     def xycurves_next(self) -> int:
         """Sets next XYCurves object active; returns 0 if none."""
-        return self.dss_obj.XYCurveI(ctypes.c_int32(2), ctypes.c_int32(0))
+        return self.dss_obj.XYCurvesI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def xycurves_read_npts(self) -> int:
         """Gets the number of points in X-Y curve."""
-        return self.dss_obj.XYCurveI(ctypes.c_int32(3), ctypes.c_int32(0))
+        return self.dss_obj.XYCurvesI(ctypes.c_int32(3), ctypes.c_int32(0))
 
     def xycurves_write_npts(self, argument) -> int:
         """Sets the number of points in X-Y curve."""
         argument = Base.check_int_param(argument)
-        return self.dss_obj.XYCurveI(ctypes.c_int32(4), ctypes.c_int32(argument))
+        return self.dss_obj.XYCurvesI(ctypes.c_int32(4), ctypes.c_int32(argument))
