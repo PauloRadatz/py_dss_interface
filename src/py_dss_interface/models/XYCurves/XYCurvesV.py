@@ -21,11 +21,11 @@ class XYCurvesV(Base):
     which can be one of the following.
     """
 
-    def read_x_array(self):
+    def xycurves_read_x_array(self):
         """Gets the X values as a variant array of doubles. Set Npts to max number expected if setting."""
         return Bridge.var_array_function(self.dss_obj.XYCurvesV, ctypes.c_int(0), ctypes.c_int(0), None)
 
-    def write_x_array(self, argument):
+    def xycurves_write_x_array(self, argument):
         """Sets the X values as a variant array of doubles specified in Argument. Set Npts to max number expected
         if setting."""
         argument = Base.check_string_param(argument)
@@ -34,11 +34,11 @@ class XYCurvesV(Base):
         xyc_name = xyc.read_name()
         return t.text(f'edit XYCurve.{xyc_name} Xarray = {argument}')
 
-    def read_y_array(self):
+    def xycurves_read_y_array(self):
         """Gets the Y values as a variant array of doubles. Set Npts to max number expected if setting.."""
         return Bridge.var_array_function(self.dss_obj.XYCurvesV, ctypes.c_int(2), ctypes.c_int(0), None)
 
-    def write_y_array(self, argument):
+    def xycurves_write_y_array(self, argument):
         """Sets the Y values as a variant array of doubles specified in Argument. Set Npts to max number expected
         if setting."""
         argument = Base.check_string_param(argument)
