@@ -5,7 +5,6 @@
 # @File     : test_settings.py
 # @Software : VSCode
 
-import os
 import pytest
 
 
