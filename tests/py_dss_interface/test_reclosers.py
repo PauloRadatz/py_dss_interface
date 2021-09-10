@@ -5,7 +5,6 @@
 # @File     : test_reclosers.py
 # @Software : VSCode
 
-import os
 import pytest
 
 

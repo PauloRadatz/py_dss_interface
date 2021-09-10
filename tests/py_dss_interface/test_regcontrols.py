@@ -5,7 +5,6 @@
 # @File     : test_regcontrols.py
 # @Software : VSCode
 
-import os
 import pytest
 
 
