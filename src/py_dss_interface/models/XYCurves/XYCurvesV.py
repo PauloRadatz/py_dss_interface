@@ -31,7 +31,7 @@ class XYCurvesV(Base):
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
         xyc = XYCurvesS(self.dss_obj)
-        xyc_name = xyc.read_name()
+        xyc_name = xyc.xycurves_read_name()
         return t.text(f'edit XYCurve.{xyc_name} Xarray = {argument}')
 
     def xycurves_read_y_array(self):
@@ -44,7 +44,7 @@ class XYCurvesV(Base):
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
         xyc = XYCurvesS(self.dss_obj)
-        xyc_name = xyc.read_name()
+        xyc_name = xyc.xycurves_read_name()
         return t.text(f'edit XYCurve.{xyc_name} Yarray = {argument}')
 
         # variant_pointer = ctypes.pointer(automation.VARIANT())

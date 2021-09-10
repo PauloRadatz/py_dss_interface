@@ -5,7 +5,6 @@
 # @File     : test_text.py
 # @Software : VSCode
 
-import os
 import pytest
 
 
