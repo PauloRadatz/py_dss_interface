@@ -178,7 +178,7 @@ class TestTransformers13Bus:
         expected = 8e-3
         self.dss.transformers_write_xhl(expected)
         actual = self.dss.transformers_read_xhl()
-        assert expected == actual * 100
+        assert expected == actual
 
     def test_transformers_read_xht(self):
         expected = 0.04
@@ -189,7 +189,7 @@ class TestTransformers13Bus:
         expected = 0.5
         self.dss.transformers_write_xht(expected)
         actual = self.dss.transformers_read_xht()
-        assert expected == actual * 100
+        assert expected == actual
 
     def test_transformers_read_xlt(self):
         expected = 0.04
@@ -200,7 +200,7 @@ class TestTransformers13Bus:
         expected = 0.5
         self.dss.transformers_write_xlt(expected)
         actual = self.dss.transformers_read_xlt()
-        assert expected == actual * 100
+        assert expected == actual
 
     # ===================================================================
     # String methods
