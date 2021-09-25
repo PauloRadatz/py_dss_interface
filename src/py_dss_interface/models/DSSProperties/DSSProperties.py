@@ -45,7 +45,7 @@ class DSSProperties(Base):
         if to_int < 1:
             return "ERROR: The value must be greater than 1!"
         result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(2), argument.encode('ascii')))
-        return result.value.decode('ascii')
+        return result.decode('ascii')
 
     def dssproperties_write_value(self, argument: str) -> str:
         """This parameter will allow to set the value of the active property. The new value must be specified in the
