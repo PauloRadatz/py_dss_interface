@@ -92,11 +92,6 @@ class TestMeters13Bus:
         actual = self.dss.meters_close_all_di_files()
         assert expected == actual
 
-    def test_meters_count_end_elements(self):
-        expected = 3
-        actual = self.dss.meters_count_end_elements()
-        assert expected == actual
-
     def test_meters_read_sequence_index(self):
         expected = 1
         actual = self.dss.meters_read_sequence_index()

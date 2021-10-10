@@ -59,6 +59,15 @@ class PVSystemsF(Base):
         """Gets the Pmpp."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(9), ctypes.c_double(0)))
 
-    def pvsystems_read_kv(self) -> float:
-        """Gets the kV."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(11), ctypes.c_double(0)))
+    def pvsystems_write_pmpp(self, argument) -> float:
+        """Sets the Pmpp."""
+        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(10), ctypes.c_double(argument)))
+
+    # TODO there are not those guys in the DLL
+    # def pvsystems_read_kv(self) -> float:
+    #     """Gets the kV."""
+    #     return float(self.dss_obj.PVsystemsF(ctypes.c_int32(11), ctypes.c_double(0)))
+    #
+    # def pvsystems_write_kv(self, argument) -> float:
+    #     """Sets the kV."""
+    #     return float(self.dss_obj.PVsystemsF(ctypes.c_int32(12), ctypes.c_double(argument)))
