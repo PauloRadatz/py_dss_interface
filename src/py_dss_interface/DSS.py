@@ -54,13 +54,6 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
             self.dll_file_path = os.path.join(self.dll_path, dll_by_user)
             self.dss_obj = ctypes.cdll.LoadLibrary(self.dll_file_path)
             self.started = True
-        # elif dll_folder_param is None and dll_by_user is not None:
-        #     print("To specific a dll you MUST define the base folder")
-        #     exit()
-        elif dll_folder_param is not None and dll_by_user is None:
-            print("Please specify a DLL in the defined folder.")
-            exit()
-
         if self.started:
             self.load_json()
             self._allocate_memory()
@@ -75,14 +68,12 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
             print("An error occur!")
             exit()
 
-
     def check_started(self):
-        if int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0))) == 1:
-            # TODO: Need refactor this call to use a method that already exists
-            self.my_dss_version = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(1), "".encode('ascii')))
-            return True
-        else:
+        if int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0))) != 1:
             return False
+        # TODO: Need refactor this call to use a method that already exists
+        self.my_dss_version = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(1), "".encode('ascii')))
+        return True
 
     def load_json(self):
         dir_path = os.path.dirname(os.path.realpath(__file__))

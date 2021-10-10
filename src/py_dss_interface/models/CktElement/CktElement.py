@@ -2,9 +2,9 @@
 """
  Created by eniocc at 11/10/2020
 """
+from py_dss_interface.models.CktElement.CktElementF import CktElementF
 from py_dss_interface.models.CktElement.CktElementI import CktElementI
 from py_dss_interface.models.CktElement.CktElementS import CktElementS
-from py_dss_interface.models.CktElement.CktElementF import CktElementF
 from py_dss_interface.models.CktElement.CktElementV import CktElementV
 
 

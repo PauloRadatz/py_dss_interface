@@ -24,5 +24,4 @@ class ActiveClassV(Base):
 
     def active_class_all_names(self) -> List[str]:
         """Gets a variant array of strings consisting of all element names in the active Class."""
-        aqui = Bridge.var_array_function(self.dss_obj.ActiveClassV, 0, None, '')
-        return aqui
+        return Bridge.var_array_function(self.dss_obj.ActiveClassV, 0, None, '')

@@ -3,8 +3,8 @@
  Created by Ênio Viana at 20/06/2021 at 15:02:12
  Project: py_dss_interface [jun, 2021]
 """
-import pathlib
 import json
+import pathlib
 
 from py_dss_interface import DSSDLL as DSS
 

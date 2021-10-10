@@ -6,7 +6,7 @@
 # @Software: PyCharm
 
 import pytest
-import platform
+
 
 class TestLineCodes13Bus:
 
@@ -171,7 +171,8 @@ class TestLineCodes13Bus:
     # Variant methods
     # ===================================================================
     def test_linecodes_read_rmatrix(self):
-        expected = [0.086666667, 0.029545455, 0.02907197, 0.029545455, 0.088371212, 0.029924242, 0.02907197, 0.029924242, 0.08740530]
+        expected = [0.086666667, 0.029545455, 0.02907197, 0.029545455, 0.088371212, 0.029924242, 0.02907197,
+                    0.029924242, 0.08740530]
         expected = [truncate(x, 6) for x in expected]
         actual = self.dss.linecodes_read_rmatrix()
         actual = [truncate(x, 6) for x in actual]
@@ -185,13 +186,14 @@ class TestLineCodes13Bus:
         self.dss.linecodes_write_rmatrix(expected_str)
         actual = self.dss.linecodes_read_rmatrix()
 
-        actual   = [truncate(x, 6) for x in actual]
+        actual = [truncate(x, 6) for x in actual]
         expected = [truncate(x, 6) for x in expected]
 
         assert expected == actual
 
     def test_linecodes_read_xmatrix(self):
-        expected = [0.20416667, 0.09501894, 0.07289773, 0.09501894, 0.19852273, 0.08022727, 0.07289773, 0.08022727, 0.20172349]
+        expected = [0.20416667, 0.09501894, 0.07289773, 0.09501894, 0.19852273, 0.08022727, 0.07289773, 0.08022727,
+                    0.20172349]
         expected = [truncate(x, 6) for x in expected]
 
         actual = self.dss.linecodes_read_xmatrix()
@@ -207,16 +209,17 @@ class TestLineCodes13Bus:
         self.dss.linecodes_write_xmatrix(expected_str)
         actual = self.dss.linecodes_read_xmatrix()
 
-        actual   = [truncate(x, 9) for x in actual]
+        actual = [truncate(x, 9) for x in actual]
         expected = [truncate(x, 9) for x in expected]
 
         assert expected == actual
 
     def test_linecodes_read_cmatrix(self):
-        expected = [2.85171007, -0.92029379, -0.35075557, -0.92029379, 3.00463186, -0.58501125, -0.35075557, -0.58501125, 2.71134756]
+        expected = [2.85171007, -0.92029379, -0.35075557, -0.92029379, 3.00463186, -0.58501125, -0.35075557,
+                    -0.58501125, 2.71134756]
 
         actual = self.dss.linecodes_read_cmatrix()
-        actual   = [truncate(x, 6) for x in actual]
+        actual = [truncate(x, 6) for x in actual]
         expected = [truncate(x, 6) for x in expected]
 
         assert expected == actual
@@ -228,7 +231,7 @@ class TestLineCodes13Bus:
         self.dss.linecodes_write_cmatrix(expected_str)
         actual = self.dss.linecodes_read_cmatrix()
 
-        actual   = [truncate(x, 9) for x in actual]
+        actual = [truncate(x, 9) for x in actual]
         expected = [truncate(x, 9) for x in expected]
 
         assert expected == actual
@@ -241,21 +244,23 @@ class TestLineCodes13Bus:
         assert expected == actual
 
 
-def truncate(num,n):
+def truncate(num, n):
     # Return a truncated version of a floating point number
     temp = str(num)
     for x in range(len(temp)):
         if temp[x] == '.':
             try:
-                return float(temp[:x+n+1])
-            except:
+                return float(temp[:x + n + 1])
+            except Exception as e:
+                print(e)
                 return float(temp)
     return float(temp)
 
+
 def format_matrix(expected_list):
     # Return a full matrix from expected list from lower triangle
-    matrix = list()
-    for i in range(0, 3):
+    matrix = []
+    for i in range(3):
         if i == 0:
             matrix.append(expected_list[0])
             matrix.append(expected_list[1])
@@ -269,6 +274,7 @@ def format_matrix(expected_list):
             matrix.append(expected_list[4])
             matrix.append(expected_list[5])
     return matrix
+
 
 def format_matrix_str(expected_list):
     # Return the matrix converted to string with delimiters used in OpenDSS

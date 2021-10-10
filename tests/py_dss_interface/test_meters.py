@@ -7,7 +7,6 @@
 
 
 import pytest
-import platform
 
 
 class TestMeters13Bus:

@@ -2,8 +2,8 @@
 """
  Created by eniocc at 11/10/2020
 """
-import platform
 import os
+import platform
 
 
 class System:
