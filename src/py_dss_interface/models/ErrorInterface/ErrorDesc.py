@@ -2,8 +2,9 @@
 """
  Created by eniocc at 11/10/2020
 """
-from py_dss_interface.models.Base import Base
 import ctypes
+
+from py_dss_interface.models.Base import Base
 
 
 class ErrorDesc(Base):
@@ -21,4 +22,3 @@ class ErrorDesc(Base):
         """"This interface returns a string with description of the latest error code delivered by OpenDSS."""
         result = ctypes.c_char_p(self.dss_obj.ErrorDesc())
         return result.value.decode('ascii')
-

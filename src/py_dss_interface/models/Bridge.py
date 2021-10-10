@@ -2,10 +2,11 @@
 """
  Created by eniocc at 30/04/2021
 """
-import struct
 import ctypes
 import logging
+import struct
 import sys
+
 import numpy as np
 import pandas as pd
 
@@ -13,14 +14,11 @@ logger = logging.getLogger('opendssdirect.core')
 
 
 def is_x64():
-    return 8 * struct.calcsize("P") == 64
+    return struct.calcsize("P") == 8
 
 
 def is_delphi():
-    if 'darwin' in sys.platform or 'linux' in sys.platform:
-        return False
-    else:
-        return True
+    return 'darwin' not in sys.platform and 'linux' not in sys.platform
 
 
 if is_x64():
@@ -86,20 +84,19 @@ def var_array_function(f, param, optional, name):
     logger.debug("Successively called and returned from function {}".format(name))
     var_arr = ctypes.cast(varg.p, ctypes.POINTER(VarArray)).contents
 
-    l_ = list()
+    l_ = []
     if varg.dtype == 0x2008 and var_arr.length != 0:  # CString
         data = ctypes.cast(var_arr.data, ctypes.POINTER(POINTER * var_arr.length))
         for s in data.contents:
             if s == 0:
                 continue
-            else:
-                length = ctypes.cast(s - HEADER_SIZE, ctypes.POINTER(ctypes.c_uint8)).contents.value
-                if is_delphi():
-                    length = int(length / 2)
-                s = ctypes.cast(s, ctypes.POINTER(ctypes.c_int16 * length))
-                s = u''.join([chr(x) for x in s.contents[:]])
-                if s.lower() != 'none':
-                    l_.append(s)
+            length = ctypes.cast(s - HEADER_SIZE, ctypes.POINTER(ctypes.c_uint8)).contents.value
+            if is_delphi():
+                length = int(length / 2)
+            s = ctypes.cast(s, ctypes.POINTER(ctypes.c_int16 * length))
+            s = u''.join(chr(x) for x in s.contents[:])
+            if s.lower() != 'none':
+                l_.append(s)
 
     elif varg.dtype == 0x2005 and var_arr.length != 0:  # Float64
         data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_double * var_arr.length))

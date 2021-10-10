@@ -7,7 +7,7 @@
 
 
 import pytest
-import platform
+
 
 class TestFuses13Bus:
 
@@ -158,4 +158,3 @@ class TestFuses13Bus:
         expected = ["fuse1", "fuse2"]
         actual = self.dss.fuses_all_names()
         assert expected == actual
-

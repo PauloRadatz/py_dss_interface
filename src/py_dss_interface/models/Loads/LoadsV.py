@@ -3,10 +3,10 @@
  Created by eniocc at 11/10/2020
 """
 
-from py_dss_interface.models.Text.Text import Text
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 from py_dss_interface.models.Loads.LoadsS import LoadsS
+from py_dss_interface.models.Text.Text import Text
 
 
 class LoadsV(Base):

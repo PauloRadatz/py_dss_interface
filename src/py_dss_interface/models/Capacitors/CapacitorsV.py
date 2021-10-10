@@ -42,6 +42,6 @@ class CapacitorsV(Base):
         """
         dss_.capacitors_write_name(dss_.capacitors_read_name())
         result = dss_.text(f'edit Capacitor.{dss_.capacitors_read_name()} states={argument}')
-        if not result == '':
+        if result != '':
             raise ValueError("An error occurred when tries to WRITE Capacitors states! ")
         return result

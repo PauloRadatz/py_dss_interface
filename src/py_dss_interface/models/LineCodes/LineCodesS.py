@@ -3,6 +3,7 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
+
 from py_dss_interface.models.Base import Base
 
 
@@ -19,6 +20,7 @@ class LineCodesS(Base):
 
     The properties (parameter) are integer numbers and are described as follows.;
     """
+
     def linecodes_read_name(self) -> str:
         """Gets the name of the active LineCode element."""
         result = ctypes.c_char_p(self.dss_obj.LineCodesS(ctypes.c_int32(0), ctypes.c_int32(0)))

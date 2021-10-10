@@ -6,7 +6,6 @@
 # @Software: PyCharm
 
 import pytest
-import platform
 
 
 class TestBus13DSSElement:

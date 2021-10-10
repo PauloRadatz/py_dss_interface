@@ -7,18 +7,21 @@
 # now
 
 import pytest
-import platform
+
 
 class TestGenerators13Bus:
 
     @pytest.fixture(autouse=True)
     def _request(self, solve_snap_13bus):
         self.dss = solve_snap_13bus
-        self.dss.text("New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=3 Vpu=1 Maxkvar=500 Minkvar=-400")
+        self.dss.text(
+            "New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=3 Vpu=1 Maxkvar=500 Minkvar=-400")
         self.dss.generators_write_name("G1")
 
     def include_generator(self):
-        self.dss.text(f"New Generator.G2 Bus1=645.1 phases=1  kV=2.4 kW=100 Model=3 Vpu=1 Maxkvar=500 Minkvar=-400")
+        self.dss.text(
+            'New Generator.G2 Bus1=645.1 phases=1  kV=2.4 kW=100 Model=3 Vpu=1 Maxkvar=500 Minkvar=-400'
+        )
 
     # ===================================================================
     # Integer methods
@@ -111,7 +114,7 @@ class TestGenerators13Bus:
         self.dss.generators_write_kv(expected)
         actual = self.dss.generators_read_kv()
         assert expected == actual
-    
+
     def test_generators_read_kw(self):
         expected = 100
         actual = self.dss.generators_read_kw()

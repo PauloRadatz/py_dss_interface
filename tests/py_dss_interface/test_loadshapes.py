@@ -6,8 +6,6 @@
 # @Software: PyCharm
 
 import pytest
-import platform
-import math as m
 
 
 class TestLoadShapes13Bus:

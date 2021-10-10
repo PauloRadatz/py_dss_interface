@@ -29,9 +29,8 @@ class Case:
                 if c['case'] == case_param:
                     if default_file:
                         self.dss_file = c['dss_file']
-                    else:
-                        if not c['dss_file_alternative'] == '':
-                            self.dss_file = c['dss_file_alternative']
+                    elif c['dss_file_alternative'] != '':
+                        self.dss_file = c['dss_file_alternative']
                     self.path = os.path.join(self.path, r"cases")
                     self.path = os.path.join(self.path, c['case_folder'])
                     self.dss_file = os.path.join(self.path, self.dss_file)
