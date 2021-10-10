@@ -22,7 +22,7 @@ class SettingsI(Base):
         """Gets if OpenDSS allows duplicate names of objects: {1 allow, 0 not allow}."""
         return self.dss_obj.SettingsI(ctypes.c_int32(0), ctypes.c_int32(0))
 
-    def settings_write_allowd_uplicates(self, argument) -> int:
+    def settings_write_allow_duplicates(self, argument) -> int:
         """Sets if OpenDSS allows duplicate names of objects: {1 allow, 0 not allow}."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.SettingsI(ctypes.c_int32(1), ctypes.c_int32(argument))

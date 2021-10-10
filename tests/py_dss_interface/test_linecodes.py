@@ -251,8 +251,12 @@ def truncate(num, n):
         if temp[x] == '.':
             try:
                 return float(temp[:x + n + 1])
+<<<<<<< HEAD
             except Exception as e:
                 print(e)
+=======
+            except:
+>>>>>>> a447c97787aeac962381db88dd622ccb235eef4b
                 return float(temp)
     return float(temp)
 
