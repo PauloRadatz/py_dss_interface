@@ -4,6 +4,7 @@
 """
 
 import ctypes
+
 from py_dss_interface.models.Base import Base
 
 

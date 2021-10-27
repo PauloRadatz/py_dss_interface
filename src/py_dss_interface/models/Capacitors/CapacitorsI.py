@@ -45,8 +45,7 @@ class CapacitorsI(Base):
 
     def capacitors_next(self) -> int:
         """Sets the next capacitor active. Returns 0 if no more."""
-        result = self.dss_obj.CapacitorsI(5, 0)
-        return result
+        return self.dss_obj.CapacitorsI(5, 0)
 
     def capacitors_count(self) -> int:
         """Gets the number of capacitor objects in active circuit."""
@@ -66,7 +65,9 @@ class CapacitorsI(Base):
         result = self.dss_obj.CapacitorsI(8, 0)
         Base.check_assertion_result(result, "Capacitor step problem detect!", "A problem occur when tried to subtract "
                                                                               "step to a capacitor. Check capacitor/"
-                                                                              "bank capacitor existence or available "                                                                   "steps!", expected_value=1)
+                                                                              "bank capacitor existence or available "
+                                                                              "steps!",
+                                    expected_value=1)
         return result
 
     def capacitors_available_steps(self) -> int:

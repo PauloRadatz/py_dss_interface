@@ -3,7 +3,13 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
+<<<<<<< HEAD
+
 import numpy as np
+
+=======
+import numpy as np
+>>>>>>> a447c97787aeac962381db88dd622ccb235eef4b
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
@@ -11,10 +17,8 @@ from py_dss_interface.models.Base import Base
 class MonitorsV(Base):
     """
     This interface can be used to read/write certain properties of the active DSS object.
-
     The structure of the interface is as follows:
         void MonitorsV(int32_t Parameter, VARIANT *Argument);
-
     This interface returns a variant according to the number sent in the variable “parameter”. The parameter can be
     one of the following.
     """
@@ -48,4 +52,8 @@ class MonitorsV(Base):
         r = np.array(self.monitors_byte_stream())
         r = np.reshape(r, (len(self.monitors_dbl_hour()), len(self.monitors_header()) + 2))
         # return r[:, [0, 1, argument+1]]
+<<<<<<< HEAD
+        return list(r[:, argument + 1])
+=======
         return list(r[:, argument+1])
+>>>>>>> a447c97787aeac962381db88dd622ccb235eef4b

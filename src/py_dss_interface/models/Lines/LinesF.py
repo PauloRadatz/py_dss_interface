@@ -5,8 +5,8 @@
 import ctypes
 
 from py_dss_interface.models.Base import Base
-from py_dss_interface.models.Text.Text import Text
 from py_dss_interface.models.Lines import LinesS
+from py_dss_interface.models.Text.Text import Text
 
 
 class LinesF(Base):

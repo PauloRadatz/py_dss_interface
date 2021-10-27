@@ -2,9 +2,9 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
-from py_dss_interface.models.Base import Base
 import numpy as np
+
+from py_dss_interface.models.Base import Base
 
 
 class CMathLibF(Base):

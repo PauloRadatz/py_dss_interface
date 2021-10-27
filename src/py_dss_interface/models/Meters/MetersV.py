@@ -3,6 +3,7 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
+
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 from py_dss_interface.models.Meters.MetersS import MetersS
@@ -69,7 +70,7 @@ class MetersV(Base):
         # argument = Base.check_string_param(argument)
         # return Bridge.VarArrayFunction(self.dss_obj.MetersV, ctypes.c_int(9), ctypes.c_int(1), None)
         t = Text(self.dss_obj)
-        a = t.text("get mode ")
+        t.text("get mode ")
         return t.text(f'Allocateload {argument}')
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/8

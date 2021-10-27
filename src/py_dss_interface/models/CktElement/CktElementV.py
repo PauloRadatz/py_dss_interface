@@ -30,7 +30,7 @@ class CktElementV(Base):
         result = '0'
         for _ in range(total_connected):
             result = dss.text(f"Edit {dss.cktelement_name()} Bus1={argument[0]} Bus2={argument[1]}")
-            if result is not '':
+            if result != '':
                 result = Base.warn_msg(f"An error occur when tried to *rename Buses* connected to "
                                        f"*{dss.cktelement_name()}*", Exception)
             return "Buses renamed succesfully!!"

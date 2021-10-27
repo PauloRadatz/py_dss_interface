@@ -31,8 +31,7 @@ class CapControlsS(Base):
     def capcontrols_write_capacitor(self, argument: str) -> str:
         """Sets the name of the capacitor that is controlled."""
         try:
-            result = self.dss_obj.CapControlsS(3, argument.encode('ascii'))
-            return result
+            return self.dss_obj.CapControlsS(3, argument.encode('ascii'))
         except Exception as e:
             print(f'capcontrols_write_capacitor: Check if exist at least one CapControl!. {e}')
 
@@ -43,7 +42,6 @@ class CapControlsS(Base):
     def capcontrols_write_monitored_obj(self, argument: str) -> str:
         """Sets the full name of the element that PT and CT are connected to."""
         try:
-            result = self.dss_obj.CapControlsS(5, argument.encode('ascii'))
-            return result
+            return self.dss_obj.CapControlsS(5, argument.encode('ascii'))
         except Exception as e:
             print(f'capcontrols_write_monitored_obj: Check if exist at least one CapControl!. {e}')
