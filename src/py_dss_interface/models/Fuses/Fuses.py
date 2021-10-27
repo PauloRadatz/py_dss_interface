@@ -2,9 +2,9 @@
 """
  Created by eniocc at 11/10/2020
 """
+from py_dss_interface.models.Fuses.FusesF import FusesF
 from py_dss_interface.models.Fuses.FusesI import FusesI
 from py_dss_interface.models.Fuses.FusesS import FusesS
-from py_dss_interface.models.Fuses.FusesF import FusesF
 from py_dss_interface.models.Fuses.FusesV import FusesV
 
 

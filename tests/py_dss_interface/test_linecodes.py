@@ -251,15 +251,20 @@ def truncate(num, n):
         if temp[x] == '.':
             try:
                 return float(temp[:x + n + 1])
+<<<<<<< HEAD
+            except Exception as e:
+                print(e)
+=======
             except:
+>>>>>>> a447c97787aeac962381db88dd622ccb235eef4b
                 return float(temp)
     return float(temp)
 
 
 def format_matrix(expected_list):
     # Return a full matrix from expected list from lower triangle
-    matrix = list()
-    for i in range(0, 3):
+    matrix = []
+    for i in range(3):
         if i == 0:
             matrix.append(expected_list[0])
             matrix.append(expected_list[1])

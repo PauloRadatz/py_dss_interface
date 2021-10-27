@@ -12,13 +12,10 @@
 #
 import os
 import sys
-import pathlib
-#sys.path.insert(0, os.path.abspath('..'))
+
+# sys.path.insert(0, os.path.abspath('..'))
 
 sys.path.insert(0, os.path.abspath('./../..'))
-
-
-
 
 # -- Project information -----------------------------------------------------
 
@@ -26,9 +23,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 project = 'py_dss_interface'
 year = '2020'
-author = 'Paulo Radatz'
+author = 'Paulo Radatz, Ênio Viana, Rodolfo Londero'
 copyright = '{0}, {1}'.format(year, author)
-version = release = '1.0.1'
+version = release = '1.1.0'
 
 extensions = [
     'sphinx.ext.autodoc',
@@ -45,7 +42,7 @@ extensions = [
 pygments_style = 'trac'
 templates_path = ['_templates']
 extlinks = {
-    'issue': ('https://github.com/PauloRadatz/py_dss_interface/issues/%s', '#'),
+    'issues': ('https://github.com/PauloRadatz/py_dss_interface/issues/%s', '#'),
     'pr': ('https://github.com/PauloRadatz/py_dss_interface/pull/%s', 'PR #'),
 }
 # on_rtd is whether we are on readthedocs.org
@@ -58,7 +55,7 @@ html_use_smartypants = True
 html_last_updated_fmt = '%b %d, %Y'
 html_split_index = False
 html_sidebars = {
-   '**': ['searchbox.html', 'globaltoc.html', 'sourcelink.html'],
+    '**': ['searchbox.html', 'globaltoc.html', 'sourcelink.html'],
 }
 html_short_title = '%s-%s' % (project, version)
 

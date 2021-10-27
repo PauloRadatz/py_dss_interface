@@ -79,10 +79,7 @@ class Base:
         :param default: self explained
         :param param: any float number, positive or negative or just 0.0
         """
-        if type(param) is None:
-            print("Param not defined, param is 0.0")
-            param = default
-        elif type(param) is str:
+        if type(param) is None or type(param) is str:
             print("Param not defined, param is 0.0")
             param = default
         elif type(param) is int:
@@ -102,9 +99,7 @@ class Base:
         """
         if not isinstance(default, str):
             default = 'NAME_DEFAULT'
-        if param is None:
-            param = default
-        elif not isinstance(param, str):
+        if param is None or not isinstance(param, str):
             param = default
         return param
 

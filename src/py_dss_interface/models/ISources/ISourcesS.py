@@ -3,6 +3,7 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
+
 from py_dss_interface.models.Base import Base
 
 
@@ -26,4 +27,3 @@ class ISourcesS(Base):
         """Sets the name of the active Isource object."""
         result = ctypes.c_char_p(self.dss_obj.IsourceS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
-

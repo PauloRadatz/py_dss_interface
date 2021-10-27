@@ -19,7 +19,9 @@ class TestGenerators13Bus:
         self.dss.generators_write_name("G1")
 
     def include_generator(self):
-        self.dss.text(f"New Generator.G2 Bus1=645.1 phases=1  kV=2.4 kW=100 Model=3 Vpu=1 Maxkvar=500 Minkvar=-400")
+        self.dss.text(
+            'New Generator.G2 Bus1=645.1 phases=1  kV=2.4 kW=100 Model=3 Vpu=1 Maxkvar=500 Minkvar=-400'
+        )
 
     # ===================================================================
     # Integer methods

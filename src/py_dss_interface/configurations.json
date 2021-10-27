@@ -9,31 +9,36 @@
         {
             "name": "BUS",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "Capacitors",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "Circuit",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "CapControls",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "CktElement",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
@@ -51,7 +56,8 @@
         {
             "name": "DSSLoads",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
@@ -69,43 +75,50 @@
         {
             "name": "Fuses",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "Generators",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "Isource",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "Lines",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "LineCodes",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "LoadShape",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "Meters",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
@@ -117,31 +130,36 @@
         {
             "name": "Parser",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "PDElements",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "PVsystems",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "Reclosers",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "RegControls",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
@@ -153,25 +171,29 @@
         {
             "name": "Sensors",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "Settings",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "Solution",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "SwtControls",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
@@ -183,23 +205,24 @@
         {
             "name": "Transformers",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "Vsources",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         },
         {
             "name": "XYCurves",
             "types": [
-                "S", "F"
+                "S",
+                "F"
             ]
         }
-
-
     ],
     "models": [
         "ActiveClass",

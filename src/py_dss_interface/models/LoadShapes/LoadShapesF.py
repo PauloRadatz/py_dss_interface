@@ -5,8 +5,6 @@
 import ctypes
 
 from py_dss_interface.models.Base import Base
-from py_dss_interface.models.Text.Text import Text
-from py_dss_interface.models.LoadShapes import LoadShapesS
 
 
 class LoadShapesF(Base):
