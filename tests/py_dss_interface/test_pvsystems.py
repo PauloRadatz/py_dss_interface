@@ -132,17 +132,6 @@ class TestPVSystems13Bus:
         actual = self.dss.pvsystems_read_pmpp()
         assert actual == expected
 
-    # def test_pvsystems_read_kv(self):
-    #     expected = 4.16
-    #     actual = self.dss.pvsystems_read_kv()
-    #     # assert actual == expected # TODO return 1.0
-    #
-    # def test_pvsystems_write_kv(self):
-    #     expected = 5
-    #     self.dss.pvsystems_write_kv(expected)
-    #     actual = self.dss.pvsystems_read_kv()
-    #     # assert actual == expected # TODO return 1.0
-
     def test_pvsystems_read_name(self):
         expected = "pv1"
         actual = self.dss.pvsystems_read_name()

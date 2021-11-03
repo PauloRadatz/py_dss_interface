@@ -174,7 +174,6 @@ class TestLines13Bus:
         assert actual == expected
 
     def test_lines_write_r1(self):
-        # TODO issue with changing from liecodes
         self.dss.text("New linecode.Sequences nphases=3 "
                       "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
                       "c1=10.4308823411236  c0=4.48501282215346  "
@@ -240,9 +239,8 @@ class TestLines13Bus:
         else:
             assert True
 
-    # TODO: Paulo - check if this is correct
     def test_lines_write_r0(self):
-        expected = 1.5
+        expected = 2.5
         self.dss.lines_write_r0(expected)
         actual = self.dss.lines_read_r0()
         assert actual == expected
@@ -269,7 +267,6 @@ class TestLines13Bus:
         else:
             assert True
 
-    # TODO: Paulo - check if this is correct
     def test_lines_write_c0(self):
         expected = 0.1
         self.dss.lines_write_c0(expected)
@@ -379,9 +376,9 @@ class TestLines13Bus:
             expected = [1.3569, 0.4591, 0.0, 0.4591, 1.3471, 0.0, 0.0, 0.0, 0.0]
             self.dss.lines_write_xmatrix("[1.3569 | 0.4591 1.3471]")
             actual = self.dss.lines_read_xmatrix()
-            assert True
-        else:
             assert actual == expected
+        else:
+            assert True
 
     def test_lines_read_yprim(self):
         if platform.architecture()[0] == "64bit":
@@ -408,6 +405,7 @@ class TestLines13Bus:
         else:
             assert True
 
+    # TODO understand it
     def test_lines_write_yprim(self):
         assert True
         # if platform.architecture()[0] == "64bit":

@@ -49,13 +49,13 @@ class MetersV(Base):
         mt_name = mt.meters_read_name()
         return t.text(f'edit EnergyMeter.{mt_name} peakcurrent = {argument}')
 
-    def meters_read_cal_current(self):
+    def meters_read_calc_current(self):
         """Returns the magnitude of the real part of the Calculated Current (normally determined by solution)
         for the meter to force some behavior on Load Allocation."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(6), ctypes.c_int(0), None)
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/6
-    def meters_write_calcurrent(self, argument: str):
+    def meters_write_calc_current(self, argument: str):
         """Sets the magnitude of the real part of the Calculated Current (normally determined by solution)
         for the meter to force some behavior on Load Allocation."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(7), argument, None)

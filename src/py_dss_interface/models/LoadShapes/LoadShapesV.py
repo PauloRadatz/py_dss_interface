@@ -52,6 +52,7 @@ class LoadShapesV(Base):
 
     def loadshapes_write_time_array(self, argument):
         """Sets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
+        # TODO it might get a str like load'zip?
         t = Text(self.dss_obj)
         ls = LoadShapesS(self.dss_obj)
         ls_name = ls.loadshapes_read_name()

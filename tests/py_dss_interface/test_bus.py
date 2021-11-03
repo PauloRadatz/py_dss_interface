@@ -32,9 +32,8 @@ class TestBus13Bus:
         assert actual == expected
 
     def test_bus_get_unique_node_number(self):
-        #TODO
-        expected = 0
-        actual = self.dss.bus_get_unique_node_number()
+        expected = 4
+        actual = self.dss.bus_get_unique_node_number(1)
         assert actual == expected
 
     def test_bus_total_customers(self):
@@ -45,7 +44,8 @@ class TestBus13Bus:
         assert actual == expected
 
     def test_bus_section_id(self):
-        # TODO
+        # TODO it does not work even with the energymeter
+        self.dss.text("New energymeter.EM2 element=Line.670671")
         expected = 0
         actual = self.dss.bus_section_id()
         assert actual == expected

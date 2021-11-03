@@ -466,6 +466,6 @@ class TestLoad13Bus:
 
     def test_loads_write_zipv(self):
         expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
-        self.dss.loads_write_zipv(str(expected))  # TODO it works only when we convert the number array to a string
+        self.dss.loads_write_zipv(str(expected))
         actual = self.dss.loads_read_zipv()
         assert actual == expected

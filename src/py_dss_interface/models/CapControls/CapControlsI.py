@@ -54,7 +54,7 @@ class CapControlsI(Base):
         type in the oficial documentation, because of this we choose not put a explicit return too. """
         return (
             dss.text(
-                f'CapControls.{dss.capcontrols_read_name()} Terminal={argument}'
+                f'edit CapControl.{dss.capcontrols_read_name()} Terminal={argument}'
             )
             if self.capcontrols_count() != 0
             else 0
@@ -70,7 +70,7 @@ class CapControlsI(Base):
         oficial documentation, because of this we choose not put a explicit return too. """
         return (
             dss.text(
-                f'CapControls.{dss.capcontrols_read_name()} VoltOverride={argument}'
+                f'edit CapControl.{dss.capcontrols_read_name()} VoltOverride={argument}'
             )
             if self.capcontrols_count() != 0
             else 0

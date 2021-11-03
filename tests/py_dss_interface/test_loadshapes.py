@@ -100,10 +100,9 @@ class TestLoadShapes13Bus:
         actual = self.dss.loadshapes_read_hr_interval()
         assert actual == expected
 
-    # TODO: method not writing
     def test_loadshapes_write_hr_interval(self):
         self.new_loadshape(True)
-        expected = 0.5
+        expected = 2
         self.dss.loadshapes_write_hr_interval(expected)
         actual = self.dss.loadshapes_read_hr_interval()
         assert actual == expected
@@ -114,10 +113,9 @@ class TestLoadShapes13Bus:
         actual = self.dss.loadshapes_read_min_interval()
         assert actual == expected
 
-    # TODO: method not writing
     def test_loadshapes_write_min_interval(self):
         self.new_loadshape(True)
-        expected = 120
+        expected = 240
         self.dss.loadshapes_write_min_interval(expected)
         actual = self.dss.loadshapes_read_min_interval()
         assert actual == expected
@@ -141,10 +139,9 @@ class TestLoadShapes13Bus:
         actual = self.dss.loadshapes_read_p_base()
         assert actual == expected
 
-    # TODO: method not writing
     def test_loadshapes_write_p_base(self):
         self.new_loadshape(True)
-        expected = 50.0
+        expected = 100.0
         self.dss.loadshapes_write_p_base(expected)
         actual = self.dss.loadshapes_read_p_base()
         assert actual == expected
@@ -155,10 +152,9 @@ class TestLoadShapes13Bus:
         actual = self.dss.loadshapes_read_q_base()
         assert actual == expected
 
-    # TODO: method not writing
     def test_loadshapes_write_q_base(self):
         self.new_loadshape(True)
-        expected = 100
+        expected = 50
         self.dss.loadshapes_write_q_base(expected)
         actual = self.dss.loadshapes_read_q_base()
         assert actual == expected
@@ -211,7 +207,6 @@ class TestLoadShapes13Bus:
         actual = self.dss.loadshapes_read_time_array()
         assert actual == expected
 
-    # TODO: method not writing
     def test_loadshapes_write_time_array(self):
         self.new_loadshape(True)
         expected = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0,
