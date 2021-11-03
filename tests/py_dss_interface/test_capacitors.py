@@ -122,7 +122,7 @@ class TestBus13Capacitors:
         assert actual == expected
 
     def test_capacitors_write_kvar(self):
-        expected = 50.0 # TODO it only works when we set 50.0. We should correct the type ourselves
+        expected = 50.0
         self.dss.capacitors_write_kvar(expected)
         actual = self.dss.capacitors_read_kvar()
         assert actual == expected

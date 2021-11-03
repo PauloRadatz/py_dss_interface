@@ -24,28 +24,28 @@ class TestXYCurves13Bus:
     def test_xycurves_count(self):
         expected = 2
         actual = self.dss.xycurves_count()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_first(self):
         expected = 1
         actual = self.dss.xycurves_first()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_next(self):
         expected = 2
         actual = self.dss.xycurves_next()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_read_npts(self):
         expected = 4
         actual = self.dss.xycurves_read_npts()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_write_npts(self):
         expected = 8
         self.dss.xycurves_write_npts(expected)
         actual = self.dss.xycurves_read_npts()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # Float methods
@@ -53,68 +53,68 @@ class TestXYCurves13Bus:
     def test_xycurves_read_x(self):
         expected = 0.1
         actual = self.dss.xycurves_read_x()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_write_x(self):
         expected = 1
         self.dss.xycurves_write_x(expected)
         actual = self.dss.xycurves_read_x()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_read_y(self):
         expected = 1
         actual = self.dss.xycurves_read_y()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_write_y(self):
         expected = 1
         self.dss.xycurves_write_y(expected)
         actual = self.dss.xycurves_read_y()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_read_x_shift(self):
         expected = 0
         actual = self.dss.xycurves_read_x_shift()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_write_x_shift(self):
         expected = 1
         self.dss.xycurves_write_x_shift(expected)
         actual = self.dss.xycurves_read_x_shift()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_read_y_shift(self):
         expected = 0
         actual = self.dss.xycurves_read_y_shift()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_write_y_shift(self):
         expected = 1
         self.dss.xycurves_write_y_shift(expected)
         actual = self.dss.xycurves_read_y_shift()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_read_x_scale(self):
         expected = 1
         actual = self.dss.xycurves_read_x_scale()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_write_x_scale(self):
         expected = 1
         self.dss.xycurves_write_x_scale(expected)
         actual = self.dss.xycurves_read_x_scale()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_read_y_scale(self):
         expected = 1
         actual = self.dss.xycurves_read_y_scale()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_write_y_scale(self):
         expected = 1
         self.dss.xycurves_write_y_scale(expected)
         actual = self.dss.xycurves_read_y_scale()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # String methods
@@ -122,13 +122,13 @@ class TestXYCurves13Bus:
     def test_xycurves_read_name(self):
         expected = 'xycurve1'
         actual = self.dss.xycurves_read_name()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_write_name(self):
         expected = 'xycurve2'
         self.dss.xycurves_write_name(expected)
         actual = self.dss.xycurves_read_name()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # Variant methods
@@ -136,21 +136,21 @@ class TestXYCurves13Bus:
     def test_xycurves_read_x_array(self):
         expected = [.1, .2, .4, 1.0]
         actual = self.dss.xycurves_read_x_array()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_write_x_array(self):
         expected = [1, 1, 1, 1]
         self.dss.xycurves_write_x_array(str(expected))
         actual = self.dss.xycurves_read_x_array()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_read_y_array(self):
         expected = [.86, .9, .93, .97]
         actual = self.dss.xycurves_read_y_array()
-        assert expected == actual
+        assert actual == expected
 
     def test_xycurves_write_y_array(self):
         expected = [1, 1, 1, 1]
         self.dss.xycurves_write_y_array(str(expected))
         actual = self.dss.xycurves_read_y_array()
-        assert expected == actual
+        assert actual == expected
