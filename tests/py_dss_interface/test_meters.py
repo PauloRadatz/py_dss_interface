@@ -262,23 +262,36 @@ class TestMeters13Bus:
         actual = self.dss.meters_read_peak_current()
         assert actual == expected
 
-    # TODO
-    # def test_meters_read_cal_current(self):
-    #     expected = [2.806806272625585e-309, 2.121995791e-314, 680.0000000000089]
-    #     actual = self.dss.meters_read_cal_current()
-    #     assert actual == expected
+    def test_meters_read_calc_current(self):
+        self.dss.text("Edit Energymeter.EM2 peakcurrent=[394, 301, 403]")
+        self.dss.text("Allocateloads")
+        expected = [473.76996080470036, 188.82026268237738, 424.9020354332265]
+        actual = self.dss.meters_read_calc_current()
+        assert actual == expected
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/6
-    # def test_meters_write_calcurrent(self):
-    #     expected = [1, 2, 3]
-    #     self.dss.meters_write_calcurrent(expected)
-    #     actual = self.dss.meters_read_cal_current()
+    # def test_meters_write_calc_current(self):
+    #     expected = [394, 301, 403]
+    #     self.dss.meters_write_calc_current(expected)
+    #     self.dss.text("Allocateloads")
+    #     actual = self.dss.meters_read_calc_current()
     #     assert actual == expected
-    # TODO
-    # def test_meters_read_alloc_factors(self):
-    #     expected = [0, 0, 0]
-    #     actual = self.dss.meters_read_alloc_factors()
-    #     assert actual == expected
+
+    def test_meters_read_alloc_factors(self):
+        self.dss.text("Edit Energymeter.EM2 peakcurrent=[394, 301, 403]")
+        self.dss.text("Allocateloads")
+        expected = [0.831627229659705, 1.5941085756581377, 0.9484539173579261]
+        actual = self.dss.meters_read_alloc_factors()
+        assert actual == expected
+
+    # TODO it changed it
+    def test_meters_write_alloc_factors(self):
+        # self.dss.text("Edit Energymeter.EM2 peakcurrent=[394, 301, 403]")
+        # self.dss.text("Allocateloads")
+        expected = [0.831627229659705, 1.5941085756581377, 0.9484539173579261]
+        self.dss.meters_write_alloc_factors(expected)
+        actual = self.dss.meters_read_alloc_factors()
+        # assert actual == expected
 
     def test_meters_all_end_elements(self):
         expected = ['Line.645646', 'Transformer.xfm1', 'Line.632670']

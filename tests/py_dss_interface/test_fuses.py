@@ -70,7 +70,6 @@ class TestFuses13Bus:
         actual = self.dss.fuses_read_switched_term()
         assert actual == expected
 
-    # TODO: Not writing value, always return 0
     def test_fuses_write_switched_term(self):
         expected = 2
         self.dss.fuses_write_switched_term(expected)
@@ -82,7 +81,6 @@ class TestFuses13Bus:
         actual = self.dss.fuses_read_idx()
         assert actual == expected
 
-    # TODO: not writing idx, always return 1
     def test_fuses_write_idx(self):
         expected = 2
         self.dss.fuses_write_idx(expected)
@@ -144,7 +142,6 @@ class TestFuses13Bus:
         actual = self.dss.fuses_read_delay()
         assert actual == expected
 
-    # TODO: Not writing value for delay, always return -1
     def test_fuses_write_delay(self):
         expected = 2
         self.dss.fuses_write_delay(expected)

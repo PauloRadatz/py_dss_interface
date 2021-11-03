@@ -59,7 +59,7 @@ class TestDSSInterface13Bus:
         actual = self.dss.dss_read_allow_forms()
         assert actual == expected
 
-    # TODO: Not writing, always returning 0
+    # TODO: Not writing, always returning 0 - it is always the opposite. Check code
     # def test_dss_write_allow_forms(self):
     #     expected = 1
     #     self.dss.dss_write_allow_forms(expected)

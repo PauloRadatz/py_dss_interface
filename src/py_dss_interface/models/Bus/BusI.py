@@ -35,7 +35,7 @@ class BusI(Base):
                                     expected_value=1)
         return result
 
-    def bus_get_unique_node_number(self, start_number: int = 0) -> int:
+    def bus_get_unique_node_number(self, start_number: int = 1) -> int:
         """Returns a unique node number at the active bus to avoid node collisions and adds it to the node list for
         the bus. The start number can be specified in the second parameter.
 
@@ -43,6 +43,7 @@ class BusI(Base):
         :returns: int
         :rtype: int
         """
+        # TODO I have no idea what is going one here. If you use start_number different than 0 it increments the return value
         start_number = Base.check_int_param(start_number)
         return self.dss_obj.BUSI(3, start_number)
 

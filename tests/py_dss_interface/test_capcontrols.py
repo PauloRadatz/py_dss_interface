@@ -215,7 +215,7 @@ class TestCapControls13Bus:
         actual = self.dss.capcontrols_read_dead_time()
         assert actual == expected
 
-    # TODO Paulo: returning -1
+    # TODO Paulo: returning -1 - check source code
     # def test_capcontrols_write_dead_time(self):
     #     expected = 10
     #     self.dss.capcontrols_write_dead_time(expected)

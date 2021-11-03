@@ -105,7 +105,6 @@ class TestLineCodes13Bus:
         assert actual == expected
 
     def test_linecodes_write_c1(self):
-        # TODO: Paulo, check the input value to write c1
         expected = 1.0
         self.dss.linecodes_write_c1(expected)
         actual = self.dss.linecodes_read_c1()
@@ -139,8 +138,7 @@ class TestLineCodes13Bus:
         assert actual == expected
 
     def test_linecodes_write_c0(self):
-        # TODO: Paulo, check the input value to write c0
-        expected = 1.0
+        expected = 2.0
         self.dss.linecodes_write_c0(expected)
         actual = self.dss.linecodes_read_c0()
         assert actual == expected
