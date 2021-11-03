@@ -6,12 +6,8 @@
 # @Software: PyCharm
 
 import platform
-
-<<<<<<< HEAD
 import pytest
 
-=======
->>>>>>> a447c97787aeac962381db88dd622ccb235eef4b
 
 class TestLines13Bus:
 
