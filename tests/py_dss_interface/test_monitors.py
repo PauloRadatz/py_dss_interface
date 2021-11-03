@@ -36,89 +36,89 @@ class TestMonitors13Bus:
     def test_monitors_first(self):
         expected = 1
         actual = self.dss.monitors_first()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_next(self):
         expected = 0
         actual = self.dss.monitors_next()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_count(self):
         expected = 1
         actual = self.dss.monitors_count()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_reset(self):
         expected = 0
         actual = self.dss.monitors_reset()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_reset_all(self):
         expected = 0
         actual = self.dss.monitors_reset_all()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_sample(self):
         expected = 0
         actual = self.dss.monitors_sample()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_sample_all(self):
         expected = 0
         actual = self.dss.monitors_sample_all()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_save(self):
         expected = 0
         actual = self.dss.monitors_save()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_save_all(self):
         expected = 0
         actual = self.dss.monitors_save_all()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_process(self):
         expected = 0
         actual = self.dss.monitors_process()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_process_all(self):
         expected = 0
         actual = self.dss.monitors_process_all()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_file_version(self):
         # TODO: file_version returns diferent values each time
         expected = 0
         actual = self.dss.monitors_file_version()
-        assert type(expected) == type(actual)
+        assert type(actual) == type(expected)
 
     def test_monitors_sample_count(self):
         expected = 24
         actual = self.dss.monitors_sample_count()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_record_size(self):
         expected = 16
         actual = self.dss.monitors_record_size()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_num_channels(self):
         expected = 16
         actual = self.dss.monitors_num_channels()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_read_terminal(self):
         expected = 1
         actual = self.dss.monitors_read_terminal()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_write_terminal(self):
         expected = 2
         self.dss.monitors_write_terminal(expected)
         actual = self.dss.monitors_read_terminal()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # String methods
@@ -143,13 +143,13 @@ class TestMonitors13Bus:
     def test_monitors_read_element(self):
         expected = "transformer.xfm1"
         actual = self.dss.monitors_read_element()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_write_element(self):
         expected = "load.671"
         self.dss.monitors_write_element(expected)
         actual = self.dss.monitors_read_element()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # Variant methods
@@ -158,7 +158,7 @@ class TestMonitors13Bus:
         self.dss.text("New monitor.m2 element=Transformer.XFM1 terminal=2 mode=0")
         expected = ["m1", "m2"]
         actual = self.dss.monitors_all_names()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_byte_stream(self):
         expected = [1.0, 0.0, 2421.029296875, -2.5194942951202393, 2467.319091796875, -121.98504638671875,
@@ -246,23 +246,23 @@ class TestMonitors13Bus:
             for j in i:
                 actual.append(j)
 
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_header(self):
         expected = [' V1', ' VAngle1', ' V2', ' VAngle2', ' V3', ' VAngle3', ' V4', ' VAngle4',
                     ' I1', ' IAngle1', ' I2', ' IAngle2', ' I3', ' IAngle3', ' I4', ' IAngle4\x00']
         actual = self.dss.monitors_header()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_dbl_hour(self):
         expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
         actual = self.dss.monitors_dbl_hour()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_dbl_freq(self):
         expected = [0.0]
         actual = self.dss.monitors_dbl_freq()
-        assert expected == actual
+        assert actual == expected
 
     def test_monitors_channel(self):
         expected = [2421.03, 2421.12, 2421.59, 2422.46, 2423.02, 2423.22, 2425.52, 2431.14, 2437.59, 2437.59, 2438.28,

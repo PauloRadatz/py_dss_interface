@@ -22,49 +22,49 @@ class TestLines13Bus:
     def test_lines_first(self):
         expected = 1
         actual = self.dss.lines_first()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_next(self):
         expected = 2
         actual = self.dss.lines_next()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_phases(self):
         expected = 3
         actual = self.dss.lines_read_phases()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_phases(self):
         expected = 2
         self.dss.lines_write_phases(2)
         actual = self.dss.lines_read_phases()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_num_cust(self):
         expected = 0
         actual = self.dss.lines_num_cust()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_parent(self):
         expected = 0
         actual = self.dss.lines_parent()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_count(self):
         expected = 12
         actual = self.dss.lines_count()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_units(self):
         expected = 5
         actual = self.dss.lines_read_units()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_units(self):
         expected = 3
         self.dss.lines_write_units(expected)
         actual = self.dss.lines_read_units()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # String methods
@@ -72,51 +72,51 @@ class TestLines13Bus:
     def test_lines_read_name(self):
         expected = '650632'
         actual = self.dss.lines_read_name()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_name(self):
         expected = '632670'
         self.dss.lines_write_name(expected)
         actual = self.dss.lines_read_name()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_bus1(self):
         expected = 'rg60.1.2.3'
         actual = self.dss.lines_read_bus1()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_bus1(self):
         expected = '670.1'
         self.dss.lines_write_bus1(expected)
         actual = self.dss.lines_read_bus1()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_bus2(self):
         expected = '632.1.2.3'
         actual = self.dss.lines_read_bus2()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_bus2(self):
         expected = '670.1'
         self.dss.lines_write_bus2(expected)
         actual = self.dss.lines_read_bus2()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_linecode(self):
         expected = 'mtx601'
         actual = self.dss.lines_read_linecode()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_linecode(self):
         expected = '723'
         self.dss.lines_write_linecode(expected)
         actual = self.dss.lines_read_linecode()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_geometry(self):
         expected = ''
         actual = self.dss.lines_read_geometry()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_geometry(self):
 
@@ -130,19 +130,19 @@ class TestLines13Bus:
         expected = '1PH-x4_ACSRx4_ACSR'.lower()
         self.dss.lines_write_geometry(expected)
         actual = self.dss.lines_read_geometry()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_spacing(self):
         expected = ""
         actual = self.dss.lines_read_spacing()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_spacing(self):
         self.dss.text("new LineSpacing.500 nconds=4 nphases=3 units=ft x=[-4 -1 3 0] h=[28 28 28 24]")
         expected = "500"
         self.dss.lines_write_spacing(expected)
         actual = self.dss.lines_read_spacing()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # Float methods
@@ -150,13 +150,13 @@ class TestLines13Bus:
     def test_lines_read_length(self):
         expected = 2000
         actual = self.dss.lines_read_length()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_length(self):
         expected = 150
         self.dss.lines_write_length(expected)
         actual = self.dss.lines_read_length()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_r1(self):
 
@@ -171,7 +171,7 @@ class TestLines13Bus:
 
         expected = 0.3489
         actual = self.dss.lines_read_r1()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_r1(self):
         # TODO issue with changing from liecodes
@@ -187,7 +187,7 @@ class TestLines13Bus:
         expected = 0.1
         self.dss.lines_write_r1(expected)
         actual = self.dss.lines_read_r1()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_x1(self):
         self.dss.text("New linecode.Sequences nphases=3 "
@@ -201,7 +201,7 @@ class TestLines13Bus:
 
         expected = 0.426198
         actual = self.dss.lines_read_x1()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_x1(self):
         self.dss.text("New linecode.Sequences nphases=3 "
@@ -216,13 +216,13 @@ class TestLines13Bus:
         expected = 0.12
         self.dss.lines_write_x1(expected)
         actual = self.dss.lines_read_x1()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_c1(self):
         if platform.architecture()[0] == "64bit":
             expected = 0.0006439569999378611
             actual = self.dss.lines_read_c1()
-            assert expected == actual
+            assert actual == expected
         else:
             assert True
 
@@ -236,7 +236,7 @@ class TestLines13Bus:
         if platform.architecture()[0] == "64bit":
             expected = 3.378880258497484e-05
             actual = self.dss.lines_read_r0()
-            assert expected == actual
+            assert actual == expected
         else:
             assert True
 
@@ -245,13 +245,13 @@ class TestLines13Bus:
         expected = 1.5
         self.dss.lines_write_r0(expected)
         actual = self.dss.lines_read_r0()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_x0(self):
         if platform.architecture()[0] == "64bit":
             expected = 7.664982290436836e-05
             actual = self.dss.lines_read_x0()
-            assert expected == actual
+            assert actual == expected
         else:
             assert True
 
@@ -259,13 +259,13 @@ class TestLines13Bus:
         expected = 0.12
         self.dss.lines_write_x0(expected)
         actual = self.dss.lines_read_x0()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_c0(self):
         if platform.architecture()[0] == "64bit":
             expected = 0.00030303858820605233
             actual = self.dss.lines_read_c0()
-            assert expected == actual
+            assert actual == expected
         else:
             assert True
 
@@ -279,62 +279,62 @@ class TestLines13Bus:
     def test_lines_read_norm_amps(self):
         expected = 400
         actual = self.dss.lines_read_norm_amps()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_norm_amps(self):
         expected = 500
         self.dss.lines_write_norm_amps(expected)
         actual = self.dss.lines_read_norm_amps()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_emerg_amps(self):
         expected = 600
         actual = self.dss.lines_read_emerg_amps()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_emerg_amps(self):
         expected = 500
         self.dss.lines_write_emerg_amps(expected)
         actual = self.dss.lines_read_emerg_amps()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_rg(self):
         expected = 0.01805
         actual = self.dss.lines_read_rg()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_rg(self):
         expected = 0.1
         self.dss.lines_write_rg(expected)
         actual = self.dss.lines_read_rg()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_xg(self):
         expected = 0.155081
         actual = self.dss.lines_read_xg()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_xg(self):
         expected = 0.1
         self.dss.lines_write_xg(expected)
         actual = self.dss.lines_read_xg()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_rho(self):
         expected = 100
         actual = self.dss.lines_read_rho()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_write_rho(self):
         expected = 0.1
         self.dss.lines_write_rho(expected)
         actual = self.dss.lines_read_rho()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_season_rating(self):
         expected = 400
         actual = self.dss.lines_read_season_rating()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # Variant methods
@@ -343,7 +343,7 @@ class TestLines13Bus:
         expected = ['650632', '632670', '670671', '671680', '632633', '632645', '645646', '692675', '671684', '684611',
                     '684652', '671692']
         actual = self.dss.lines_all_names()
-        assert expected == actual
+        assert actual == expected
 
     def test_lines_read_rmatrix(self):
         if platform.architecture()[0] == "64bit":
@@ -351,7 +351,7 @@ class TestLines13Bus:
                         6.392220219971417e-05, 2.9072764556018148e-05, 2.992506058534767e-05, 2.9072764556018148e-05,
                         6.466085875846642e-05]
             actual = self.dss.lines_read_rmatrix()
-            assert expected == actual
+            assert actual == expected
         else:
             assert True
 
@@ -360,7 +360,7 @@ class TestLines13Bus:
             expected = [1.3569, 0.4591, 0.0, 0.4591, 1.3471, 0.0, 0.0, 0.0, 0.0]
             self.dss.lines_write_rmatrix("[1.3569 | 0.4591 1.3471]")
             actual = self.dss.lines_read_rmatrix()
-            assert expected == actual
+            assert actual == expected
         else:
             assert True
 
@@ -370,7 +370,7 @@ class TestLines13Bus:
                         0.00019845239545143855, 7.289972037531847e-05, 8.022946622755235e-05, 7.289972037531847e-05,
                         0.00019599020692226434]
             actual = self.dss.lines_read_xmatrix()
-            assert expected == actual
+            assert actual == expected
         else:
             assert True
 
@@ -381,7 +381,7 @@ class TestLines13Bus:
             actual = self.dss.lines_read_xmatrix()
             assert True
         else:
-            assert expected == actual
+            assert actual == expected
 
     def test_lines_read_yprim(self):
         if platform.architecture()[0] == "64bit":
@@ -404,7 +404,7 @@ class TestLines13Bus:
                         -0.886694192671301, 2.950513088021902, -0.2660516357083827, 0.9121918679463129,
                         -0.12630137793675839, 0.6966811885852322, 0.886694192671301, -2.950512888096904]
             actual = self.dss.lines_read_yprim()
-            assert expected == actual
+            assert actual == expected
         else:
             assert True
 
@@ -414,6 +414,6 @@ class TestLines13Bus:
         #     expected = [1.3569, 0.4591, 0.0, 0.4591, 1.3471, 0.0, 0.0, 0.0, 0.0]
         #     self.dss.lines_write_yprim("[1.3569 | 0.4591 1.3471]")
         #     actual = self.dss.lines_read_yprim()
-        #     assert expected == actual
+        #     assert actual == expected
         # else:
         #     assert True

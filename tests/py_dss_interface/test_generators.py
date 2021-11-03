@@ -29,62 +29,62 @@ class TestGenerators13Bus:
     def test_generators_first(self):
         expected = 1
         actual = self.dss.generators_first()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_next(self):
         expected = 0
         actual = self.dss.generators_next()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_count(self):
         expected = 1
         actual = self.dss.generators_count()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_read_forced_on(self):
         expected = 0
         actual = self.dss.generators_read_forced_on()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_write_forced_on(self):
         expected = 1
         self.dss.generators_write_forced_on(expected)
         actual = self.dss.generators_read_forced_on()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_read_phases(self):
         expected = 1
         actual = self.dss.generators_read_phases()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_write_phases(self):
         expected = 3
         self.dss.generators_write_phases(expected)
         actual = self.dss.generators_read_phases()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_read_idx(self):
         expected = 1
         actual = self.dss.generators_read_idx()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_write_idx(self):
         self.include_generator()
         expected = 2
         self.dss.generators_write_idx(expected)
         actual = self.dss.generators_read_idx()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_read_model(self):
         expected = 3
         actual = self.dss.generators_read_model()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_write_model(self):
         expected = 2
         self.dss.generators_write_model(expected)
         actual = self.dss.generators_read_model()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # String methods
@@ -107,36 +107,35 @@ class TestGenerators13Bus:
     def test_generators_read_kv(self):
         expected = 2.4
         actual = self.dss.generators_read_kv()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_write_kv(self):
         expected = 4.8
         self.dss.generators_write_kv(expected)
         actual = self.dss.generators_read_kv()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_read_kw(self):
         expected = 100
         actual = self.dss.generators_read_kw()
-        assert expected == actual
+        assert actual == expected
 
-    # TODO: not writing kW
     def test_generators_write_kw(self):
-        expected = 200.0
+        expected = 400.0
         self.dss.generators_write_kw(expected)
         actual = self.dss.generators_read_kw()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_read_kvar(self):
         expected = -50
         actual = self.dss.generators_read_kvar()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_write_kvar(self):
         expected = -10
         self.dss.generators_write_kvar(expected)
         actual = self.dss.generators_read_kvar()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_read_pf(self):
         expected = -0.894427
@@ -189,14 +188,14 @@ class TestGenerators13Bus:
         self.include_generator()
         expected = ["g1", "g2"]
         actual = self.dss.generators_all_names()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_register_names(self):
         expected = ['kWh', 'kvarh', 'Max kW', 'Max kVA', 'Hours', '$']
         actual = self.dss.generators_register_names()
-        assert expected == actual
+        assert actual == expected
 
     def test_generators_register_values(self):
         expected = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         actual = self.dss.generators_register_values()
-        assert expected == actual
+        assert actual == expected

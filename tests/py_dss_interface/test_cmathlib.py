@@ -23,13 +23,13 @@ class TestCMathLib13Bus:
         real, imag = -3, 4
         expected = (real ** 2 + imag ** 2) ** 0.5
         actual = self.dss.cmathlib_cabs(real, imag)
-        assert expected == actual
+        assert actual == expected
 
     def test_cmathlib_cdang(self):
         real, imag = 1, 1
         expected = 45
         actual = self.dss.cmathlib_cdang(1, 1)
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # Variant methods
@@ -38,13 +38,13 @@ class TestCMathLib13Bus:
         real, imag = 1, 1
         expected = complex(real, imag)
         actual = self.dss.cmathlib_cmplx(real, imag)
-        assert expected == actual
+        assert actual == expected
 
     def test_cmathlib_ctopolardeg(self):
         real, imag = 1, 3
         expected = (abs(complex(real, imag)), math.atan2(imag, real))
         actual = self.dss.cmathlib_ctopolardeg(real, imag)
-        assert expected == actual
+        assert actual == expected
 
     def test_cmathlib_pdegtocomplex(self):
         real, imag = 3.1622776601683795, 1.2490457723982544

@@ -56,82 +56,82 @@ class TestReclosers13Bus:
     def test_reclosers_count(self):
         expected = 2
         actual = self.dss.reclosers_count()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_first(self):
         expected = 1
         actual = self.dss.reclosers_first()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_next(self):
         expected = 2
         actual = self.dss.reclosers_next()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_read_monitored_term(self):
         expected = 1
         actual = self.dss.reclosers_read_monitored_term()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_monitored_term(self):
         expected = 2
         self.dss.reclosers_write_monitored_term(expected)
         actual = self.dss.reclosers_read_monitored_term()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_read_switched_term(self):
         expected = 1
         actual = self.dss.reclosers_read_switched_term()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_switched_term(self):
         expected = 2
         self.dss.reclosers_write_switched_term(expected)
         actual = self.dss.reclosers_read_switched_term()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_read_num_fast(self):
         expected = 4
         actual = self.dss.reclosers_read_num_fast()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_num_fast(self):
         expected = 1
         self.dss.reclosers_write_num_fast(expected)
         actual = self.dss.reclosers_read_num_fast()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_read_shots(self):
         expected = 4
         actual = self.dss.reclosers_read_shots()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_shots(self):
         expected = 3
         self.dss.reclosers_write_shots(expected)
         actual = self.dss.reclosers_read_shots()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_open(self):
         expected = 0
         actual = self.dss.reclosers_open()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_close(self):
         expected = 0
         actual = self.dss.reclosers_close()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_read_idx(self):
         expected = 1
         actual = self.dss.reclosers_read_idx()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_idx(self):
         expected = 2
         self.dss.reclosers_write_idx(expected)
         actual = self.dss.reclosers_read_idx()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # Float methods
@@ -139,46 +139,46 @@ class TestReclosers13Bus:
     def test_reclosers_read_phase_trip(self):
         expected = 800
         actual = self.dss.reclosers_read_phase_trip()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_phase_trip(self):
         expected = 700
         self.dss.reclosers_write_phase_trip(expected)
         actual = self.dss.reclosers_read_phase_trip()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_read_phase_inst(self):
         expected = 2400
         actual = self.dss.reclosers_read_phase_inst()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_phase_inst(self):
         expected = 1200
         self.dss.reclosers_write_phase_inst(expected)
         actual = self.dss.reclosers_read_phase_inst()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_read_ground_trip(self):
         expected = 800
         actual = self.dss.reclosers_read_ground_trip()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_ground_trip(self):
         expected = 700
         self.dss.reclosers_write_ground_trip(expected)
         actual = self.dss.reclosers_read_ground_trip()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_read_ground_inst(self):
         expected = 1200
         actual = self.dss.reclosers_read_ground_inst()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_ground_inst(self):
         expected = 1900
         self.dss.reclosers_write_ground_inst(expected)
         actual = self.dss.reclosers_read_ground_inst()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # String methods
@@ -186,35 +186,35 @@ class TestReclosers13Bus:
     def test_reclosers_read_name(self):
         expected = 'cb1'
         actual = self.dss.reclosers_read_name()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_name(self):
         expected = 'cb2'
         self.dss.reclosers_write_name(expected)
         actual = self.dss.reclosers_read_name()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_read_monitored_obj(self):
         expected = 'line.650632'
         actual = self.dss.reclosers_read_monitored_obj()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_monitored_obj(self):
         expected = 'line.684652'
         self.dss.reclosers_write_monitored_obj(expected)
         actual = self.dss.reclosers_read_monitored_obj()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_read_switched_obj(self):
         expected = 'line.650632'
         actual = self.dss.reclosers_read_switched_obj()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_write_switched_obj(self):
         expected = 'line.684652'
         self.dss.reclosers_write_switched_obj(expected)
         actual = self.dss.reclosers_read_switched_obj()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # Variant methods
@@ -222,9 +222,9 @@ class TestReclosers13Bus:
     def test_reclosers_all_names(self):
         expected = ['cb1', 'cb2']
         actual = self.dss.reclosers_all_names()
-        assert expected == actual
+        assert actual == expected
 
     def test_reclosers_reclose_intervals(self):
         expected = [0.5, 2, 2]
         actual = self.dss.reclosers_reclose_intervals()
-        assert expected == actual
+        assert actual == expected

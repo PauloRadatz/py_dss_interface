@@ -21,4 +21,4 @@ class TestText13Bus:
     def test_text(self):
         expected = "2000"
         actual = self.dss.text('? Line.650632.Length')
-        assert expected == actual
+        assert actual == expected

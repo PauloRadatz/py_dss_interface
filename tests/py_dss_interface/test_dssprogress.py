@@ -22,17 +22,17 @@ class TestDSSProgress13Bus:
         # TODO: Returning zero, is it correct?
         expected = 0
         actual = self.dss.dssprogress_pct_progress(12.5)
-        assert expected == actual
+        assert actual == expected
 
     def test_dssprogress_show(self):
         expected = 0
         actual = self.dss.dssprogress_show()
-        assert expected == actual
+        assert actual == expected
 
     def test_dssprogress_close(self):
         expected = 0
         actual = self.dss.dssprogress_close()
-        assert expected == actual
+        assert actual == expected
 
     # ===================================================================
     # String methods
@@ -41,4 +41,4 @@ class TestDSSProgress13Bus:
         # TODO: Its returning "0", is it correct?
         expected = "0"
         actual = self.dss.dssprogress_caption("my_caption")
-        assert expected == actual
+        assert actual == expected

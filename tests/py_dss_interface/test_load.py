@@ -32,7 +32,7 @@ class TestLoad13Bus:
     def test_loads_next(self):
         expected = 2
         actual = self.dss.loads_next()
-        assert expected == actual
+        assert actual == expected
 
     def test_loads_read_idx(self):
         expected = 1
@@ -218,7 +218,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_kw(self):
-        expected = 1000.0  # TODO it only works when we set decimal number. Like in capacitors.
+        expected = 1000
         self.dss.loads_write_kw(expected)
         actual = self.dss.loads_read_kw()
         assert actual == expected
@@ -229,7 +229,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_kvar(self):
-        expected = 600.0  # TODO it only works when we set decimal number.
+        expected = 600
         self.dss.loads_write_kvar(expected)
         actual = self.dss.loads_read_kvar()
         assert actual == expected
@@ -243,7 +243,7 @@ class TestLoad13Bus:
             assert 1 == 1
 
     def test_loads_write_pf(self):
-        expected = 1.0  # TODO it only works when we set decimal number. Like in capacitors.
+        expected = 1
         self.dss.loads_write_pf(expected)
         actual = self.dss.loads_read_pf()
         assert actual == expected
@@ -254,7 +254,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_pct_mean(self):
-        expected = 123.0  # TODO it only works when we set decimal number.
+        expected = 123
         self.dss.loads_write_pct_mean(expected)
         actual = self.dss.loads_read_pct_mean()
         assert actual == expected
@@ -265,7 +265,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_pct_std_dev(self):
-        expected = 123.0  # TODO it only works when we set decimal number.
+        expected = 123
         self.dss.loads_write_pct_std_dev(expected)
         actual = self.dss.loads_read_pct_std_dev()
         assert actual == expected
@@ -276,7 +276,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_pct_series_rl(self):
-        expected = 123.0  # TODO it only works when we set decimal number.
+        expected = 123
         self.dss.loads_write_pct_series_rl(expected)
         actual = self.dss.loads_read_pct_series_rl()
         assert actual == expected
@@ -287,7 +287,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_allocation_factor(self):
-        expected = 123.1  # TODO it only works when we set decimal number.
+        expected = 123
         self.dss.loads_write_allocation_factor(expected)
         actual = self.dss.loads_read_allocation_factor()
         assert actual == expected
@@ -298,7 +298,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_c_factor(self):
-        expected = 123.1  # TODO it only works when we set decimal number.
+        expected = 123
         self.dss.loads_write_c_factor(expected)
         actual = self.dss.loads_read_c_factor()
         assert actual == expected
@@ -309,7 +309,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_cvr_watts(self):
-        expected = 123.1  # TODO it only works when we set decimal number.
+        expected = 123
         self.dss.loads_write_cvr_watts(expected)
         actual = self.dss.loads_read_cvr_watts()
         assert actual == expected
@@ -320,7 +320,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_cvr_vars(self):
-        expected = 123.1  # TODO it only works when we set decimal number.
+        expected = 123
         self.dss.loads_write_cvr_vars(expected)
         actual = self.dss.loads_read_cvr_vars()
         assert actual == expected
@@ -334,7 +334,7 @@ class TestLoad13Bus:
             assert 1 == 1
 
     def test_loads_write_kva(self):
-        expected = 1500.0  # TODO it only works when we set decimal number.
+        expected = 1500
         self.dss.loads_write_kva(expected)
         actual = self.dss.loads_read_kva()
         assert actual == expected
@@ -345,7 +345,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_kwh(self):
-        expected = 123.0  # TODO it only works when we set decimal number.
+        expected = 123
         self.dss.loads_write_kwh(expected)
         actual = self.dss.loads_read_kwh()
         assert actual == expected
@@ -356,7 +356,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_kwh_days(self):
-        expected = 60.0  # TODO it only works when we set decimal number.
+        expected = 60
         self.dss.loads_write_kwh_days(expected)
         actual = self.dss.loads_read_kwh_days()
         assert actual == expected
@@ -367,7 +367,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_r_neut(self):
-        expected = 60.0  # TODO it only works when we set decimal number.
+        expected = 60.0
         self.dss.loads_write_r_neut(expected)
         actual = self.dss.loads_read_r_neut()
         assert actual == expected
@@ -378,7 +378,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_x_neut(self):
-        expected = 60.0  # TODO it only works when we set decimal number.
+        expected = 60.0
         self.dss.loads_write_x_neut(expected)
         actual = self.dss.loads_read_x_neut()
         assert actual == expected
@@ -389,7 +389,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_vmax_pu(self):
-        expected = 1.1  # TODO it only works when we set decimal number.
+        expected = 1.1
         self.dss.loads_write_vmax_pu(expected)
         actual = self.dss.loads_read_vmax_pu()
         assert actual == expected
@@ -400,7 +400,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_vmin_pu(self):
-        expected = 0.9  # TODO it only works when we set decimal number.
+        expected = 0.9
         self.dss.loads_write_vmin_pu(expected)
         actual = self.dss.loads_read_vmin_pu()
         assert actual == expected
@@ -411,7 +411,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_vmin_emerg(self):
-        expected = 0.5  # TODO it only works when we set decimal number.
+        expected = 0.5
         self.dss.loads_write_vmin_emerg(expected)
         actual = self.dss.loads_read_vmin_emerg()
         assert actual == expected
@@ -422,7 +422,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_vmin_norm(self):
-        expected = 0.8  # TODO it only works when we set decimal number.
+        expected = 0.8
         self.dss.loads_write_vmin_norm(expected)
         actual = self.dss.loads_read_vmin_norm()
         assert actual == expected
@@ -433,7 +433,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_xfkva(self):
-        expected = 123.1  # TODO it only works when we set decimal number.
+        expected = 123.1
         self.dss.loads_write_xfkva(expected)
         actual = self.dss.loads_read_xfkva()
         assert actual == expected
@@ -444,7 +444,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_rel_weight(self):
-        expected = 123.1  # TODO it only works when we set decimal number.
+        expected = 123.1
         self.dss.loads_write_rel_weight(expected)
         actual = self.dss.loads_read_rel_weight()
         assert actual == expected
