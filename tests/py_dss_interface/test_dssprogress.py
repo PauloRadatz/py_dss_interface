@@ -11,36 +11,38 @@ import pytest
 
 class TestDSSProgress13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    # def test_dssprogress_pct_progress(self):
+    # def test_dssprogress_pct_progress(self, dss):
     #     # TODO: Returning zero, is it correct?
     #     expected = 0
-    #     actual = self.dss.dssprogress_pct_progress(12.5)
-    #     self.dss.dssprogress_close()
+    #     actual = dss.dssprogress_pct_progress(12.5)
+    #     dss.dssprogress_close()
     #     assert actual == expected
     #
-    # def test_dssprogress_show(self):
+    # def test_dssprogress_show(self, dss):
     #     expected = 0
-    #     actual = self.dss.dssprogress_show()
-    #     self.dss.dssprogress_close()
+    #     actual = dss.dssprogress_show()
+    #     dss.dssprogress_close()
     #     assert actual == expected
     #
-    # def test_dssprogress_close(self):
+    # def test_dssprogress_close(self, dss):
     #     expected = 0
-    #     actual = self.dss.dssprogress_close()
+    #     actual = dss.dssprogress_close()
     #     assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
-    # def test_dssprogress_caption(self):
+    # def test_dssprogress_caption(self, dss):
     #     # TODO: Its returning "0", is it correct?
     #     expected = "0"
-    #     actual = self.dss.dssprogress_caption("my_caption")
+    #     actual = dss.dssprogress_caption("my_caption")
     #     assert actual == expected

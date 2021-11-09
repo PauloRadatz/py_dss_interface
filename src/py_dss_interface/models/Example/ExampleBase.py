@@ -22,7 +22,7 @@ class ExampleBase:
             self.case = ""
         self.case = case
         self.load_json_(self.case, True)  # 13, 34, 37, 123, 8500+
-        self.dss.text("compile {0}".format(self.dss_file_full_path))
+        dss.text("compile {0}".format(self.dss_file_full_path))
 
     def load_json_(self, case_param: str, default_file: bool) -> None:
         self.dir_path = pathlib.Path(__file__).resolve().parents[4]

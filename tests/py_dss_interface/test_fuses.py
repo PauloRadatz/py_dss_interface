@@ -11,147 +11,149 @@ import pytest
 
 class TestFuses13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
-        self.dss.text("New TCC_Curve.tlink  npts=7 C_array=[ 2 2.1 3 4 6 22 50] T_array=[ 300 100 10.1 4 1.4 0.1 0.02]")
-        self.dss.text("New TCC_Curve.tlink2 npts=7 C_array=[ 2 2.1 3 4 6 22 50] T_array=[ 300 100 10.1 4 1.4 0.1 0.02]")
-        self.dss.text("New Fuse.Fuse1   LINE.684652   1 fusecurve=tlink   Ratedcurrent=10")
-        self.dss.text("New Fuse.Fuse2   LINE.684611   1 fusecurve=tlink2  Ratedcurrent=15")
-        self.dss.fuses_write_name("Fuse1")
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        dss.text("New TCC_Curve.tlink  npts=7 C_array=[ 2 2.1 3 4 6 22 50] T_array=[ 300 100 10.1 4 1.4 0.1 0.02]")
+        dss.text("New TCC_Curve.tlink2 npts=7 C_array=[ 2 2.1 3 4 6 22 50] T_array=[ 300 100 10.1 4 1.4 0.1 0.02]")
+        dss.text("New Fuse.Fuse1   LINE.684652   1 fusecurve=tlink   Ratedcurrent=10")
+        dss.text("New Fuse.Fuse2   LINE.684611   1 fusecurve=tlink2  Ratedcurrent=15")
+        dss.fuses_write_name("Fuse1")
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_fuses_first(self):
+    def test_fuses_first(self, dss):
         expected = 1
-        actual = self.dss.fuses_first()
+        actual = dss.fuses_first()
         assert actual == expected
 
-    def test_fuses_next(self):
+    def test_fuses_next(self, dss):
         expected = 2
-        actual = self.dss.fuses_next()
+        actual = dss.fuses_next()
         assert actual == expected
 
-    def test_fuses_count(self):
+    def test_fuses_count(self, dss):
         expected = 2
-        actual = self.dss.fuses_count()
+        actual = dss.fuses_count()
         assert actual == expected
 
-    def test_fuses_open(self):
+    def test_fuses_open(self, dss):
         expected = 0
-        actual = self.dss.fuses_open()
+        actual = dss.fuses_open()
         assert actual == expected
 
-    def test_fuses_close(self):
+    def test_fuses_close(self, dss):
         expected = ['closed']
-        self.dss.fuses_close()
-        actual = self.dss.fuses_read_state()
+        dss.fuses_close()
+        actual = dss.fuses_read_state()
         assert actual == expected
 
-    def test_fuses_num_phases(self):
+    def test_fuses_num_phases(self, dss):
         expected = 1
-        actual = self.dss.fuses_num_phases()
+        actual = dss.fuses_num_phases()
         assert actual == expected
 
-    def test_fuses_read_monitored_term(self):
+    def test_fuses_read_monitored_term(self, dss):
         expected = 1
-        actual = self.dss.fuses_read_monitored_term()
+        actual = dss.fuses_read_monitored_term()
         assert actual == expected
 
-    def test_fuses_write_monitored_term(self):
+    def test_fuses_write_monitored_term(self, dss):
         expected = 2
-        self.dss.fuses_write_monitored_term(expected)
-        actual = self.dss.fuses_read_monitored_term()
+        dss.fuses_write_monitored_term(expected)
+        actual = dss.fuses_read_monitored_term()
         assert actual == expected
 
-    def test_fuses_read_switched_term(self):
+    def test_fuses_read_switched_term(self, dss):
         expected = 1
-        actual = self.dss.fuses_read_switched_term()
+        actual = dss.fuses_read_switched_term()
         assert actual == expected
 
-    def test_fuses_write_switched_term(self):
+    def test_fuses_write_switched_term(self, dss):
         expected = 2
-        self.dss.fuses_write_switched_term(expected)
-        actual = self.dss.fuses_read_switched_term()
+        dss.fuses_write_switched_term(expected)
+        actual = dss.fuses_read_switched_term()
         assert actual == expected
 
-    def test_fuses_read_idx(self):
+    def test_fuses_read_idx(self, dss):
         expected = 1
-        actual = self.dss.fuses_read_idx()
+        actual = dss.fuses_read_idx()
         assert actual == expected
 
-    def test_fuses_write_idx(self):
+    def test_fuses_write_idx(self, dss):
         expected = 2
-        self.dss.fuses_write_idx(expected)
-        actual = self.dss.fuses_read_idx()
+        dss.fuses_write_idx(expected)
+        actual = dss.fuses_read_idx()
         assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_fuses_read_name(self):
+    def test_fuses_read_name(self, dss):
         expected = "fuse1"
-        actual = self.dss.fuses_read_name()
+        actual = dss.fuses_read_name()
         assert expected.lower() == actual.lower()
 
-    def test_fuses_write_name(self):
+    def test_fuses_write_name(self, dss):
         expected = "fuse2"
-        self.dss.fuses_write_name(expected)
-        actual = self.dss.fuses_read_name()
+        dss.fuses_write_name(expected)
+        actual = dss.fuses_read_name()
         assert expected.lower() == actual.lower()
 
-    def test_fuses_read_switched_obj(self):
+    def test_fuses_read_switched_obj(self, dss):
         expected = 'line.684652'
-        actual = self.dss.fuses_read_switched_obj()
+        actual = dss.fuses_read_switched_obj()
         assert actual == expected
 
-    def test_fuses_write_switched_obj(self):
+    def test_fuses_write_switched_obj(self, dss):
         expected = 'line.684611'
-        self.dss.fuses_write_switched_obj(expected)
-        actual = self.dss.fuses_read_switched_obj()
+        dss.fuses_write_switched_obj(expected)
+        actual = dss.fuses_read_switched_obj()
         assert actual == expected
 
-    def test_fuses_read_tcc_curve(self):
+    def test_fuses_read_tcc_curve(self, dss):
         expected = 'tlink'
-        actual = self.dss.fuses_read_tcc_curve()
+        actual = dss.fuses_read_tcc_curve()
         assert actual == expected
 
-    def test_fuses_write_tcc_curve(self):
+    def test_fuses_write_tcc_curve(self, dss):
         expected = 'tlink2'
-        self.dss.fuses_write_tcc_curve(expected)
-        actual = self.dss.fuses_read_tcc_curve()
+        dss.fuses_write_tcc_curve(expected)
+        actual = dss.fuses_read_tcc_curve()
         assert actual == expected
 
     # ===================================================================
     # Float methods
     # ===================================================================
-    def test_fuses_read_rated_current(self):
+    def test_fuses_read_rated_current(self, dss):
         expected = 10
-        actual = self.dss.fuses_read_rated_current()
+        actual = dss.fuses_read_rated_current()
         assert actual == expected
 
-    def test_fuses_write_rated_current(self):
+    def test_fuses_write_rated_current(self, dss):
         expected = 12
-        self.dss.fuses_write_rated_current(expected)
-        actual = self.dss.fuses_read_rated_current()
+        dss.fuses_write_rated_current(expected)
+        actual = dss.fuses_read_rated_current()
         assert actual == expected
 
-    def test_fuses_read_delay(self):
+    def test_fuses_read_delay(self, dss):
         expected = 0
-        actual = self.dss.fuses_read_delay()
+        actual = dss.fuses_read_delay()
         assert actual == expected
 
-    def test_fuses_write_delay(self):
+    def test_fuses_write_delay(self, dss):
         expected = 2
-        self.dss.fuses_write_delay(expected)
-        actual = self.dss.fuses_read_delay()
+        dss.fuses_write_delay(expected)
+        actual = dss.fuses_read_delay()
         assert actual == expected
 
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_fuses_all_names(self):
+    def test_fuses_all_names(self, dss):
         expected = ["fuse1", "fuse2"]
-        actual = self.dss.fuses_all_names()
+        actual = dss.fuses_all_names()
         assert actual == expected

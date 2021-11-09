@@ -14,144 +14,146 @@ import pytest
 
 class TestDSSParser13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_parser_int_value(self):
+    def test_parser_int_value(self, dss):
         # expected = 1
-        # actual = self.dss.parser_int_value()
+        # actual = dss.parser_int_value()
         # assert actual == expected
         ...
 
-    def test_parser_reset_delimeters(self):
+    def test_parser_reset_delimeters(self, dss):
         # expected = 1
-        # actual = self.dss.parser_reset_delimeters()
+        # actual = dss.parser_reset_delimeters()
         # assert actual == expected
         ...
 
-    def test_parser_read_auto_increment(self):
+    def test_parser_read_auto_increment(self, dss):
         # expected = 0
-        # actual = self.dss.parser_read_auto_increment()
+        # actual = dss.parser_read_auto_increment()
         # assert actual == expected
         ...
 
-    def test_parser_write_auto_increment(self):
+    def test_parser_write_auto_increment(self, dss):
         # expected = 1
-        # self.dss.parser_write_auto_increment(expected)
-        # actual = self.dss.parser_read_auto_increment()
+        # dss.parser_write_auto_increment(expected)
+        # actual = dss.parser_read_auto_increment()
         # assert actual == expected
         ...
 
     # ===================================================================
     # Float methods
     # ===================================================================
-    def test_parser_dbl_value(self):
+    def test_parser_dbl_value(self, dss):
         # expected = 1
-        # actual = self.dss.parser_dbl_value()
+        # actual = dss.parser_dbl_value()
         # assert actual == expected
         ...
 
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_parser_read_cmd_string(self):
+    def test_parser_read_cmd_string(self, dss):
         # expected = ""
-        # actual = self.dss.parser_read_cmd_string()
+        # actual = dss.parser_read_cmd_string()
         # assert actual == expected
         ...
 
-    def test_parser_write_cmd_string(self):
+    def test_parser_write_cmd_string(self, dss):
         # expected = "? datapath"
-        # self.dss.parser_write_cmd_string(expected)
-        # actual = self.dss.parser_read_cmd_string()
+        # dss.parser_write_cmd_string(expected)
+        # actual = dss.parser_read_cmd_string()
         # assert actual == expected
         ...
 
-    def test_parser_next_param(self):
+    def test_parser_next_param(self, dss):
         # expected = "0"
-        # actual = self.dss.parser_next_param()
+        # actual = dss.parser_next_param()
         # assert actual == expected
         ...
 
-    def test_parser_str_value(self):
+    def test_parser_str_value(self, dss):
         # expected = "1"
-        # actual = self.dss.parser_str_value()
+        # actual = dss.parser_str_value()
         # assert actual == expected
         ...
 
-    def test_parser_read_white_space(self):
+    def test_parser_read_white_space(self, dss):
         # expected = ""
-        # actual = self.dss.parser_read_white_space()
+        # actual = dss.parser_read_white_space()
         # assert actual == expected
         ...
 
-    def test_parser_write_white_space(self):
+    def test_parser_write_white_space(self, dss):
         # expected = "a"
-        # self.dss.parser_write_white_space(expected)
-        # actual = self.dss.parser_read_white_space()
+        # dss.parser_write_white_space(expected)
+        # actual = dss.parser_read_white_space()
         # assert actual == expected
         ...
 
-    def test_parser_read_begin_quote(self):
+    def test_parser_read_begin_quote(self, dss):
         # expected = ""
-        # actual = self.dss.parser_read_begin_quote()
+        # actual = dss.parser_read_begin_quote()
         # assert actual == expected
         ...
 
-    def test_parser_write_begin_quote(self):
+    def test_parser_write_begin_quote(self, dss):
         # expected = "a"
-        # self.dss.parser_write_begin_quote(expected)
-        # actual = self.dss.parser_read_begin_quote()
+        # dss.parser_write_begin_quote(expected)
+        # actual = dss.parser_read_begin_quote()
         # assert actual == expected
         ...
 
-    def test_parser_read_end_quote(self):
+    def test_parser_read_end_quote(self, dss):
         # expected = ""
-        # actual = self.dss.parser_read_end_quote()
+        # actual = dss.parser_read_end_quote()
         # assert actual == expected
         ...
 
-    def test_parser_write_end_quote(self):
+    def test_parser_write_end_quote(self, dss):
         # expected = "a"
-        # self.dss.parser_write_end_quote(expected)
-        # actual = self.dss.parser_read_end_quote()
+        # dss.parser_write_end_quote(expected)
+        # actual = dss.parser_read_end_quote()
         # assert actual == expected
         ...
 
-    def test_parser_read_delimiters(self):
+    def test_parser_read_delimiters(self, dss):
         # expected = ","
-        # actual = self.dss.parser_read_delimiters()
+        # actual = dss.parser_read_delimiters()
         # assert actual == expected
         ...
 
-    def test_parser_write_delimiters(self):
+    def test_parser_write_delimiters(self, dss):
         # expected = ";"
-        # self.dss.parser_write_delimiters(expected)
-        # actual = self.dss.parser_read_delimiters()
+        # dss.parser_write_delimiters(expected)
+        # actual = dss.parser_read_delimiters()
         # assert actual == expected
         ...
 
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_parser_vector(self):
+    def test_parser_vector(self, dss):
         # expected = [1, 2, 3]
-        # actual = self.dss.parser_vector()
+        # actual = dss.parser_vector()
         # assert actual == expected
         ...
 
-    def test_parser_matrix(self):
+    def test_parser_matrix(self, dss):
         # expected = [[1, 2, 3], [4, 5, 6]]
-        # actual = self.dss.parser_matrix()
+        # actual = dss.parser_matrix()
         # assert actual == expected
         ...
 
-    def test_parser_sym_matrix(self):
+    def test_parser_sym_matrix(self, dss):
         # expected = [[1, 2, 3], [4, 5, 6]]
-        # actual = self.dss.parser_sym_matrix()
+        # actual = dss.parser_sym_matrix()
         # assert actual == expected
         ...

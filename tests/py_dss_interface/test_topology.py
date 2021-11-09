@@ -10,174 +10,176 @@ import pytest
 
 class TestTopology13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
-        self.dss.solution_solve()
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        dss.solution_solve()
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_topology_num_loops(self):
+    def test_topology_num_loops(self, dss):
         expected = 1
-        actual = self.dss.topology_num_loops()
+        actual = dss.topology_num_loops()
         assert actual == expected
 
-    def test_topology_num_isolated_branches(self):
+    def test_topology_num_isolated_branches(self, dss):
         expected = 0
-        actual = self.dss.topology_num_isolated_branches()
+        actual = dss.topology_num_isolated_branches()
         assert actual == expected
 
-    def test_topology_num_isolated_loads(self):
-        self.dss.text("edit Line.670671 enabled=no")
+    def test_topology_num_isolated_loads(self, dss):
+        dss.text("edit Line.670671 enabled=no")
         expected = 7
-        actual = self.dss.topology_num_isolated_loadss()
+        actual = dss.topology_num_isolated_loadss()
         assert actual == expected
 
-    def test_topology_first(self):
+    def test_topology_first(self, dss):
         expected = 1
-        actual = self.dss.topology_first()
+        actual = dss.topology_first()
         assert actual == expected
 
         expected = 'Vsource.source'
-        actual = self.dss.topology_read_branch_name()
+        actual = dss.topology_read_branch_name()
         assert actual == expected
 
-    def test_topology_next(self):
+    def test_topology_next(self, dss):
         expected = 1
-        self.dss.topology_first()
-        actual = self.dss.topology_next()
+        dss.topology_first()
+        actual = dss.topology_next()
         assert actual == expected
 
         expected = 'Transformer.sub'
-        actual = self.dss.topology_read_branch_name()
+        actual = dss.topology_read_branch_name()
         assert actual == expected
 
-    def test_topology_active_branch(self):
-        self.dss.topology_write_branch_name('Transformer.sub')
+    def test_topology_active_branch(self, dss):
+        dss.topology_write_branch_name('Transformer.sub')
         expected = 1
-        actual = self.dss.topology_active_branch()
+        actual = dss.topology_active_branch()
         assert actual == expected
 
         expected = 'Transformer.sub'
-        actual = self.dss.topology_read_branch_name()
+        actual = dss.topology_read_branch_name()
         assert actual == expected
 
-    def test_topology_forward_branch(self):
-        self.dss.topology_write_branch_name('Vsource.source')
+    def test_topology_forward_branch(self, dss):
+        dss.topology_write_branch_name('Vsource.source')
         expected = 1
-        actual = self.dss.topology_forward_branch()
+        actual = dss.topology_forward_branch()
         assert actual == expected
 
         expected = 'Transformer.sub'
-        actual = self.dss.topology_read_branch_name()
+        actual = dss.topology_read_branch_name()
         assert actual == expected
 
-    def test_topology_backward_branch(self):
-        self.dss.topology_write_branch_name('Transformer.sub')
+    def test_topology_backward_branch(self, dss):
+        dss.topology_write_branch_name('Transformer.sub')
         expected = 1
-        actual = self.dss.topology_backward_branch()
+        actual = dss.topology_backward_branch()
         assert actual == expected
 
         expected = 'Vsource.source'
-        actual = self.dss.topology_read_branch_name()
+        actual = dss.topology_read_branch_name()
         assert actual == expected
 
     # TODO
-    def test_topology_looped_branch(self):
-        self.dss.topology_write_branch_name('Transformer.sub')
+    def test_topology_looped_branch(self, dss):
+        dss.topology_write_branch_name('Transformer.sub')
         expected = 0
-        actual = self.dss.topology_looped_branch()
+        actual = dss.topology_looped_branch()
         assert actual == expected
 
-        self.dss.topology_write_branch_name('Transformer.reg3')
+        dss.topology_write_branch_name('Transformer.reg3')
         expected = 1
-        actual = self.dss.topology_looped_branch()
+        actual = dss.topology_looped_branch()
         assert actual == expected
 
     # TODO
-    def test_topology_parallel_branch(self):
+    def test_topology_parallel_branch(self, dss):
         expected = 0
-        actual = self.dss.topology_parallel_branch()
+        actual = dss.topology_parallel_branch()
         assert actual == expected
 
-    def test_topology_first_load(self):
-        self.dss.topology_write_branch_name("Line.670671")
+    def test_topology_first_load(self, dss):
+        dss.topology_write_branch_name("Line.670671")
         expected = 1
-        actual = self.dss.topology_first_load()
+        actual = dss.topology_first_load()
         assert actual == expected  # TODO understand
 
         # expected = 'Load.671'
-        # actual = self.dss.topology_read_branch_name()
+        # actual = dss.topology_read_branch_name()
         # assert actual == expected
 
-    def test_topology_next_load(self):
-        self.dss.topology_write_branch_name("Transformer.XFM1")
+    def test_topology_next_load(self, dss):
+        dss.topology_write_branch_name("Transformer.XFM1")
 
         expected = "Load.634a"
-        self.dss.topology_first_load()
-        actual = self.dss.cktelement_name()
+        dss.topology_first_load()
+        actual = dss.cktelement_name()
         assert actual == expected
 
         expected = 1
-        actual = self.dss.topology_next_load()
+        actual = dss.topology_next_load()
         assert actual == expected
 
         expected = "Load.634b"
-        actual = self.dss.cktelement_name()
+        actual = dss.cktelement_name()
         assert actual == expected
 
-    def test_topology_active_level(self):
-        self.dss.topology_write_branch_name("Line.670671")
+    def test_topology_active_level(self, dss):
+        dss.topology_write_branch_name("Line.670671")
         expected = 5
-        actual = self.dss.topology_active_level()
+        actual = dss.topology_active_level()
         assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
 
-    def test_topology_read_branch_name(self):
-        self.dss.topology_write_branch_name('Transformer.sub')
+    def test_topology_read_branch_name(self, dss):
+        dss.topology_write_branch_name('Transformer.sub')
         expected = 'Transformer.sub'
-        actual = self.dss.topology_read_branch_name()
+        actual = dss.topology_read_branch_name()
         assert actual == expected
 
-    def test_topology_write_branch_name(self):
+    def test_topology_write_branch_name(self, dss):
         expected = 'Transformer.sub'
-        self.dss.topology_write_branch_name(expected)
-        actual = self.dss.topology_read_branch_name()
+        dss.topology_write_branch_name(expected)
+        actual = dss.topology_read_branch_name()
         assert actual == expected
 
-    def test_topology_read_bus_name(self):
-        self.dss.topology_write_branch_name('Transformer.sub')
+    def test_topology_read_bus_name(self, dss):
+        dss.topology_write_branch_name('Transformer.sub')
         expected = 'sourcebus'
-        actual = self.dss.topology_read_bus_name()
+        actual = dss.topology_read_bus_name()
         assert actual == expected
 
     # TODO: Needs to specify the correct input
-    def test_topology_write_bus_name(self):
+    def test_topology_write_bus_name(self, dss):
         # expected = '670'
-        # self.dss.topology_write_bus_name(expected)
-        # actual = self.dss.topology_read_bus_name()
+        # dss.topology_write_bus_name(expected)
+        # actual = dss.topology_read_bus_name()
         # assert actual == expected
         #
         # expected = 'Line.650632'
-        # actual = self.dss.topology_read_branch_name()
+        # actual = dss.topology_read_branch_name()
         # assert actual == expected
         pass
 
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_topology_all_looped_pairs(self):
+    def test_topology_all_looped_pairs(self, dss):
         expected = ['Transformer.reg3', 'Transformer.reg2', 'Transformer.reg2',
                     'Line.650632', 'Transformer.reg1', 'Line.650632']
-        actual = self.dss.topology_all_looped_pairs()
+        actual = dss.topology_all_looped_pairs()
         assert actual == expected
 
-    def test_topology_all_isolated_branches(self):
-        self.dss.text("edit Line.670671 enabled=no")
+    def test_topology_all_isolated_branches(self, dss):
+        dss.text("edit Line.670671 enabled=no")
         expected = ['Capacitor.cap1',
                     'Capacitor.cap2',
                     'Line.670671',
@@ -187,11 +189,11 @@ class TestTopology13Bus:
                     'Line.684611',
                     'Line.684652',
                     'Line.671692']
-        actual = self.dss.topology_all_isolated_branches()
+        actual = dss.topology_all_isolated_branches()
         assert actual == expected
 
-    def test_topology_all_isolated_loads(self):
-        self.dss.text("edit Line.670671 enabled=no")
+    def test_topology_all_isolated_loads(self, dss):
+        dss.text("edit Line.670671 enabled=no")
         expected = ['Load.671',
                     'Load.692',
                     'Load.675a',
@@ -199,5 +201,5 @@ class TestTopology13Bus:
                     'Load.675c',
                     'Load.611',
                     'Load.652']
-        actual = self.dss.topology_all_isolated_loads()
+        actual = dss.topology_all_isolated_loads()
         assert actual == expected
