@@ -13,8 +13,16 @@ class TestSensors13Bus:
     @pytest.fixture(autouse=True)
     def _request(self, solve_snap_13bus):
         self.dss = solve_snap_13bus
-        self.dss.text("New Sensor.Sensor1 element=Load.671 terminal=1 kVBase=4.16 conn=delta ")
-        self.dss.text("New Sensor.Sensor2 element=Load.611 terminal=1 kVBase=4.16 conn=wye ")
+        self.dss.text("New Sensor.Sensor1 "
+                      "element=Load.671 "
+                      "terminal=1 "
+                      "kVBase=4.16 "
+                      "conn=delta ")
+        self.dss.text("New Sensor.Sensor2 "
+                      "element=Load.611 "
+                      "terminal=1 "
+                      "kVBase=4.16 "
+                      "conn=wye ")
         self.dss.solution_solve()
         self.dss.sensors_write_name("Sensor1")
 
