@@ -82,7 +82,7 @@ class TestTransformers13Bus:
     # Float methods
     # ===================================================================
     def test_transformers_read_r(self):
-        expected = 5e-6
+        expected = 0.0005
         actual = self.dss.transformers_read_r()
         assert actual == expected
 
@@ -90,7 +90,7 @@ class TestTransformers13Bus:
         expected = 0.01
         self.dss.transformers_write_r(expected)
         actual = self.dss.transformers_read_r()
-        assert actual == expected * 100
+        assert actual == expected
 
     def test_transformers_read_tap(self):
         expected = 1
@@ -170,34 +170,34 @@ class TestTransformers13Bus:
         assert actual == expected
 
     def test_transformers_read_xhl(self):
-        expected = 8e-5
+        expected = 0.008
         actual = self.dss.transformers_read_xhl()
         assert actual == expected
 
     def test_transformers_write_xhl(self):
-        expected = 8e-3
+        expected = 0.008
         self.dss.transformers_write_xhl(expected)
         actual = self.dss.transformers_read_xhl()
         assert actual == expected
 
     def test_transformers_read_xht(self):
-        expected = 0.04
+        expected = 4
         actual = self.dss.transformers_read_xht()
         assert actual == expected
 
     def test_transformers_write_xht(self):
-        expected = 0.5
+        expected = 5
         self.dss.transformers_write_xht(expected)
         actual = self.dss.transformers_read_xht()
         assert actual == expected
 
     def test_transformers_read_xlt(self):
-        expected = 0.04
+        expected = 4
         actual = self.dss.transformers_read_xlt()
         assert actual == expected
 
     def test_transformers_write_xlt(self):
-        expected = 0.5
+        expected = 5
         self.dss.transformers_write_xlt(expected)
         actual = self.dss.transformers_read_xlt()
         assert actual == expected
@@ -242,17 +242,39 @@ class TestTransformers13Bus:
         assert actual == expected
 
     def test_transformers_wdg_voltages(self):
-        expected = [2401.5628101024668, -0.4668918200941385, -1201.2376716779909,
-                    -2079.7175222941146, -1200.311653100436, 2080.141949991459]
+        expected = [2401.5628121109403,
+                    -0.4668923729244497,
+                    -1201.237672392959,
+                    -2079.717523220085,
+                    -1200.311654294895,
+                    2080.141951753078]
         actual = self.dss.transformers_wdg_voltages()
         assert actual == expected
 
     def test_transformers_wdg_currents(self):
-        expected = [10.886379602870875, -5.958667666767724, -10.886375419202523, 5.958667666069232,
-                    -521.2529520965181, 285.30771072395146, 521.2529520289972, -285.3080576583743,
-                    -7.086441140418174, -5.6765349296765635, 7.086439048056491, 5.676531307020923,
-                    339.306891429238, 271.7995472564362, -339.307191869244, -271.79937372310087,
-                    -0.7714520632580388, 13.030924175051041, 0.7714499719149899, -13.030920551682357,
-                    36.93846064992249, -623.9360991017893, -36.93816014844924, 623.9362725010142]
+        expected = [10.886376124155504,
+                    -5.958628293446964,
+                    -10.886371940479876,
+                    5.958628292748472,
+                    -521.2527855311055,
+                    285.3058254830539,
+                    521.2527854638174,
+                    -285.3061724174768,
+                    -7.086427310190629,
+                    -5.676542717425036,
+                    7.086425217828946,
+                    5.676539094769396,
+                    339.30622922163457,
+                    271.7999201430939,
+                    -339.3065296616405,
+                    -271.7997466106899,
+                    -0.771484338270966,
+                    13.030897319840733,
+                    0.771482246927917,
+                    -13.0308936964866,
+                    36.940006016753614,
+                    -623.934813240543,
+                    -36.93970551621169,
+                    623.9349866397679]
         actual = self.dss.transformers_wdg_currents()
         assert actual == expected
