@@ -11,47 +11,49 @@ import pytest
 
 class TestDSSExecutive13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_executive_num_commands(self):
+    def test_executive_num_commands(self, dss):
         expected = 129
-        actual = self.dss.executive_num_commands()
+        actual = dss.executive_num_commands()
         assert actual == expected
 
-    def test_executive_num_options(self):
+    def test_executive_num_options(self, dss):
         expected = 134
-        actual = self.dss.executive_num_options()
+        actual = dss.executive_num_options()
         assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_executive_command(self):
+    def test_executive_command(self, dss):
         expected = "New"
-        actual = self.dss.executive_command("1")
+        actual = dss.executive_command("1")
         assert actual == expected
 
-    def test_executive_option(self):
+    def test_executive_option(self, dss):
         expected = "type"
-        actual = self.dss.executive_option("1")
+        actual = dss.executive_option("1")
         assert actual == expected
 
-    def test_executive_command_help(self):
+    def test_executive_command_help(self, dss):
         expected = "Continuation of editing on the active object."
-        actual = self.dss.executive_command_help("3")
+        actual = dss.executive_command_help("3")
         assert actual == expected
 
-    def test_executive_option_help(self):
+    def test_executive_option_help(self, dss):
         expected = "Sets the active DSS class type.  Same as Class=..."
-        actual = self.dss.executive_option_help("1")
+        actual = dss.executive_option_help("1")
         assert actual == expected
 
-    def test_executive_option_value(self):
+    def test_executive_option_value(self, dss):
         expected = "Line"
-        actual = self.dss.executive_option_value("1")
+        actual = dss.executive_option_value("1")
         assert actual == expected

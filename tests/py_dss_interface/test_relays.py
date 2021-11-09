@@ -10,113 +10,115 @@ import pytest
 
 class TestRelays13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
-        self.dss.text(r"New Relay.test1 MonitoredObj=Line.650632 "
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        dss.text(r"New Relay.test1 MonitoredObj=Line.650632 "
                       r"                MonitoredTerm=1 "
                       r"                Type=Current "
                       r"                PhaseTrip=800 "
                       r"                GroundTrip=250")
-        self.dss.text(r"New Relay.test2 MonitoredObj=Line.632645 "
+        dss.text(r"New Relay.test2 MonitoredObj=Line.632645 "
                       r"                MonitoredTerm=1 "
                       r"                Type=Current "
                       r"                PhaseTrip=800 "
                       r"                GroundTrip=250")
-        self.dss.solution_solve()
-        self.dss.relays_write_name("test1")
+        dss.solution_solve()
+        dss.relays_write_name("test1")
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_relays_count(self):
+    def test_relays_count(self, dss):
         expected = 2
-        actual = self.dss.relays_count()
+        actual = dss.relays_count()
         assert actual == expected
 
-    def test_relays_first(self):
+    def test_relays_first(self, dss):
         expected = 1
-        actual = self.dss.relays_first()
+        actual = dss.relays_first()
         assert actual == expected
 
-    def test_relays_next(self):
+    def test_relays_next(self, dss):
         expected = 2
-        actual = self.dss.relays_next()
+        actual = dss.relays_next()
         assert actual == expected
 
-    def test_relays_read_monitored_term(self):
+    def test_relays_read_monitored_term(self, dss):
         expected = 1
-        actual = self.dss.relays_read_monitored_term()
+        actual = dss.relays_read_monitored_term()
         assert actual == expected
 
-    def test_relays_write_monitored_term(self):
+    def test_relays_write_monitored_term(self, dss):
         expected = 2
-        self.dss.relays_write_monitored_term(expected)
-        actual = self.dss.relays_read_monitored_term()
+        dss.relays_write_monitored_term(expected)
+        actual = dss.relays_read_monitored_term()
         assert actual == expected
 
-    def test_relays_read_switched_term(self):
+    def test_relays_read_switched_term(self, dss):
         exptected = 1
-        actual = self.dss.relays_read_switched_term()
+        actual = dss.relays_read_switched_term()
         assert exptected == actual
 
-    def test_relays_write_switched_term(self):
+    def test_relays_write_switched_term(self, dss):
         expected = 2
-        self.dss.relays_write_switched_term(expected)
-        actual = self.dss.relays_read_switched_term()
+        dss.relays_write_switched_term(expected)
+        actual = dss.relays_read_switched_term()
         assert actual == expected
 
-    def test_relays_read_idx(self):
+    def test_relays_read_idx(self, dss):
         expected = 1
-        actual = self.dss.relays_read_idx()
+        actual = dss.relays_read_idx()
         assert actual == expected
 
-    def test_relays_write_idx(self):
+    def test_relays_write_idx(self, dss):
         expected = 2
-        self.dss.relays_write_idx(expected)
-        actual = self.dss.relays_read_idx()
+        dss.relays_write_idx(expected)
+        actual = dss.relays_read_idx()
         assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_relays_read_name(self):
+    def test_relays_read_name(self, dss):
         expected = "test1"
-        actual = self.dss.relays_read_name()
+        actual = dss.relays_read_name()
         assert actual == expected
 
-    def test_relays_write_name(self):
+    def test_relays_write_name(self, dss):
         expected = "test2"
-        self.dss.relays_write_name(expected)
-        actual = self.dss.relays_read_name()
+        dss.relays_write_name(expected)
+        actual = dss.relays_read_name()
         assert actual == expected
 
-    def test_relays_read_monitored_obj(self):
+    def test_relays_read_monitored_obj(self, dss):
         expected = "line.650632"
-        actual = self.dss.relays_read_monitored_obj()
+        actual = dss.relays_read_monitored_obj()
         assert actual == expected
 
-    def test_relays_write_monitored_obj(self):
+    def test_relays_write_monitored_obj(self, dss):
         expected = "line.632645"
-        self.dss.relays_write_monitored_obj(expected)
-        actual = self.dss.relays_read_monitored_obj()
+        dss.relays_write_monitored_obj(expected)
+        actual = dss.relays_read_monitored_obj()
         assert actual == expected
 
-    def test_relays_read_switched_obj(self):
+    def test_relays_read_switched_obj(self, dss):
         expected = "line.650632"
-        actual = self.dss.relays_read_switched_obj()
+        actual = dss.relays_read_switched_obj()
         assert actual == expected
 
-    def test_relays_write_switched_obj(self):
+    def test_relays_write_switched_obj(self, dss):
         expected = "line.632645"
-        self.dss.relays_write_switched_obj(expected)
-        actual = self.dss.relays_read_switched_obj()
+        dss.relays_write_switched_obj(expected)
+        actual = dss.relays_read_switched_obj()
         assert actual == expected
 
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_relays_all_names(self):
+    def test_relays_all_names(self, dss):
         expected = ["test1", "test2"]
-        actual = self.dss.relays_all_names()
+        actual = dss.relays_all_names()
         assert actual == expected

@@ -10,283 +10,285 @@ import pytest
 
 class TestRegcontrols13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
-        self.dss.solution_solve()
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        dss.solution_solve()
 
-        self.dss.regcontrols_write_name('reg1')
+        dss.regcontrols_write_name('reg1')
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_regcontrols_first(self):
+    def test_regcontrols_first(self, dss):
         expected = 1
-        actual = self.dss.regcontrols_first()
+        actual = dss.regcontrols_first()
         assert actual == expected
 
-    def test_regcontrols_next(self):
+    def test_regcontrols_next(self, dss):
         expected = 2
-        actual = self.dss.regcontrols_next()
+        actual = dss.regcontrols_next()
         assert actual == expected
 
-    def test_regcontrols_read_tap_winding(self):
+    def test_regcontrols_read_tap_winding(self, dss):
         expected = 2
-        actual = self.dss.regcontrols_read_tap_winding()
+        actual = dss.regcontrols_read_tap_winding()
         assert actual == expected
 
-    def test_regcontrols_write_tap_winding(self):
+    def test_regcontrols_write_tap_winding(self, dss):
         expected = 1
-        self.dss.regcontrols_write_tap_winding(expected)
-        actual = self.dss.regcontrols_read_tap_winding()
+        dss.regcontrols_write_tap_winding(expected)
+        actual = dss.regcontrols_read_tap_winding()
         assert actual == expected
 
-    def test_regcontrols_read_winding(self):
+    def test_regcontrols_read_winding(self, dss):
         expected = 2
-        actual = self.dss.regcontrols_read_winding()
+        actual = dss.regcontrols_read_winding()
         assert actual == expected
 
-    def test_regcontrols_write_winding(self):
+    def test_regcontrols_write_winding(self, dss):
         expected = 1
-        self.dss.regcontrols_write_winding(expected)
-        actual = self.dss.regcontrols_read_winding()
+        dss.regcontrols_write_winding(expected)
+        actual = dss.regcontrols_read_winding()
         assert actual == expected
 
-    def test_regcontrols_read_is_reversible(self):
+    def test_regcontrols_read_is_reversible(self, dss):
         expected = 0
-        actual = self.dss.regcontrols_read_is_reversible()
+        actual = dss.regcontrols_read_is_reversible()
         assert actual == expected
 
-    def test_regcontrols_write_is_reversible(self):
+    def test_regcontrols_write_is_reversible(self, dss):
         expected = 1
-        self.dss.regcontrols_write_is_reversible(expected)
-        actual = self.dss.regcontrols_read_is_reversible()
+        dss.regcontrols_write_is_reversible(expected)
+        actual = dss.regcontrols_read_is_reversible()
         assert actual == expected
 
-    def test_regcontrols_read_is_inverse_time(self):
+    def test_regcontrols_read_is_inverse_time(self, dss):
         expected = 0
-        actual = self.dss.regcontrols_read_is_inverse_time()
+        actual = dss.regcontrols_read_is_inverse_time()
         assert actual == expected
 
-    def test_regcontrols_write_is_inverse_time(self):
+    def test_regcontrols_write_is_inverse_time(self, dss):
         expected = 1
-        self.dss.regcontrols_write_is_inverse_time(expected)
-        actual = self.dss.regcontrols_read_is_inverse_time()
+        dss.regcontrols_write_is_inverse_time(expected)
+        actual = dss.regcontrols_read_is_inverse_time()
         assert actual == expected
 
-    def test_regcontrols_read_max_tap_change(self):
+    def test_regcontrols_read_max_tap_change(self, dss):
         expected = 16
-        actual = self.dss.regcontrols_read_max_tap_change()
+        actual = dss.regcontrols_read_max_tap_change()
         assert actual == expected
 
-    def test_regcontrols_write_max_tap_change(self):
+    def test_regcontrols_write_max_tap_change(self, dss):
         expected = 12
-        self.dss.regcontrols_write_max_tap_change(expected)
-        actual = self.dss.regcontrols_read_max_tap_change()
+        dss.regcontrols_write_max_tap_change(expected)
+        actual = dss.regcontrols_read_max_tap_change()
         assert actual == expected
 
-    def test_regcontrols_count(self):
+    def test_regcontrols_count(self, dss):
         expected = 3
-        actual = self.dss.regcontrols_count()
+        actual = dss.regcontrols_count()
         assert actual == expected
 
-    def test_regcontrols_read_tap_number(self):
+    def test_regcontrols_read_tap_number(self, dss):
         expected = 9
-        actual = self.dss.regcontrols_read_tap_number()
+        actual = dss.regcontrols_read_tap_number()
         assert actual == expected
 
-    def test_regcontrols_write_tap_number(self):
+    def test_regcontrols_write_tap_number(self, dss):
         expected = 16
-        self.dss.regcontrols_write_tap_number(expected)
-        actual = self.dss.regcontrols_read_tap_number()
+        dss.regcontrols_write_tap_number(expected)
+        actual = dss.regcontrols_read_tap_number()
         assert actual == expected
 
     # ===================================================================
     # Float methods
     # ===================================================================
-    def test_regcontrols_read_ct_primary(self):
+    def test_regcontrols_read_ct_primary(self, dss):
         expected = 700
-        actual = self.dss.regcontrols_read_ct_primary()
+        actual = dss.regcontrols_read_ct_primary()
         assert actual == expected
 
-    def test_regcontrols_write_ct_primary(self):
+    def test_regcontrols_write_ct_primary(self, dss):
         expected = 600
-        self.dss.regcontrols_write_ct_primary(expected)
-        actual = self.dss.regcontrols_read_ct_primary()
+        dss.regcontrols_write_ct_primary(expected)
+        actual = dss.regcontrols_read_ct_primary()
         assert actual == expected
 
-    def test_regcontrols_read_pt_ratio(self):
+    def test_regcontrols_read_pt_ratio(self, dss):
         expected = 20
-        actual = self.dss.regcontrols_read_pt_ratio()
+        actual = dss.regcontrols_read_pt_ratio()
         assert actual == expected
 
-    def test_regcontrols_write_pt_ratio(self):
+    def test_regcontrols_write_pt_ratio(self, dss):
         expected = 15
-        self.dss.regcontrols_write_pt_ratio(expected)
-        actual = self.dss.regcontrols_read_pt_ratio()
+        dss.regcontrols_write_pt_ratio(expected)
+        actual = dss.regcontrols_read_pt_ratio()
         assert actual == expected
 
-    def test_regcontrols_read_forward_r(self):
+    def test_regcontrols_read_forward_r(self, dss):
         expected = 3
-        actual = self.dss.regcontrols_read_forward_r()
+        actual = dss.regcontrols_read_forward_r()
         assert actual == expected
 
-    def test_regcontrols_write_forward_r(self):
+    def test_regcontrols_write_forward_r(self, dss):
         expected = 4
-        self.dss.regcontrols_write_forward_r(expected)
-        actual = self.dss.regcontrols_read_forward_r()
+        dss.regcontrols_write_forward_r(expected)
+        actual = dss.regcontrols_read_forward_r()
         assert actual == expected
 
-    def test_regcontrols_read_forward_x(self):
+    def test_regcontrols_read_forward_x(self, dss):
         expected = 9
-        actual = self.dss.regcontrols_read_forward_x()
+        actual = dss.regcontrols_read_forward_x()
         assert actual == expected
 
-    def test_regcontrols_write_forward_x(self):
+    def test_regcontrols_write_forward_x(self, dss):
         expected = 8
-        self.dss.regcontrols_write_forward_x(expected)
-        actual = self.dss.regcontrols_read_forward_x()
+        dss.regcontrols_write_forward_x(expected)
+        actual = dss.regcontrols_read_forward_x()
         assert actual == expected
 
-    def test_regcontrols_read_reverse_r(self):
+    def test_regcontrols_read_reverse_r(self, dss):
         expected = 0
-        actual = self.dss.regcontrols_read_reverse_r()
+        actual = dss.regcontrols_read_reverse_r()
         assert actual == expected
 
-    def test_regcontrols_write_reverse_r(self):
+    def test_regcontrols_write_reverse_r(self, dss):
         expected = 5
-        self.dss.regcontrols_write_reverse_r(expected)
-        actual = self.dss.regcontrols_read_reverse_r()
+        dss.regcontrols_write_reverse_r(expected)
+        actual = dss.regcontrols_read_reverse_r()
         assert actual == expected
 
-    def test_regcontrols_read_reverser_x(self):
+    def test_regcontrols_read_reverser_x(self, dss):
         expected = 0
-        actual = self.dss.regcontrols_read_reverser_x()
+        actual = dss.regcontrols_read_reverser_x()
         assert actual == expected
 
-    def test_regcontrols_write_reverser_x(self):
+    def test_regcontrols_write_reverser_x(self, dss):
         expected = 5
-        self.dss.regcontrols_write_reverser_x(expected)
-        actual = self.dss.regcontrols_read_reverser_x()
+        dss.regcontrols_write_reverser_x(expected)
+        actual = dss.regcontrols_read_reverser_x()
         assert actual == expected
 
-    def test_regcontrols_read_delay(self):
+    def test_regcontrols_read_delay(self, dss):
         expected = 15
-        actual = self.dss.regcontrols_read_delay()
+        actual = dss.regcontrols_read_delay()
         assert actual == expected
 
-    def test_regcontrols_write_delay(self):
+    def test_regcontrols_write_delay(self, dss):
         expected = 10
-        self.dss.regcontrols_write_delay(expected)
-        actual = self.dss.regcontrols_read_delay()
+        dss.regcontrols_write_delay(expected)
+        actual = dss.regcontrols_read_delay()
         assert actual == expected
 
-    def test_regcontrols_read_tap_delay(self):
+    def test_regcontrols_read_tap_delay(self, dss):
         expected = 2
-        actual = self.dss.regcontrols_read_tap_delay()
+        actual = dss.regcontrols_read_tap_delay()
         assert actual == expected
 
-    def test_regcontrols_write_tap_delay(self):
+    def test_regcontrols_write_tap_delay(self, dss):
         expected = 1
-        self.dss.regcontrols_write_tap_delay(expected)
-        actual = self.dss.regcontrols_read_tap_delay()
+        dss.regcontrols_write_tap_delay(expected)
+        actual = dss.regcontrols_read_tap_delay()
         assert actual == expected
 
-    def test_regcontrols_read_voltage_limit(self):
+    def test_regcontrols_read_voltage_limit(self, dss):
         expected = 0
-        actual = self.dss.regcontrols_read_voltage_limit()
+        actual = dss.regcontrols_read_voltage_limit()
         assert actual == expected
 
-    def test_regcontrols_write_voltage_limit(self):
+    def test_regcontrols_write_voltage_limit(self, dss):
         expected = 1
-        self.dss.regcontrols_write_voltage_limit(expected)
-        actual = self.dss.regcontrols_read_voltage_limit()
+        dss.regcontrols_write_voltage_limit(expected)
+        actual = dss.regcontrols_read_voltage_limit()
         assert actual == expected
 
-    def test_regcontrols_read_forward_band(self):
+    def test_regcontrols_read_forward_band(self, dss):
         expected = 2
-        actual = self.dss.regcontrols_read_forward_band()
+        actual = dss.regcontrols_read_forward_band()
         assert actual == expected
 
-    def test_regcontrols_write_forward_band(self):
+    def test_regcontrols_write_forward_band(self, dss):
         expected = 1
-        self.dss.regcontrols_write_forward_band(expected)
-        actual = self.dss.regcontrols_read_forward_band()
+        dss.regcontrols_write_forward_band(expected)
+        actual = dss.regcontrols_read_forward_band()
         assert actual == expected
 
-    def test_regcontrols_read_forward_vreg(self):
+    def test_regcontrols_read_forward_vreg(self, dss):
         expected = 122
-        actual = self.dss.regcontrols_read_forward_vreg()
+        actual = dss.regcontrols_read_forward_vreg()
         assert actual == expected
 
-    def test_regcontrols_write_forward_vreg(self):
+    def test_regcontrols_write_forward_vreg(self, dss):
         expected = 111
-        self.dss.regcontrols_write_forward_vreg(expected)
-        actual = self.dss.regcontrols_read_forward_vreg()
+        dss.regcontrols_write_forward_vreg(expected)
+        actual = dss.regcontrols_read_forward_vreg()
         assert actual == expected
 
-    def test_regcontrols_read_reverse_band(self):
+    def test_regcontrols_read_reverse_band(self, dss):
         expected = 3
-        actual = self.dss.regcontrols_read_reverse_band()
+        actual = dss.regcontrols_read_reverse_band()
         assert actual == expected
 
-    def test_regcontrols_write_reverse_band(self):
+    def test_regcontrols_write_reverse_band(self, dss):
         expected = 12
-        self.dss.regcontrols_write_reverse_band(expected)
-        actual = self.dss.regcontrols_read_reverse_band()
+        dss.regcontrols_write_reverse_band(expected)
+        actual = dss.regcontrols_read_reverse_band()
         assert actual == expected
 
-    def test_regcontrols_read_reverse_vreg(self):
+    def test_regcontrols_read_reverse_vreg(self, dss):
         expected = 120
-        actual = self.dss.regcontrols_read_reverse_vreg()
+        actual = dss.regcontrols_read_reverse_vreg()
         assert actual == expected
 
-    def test_regcontrols_write_reverse_vreg(self):
+    def test_regcontrols_write_reverse_vreg(self, dss):
         expected = 110
-        self.dss.regcontrols_write_reverse_vreg(expected)
-        actual = self.dss.regcontrols_read_reverse_vreg()
+        dss.regcontrols_write_reverse_vreg(expected)
+        actual = dss.regcontrols_read_reverse_vreg()
         assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_regcontrols_read_name(self):
+    def test_regcontrols_read_name(self, dss):
         expected = 'reg1'
-        actual = self.dss.regcontrols_read_name()
+        actual = dss.regcontrols_read_name()
         assert actual == expected
 
-    def test_regcontrols_write_name(self):
+    def test_regcontrols_write_name(self, dss):
         expected = 'reg2'
-        self.dss.regcontrols_write_name(expected)
-        actual = self.dss.regcontrols_read_name()
+        dss.regcontrols_write_name(expected)
+        actual = dss.regcontrols_read_name()
         assert actual == expected
 
-    def test_regcontrols_read_monitored_bus(self):
+    def test_regcontrols_read_monitored_bus(self, dss):
         expected = ''
-        actual = self.dss.regcontrols_read_monitored_bus()
+        actual = dss.regcontrols_read_monitored_bus()
         assert actual == expected
 
-    def test_regcontrols_write_monitored_bus(self):
+    def test_regcontrols_write_monitored_bus(self, dss):
         expected = '672'
-        self.dss.regcontrols_write_monitored_bus(expected)
-        actual = self.dss.regcontrols_read_monitored_bus()
+        dss.regcontrols_write_monitored_bus(expected)
+        actual = dss.regcontrols_read_monitored_bus()
         assert actual == expected
 
-    def test_regcontrols_read_transformer(self):
+    def test_regcontrols_read_transformer(self, dss):
         expected = 'reg1'
-        actual = self.dss.regcontrols_read_transformer()
+        actual = dss.regcontrols_read_transformer()
         assert actual == expected
 
-    def test_regcontrols_write_transformer(self):
+    def test_regcontrols_write_transformer(self, dss):
         expected = 'reg2'
-        self.dss.regcontrols_write_transformer(expected)
-        actual = self.dss.regcontrols_read_transformer()
+        dss.regcontrols_write_transformer(expected)
+        actual = dss.regcontrols_read_transformer()
         assert actual == expected
 
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_regcontrols_all_names(self):
+    def test_regcontrols_all_names(self, dss):
         expected = ['reg1', 'reg2', 'reg3']
-        actual = self.dss.regcontrols_all_names()
+        actual = dss.regcontrols_all_names()
         assert actual == expected

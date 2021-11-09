@@ -10,235 +10,237 @@ import pytest
 
 class TestLineCodes13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
-        self.dss.linecodes_write_name('1')
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        dss.linecodes_write_name('1')
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_linecodes_count(self):
+    def test_linecodes_count(self, dss):
         expected = 36
-        actual = self.dss.linecodes_count()
+        actual = dss.linecodes_count()
         assert actual == expected
 
-    def test_linecodes_first(self):
+    def test_linecodes_first(self, dss):
         expected = 1
-        actual = self.dss.linecodes_first()
+        actual = dss.linecodes_first()
         assert actual == expected
 
-    def test_linecodes_next(self):
+    def test_linecodes_next(self, dss):
         expected = 2
-        actual = self.dss.linecodes_next()
+        actual = dss.linecodes_next()
         assert actual == expected
 
-    def test_linecodes_read_units(self):
+    def test_linecodes_read_units(self, dss):
         expected = 0
-        actual = self.dss.linecodes_read_units()
+        actual = dss.linecodes_read_units()
         assert actual == expected
 
-    def test_linecodes_write_units(self):
+    def test_linecodes_write_units(self, dss):
         expected = 5
-        self.dss.linecodes_write_units(expected)
-        actual = self.dss.linecodes_read_units()
+        dss.linecodes_write_units(expected)
+        actual = dss.linecodes_read_units()
         assert actual == expected
 
-    def test_linecodes_read_phases(self):
+    def test_linecodes_read_phases(self, dss):
         expected = 3
-        actual = self.dss.linecodes_read_phases()
+        actual = dss.linecodes_read_phases()
         assert actual == expected
 
-    def test_linecodes_write_phases(self):
+    def test_linecodes_write_phases(self, dss):
         expected = 2
-        self.dss.linecodes_write_phases(expected)
-        actual = self.dss.linecodes_read_phases()
+        dss.linecodes_write_phases(expected)
+        actual = dss.linecodes_read_phases()
         assert actual == expected
 
-    def test_linecodes_is_z1z0(self):
+    def test_linecodes_is_z1z0(self, dss):
         expected = 0
-        actual = self.dss.linecodes_is_z1z0()
+        actual = dss.linecodes_is_z1z0()
         assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_linecodes_read_name(self):
+    def test_linecodes_read_name(self, dss):
         expected = '1'
-        actual = self.dss.linecodes_read_name()
+        actual = dss.linecodes_read_name()
         assert actual == expected
 
-    def test_linecodes_write_name(self):
+    def test_linecodes_write_name(self, dss):
         expected = '2'
-        self.dss.linecodes_write_name(expected)
-        actual = self.dss.linecodes_read_name()
+        dss.linecodes_write_name(expected)
+        actual = dss.linecodes_read_name()
         assert actual == expected
 
     # ===================================================================
     # Float methods
     # ===================================================================
-    def test_linecodes_read_r1(self):
+    def test_linecodes_read_r1(self, dss):
         expected = 0.058
-        actual = self.dss.linecodes_read_r1()
+        actual = dss.linecodes_read_r1()
         assert actual == expected
 
-    def test_linecodes_write_r1(self):
+    def test_linecodes_write_r1(self, dss):
         expected = 0.1
-        self.dss.linecodes_write_r1(expected)
-        actual = self.dss.linecodes_read_r1()
+        dss.linecodes_write_r1(expected)
+        actual = dss.linecodes_read_r1()
         assert actual == expected
 
-    def test_linecodes_read_x1(self):
+    def test_linecodes_read_x1(self, dss):
         expected = 0.1206
-        actual = self.dss.linecodes_read_x1()
+        actual = dss.linecodes_read_x1()
         assert actual == expected
 
-    def test_linecodes_write_x1(self):
+    def test_linecodes_write_x1(self, dss):
         expected = 0.1
-        self.dss.linecodes_write_x1(expected)
-        actual = self.dss.linecodes_read_x1()
+        dss.linecodes_write_x1(expected)
+        actual = dss.linecodes_read_x1()
         assert actual == expected
 
-    def test_linecodes_read_c1(self):
+    def test_linecodes_read_c1(self, dss):
         expected = 3.4
-        actual = self.dss.linecodes_read_c1()
+        actual = dss.linecodes_read_c1()
         assert actual == expected
 
-    def test_linecodes_write_c1(self):
+    def test_linecodes_write_c1(self, dss):
         expected = 1.0
-        self.dss.linecodes_write_c1(expected)
-        actual = self.dss.linecodes_read_c1()
+        dss.linecodes_write_c1(expected)
+        actual = dss.linecodes_read_c1()
         assert actual == expected
 
-    def test_linecodes_read_r0(self):
+    def test_linecodes_read_r0(self, dss):
         expected = 0.1784
-        actual = self.dss.linecodes_read_r0()
+        actual = dss.linecodes_read_r0()
         assert actual == expected
 
-    def test_linecodes_write_r0(self):
+    def test_linecodes_write_r0(self, dss):
         expected = 0.1
-        self.dss.linecodes_write_r0(expected)
-        actual = self.dss.linecodes_read_r0()
+        dss.linecodes_write_r0(expected)
+        actual = dss.linecodes_read_r0()
         assert actual == expected
 
-    def test_linecodes_read_x0(self):
+    def test_linecodes_read_x0(self, dss):
         expected = 0.4047
-        actual = self.dss.linecodes_read_x0()
+        actual = dss.linecodes_read_x0()
         assert actual == expected
 
-    def test_linecodes_write_x0(self):
+    def test_linecodes_write_x0(self, dss):
         expected = 0.1
-        self.dss.linecodes_write_x0(expected)
-        actual = self.dss.linecodes_read_x0()
+        dss.linecodes_write_x0(expected)
+        actual = dss.linecodes_read_x0()
         assert actual == expected
 
-    def test_linecodes_read_c0(self):
+    def test_linecodes_read_c0(self, dss):
         expected = 1.6
-        actual = self.dss.linecodes_read_c0()
+        actual = dss.linecodes_read_c0()
         assert actual == expected
 
-    def test_linecodes_write_c0(self):
+    def test_linecodes_write_c0(self, dss):
         expected = 2.0
-        self.dss.linecodes_write_c0(expected)
-        actual = self.dss.linecodes_read_c0()
+        dss.linecodes_write_c0(expected)
+        actual = dss.linecodes_read_c0()
         assert actual == expected
 
-    def test_linecodes_read_norm_amps(self):
+    def test_linecodes_read_norm_amps(self, dss):
         expected = 400
-        actual = self.dss.linecodes_read_norm_amps()
+        actual = dss.linecodes_read_norm_amps()
         assert actual == expected
 
-    def test_linecodes_write_norm_amps(self):
+    def test_linecodes_write_norm_amps(self, dss):
         expected = 300
-        self.dss.linecodes_write_norm_amps(expected)
-        actual = self.dss.linecodes_read_norm_amps()
+        dss.linecodes_write_norm_amps(expected)
+        actual = dss.linecodes_read_norm_amps()
         assert actual == expected
 
-    def test_linecodes_read_emerg_amps(self):
+    def test_linecodes_read_emerg_amps(self, dss):
         expected = 600
-        actual = self.dss.linecodes_read_emerg_amps()
+        actual = dss.linecodes_read_emerg_amps()
         assert actual == expected
 
-    def test_linecodes_write_emerg_amps(self):
+    def test_linecodes_write_emerg_amps(self, dss):
         expected = 300
-        self.dss.linecodes_write_emerg_amps(expected)
-        actual = self.dss.linecodes_read_emerg_amps()
+        dss.linecodes_write_emerg_amps(expected)
+        actual = dss.linecodes_read_emerg_amps()
         assert actual == expected
 
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_linecodes_read_rmatrix(self):
+    def test_linecodes_read_rmatrix(self, dss):
         expected = [0.086666667, 0.029545455, 0.02907197, 0.029545455, 0.088371212, 0.029924242, 0.02907197,
                     0.029924242, 0.08740530]
         expected = [truncate(x, 6) for x in expected]
-        actual = self.dss.linecodes_read_rmatrix()
+        actual = dss.linecodes_read_rmatrix()
         actual = [truncate(x, 6) for x in actual]
         assert actual == expected
 
-    def test_linecodes_write_rmatrix(self):
+    def test_linecodes_write_rmatrix(self, dss):
         expected_list = [0.791721, 0.31, 0.781649, 0.28345, 0.32, 0.791721]
         expected = format_matrix(expected_list)
         expected_str = format_matrix_str(expected)
 
-        self.dss.linecodes_write_rmatrix(expected_str)
-        actual = self.dss.linecodes_read_rmatrix()
+        dss.linecodes_write_rmatrix(expected_str)
+        actual = dss.linecodes_read_rmatrix()
 
         actual = [truncate(x, 6) for x in actual]
         expected = [truncate(x, 6) for x in expected]
 
         assert actual == expected
 
-    def test_linecodes_read_xmatrix(self):
+    def test_linecodes_read_xmatrix(self, dss):
         expected = [0.20416667, 0.09501894, 0.07289773, 0.09501894, 0.19852273, 0.08022727, 0.07289773, 0.08022727,
                     0.20172349]
         expected = [truncate(x, 6) for x in expected]
 
-        actual = self.dss.linecodes_read_xmatrix()
+        actual = dss.linecodes_read_xmatrix()
         actual = [truncate(x, 6) for x in actual]
 
         assert actual == expected
 
-    def test_linecodes_write_xmatrix(self):
+    def test_linecodes_write_xmatrix(self, dss):
         expected_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
         expected = format_matrix(expected_list)
         expected_str = format_matrix_str(expected)
 
-        self.dss.linecodes_write_xmatrix(expected_str)
-        actual = self.dss.linecodes_read_xmatrix()
+        dss.linecodes_write_xmatrix(expected_str)
+        actual = dss.linecodes_read_xmatrix()
 
         actual = [truncate(x, 9) for x in actual]
         expected = [truncate(x, 9) for x in expected]
 
         assert actual == expected
 
-    def test_linecodes_read_cmatrix(self):
+    def test_linecodes_read_cmatrix(self, dss):
         expected = [2.85171007, -0.92029379, -0.35075557, -0.92029379, 3.00463186, -0.58501125, -0.35075557,
                     -0.58501125, 2.71134756]
 
-        actual = self.dss.linecodes_read_cmatrix()
+        actual = dss.linecodes_read_cmatrix()
         actual = [truncate(x, 6) for x in actual]
         expected = [truncate(x, 6) for x in expected]
 
         assert actual == expected
 
-    def test_linecodes_write_cmatrix(self):
+    def test_linecodes_write_cmatrix(self, dss):
         expected_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
         expected = format_matrix(expected_list)
         expected_str = format_matrix_str(expected)
-        self.dss.linecodes_write_cmatrix(expected_str)
-        actual = self.dss.linecodes_read_cmatrix()
+        dss.linecodes_write_cmatrix(expected_str)
+        actual = dss.linecodes_read_cmatrix()
 
         actual = [truncate(x, 9) for x in actual]
         expected = [truncate(x, 9) for x in expected]
 
         assert actual == expected
 
-    def test_linecodes_all_names(self):
+    def test_linecodes_all_names(self, dss):
         expected = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '300', '301', '302', '303', '304',
                     '400', '601', '602', '603', '604', '605', '606', '607', '721', '722', '723', '724', 'mtx601',
                     'mtx602', 'mtx603', 'mtx604', 'mtx605', 'mtx606', 'mtx607']
-        actual = self.dss.linecodes_all_names()
+        actual = dss.linecodes_all_names()
         assert actual == expected
 
 

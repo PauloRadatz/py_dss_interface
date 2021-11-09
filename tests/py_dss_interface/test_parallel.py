@@ -11,96 +11,98 @@ import pytest
 
 class TestParallel13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_parallel_num_cpus(self):
+    def test_parallel_num_cpus(self, dss):
         expected = 4
-        actual = self.dss.parallel_num_cpus()
+        actual = dss.parallel_num_cpus()
         #assert actual == expected
 
-    def test_parallel_num_cores(self):
+    def test_parallel_num_cores(self, dss):
         expected = 2
-        actual = self.dss.parallel_num_cores()
+        actual = dss.parallel_num_cores()
         # assert actual == expected
 
-    def test_parallel_read_active_actor(self):
+    def test_parallel_read_active_actor(self, dss):
         expected = 1
-        actual = self.dss.parallel_read_active_actor()
+        actual = dss.parallel_read_active_actor()
         assert actual == expected
 
-    def test_parallel_write_active_actor(self):
+    def test_parallel_write_active_actor(self, dss):
         expected = 2
-        self.dss.parallel_create_actor()
-        self.dss.parallel_write_active_actor(expected)
-        actual = self.dss.parallel_read_active_actor()
+        dss.parallel_create_actor()
+        dss.parallel_write_active_actor(expected)
+        actual = dss.parallel_read_active_actor()
         assert actual == expected
 
-    def test_parallel_create_actor(self):
+    def test_parallel_create_actor(self, dss):
         expected = 0
-        actual = self.dss.parallel_create_actor()
+        actual = dss.parallel_create_actor()
         assert actual == expected
 
-    def test_parallel_read_actor_cpu(self):
+    def test_parallel_read_actor_cpu(self, dss):
         expected = -1
-        actual = self.dss.parallel_read_actor_cpu()
+        actual = dss.parallel_read_actor_cpu()
         assert actual == expected
 
-    def test_parallel_write_actor_cpu(self):
+    def test_parallel_write_actor_cpu(self, dss):
         expected = 1
-        self.dss.parallel_write_actor_cpu(expected)
-        actual = self.dss.parallel_read_actor_cpu()
+        dss.parallel_write_actor_cpu(expected)
+        actual = dss.parallel_read_actor_cpu()
         assert actual == expected
 
-    def test_parallel_num_actors(self):
+    def test_parallel_num_actors(self, dss):
         # TODO: It works only if the method is performed alone, if you run all tests at the same time, it fails
         expected = 2
-        self.dss.parallel_create_actor()
-        actual = self.dss.parallel_num_actors()
+        dss.parallel_create_actor()
+        actual = dss.parallel_num_actors()
         # assert actual == expected
 
-    def test_parallel_wait(self):
+    def test_parallel_wait(self, dss):
         expected = 0
-        actual = self.dss.parallel_wait()
+        actual = dss.parallel_wait()
         assert actual == expected
 
-    def test_parallel_read_active_parallel(self):
+    def test_parallel_read_active_parallel(self, dss):
         expected = 0
-        actual = self.dss.parallel_read_active_parallel()
+        actual = dss.parallel_read_active_parallel()
         assert actual == expected
 
-    def test_parallel_write_active_parallel(self):
+    def test_parallel_write_active_parallel(self, dss):
         expected = 1
-        self.dss.parallel_write_active_parallel(expected)
-        actual = self.dss.parallel_read_active_parallel()
+        dss.parallel_write_active_parallel(expected)
+        actual = dss.parallel_read_active_parallel()
         assert actual == expected
 
-    def test_parallel_read_concatenate_reportsl(self):
+    def test_parallel_read_concatenate_reportsl(self, dss):
         expected = 0
-        actual = self.dss.parallel_read_concatenate_reportsl()
+        actual = dss.parallel_read_concatenate_reportsl()
         assert actual == expected
 
-    def test_parallel_write_concatenate_reportsl(self):
+    def test_parallel_write_concatenate_reportsl(self, dss):
         expected = 1
-        self.dss.parallel_write_concatenate_reportsl(expected)
-        actual = self.dss.parallel_read_concatenate_reportsl()
+        dss.parallel_write_concatenate_reportsl(expected)
+        actual = dss.parallel_read_concatenate_reportsl()
         assert actual == expected
 
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_parallel_actor_progress(self):
+    def test_parallel_actor_progress(self, dss):
         # TODO: It works only if the method is performed alone, if you run all tests at the same time, it fails
         expected = [0]
-        actual = self.dss.parallel_actor_progress()
+        actual = dss.parallel_actor_progress()
         # assert actual == expected
 
-    def test_parallel_actor_status(self):
+    def test_parallel_actor_status(self, dss):
         # TODO: It works only if the method is performed alone, if you run all tests at the same time, it fails
         expected = [1]
-        actual = self.dss.parallel_actor_status()
+        actual = dss.parallel_actor_status()
         # assert actual == expected

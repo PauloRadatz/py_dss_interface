@@ -10,192 +10,194 @@ import pytest
 
 class TestSensors13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
-        self.dss.text("New Sensor.Sensor1 "
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        dss.text("New Sensor.Sensor1 "
                       "element=Load.671 "
                       "terminal=1 "
                       "kVBase=4.16 "
                       "conn=delta ")
-        self.dss.solution_solve()
-        self.dss.sensors_write_name("Sensor1")
+        dss.solution_solve()
+        dss.sensors_write_name("Sensor1")
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_sensors_count(self):
+    def test_sensors_count(self, dss):
         expected = 1
-        actual = self.dss.sensors_count()
+        actual = dss.sensors_count()
         assert actual == expected
 
-    def test_sensors_first(self):
+    def test_sensors_first(self, dss):
         expected = 1
-        actual = self.dss.sensors_first()
+        actual = dss.sensors_first()
         assert actual == expected
 
-    def test_sensors_next(self):
-        self.dss.text("New Sensor.Sensor2 "
+    def test_sensors_next(self, dss):
+        dss.text("New Sensor.Sensor2 "
                       "element=Load.611 "
                       "terminal=1 "
                       "kVBase=4.16 "
                       "conn=wye ")
         expected = 2
-        self.dss.sensors_first()
-        actual = self.dss.sensors_next()
+        dss.sensors_first()
+        actual = dss.sensors_next()
         assert actual == expected
 
-    def test_sensors_read_is_delta(self):
+    def test_sensors_read_is_delta(self, dss):
         expected = 1
-        actual = self.dss.sensors_read_is_delta()
+        actual = dss.sensors_read_is_delta()
         assert actual == expected
 
-    def test_sensors_write_is_delta(self):
+    def test_sensors_write_is_delta(self, dss):
         expected = 0
-        self.dss.sensors_write_is_delta(expected)
-        actual = self.dss.sensors_read_is_delta()
+        dss.sensors_write_is_delta(expected)
+        actual = dss.sensors_read_is_delta()
         assert actual == expected
 
-    def test_sensors_read_reverse_delta(self):
+    def test_sensors_read_reverse_delta(self, dss):
         expected = 0
-        actual = self.dss.sensors_read_reverse_delta()
+        actual = dss.sensors_read_reverse_delta()
         assert actual == expected
 
-    def test_sensors_write_reverse_delta(self):
+    def test_sensors_write_reverse_delta(self, dss):
         expected = 0
-        self.dss.sensors_write_reverse_delta(expected)
-        actual = self.dss.sensors_read_reverse_delta()
+        dss.sensors_write_reverse_delta(expected)
+        actual = dss.sensors_read_reverse_delta()
         assert actual == expected
 
-    def test_sensors_read_metered_terminal(self):
+    def test_sensors_read_metered_terminal(self, dss):
         expected = 1
-        actual = self.dss.sensors_read_metered_terminal()
+        actual = dss.sensors_read_metered_terminal()
         assert actual == expected
 
-    def test_sensors_write_metered_terminal(self):
+    def test_sensors_write_metered_terminal(self, dss):
         expected = 1
-        self.dss.sensors_write_metered_terminal(expected)
-        actual = self.dss.sensors_read_metered_terminal()
+        dss.sensors_write_metered_terminal(expected)
+        actual = dss.sensors_read_metered_terminal()
         assert actual == expected
 
-    def test_sensors_reset(self):
+    def test_sensors_reset(self, dss):
         expected = 0
-        actual = self.dss.sensors_reset()
+        actual = dss.sensors_reset()
         assert actual == expected
 
-    def test_sensors_reset_all(self):
+    def test_sensors_reset_all(self, dss):
         expected = 0
-        actual = self.dss.sensors_reset_all()
+        actual = dss.sensors_reset_all()
         assert actual == expected
 
     # ===================================================================
     # Float methods
     # ===================================================================
-    def test_sensors_read_pct_error(self):
+    def test_sensors_read_pct_error(self, dss):
         expected = 1
-        actual = self.dss.sensors_read_pct_error()
+        actual = dss.sensors_read_pct_error()
         assert actual == expected
 
-    def test_sensors_write_pct_error(self):
+    def test_sensors_write_pct_error(self, dss):
         expected = 1.0
-        self.dss.sensors_write_pct_error(expected)
-        actual = self.dss.sensors_read_pct_error()
+        dss.sensors_write_pct_error(expected)
+        actual = dss.sensors_read_pct_error()
         assert actual == expected
 
-    def test_sensors_read_weight(self):
+    def test_sensors_read_weight(self, dss):
         expected = 1.0
-        actual = self.dss.sensors_read_weight()
+        actual = dss.sensors_read_weight()
         assert actual == expected
 
-    def test_sensors_write_weight(self):
+    def test_sensors_write_weight(self, dss):
         expected = 1.0
-        self.dss.sensors_write_weight(expected)
-        actual = self.dss.sensors_read_weight()
+        dss.sensors_write_weight(expected)
+        actual = dss.sensors_read_weight()
         assert actual == expected
 
-    def test_sensors_read_kv_base(self):
+    def test_sensors_read_kv_base(self, dss):
         expected = 4.16
-        actual = self.dss.sensors_read_kv_base()
+        actual = dss.sensors_read_kv_base()
         assert actual == expected
 
-    def test_sensors_write_kv_base(self):
+    def test_sensors_write_kv_base(self, dss):
         expected = 0.48
-        self.dss.sensors_write_kv_base(expected)
-        actual = self.dss.sensors_read_kv_base()
+        dss.sensors_write_kv_base(expected)
+        actual = dss.sensors_read_kv_base()
         assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_sensors_read_name(self):
+    def test_sensors_read_name(self, dss):
         expected = "sensor1"
-        actual = self.dss.sensors_read_name()
+        actual = dss.sensors_read_name()
         assert actual == expected
 
-    def test_sensors_write_name(self):
-        self.dss.text("New Sensor.Sensor2 "
+    def test_sensors_write_name(self, dss):
+        dss.text("New Sensor.Sensor2 "
                       "element=Load.611 "
                       "terminal=1 "
                       "kVBase=4.16 "
                       "conn=wye ")
         expected = "sensor2"
-        self.dss.sensors_write_name(expected)
-        actual = self.dss.sensors_read_name()
+        dss.sensors_write_name(expected)
+        actual = dss.sensors_read_name()
         assert actual == expected
 
-    def test_sensors_read_metered_element(self):
+    def test_sensors_read_metered_element(self, dss):
         expected = "load.671"
-        actual = self.dss.sensors_read_metered_element()
+        actual = dss.sensors_read_metered_element()
         assert actual == expected
 
-    def test_sensors_write_metered_element(self):
+    def test_sensors_write_metered_element(self, dss):
         expected = "load.611"
-        self.dss.sensors_write_metered_element(expected)
-        actual = self.dss.sensors_read_metered_element()
+        dss.sensors_write_metered_element(expected)
+        actual = dss.sensors_read_metered_element()
         assert actual == expected
 
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_sensors_all_names(self):
-        self.dss.text("New Sensor.Sensor2 "
+    def test_sensors_all_names(self, dss):
+        dss.text("New Sensor.Sensor2 "
                       "element=Load.611 "
                       "terminal=1 "
                       "kVBase=4.16 "
                       "conn=wye ")
         expected = ["sensor1", "sensor2"]
-        actual = self.dss.sensors_all_names()
+        actual = dss.sensors_all_names()
         assert actual == expected
 
-    def test_sensors_read_currents(self):
+    def test_sensors_read_currents(self, dss):
         expected = [0.0, 0.0, 0.0]
-        actual = self.dss.sensors_read_currents()
+        actual = dss.sensors_read_currents()
         assert actual == expected
 
-    def test_sensors_write_currents(self):
+    def test_sensors_write_currents(self, dss):
         expected = [1, 1, 1]
-        self.dss.sensors_write_currents(str(expected))
-        actual = self.dss.sensors_read_currents()
+        dss.sensors_write_currents(str(expected))
+        actual = dss.sensors_read_currents()
         assert actual == expected
 
-    def test_sensors_read_kvars(self):
+    def test_sensors_read_kvars(self, dss):
         expected = [0.0, 0.0, 0.0]
-        actual = self.dss.sensors_read_kvars()
+        actual = dss.sensors_read_kvars()
         assert actual == expected
 
-    def test_sensors_write_kvars(self):
+    def test_sensors_write_kvars(self, dss):
         expected = [0.0, 0.0, 0.0]
-        self.dss.sensors_write_kvars(str(expected))
-        actual = self.dss.sensors_read_kvars()
+        dss.sensors_write_kvars(str(expected))
+        actual = dss.sensors_read_kvars()
         assert actual == expected
 
-    def test_sensors_read_kws(self):
+    def test_sensors_read_kws(self, dss):
         expected = [0.0, 0.0, 0.0]
-        actual = self.dss.sensors_read_kws()
+        actual = dss.sensors_read_kws()
         assert actual == expected
 
-    def test_sensors_write_kws(self):
+    def test_sensors_write_kws(self, dss):
         expected = [10, 10, 10]
-        self.dss.sensors_write_kws(str(expected))
-        actual = self.dss.sensors_read_kws()
+        dss.sensors_write_kws(str(expected))
+        actual = dss.sensors_read_kws()
         assert actual == expected

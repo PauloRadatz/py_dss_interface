@@ -10,523 +10,524 @@ import pytest
 
 class TestSolution13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
-        self.dss.solution_solve()
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        dss.solution_solve()
 
+        return dss
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_solution_read_mode(self):
+    def test_solution_read_mode(self, dss):
         expected = 0
-        actual = self.dss.solution_read_mode()
+        actual = dss.solution_read_mode()
         assert actual == expected
 
-    def test_solution_write_mode(self):
+    def test_solution_write_mode(self, dss):
         expected = 1
-        self.dss.solution_write_mode(expected)
-        actual = self.dss.solution_read_mode()
+        dss.solution_write_mode(expected)
+        actual = dss.solution_read_mode()
         assert actual == expected
 
-    def test_solution_read_hour(self):
+    def test_solution_read_hour(self, dss):
         expected = 0
-        actual = self.dss.solution_read_hour()
+        actual = dss.solution_read_hour()
         assert actual == expected
 
-    def test_solution_write_hour(self):
+    def test_solution_write_hour(self, dss):
         expected = 12
-        self.dss.solution_write_hour(expected)
-        actual = self.dss.solution_read_hour()
+        dss.solution_write_hour(expected)
+        actual = dss.solution_read_hour()
         assert actual == expected
 
-    def test_solution_read_year(self):
+    def test_solution_read_year(self, dss):
         expected = 0
-        actual = self.dss.solution_read_year()
+        actual = dss.solution_read_year()
         assert actual == expected
 
-    def test_solution_write_year(self):
+    def test_solution_write_year(self, dss):
         expected = 2
-        self.dss.solution_write_year(expected)
-        actual = self.dss.solution_read_year()
+        dss.solution_write_year(expected)
+        actual = dss.solution_read_year()
         assert actual == expected
 
-    def test_solution_iterations(self):
+    def test_solution_iterations(self, dss):
         expected = 2
-        actual = self.dss.solution_iterations()
+        actual = dss.solution_iterations()
         assert actual == expected
 
-    def test_solution_read_max_iterations(self):
+    def test_solution_read_max_iterations(self, dss):
         expected = 15
-        actual = self.dss.solution_read_max_iterations()
+        actual = dss.solution_read_max_iterations()
         assert actual == expected
 
-    def test_solution_write_max_iterations(self):
+    def test_solution_write_max_iterations(self, dss):
         expected = 20
-        self.dss.solution_write_max_iterations(expected)
-        actual = self.dss.solution_read_max_iterations()
+        dss.solution_write_max_iterations(expected)
+        actual = dss.solution_read_max_iterations()
         assert actual == expected
 
-    def test_solution_read_number(self):
+    def test_solution_read_number(self, dss):
         expected = 100
-        actual = self.dss.solution_read_number()
+        actual = dss.solution_read_number()
         assert actual == expected
 
-    def test_solution_write_number(self):
+    def test_solution_write_number(self, dss):
         expected = 2
-        self.dss.solution_write_number(expected)
-        actual = self.dss.solution_read_number()
+        dss.solution_write_number(expected)
+        actual = dss.solution_read_number()
         assert actual == expected
 
-    def test_solution_read_random(self):
+    def test_solution_read_random(self, dss):
         expected = 1
-        actual = self.dss.solution_read_random()
+        actual = dss.solution_read_random()
         assert actual == expected
 
-    def test_solution_write_random(self):
+    def test_solution_write_random(self, dss):
         expected = 2
-        self.dss.solution_write_random(expected)
-        actual = self.dss.solution_read_random()
+        dss.solution_write_random(expected)
+        actual = dss.solution_read_random()
         assert actual == expected
 
-    def test_solution_read_load_model(self):
+    def test_solution_read_load_model(self, dss):
         expected = 1
-        actual = self.dss.solution_read_load_model()
+        actual = dss.solution_read_load_model()
         assert actual == expected
 
-    def test_solution_write_load_model(self):
+    def test_solution_write_load_model(self, dss):
         expected = 2
-        self.dss.solution_write_load_model(expected)
-        actual = self.dss.solution_read_load_model()
+        dss.solution_write_load_model(expected)
+        actual = dss.solution_read_load_model()
         assert actual == expected
 
-    def test_solution_read_add_type(self):
+    def test_solution_read_add_type(self, dss):
         expected = 1
-        actual = self.dss.solution_read_add_type()
+        actual = dss.solution_read_add_type()
         assert actual == expected
 
-    def test_solution_write_add_type(self):
+    def test_solution_write_add_type(self, dss):
         expected = 2
-        self.dss.solution_write_add_type(expected)
-        actual = self.dss.solution_read_add_type()
+        dss.solution_write_add_type(expected)
+        actual = dss.solution_read_add_type()
         assert actual == expected
 
-    def test_solution_read_algorithm(self):
+    def test_solution_read_algorithm(self, dss):
         expected = 0
-        actual = self.dss.solution_read_algorithm()
+        actual = dss.solution_read_algorithm()
         assert actual == expected
 
-    def test_solution_write_algorithm(self):
+    def test_solution_write_algorithm(self, dss):
         expected = 2
-        self.dss.solution_write_algorithm(expected)
-        actual = self.dss.solution_read_algorithm()
+        dss.solution_write_algorithm(expected)
+        actual = dss.solution_read_algorithm()
         assert actual == expected
 
-    def test_solution_read_control_mode(self):
+    def test_solution_read_control_mode(self, dss):
         expected = 0
-        actual = self.dss.solution_read_control_mode()
+        actual = dss.solution_read_control_mode()
         assert actual == expected
 
-    def test_solution_write_control_mode(self):
+    def test_solution_write_control_mode(self, dss):
         expected = 1
-        self.dss.solution_write_control_mode(expected)
-        actual = self.dss.solution_read_control_mode()
+        dss.solution_write_control_mode(expected)
+        actual = dss.solution_read_control_mode()
         assert actual == expected
 
-    def test_solution_read_control_iterations(self):
+    def test_solution_read_control_iterations(self, dss):
         expected = 1
-        actual = self.dss.solution_read_control_iterations()
+        actual = dss.solution_read_control_iterations()
         assert actual == expected
 
-    def test_solution_write_control_iterations(self):
+    def test_solution_write_control_iterations(self, dss):
         expected = 2
-        self.dss.solution_write_control_iterations(expected)
-        actual = self.dss.solution_read_control_iterations()
+        dss.solution_write_control_iterations(expected)
+        actual = dss.solution_read_control_iterations()
         assert actual == expected
 
-    def test_solution_read_max_control_iterations(self):
+    def test_solution_read_max_control_iterations(self, dss):
         expected = 10
-        actual = self.dss.solution_read_max_control_iterations()
+        actual = dss.solution_read_max_control_iterations()
         assert actual == expected
 
-    def test_solution_write_max_control_iterations(self):
+    def test_solution_write_max_control_iterations(self, dss):
         expected = 2
-        self.dss.solution_write_max_control_iterations(expected)
-        actual = self.dss.solution_read_max_control_iterations()
+        dss.solution_write_max_control_iterations(expected)
+        actual = dss.solution_read_max_control_iterations()
         assert actual == expected
 
-    def test_solution_sample_do_control_actions(self):
+    def test_solution_sample_do_control_actions(self, dss):
         expected = 0
-        actual = self.dss.solution_sample_do_control_actions()
+        actual = dss.solution_sample_do_control_actions()
         assert actual == expected
 
-    def test_solution_check_fault_status(self):
+    def test_solution_check_fault_status(self, dss):
         expected = 0
-        actual = self.dss.solution_check_fault_status()
+        actual = dss.solution_check_fault_status()
         assert actual == expected
 
-    def test_solution_solve_direct(self):
+    def test_solution_solve_direct(self, dss):
         expected = 0
-        actual = self.dss.solution_solve_direct()
+        actual = dss.solution_solve_direct()
         assert actual == expected
 
-    def test_solution_solve_power_flow(self):
+    def test_solution_solve_power_flow(self, dss):
         expected = 0
-        actual = self.dss.solution_solve_power_flow()
+        actual = dss.solution_solve_power_flow()
         assert actual == expected
 
-    def test_solution_solve_no_control(self):
+    def test_solution_solve_no_control(self, dss):
         expected = 0
-        actual = self.dss.solution_solve_no_control()
+        actual = dss.solution_solve_no_control()
         assert actual == expected
 
-    def test_solution_solve_plus_control(self):
+    def test_solution_solve_plus_control(self, dss):
         expected = 0
-        actual = self.dss.solution_solve_plus_control()
+        actual = dss.solution_solve_plus_control()
         assert actual == expected
 
-    def test_solution_init_snap(self):
+    def test_solution_init_snap(self, dss):
         expected = 0
-        actual = self.dss.solution_init_snap()
+        actual = dss.solution_init_snap()
         assert actual == expected
 
-    def test_solution_check_controls(self):
+    def test_solution_check_controls(self, dss):
         expected = 0
-        actual = self.dss.solution_check_controls()
+        actual = dss.solution_check_controls()
         assert actual == expected
 
-    def test_solution_sample_control_devices(self):
+    def test_solution_sample_control_devices(self, dss):
         expected = 0
-        actual = self.dss.solution_sample_control_devices()
+        actual = dss.solution_sample_control_devices()
         assert actual == expected
 
-    def test_solution_do_control_actions(self):
+    def test_solution_do_control_actions(self, dss):
         expected = 0
-        actual = self.dss.solution_do_control_actions()
+        actual = dss.solution_do_control_actions()
         assert actual == expected
 
-    def test_solution_build_y_matrix(self):
+    def test_solution_build_y_matrix(self, dss):
         expected = 0
-        actual = self.dss.solution_build_y_matrix()
+        actual = dss.solution_build_y_matrix()
         assert actual == expected
 
-    def test_solution_system_y_changed(self):
+    def test_solution_system_y_changed(self, dss):
         expected = 0
-        actual = self.dss.solution_system_y_changed()
+        actual = dss.solution_system_y_changed()
         assert actual == expected
 
-    def test_solution_read_converged(self):
+    def test_solution_read_converged(self, dss):
         expected = 1
-        actual = self.dss.solution_read_converged()
+        actual = dss.solution_read_converged()
         assert actual == expected
 
-    def test_solution_write_converged(self):
+    def test_solution_write_converged(self, dss):
         expected = 1
-        self.dss.solution_write_converged(expected)
-        actual = self.dss.solution_read_converged()
+        dss.solution_write_converged(expected)
+        actual = dss.solution_read_converged()
         assert actual == expected
 
-    def test_solution_total_iterations(self):
+    def test_solution_total_iterations(self, dss):
         expected = 2
-        actual = self.dss.solution_total_iterations()
+        actual = dss.solution_total_iterations()
         assert actual == expected
 
-    def test_solution_most_iterations_done(self):
+    def test_solution_most_iterations_done(self, dss):
         expected = 2
-        actual = self.dss.solution_most_iterations_done()
+        actual = dss.solution_most_iterations_done()
         assert actual == expected
 
-    def test_solution_read_control_actions_done(self):
+    def test_solution_read_control_actions_done(self, dss):
         expected = 1
-        actual = self.dss.solution_read_control_actions_done()
+        actual = dss.solution_read_control_actions_done()
         assert actual == expected
 
-    def test_solution_write_control_actions_done(self):
+    def test_solution_write_control_actions_done(self, dss):
         expected = 1
-        self.dss.solution_write_control_actions_done(expected)
-        actual = self.dss.solution_read_control_actions_done()
+        dss.solution_write_control_actions_done(expected)
+        actual = dss.solution_read_control_actions_done()
         assert actual == expected
 
-    def test_solution_finish_time_step(self):
+    def test_solution_finish_time_step(self, dss):
         expected = 0
-        actual = self.dss.solution_finish_time_step()
+        actual = dss.solution_finish_time_step()
         assert actual == expected
 
-    def test_solution_clean_up(self):
+    def test_solution_clean_up(self, dss):
         expected = 0
-        actual = self.dss.solution_clean_up()
+        actual = dss.solution_clean_up()
         assert actual == expected
 
-    def test_solution_solve_all(self):
+    def test_solution_solve_all(self, dss):
         expected = 0
-        actual = self.dss.solution_solve_all()
+        actual = dss.solution_solve_all()
         assert actual == expected
 
-    def test_solution_calc_inc_matrix(self):
+    def test_solution_calc_inc_matrix(self, dss):
         expected = 0
-        actual = self.dss.solution_calc_inc_matrix()
+        actual = dss.solution_calc_inc_matrix()
         assert actual == expected
 
-    def test_solution_calc_inc_matrix_0(self):
+    def test_solution_calc_inc_matrix_0(self, dss):
         expected = 0
-        actual = self.dss.solution_calc_inc_matrix()
+        actual = dss.solution_calc_inc_matrix()
         assert actual == expected
 
     # ===================================================================
     # Float methods
     # ===================================================================
-    def test_solution_read_frequency(self):
+    def test_solution_read_frequency(self, dss):
         expected = 60
-        actual = self.dss.solution_read_frequency()
+        actual = dss.solution_read_frequency()
         assert actual == expected
 
-    def test_solution_write_frequency(self):
+    def test_solution_write_frequency(self, dss):
         expected = 50
-        self.dss.solution_write_frequency(expected)
-        actual = self.dss.solution_read_frequency()
+        dss.solution_write_frequency(expected)
+        actual = dss.solution_read_frequency()
         assert actual == expected
 
-    def test_solution_read_seconds(self):
+    def test_solution_read_seconds(self, dss):
         expected = 0
-        actual = self.dss.solution_read_seconds()
+        actual = dss.solution_read_seconds()
         assert actual == expected
 
-    def test_solution_write_seconds(self):
+    def test_solution_write_seconds(self, dss):
         expected = 2.0
-        self.dss.solution_write_seconds(expected)
-        actual = self.dss.solution_read_seconds()
+        dss.solution_write_seconds(expected)
+        actual = dss.solution_read_seconds()
         assert actual == expected
 
-    def test_solution_read_step_size(self):
+    def test_solution_read_step_size(self, dss):
         expected = 0.001
-        actual = self.dss.solution_read_step_size()
+        actual = dss.solution_read_step_size()
         assert actual == expected
 
-    def test_solution_write_step_size(self):
+    def test_solution_write_step_size(self, dss):
         expected = 1
-        self.dss.solution_write_step_size(expected)
-        actual = self.dss.solution_read_step_size()
+        dss.solution_write_step_size(expected)
+        actual = dss.solution_read_step_size()
         assert actual == expected
 
-    def test_solution_read_load_mult(self):
+    def test_solution_read_load_mult(self, dss):
         expected = 1.0
-        actual = self.dss.solution_read_load_mult()
+        actual = dss.solution_read_load_mult()
         assert actual == expected
 
-    def test_solution_write_load_mult(self):
+    def test_solution_write_load_mult(self, dss):
         expected = 2.0
-        self.dss.solution_write_load_mult(expected)
-        actual = self.dss.solution_read_load_mult()
+        dss.solution_write_load_mult(expected)
+        actual = dss.solution_read_load_mult()
         assert actual == expected
 
-    def test_solution_read_tolerance(self):
+    def test_solution_read_tolerance(self, dss):
         expected = 0.0001
-        actual = self.dss.solution_read_tolerance()
+        actual = dss.solution_read_tolerance()
         assert actual == expected
 
-    def test_solution_write_tolerance(self):
+    def test_solution_write_tolerance(self, dss):
         expected = 2.0
-        self.dss.solution_write_tolerance(expected)
-        actual = self.dss.solution_read_tolerance()
+        dss.solution_write_tolerance(expected)
+        actual = dss.solution_read_tolerance()
         assert actual == expected
 
-    def test_solution_read_pct_growth(self):
+    def test_solution_read_pct_growth(self, dss):
         expected = 2.5
-        actual = self.dss.solution_read_pct_growth()
+        actual = dss.solution_read_pct_growth()
         assert pytest.approx(expected) == pytest.approx(actual)
 
-    def test_solution_write_pct_growth(self):
+    def test_solution_write_pct_growth(self, dss):
         expected = 2.0
-        self.dss.solution_write_pct_growth(expected)
-        actual = self.dss.solution_read_pct_growth()
+        dss.solution_write_pct_growth(expected)
+        actual = dss.solution_read_pct_growth()
         assert pytest.approx(expected) == pytest.approx(actual)
 
-    def test_solution_read_gen_kw(self):
+    def test_solution_read_gen_kw(self, dss):
         expected = 1000
-        actual = self.dss.solution_read_gen_kw()
+        actual = dss.solution_read_gen_kw()
         assert actual == expected
 
-    def test_solution_write_gen_kw(self):
+    def test_solution_write_gen_kw(self, dss):
         expected = 100
-        self.dss.solution_write_gen_kw(expected)
-        actual = self.dss.solution_read_gen_kw()
+        dss.solution_write_gen_kw(expected)
+        actual = dss.solution_read_gen_kw()
         assert actual == expected
 
-    def test_solution_read_gen_pf(self):
+    def test_solution_read_gen_pf(self, dss):
         expected = 1.0
-        actual = self.dss.solution_read_gen_pf()
+        actual = dss.solution_read_gen_pf()
         assert actual == expected
 
-    def test_solution_write_gen_pf(self):
+    def test_solution_write_gen_pf(self, dss):
         expected = 1.5
-        self.dss.solution_write_gen_pf(expected)
-        actual = self.dss.solution_read_gen_pf()
+        dss.solution_write_gen_pf(expected)
+        actual = dss.solution_read_gen_pf()
         assert actual == expected
 
-    def test_solution_read_cap_kvar(self):
+    def test_solution_read_cap_kvar(self, dss):
         expected = 600
-        actual = self.dss.solution_read_cap_kvar()
+        actual = dss.solution_read_cap_kvar()
         assert actual == expected
 
-    def test_solution_write_cap_kvar(self):
+    def test_solution_write_cap_kvar(self, dss):
         expected = 2.0
-        self.dss.solution_write_cap_kvar(expected)
-        actual = self.dss.solution_read_cap_kvar()
+        dss.solution_write_cap_kvar(expected)
+        actual = dss.solution_read_cap_kvar()
         assert actual == expected
 
-    def test_solution_read_gen_mult(self):
+    def test_solution_read_gen_mult(self, dss):
         expected = 1.0
-        actual = self.dss.solution_read_gen_mult()
+        actual = dss.solution_read_gen_mult()
         assert actual == expected
 
-    def test_solution_write_gen_mult(self):
+    def test_solution_write_gen_mult(self, dss):
         expected = 2.0
-        self.dss.solution_write_gen_mult(expected)
-        actual = self.dss.solution_read_gen_mult()
+        dss.solution_write_gen_mult(expected)
+        actual = dss.solution_read_gen_mult()
         assert actual == expected
 
-    def test_solution_read_dbl_hour(self):
+    def test_solution_read_dbl_hour(self, dss):
         expected = 0
-        actual = self.dss.solution_read_dbl_hour()
+        actual = dss.solution_read_dbl_hour()
         assert actual == expected
 
-    def test_solution_write_dbl_hour(self):
+    def test_solution_write_dbl_hour(self, dss):
         expected = 1
-        self.dss.solution_write_dbl_hour(expected)
-        actual = self.dss.solution_read_dbl_hour()
+        dss.solution_write_dbl_hour(expected)
+        actual = dss.solution_read_dbl_hour()
         assert actual == expected
 
-    def test_solution_step_size_min(self):
+    def test_solution_step_size_min(self, dss):
         expected = 0
-        actual = self.dss.solution_step_size_min()
+        actual = dss.solution_step_size_min()
         assert actual == expected
 
-    def test_solution_step_size_hr(self):
+    def test_solution_step_size_hr(self, dss):
         expected = 0
-        actual = self.dss.solution_step_size_hr()
-        assert expected == self.dss.solution_step_size_hr()
+        actual = dss.solution_step_size_hr()
+        assert expected == dss.solution_step_size_hr()
 
-    def test_solution_process_time(self):
+    def test_solution_process_time(self, dss):
         expected = -1
-        actual = self.dss.solution_process_time()
+        actual = dss.solution_process_time()
         assert actual > expected
 
-    def test_solution_read_total_time(self):
+    def test_solution_read_total_time(self, dss):
         expected = 0
-        actual = self.dss.solution_read_total_time()
+        actual = dss.solution_read_total_time()
         assert actual > expected
 
-    def test_solution_write_total_time(self):
+    def test_solution_write_total_time(self, dss):
         expected = 2.0
-        self.dss.solution_write_total_time(expected)
-        actual = self.dss.solution_read_total_time()
+        dss.solution_write_total_time(expected)
+        actual = dss.solution_read_total_time()
         assert actual == expected
 
-    def test_solution_process_time_step(self):
+    def test_solution_process_time_step(self, dss):
         expected = 0
-        actual = self.dss.solution_process_time_step()
+        actual = dss.solution_process_time_step()
         assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_solution_mode_id(self):
+    def test_solution_mode_id(self, dss):
         expected = 'Snap'
-        actual = self.dss.solution_mode_id()
+        actual = dss.solution_mode_id()
         assert actual == expected
 
-    def test_solution_read_ld_curve(self):
+    def test_solution_read_ld_curve(self, dss):
         expected = ''
-        actual = self.dss.solution_read_ld_curve()
+        actual = dss.solution_read_ld_curve()
         assert actual == expected
 
-    def test_solution_write_ld_curve(self):
-        self.dss.text("New Loadshape.Test npts=24 interval=1 Pbase=100 Qbase=50 "
+    def test_solution_write_ld_curve(self, dss):
+        dss.text("New Loadshape.Test npts=24 interval=1 Pbase=100 Qbase=50 "
                       "mult= "
                       "(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 "
                       "0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 "
                       "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
                       "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
         expected = 'test'
-        self.dss.solution_write_ld_curve(expected)
-        actual = self.dss.solution_read_ld_curve()
+        dss.solution_write_ld_curve(expected)
+        actual = dss.solution_read_ld_curve()
         assert actual == expected
 
-    def test_solution_read_default_daily(self):
+    def test_solution_read_default_daily(self, dss):
         expected = 'default'
-        actual = self.dss.solution_read_default_daily()
+        actual = dss.solution_read_default_daily()
         assert actual == expected
 
-    def test_solution_write_default_daily(self):
-        self.dss.text("New Loadshape.Test npts=24 interval=1 Pbase=100 Qbase=50 "
+    def test_solution_write_default_daily(self, dss):
+        dss.text("New Loadshape.Test npts=24 interval=1 Pbase=100 Qbase=50 "
                       "mult= "
                       "(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 "
                       "0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 "
                       "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
                       "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
         expected = 'test'
-        self.dss.solution_write_default_daily(expected)
-        actual = self.dss.solution_read_default_daily()
+        dss.solution_write_default_daily(expected)
+        actual = dss.solution_read_default_daily()
         assert actual == expected
 
-    def test_solution_read_default_yearly(self):
+    def test_solution_read_default_yearly(self, dss):
         expected = 'default'
-        actual = self.dss.solution_read_default_yearly()
+        actual = dss.solution_read_default_yearly()
         assert actual == expected
 
-    def test_solution_write_default_yearly(self):
-        self.dss.text("New Loadshape.Test npts=24 interval=1 Pbase=100 Qbase=50 "
+    def test_solution_write_default_yearly(self, dss):
+        dss.text("New Loadshape.Test npts=24 interval=1 Pbase=100 Qbase=50 "
                       "mult= "
                       "(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 "
                       "0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 "
                       "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
                       "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
         expected = 'test'
-        self.dss.solution_write_default_yearly(expected)
-        actual = self.dss.solution_read_default_yearly()
+        dss.solution_write_default_yearly(expected)
+        actual = dss.solution_read_default_yearly()
         assert actual == expected
 
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_solution_event_log(self):
+    def test_solution_event_log(self, dss):
         expected = ['Hour=0, Sec=0, ControlIter=1, Element=Regulator.reg3, Action= CHANGED 7 TAPS TO 1.04375.',
                     'Hour=0, Sec=0, ControlIter=1, Element=Regulator.reg2, Action= CHANGED 5 TAPS TO 1.03125.',
                     'Hour=0, Sec=0, ControlIter=1, Element=Regulator.reg1, Action= CHANGED 7 TAPS TO 1.04375.',
                     'Hour=0, Sec=0, ControlIter=2, Element=Regulator.reg3, Action= CHANGED 2 TAPS TO 1.05625.',
                     'Hour=0, Sec=0, ControlIter=2, Element=Regulator.reg2, Action= CHANGED 1 TAPS TO 1.0375.',
                     'Hour=0, Sec=0, ControlIter=2, Element=Regulator.reg1, Action= CHANGED 2 TAPS TO 1.05625.']
-        actual = self.dss.solution_event_log()
+        actual = dss.solution_event_log()
         assert actual == expected
 
-    def test_solution_nc_matrix(self):
+    def test_solution_nc_matrix(self, dss):
         expected = [0]
-        actual = self.dss.solution_nc_matrix()
+        actual = dss.solution_nc_matrix()
         assert actual == expected
 
-    def test_solution_bus_levels(self):
+    def test_solution_bus_levels(self, dss):
         expected = []
-        actual = self.dss.solution_bus_levels()
+        actual = dss.solution_bus_levels()
         assert actual == expected
 
-    def test_solution_inc_matrix_rows(self):
+    def test_solution_inc_matrix_rows(self, dss):
         expected = []
-        actual = self.dss.solution_inc_matrix_rows()
+        actual = dss.solution_inc_matrix_rows()
         assert actual == expected
 
-    def test_solution_inc_matrix_cols(self):
+    def test_solution_inc_matrix_cols(self, dss):
         expected = ['sourcebus', '650', 'rg60', '633', '634',
                     '671', '645', '646', '692', '675', '611',
                     '652', '670', '632', '680', '684']
-        actual = self.dss.solution_inc_matrix_cols()
+        actual = dss.solution_inc_matrix_cols()
         assert actual == expected
 
-    def test_solution_laplacian(self):
+    def test_solution_laplacian(self, dss):
         expected = [0]
-        actual = self.dss.solution_laplacian()
+        actual = dss.solution_laplacian()
         assert actual == expected
 
-    def test_solution_solve(self):
+    def test_solution_solve(self, dss):
         expected = 0
-        actual = self.dss.solution_solve()
+        actual = dss.solution_solve()
         assert actual == expected

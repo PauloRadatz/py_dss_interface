@@ -10,107 +10,109 @@ import pytest
 
 class TestSWTControls13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
-        self.dss.text("new swtcontrol.1  SwitchedObj=line.650632  SwitchedTerm=1 Action=c")
-        self.dss.text("new swtcontrol.2  SwitchedObj=line.692675  SwitchedTerm=1 Action=o")
-        self.dss.solution_solve()
-        self.dss.swtcontrols_write_name('1')
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        dss.text("new swtcontrol.1  SwitchedObj=line.650632  SwitchedTerm=1 Action=c")
+        dss.text("new swtcontrol.2  SwitchedObj=line.692675  SwitchedTerm=1 Action=o")
+        dss.solution_solve()
+        dss.swtcontrols_write_name('1')
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_swtcontrols_first(self):
+    def test_swtcontrols_first(self, dss):
         expected = 1
-        actual = self.dss.swtcontrols_first()
+        actual = dss.swtcontrols_first()
         assert actual == expected
 
-    def test_swtcontrols_next(self):
+    def test_swtcontrols_next(self, dss):
         expected = 2
-        actual = self.dss.swtcontrols_next()
+        actual = dss.swtcontrols_next()
         assert actual == expected
 
-    def test_swtcontrols_read_action(self):
+    def test_swtcontrols_read_action(self, dss):
         expected = 2
-        actual = self.dss.swtcontrols_read_action()
+        actual = dss.swtcontrols_read_action()
         assert actual == expected
 
-    def test_swtcontrols_write_action(self):
+    def test_swtcontrols_write_action(self, dss):
         expected = 2
-        self.dss.swtcontrols_write_action(expected)
-        actual = self.dss.swtcontrols_read_action()
+        dss.swtcontrols_write_action(expected)
+        actual = dss.swtcontrols_read_action()
         assert actual == expected
 
-    def test_swtcontrols_read_is_locked(self):
+    def test_swtcontrols_read_is_locked(self, dss):
         expected = 1
-        actual = self.dss.swtcontrols_read_is_locked()
+        actual = dss.swtcontrols_read_is_locked()
         assert actual == expected
 
-    def test_swtcontrols_write_is_locked(self):
+    def test_swtcontrols_write_is_locked(self, dss):
         expected = 1
-        self.dss.swtcontrols_write_is_locked(expected)
-        actual = self.dss.swtcontrols_read_is_locked()
+        dss.swtcontrols_write_is_locked(expected)
+        actual = dss.swtcontrols_read_is_locked()
         assert actual == expected
 
-    def test_swtcontrols_read_switched_term(self):
+    def test_swtcontrols_read_switched_term(self, dss):
         expected = 1
-        actual = self.dss.swtcontrols_read_switched_term()
+        actual = dss.swtcontrols_read_switched_term()
         assert actual == expected
 
-    def test_swtcontrols_write_switched_term(self):
+    def test_swtcontrols_write_switched_term(self, dss):
         expected = 0
-        self.dss.swtcontrols_write_switched_term(expected)
-        actual = self.dss.swtcontrols_read_switched_term()
+        dss.swtcontrols_write_switched_term(expected)
+        actual = dss.swtcontrols_read_switched_term()
         assert actual == expected
 
-    def test_swtcontrols_count(self):
+    def test_swtcontrols_count(self, dss):
         expected = 2
-        actual = self.dss.swtcontrols_count()
+        actual = dss.swtcontrols_count()
         assert actual == expected
 
     # ===================================================================
     # Float methods
     # ===================================================================
-    def test_swtcontrols_read_delay(self):
+    def test_swtcontrols_read_delay(self, dss):
         expected = 120
-        actual = self.dss.swtcontrols_read_delay()
+        actual = dss.swtcontrols_read_delay()
         assert actual == expected
 
-    def test_swtcontrols_write_delay(self):
+    def test_swtcontrols_write_delay(self, dss):
         expected = 160.0
-        self.dss.swtcontrols_write_delay(expected)
-        actual = self.dss.swtcontrols_read_delay()
+        dss.swtcontrols_write_delay(expected)
+        actual = dss.swtcontrols_read_delay()
         assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_swtcontrols_read_name(self):
+    def test_swtcontrols_read_name(self, dss):
         expected = '1'
-        actual = self.dss.swtcontrols_read_name()
+        actual = dss.swtcontrols_read_name()
         assert actual == expected
 
-    def test_swtcontrols_write_name(self):
+    def test_swtcontrols_write_name(self, dss):
         expected = '2'
-        self.dss.swtcontrols_write_name(expected)
-        actual = self.dss.swtcontrols_read_name()
+        dss.swtcontrols_write_name(expected)
+        actual = dss.swtcontrols_read_name()
         assert actual == expected
 
-    def test_swtcontrols_read_switched_obj(self):
+    def test_swtcontrols_read_switched_obj(self, dss):
         expected = 'line.650632'
-        actual = self.dss.swtcontrols_read_switched_obj()
+        actual = dss.swtcontrols_read_switched_obj()
         assert actual == expected
 
-    def test_swtcontrols_write_switched_obj(self):
+    def test_swtcontrols_write_switched_obj(self, dss):
         expected = 'line.692675'
-        self.dss.swtcontrols_write_switched_obj(expected)
-        actual = self.dss.swtcontrols_read_switched_obj()
+        dss.swtcontrols_write_switched_obj(expected)
+        actual = dss.swtcontrols_read_switched_obj()
         assert actual == expected
 
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_swtcontrols_all_names(self):
+    def test_swtcontrols_all_names(self, dss):
         expected = ['1', '2']
-        actual = self.dss.swtcontrols_all_names()
+        actual = dss.swtcontrols_all_names()

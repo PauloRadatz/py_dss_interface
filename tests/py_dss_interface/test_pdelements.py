@@ -10,117 +10,119 @@ import pytest
 
 class TestSensors13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
-        self.dss.solution_solve()
-        self.dss.pdelements_write_name("Line.671692")
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        dss.solution_solve()
+        dss.pdelements_write_name("Line.671692")
+
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_pdelements_count(self):
+    def test_pdelements_count(self, dss):
         expected = 19
-        actual = self.dss.pdelements_count()
+        actual = dss.pdelements_count()
         assert actual == expected
 
-    def test_pdelements_first(self):
+    def test_pdelements_first(self, dss):
         expected = 1
-        actual = self.dss.pdelements_first()
+        actual = dss.pdelements_first()
         assert actual == expected
 
-    def test_pdelements_next(self):
+    def test_pdelements_next(self, dss):
         expected = 1
-        self.dss.pdelements_first()
-        actual = self.dss.pdelements_next()
+        dss.pdelements_first()
+        actual = dss.pdelements_next()
         assert actual == expected
 
-    def test_pdelements_is_shunt(self):
+    def test_pdelements_is_shunt(self, dss):
         expected = 1
-        self.dss.pdelements_write_name('capacitor.cap1')
-        actual = self.dss.pdelements_is_shunt()
+        dss.pdelements_write_name('capacitor.cap1')
+        actual = dss.pdelements_is_shunt()
         assert actual == expected
 
-    def test_pdelements_num_customers(self):
+    def test_pdelements_num_customers(self, dss):
         expected = 1
-        actual = self.dss.pdelements_num_customers()
+        actual = dss.pdelements_num_customers()
         assert actual == expected
 
-    def test_pdelements_total_customers(self):
+    def test_pdelements_total_customers(self, dss):
         expected = 4
-        actual = self.dss.pdelements_total_customers()
+        actual = dss.pdelements_total_customers()
         assert actual == expected
 
-    def test_pdelements_parent_pd_element(self):
+    def test_pdelements_parent_pd_element(self, dss):
         expected = 3
-        actual = self.dss.pdelements_parent_pd_element()
+        actual = dss.pdelements_parent_pd_element()
         assert actual == expected
 
-    def test_pdelements_from_terminal(self):
+    def test_pdelements_from_terminal(self, dss):
         expected = 1
-        actual = self.dss.pdelements_from_terminal()
+        actual = dss.pdelements_from_terminal()
         assert actual == expected
 
-    def test_pdelements_section_id(self):
+    def test_pdelements_section_id(self, dss):
         expected = 0
-        actual = self.dss.pdelements_section_id()
+        actual = dss.pdelements_section_id()
         assert actual == expected
 
     # ===================================================================
     # Float methods
     # ===================================================================
-    def test_pdelements_read_fault_rate(self):
+    def test_pdelements_read_fault_rate(self, dss):
         expected = 0.1
-        actual = self.dss.pdelements_read_fault_rate()
+        actual = dss.pdelements_read_fault_rate()
         assert actual == expected
 
-    def test_pdelements_write_fault_rate(self):
+    def test_pdelements_write_fault_rate(self, dss):
         expected = 0.5
-        self.dss.pdelements_write_fault_rate(expected)
-        actual = self.dss.pdelements_read_fault_rate()
+        dss.pdelements_write_fault_rate(expected)
+        actual = dss.pdelements_read_fault_rate()
         assert actual == expected
 
-    def test_pdelements_read_pct_permanent(self):
+    def test_pdelements_read_pct_permanent(self, dss):
         expected = 20.0
-        actual = self.dss.pdelements_read_pct_permanent()
+        actual = dss.pdelements_read_pct_permanent()
         assert actual == expected
 
-    def test_pdelements_write_pct_permanent(self):
+    def test_pdelements_write_pct_permanent(self, dss):
         expected = 30
-        self.dss.pdelements_write_pct_permanent(expected)
-        actual = self.dss.pdelements_read_pct_permanent()
+        dss.pdelements_write_pct_permanent(expected)
+        actual = dss.pdelements_read_pct_permanent()
         assert actual == expected
 
-    def test_pdelements_lambda(self):
+    def test_pdelements_lambda(self, dss):
         expected = 0
-        actual = self.dss.pdelements_lambda()
+        actual = dss.pdelements_lambda()
         assert actual == expected
 
-    def test_pdelements_accumulated_l(self):
+    def test_pdelements_accumulated_l(self, dss):
         expected = 0
-        actual = self.dss.pdelements_accumulated_l()
+        actual = dss.pdelements_accumulated_l()
         assert actual == expected
 
-    def test_pdelements_repair_time(self):
+    def test_pdelements_repair_time(self, dss):
         expected = 3
-        actual = self.dss.pdelements_repair_time()
+        actual = dss.pdelements_repair_time()
         assert actual == expected
 
-    def test_pdelements_total_miles(self):
+    def test_pdelements_total_miles(self, dss):
         expected = 0
-        actual = self.dss.pdelements_total_miles()
+        actual = dss.pdelements_total_miles()
         assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_pdelements_read_name(self):
+    def test_pdelements_read_name(self, dss):
         expected = 'Line.671692'
-        actual = self.dss.pdelements_read_name()
+        actual = dss.pdelements_read_name()
         assert actual == expected
 
-    def test_pdelements_write_name(self):
+    def test_pdelements_write_name(self, dss):
         expected = 'Capacitor.cap2'
-        self.dss.pdelements_write_name(expected)
-        actual = self.dss.pdelements_read_name()
+        dss.pdelements_write_name(expected)
+        actual = dss.pdelements_read_name()
         assert actual == expected

@@ -10,64 +10,66 @@ import pytest
 
 class TestBus13ISources:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
-        self.dss.text("new isource.MyISource phases=3 amps=100 bus1=692 angle=30")
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        dss.text("new isource.MyISource phases=3 amps=100 bus1=692 angle=30")
 
-    def test_isources_count(self):
+        return dss
+
+    def test_isources_count(self, dss):
         expected = 1
-        actual = self.dss.isources_count()
+        actual = dss.isources_count()
         assert actual == expected
 
-    def test_isources_first(self):
+    def test_isources_first(self, dss):
         expected = 1
-        actual = self.dss.isources_first()
+        actual = dss.isources_first()
         assert actual == expected
 
         expected = 'myisource'
-        actual = self.dss.isources_read_name()
+        actual = dss.isources_read_name()
         assert actual == expected
 
-    def test_isources_next(self):
-        self.dss.isources_write_name('myisource')
+    def test_isources_next(self, dss):
+        dss.isources_write_name('myisource')
         expected = 0
-        actual = self.dss.isources_next()
+        actual = dss.isources_next()
         assert actual == expected
 
         expected = 'myisource'
-        actual = self.dss.isources_read_name()
+        actual = dss.isources_read_name()
         assert actual == expected
 
-    def test_isources_read_amps(self):
+    def test_isources_read_amps(self, dss):
         expected = 100.0
-        actual = self.dss.isources_read_amps()
+        actual = dss.isources_read_amps()
         assert actual == expected
 
-    def test_isources_write_amps(self):
+    def test_isources_write_amps(self, dss):
         expected = 0.0
-        self.dss.isources_write_amps(expected)
-        actual = self.dss.isources_read_amps()
+        dss.isources_write_amps(expected)
+        actual = dss.isources_read_amps()
         assert actual == expected
 
-    def test_isources_read_angle_deg(self):
+    def test_isources_read_angle_deg(self, dss):
         expected = 30.0
-        actual = self.dss.isources_read_angle_deg()
+        actual = dss.isources_read_angle_deg()
         assert actual == expected
 
-    def test_isources_write_angle_deg(self):
+    def test_isources_write_angle_deg(self, dss):
         expected = 0.0
-        self.dss.isources_write_angle_deg(expected)
-        actual = self.dss.isources_read_angle_deg()
+        dss.isources_write_angle_deg(expected)
+        actual = dss.isources_read_angle_deg()
         assert actual == expected
 
-    def test_isources_read_frequency(self):
+    def test_isources_read_frequency(self, dss):
         expected = 60.0
-        actual = self.dss.isources_read_frequency()
+        actual = dss.isources_read_frequency()
         assert actual == expected
 
-    def test_isources_write_frequency(self):
+    def test_isources_write_frequency(self, dss):
         expected = 0.0
-        self.dss.isources_write_frequency(expected)
-        actual = self.dss.isources_read_frequency()
+        dss.isources_write_frequency(expected)
+        actual = dss.isources_read_frequency()
         assert actual == expected

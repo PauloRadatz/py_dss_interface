@@ -11,189 +11,190 @@ import pytest
 
 class TestCircuit13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        return dss
 
-    def test_circuit_num_ckt_elements(self):
+    def test_circuit_num_ckt_elements(self, dss):
         expected = 39
-        actual = self.dss.circuit_num_ckt_elements()
+        actual = dss.circuit_num_ckt_elements()
         assert actual == expected
 
-    def test_circuit_num_buses(self):
+    def test_circuit_num_buses(self, dss):
         expected = 16
-        actual = self.dss.circuit_num_buses()
+        actual = dss.circuit_num_buses()
         assert actual == expected
 
-    def test_circuit_num_nodes(self):
+    def test_circuit_num_nodes(self, dss):
         expected = 41
-        actual = self.dss.circuit_num_nodes()
+        actual = dss.circuit_num_nodes()
         assert actual == expected
 
-    def test_circuit_first_pc_element(self):
+    def test_circuit_first_pc_element(self, dss):
         expected = 1
-        actual = self.dss.circuit_first_pc_element()
+        actual = dss.circuit_first_pc_element()
         assert actual == expected
 
         expected = 'Load.671'
-        actual = self.dss.cktelement_name()
+        actual = dss.cktelement_name()
         assert actual == expected
 
-    def test_circuit_next_pc_element(self):
+    def test_circuit_next_pc_element(self, dss):
         expected = 3
-        self.dss.circuit_first_pc_element()
-        self.dss.circuit_next_pc_element()
-        actual = self.dss.circuit_next_pc_element()
+        dss.circuit_first_pc_element()
+        dss.circuit_next_pc_element()
+        actual = dss.circuit_next_pc_element()
         assert actual == expected
 
         expected = "Load.634b"
-        actual = self.dss.cktelement_name()
+        actual = dss.cktelement_name()
         assert actual == expected
 
-    def test_circuit_first_pd_element(self):
+    def test_circuit_first_pd_element(self, dss):
         expected = 1
-        actual = self.dss.circuit_first_pd_element()
+        actual = dss.circuit_first_pd_element()
         assert actual == expected
 
         expected = 'Transformer.sub'
-        actual = self.dss.cktelement_name()
+        actual = dss.cktelement_name()
         assert actual == expected
 
-    def test_circuit_next_pd_element(self):
+    def test_circuit_next_pd_element(self, dss):
         expected = 3
-        self.dss.circuit_first_pd_element()
-        self.dss.circuit_next_pd_element()
-        actual = self.dss.circuit_next_pd_element()
+        dss.circuit_first_pd_element()
+        dss.circuit_next_pd_element()
+        actual = dss.circuit_next_pd_element()
         assert actual == expected
 
         expected = "Transformer.reg2"
-        actual = self.dss.cktelement_name()
+        actual = dss.cktelement_name()
         assert actual == expected
 
-    def test_circuit_sample(self):
+    def test_circuit_sample(self, dss):
         expected = 0
-        actual = self.dss.circuit_sample()
+        actual = dss.circuit_sample()
         assert actual == expected
 
-    def test_circuit_save_sample(self):
+    def test_circuit_save_sample(self, dss):
         expected = 0
-        actual = self.dss.circuit_save_sample()
+        actual = dss.circuit_save_sample()
         assert actual == expected
 
-    def test_circuit_set_active_bus_i(self):
+    def test_circuit_set_active_bus_i(self, dss):
         expected = 0
-        actual = self.dss.circuit_set_active_bus_i(1)
+        actual = dss.circuit_set_active_bus_i(1)
         assert actual == expected
 
         expected = '650'
-        actual = self.dss.bus_name()
+        actual = dss.bus_name()
         assert actual == expected
 
-    def test_circuit_first_element(self):
+    def test_circuit_first_element(self, dss):
         expected = 1
-        actual = self.dss.circuit_first_element()
+        actual = dss.circuit_first_element()
         assert actual == expected
 
         expected = 'Line.650632'
-        actual = self.dss.cktelement_name()
+        actual = dss.cktelement_name()
         assert actual == expected
 
-    def test_circuit_next_element(self):
+    def test_circuit_next_element(self, dss):
         expected = 2
-        self.dss.circuit_first_element()
-        actual = self.dss.circuit_next_element()
+        dss.circuit_first_element()
+        actual = dss.circuit_next_element()
         assert actual == expected
 
         expected = 'Line.632670'
-        actual = self.dss.cktelement_name()
+        actual = dss.cktelement_name()
         assert actual == expected
 
-    def test_circuit_update_storage_t(self):
+    def test_circuit_update_storage_t(self, dss):
         expected = 0
-        actual = self.dss.circuit_update_storage_t()
+        actual = dss.circuit_update_storage_t()
         assert actual == expected
 
-    def test_circuit_parent_pd_element(self):
+    def test_circuit_parent_pd_element(self, dss):
         expected = 1
-        self.dss.circuit_first_element()
-        self.dss.circuit_next_element()
-        actual = self.dss.circuit_parent_pd_element()
+        dss.circuit_first_element()
+        dss.circuit_next_element()
+        actual = dss.circuit_parent_pd_element()
         assert actual == expected
 
         expected = 'Line.650632'
-        actual = self.dss.cktelement_name()
+        actual = dss.cktelement_name()
         assert actual == expected
 
-    def test_circuit_end_of_time_step_update(self):
+    def test_circuit_end_of_time_step_update(self, dss):
         expected = 0
-        actual = self.dss.circuit_end_of_time_step_update()
+        actual = dss.circuit_end_of_time_step_update()
         assert actual == expected
 
-    def test_circuit_name(self):
+    def test_circuit_name(self, dss):
         expected = 'ieee13nodeckt'
-        actual = self.dss.circuit_name()
+        actual = dss.circuit_name()
         assert actual == expected
 
-    def test_circuit_disable(self):
+    def test_circuit_disable(self, dss):
         pass
 
-    def test_circuit_enable(self):
+    def test_circuit_enable(self, dss):
         pass
 
-    def test_circuit_set_active_element(self):
+    def test_circuit_set_active_element(self, dss):
         expected = '26'
-        actual = self.dss.circuit_set_active_element("Line.650632")
+        actual = dss.circuit_set_active_element("Line.650632")
         assert actual == expected
 
         expected = 'Line.650632'
-        actual = self.dss.cktelement_name()
+        actual = dss.cktelement_name()
         assert actual == expected
 
-    def test_active_class_get_name(self):
+    def test_active_class_get_name(self, dss):
         expected = '650632'
-        self.dss.circuit_set_active_element("Line.650632")
-        actual = self.dss.active_class_get_name()
+        dss.circuit_set_active_element("Line.650632")
+        actual = dss.active_class_get_name()
         assert actual == expected
 
-    def test_circuit_set_active_bus(self):
+    def test_circuit_set_active_bus(self, dss):
         expected = '8'
-        actual = self.dss.circuit_set_active_bus("692")
+        actual = dss.circuit_set_active_bus("692")
         assert actual == expected
 
         expected = '692'
-        actual = self.dss.bus_name()
+        actual = dss.bus_name()
         assert actual == expected
 
-    def test_circuit_set_active_class(self):
+    def test_circuit_set_active_class(self, dss):
         # Not sure how to use it
         expected = '23'
-        actual = self.dss.circuit_set_active_class("Capacitor")
+        actual = dss.circuit_set_active_class("Capacitor")
         assert actual == expected
 
-    def test_circuit_losses(self):
+    def test_circuit_losses(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [112405.24721569585, 327901.77539540455]
-            actual = self.dss.circuit_losses()
+            actual = dss.circuit_losses()
             assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
 
-    def test_circuit_line_losses(self):
+    def test_circuit_line_losses(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [106.49777151287977, 317.2152703226103]
-            actual = self.dss.circuit_line_losses()
+            actual = dss.circuit_line_losses()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_substation_losses(self):
+    def test_circuit_substation_losses(self, dss):
         expected = [0.0, 0.0]
-        actual = self.dss.circuit_substation_losses()
+        actual = dss.circuit_substation_losses()
         assert actual == expected
 
-    def test_circuit_total_power(self):
+    def test_circuit_total_power(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [-3567.2118131482466, -1736.5765097263468]
-            actual = self.dss.circuit_total_power()
+            actual = dss.circuit_total_power()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_all_bus_volts(self):
+    def test_circuit_all_bus_volts(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [57502.68622482564,
                         33189.47561163729,
@@ -277,10 +278,10 @@ class TestCircuit13Bus:
                         -221.599795561614,
                         -1009.5693326805186,
                         2080.532633420145]
-            actual = self.dss.circuit_all_bus_volts()
+            actual = dss.circuit_all_bus_volts()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_all_bus_vmag(self):
+    def test_circuit_all_bus_vmag(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [66393.52539552496,
                         66394.86979179642,
@@ -323,10 +324,10 @@ class TestCircuit13Bus:
                         2317.417310405978,
                         2355.8353074279353,
                         2312.5410863842294]
-            actual = self.dss.circuit_all_bus_vmag()
+            actual = dss.circuit_all_bus_vmag()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_all_element_names(self):
+    def test_circuit_all_element_names(self, dss):
         expected = ['Vsource.source', 'Transformer.sub', 'Transformer.reg1', 'RegControl.reg1', 'Transformer.reg2',
                     'RegControl.reg2', 'Transformer.reg3', 'RegControl.reg3', 'Transformer.xfm1', 'Load.671',
                     'Load.634a', 'Load.634b', 'Load.634c', 'Load.645', 'Load.646', 'Load.692', 'Load.675a', 'Load.675b',
@@ -334,16 +335,16 @@ class TestCircuit13Bus:
                     'Capacitor.cap2', 'Line.650632', 'Line.632670', 'Line.670671', 'Line.671680', 'Line.632633',
                     'Line.632645', 'Line.645646', 'Line.692675', 'Line.671684', 'Line.684611', 'Line.684652',
                     'EnergyMeter.em1', 'Line.671692']
-        actual = self.dss.circuit_all_element_names()
+        actual = dss.circuit_all_element_names()
         assert actual == expected
 
-    def test_circuit_all_bus_names(self):
+    def test_circuit_all_bus_names(self, dss):
         expected = ['sourcebus', '650', 'rg60', '633', '634', '671', '645', '646', '692', '675', '611', '652', '670',
                     '632', '680', '684']
-        actual = self.dss.circuit_all_bus_names()
+        actual = dss.circuit_all_bus_names()
         assert actual == expected
 
-    def test_circuit_all_element_losses(self):
+    def test_circuit_all_element_losses(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [-3567.2118131482466,
                         -1736.5765097263468,
@@ -423,10 +424,10 @@ class TestCircuit13Bus:
                         0.0,
                         9.05457499902695e-06,
                         5.820766e-14]
-            actual = self.dss.circuit_all_element_losses()
+            actual = dss.circuit_all_element_losses()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_all_bus_vmag_pu(self):
+    def test_circuit_all_bus_vmag_pu(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.9999735589449024,
                         0.9999938073157516,
@@ -469,18 +470,18 @@ class TestCircuit13Bus:
                         0.9648760874910502,
                         0.9808717420023628,
                         0.9628458308192339]
-            actual = self.dss.circuit_all_bus_vmag_pu()
+            actual = dss.circuit_all_bus_vmag_pu()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_all_node_names(self):
+    def test_circuit_all_node_names(self, dss):
         expected = ['sourcebus.1', 'sourcebus.2', 'sourcebus.3', '650.1', '650.2', '650.3', 'rg60.1', 'rg60.2',
                     'rg60.3', '633.1', '633.2', '633.3', '634.1', '634.2', '634.3', '671.1', '671.2', '671.3', '645.2',
                     '645.3', '646.2', '646.3', '692.3', '692.1', '692.2', '675.1', '675.2', '675.3', '611.3', '652.1',
                     '670.1', '670.2', '670.3', '632.1', '632.2', '632.3', '680.1', '680.2', '680.3', '684.1', '684.3']
-        actual = self.dss.circuit_all_node_names()
+        actual = dss.circuit_all_node_names()
         assert actual == expected
 
-    def test_circuit_system_y(self):
+    def test_circuit_system_y(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.8178822742754986,
                         -4.636999108384914,
@@ -3844,27 +3845,27 @@ class TestCircuit13Bus:
                         0.9993426902982676,
                         13.754939838994417,
                         -13.264848127833126]
-            actual = self.dss.circuit_system_y()
+            actual = dss.circuit_system_y()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_all_bus_distances(self):
+    def test_circuit_all_bus_distances(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.0, 0.0, 0.0, 0.762, 0.762, 1.2192, 0.762, 0.85344, 1.2202, 1.3726, 1.40208, 1.55448,
                         0.8129016,
                         0.6096, 1.524, 1.31064]
-            actual = self.dss.circuit_all_bus_distances()
+            actual = dss.circuit_all_bus_distances()
             assert actual == expected
 
-    def test_circuit_all_node_distances(self):
+    def test_circuit_all_node_distances(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.762, 0.762, 0.762, 0.762, 0.762, 0.762, 1.2192,
                         1.2192, 1.2192, 0.762, 0.762, 0.85344, 0.85344, 1.2202, 1.2202, 1.2202, 1.3726, 1.3726, 1.3726,
                         1.40208, 1.55448, 0.8129016, 0.8129016, 0.8129016, 0.6096, 0.6096, 0.6096, 1.524, 1.524, 1.524,
                         1.31064, 1.31064]
-            actual = self.dss.circuit_all_node_distances()
+            actual = dss.circuit_all_node_distances()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_all_node_vmag_by_phase(self):
+    def test_circuit_all_node_vmag_by_phase(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [66394.86979179642,
                         2401.7070791741353,
@@ -3879,10 +3880,10 @@ class TestCircuit13Bus:
                         2478.326882914011,
                         2471.2992596093127,
                         2498.5158685371916]
-            actual = self.dss.circuit_all_node_vmag_by_phase(2)
+            actual = dss.circuit_all_node_vmag_by_phase(2)
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_all_node_vmag_pu_by_phase(self):
+    def test_circuit_all_node_vmag_pu_by_phase(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.9999938073157516,
                         0.9999708379873679,
@@ -3897,23 +3898,23 @@ class TestCircuit13Bus:
                         1.031872134367998,
                         1.0289461246035285,
                         1.0402779874575714]
-            actual = self.dss.circuit_all_node_vmag_pu_by_phase(2)
+            actual = dss.circuit_all_node_vmag_pu_by_phase(2)
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_all_node_distances_by_phase(self):
+    def test_circuit_all_node_distances_by_phase(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.0, 0.0, 0.0, 0.762, 0.762, 1.2192, 0.762, 0.85344, 1.2202, 1.3726, 1.40208, 0.8129016, 0.6096,
                         1.524, 1.31064]
-            actual = self.dss.circuit_all_node_distances_by_phase(3)
+            actual = dss.circuit_all_node_distances_by_phase(3)
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_all_node_names_by_phase(self):
+    def test_circuit_all_node_names_by_phase(self, dss):
         expected = ['sourcebus.0', '650.0', 'rg60.0', '633.0', '634.0', '671.0', '645.0', '646.0', '692.0', '675.0',
                     '670.0', '632.0', '680.0']
-        actual = self.dss.circuit_all_node_names_by_phase(2)
+        actual = dss.circuit_all_node_names_by_phase(2)
         assert actual == expected
 
-    def test_circuit_y_node_varray(self):
+    def test_circuit_y_node_varray(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [57502.68622482564,
                         33189.47561163729,
@@ -3997,18 +3998,18 @@ class TestCircuit13Bus:
                         -221.599795561614,
                         -1009.5693326805186,
                         2080.532633420145]
-            actual = self.dss.circuit_y_node_varray()
+            actual = dss.circuit_y_node_varray()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_circuit_y_node_order(self):
+    def test_circuit_y_node_order(self, dss):
         expected = ['SOURCEBUS.1', 'SOURCEBUS.2', 'SOURCEBUS.3', '650.1', '650.2', '650.3', 'RG60.1', 'RG60.2',
                     'RG60.3', '633.1', '633.2', '633.3', '634.1', '634.2', '634.3', '671.1', '671.2', '671.3', '645.2',
                     '646.2', '646.3', '692.3', '692.1', '675.1', '675.2', '675.3', '611.3', '652.1', '670.1', '670.2',
                     '670.3', '632.1', '632.2', '632.3', '680.1', '680.2', '680.3', '645.3', '692.2', '684.1', '684.3']
-        actual = self.dss.circuit_y_node_order()
+        actual = dss.circuit_y_node_order()
         assert actual == expected
 
-    def test_circuit_y_currents(self):
+    def test_circuit_y_currents(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [69802.42815021734,
                         -72191.08720768025,
@@ -4092,5 +4093,5 @@ class TestCircuit13Bus:
                         0.0,
                         0.0,
                         0.0]
-            actual = self.dss.circuit_y_currents()
+            actual = dss.circuit_y_currents()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]

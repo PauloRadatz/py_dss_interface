@@ -11,64 +11,65 @@ import pytest
 
 class TestActiveClass13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        return dss
 
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_active_class_first(self):
+    def test_active_class_first(self, dss):
         expected = 1
-        actual = self.dss.active_class_first()
+        actual = dss.active_class_first()
         assert actual == expected
 
-    def test_active_class_next(self):
+    def test_active_class_next(self, dss):
         expected = 2
-        self.dss.active_class_first()
-        actual = self.dss.active_class_next()
+        dss.active_class_first()
+        actual = dss.active_class_next()
         assert actual == expected
 
-    def test_active_class_num_elements(self):
+    def test_active_class_num_elements(self, dss):
         expected = 12
-        actual = self.dss.active_class_num_elements()
+        actual = dss.active_class_num_elements()
         assert actual == expected
 
-    def test_active_class_count(self):
+    def test_active_class_count(self, dss):
         expected = 12
-        actual = self.dss.active_class_count()
+        actual = dss.active_class_count()
         assert actual == expected
 
     # ===================================================================
     # String methods
     # ===================================================================
 
-    def test_active_class_get_class_name(self):
+    def test_active_class_get_class_name(self, dss):
         expected = 'Line'
-        actual = self.dss.active_class_get_class_name()
+        actual = dss.active_class_get_class_name()
         assert actual == expected
 
-    def test_active_class_get_name(self):
+    def test_active_class_get_name(self, dss):
         expected = '671692'
-        actual = self.dss.active_class_get_name()
+        actual = dss.active_class_get_name()
         assert actual == expected
 
-    def test_active_class_write_name(self):
+    def test_active_class_write_name(self, dss):
         expected = '645646'
-        actual = self.dss.active_class_write_name(expected)
-        actual = self.dss.active_class_get_name()
+        actual = dss.active_class_write_name(expected)
+        actual = dss.active_class_get_name()
         assert actual == expected
 
-    def test_active_class_parent_class_name(self):
+    def test_active_class_parent_class_name(self, dss):
         expected = 'TPDClass'
-        actual = self.dss.active_class_parent_class_name()
+        actual = dss.active_class_parent_class_name()
         assert actual == expected
 
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_active_class_all_names(self):
+    def test_active_class_all_names(self, dss):
         expected = ['650632', '632670', '670671', '671680', '632633', '632645', '645646', '692675', '671684', '684611',
                     '684652', '671692']
-        actual = self.dss.active_class_all_names()
+        actual = dss.active_class_all_names()
         assert actual == expected

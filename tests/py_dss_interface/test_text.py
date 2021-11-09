@@ -10,15 +10,17 @@ import pytest
 
 class TestText13Bus:
 
-    @pytest.fixture(autouse=True)
-    def _request(self, solve_snap_13bus):
-        self.dss = solve_snap_13bus
-        self.dss.solution_solve()
+    @pytest.fixture
+    def dss(self, solve_snap_13bus):
+        dss = solve_snap_13bus
+        dss.solution_solve()
+
+        return dss
 
     # ===================================================================
     # String methods
     # ===================================================================
-    def test_text(self):
+    def test_text(self, dss):
         expected = "2000"
-        actual = self.dss.text('? Line.650632.Length')
+        actual = dss.text('? Line.650632.Length')
         assert actual == expected
