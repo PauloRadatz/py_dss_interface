@@ -18,11 +18,6 @@ class TestSensors13Bus:
                       "terminal=1 "
                       "kVBase=4.16 "
                       "conn=delta ")
-        self.dss.text("New Sensor.Sensor2 "
-                      "element=Load.611 "
-                      "terminal=1 "
-                      "kVBase=4.16 "
-                      "conn=wye ")
         self.dss.solution_solve()
         self.dss.sensors_write_name("Sensor1")
 
@@ -30,7 +25,7 @@ class TestSensors13Bus:
     # Integer methods
     # ===================================================================
     def test_sensors_count(self):
-        expected = 2
+        expected = 1
         actual = self.dss.sensors_count()
         assert actual == expected
 
@@ -40,7 +35,13 @@ class TestSensors13Bus:
         assert actual == expected
 
     def test_sensors_next(self):
+        self.dss.text("New Sensor.Sensor2 "
+                      "element=Load.611 "
+                      "terminal=1 "
+                      "kVBase=4.16 "
+                      "conn=wye ")
         expected = 2
+        self.dss.sensors_first()
         actual = self.dss.sensors_next()
         assert actual == expected
 
@@ -132,6 +133,11 @@ class TestSensors13Bus:
         assert actual == expected
 
     def test_sensors_write_name(self):
+        self.dss.text("New Sensor.Sensor2 "
+                      "element=Load.611 "
+                      "terminal=1 "
+                      "kVBase=4.16 "
+                      "conn=wye ")
         expected = "sensor2"
         self.dss.sensors_write_name(expected)
         actual = self.dss.sensors_read_name()
@@ -152,6 +158,11 @@ class TestSensors13Bus:
     # Variant methods
     # ===================================================================
     def test_sensors_all_names(self):
+        self.dss.text("New Sensor.Sensor2 "
+                      "element=Load.611 "
+                      "terminal=1 "
+                      "kVBase=4.16 "
+                      "conn=wye ")
         expected = ["sensor1", "sensor2"]
         actual = self.dss.sensors_all_names()
         assert actual == expected

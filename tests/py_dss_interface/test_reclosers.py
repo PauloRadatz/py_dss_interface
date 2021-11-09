@@ -30,6 +30,13 @@ class TestReclosers13Bus:
                       r"GroundInst=1200 "
                       r"Shots=4 "
                       r"RecloseIntervals=(0.5, 2, 2, )")
+        self.dss.solution_solve()
+        self.dss.reclosers_write_name('cb1')
+
+    # ===================================================================
+    # Integer methods
+    # ===================================================================
+    def test_reclosers_count(self):
         self.dss.text(r"New 'Recloser.cb2' MonitoredObj=Line.684611 "
                       r"MonitoredTerm=2 "
                       r"NumFast=4 "
@@ -47,13 +54,6 @@ class TestReclosers13Bus:
                       r"GroundInst=1200 "
                       r"Shots=4 "
                       r"RecloseIntervals=(0.5, 2, 2, )")
-        self.dss.solution_solve()
-        self.dss.reclosers_write_name('cb1')
-
-    # ===================================================================
-    # Integer methods
-    # ===================================================================
-    def test_reclosers_count(self):
         expected = 2
         actual = self.dss.reclosers_count()
         assert actual == expected
@@ -64,7 +64,25 @@ class TestReclosers13Bus:
         assert actual == expected
 
     def test_reclosers_next(self):
+        self.dss.text(r"New 'Recloser.cb2' MonitoredObj=Line.684611 "
+                      r"MonitoredTerm=2 "
+                      r"NumFast=4 "
+                      r"PhaseFast=Ext_Inv "
+                      r"PhaseDelayed=Ext_Inv "
+                      r"PhaseTrip=800 "
+                      r"TDPhFast=1 "
+                      r"TDPhDelayed=1 "
+                      r"PhaseInst=2400 "
+                      r"GroundFast=Ext_Inv "
+                      r"GroundDelayed=Ext_Inv "
+                      r"GroundTrip=800 "
+                      r"TDGrFast=1 "
+                      r"TDGrDelayed=1 "
+                      r"GroundInst=1200 "
+                      r"Shots=4 "
+                      r"RecloseIntervals=(0.5, 2, 2, )")
         expected = 2
+        self.dss.reclosers_first()
         actual = self.dss.reclosers_next()
         assert actual == expected
 
@@ -128,6 +146,23 @@ class TestReclosers13Bus:
         assert actual == expected
 
     def test_reclosers_write_idx(self):
+        self.dss.text(r"New 'Recloser.cb2' MonitoredObj=Line.684611 "
+                      r"MonitoredTerm=2 "
+                      r"NumFast=4 "
+                      r"PhaseFast=Ext_Inv "
+                      r"PhaseDelayed=Ext_Inv "
+                      r"PhaseTrip=800 "
+                      r"TDPhFast=1 "
+                      r"TDPhDelayed=1 "
+                      r"PhaseInst=2400 "
+                      r"GroundFast=Ext_Inv "
+                      r"GroundDelayed=Ext_Inv "
+                      r"GroundTrip=800 "
+                      r"TDGrFast=1 "
+                      r"TDGrDelayed=1 "
+                      r"GroundInst=1200 "
+                      r"Shots=4 "
+                      r"RecloseIntervals=(0.5, 2, 2, )")
         expected = 2
         self.dss.reclosers_write_idx(expected)
         actual = self.dss.reclosers_read_idx()
@@ -189,6 +224,23 @@ class TestReclosers13Bus:
         assert actual == expected
 
     def test_reclosers_write_name(self):
+        self.dss.text(r"New 'Recloser.cb2' MonitoredObj=Line.684611 "
+                      r"MonitoredTerm=2 "
+                      r"NumFast=4 "
+                      r"PhaseFast=Ext_Inv "
+                      r"PhaseDelayed=Ext_Inv "
+                      r"PhaseTrip=800 "
+                      r"TDPhFast=1 "
+                      r"TDPhDelayed=1 "
+                      r"PhaseInst=2400 "
+                      r"GroundFast=Ext_Inv "
+                      r"GroundDelayed=Ext_Inv "
+                      r"GroundTrip=800 "
+                      r"TDGrFast=1 "
+                      r"TDGrDelayed=1 "
+                      r"GroundInst=1200 "
+                      r"Shots=4 "
+                      r"RecloseIntervals=(0.5, 2, 2, )")
         expected = 'cb2'
         self.dss.reclosers_write_name(expected)
         actual = self.dss.reclosers_read_name()
@@ -220,6 +272,23 @@ class TestReclosers13Bus:
     # Variant methods
     # ===================================================================
     def test_reclosers_all_names(self):
+        self.dss.text(r"New 'Recloser.cb2' MonitoredObj=Line.684611 "
+                      r"MonitoredTerm=2 "
+                      r"NumFast=4 "
+                      r"PhaseFast=Ext_Inv "
+                      r"PhaseDelayed=Ext_Inv "
+                      r"PhaseTrip=800 "
+                      r"TDPhFast=1 "
+                      r"TDPhDelayed=1 "
+                      r"PhaseInst=2400 "
+                      r"GroundFast=Ext_Inv "
+                      r"GroundDelayed=Ext_Inv "
+                      r"GroundTrip=800 "
+                      r"TDGrFast=1 "
+                      r"TDGrDelayed=1 "
+                      r"GroundInst=1200 "
+                      r"Shots=4 "
+                      r"RecloseIntervals=(0.5, 2, 2, )")
         expected = ['cb1', 'cb2']
         actual = self.dss.reclosers_all_names()
         assert actual == expected

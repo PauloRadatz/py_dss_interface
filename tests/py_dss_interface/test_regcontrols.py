@@ -267,8 +267,7 @@ class TestRegcontrols13Bus:
         assert actual == expected
 
     def test_regcontrols_write_monitored_bus(self):
-        # TODO: I don't know how to test this, returning '' for whatever argument
-        expected = ''
+        expected = '672'
         self.dss.regcontrols_write_monitored_bus(expected)
         actual = self.dss.regcontrols_read_monitored_bus()
         assert actual == expected

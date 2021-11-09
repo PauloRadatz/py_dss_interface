@@ -21,8 +21,11 @@ overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.circuit_name(
 # dss.text('show voltage')
 dss.solution_solve()
 
+#
+
 dss.regcontrols_write_name('reg1')
-# dss.regcontrols_read_monitored_bus()
+dss.regcontrols_write_monitored_bus("672")
+dss.regcontrols_read_monitored_bus()
 
 dss.dss_read_datapath()
 
