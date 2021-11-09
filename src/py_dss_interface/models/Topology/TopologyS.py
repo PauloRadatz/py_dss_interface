@@ -33,6 +33,7 @@ class TopologyS(Base):
         result = ctypes.c_char_p(self.dss_obj.TopologyS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
+    # TODO include in test
     def topology_write_bus_name(self, argument):
         """Sets the Bus active by name."""
         result = ctypes.c_char_p(self.dss_obj.TopologyS(ctypes.c_int32(3), argument.encode('ascii')))

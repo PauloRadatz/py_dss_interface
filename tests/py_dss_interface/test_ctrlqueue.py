@@ -10,7 +10,7 @@ import pytest
 
 class TestBus13CtrlQueue:
 
-    @pytest.fixture
+    @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.text("set loadmult=0.2")

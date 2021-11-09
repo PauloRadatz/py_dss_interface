@@ -10,7 +10,7 @@ import pytest
 
 class TestBus13DSSElement:
 
-    @pytest.fixture
+    @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.circuit_set_active_element('Line.671692')

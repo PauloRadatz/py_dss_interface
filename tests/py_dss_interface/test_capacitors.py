@@ -11,10 +11,10 @@ import pytest
 
 class TestBus13Capacitors:
 
-    @pytest.fixture
+    @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.circuit_set_active_bus('692')
+        dss.circuit_set_active_element("capacitor.cap1")
         return dss
 
     def test_capacitors_read_num_steps(self, dss):

@@ -18,6 +18,9 @@ class ParserS(Base):
     which can be one of the following.
     """
 
+    # TODO include in test
+    # TODO ALLLLL
+
     def parser_read_cmd_string(self):
         """Gets a string to be parsed. Loading this string resets the parser to the beginning of the line.
         Then parse off the tokens in sequence."""

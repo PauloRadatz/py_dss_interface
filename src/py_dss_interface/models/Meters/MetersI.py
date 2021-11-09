@@ -50,6 +50,7 @@ class MetersI(Base):
         """Sets the number of metered terminal by the active Energy Meter."""
         return self.dss_obj.MetersI(ctypes.c_int32(7), ctypes.c_int32(argument))
 
+    # TODO include in test
     def meters_di_files_are_open(self) -> int:
         """Returns a global flag (1=true, 0=false) to indicate if Demand Interval (DI) files have been properly
         opened. """

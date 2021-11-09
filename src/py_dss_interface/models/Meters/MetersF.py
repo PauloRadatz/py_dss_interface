@@ -26,6 +26,7 @@ class MetersF(Base):
         """Returns the SAIFI based on kW rather than number of customers. Get after reliability calcs."""
         return float(self.dss_obj.MetersF(ctypes.c_int32(1), ctypes.c_double(0)))
 
+    # TODO include in test
     def meters_saidi(self) -> float:
         """Returns the SAIDI for this meter zone. Execute DoreliabilityCalc first."""
         return float(self.dss_obj.MetersF(ctypes.c_int32(2), ctypes.c_double(0)))

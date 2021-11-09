@@ -10,7 +10,7 @@ import pytest
 
 class TestReclosers13Bus:
 
-    @pytest.fixture
+    @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.text(r"New 'Recloser.cb1' MonitoredObj=Line.650632 "

@@ -13,6 +13,7 @@ class ErrorCode(Base):
         int32_t ErrorCode(void );
     """
 
+    # TODO include in test
     def error_code(self) -> int:
         """"This interface returns an integer with latest error code delivered by OpenDSS."""
         return int(self.dss_obj.ErrorCode())
