@@ -37,9 +37,9 @@ class CtrlQueueI(Base):
         except Exception as e:
             Base.warn_msg("An error occur when tried to get *Num Actions of CrlQueue* check if *Queue* is NOT empty", e)
 
-    def ctrlqueue_action(self) -> int:
+    def ctrlqueue_action(self, argument: int) -> int:
         """Sets the active action by index (argument)."""
-        return self.dss_obj.CtrlQueueI(ctypes.c_int32(3), ctypes.c_int32(0))
+        return self.dss_obj.CtrlQueueI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
     def ctrlqueue_action_code(self) -> int:
         """Gets the code for the active action. Long integer code to tell the control device what to do."""

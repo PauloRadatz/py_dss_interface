@@ -43,7 +43,6 @@ class BusI(Base):
         :returns: int
         :rtype: int
         """
-        # TODO I have no idea what is going one here. If you use start_number different than 0 it increments the return value
         start_number = Base.check_int_param(start_number)
         return self.dss_obj.BUSI(3, start_number)
 
