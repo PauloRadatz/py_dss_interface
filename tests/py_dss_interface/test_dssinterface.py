@@ -91,7 +91,7 @@ class TestDSSInterface13Bus:
         self.dss.dss_write_datapath(data_path)
         expected = data_path
         actual = self.dss.dss_read_datapath()
-        assert actual.replace("\\", "") == expected.replace("\\", "")
+        assert actual.replace("\\", "").split("py-dss-interfacetests")[1] == expected.replace("\\", "").split("py-dss-interfacetests")[1]
 
     def test_dss_default_editor(self):
         expected = 'Notepad.exe'

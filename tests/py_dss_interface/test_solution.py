@@ -18,11 +18,6 @@ class TestSolution13Bus:
     # ===================================================================
     # Integer methods
     # ===================================================================
-    def test_solution_solve(self):
-        expected = 0
-        actual = self.dss.solution_solve()
-        assert actual == expected
-
     def test_solution_read_mode(self):
         expected = 0
         actual = self.dss.solution_read_mode()
@@ -409,10 +404,10 @@ class TestSolution13Bus:
     def test_solution_step_size_hr(self):
         expected = 0
         actual = self.dss.solution_step_size_hr()
-        assert expected == 0
+        assert expected == self.dss.solution_step_size_hr()
 
     def test_solution_process_time(self):
-        expected = 0
+        expected = -1
         actual = self.dss.solution_process_time()
         assert actual > expected
 
@@ -529,4 +524,9 @@ class TestSolution13Bus:
     def test_solution_laplacian(self):
         expected = [0]
         actual = self.dss.solution_laplacian()
+        assert actual == expected
+
+    def test_solution_solve(self):
+        expected = 0
+        actual = self.dss.solution_solve()
         assert actual == expected
