@@ -377,19 +377,64 @@ class TestCktElement13Bus:
             assert 1 == 1
 
     def test_cktelement_all_variables_names(self):
-        # TODO: Paulo - https://github.com/PauloRadatz/py_dss_interface/issues/3
-        self.dss.text("var @ZZ=671_variable")
-        self.dss.text("var @B1=MyZZBus")
-        self.dss.text("var @kw=23.8")
-        self.dss.text("New Load.@ZZ phases=1 bus1=@B1.4  kw=@kw")
-        self.dss.circuit_set_active_element("Load.@ZZ")
-        expected = []
+        self.dss.text("New Storage.str bus=650 kw=50")
+        self.dss.circuit_set_active_element("Storage.str")
+        expected = ['kWh',
+                    'State',
+                    'kWOut',
+                    'kWIn',
+                    'kvarOut',
+                    'DCkW',
+                    'kWTotalLosses',
+                    'kWInvLosses',
+                    'kWIdlingLosses',
+                    'kWChDchLosses',
+                    'kWh Chng',
+                    'InvEff',
+                    'InverterON',
+                    'Vref',
+                    'Vavg (DRC)',
+                    'VV Oper',
+                    'VW Oper',
+                    'DRC Oper',
+                    'VV_DRC Oper',
+                    'WP Oper',
+                    'WV Oper',
+                    'kWDesired',
+                    'kW VW Limit',
+                    'Limit kWOut Function',
+                    'kVA Exceeded']
         actual = self.dss.cktelement_all_variables_names()
         assert actual == expected
 
     def test_cktelement_all_variables_values(self):
-        # TODO: Paulo - https://github.com/PauloRadatz/py_dss_interface/issues/4
-        expected = [0.0]
+        self.dss.text("New Storage.str bus=650 kw=50")
+        self.dss.circuit_set_active_element("Storage.str")
+        expected = [50.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    -0.0,
+                    0.0,
+                    0.2777777777777778,
+                    0.0,
+                    0.25,
+                    0.02777777777777779,
+                    0.0,
+                    1.0,
+                    1.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    50.0,
+                    9999.0,
+                    25.0,
+                    1.0]
         actual = self.dss.cktelement_all_variables_values()
         assert actual == expected
 
