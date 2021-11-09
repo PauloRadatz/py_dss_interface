@@ -18,6 +18,7 @@ class CircuitF(Base):
     “parameter”. The parameter can be one of the following.
     """
 
+    # TODO include in test
     def circuit_float(self, first, second, third) -> float:
         return float(self.dss_obj.CircuitF(ctypes.c_int32(first), ctypes.c_double(second), ctypes.c_double(third)))
 

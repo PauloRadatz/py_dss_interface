@@ -10,7 +10,7 @@ import pytest
 
 class TestVSources13Bus:
 
-    @pytest.fixture
+    @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.text('New "Vsource.Fonte1" basekv=2.4 pu=1.0001 phases=3 bus1=611.3 angle=30 MVAsc3=1000 MVAsc1=2000')

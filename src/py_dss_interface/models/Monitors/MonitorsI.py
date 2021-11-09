@@ -54,6 +54,7 @@ class MonitorsI(Base):
         result = self.dss_obj.MonitorsI(ctypes.c_int32(6), ctypes.c_int32(0))
         return result
 
+    # TODO include in test
     def monitors_read_mode(self) -> int:
         """Returns the monitor mode (bitmask integer - see DSS Help)."""
         result = self.dss_obj.MonitorsI(ctypes.c_int32(7), ctypes.c_int32(0))

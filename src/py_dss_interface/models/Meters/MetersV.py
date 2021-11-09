@@ -55,6 +55,7 @@ class MetersV(Base):
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(6), ctypes.c_int(0), None)
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/6
+    # TODO include in test
     def meters_write_calc_current(self, argument: str):
         """Sets the magnitude of the real part of the Calculated Current (normally determined by solution)
         for the meter to force some behavior on Load Allocation."""
@@ -79,6 +80,7 @@ class MetersV(Base):
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(10), ctypes.c_int(0), None)
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/9
+    # TODO include in test
     def meters_all_branches_in_zone(self):
         """Returns a wide string list of all branches in zone of the active Energy Meter object."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(11), ctypes.c_int(0), None)

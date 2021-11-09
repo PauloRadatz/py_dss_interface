@@ -19,15 +19,18 @@ class ParserV(Base):
     which can be one of the following.
     """
 
+    # TODO include in test
     def parser_vector(self):
         """Returns token as variant array of doubles. For parsing quoted array syntax."""
         return Bridge.var_array_function(self.dss_obj.ParserV, ctypes.c_int(0), ctypes.c_int(0), None)
 
+    # TODO include in test
     def parser_matrix(self):
         """Use this property to parse a Matrix token in OpenDSS format. Returns square matrix of order specified.
         Order same as default fortran order: column by column. """
         return Bridge.var_array_function(self.dss_obj.ParserV, ctypes.c_int(1), ctypes.c_int(0), None)
 
+    # TODO include in test
     def parser_sym_matrix(self):
         """Use this property to parse a Matrix token in lower triangular form. Symmetry is forced."""
         return Bridge.var_array_function(self.dss_obj.ParserV, ctypes.c_int(2), ctypes.c_int(0), None)

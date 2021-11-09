@@ -62,6 +62,7 @@ class LoadsS(Base):
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(6), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
+    # TODO include in test
     def loads_write_duty(self, argument) -> str:
         """Allows to set the dduty property for the active load. The parameter argument must contain the Name of the
         new duty to be linked to the active load. The return value will be equal to empty. """

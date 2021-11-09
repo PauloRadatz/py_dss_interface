@@ -22,6 +22,7 @@ class LoadShapesI(Base):
         """Returns the number of LoadShape objects currently defined in LoadShape collection."""
         return self.dss_obj.LoadShapeI(ctypes.c_int32(0), ctypes.c_int32(0))
 
+    # TODO include in test
     def loadshapes_first(self) -> int:
         """sets the first loadshape active and return integer index of the loadshape. Returns 0 if no more."""
         return self.dss_obj.LoadShapeI(ctypes.c_int32(1), ctypes.c_int32(0))

@@ -13,7 +13,7 @@ import pathlib
 
 class TestDSSInterface13Bus:
 
-    @pytest.fixture
+    @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
 

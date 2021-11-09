@@ -49,6 +49,7 @@ class DSSProperties(Base):
         result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
+    # TODO include in test
     def dssproperties_write_value(self, argument: str) -> str:
         """This parameter will allow to set the value of the active property. The new value must be specified in the
         variable “argument” as string. This parameter will deliver the name of the active property. The index of the

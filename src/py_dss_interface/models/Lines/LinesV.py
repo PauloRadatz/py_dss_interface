@@ -53,10 +53,12 @@ class LinesV(Base):
         lc_name = lc.lines_read_name()
         return t.text(f'edit Line.{lc_name} Xmatrix = {argument}')
 
+    # TODO include in test
     def lines_read_cmatrix(self) -> str:
         """Gets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
         return Bridge.var_array_function(self.dss_obj.LinesV, 5, None, '')
 
+    # TODO include in test
     def lines_write_cmatrix(self, argument) -> int:
         """Sets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
         argument = Base.check_string_param(argument)
@@ -69,6 +71,7 @@ class LinesV(Base):
         """Gets the YPrimitive of the active Line."""
         return Bridge.var_array_function(self.dss_obj.LinesV, 7, None, '')
 
+    # TODO include in test
     def lines_write_yprim(self, argument) -> str:
         """
         According the oficial documentation this parameter does nothing at present.

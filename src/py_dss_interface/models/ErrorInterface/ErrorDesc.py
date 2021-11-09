@@ -17,6 +17,7 @@ class ErrorDesc(Base):
     This interface returns a string with description of the latest error code delivered by OpenDSS.
     """
 
+    # TODO include in test
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/12
     def error_desc(self) -> str:
         """"This interface returns a string with description of the latest error code delivered by OpenDSS."""

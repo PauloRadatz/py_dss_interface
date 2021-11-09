@@ -11,7 +11,7 @@ import pytest
 
 class TestMeters13Bus:
 
-    @pytest.fixture
+    @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.text("New energymeter.EM2 element=Line.670671")

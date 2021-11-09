@@ -235,6 +235,7 @@ class SolutionI(Base):
         command."""
         return int(self.dss_obj.SolutionI(ctypes.c_int32(47), ctypes.c_int32(0)))
 
+    # TODO include in test
     def solution_calc_inc_matrix_0(self) -> int:
         """Starts the calculation of the Branch to Node incidence matrix for the active actor.
         Please be sure that the circuits of each actor have been compiled and ready to be solved before

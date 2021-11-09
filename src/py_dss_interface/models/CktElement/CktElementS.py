@@ -34,6 +34,7 @@ class CktElementS(Base):
         result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
+    # TODO include in test
     def cktelement_guid(self) -> str:
         """Delivers the unique name for the active circuit element."""
         result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(3), ctypes.c_int32(0)))

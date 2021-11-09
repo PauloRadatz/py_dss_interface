@@ -10,7 +10,7 @@ import pytest
 
 class TestLineCodes13Bus:
 
-    @pytest.fixture
+    @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.linecodes_write_name('1')

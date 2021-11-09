@@ -13,7 +13,7 @@ import py_dss_interface
 script_path = os.path.dirname(os.path.abspath(__file__))
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope='function')
 def solve_snap_13bus():
     dss = py_dss_interface.DSSDLL()
     actual = dss.started

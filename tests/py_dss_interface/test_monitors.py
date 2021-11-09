@@ -15,7 +15,7 @@ path = os.path.dirname(os.path.abspath(__file__))
 
 class TestMonitors13Bus:
 
-    @pytest.fixture
+    @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.text(
