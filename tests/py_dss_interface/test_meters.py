@@ -265,7 +265,7 @@ class TestMeters13Bus:
     def test_meters_read_calc_current(self):
         self.dss.text("Edit Energymeter.EM2 peakcurrent=[394, 301, 403]")
         self.dss.text("Allocateloads")
-        expected = [473.76996080470036, 188.82026268237738, 424.9020354332265]
+        expected = [473.76911764821904, 188.82002588596725, 424.90119440383563]
         actual = self.dss.meters_read_calc_current()
         assert actual == expected
 
@@ -280,7 +280,7 @@ class TestMeters13Bus:
     def test_meters_read_alloc_factors(self):
         self.dss.text("Edit Energymeter.EM2 peakcurrent=[394, 301, 403]")
         self.dss.text("Allocateloads")
-        expected = [0.831627229659705, 1.5941085756581377, 0.9484539173579261]
+        expected = [0.8316287096883996, 1.5941105748061957, 0.9484557946828922]
         actual = self.dss.meters_read_alloc_factors()
         assert actual == expected
 

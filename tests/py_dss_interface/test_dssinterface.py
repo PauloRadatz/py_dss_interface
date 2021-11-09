@@ -76,7 +76,7 @@ class TestDSSInterface13Bus:
     #     assert actual == expected
 
     def test_dss_version(self):
-        expected = 'Version 9.3.0.1 (64-bit build); License Status: Open '
+        expected = 'Version 9.3.0.2 (64-bit build); License Status: Open '
         actual = self.dss.dss_version()
         assert actual == expected
 

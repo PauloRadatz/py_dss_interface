@@ -188,81 +188,122 @@ class TestCktElement13Bus:
 
     def test_cktelement_voltages(self):
         if platform.architecture()[0] == "64bit":
-            expected = [2350.072713273249, -221.08573964636037, -1338.4057884569047, -2109.79926873945,
-                        -1015.4001153916768,
-                        2083.1115246837253, 2350.0726913632457, -221.08573234457813, -1338.4057922959519,
-                        -2109.7992630653525, -1015.4001096022041, 2083.111507606075]
+            expected = [2350.078784828011,
+                        -221.0796482325248,
+                        -1338.403130602017,
+                        -2109.8005657418066,
+                        -1015.4071554561633,
+                        2083.115730276637,
+                        2350.0787629180386,
+                        -221.07964093085243,
+                        -1338.4031344410694,
+                        -2109.8005600677147,
+                        -1015.4071496666263,
+                        2083.115713199055]
             actual = self.dss.cktelement_voltages()
-            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
+            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
     def test_cktelement_currents(self):
         if platform.architecture()[0] == "64bit":
-            expected = [219.10003280639648, -73.017822265625, 38.39047050476074, -56.740970611572266,
-                        -57.89472579956055,
-                        170.77650451660156, -219.10003280639648, 73.017822265625, -38.39047050476074,
-                        56.740970611572266,
-                        57.89472579956055, -170.77650451660156]
+            expected = [219.09972381591797,
+                        -73.0167236328125,
+                        38.39052391052246,
+                        -56.74092102050781,
+                        -57.895368576049805,
+                        170.77582168579102,
+                        -219.09972381591797,
+                        73.0167236328125,
+                        -38.39052391052246,
+                        56.74092102050781,
+                        57.895368576049805,
+                        -170.77582168579102]
             actual = self.dss.cktelement_currents()
-            assert [round(value, 5) for value in actual] == [round(value, 5) for value in expected]
+            assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
         else:
             assert 1 == 1
 
     def test_cktelement_powers(self):
         if platform.architecture()[0] == "64bit":
-            expected = [531.0442078185483, 123.15729887953721, 68.33003035870593, -156.93863010669907,
-                        414.5328159611783,
-                        52.80531186087565, -531.0442024849057, -123.15729887953721, -68.33002988936931,
-                        156.93863010669907,
-                        -414.53281270953687, -52.80531186087562]
+            expected = [531.044124277299,
+                        123.15656327805625,
+                        68.33002988248371,
+                        -156.93857539263408,
+                        414.53317202448216,
+                        52.804238327724974,
+                        -531.0441189436859,
+                        -123.15656327805621,
+                        -68.33002941314726,
+                        156.93857539263408,
+                        -414.5331687728567,
+                        -52.804238327724946]
             actual = self.dss.cktelement_powers()
-            assert [round(value, 4) for value in actual] == [round(value, 4) for value in expected]
+            assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
         else:
             assert 1 == 1
 
     def test_cktelement_losses(self):
         if platform.architecture()[0] == "64bit":
-            expected = [0.009054620692040771, 2.9103830456733704e-11]
+            expected = [0.009054574999026954, 5.820766091e-11]
             actual = self.dss.cktelement_losses()
-            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
+            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
         else:
             assert 1 == 1
 
     def test_cktelement_phase_losses(self):
         if platform.architecture()[0] == "64bit":
-            expected = [5.333642708137631e-06, 0.0, 4.693366208812222e-07, 0.0, 3.251641406677663e-06,
-                        2.9103830456733704e-14]
+            expected = [5.33361313864589e-06,
+                        2.910383e-14,
+                        4.6933644625824e-07,
+                        0.0,
+                        3.25162545777857e-06,
+                        2.910383e-14]
             actual = self.dss.cktelement_phase_losses()
-            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
+            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
         else:
             assert 1 == 1
 
     def test_cktelement_seq_voltages(self):
         if platform.architecture()[0] == "64bit":
-            expected = [82.60053533438243, 2391.57410131294, 42.214191911916366, 82.60053680171639, 2391.5740870438235,
-                        42.21419682837919]
+            expected = [82.5975271915408,
+                        2391.5781387345023,
+                        42.212520080202225,
+                        82.59752865884842,
+                        2391.5781244654136,
+                        42.2125249966211]
             actual = self.dss.cktelement_seq_voltages()
-            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
+            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
         else:
             assert 1 == 1
 
     def test_cktelement_seq_currents(self):
         if platform.architecture()[0] == "64bit":
-            expected = [67.92228162359304, 142.8117989247778, 71.92650828459385, 67.92228162359304, 142.8117989247778,
-                        71.92650828459385]
+            expected = [67.92201952740132,
+                        142.81151076209932,
+                        71.9262709364223,
+                        67.92201952740132,
+                        142.81151076209932,
+                        71.9262709364223]
             actual = self.dss.cktelement_seq_currents()
-            assert [round(value, 5) for value in actual] == [round(value, 5) for value in expected]
+            assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
         else:
             assert 1 == 1
 
     def test_cktelement_seq_powers(self):
         if platform.architecture()[0] == "64bit":
-            expected = [-3.6360767939550196, -16.43380473058689, 1023.7694666913296, 42.10653475759665,
-                        -6.226334923023335,
-                        -6.648749825544208, 3.6360781779859073, 16.43380473058686, -1023.7694605727667,
-                        -42.10653475759662,
-                        6.226336475050096, 6.648749825544179]
+            expected = [-3.6358786639185694,
+                        -16.433154267781457,
+                        1023.7692379604973,
+                        42.103877880761,
+                        -6.226032276396039,
+                        -6.64849783208149,
+                        3.6358800479387927,
+                        16.43315426778146,
+                        -1023.7692318419589,
+                        -42.10387788076099,
+                        6.226033828412597,
+                        6.648497832081523]
             actual = self.dss.cktelement_seq_powers()
-            assert [round(value, 4) for value in actual] == [round(value, 4) for value in expected]
+            assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
         else:
             assert 1 == 1
 
@@ -276,9 +317,9 @@ class TestCktElement13Bus:
 
     def test_cktelement_residuals(self):
         if platform.architecture()[0] == "64bit":
-            expected = [203.766844870779, 11.612830692170245, 203.766844870779, -168.38716929815823]
+            expected = [203.7660585822039, 11.613009723287425, 203.7660585822039, -168.38699026704103]
             actual = self.dss.cktelement_residuals()
-            assert [round(value, 5) for value in actual] == [round(value, 5) for value in expected]
+            assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
         else:
             assert 1 == 1
 
@@ -293,31 +334,45 @@ class TestCktElement13Bus:
                         0.0,
                         -10000000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10000000.0, 0.0]
             actual = self.dss.cktelement_y_prim()
-            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
+            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
         else:
             assert 1 == 1
 
     def test_cktelement_cplx_seq_voltages(self):
         if platform.architecture()[0] == "64bit":
-            expected = [-1.2443968584439062, -82.59116123402828, 2386.047643797686, -162.49099543761832,
-                        -34.73053366599282,
-                        23.996417025286178, -1.244403511636449, -82.59116260128519, 2386.0476296014167,
-                        -162.49099388261294,
-                        -34.730534726534245, 23.99642413931997]
+            expected = [-1.2438337433894162,
+                        -82.58816123256486,
+                        2386.0519864799708,
+                        -162.48665018324897,
+                        -34.72936790857,
+                        23.995163183288923,
+                        -1.2438403965520592,
+                        -82.58816259983746,
+                        2386.051972283723,
+                        -162.48664862831083,
+                        -34.729368969132395,
+                        23.995170297295772]
             actual = self.dss.cktelement_cplx_seq_voltages()
-            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
+            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
         else:
             assert 1 == 1
 
     def test_cktelement_cplx_seq_currents(self):
         if platform.architecture()[0] == "64bit":
-            expected = [66.53192583719891, 13.672570546468101, 141.96269129938753, -15.550054378231998,
-                        10.605415669810057,
-                        -71.1403384338611, -66.53192583719891, -13.672570546468101, -141.96269129938753,
-                        15.550054378231998,
-                        -10.605415669810057, 71.1403384338611]
+            expected = [66.53162638346356,
+                        13.672725677490241,
+                        141.96247509903242,
+                        -15.549381656831635,
+                        10.60562233342202,
+                        -71.1400676534711,
+                        -66.53162638346356,
+                        -13.672725677490241,
+                        -141.96247509903242,
+                        15.549381656831635,
+                        -10.60562233342202,
+                        71.1400676534711]
             actual = self.dss.cktelement_cplx_seq_currents()
-            assert [round(value, 5) for value in actual] == [round(value, 5) for value in expected]
+            assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
         else:
             assert 1 == 1
 
@@ -341,23 +396,38 @@ class TestCktElement13Bus:
 
     def test_cktelement_currents_mag_ang(self):
         if platform.architecture()[0] == "64bit":
-            expected = [230.9468050096784, -18.431295569374065, 68.50814529324387, -55.91804381551418,
-                        180.32308163492308,
-                        108.72710746089945, 230.9468050096784, 161.56870442095442, 68.50814529324387,
-                        124.08195617481427,
-                        180.32308163492308, -71.27289252942901]
+            expected = [230.9461645195305,
+                        -18.43106122609838,
+                        68.50813414755872,
+                        -55.91798358065394,
+                        180.3226413266336,
+                        108.72737054270922,
+                        230.9461645195305,
+                        161.5689387642301,
+                        68.50813414755872,
+                        124.08201640967452,
+                        180.3226413266336,
+                        -71.27262944761924]
             actual = self.dss.cktelement_currents_mag_ang()
-            assert [round(value, 4) for value in actual] == [round(value, 4) for value in expected]
+            assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
         else:
             assert 1 == 1
 
     def test_cktelement_voltages_mag_ang(self):
         if platform.architecture()[0] == "64bit":
-            expected = [2360.449250025611, -5.3743473971090765, 2498.5161614343156, -122.39005677200043,
-                        2317.4104122074677,
-                        115.9866388766925, 2360.4492275280204, -5.3743472704625, 2498.516158699491, -122.39005691604211,
-                        2317.410394319708, 115.98663893302955]
+            expected = [2360.454724361668,
+                        -5.374186385394906,
+                        2498.515832891544,
+                        -122.38998937216341,
+                        2317.417277288996,
+                        115.9867497775529,
+                        2360.454701864133,
+                        -5.374186258749673,
+                        2498.5158301567194,
+                        -122.38998951620508,
+                        2317.4172594012734,
+                        115.98674983388848]
             actual = self.dss.cktelement_voltages_mag_ang()
-            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
+            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
         else:
             assert 1 == 1
