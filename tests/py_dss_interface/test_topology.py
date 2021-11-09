@@ -28,10 +28,9 @@ class TestTopology13Bus:
         actual = self.dss.topology_num_isolated_branches()
         assert actual == expected
 
-    def test_topology_num_isolated_loadss(self):
-        self.dss.text("New Load.test bus1=A")
-        self.dss.solution_solve()
-        expected = 1
+    def test_topology_num_isolated_loads(self):
+        self.dss.text("edit Line.670671 enabled=no")
+        expected = 7
         actual = self.dss.topology_num_isolated_loadss()
         assert actual == expected
 
@@ -106,15 +105,26 @@ class TestTopology13Bus:
         self.dss.topology_write_branch_name("Line.670671")
         expected = 1
         actual = self.dss.topology_first_load()
-        assert actual == expected # TODO understand
+        assert actual == expected  # TODO understand
 
         # expected = 'Load.671'
         # actual = self.dss.topology_read_branch_name()
         # assert actual == expected
 
     def test_topology_next_load(self):
-        expected = 0
+        self.dss.topology_write_branch_name("Transformer.XFM1")
+
+        expected = "Load.634a"
+        self.dss.topology_first_load()
+        actual = self.dss.cktelement_name()
+        assert actual == expected
+
+        expected = 1
         actual = self.dss.topology_next_load()
+        assert actual == expected
+
+        expected = "Load.634b"
+        actual = self.dss.cktelement_name()
         assert actual == expected
 
     def test_topology_active_level(self):
@@ -167,11 +177,27 @@ class TestTopology13Bus:
         assert actual == expected
 
     def test_topology_all_isolated_branches(self):
-        expected = []
+        self.dss.text("edit Line.670671 enabled=no")
+        expected = ['Capacitor.cap1',
+                    'Capacitor.cap2',
+                    'Line.670671',
+                    'Line.671680',
+                    'Line.692675',
+                    'Line.671684',
+                    'Line.684611',
+                    'Line.684652',
+                    'Line.671692']
         actual = self.dss.topology_all_isolated_branches()
         assert actual == expected
 
     def test_topology_all_isolated_loads(self):
-        expected = []
+        self.dss.text("edit Line.670671 enabled=no")
+        expected = ['Load.671',
+                    'Load.692',
+                    'Load.675a',
+                    'Load.675b',
+                    'Load.675c',
+                    'Load.611',
+                    'Load.652']
         actual = self.dss.topology_all_isolated_loads()
         assert actual == expected

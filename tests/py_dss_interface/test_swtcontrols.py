@@ -13,8 +13,8 @@ class TestSWTControls13Bus:
     @pytest.fixture(autouse=True)
     def _request(self, solve_snap_13bus):
         self.dss = solve_snap_13bus
-        self.dss.text("new swtcontrol.1   SwitchedObj=line.650632  SwitchedTerm=1 Action=c")
-        self.dss.text("new swtcontrol.2   SwitchedObj=line.692675  SwitchedTerm=1 Action=o")
+        self.dss.text("new swtcontrol.1  SwitchedObj=line.650632  SwitchedTerm=1 Action=c")
+        self.dss.text("new swtcontrol.2  SwitchedObj=line.692675  SwitchedTerm=1 Action=o")
         self.dss.solution_solve()
         self.dss.swtcontrols_write_name('1')
 

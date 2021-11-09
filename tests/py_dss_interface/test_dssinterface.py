@@ -55,16 +55,15 @@ class TestDSSInterface13Bus:
         assert actual == expected
 
     def test_dss_read_allow_forms(self):
-        expected = 0
+        expected = 1
         actual = self.dss.dss_read_allow_forms()
         assert actual == expected
 
-    # TODO: Not writing, always returning 0 - it is always the opposite. Check code
-    # def test_dss_write_allow_forms(self):
-    #     expected = 1
-    #     self.dss.dss_write_allow_forms(expected)
-    #     actual = self.dss.dss_read_allow_forms()
-    #     assert actual == expected
+    def test_dss_write_allow_forms(self):
+        expected = 1
+        self.dss.dss_write_allow_forms(0)
+        actual = self.dss.dss_read_allow_forms()
+        assert actual == expected
 
     # ===================================================================
     # String methods
@@ -76,7 +75,7 @@ class TestDSSInterface13Bus:
     #     assert actual == expected
 
     def test_dss_version(self):
-        expected = 'Version 9.3.0.2 (64-bit build); License Status: Open '
+        expected = 'Version 9.4.0.1 (64-bit build); License Status: Open '
         actual = self.dss.dss_version()
         assert actual == expected
 
@@ -85,7 +84,7 @@ class TestDSSInterface13Bus:
         actual = self.dss.dss_read_datapath()
         assert actual == expected
 
-    # TODO Paulo: Not writing datapath, the read method returns '' afeter write
+    # TODO Paulo: Not writing datapath, the read method returns '' after write
     # def test_dss_write_datapath(self):
     #     expected = 'C:'
     #     self.dss.dss_write_datapath(expected)
