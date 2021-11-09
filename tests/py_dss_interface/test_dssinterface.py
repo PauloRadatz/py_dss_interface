@@ -7,6 +7,8 @@
 
 
 import pytest
+import os
+import pathlib
 
 
 class TestDSSInterface13Bus:
@@ -80,16 +82,16 @@ class TestDSSInterface13Bus:
         assert actual == expected
 
     def test_dss_read_datapath(self):
-        expected = ''
+        expected = r"C:\\PauloRadatz\\GitHub\\py-dss-interface\\tests\\py_dss_interface\\cases\\13Bus\\"
         actual = self.dss.dss_read_datapath()
-        assert actual == expected
+        assert actual.replace("\\", "") == expected.replace("\\", "")
 
-    # TODO Paulo: Not writing datapath, the read method returns '' after write
-    # def test_dss_write_datapath(self):
-    #     expected = 'C:'
-    #     self.dss.dss_write_datapath(expected)
-    #     actual = self.dss.dss_read_datapath()
-    #     assert actual == expected
+    def test_dss_write_datapath(self):
+        data_path = str(pathlib.Path(os.path.dirname(__file__)).joinpath("cases", "13Bus", "datapath"))
+        self.dss.dss_write_datapath(data_path)
+        expected = data_path
+        actual = self.dss.dss_read_datapath()
+        assert actual.replace("\\", "") == expected.replace("\\", "")
 
     def test_dss_default_editor(self):
         expected = 'Notepad.exe'

@@ -13,8 +13,9 @@ class TestRegcontrols13Bus:
     @pytest.fixture(autouse=True)
     def _request(self, solve_snap_13bus):
         self.dss = solve_snap_13bus
-        self.dss.regcontrols_write_name('reg1')
         self.dss.solution_solve()
+
+        self.dss.regcontrols_write_name('reg1')
 
     # ===================================================================
     # Integer methods

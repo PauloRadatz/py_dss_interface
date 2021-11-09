@@ -378,7 +378,11 @@ class TestCktElement13Bus:
 
     def test_cktelement_all_variables_names(self):
         # TODO: Paulo - https://github.com/PauloRadatz/py_dss_interface/issues/3
-        self.dss.circuit_set_active_element("Load.611")
+        self.dss.text("var @ZZ=671_variable")
+        self.dss.text("var @B1=MyZZBus")
+        self.dss.text("var @kw=23.8")
+        self.dss.text("New Load.@ZZ phases=1 bus1=@B1.4  kw=@kw")
+        self.dss.circuit_set_active_element("Load.@ZZ")
         expected = []
         actual = self.dss.cktelement_all_variables_names()
         assert actual == expected

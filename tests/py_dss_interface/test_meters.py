@@ -149,6 +149,11 @@ class TestMeters13Bus:
         actual = self.dss.meters_sect_total_cust()
         assert actual == expected
 
+    def test_meters_count_end_elements(self):
+        expected = 3
+        actual = self.dss.meters_count_end_elements()
+        assert actual == expected
+
     # ===================================================================
     # String methods
     # ===================================================================

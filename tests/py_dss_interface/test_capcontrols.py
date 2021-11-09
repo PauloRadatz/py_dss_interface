@@ -211,16 +211,15 @@ class TestCapControls13Bus:
         assert actual == expected
 
     def test_capcontrols_read_dead_time(self):
-        expected = -1
+        expected = 300
         actual = self.dss.capcontrols_read_dead_time()
         assert actual == expected
 
-    # TODO Paulo: returning -1 - check source code
-    # def test_capcontrols_write_dead_time(self):
-    #     expected = 10
-    #     self.dss.capcontrols_write_dead_time(expected)
-    #     actual = self.dss.capcontrols_read_dead_time()
-    #     assert actual == expected
+    def test_capcontrols_write_dead_time(self):
+        expected = 10
+        self.dss.capcontrols_write_dead_time(expected)
+        actual = self.dss.capcontrols_read_dead_time()
+        assert actual == expected
 
     # ===================================================================
     # Variant methods
