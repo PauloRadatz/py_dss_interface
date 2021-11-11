@@ -17,7 +17,8 @@ class TestBus13CtrlQueue:
         dss.solution_init_snap()
         dss.solution_solve_no_control()
         dss.solution_sample_control_devices()
-        return dss
+        yield dss
+        dss.text("clearall")
 
     def test_ctrlqueue_ctrlqueue(self, dss):
         actual_0 = dss.ctrlqueue_ctrlqueue()[0]

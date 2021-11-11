@@ -21,7 +21,8 @@ class TestSensors13Bus:
         dss.solution_solve()
         dss.sensors_write_name("Sensor1")
 
-        return dss
+        yield dss
+        dss.text("clearall")
 
     # ===================================================================
     # Integer methods

@@ -15,7 +15,8 @@ class TestLoadShapes13Bus:
         dss = solve_snap_13bus
         dss.loadshapes_write_name('default')
 
-        return dss
+        yield dss
+        dss.text("clearall")
 
     def new_loadshape(self, dss, activate: bool = False):
         dss.text("New Loadshape.Test npts=24 interval=1 Pbase=100 Qbase=50 "

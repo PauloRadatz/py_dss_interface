@@ -30,7 +30,8 @@ class TestMonitors13Bus:
 
         dss.solution_solve()
 
-        return dss
+        yield dss
+        dss.text("clearall")
 
     # ===================================================================
     # Integer methods

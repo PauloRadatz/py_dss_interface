@@ -20,7 +20,8 @@ class TestFuses13Bus:
         dss.text("New Fuse.Fuse2   LINE.684611   1 fusecurve=tlink2  Ratedcurrent=15")
         dss.fuses_write_name("Fuse1")
 
-        return dss
+        yield dss
+        dss.text("clearall")
 
     # ===================================================================
     # Integer methods

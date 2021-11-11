@@ -16,7 +16,8 @@ class TestCktElement13Bus:
         dss = solve_snap_13bus
         dss.circuit_set_active_element('Line.671692')
 
-        return dss
+        yield dss
+        dss.text("clearall")
 
     def test_cktelement_num_terminals(self, dss):
         expected = 2
@@ -409,6 +410,7 @@ class TestCktElement13Bus:
         actual = dss.cktelement_all_variables_names()
         assert actual == expected
 
+    # TODO gives error
     def test_cktelement_all_variables_values(self, dss):
         dss.text("New Storage.str bus=650 kw=50")
         dss.circuit_set_active_element("Storage.str")

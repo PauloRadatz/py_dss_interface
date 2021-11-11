@@ -33,7 +33,8 @@ class TestReclosers13Bus:
         dss.solution_solve()
         dss.reclosers_write_name('cb1')
 
-        return dss
+        yield dss
+        dss.text("clearall")
 
     # ===================================================================
     # Integer methods
