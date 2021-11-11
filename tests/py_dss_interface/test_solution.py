@@ -413,7 +413,7 @@ class TestSolution13Bus:
         assert actual > expected
 
     def test_solution_read_total_time(self, dss):
-        expected = 0
+        expected = -1
         actual = dss.solution_read_total_time()
         assert actual > expected
 
