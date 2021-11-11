@@ -31,6 +31,8 @@ class TestCapControls13Bus:
             "VoltOverride=Y Vmin=7110 Vmax=7740 Delay=102 Delayoff=102")
         dss.solution_solve()
 
+        dss.capcontrols_write_name("CAPBank2C_Ctrl")
+
         return dss
 
     # ===================================================================
