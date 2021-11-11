@@ -14,7 +14,8 @@ import time
 script_path = os.path.dirname(os.path.abspath(__file__))
 
 
-@pytest.fixture
+
+@pytest.fixture(scope='function')
 def solve_snap_13bus():
     dss = py_dss_interface.DSSDLL()
     actual = dss.started
@@ -29,8 +30,7 @@ def solve_snap_13bus():
     dss.text("compile " + dss13_path)  # It already performs power flow
 
     dss.dss_write_allow_forms(0)
-    yield dss
-    dss.text("clearall")
+    return dss
 
 # @pytest.fixture(autouse=True)
 # def slow_down_tests():

@@ -18,8 +18,7 @@ class TestXYCurves13Bus:
         dss.solution_solve()
         dss.xycurves_write_name('xycurve1')
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     # ===================================================================
     # Integer methods

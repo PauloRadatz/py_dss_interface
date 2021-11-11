@@ -16,8 +16,7 @@ class TestLoad13Bus:
         dss = solve_snap_13bus
         dss.loads_write_name('671')
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     # ===================================================================
     # Integer methods

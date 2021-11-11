@@ -18,8 +18,7 @@ class TestMeters13Bus:
         dss.text("solve")
         dss.meters_write_name("em1")
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     # ===================================================================
     # Integer methods

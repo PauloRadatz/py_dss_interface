@@ -16,8 +16,7 @@ class TestBus13Bus:
         dss = solve_snap_13bus
         dss.circuit_set_active_bus('692')
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     def test_bus_num_nodes(self, dss):
         expected = 3

@@ -14,8 +14,7 @@ class TestCircuit13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        yield dss
-        dss.text("clearall")
+        return dss
 
     def test_circuit_num_ckt_elements(self, dss):
         expected = 39

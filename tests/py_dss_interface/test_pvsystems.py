@@ -32,8 +32,7 @@ class TestPVSystems13Bus:
         dss.solution_solve()
         dss.pvsystems_write_name('PV1')
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     def test_pvsystems_count(self, dss):
         expected = 1
