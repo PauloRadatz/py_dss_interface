@@ -15,8 +15,7 @@ class TestLineCodes13Bus:
         dss = solve_snap_13bus
         dss.linecodes_write_name('1')
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     # ===================================================================
     # Integer methods

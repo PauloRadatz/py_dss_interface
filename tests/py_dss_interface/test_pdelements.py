@@ -16,8 +16,7 @@ class TestSensors13Bus:
         dss.solution_solve()
         dss.pdelements_write_name("Line.671692")
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     # ===================================================================
     # Integer methods

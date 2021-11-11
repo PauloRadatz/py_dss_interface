@@ -15,8 +15,7 @@ class TestBus13Capacitors:
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.circuit_set_active_element("capacitor.cap1")
-        yield dss
-        dss.text("clearall")
+        return dss
 
     def test_capacitors_read_num_steps(self, dss):
         expected = 1

@@ -31,8 +31,7 @@ class TestCapControls13Bus:
             "VoltOverride=Y Vmin=7110 Vmax=7740 Delay=102 Delayoff=102")
         dss.solution_solve()
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     # ===================================================================
     # Integer methods

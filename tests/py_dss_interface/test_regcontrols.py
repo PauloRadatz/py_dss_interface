@@ -17,8 +17,7 @@ class TestRegcontrols13Bus:
 
         dss.regcontrols_write_name('reg1')
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     # ===================================================================
     # Integer methods

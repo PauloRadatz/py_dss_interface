@@ -15,8 +15,7 @@ class TestBus13DSSProperties:
         dss = solve_snap_13bus
         dss.circuit_set_active_element('Line.671692')
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     def test_dssproperties_name(self, dss):
         expected = "bus1"

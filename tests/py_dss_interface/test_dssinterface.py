@@ -17,8 +17,7 @@ class TestDSSInterface13Bus:
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     # ===================================================================
     # Integer methods

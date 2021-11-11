@@ -15,8 +15,7 @@ class TestBus13ISources:
         dss = solve_snap_13bus
         dss.text("new isource.MyISource phases=3 amps=100 bus1=692 angle=30")
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     def test_isources_count(self, dss):
         expected = 1

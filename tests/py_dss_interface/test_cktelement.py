@@ -16,8 +16,7 @@ class TestCktElement13Bus:
         dss = solve_snap_13bus
         dss.circuit_set_active_element('Line.671692')
 
-        yield dss
-        dss.text("clearall")
+        return dss
 
     def test_cktelement_num_terminals(self, dss):
         expected = 2
