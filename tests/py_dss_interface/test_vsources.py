@@ -17,7 +17,8 @@ class TestVSources13Bus:
         dss.solution_solve()
         dss.vsources_write_name('fonte1')
 
-        return dss
+        yield dss
+        dss.text("clearall")
 
     # ===================================================================
     # Integer methods

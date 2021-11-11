@@ -15,7 +15,8 @@ class TestSolution13Bus:
         dss = solve_snap_13bus
         dss.solution_solve()
 
-        return dss
+        yield dss
+        dss.text("clearall")
     # ===================================================================
     # Integer methods
     # ===================================================================

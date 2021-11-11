@@ -16,7 +16,8 @@ class TestTransformers13Bus:
         dss.solution_solve()
         dss.transformers_write_name('sub')
 
-        return dss
+        yield dss
+        dss.text("clearall")
 
     # ===================================================================
     # Integer methods

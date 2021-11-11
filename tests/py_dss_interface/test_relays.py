@@ -26,7 +26,8 @@ class TestRelays13Bus:
         dss.solution_solve()
         dss.relays_write_name("test1")
 
-        return dss
+        yield dss
+        dss.text("clearall")
 
     # ===================================================================
     # Integer methods

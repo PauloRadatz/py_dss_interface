@@ -18,7 +18,8 @@ class TestGenerators13Bus:
             "New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=3 Vpu=1 Maxkvar=500 Minkvar=-400")
         dss.generators_write_name("G1")
 
-        return dss
+        yield dss
+        dss.text("clearall")
 
     def include_generator(self, dss):
         dss.text(

@@ -18,7 +18,8 @@ class TestSWTControls13Bus:
         dss.solution_solve()
         dss.swtcontrols_write_name('1')
 
-        return dss
+        yield dss
+        dss.text("clearall")
 
     # ===================================================================
     # Integer methods

@@ -21,6 +21,11 @@ overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.circuit_name(
 # dss.text('show voltage')
 dss.solution_solve()
 
+
+dss.text("New Storage.str bus=650 kw=50")
+dss.circuit_set_active_element("Storage.str")
+dss.cktelement_all_variables_names()
+
 #
 
 dss.regcontrols_write_name('reg1')
