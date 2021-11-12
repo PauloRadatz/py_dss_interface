@@ -259,7 +259,7 @@ class TestLines13Bus:
         expected = 0.12
         dss.lines_write_x0(expected)
         actual = dss.lines_read_x0()
-        assert actual == expected
+        assert round(actual, 2) == expected
 
     def test_lines_read_c0(self, dss):
         if platform.architecture()[0] == "64bit":

@@ -57,10 +57,7 @@ class LinesF(Base):
     def lines_write_r0(self, argument: float) -> float:
         """Sets the zero sequence resistance, ohm per unit length."""
         argument = Base.check_float_param(argument)
-        t = Text(self.dss_obj)
-        lc = LinesS.LinesS(self.dss_obj)
-        lc_name = lc.lines_read_name()
-        t.text(f'edit Line.{lc_name} R0 = {argument}')
+        return float(self.dss_obj.LinesF(ctypes.c_int32(7), ctypes.c_double(argument)))
 
     def lines_read_x0(self) -> float:
         """Gets the zero sequence reactance, ohm per unit length."""
@@ -69,10 +66,7 @@ class LinesF(Base):
     def lines_write_x0(self, argument: float) -> float:
         """Sets the zero sequence reactance, ohm per unit length."""
         argument = Base.check_float_param(argument)
-        t = Text(self.dss_obj)
-        lc = LinesS.LinesS(self.dss_obj)
-        lc_name = lc.lines_read_name()
-        t.text(f'edit Line.{lc_name} X0 = {argument}')
+        return float(self.dss_obj.LinesF(ctypes.c_int32(9), ctypes.c_double(argument)))
 
     def lines_read_c1(self) -> float:
         """Gets the positive sequence capacitance, nanofarads per unit length."""
@@ -80,13 +74,8 @@ class LinesF(Base):
 
     def lines_write_c1(self, argument: float) -> float:
         """Sets the positive sequence capacitance, nanofarads per unit length."""
-        # argument = Base.check_float_param(argument)
-        # return float(self.dss_obj.LinesF(ctypes.c_int32(11), ctypes.c_double(argument)))
         argument = Base.check_float_param(argument)
-        t = Text(self.dss_obj)
-        lc = LinesS.LinesS(self.dss_obj)
-        lc_name = lc.lines_read_name()
-        t.text(f'edit Line.{lc_name} C1 = {argument}')
+        return float(self.dss_obj.LinesF(ctypes.c_int32(11), ctypes.c_double(argument)))
 
     def lines_read_c0(self) -> float:
         """Gets the zero sequence capacitance, nanofarads per unit length."""
@@ -95,10 +84,7 @@ class LinesF(Base):
     def lines_write_c0(self, argument: float) -> float:
         """Sets the zero sequence capacitance, nanofarads per unit length."""
         argument = Base.check_float_param(argument)
-        t = Text(self.dss_obj)
-        lc = LinesS.LinesS(self.dss_obj)
-        lc_name = lc.lines_read_name()
-        t.text(f'edit Line.{lc_name} C0 = {argument}')
+        return float(self.dss_obj.LinesF(ctypes.c_int32(13), ctypes.c_double(argument)))
 
     def lines_read_norm_amps(self) -> float:
         """Gets the normal ampere rating of line section."""
