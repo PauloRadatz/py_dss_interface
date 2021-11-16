@@ -26,11 +26,6 @@ class LoadShapesF(Base):
         """Sets the fixed interval time value, hours."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.LoadShapeF(ctypes.c_int32(1), ctypes.c_double(argument)))
-        # argument = Base.check_float_param(argument)
-        # t = Text(self.dss_obj)
-        # lc = LoadShapesS.LoadShapesS(self.dss_obj)
-        # lc_name = lc.loadshapes_read_name()
-        # return t.text(f'edit LoadShape.{lc_name} hour = {argument}')
 
     def loadshapes_read_min_interval(self) -> float:
         """Gets the fixed interval time value, in minutes."""

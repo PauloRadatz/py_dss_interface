@@ -67,11 +67,11 @@ class TestSettings13Bus:
     # ===================================================================
     # Float methods
     # ===================================================================
-    def test_settings_allocation_factors(self, dss):
-        # TODO: It works, but shows a OpenDSS error message (Allocation Factor must be greater than zero.)
-        expected = 0
-        actual = dss.settings_allocation_factors()
-        assert actual == expected
+    # def test_settings_allocation_factors(self, dss):
+    #     # TODO: It works, but shows a OpenDSS error message (Allocation Factor must be greater than zero.)
+    #     expected = 0
+    #     actual = dss.settings_allocation_factors()
+    #     assert actual == expected
 
     def test_settings_read_norm_vmin_pu(self, dss):
         expected = 0.95

@@ -16,8 +16,7 @@ class ActiveClassI(Base):
     the class to be used and the variable “argument” can be used to modify the value of the property when necessary.
     Reading and writing properties are separated and require a different parameter number to be executed.
 
-    The properties (parameter) are integer numbers and are described as follows.
-    """
+    The properties (parameter) are integer numbers and are described as follows."""
 
     def active_class_first(self) -> int:
         """Sets first element in the active class to be the active DSS object. If object is a CktElement,

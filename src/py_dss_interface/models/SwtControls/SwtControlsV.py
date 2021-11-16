@@ -9,7 +9,7 @@ from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 
 
-class SWTControlsV(Base):
+class SwtControlsV(Base):
     """
     This interface can be used to read/write certain properties of the active DSS object.
 

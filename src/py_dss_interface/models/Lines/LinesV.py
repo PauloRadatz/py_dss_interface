@@ -35,11 +35,13 @@ class LinesV(Base):
 
     def lines_write_rmatrix(self, argument) -> str:
         """Sets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        lc = Lines.LinesS(self.dss_obj)
-        lc_name = lc.lines_read_name()
-        return t.text(f'edit Line.{lc_name} Rmatrix = {argument}')
+        # argument = Base.check_string_param(argument)
+        # t = Text(self.dss_obj)
+        # lc = Lines.LinesS(self.dss_obj)
+        # lc_name = lc.lines_read_name()
+        # return t.text(f'edit Line.{lc_name} Rmatrix = {argument}')
+
+        return Bridge.var_array_function(self.dss_obj.LinesV, 2, None, argument)
 
     def lines_read_xmatrix(self) -> List[float]:
         """Gets the reactance matrix (full), ohms per unit length. Variant array of doubles."""

@@ -1,6 +1,7 @@
 # First import the Package
 import py_dss_interface
 import pathlib
+import numpy as np
 import os
 # Creates an OpenDSS object
 dss = py_dss_interface.DSSDLL("C:\OpenDSS_rep\Version8\Source")
@@ -22,9 +23,17 @@ overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.circuit_name(
 dss.solution_solve()
 
 
-dss.text("New Storage.str bus=650 kw=50")
+dss.lines_first()
+expected = [1.3569, 0.4591, 0.0, 0.4591, 1.3471, 0.0, 0.0, 0.0, 0.0]
+dss.lines_write_rmatrix([1.3569, 0.4591, 1.3471])
+
+
+
+
+dss.text("New Storage.Battery phases=3 Bus1=680 kV=4.16 kWrated=350 kWhrated=2000")
 dss.circuit_set_active_element("Storage.str")
 dss.cktelement_all_variables_names()
+dss.cktelement_all_variables_values()
 
 #
 
@@ -33,6 +42,9 @@ dss.regcontrols_write_monitored_bus("672")
 dss.regcontrols_read_monitored_bus()
 
 dss.dss_read_datapath()
+
+
+
 
 # dss.text("var @ZZ=671_test")
 # dss.text("var @B1=MyZZBus")
