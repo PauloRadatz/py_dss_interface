@@ -8,7 +8,7 @@ import ctypes
 from py_dss_interface.models.Base import Base
 
 
-class SWTControlsI(Base):
+class SwtControlsI(Base):
     """
     This interface can be used to read/write certain properties of the active DSS object.
 

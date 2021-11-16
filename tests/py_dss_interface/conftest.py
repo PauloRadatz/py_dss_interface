@@ -14,10 +14,9 @@ import time
 script_path = os.path.dirname(os.path.abspath(__file__))
 
 
-
 @pytest.fixture(scope='function')
 def solve_snap_13bus():
-    dss = py_dss_interface.DSSDLL()
+    dss = py_dss_interface.DSSDLL(r"C:\OpenDSS_rep\Version8\Source")
     actual = dss.started
     expected = True
 
