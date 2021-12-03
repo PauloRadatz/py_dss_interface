@@ -33,7 +33,7 @@ from py_dss_interface.models.Parser.Parser import Parser
 from py_dss_interface.models.Reclosers.Reclosers import Reclosers
 from py_dss_interface.models.RegControls.RegControls import RegControls
 from py_dss_interface.models.Relays.Relays import Relays
-from py_dss_interface.models.SwtControls.SwtControls import SWTControls
+from py_dss_interface.models.SwtControls.SwtControls import SwtControls
 from py_dss_interface.models.Sensors.Sensors import Sensors
 from py_dss_interface.models.Settings.Settings import Settings
 from py_dss_interface.models.Solution.Solution import Solution

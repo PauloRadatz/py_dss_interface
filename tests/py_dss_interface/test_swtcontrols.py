@@ -8,7 +8,7 @@
 import pytest
 
 
-class TestSWTControls13Bus:
+class TestSwtControls13Bus:
 
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):

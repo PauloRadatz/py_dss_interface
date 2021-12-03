@@ -9,10 +9,10 @@ from py_dss_interface.models.SwtControls.SwtControlsS import SwtControlsS
 from py_dss_interface.models.SwtControls.SwtControlsV import SwtControlsV
 
 
-class SWTControls(SwtControlsS, SwtControlsV, SwtControlsI, SwtControlsF):
+class SwtControls(SwtControlsS, SwtControlsV, SwtControlsI, SwtControlsF):
     """
     This interface implements the SwtControls (ISwtControls) interface of OpenDSS by declaring 4 procedures for
-    accessing the different properties included in this interface: SWTControlsS, SWTControlsV, SWTControlsI,
-    SWTControlsF.
+    accessing the different properties included in this interface: SwtControlsS, SwtControlsV, SwtControlsI,
+    SwtControlsF.
     """
     pass
