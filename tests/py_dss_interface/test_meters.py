@@ -304,3 +304,15 @@ class TestMeters13Bus:
         expected = ['Line.645646', 'Transformer.xfm1', 'Line.632670']
         actual = dss.meters_all_end_elements()
         assert actual == expected
+
+    def test_meters_all_pce_in_zone(selfself, dss):
+        expected = ['Load.645',
+                    'Load.646',
+                    'Load.634a',
+                    'Load.634b',
+                    'Load.634c',
+                    'Load.670a',
+                    'Load.670b',
+                    'Load.670c']
+        actual = dss.meters_all_pce_in_zone()
+        assert actual == expected

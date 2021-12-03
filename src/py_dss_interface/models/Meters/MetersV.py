@@ -84,3 +84,7 @@ class MetersV(Base):
     def meters_all_branches_in_zone(self):
         """Returns a wide string list of all branches in zone of the active Energy Meter object."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(11), ctypes.c_int(0), None)
+
+    def meters_all_pce_in_zone(self):
+        """This parameter returns a wide string list of all the PCE in zone of the active Energy Meter object."""
+        return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(12), ctypes.c_int(0), None)
