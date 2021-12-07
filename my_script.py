@@ -27,7 +27,7 @@ dss.lines_first()
 expected = [1.3569, 0.4591, 0.0, 0.4591, 1.3471, 0.0, 0.0, 0.0, 0.0]
 dss.lines_write_rmatrix([1.3569, 0.4591, 1.3471])
 
-
+dss.regcontrols_read_ct_primary()
 
 
 dss.text("New Storage.Battery phases=3 Bus1=680 kV=4.16 kWrated=350 kWhrated=2000")
@@ -43,7 +43,7 @@ dss.regcontrols_read_monitored_bus()
 
 dss.dss_read_datapath()
 
-
+dss.circuit_all_node_vmag_pu_by_phase()
 
 
 # dss.text("var @ZZ=671_test")

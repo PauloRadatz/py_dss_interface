@@ -25,7 +25,7 @@ project = 'py_dss_interface'
 year = '2020'
 author = 'Paulo Radatz, Ênio Viana, Rodolfo Londero'
 copyright = '{0}, {1}'.format(year, author)
-version = release = '1.1.0'
+version = release = '1.0.2'
 
 extensions = [
     'sphinx.ext.autodoc',

@@ -161,15 +161,15 @@ class TestRegcontrols13Bus:
         actual = dss.regcontrols_read_reverse_r()
         assert actual == expected
 
-    def test_regcontrols_read_reverser_x(self, dss):
+    def test_regcontrols_read_reverse_x(self, dss):
         expected = 0
-        actual = dss.regcontrols_read_reverser_x()
+        actual = dss.regcontrols_read_reverse_x()
         assert actual == expected
 
-    def test_regcontrols_write_reverser_x(self, dss):
+    def test_regcontrols_write_reverse_x(self, dss):
         expected = 5
-        dss.regcontrols_write_reverser_x(expected)
-        actual = dss.regcontrols_read_reverser_x()
+        dss.regcontrols_write_reverse_x(expected)
+        actual = dss.regcontrols_read_reverse_x()
         assert actual == expected
 
     def test_regcontrols_read_delay(self, dss):

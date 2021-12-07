@@ -13,7 +13,7 @@ class TestReclosers13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.text(r"New 'Recloser.cb1' MonitoredObj=Line.650632 "
+        dss.text(r"New Recloser.cb1 MonitoredObj=Line.650632 "
                       r"MonitoredTerm=1  "
                       r"NumFast=4       "
                       r"PhaseFast=Ext_Inv "

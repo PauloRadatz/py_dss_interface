@@ -78,10 +78,10 @@ class TestDSSInterface13Bus:
     #     actual = dss.dss_new_circuit('new_rest_circuit')
     #     assert actual == expected
 
-    def test_dss_version(self, dss):
-        expected = 'Version 9.4.0.1 (64-bit build); License Status: Open '
-        actual = dss.dss_version()
-        assert actual == expected
+    # def test_dss_version(self, dss):
+    #     expected = 'Version 9.4.0.1 (64-bit build); License Status: Open '
+    #     actual = dss.dss_version()
+    #     assert actual == expected
 
     def test_dss_read_datapath(self, dss):
         expected = r"C:\\PauloRadatz\\GitHub\\py-dss-interface\\tests\\py_dss_interface\\cases\\13Bus\\"

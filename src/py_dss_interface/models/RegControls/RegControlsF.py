@@ -63,11 +63,11 @@ class RegControlsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.RegControlsF(ctypes.c_int32(9), ctypes.c_double(argument)))
 
-    def regcontrols_read_reverser_x(self) -> float:
+    def regcontrols_read_reverse_x(self) -> float:
         """Gets the reverse LDC X settings in Volts."""
         return float(self.dss_obj.RegControlsF(ctypes.c_int32(10), ctypes.c_double(0)))
 
-    def regcontrols_write_reverser_x(self, argument) -> float:
+    def regcontrols_write_reverse_x(self, argument) -> float:
         """Sets the reverse LDC X settings in Volts."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.RegControlsF(ctypes.c_int32(11), ctypes.c_double(argument)))
