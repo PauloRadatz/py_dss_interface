@@ -60,6 +60,7 @@ class CapControlsI(Base):
             else 0
         )
 
+    # TODO
     def capcontrols_read_use_volt_override(self) -> int:
         """Gets if Vmin and Vmax are enabled to override the control Mode. There is not a explicit return type in the
         oficial documentation, because of this we choose not put a explicit return too."
