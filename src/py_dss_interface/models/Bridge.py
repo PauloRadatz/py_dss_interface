@@ -21,17 +21,8 @@ def is_delphi():
     return 'darwin' not in sys.platform and 'linux' not in sys.platform
 
 
-if is_x64():
-    POINTER = ctypes.c_int64
-else:
-    POINTER = ctypes.c_int32
-
-if is_delphi():
-    HEADER_SIZE = 4  # Windows
-else:
-    HEADER_SIZE = 8  # OSX and LINUX
-
-
+POINTER = ctypes.c_int64 if is_x64() else ctypes.c_int32
+HEADER_SIZE = 4 if is_delphi() else 8
 class ArrayEnio(ctypes.Structure):
     _fields_ = [
         ('size', ctypes.c_int),
@@ -64,7 +55,7 @@ def c_types_function(f, param, dss_arg, name):
     if isinstance(dss_arg, str):
         dss_arg = dss_arg.encode('ascii')
 
-    logger.debug("Calling function {} with arguments {}".format(name, (param, dss_arg)))
+    logger.debug(f"Calling function {name} with arguments {(param, dss_arg)}")
     r = f(param, dss_arg)
 
     if isinstance(r, bytes):
@@ -78,10 +69,10 @@ def var_array_function(f, param, optional, name):
     if optional is not None:
         f(param, p, optional)
     else:
-        logger.debug("Calling function {} with arguments {}".format(name, (param, p)))
+        logger.debug(f"Calling function {name} with arguments {(param, p)}")
         f(param, p)
 
-    logger.debug("Successively called and returned from function {}".format(name))
+    logger.debug(f"Successively called and returned from function {name}")
     var_arr = ctypes.cast(varg.p, ctypes.POINTER(VarArray)).contents
 
     l_ = []
@@ -101,21 +92,19 @@ def var_array_function(f, param, optional, name):
     elif varg.dtype == 0x2005 and var_arr.length != 0:  # Float64
         data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_double * var_arr.length))
         # Converting CFloat to Python float, more efficiency could be gained by using NumPy
-        for i in data.contents:
-            l_.append(i)
-
+        l_.extend(iter(data.contents))
     elif varg.dtype == 0x2003 and var_arr.length != 0:  # Int32
         data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_int32 * var_arr.length))
         # Converting CInt32 to Python float, more efficiency could be gained by using NumPy
-        for i in data.contents:
-            l_.append(i)
-
+        l_.extend(iter(data.contents))
     elif varg.dtype == 0x2011 and var_arr.length != 0:
         signature = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_int32)).contents.value
 
         if signature != 43756:
             logger.warning(
-                "ByteStream did not contain expected signature. Found {} but expected 43756".format(signature))
+                f"ByteStream did not contain expected signature. Found {signature} but expected 43756"
+            )
+
         else:
             # data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_int32 * 4))
             # signature, version, size, param = data.contents
@@ -150,9 +139,7 @@ def var_array_function(f, param, optional, name):
             data = ctypes.cast(a_ptr, ctypes.POINTER(ctypes.c_float * (size + 2) * count))
 
             for row in data.contents[:]:
-                for i, v in enumerate(row[:]):
-                    l_.append(v)
-
+                l_.extend(iter(row[:]))
             try:
                 l_ = np.array(l_).reshape([-1, len(header)])
                 l_ = pd.DataFrame(l_, columns=header)
@@ -162,5 +149,8 @@ def var_array_function(f, param, optional, name):
     elif var_arr.length == 0:
         logger.warning("Empty var_arr found")
     else:
-        logger.warning("Unsupported dtype {} returned for {}. Please contact developer".format(varg.dtype, name))
+        logger.warning(
+            f"Unsupported dtype {varg.dtype} returned for {name}. Please contact developer"
+        )
+
     return l_

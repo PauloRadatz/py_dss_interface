@@ -20,8 +20,7 @@ class GeneratorsF(Base):
 
     def generators_read_kv(self) -> float:
         """Gets the voltage base for the active generator, kV."""
-        result = float(self.dss_obj.GeneratorsF(ctypes.c_int32(0), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.GeneratorsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
     def generators_write_kv(self, argument: float) -> float:
         """Sets the voltage base for the active generator, kV."""
@@ -39,8 +38,7 @@ class GeneratorsF(Base):
 
     def generators_read_kvar(self) -> float:
         """Gets the kvar output for the active generator, kW is updated for current power factor."""
-        result = float(self.dss_obj.GeneratorsF(ctypes.c_int32(4), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.GeneratorsF(ctypes.c_int32(4), ctypes.c_double(0)))
 
     def generators_write_kvar(self, argument: float) -> float:
         """Sets the kvar output for the active generator, kW is updated for current power factor."""

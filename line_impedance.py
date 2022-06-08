@@ -14,7 +14,7 @@ dss = py_dss_interface.DSSDLL(r"C:\OpenDSS_svn\Version8\Source")
 
 dss_file = r"C:\Users\ppra005\Box\Documents_PC\OpenDSS_forum\Jouni\line_impedances.dss"
 
-dss.text("compile [{}]".format(dss_file))
+dss.text(f"compile [{dss_file}]")
 
 dss.lines_write_name("line2")
 dss.lines_read_r1()

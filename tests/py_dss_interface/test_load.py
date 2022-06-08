@@ -241,8 +241,6 @@ class TestLoad13Bus:
             expected = 0.8682431421244591
             actual = dss.loads_read_pf()
             assert actual == expected
-        else:
-            assert 1 == 1
 
     def test_loads_write_pf(self, dss):
         expected = 1
@@ -332,8 +330,6 @@ class TestLoad13Bus:
             expected = (dss.loads_read_kw() ** 2 + dss.loads_read_kvar() ** 2) ** (1 / 2)
             actual = dss.loads_read_kva()
             assert actual == expected
-        else:
-            assert 1 == 1
 
     def test_loads_write_kva(self, dss):
         expected = 1500
