@@ -13,7 +13,7 @@ class Case:
         self.dss_file = ""
         self.dss = DSS()
         self.actual = self.dss.started
-        self.message = ("OpenDSSDirectDLL has been loaded: {}".format(self.actual))
+        self.message = f"OpenDSSDirectDLL has been loaded: {self.actual}"
 
         if case is None:
             self.case = ""
@@ -23,7 +23,7 @@ class Case:
 
     def load_json_(self, case_param: str, default_file: bool) -> None:
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        with open(dir_path + '/' + 'configurations.json') as json_f:
+        with open(f'{dir_path}/configurations.json') as json_f:
             data = json.load(json_f)
             for c in data['cases']:
                 if c['case'] == case_param:

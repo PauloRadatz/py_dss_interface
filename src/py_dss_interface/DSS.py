@@ -79,14 +79,14 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
 
     def load_json(self):
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        with open(dir_path + '/' + 'configurations.json') as json_f:
+        with open(f'{dir_path}/configurations.json') as json_f:
             data = json.load(json_f)
             for n in data['structured_data']:
                 for t in n['types']:
-                    if t == 'S':
-                        ctype = 'c_char_p'
-                    elif t == 'F':
+                    if t == 'F':
                         ctype = 'c_double'
+                    elif t == 'S':
+                        ctype = 'c_char_p'
                     command_ = 'self.dss_obj.' + n['name'] + t + '.restype' + ' = ' + 'ctypes.' + ctype
                     self.memory_commands.append(command_)
 

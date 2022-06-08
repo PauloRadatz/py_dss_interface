@@ -598,11 +598,9 @@ class TestMonitors13Bus:
 
         dss.monitors_save()
 
-        actual = list()
+        actual = []
         for i in dss.monitors_byte_stream().values.tolist():
-            for j in i:
-                actual.append(j)
-
+            actual.extend(iter(i))
         assert actual == expected
 
     def test_monitors_header(self, dss):
