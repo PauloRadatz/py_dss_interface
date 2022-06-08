@@ -224,8 +224,6 @@ class TestLines13Bus:
             expected = 0.0006439393939393939
             actual = dss.lines_read_c1()
             assert actual == expected
-        else:
-            assert True
 
     def test_lines_write_c1(self, dss):
         expected = 0.1
@@ -238,8 +236,6 @@ class TestLines13Bus:
             expected = 3.378787878787879e-05
             actual = dss.lines_read_r0()
             assert actual == expected
-        else:
-            assert True
 
     def test_lines_write_r0(self, dss):
         expected = 2.5
@@ -252,8 +248,6 @@ class TestLines13Bus:
             expected = 7.664772727272727e-05
             actual = dss.lines_read_x0()
             assert actual == expected
-        else:
-            assert True
 
     def test_lines_write_x0(self, dss):
         expected = 0.12
@@ -266,8 +260,6 @@ class TestLines13Bus:
             expected = 0.0003030303030303031
             actual = dss.lines_read_c0()
             assert actual == expected
-        else:
-            assert True
 
     def test_lines_write_c0(self, dss):
         expected = 0.1
@@ -357,8 +349,6 @@ class TestLines13Bus:
                         6.46590909090909e-05]
             actual = dss.lines_read_rmatrix()
             assert actual == expected
-        else:
-            assert True
 
     # TODO
     # def test_lines_write_rmatrix(self, dss):
@@ -383,8 +373,6 @@ class TestLines13Bus:
                         0.00019598484848484847]
             actual = dss.lines_read_xmatrix()
             assert actual == expected
-        else:
-            assert True
 
     def test_lines_write_xmatrix(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -392,8 +380,6 @@ class TestLines13Bus:
             dss.lines_write_xmatrix("[1.3569 | 0.4591 1.3471]")
             actual = dss.lines_read_xmatrix()
             assert actual == expected
-        else:
-            assert True
 
     def test_lines_read_yprim(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -471,12 +457,10 @@ class TestLines13Bus:
                         -2.95059355831667]
             actual = dss.lines_read_yprim()
             assert actual == expected
-        else:
-            assert True
 
     # TODO understand it
     def test_lines_write_yprim(self, dss):
-        assert True
+        pass
         # if platform.architecture()[0] == "64bit":
         #     expected = [1.3569, 0.4591, 0.0, 0.4591, 1.3471, 0.0, 0.0, 0.0, 0.0]
         #     dss.lines_write_yprim("[1.3569 | 0.4591 1.3471]")

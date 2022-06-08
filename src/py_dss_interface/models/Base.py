@@ -61,15 +61,17 @@ class Base:
         if type(param) is None:
             print("Param not defined, param is 0")
             param = default
-        elif type(param) is str:
+        elif (
+            type(param) is str
+            or type(param) is not float
+            and type(param) is not int
+        ):
             param = default
         elif type(param) is float:
             print("Your parameter will be truncated")
             param = int(param)
-        elif type(param) is int:
-            return param
         else:
-            param = default
+            return param
         return param
 
     @classmethod

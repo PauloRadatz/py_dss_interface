@@ -74,7 +74,7 @@ def main():
     for name in os.listdir(join("ci", "templates")):
         with open(join(base_path, name), "w") as fh:
             fh.write(jinja.get_template(name).render(tox_environments=tox_environments))
-        print("Wrote {}".format(name))
+        print(f"Wrote {name}")
     print("DONE.")
 
 

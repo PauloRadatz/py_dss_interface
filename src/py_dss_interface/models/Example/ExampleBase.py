@@ -34,9 +34,8 @@ class ExampleBase:
                 if c['case'] == case_param:
                     if default_file:
                         self.dss_file_name = c['dss_file']
-                    else:
-                        if not c['dss_file_alternative'] == '':
-                            self.dss_file_name = c['dss_file_alternative']
+                    elif c['dss_file_alternative'] != '':
+                        self.dss_file_name = c['dss_file_alternative']
                     self.dss_file_path = self.dir_path.joinpath("cases")
                     self.dss_file_path = self.dss_file_path.joinpath(c['case_folder'])
                     self.dss_file_full_path = self.dss_file_path.joinpath(self.dss_file_name)
