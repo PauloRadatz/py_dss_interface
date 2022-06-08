@@ -20,13 +20,13 @@ def solve_snap_13bus():
     actual = dss.started
     expected = True
 
-    message = ("OpenDSSDirectDLL has been loaded: {}".format(actual))
+    message = f"OpenDSSDirectDLL has been loaded: {actual}"
 
     # assert actual is expected, message
 
     dss.text("set DefaultBaseFrequency=60")
     dss13_path = os.path.join(pathlib.Path(script_path), "cases", "13Bus", "IEEE13Nodeckt.dss")
-    dss.text("compile " + dss13_path)  # It already performs power flow
+    dss.text(f"compile {dss13_path}")
 
     dss.dss_write_allow_forms(0)
     return dss
