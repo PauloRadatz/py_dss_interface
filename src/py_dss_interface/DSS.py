@@ -61,8 +61,8 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
             self._allocate_memory()
 
             if self.check_started():
-                print(
-                    "OpenDSS Started successfully! \nOpenDSS {}\n\n".format(self.my_dss_version.value.decode('ascii')))
+                print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
+
             else:
                 print("OpenDSS Failed to Start")
                 exit()
