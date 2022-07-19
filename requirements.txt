@@ -1,5 +1,5 @@
-numpy~=1.20.2
-pandas~=1.2.4
+numpy==1.22
+pandas==1.4.3
 pytest~=6.2.3
 setuptools~=56.0.0
 
