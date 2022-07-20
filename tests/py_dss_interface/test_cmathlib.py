@@ -26,7 +26,6 @@ class TestCMathLib13Bus:
         assert actual == expected
 
     def test_cmathlib_cdang(self, dss):
-        real, imag = 1, 1
         expected = 45
         actual = dss.cmathlib_cdang(1, 1)
         assert actual == expected
@@ -50,3 +49,5 @@ class TestCMathLib13Bus:
         real, imag = 3.1622776601683795, 1.2490457723982544
         actual = dss.cmathlib_pdegtocomplex(real, imag)
         expected = complex(real, imag)
+        assert actual == expected
+

@@ -123,11 +123,12 @@ class TestLines13Bus:
     def test_lines_write_geometry(self, dss):
 
         dss.text(
-            "New WireData.1/0_ACSR Rac=0.646847 Runits=km GMRac=0.13589  GMRUnits=cm Radius=0.50546 Radunits=cm Normamps=260  Emergamps=260")
+            "New WireData.1/0_ACSR Rac=0.646847 Runits=km GMRac=0.13589  GMRUnits=cm Radius=0.50546 Radunits=cm "
+            "Normamps=260  Emergamps=260")
         dss.text("New LineGeometry.1PH-x4_ACSRx4_ACSR  nconds=2  nphases=1 "
-                      " cond=1  wire=1/0_ACSR x=-0.1524 h=10.5156 units=m "
-                      " cond=2  wire=1/0_ACSR x=0.1524  h=8.2296  units=m "
-                      " reduce=y ")
+                 " cond=1  wire=1/0_ACSR x=-0.1524 h=10.5156 units=m "
+                 " cond=2  wire=1/0_ACSR x=0.1524  h=8.2296  units=m "
+                 " reduce=y ")
 
         expected = '1PH-x4_ACSRx4_ACSR'.lower()
         dss.lines_write_geometry(expected)
@@ -163,10 +164,10 @@ class TestLines13Bus:
     def test_lines_read_r1(self, dss):
 
         dss.text("New linecode.Sequences nphases=3 "
-                      "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
-                      "c1=10.4308823411236  c0=4.48501282215346  "
-                      "units=km baseFreq=60 normamps=310  emergamps=310  "
-                      "faultrate=0.1 pctperm=20 repair=3")
+                 "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
+                 "c1=10.4308823411236  c0=4.48501282215346  "
+                 "units=km baseFreq=60 normamps=310  emergamps=310  "
+                 "faultrate=0.1 pctperm=20 repair=3")
 
         dss.text("New line.MyLine linecode=Sequences length=1")
         dss.lines_write_name('MyLine')
@@ -177,10 +178,10 @@ class TestLines13Bus:
 
     def test_lines_write_r1(self, dss):
         dss.text("New linecode.Sequences nphases=3 "
-                      "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
-                      "c1=10.4308823411236  c0=4.48501282215346  "
-                      "units=km baseFreq=60 normamps=310  emergamps=310  "
-                      "faultrate=0.1 pctperm=20 repair=3")
+                 "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
+                 "c1=10.4308823411236  c0=4.48501282215346  "
+                 "units=km baseFreq=60 normamps=310  emergamps=310  "
+                 "faultrate=0.1 pctperm=20 repair=3")
 
         dss.text("New line.MyLine linecode=Sequences length=1")
         dss.lines_write_name('MyLine')
@@ -192,10 +193,10 @@ class TestLines13Bus:
 
     def test_lines_read_x1(self, dss):
         dss.text("New linecode.Sequences nphases=3 "
-                      "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
-                      "c1=10.4308823411236  c0=4.48501282215346  "
-                      "units=km baseFreq=60 normamps=310  emergamps=310  "
-                      "faultrate=0.1 pctperm=20 repair=3")
+                 "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
+                 "c1=10.4308823411236  c0=4.48501282215346  "
+                 "units=km baseFreq=60 normamps=310  emergamps=310  "
+                 "faultrate=0.1 pctperm=20 repair=3")
 
         dss.text("New line.MyLine linecode=Sequences length=1")
         dss.lines_write_name('MyLine')
@@ -206,10 +207,10 @@ class TestLines13Bus:
 
     def test_lines_write_x1(self, dss):
         dss.text("New linecode.Sequences nphases=3 "
-                      "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
-                      "c1=10.4308823411236  c0=4.48501282215346  "
-                      "units=km baseFreq=60 normamps=310  emergamps=310  "
-                      "faultrate=0.1 pctperm=20 repair=3")
+                 "r1=0.3489 x1=0.426198 r0=0.588811 x0=1.29612 "
+                 "c1=10.4308823411236  c0=4.48501282215346  "
+                 "units=km baseFreq=60 normamps=310  emergamps=310  "
+                 "faultrate=0.1 pctperm=20 repair=3")
 
         dss.text("New line.MyLine linecode=Sequences length=1")
         dss.lines_write_name('MyLine')

@@ -14,10 +14,10 @@ class TestSensors13Bus:
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.text("New Sensor.Sensor1 "
-                      "element=Load.671 "
-                      "terminal=1 "
-                      "kVBase=4.16 "
-                      "conn=delta ")
+                 "element=Load.671 "
+                 "terminal=1 "
+                 "kVBase=4.16 "
+                 "conn=delta ")
         dss.solution_solve()
         dss.sensors_write_name("Sensor1")
 
@@ -38,10 +38,10 @@ class TestSensors13Bus:
 
     def test_sensors_next(self, dss):
         dss.text("New Sensor.Sensor2 "
-                      "element=Load.611 "
-                      "terminal=1 "
-                      "kVBase=4.16 "
-                      "conn=wye ")
+                 "element=Load.611 "
+                 "terminal=1 "
+                 "kVBase=4.16 "
+                 "conn=wye ")
         expected = 2
         dss.sensors_first()
         actual = dss.sensors_next()
@@ -136,10 +136,10 @@ class TestSensors13Bus:
 
     def test_sensors_write_name(self, dss):
         dss.text("New Sensor.Sensor2 "
-                      "element=Load.611 "
-                      "terminal=1 "
-                      "kVBase=4.16 "
-                      "conn=wye ")
+                 "element=Load.611 "
+                 "terminal=1 "
+                 "kVBase=4.16 "
+                 "conn=wye ")
         expected = "sensor2"
         dss.sensors_write_name(expected)
         actual = dss.sensors_read_name()
@@ -161,10 +161,10 @@ class TestSensors13Bus:
     # ===================================================================
     def test_sensors_all_names(self, dss):
         dss.text("New Sensor.Sensor2 "
-                      "element=Load.611 "
-                      "terminal=1 "
-                      "kVBase=4.16 "
-                      "conn=wye ")
+                 "element=Load.611 "
+                 "terminal=1 "
+                 "kVBase=4.16 "
+                 "conn=wye ")
         expected = ["sensor1", "sensor2"]
         actual = dss.sensors_all_names()
         assert actual == expected

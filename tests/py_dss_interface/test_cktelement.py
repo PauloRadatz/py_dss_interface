@@ -170,7 +170,7 @@ class TestCktElement13Bus:
     def test_cktelement_controller(self, dss):
         # https://github.com/PauloRadatz/py_dss_interface/issues/2 - Issue solved =)
         dss.text("New 'Fuse.f1' MonitoredObj=Line.650632 MonitoredTerm=1 FuseCurve=Klink RatedCurrent=65")
-        # After include a new element it become the active element. So, we need activate another element to test the
+        # After include a new element it becomes the active element. So, we need activate another element to test the
         # methods below
         dss.circuit_set_active_element('Line.650632')
         expected = "Fuse.f1"

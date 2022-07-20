@@ -116,3 +116,4 @@ class TestSwtControls13Bus:
     def test_swtcontrols_all_names(self, dss):
         expected = ['1', '2']
         actual = dss.swtcontrols_all_names()
+        assert actual == expected
