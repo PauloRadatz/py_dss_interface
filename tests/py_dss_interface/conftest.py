@@ -5,11 +5,12 @@
 # @File    : conftest.py
 # @Software: PyCharm
 
-import pytest
-import pathlib
 import os
+import pathlib
+
+import pytest
+
 import py_dss_interface
-import time
 
 script_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -18,9 +19,9 @@ script_path = os.path.dirname(os.path.abspath(__file__))
 def solve_snap_13bus():
     dss = py_dss_interface.DSSDLL()
     actual = dss.started
-    expected = True
+    # expected = True
 
-    message = f"OpenDSSDirectDLL has been loaded: {actual}"
+    # message = f"OpenDSSDirectDLL has been loaded: {actual}"
 
     # assert actual is expected, message
 

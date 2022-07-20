@@ -6,9 +6,10 @@
 # @Software: PyCharm
 
 
-import pytest
 import os
 import pathlib
+
+import pytest
 
 
 class TestDSSInterface13Bus:
@@ -84,14 +85,16 @@ class TestDSSInterface13Bus:
     def test_dss_read_datapath(self, dss):
         expected = r"C:\\PauloRadatz\\GitHub\\py-dss-interface\\tests\\py_dss_interface\\cases\\13Bus\\"
         actual = dss.dss_read_datapath()
-        assert actual.replace("\\", "").split("py-dss-interfacetests")[1] == expected.replace("\\", "").split("py-dss-interfacetests")[1]
+        assert actual.replace("\\", "").split("py-dss-interfacetests")[1] == \
+               expected.replace("\\", "").split("py-dss-interfacetests")[1]
 
     def test_dss_write_datapath(self, dss):
         data_path = str(pathlib.Path(os.path.dirname(__file__)).joinpath("cases", "13Bus", "datapath"))
         dss.dss_write_datapath(data_path)
         expected = data_path
         actual = dss.dss_read_datapath()
-        assert actual.replace("\\", "").split("py-dss-interfacetests")[1] == expected.replace("\\", "").split("py-dss-interfacetests")[1]
+        assert actual.replace("\\", "").split("py-dss-interfacetests")[1] == \
+               expected.replace("\\", "").split("py-dss-interfacetests")[1]
 
     def test_dss_default_editor(self, dss):
         expected = 'Notepad.exe'

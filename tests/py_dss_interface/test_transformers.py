@@ -238,7 +238,7 @@ class TestTransformers13Bus:
     # ===================================================================
     # Variant methods
     # ===================================================================
-    def test_transformers_all_Names(self, dss):
+    def test_transformers_all_names(self, dss):
         expected = ['sub', 'reg1', 'reg2', 'reg3', 'xfm1']
         actual = dss.transformers_all_Names()
         assert actual == expected
