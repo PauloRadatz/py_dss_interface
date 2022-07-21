@@ -153,7 +153,7 @@ class TestTopology13Bus:
 
     def test_topology_read_bus_name(self, dss):
         dss.topology_write_branch_name('Transformer.sub')
-        expected = 'sourcebus'
+        expected = "sourcebus"
         actual = dss.topology_read_bus_name()
         assert actual == expected
 

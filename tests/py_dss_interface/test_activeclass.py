@@ -55,7 +55,7 @@ class TestActiveClass13Bus:
 
     def test_active_class_write_name(self, dss):
         expected = '645646'
-        actual = dss.active_class_write_name(expected)
+        dss.active_class_write_name(expected)
         actual = dss.active_class_get_name()
         assert actual == expected
 

@@ -6,7 +6,6 @@
 # @Software: PyCharm
 
 import pytest
-import platform
 
 
 class TestPVSystems13Bus:
@@ -18,17 +17,17 @@ class TestPVSystems13Bus:
         dss.text(r"New XYCurve.MyPvsT npts=4  xarray=[0  25  75  100]  yarray=[1 1 1 1]")
         dss.text(r"New XYCurve.MyEff npts=4  xarray=[.1  .2  .4  1.0]  yarray=[1 1 1 1]")
         dss.text(r"New PVSystem.PV1 phases=3 "
-                      r"bus1=680 "
-                      r"kV=4.16  "
-                      r"kVA=600  "
-                      r"irrad=1  "
-                      r"Pmpp=500 "
-                      r"temperature=25 "
-                      r"PF=1 "
-                      r"%cutin=0.1 "
-                      r"%cutout=0.1  "
-                      r"effcurve=Myeff  "
-                      r"P-TCurve=MyPvsT")
+                 r"bus1=680 "
+                 r"kV=4.16  "
+                 r"kVA=600  "
+                 r"irrad=1  "
+                 r"Pmpp=500 "
+                 r"temperature=25 "
+                 r"PF=1 "
+                 r"%cutin=0.1 "
+                 r"%cutout=0.1  "
+                 r"effcurve=Myeff  "
+                 r"P-TCurve=MyPvsT")
         dss.solution_solve()
         dss.pvsystems_write_name('PV1')
 
@@ -46,17 +45,17 @@ class TestPVSystems13Bus:
 
     def test_pvsystems_next(self, dss):
         dss.text(r"New PVSystem.PV2 phases=3 "
-                      r"bus1=680 "
-                      r"kV=4.16  "
-                      r"kVA=600  "
-                      r"irrad=1  "
-                      r"Pmpp=500 "
-                      r"temperature=25 "
-                      r"PF=1 "
-                      r"%cutin=0.1 "
-                      r"%cutout=0.1  "
-                      r"effcurve=Myeff  "
-                      r"P-TCurve=MyPvsT")
+                 r"bus1=680 "
+                 r"kV=4.16  "
+                 r"kVA=600  "
+                 r"irrad=1  "
+                 r"Pmpp=500 "
+                 r"temperature=25 "
+                 r"PF=1 "
+                 r"%cutin=0.1 "
+                 r"%cutout=0.1  "
+                 r"effcurve=Myeff  "
+                 r"P-TCurve=MyPvsT")
         expected = 2
         dss.pvsystems_first()
         actual = dss.pvsystems_next()
@@ -141,17 +140,17 @@ class TestPVSystems13Bus:
 
     def test_pvsystems_write_name(self, dss):
         dss.text(r"New PVSystem.PV2 phases=3 "
-                      r"bus1=680 "
-                      r"kV=4.16  "
-                      r"kVA=600  "
-                      r"irrad=1  "
-                      r"Pmpp=500 "
-                      r"temperature=25 "
-                      r"PF=1 "
-                      r"%cutin=0.1 "
-                      r"%cutout=0.1  "
-                      r"effcurve=Myeff  "
-                      r"P-TCurve=MyPvsT")
+                 r"bus1=680 "
+                 r"kV=4.16  "
+                 r"kVA=600  "
+                 r"irrad=1  "
+                 r"Pmpp=500 "
+                 r"temperature=25 "
+                 r"PF=1 "
+                 r"%cutin=0.1 "
+                 r"%cutout=0.1  "
+                 r"effcurve=Myeff  "
+                 r"P-TCurve=MyPvsT")
         expected = "pv2"
         dss.pvsystems_write_name(expected)
         actual = dss.pvsystems_read_name()
@@ -159,17 +158,17 @@ class TestPVSystems13Bus:
 
     def test_pvsystems_all_names(self, dss):
         dss.text(r"New PVSystem.PV2 phases=3 "
-                      r"bus1=680 "
-                      r"kV=4.16  "
-                      r"kVA=600  "
-                      r"irrad=1  "
-                      r"Pmpp=500 "
-                      r"temperature=25 "
-                      r"PF=1 "
-                      r"%cutin=0.1 "
-                      r"%cutout=0.1  "
-                      r"effcurve=Myeff  "
-                      r"P-TCurve=MyPvsT")
+                 r"bus1=680 "
+                 r"kV=4.16  "
+                 r"kVA=600  "
+                 r"irrad=1  "
+                 r"Pmpp=500 "
+                 r"temperature=25 "
+                 r"PF=1 "
+                 r"%cutin=0.1 "
+                 r"%cutout=0.1  "
+                 r"effcurve=Myeff  "
+                 r"P-TCurve=MyPvsT")
         expected = ["pv1", "pv2"]
         actual = dss.pvsystems_all_names()
         assert actual == expected

@@ -14,15 +14,15 @@ class TestRelays13Bus:
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.text(r"New Relay.test1 MonitoredObj=Line.650632 "
-                      r"                MonitoredTerm=1 "
-                      r"                Type=Current "
-                      r"                PhaseTrip=800 "
-                      r"                GroundTrip=250")
+                 r"                MonitoredTerm=1 "
+                 r"                Type=Current "
+                 r"                PhaseTrip=800 "
+                 r"                GroundTrip=250")
         dss.text(r"New Relay.test2 MonitoredObj=Line.632645 "
-                      r"                MonitoredTerm=1 "
-                      r"                Type=Current "
-                      r"                PhaseTrip=800 "
-                      r"                GroundTrip=250")
+                 r"                MonitoredTerm=1 "
+                 r"                Type=Current "
+                 r"                PhaseTrip=800 "
+                 r"                GroundTrip=250")
         dss.solution_solve()
         dss.relays_write_name("test1")
 
