@@ -5,8 +5,6 @@
 import ctypes
 
 from py_dss_interface.models.Base import Base
-from py_dss_interface.models.Lines import LinesS
-from py_dss_interface.models.Text.Text import Text
 
 
 class LinesF(Base):
@@ -105,7 +103,7 @@ class LinesF(Base):
         return float(self.dss_obj.LinesF(ctypes.c_int32(17), ctypes.c_double(argument)))
 
     def lines_read_rg(self) -> float:
-        """Gets the earth return value used to compute line impedances at power frequency."""
+        """Gets the earth return value used to compute line impedance's at power frequency."""
         return float(self.dss_obj.LinesF(ctypes.c_int32(18), ctypes.c_double(0)))
 
     def lines_write_rg(self, argument: float) -> float:

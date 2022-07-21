@@ -39,4 +39,3 @@ def format_matrix_str(expected_list):
         if i in [2, 5]:
             matrix_str += ' | '
     return f'{matrix_str[:-1]}]'
-

@@ -61,6 +61,7 @@ class TestVSources13Bus:
         expected = 13.8
         dss.vsources_write_base_kv(expected)
         actual = dss.vsources_read_base_kv()
+        assert actual == expected
 
     def test_vsources_read_pu(self, dss):
         expected = 1.0001

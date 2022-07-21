@@ -20,7 +20,8 @@ class TestGenerators13Bus:
 
         return dss
 
-    def include_generator(self, dss):
+    @staticmethod
+    def include_generator(dss):
         dss.text(
             'New Generator.G2 Bus1=645.1 phases=1  kV=2.4 kW=100 Model=3 Vpu=1 Maxkvar=500 Minkvar=-400'
         )
