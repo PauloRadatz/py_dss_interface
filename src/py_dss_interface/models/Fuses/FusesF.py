@@ -21,8 +21,7 @@ class FusesF(Base):
     def fuses_read_rated_current(self) -> float:
         """Gets the multiplier or actual amps for the TCCcurve object. Defaults to 1.0, Multiply current values of
         TCC curve by this to get actual amps. """
-        result = float(self.dss_obj.FusesF(ctypes.c_int32(0), ctypes.c_double(0)))
-        return result
+        return float(self.dss_obj.FusesF(ctypes.c_int32(0), ctypes.c_double(0)))
 
     def fuses_write_rated_current(self, argument: float) -> float:
         """Sets the multiplier or actual amps for the TCCcurve object. Defaults to 1.0, Multiply current values of

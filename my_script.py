@@ -15,7 +15,7 @@ dss = py_dss_interface.DSSDLL("C:\OpenDSS_rep\Version8\Source")
 dss_file = r"C:\MeuTCC\Paulo_Example\DSSFiles\MASTER_RedeTeste13Barras.dss"
 dss_file = r"C:\Program Files\OpenDSS\IEEETestCases\13Bus\IEEE13Nodeckt.dss"
 # Compile
-dss.text("compile [{}]".format(dss_file))
+dss.text(f"compile [{dss_file}]")
 overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.circuit_name()}_EXP_OVERLOADS.CSV")
 
 # Solve
