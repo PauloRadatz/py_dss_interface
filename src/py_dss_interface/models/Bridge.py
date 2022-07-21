@@ -23,6 +23,8 @@ def is_delphi():
 
 POINTER = ctypes.c_int64 if is_x64() else ctypes.c_int32
 HEADER_SIZE = 4 if is_delphi() else 8
+
+
 class ArrayEnio(ctypes.Structure):
     _fields_ = [
         ('size', ctypes.c_int),
