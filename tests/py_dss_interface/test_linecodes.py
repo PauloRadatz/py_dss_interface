@@ -262,17 +262,11 @@ def format_matrix(expected_list):
     matrix = []
     for i in range(3):
         if i == 0:
-            matrix.append(expected_list[0])
-            matrix.append(expected_list[1])
-            matrix.append(expected_list[3])
+            matrix.extend((expected_list[0], expected_list[1], expected_list[3]))
         elif i == 1:
-            matrix.append(expected_list[1])
-            matrix.append(expected_list[2])
-            matrix.append(expected_list[4])
+            matrix.extend((expected_list[1], expected_list[2], expected_list[4]))
         else:
-            matrix.append(expected_list[3])
-            matrix.append(expected_list[4])
-            matrix.append(expected_list[5])
+            matrix.extend((expected_list[3], expected_list[4], expected_list[5]))
     return matrix
 
 
@@ -280,7 +274,7 @@ def format_matrix_str(expected_list):
     # Return the matrix converted to string with delimiters used in OpenDSS
     matrix_str = '['
     for i, val in enumerate(expected_list):
-        matrix_str += str(val) + " "
+        matrix_str += f"{str(val)} "
         if i in [2, 5]:
             matrix_str += ' | '
-    return matrix_str[:-1] + ']'
+    return f'{matrix_str[:-1]}]'

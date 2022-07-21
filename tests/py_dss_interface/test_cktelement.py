@@ -221,8 +221,6 @@ class TestCktElement13Bus:
                         -170.77582168579102]
             actual = dss.cktelement_currents()
             assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_powers(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -240,16 +238,12 @@ class TestCktElement13Bus:
                         -52.804238327724946]
             actual = dss.cktelement_powers()
             assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_losses(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.009054574999026954, 5.820766091e-11]
             actual = dss.cktelement_losses()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_phase_losses(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -261,8 +255,6 @@ class TestCktElement13Bus:
                         2.910383e-14]
             actual = dss.cktelement_phase_losses()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_seq_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -274,8 +266,6 @@ class TestCktElement13Bus:
                         42.2125249966211]
             actual = dss.cktelement_seq_voltages()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_seq_currents(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -287,8 +277,6 @@ class TestCktElement13Bus:
                         71.9262709364223]
             actual = dss.cktelement_seq_currents()
             assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_seq_powers(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -306,8 +294,6 @@ class TestCktElement13Bus:
                         6.648497832081523]
             actual = dss.cktelement_seq_powers()
             assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_all_property_names(self, dss):
         expected = ['bus1', 'bus2', 'linecode', 'length', 'phases', 'r1', 'x1', 'r0', 'x0', 'C1', 'C0', 'rmatrix',
@@ -322,8 +308,6 @@ class TestCktElement13Bus:
             expected = [203.7660585822039, 11.613009723287425, 203.7660585822039, -168.38699026704103]
             actual = dss.cktelement_residuals()
             assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_y_prim(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -337,8 +321,6 @@ class TestCktElement13Bus:
                         -10000000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10000000.0, 0.0]
             actual = dss.cktelement_y_prim()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_cplx_seq_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -356,8 +338,6 @@ class TestCktElement13Bus:
                         23.995170297295772]
             actual = dss.cktelement_cplx_seq_voltages()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_cplx_seq_currents(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -375,8 +355,6 @@ class TestCktElement13Bus:
                         71.1400676534711]
             actual = dss.cktelement_cplx_seq_currents()
             assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_all_variables_names(self, dss):
         dss.text("New Storage.str bus=650 kw=50")
@@ -462,8 +440,6 @@ class TestCktElement13Bus:
                         -71.27262944761924]
             actual = dss.cktelement_currents_mag_ang()
             assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
-        else:
-            assert 1 == 1
 
     def test_cktelement_voltages_mag_ang(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -481,5 +457,3 @@ class TestCktElement13Bus:
                         115.98674983388848]
             actual = dss.cktelement_voltages_mag_ang()
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1

@@ -77,15 +77,13 @@ class TestCapControls13Bus:
         assert actual == expected
 
     def test_capcontrols_read_use_volt_override(self, dss):
-        expected = None
         actual = dss.capcontrols_read_use_volt_override()
-        assert actual == expected
+        assert actual is None
 
     def test_capcontrols_write_use_volt_override(self, dss):
-        expected = None
         dss.capcontrols_write_use_volt_override(dss, 10)
         actual = dss.capcontrols_read_use_volt_override()
-        assert actual == expected
+        assert actual is None
 
     # ===================================================================
     # String methods
