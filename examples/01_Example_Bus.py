@@ -6,8 +6,7 @@ from py_dss_interface.models.Example.ExampleBase import ExampleBase
 
 dss = ExampleBase("13").dss
 
-
-dss.circuit_set_active_bus('692')
+dss.set_active_bus('692')
 print(dss.name())
 
 # # Integer methods

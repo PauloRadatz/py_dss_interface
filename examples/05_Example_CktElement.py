@@ -21,7 +21,7 @@ print(f'cktelement_num_properties: {dss.cktelement_num_properties()}')
 print(f'cktelement_has_switch_control: {dss.cktelement_has_switch_control()}')
 print(f'cktelement_has_volt_control: {dss.cktelement_has_volt_control()}')
 print(f'cktelement_num_controls: {dss.cktelement_num_controls()}')
-dss.circuit_set_active_element('Line.650632')
+dss.set_active_element('Line.650632')
 print(f'cktelement_num_controls: {dss.cktelement_num_controls()}')
 print(f'cktelement_ocp_dev_index: {dss.cktelement_ocp_dev_index()}')
 print(f'cktelement_ocp_dev_type: {dss.cktelement_ocp_dev_type()}')
@@ -59,13 +59,13 @@ print(f'cktelement_read_display: {dss.cktelement_read_display()}')
 
 print(f'cktelement_guid: {dss.cktelement_guid()}')
 
-dss.circuit_set_active_element('Line.650632')
+dss.set_active_element('Line.650632')
 print(f'cktelement_energymeter: {dss.cktelement_energymeter()}')
 # Adding an element control
 dss.text("New 'Fuse.f1' MonitoredObj=Line.650632 MonitoredTerm=1 FuseCurve=Klink RatedCurrent=65")
 # After include a new element it become the active element. So, we need activate another element to test the methods
 # below
-dss.circuit_set_active_element('Line.650632')
+dss.set_active_element('Line.650632')
 print(f'cktelement_controller: {dss.cktelement_controller("1")}')
 
 
@@ -84,7 +84,7 @@ print(f'cktelement_powers: {dss.cktelement_powers()}')
 print(f'cktelement_losses: {dss.cktelement_losses()}')
 
 # After set a specific active element
-dss.circuit_set_active_element("Load.671")
+dss.set_active_element("Load.671")
 print(f'cktelement_voltages: {dss.cktelement_voltages()}')
 print(f'cktelement_currents: {dss.cktelement_currents()}')
 

@@ -14,7 +14,7 @@ class TestBus13Capacitors:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.circuit_set_active_element("capacitor.cap1")
+        dss.set_active_element("capacitor.cap1")
         return dss
 
     def test_capacitors_read_num_steps(self, dss):
