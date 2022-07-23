@@ -32,8 +32,8 @@ dss.regcontrols_read_ct_primary()
 
 dss.text("New Storage.Battery phases=3 Bus1=680 kV=4.16 kWrated=350 kWhrated=2000")
 dss.set_active_element("Storage.str")
-dss.cktelement_all_variables_names()
-dss.cktelement_all_variables_values()
+dss.variables_names()
+dss.variables_values()
 
 #
 
