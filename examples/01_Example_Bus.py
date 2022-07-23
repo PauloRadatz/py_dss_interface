@@ -8,7 +8,7 @@ dss = ExampleBase("13").dss
 
 
 dss.circuit_set_active_bus('692')
-print(dss.bus_name())
+print(dss.name())
 
 # # Integer methods
 # print(45 * '=' + ' Integer Methods ' + 45 * '=')
@@ -55,28 +55,28 @@ print(dss.bus_name())
 
 # Variant methods
 print(45 * '=' + ' Variant Methods ' + 45 * '=')
-print(f'dss.bus_voltages(): {dss.bus_voltages()}')
-print(f'dss.bus_seqvoltages(): {dss.bus_seq_voltages()}')
-print(f'dss.bus_nodes(): {dss.bus_nodes()}')
-print(f'dss.bus_voc(): {dss.bus_voc()}')
-print(f'dss.bus_isc(): {dss.bus_isc()}')
-print(f'dss.bus_pu_voltages(): {dss.bus_pu_voltages()}')
-print(f'dss.bus_zsc_matrix(): {dss.bus_zsc_matrix()}')
-print(f'dss.bus_zsc1(): {dss.bus_zsc1()}')
-print(f'dss.bus_zsc0(): {dss.bus_zsc0()}')
-print(f'dss.bus_ysc_matrix(): {dss.bus_ysc_matrix()}')
+print(f'dss.bus_voltages(): {dss.voltages()}')
+print(f'dss.bus_seqvoltages(): {dss.seq_voltages()}')
+print(f'dss.bus_nodes(): {dss.nodes()}')
+print(f'dss.bus_voc(): {dss.voc()}')
+print(f'dss.bus_isc(): {dss.isc()}')
+print(f'dss.bus_pu_voltages(): {dss.pu_voltages()}')
+print(f'dss.bus_zsc_matrix(): {dss.zsc_matrix()}')
+print(f'dss.bus_zsc1(): {dss.zsc1()}')
+print(f'dss.bus_zsc0(): {dss.zsc0()}')
+print(f'dss.bus_ysc_matrix(): {dss.ysc_matrix()}')
 print(f'dss.bus_sequence_voltages(): {dss.bus_sequence_voltages()}')
 
-print(f'dss.bus_vll(): {dss.bus_vll()}')
-print(f'dss.bus_pu_vll(): {dss.bus_pu_vll()}')
+print(f'dss.bus_vll(): {dss.vll()}')
+print(f'dss.bus_pu_vll(): {dss.pu_vll()}')
 
-print(f'dss.bus_vmag_angle(): {dss.bus_vmag_angle()}')
-print(f'dss.bus_pu_vmag_angle(): {dss.bus_pu_vmag_angle()}')
+print(f'dss.bus_vmag_angle(): {dss.vmag_angle()}')
+print(f'dss.bus_pu_vmag_angle(): {dss.vmag_angle_pu()}')
 
-print(f'dss.bus_line_list(): {dss.bus_line_list()}')
+print(f'dss.bus_line_list(): {dss.line_list()}')
 
-print(f'dss.bus_load_list(): {dss.bus_load_list()}')
+print(f'dss.bus_load_list(): {dss.load_list()}')
 
-print(f'dss.bus_axc_012_matrix(): {dss.bus_axc_012_matrix()}')
-print(f'dss.bus_all_pce_active_bus(): {dss.bus_all_pce_active_bus()}')
-print(f'dss.bus_all_pde_active_bus(): {dss.bus_all_pde_active_bus()}')
+print(f'dss.bus_axc_012_matrix(): {dss.axc_012_matrix()}')
+print(f'dss.bus_all_pce_active_bus(): {dss.all_pce_active_bus()}')
+print(f'dss.bus_all_pde_active_bus(): {dss.all_pde_active_bus()}')

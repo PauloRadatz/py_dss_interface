@@ -86,7 +86,7 @@ class TestCircuit13Bus:
         assert actual == expected
 
         expected = '650'
-        actual = dss.bus_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_circuit_first_element(self, dss):
@@ -161,7 +161,7 @@ class TestCircuit13Bus:
         assert actual == expected
 
         expected = '692'
-        actual = dss.bus_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_circuit_set_active_class(self, dss):
