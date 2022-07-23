@@ -7,7 +7,7 @@ from py_dss_interface.models.Example.ExampleBase import ExampleBase
 dss = ExampleBase("13").dss
 
 # CtrlQueue
-print(f'dss.ctrlqueue_ctrlqueue(): {dss.ctrlqueue_ctrlqueue()}')
+print(f'dss.ctrlqueue_ctrlqueue(): {dss.ctrlqueue()}')
 
 # DSSElement
 print(f'dss.dsselement_allpropertynames(): {dss.dsselement_all_property_names()}')
