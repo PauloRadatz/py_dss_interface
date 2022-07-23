@@ -20,38 +20,38 @@ class CapacitorsI(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def capacitors_read_num_steps(self) -> int:
+    def read_num_steps(self) -> int:
         """Gets the number of steps (defaults 1) for distributing and switching the total bank kvar."""
         return self.dss_obj.CapacitorsI(0, 0)
 
-    def capacitors_write_num_steps(self, argument: int) -> int:
+    def write_num_steps(self, argument: int) -> int:
         """Sets the number of steps (defaults 1) for distributing and switching the total bank kvar."""
         argument = Base.check_int_param(argument, default=1)
         return self.dss_obj.CapacitorsI(1, argument)
 
-    def capacitors_read_is_delta(self) -> int:
+    def is_delta(self) -> int:
         """Gets 1 if delta connection, otherwise will return 0 for distributing and switching the total kvar."""
         return self.dss_obj.CapacitorsI(2, 0)
 
-    def capacitors_write_is_delta(self, argument: int = 1) -> int:
+    def write_is_delta(self, argument: int = 1) -> int:
         """Sets (Argument) 1 if delta connection, otherwise will return 0 for distributing and switching the total
         kvar. """
         argument = Base.check_int_param(argument, default=1)
         return self.dss_obj.CapacitorsI(3, argument)
 
-    def capacitors_first(self) -> int:
+    def first(self) -> int:
         """Sets the first capacitor active. Returns 0 if no more."""
         return self.dss_obj.CapacitorsI(4, 0)
 
-    def capacitors_next(self) -> int:
+    def next(self) -> int:
         """Sets the next capacitor active. Returns 0 if no more."""
         return self.dss_obj.CapacitorsI(5, 0)
 
-    def capacitors_count(self) -> int:
+    def count(self) -> int:
         """Gets the number of capacitor objects in active circuit."""
         return self.dss_obj.CapacitorsI(6, 0)
 
-    def capacitors_add_step(self) -> int:
+    def add_step(self) -> int:
         """Adds one step of the capacitor if available. If successful returns 1."""
         result = self.dss_obj.CapacitorsI(7, 0)
         Base.check_assertion_result(result, "Capacitor step problem detect!", "A problem occur when tried to adds "
@@ -60,7 +60,7 @@ class CapacitorsI(Base):
                                                                               "steps!", expected_value=1)
         return result
 
-    def capacitors_subtract_step(self) -> int:
+    def subtract_step(self) -> int:
         """Subtracts one step of the capacitor if available. If no more steps, returns 0."""
         result = self.dss_obj.CapacitorsI(8, 0)
         Base.check_assertion_result(result, "Capacitor step problem detect!", "A problem occur when tried to subtract "
@@ -70,14 +70,14 @@ class CapacitorsI(Base):
                                     expected_value=1)
         return result
 
-    def capacitors_available_steps(self) -> int:
+    def available_steps(self) -> int:
         """Gets the number of steps available in cap bank to be switched ON."""
         return self.dss_obj.CapacitorsI(9, 0)
 
-    def capacitors_open(self) -> int:
+    def open_all_steps(self) -> int:
         """Opens all steps, all phases of the capacitor."""
         return self.dss_obj.CapacitorsI(10, 0)
 
-    def capacitors_close(self) -> int:
+    def close_all_steps(self) -> int:
         """Closes all steps, all phases of the capacitor."""
         return self.dss_obj.CapacitorsI(11, 0)
