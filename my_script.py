@@ -41,7 +41,7 @@ dss.regcontrols_write_name('reg1')
 dss.regcontrols_write_monitored_bus("672")
 dss.regcontrols_read_monitored_bus()
 
-dss.dss_read_datapath()
+dss.datapath_read()
 
 dss.nodes_vmag_pu_by_phase()
 

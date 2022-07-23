@@ -11,8 +11,8 @@ print(f'dss.ctrlqueue_ctrlqueue(): {dss.ctrlqueue()}')
 
 # DSSElement
 print(f'dss.dsselement_allpropertynames(): {dss.property_names()}')
-print(f'dss.dss_classes(): {dss.dss_classes()}')
-print(f'dss.dss_user_classes(): {dss.dss_user_classes()}')
+print(f'dss.dss_classes(): {dss.classes()}')
+print(f'dss.dss_user_classes(): {dss.user_classes()}')
 
 # Fuses
 print(f'dss.fuses_allnames(): {dss.fuses_all_names()}')
