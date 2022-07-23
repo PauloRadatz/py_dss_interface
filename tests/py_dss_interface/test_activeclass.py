@@ -20,23 +20,23 @@ class TestActiveClass13Bus:
     # ===================================================================
     def test_active_class_first(self, dss):
         expected = 1
-        actual = dss.active_class_first()
+        actual = dss.first()
         assert actual == expected
 
     def test_active_class_next(self, dss):
         expected = 2
-        dss.active_class_first()
-        actual = dss.active_class_next()
+        dss.first()
+        actual = dss.next()
         assert actual == expected
 
     def test_active_class_num_elements(self, dss):
         expected = 12
-        actual = dss.active_class_num_elements()
+        actual = dss.num_elements()
         assert actual == expected
 
     def test_active_class_count(self, dss):
         expected = 12
-        actual = dss.active_class_count()
+        actual = dss.count()
         assert actual == expected
 
     # ===================================================================
@@ -45,23 +45,23 @@ class TestActiveClass13Bus:
 
     def test_active_class_get_class_name(self, dss):
         expected = 'Line'
-        actual = dss.active_class_get_class_name()
+        actual = dss.get_class_name()
         assert actual == expected
 
     def test_active_class_get_name(self, dss):
         expected = '671692'
-        actual = dss.active_class_get_name()
+        actual = dss.get_name()
         assert actual == expected
 
     def test_active_class_write_name(self, dss):
         expected = '645646'
-        dss.active_class_write_name(expected)
-        actual = dss.active_class_get_name()
+        dss.write_name(expected)
+        actual = dss.get_name()
         assert actual == expected
 
     def test_active_class_parent_class_name(self, dss):
         expected = 'TPDClass'
-        actual = dss.active_class_parent_class_name()
+        actual = dss.parent_class_name()
         assert actual == expected
 
     # ===================================================================
@@ -70,5 +70,5 @@ class TestActiveClass13Bus:
     def test_active_class_all_names(self, dss):
         expected = ['650632', '632670', '670671', '671680', '632633', '632645', '645646', '692675', '671684', '684611',
                     '684652', '671692']
-        actual = dss.active_class_all_names()
+        actual = dss.all_names()
         assert actual == expected
