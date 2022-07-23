@@ -42,12 +42,12 @@ print(f'dss.circuit_disable(): {dss.circuit_disable()}')
 print(f'dss.circuit_enable(): {dss.circuit_enable()}')
 
 print(f'dss.circuit_set_active_element(): {dss.circuit_set_active_element("Line.650632")}')
-print(f'dss.active_class_get_name(): {dss.active_class_get_name()}')
+print(f'dss.active_class_get_name(): {dss.get_name()}')
 
 print(f'dss.circuit_set_active_bus(): {dss.circuit_set_active_bus("692")}')
 
 print(f'circuit_set_active_class(): {dss.circuit_set_active_class("Capacitor")}')
-print(f'dss.active_class_get_name(): {dss.active_class_get_name()}')
+print(f'dss.active_class_get_name(): {dss.get_name()}')
 
 # Variant methods
 print(45 * '=' + ' Variant Methods ' + 45 * '=')

@@ -152,7 +152,7 @@ class TestCircuit13Bus:
     def test_active_class_get_name(self, dss):
         expected = '650632'
         dss.circuit_set_active_element("Line.650632")
-        actual = dss.active_class_get_name()
+        actual = dss.get_name()
         assert actual == expected
 
     def test_circuit_set_active_bus(self, dss):
