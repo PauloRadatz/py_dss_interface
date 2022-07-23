@@ -10,7 +10,7 @@ dss = ExampleBase("13").dss
 print(f'dss.ctrlqueue_ctrlqueue(): {dss.ctrlqueue()}')
 
 # DSSElement
-print(f'dss.dsselement_allpropertynames(): {dss.dsselement_all_property_names()}')
+print(f'dss.dsselement_allpropertynames(): {dss.property_names()}')
 print(f'dss.dss_classes(): {dss.dss_classes()}')
 print(f'dss.dss_user_classes(): {dss.dss_user_classes()}')
 

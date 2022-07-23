@@ -21,7 +21,7 @@ class DSSElementS(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def dsselement_name(self) -> str:
+    def name(self) -> str:
         """Gets the full name of the active DSS object (general element or circuit element)."""
         result = ctypes.c_char_p(self.dss_obj.DSSElementS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
