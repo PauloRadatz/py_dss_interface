@@ -21,11 +21,11 @@ class CapacitorsS(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def capacitors_read_name(self) -> str:
+    def read_name(self) -> str:
         """Gets the name of the active Capacitor element."""
         return (self.dss_obj.CapacitorsS(0, 0)).decode('ascii')
 
-    def capacitors_write_name(self, capacitor_name: str) -> str:
+    def write_name(self, capacitor_name: str) -> str:
         """Sets the name of the Capacitor element to set it active. There is not a explicit return type in the
         oficial documentation, because of this we choose not put a explicit return too.
         :param capacitor_name: the intended name to the capacitor
