@@ -20,12 +20,12 @@ class TestDSSExecutive13Bus:
     # ===================================================================
     def test_executive_num_commands(self, dss):
         expected = 129
-        actual = dss.executive_num_commands()
+        actual = dss.num_commands()
         assert actual == expected
 
     def test_executive_num_options(self, dss):
         expected = 134
-        actual = dss.executive_num_options()
+        actual = dss.num_options()
         assert actual == expected
 
     # ===================================================================
@@ -33,25 +33,25 @@ class TestDSSExecutive13Bus:
     # ===================================================================
     def test_executive_command(self, dss):
         expected = "New"
-        actual = dss.executive_command("1")
+        actual = dss.command("1")
         assert actual == expected
 
     def test_executive_option(self, dss):
         expected = "type"
-        actual = dss.executive_option("1")
+        actual = dss.option("1")
         assert actual == expected
 
     def test_executive_command_help(self, dss):
         expected = "Continuation of editing on the active object."
-        actual = dss.executive_command_help("3")
+        actual = dss.command_help("3")
         assert actual == expected
 
     def test_executive_option_help(self, dss):
         expected = "Sets the active DSS class type.  Same as Class=..."
-        actual = dss.executive_option_help("1")
+        actual = dss.option_help("1")
         assert actual == expected
 
     def test_executive_option_value(self, dss):
         expected = "Line"
-        actual = dss.executive_option_value("1")
+        actual = dss.option_value("1")
         assert actual == expected
