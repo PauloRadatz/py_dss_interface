@@ -14,7 +14,7 @@ class TestCktElement13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.circuit_set_active_element('Line.671692')
+        dss.set_active_element('Line.671692')
 
         return dss
 
@@ -163,7 +163,7 @@ class TestCktElement13Bus:
 
     def test_cktelement_energymeter(self, dss):
         expected = "em1"
-        dss.circuit_set_active_element('Line.650632')
+        dss.set_active_element('Line.650632')
         actual = dss.cktelement_energymeter()
         assert actual == expected
 
@@ -172,7 +172,7 @@ class TestCktElement13Bus:
         dss.text("New 'Fuse.f1' MonitoredObj=Line.650632 MonitoredTerm=1 FuseCurve=Klink RatedCurrent=65")
         # After include a new element it becomes the active element. So, we need activate another element to test the
         # methods below
-        dss.circuit_set_active_element('Line.650632')
+        dss.set_active_element('Line.650632')
         expected = "Fuse.f1"
         actual = dss.cktelement_controller("1")
         assert actual == expected
@@ -358,7 +358,7 @@ class TestCktElement13Bus:
 
     def test_cktelement_all_variables_names(self, dss):
         dss.text("New Storage.str bus=650 kw=50")
-        dss.circuit_set_active_element("Storage.str")
+        dss.set_active_element("Storage.str")
         expected = ['kWh',
                     'State',
                     'kWOut',
@@ -390,7 +390,7 @@ class TestCktElement13Bus:
     # TODO gives error
     def test_cktelement_all_variables_values(self, dss):
         dss.text("New Storage.str bus=650 kw=50")
-        dss.circuit_set_active_element("Storage.str")
+        dss.set_active_element("Storage.str")
         expected = [50.0,
                     1.0,
                     0.0,

@@ -16,7 +16,7 @@ dss_file = r"C:\MeuTCC\Paulo_Example\DSSFiles\MASTER_RedeTeste13Barras.dss"
 dss_file = r"C:\Program Files\OpenDSS\IEEETestCases\13Bus\IEEE13Nodeckt.dss"
 # Compile
 dss.text(f"compile [{dss_file}]")
-overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.circuit_name()}_EXP_OVERLOADS.CSV")
+overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.name()}_EXP_OVERLOADS.CSV")
 
 # Solve
 # dss.text('show voltage')
@@ -31,7 +31,7 @@ dss.regcontrols_read_ct_primary()
 
 
 dss.text("New Storage.Battery phases=3 Bus1=680 kV=4.16 kWrated=350 kWhrated=2000")
-dss.circuit_set_active_element("Storage.str")
+dss.set_active_element("Storage.str")
 dss.cktelement_all_variables_names()
 dss.cktelement_all_variables_values()
 
@@ -43,7 +43,7 @@ dss.regcontrols_read_monitored_bus()
 
 dss.dss_read_datapath()
 
-dss.circuit_all_node_vmag_pu_by_phase()
+dss.nodes_vmag_pu_by_phase()
 
 
 # dss.text("var @ZZ=671_test")

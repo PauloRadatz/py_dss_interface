@@ -14,7 +14,7 @@ class TestBus13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.circuit_set_active_bus('692')
+        dss.set_active_bus('692')
 
         return dss
 

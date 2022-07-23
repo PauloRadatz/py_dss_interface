@@ -28,9 +28,9 @@ dss.loadshapes_write_p_mult(new)
 # print(dss.loadshapes_read_pmult())
 # dss.text.text("show voltages")
 
-print("Resultado: {0}".format(dss.circuit_total_power()))
+print("Resultado: {0}".format(dss.total_power()))
 # print(dss.dssinterface.dss_read_datapath())
 # Get all buses voltages
-print(dss.circuit_all_bus_volts())
+print(dss.buses_volts())
 
 # from  py_dss_interface import Loads
