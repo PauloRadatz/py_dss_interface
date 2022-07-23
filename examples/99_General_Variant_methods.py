@@ -15,7 +15,7 @@ print(f'dss.dss_classes(): {dss.classes()}')
 print(f'dss.dss_user_classes(): {dss.user_classes()}')
 
 # Fuses
-print(f'dss.fuses_allnames(): {dss.fuses_all_names()}')
+print(f'dss.fuses_allnames(): {dss.names()}')
 
 # Generators
 print(f'dss.generators_allnames(): {dss.generators_all_names()}')
