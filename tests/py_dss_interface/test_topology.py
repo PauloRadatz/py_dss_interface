@@ -118,7 +118,7 @@ class TestTopology13Bus:
 
         expected = "Load.634a"
         dss.topology_first_load()
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
         expected = 1
@@ -126,7 +126,7 @@ class TestTopology13Bus:
         assert actual == expected
 
         expected = "Load.634b"
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_topology_active_level(self, dss):

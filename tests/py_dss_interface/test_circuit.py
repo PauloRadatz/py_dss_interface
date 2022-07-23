@@ -36,7 +36,7 @@ class TestCircuit13Bus:
         assert actual == expected
 
         expected = 'Load.671'
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_circuit_next_pc_element(self, dss):
@@ -47,7 +47,7 @@ class TestCircuit13Bus:
         assert actual == expected
 
         expected = "Load.634b"
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_circuit_first_pd_element(self, dss):
@@ -56,7 +56,7 @@ class TestCircuit13Bus:
         assert actual == expected
 
         expected = 'Transformer.sub'
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_circuit_next_pd_element(self, dss):
@@ -67,7 +67,7 @@ class TestCircuit13Bus:
         assert actual == expected
 
         expected = "Transformer.reg2"
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_circuit_sample(self, dss):
@@ -95,7 +95,7 @@ class TestCircuit13Bus:
         assert actual == expected
 
         expected = 'Line.650632'
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_circuit_next_element(self, dss):
@@ -105,7 +105,7 @@ class TestCircuit13Bus:
         assert actual == expected
 
         expected = 'Line.632670'
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_circuit_update_storage_t(self, dss):
@@ -121,7 +121,7 @@ class TestCircuit13Bus:
         assert actual == expected
 
         expected = 'Line.650632'
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_circuit_end_of_time_step_update(self, dss):
@@ -146,7 +146,7 @@ class TestCircuit13Bus:
         assert actual == expected
 
         expected = 'Line.650632'
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_active_class_get_name(self, dss):
