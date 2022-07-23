@@ -18,31 +18,31 @@ class DSSExecutiveS(Base):
     which can be one of the following.
     """
 
-    def executive_command(self, arg: str) -> str:
+    def command(self, arg: str) -> str:
         """Gets i-th command (specified in the argument as string)."""
         arg = Base.check_string_param(arg)
         ctypes.c_char_p(arg.encode('utf-8'))
         return (self.dss_obj.DSSExecutiveS(0, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
 
-    def executive_option(self, arg: str) -> str:
+    def option(self, arg: str) -> str:
         """Gets i-th option (specified in the argument as string)."""
         arg = Base.check_string_param(arg)
         ctypes.c_char_p(arg.encode('utf-8'))
         return (self.dss_obj.DSSExecutiveS(1, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
 
-    def executive_command_help(self, arg: str) -> str:
+    def command_help(self, arg: str) -> str:
         """Gets help string for i-th command (specified in the argument as string)."""
         arg = Base.check_string_param(arg)
         ctypes.c_char_p(arg.encode('utf-8'))
         return (self.dss_obj.DSSExecutiveS(2, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
 
-    def executive_option_help(self, arg: str) -> str:
+    def option_help(self, arg: str) -> str:
         """Gets help string for i-th option (specified in the argument as string)."""
         arg = Base.check_string_param(arg)
         ctypes.c_char_p(arg.encode('utf-8'))
         return (self.dss_obj.DSSExecutiveS(3, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
 
-    def executive_option_value(self, arg: str) -> str:
+    def option_value(self, arg: str) -> str:
         """Gets present value for i-th option (specified in the argument as string)."""
         arg = Base.check_string_param(arg)
         ctypes.c_char_p(arg.encode('utf-8'))
