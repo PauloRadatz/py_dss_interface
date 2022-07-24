@@ -18,12 +18,6 @@ script_path = os.path.dirname(os.path.abspath(__file__))
 @pytest.fixture(scope='function')
 def solve_snap_13bus():
     dss = py_dss_interface.DSS()
-    actual = dss.started
-    # expected = True
-
-    # message = f"OpenDSSDirectDLL has been loaded: {actual}"
-
-    # assert actual is expected, message
 
     dss.text("set DefaultBaseFrequency=60")
     dss13_path = os.path.join(pathlib.Path(script_path), "cases", "13Bus", "IEEE13Nodeckt.dss")
@@ -31,8 +25,3 @@ def solve_snap_13bus():
 
     dss.allow_forms_write(0)
     return dss
-
-# @pytest.fixture(autouse=True)
-# def slow_down_tests():
-#     yield
-#     time.sleep(1)

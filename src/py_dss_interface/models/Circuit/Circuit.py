@@ -175,14 +175,14 @@ class Circuit(CircuitI, CircuitS, CircuitF, CircuitV):
     def end_of_time_step_update(self) -> int:
         return CircuitI._end_of_time_step_update(self)
 
-    def active_bus(self, active_bus: str):
-        CircuitS._active_bus(self, active_bus)
+    def activate_bus(self, active_bus: str):
+        return CircuitS._activate_bus(self, active_bus)
 
-    def activate_bus_i(self, i: int) -> int:
+    def activate_bus_i_on_circuit(self, i: int) -> int:
         return CircuitI._activate_bus_i(self, i)
 
-    def active_element(self, active_element: str):
-        CircuitS._active_element(self, active_element)
+    def activate_element_on_circuit(self, active_element: str):
+        return CircuitS._activate_element(self, active_element)
 
-    def active_class(self, argument: str) -> str:
-        return CircuitS._active_class(self, argument)
+    def activate_class_on_circuit(self, argument: str) -> str:
+        return CircuitS._activate_class(self, argument)

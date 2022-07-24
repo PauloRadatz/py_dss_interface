@@ -15,18 +15,10 @@ DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
 
 
-class DSS(Text, CktElement, CMathLib, CtrlQueue, DSSElement,
-          DSSExecutive, DSSInterface, DSSProgress, DSSProperties, ErrorOpenDSS, Fuses, Generators, Lines, Loads,
-          ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reclosers,
-          Relays, RegControls, Sensors, Settings, Solution, SwtControls, Topology, Transformers, VSources,
-          XYCurves):
-    dll_folder: str
-    dll_path: str
-    my_dss_version: ctypes.c_char_p
-    dss_obj: ctypes.cdll
-    started = False
-    memory_commands = []
-    class_commands = []
+class DSS(Text, CktElement, CMathLib, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, DSSProperties,
+          ErrorOpenDSS, Fuses, Generators, Lines, Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel,
+          Parser, PDElements, PVSystems, Reclosers, Relays, RegControls, Sensors, Settings, Solution, SwtControls,
+          Topology, Transformers, VSources, XYCurves):
 
     # TODO need to be able to get different dll names:
     #  https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
@@ -37,7 +29,9 @@ class DSS(Text, CktElement, CMathLib, CtrlQueue, DSSElement,
         :param dll_folder_param: None will use the OpenDSS available within the package. The dll path allows to use a
         different OpenDSS
         """
+        self.my_dss_version = None
         self.started = False
+        self.memory_commands = []
         if dll_folder_param is not None and dll_by_user is not None:
             os.chdir(dll_folder_param)
             self.dss_obj = ctypes.cdll.LoadLibrary(os.path.join(dll_folder_param, dll_by_user))
