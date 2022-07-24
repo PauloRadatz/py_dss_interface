@@ -4,7 +4,7 @@ import json
 import os
 import pathlib
 
-from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement
+from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, Base
 from . import DSSExecutive, DSSInterface, DSSProgress, DSSProperties, ErrorOpenDSS, Fuses, Generators, ISources
 from . import LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reclosers
 from . import Relays, RegControls, Sensors, Settings, Solution, SwtControls, Text, Topology, Transformers, VSources
@@ -15,7 +15,7 @@ DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
 
 
-class DSS(Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement,
+class DSS(CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement,
           DSSExecutive, DSSInterface, DSSProgress, DSSProperties, ErrorOpenDSS, Fuses, Generators, Lines, Loads,
           ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reclosers,
           Relays, RegControls, Sensors, Settings, Solution, SwtControls, Text, Topology, Transformers, VSources,
@@ -27,8 +27,6 @@ class DSS(Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue
     started = False
     memory_commands = []
     class_commands = []
-
-
 
     # TODO need to be able to get different dll names:
     #  https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
@@ -63,9 +61,10 @@ class DSS(Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue
             self._allocate_memory()
 
             if self.check_started():
-                self.active_class = ActiveClass()
+                self.base = Base(self.dss_obj)
+                self.active_class = ActiveClass(self.dss_obj)
+                self.bus = Bus(self.dss_obj)
 
-                self.instantiate_all_dss_objects()
                 print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
 
             else:
@@ -74,9 +73,6 @@ class DSS(Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue
         else:
             print("An error occur!")
             exit()
-
-    def instantiate_all_dss_objects(self):
-        self.active_class.dss_obj = self.dss_obj
 
     def check_started(self):
         if int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0))) != 1:
