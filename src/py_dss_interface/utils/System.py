@@ -14,9 +14,7 @@ class System:
         :return: plat: A string contains the platform name like 'Windows', 'Linux'.
         """
         plat = platform.system()
-        if plat == 0:
-            return 'System cannot be determined'
-        return plat
+        return 'System cannot be determined' if plat == 0 else plat
 
     @staticmethod
     def get_architecture_path(dll_folder):
