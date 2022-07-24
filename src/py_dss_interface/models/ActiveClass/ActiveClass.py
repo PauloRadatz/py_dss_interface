@@ -16,6 +16,9 @@ class ActiveClass(ActiveClassS, ActiveClassI, ActiveClassV):
     accessing the different properties included in this interface: ActiveClassS, ActiveClassI, ActiveClassV. Ih the
     original paper Davis cited that are 4 procedures, but only 3 were described."""
 
+    def __init__(self, obj_dss):
+        super().__init__(obj_dss)
+
     @property
     def first(self) -> int:
         return ActiveClassI._first(self)
