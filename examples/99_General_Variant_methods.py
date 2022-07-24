@@ -58,11 +58,11 @@ print(f'dss.lines_read_yprim(): {dss.yprim_read()}')
 
 # Loads
 print()
-print(f'dss.loads_allnames(): {dss.loads_all_names()}')
-print(f'dss.loads_read_zipv(): {dss.loads_read_zipv()}')
+print(f'dss.loads_allnames(): {dss.names()}')
+print(f'dss.loads_read_zipv(): {dss.zipv_read()}')
 zipv = "[0 1 2 3 4 5 6]"
-print(f'dss.loads_write_zipv(): {dss.loads_write_zipv(zipv)}')
-print(f'dss.loads_read_zipv(): {dss.loads_read_zipv()}')
+print(f'dss.loads_write_zipv(): {dss.zipv_write(zipv)}')
+print(f'dss.loads_read_zipv(): {dss.zipv_read()}')
 
 # LoadShapes
 # print()

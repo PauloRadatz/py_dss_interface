@@ -44,7 +44,7 @@ class TestLoadShapes13Bus:
 
     def test_loadshapes_first(self, dss):
         expected = 1
-        actual = dss.loads_first()
+        actual = dss.first()
         assert actual == expected
 
     def test_loadshapes_next(self, dss):
