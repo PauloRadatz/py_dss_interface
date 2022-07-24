@@ -18,42 +18,42 @@ class CircuitS(Base):
     one of the following.
     """
 
-    def name(self) -> str:
+    def _name(self) -> str:
         """Returns the name of the active circuit."""
         result = ctypes.c_char_p(self.dss_obj.CircuitS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     # TODO: Must be reimplemented and reviewed
-    def disable(self) -> str:
+    def _disable(self) -> str:
         """Allows to disable an element of the active circuit, the element must be specified by name.
         As a result, this parameter will deliver the string ?Ok?."""
         result = ctypes.c_char_p(self.dss_obj.CircuitS(ctypes.c_int32(1), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     # TODO: must be reimplemented and reviewed
-    def enable(self) -> str:
+    def _enable(self) -> str:
         """Allows to enable an element of the active circuit, the element must be specified by name.
         As a result, this parameter will deliver the string ?Ok?."""
         result = ctypes.c_char_p(self.dss_obj.CircuitS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def set_active_element(self, argument: str) -> str:
+    def _active_element(self, argument: str) -> str:
         """Allows to activate an element of the active circuit, the element must be specified by name.
         As a result, this parameter will deliver a string with the index of the active element."""
         argument = Base.check_string_param(argument, default="")
         result = ctypes.c_char_p(self.dss_obj.CircuitS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def set_active_bus(self, argument: str) -> str:
-        """Allows to activate a bus of the active circuit, the bus must be specified by name.
-        As a result, this parameter will deliver a string with the index of the active Bus."""
-        argument = Base.check_string_param(argument, default="")
-        result = ctypes.c_char_p(self.dss_obj.CircuitS(ctypes.c_int32(4), argument.encode('ascii')))
-        return result.value.decode('ascii')
-
-    def set_active_class(self, argument: str) -> str:
+    def _active_class(self, argument: str) -> str:
         """Allows tto activate a Class of the active circuit, the Class must be specified by name.
         As a result, this parameter will deliver a string with the index of the active Class."""
         argument = Base.check_string_param(argument, default="")
         result = ctypes.c_char_p(self.dss_obj.CircuitS(ctypes.c_int32(5), argument.encode('ascii')))
+        return result.value.decode('ascii')
+
+    def _active_bus(self, argument: str) -> str:
+        """Allows to activate a bus of the active circuit, the bus must be specified by name.
+        As a result, this parameter will deliver a string with the index of the active Bus."""
+        argument = Base.check_string_param(argument, default="")
+        result = ctypes.c_char_p(self.dss_obj.CircuitS(ctypes.c_int32(4), argument.encode('ascii')))
         return result.value.decode('ascii')
