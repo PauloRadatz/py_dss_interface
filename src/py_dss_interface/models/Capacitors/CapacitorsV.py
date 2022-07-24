@@ -22,11 +22,11 @@ class CapacitorsV(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def all_names(self) -> List[str]:
+    def _names(self) -> List[str]:
         """Gets a variant array of strings with all Capacitor names in the circuit."""
         return Bridge.var_array_function(self.dss_obj.CapacitorsV, 0, None, '')
 
-    def read_states(self) -> List[int]:
+    def _states(self) -> List[int]:
         """Gets a variant array of integers [0..numsteps-1] indicating the state of each step.
         If value is -1 and error has occurred."""
         result = Bridge.var_array_function(self.dss_obj.CapacitorsV, 1, None, '')
@@ -35,14 +35,14 @@ class CapacitorsV(Base):
         return result
 
     # TODO: Must be reimplemented
-    def write_states(self, dss_, argument: list) -> int:
+    def _states_write(self, dss_, argument: list) -> int:
         """Sets a variant array of integers [0..numsteps-1] indicating the state of each step. If value is -1 and
         error has occurred.
         :param dss_: an instance of dss object
         :param argument: list with status of Capacitor states
         """
-        dss_.write_name(dss_.read_name())
-        result = dss_.text(f'edit Capacitor.{dss_.read_name()} states={argument}')
+        dss_.capacitors.name = dss_.capacitors.name
+        result = dss_.text(f'edit Capacitor.{dss_.capacitors.name} states={argument}')
         if result != '':
             raise ValueError("An error occurred when tries to WRITE Capacitors states! ")
         return result

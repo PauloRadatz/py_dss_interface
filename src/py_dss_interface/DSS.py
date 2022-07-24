@@ -15,10 +15,10 @@ DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
 
 
-class DSS(CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement,
+class DSS(Text, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement,
           DSSExecutive, DSSInterface, DSSProgress, DSSProperties, ErrorOpenDSS, Fuses, Generators, Lines, Loads,
           ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reclosers,
-          Relays, RegControls, Sensors, Settings, Solution, SwtControls, Text, Topology, Transformers, VSources,
+          Relays, RegControls, Sensors, Settings, Solution, SwtControls, Topology, Transformers, VSources,
           XYCurves):
     dll_folder: str
     dll_path: str
@@ -62,8 +62,11 @@ class DSS(CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSS
 
             if self.check_started():
                 self.base = Base(self.dss_obj)
+
                 self.active_class = ActiveClass(self.dss_obj)
                 self.bus = Bus(self.dss_obj)
+                self.capcontrols = CapControls(self.dss_obj)
+                self.capacitors = Capacitors(self.dss_obj)
 
                 print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
 
