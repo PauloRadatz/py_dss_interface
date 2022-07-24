@@ -26,22 +26,22 @@ print(f'dss.generators_registervalues(): {dss.register_values()}')
 print(f'dss.isources_allnames(): {dss.names()}')
 
 # LineCodes
-print(f'dss.linecodes_read_rmatrix(): {dss.linecodes_read_rmatrix()}')
+print(f'dss.linecodes_read_rmatrix(): {dss.rmatrix_read()}')
 rmatrix = "[0.791721 | 0.318476 0.781649 | 0.28345, 0.318476, 0.791721]"
-print(f'dss.linecodes_write_rmatrix(): {dss.linecodes_write_rmatrix(rmatrix)}')
-print(f'dss.linecodes_read_rmatrix(): {dss.linecodes_read_rmatrix()}')
+print(f'dss.linecodes_write_rmatrix(): {dss.rmatrix_write(rmatrix)}')
+print(f'dss.linecodes_read_rmatrix(): {dss.rmatrix_read()}')
 
-print(f'dss.linecodes_read_xmatrix(): {dss.linecodes_read_xmatrix()}')
+print(f'dss.linecodes_read_xmatrix(): {dss.xmatrix_read()}')
 xmatrix = "[0.438352  |0.0276838  0.396697  |-0.0184204  0.0276838  0.438352  ]"
-print(f'dss.linecodes_write_xmatrix(): {dss.linecodes_write_xmatrix(xmatrix)}')
-print(f'dss.linecodes_read_xmatrix(): {dss.linecodes_read_xmatrix()}')
+print(f'dss.linecodes_write_xmatrix(): {dss.xmatrix_write(xmatrix)}')
+print(f'dss.linecodes_read_xmatrix(): {dss.xmatrix_read()}')
 
-print(f'dss.linecodes_read_cmatrix(): {dss.linecodes_read_cmatrix()}')
+print(f'dss.linecodes_read_cmatrix(): {dss.cmatrix_read()}')
 cmatrix = "[257 | 0 257 | 0 0 257]"
-print(f'dss.linecodes_write_cmatrix(): {dss.linecodes_write_cmatrix(cmatrix)}')
-print(f'dss.linecodes_read_cmatrix(): {dss.linecodes_read_cmatrix()}')
+print(f'dss.linecodes_write_cmatrix(): {dss.cmatrix_write(cmatrix)}')
+print(f'dss.linecodes_read_cmatrix(): {dss.cmatrix_read()}')
 
-print(f'dss.linecodes_allnames(): {dss.linecodes_all_names()}')
+print(f'dss.linecodes_allnames(): {dss.names()}')
 
 # Lines
 print(f'dss.lines_allnames(): {dss.lines_all_names()}')
