@@ -33,6 +33,9 @@ class Base:
         second = Base.check_float_param(second)
         return float(self.dss_obj.type(self).__name__(ctypes.c_int32(first), ctypes.c_double(second)))
 
+    def get_dss_obj(self):
+        return self.dss_obj
+
     @classmethod
     def check_assertion_result(cls, param: int, message_1: Optional[str] = None, message_2: Optional[str] = None,
                                expected_value=0) -> None:

@@ -21,21 +21,21 @@ class CapacitorsF(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def read_kv(self) -> float:
+    def _kv(self) -> float:
         """Gets the bank rating. Use LL for 2 or 3 phases, or actual can rating for 1 phase."""
         return self.dss_obj.CapacitorsF(0, 0)
 
-    def write_kv(self, argument: float):
+    def _kv_write(self, argument: float):
         """Sets the bank rating. Use LL for 2 or 3 phases, or actual can rating for 1 phase. There is not a explicit
         return type in the oficial documentation, because of this we choose not put a explicit return too."""
         argument = Base.check_float_param(argument)
         return self.dss_obj.CapacitorsF(1, ctypes.c_double(argument))
 
-    def read_kvar(self) -> float:
+    def _kvar(self) -> float:
         """Gets the total bank kvar, distributed equally among phases and steps."""
         return self.dss_obj.CapacitorsF(2, 0)
 
-    def write_kvar(self, argument: float):
+    def _kvar_write(self, argument: float):
         """Sets the total bank kvar, distributed equally among phases and steps. There is not a explicit return type
         in the oficial documentation, because of this we choose not put a explicit return too. """
         argument = Base.check_float_param(argument)
