@@ -18,47 +18,47 @@ class GeneratorsF(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def generators_read_kv(self) -> float:
+    def kv_read(self) -> float:
         """Gets the voltage base for the active generator, kV."""
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def generators_write_kv(self, argument: float) -> float:
+    def kv_write(self, argument: float) -> float:
         """Sets the voltage base for the active generator, kV."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
-    def generators_read_kw(self) -> float:
+    def kw_read(self) -> float:
         """Gets the kW output for the active generator, kvar is updated for current power factor."""
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def generators_write_kw(self, argument: float) -> float:
+    def kw_write(self, argument: float) -> float:
         """Sets the kW output for the active generator, kvar is updated for current power factor."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    def generators_read_kvar(self) -> float:
+    def kvar_read(self) -> float:
         """Gets the kvar output for the active generator, kW is updated for current power factor."""
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def generators_write_kvar(self, argument: float) -> float:
+    def kvar_write(self, argument: float) -> float:
         """Sets the kvar output for the active generator, kW is updated for current power factor."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(5), ctypes.c_double(argument)))
 
-    def generators_read_pf(self) -> float:
+    def pf_read(self) -> float:
         """Gets the power factor (pos. = producing vars). Updates kvar based on present kW value."""
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(6), ctypes.c_double(0)))
 
-    def generators_write_pf(self, argument: float) -> float:
+    def pf_write(self, argument: float) -> float:
         """Sets the power factor (pos. = producing vars). Updates kvar based on present kW value."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(7), ctypes.c_double(argument)))
 
-    def generators_read_kva_rated(self) -> float:
+    def kva_rated_read(self) -> float:
         """Gets the KVA rating of the generator."""
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(8), ctypes.c_double(0)))
 
-    def generators_write_kva_rated(self, argument: float) -> float:
+    def kva_rated_write(self, argument: float) -> float:
         """Sets the KVA rating of the generator."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.GeneratorsF(ctypes.c_int32(9), ctypes.c_double(argument)))

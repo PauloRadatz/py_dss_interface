@@ -18,9 +18,9 @@ print(f'dss.dss_user_classes(): {dss.user_classes()}')
 print(f'dss.fuses_allnames(): {dss.names()}')
 
 # Generators
-print(f'dss.generators_allnames(): {dss.generators_all_names()}')
-print(f'dss.generators_registernames(): {dss.generators_register_names()}')
-print(f'dss.generators_registervalues(): {dss.generators_register_values()}')
+print(f'dss.generators_allnames(): {dss.names()}')
+print(f'dss.generators_registernames(): {dss.register_names()}')
+print(f'dss.generators_registervalues(): {dss.register_values()}')
 
 # ISources
 print(f'dss.isources_allnames(): {dss.isources_all_names()}')
