@@ -42,4 +42,4 @@ from py_dss_interface.models.Topology.Topology import Topology
 from py_dss_interface.models.Transformers.Transformers import Transformers
 from py_dss_interface.models.VSources.VSources import VSources
 from py_dss_interface.models.XYCurves.XYCurves import XYCurves
-from .DSS import DSSDLL
+from .DSS import DSS

@@ -15,11 +15,11 @@ DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
 
 
-class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement,
-             DSSExecutive, DSSInterface, DSSProgress, DSSProperties, ErrorOpenDSS, Fuses, Generators, Lines, Loads,
-             ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reclosers,
-             Relays, RegControls, Sensors, Settings, Solution, SwtControls, Text, Topology, Transformers, VSources,
-             XYCurves):
+class DSS(Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement,
+          DSSExecutive, DSSInterface, DSSProgress, DSSProperties, ErrorOpenDSS, Fuses, Generators, Lines, Loads,
+          ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reclosers,
+          Relays, RegControls, Sensors, Settings, Solution, SwtControls, Text, Topology, Transformers, VSources,
+          XYCurves):
     dll_folder: str
     dll_path: str
     my_dss_version: ctypes.c_char_p
@@ -27,6 +27,8 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
     started = False
     memory_commands = []
     class_commands = []
+
+
 
     # TODO need to be able to get different dll names:
     #  https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
@@ -61,6 +63,9 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
             self._allocate_memory()
 
             if self.check_started():
+                self.active_class = ActiveClass()
+
+                self.instantiate_all_dss_objects()
                 print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
 
             else:
@@ -69,6 +74,9 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
         else:
             print("An error occur!")
             exit()
+
+    def instantiate_all_dss_objects(self):
+        self.active_class.dss_obj = self.dss_obj
 
     def check_started(self):
         if int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0))) != 1:

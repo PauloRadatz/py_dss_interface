@@ -4,11 +4,11 @@ import pathlib
 import numpy as np
 import os
 # Creates an OpenDSS object
-dss = py_dss_interface.DSSDLL("C:\OpenDSS_rep\Version8\Source")
-# dss = py_dss_interface.DSSDLL(r"C:\Program Files\OpenDSS")
+dss = py_dss_interface.DSS("C:\OpenDSS_rep\Version8\Source")
+# dss = py_dss_interface.DSS(r"C:\Program Files\OpenDSS")
 
 # If specific DLL Version, use this line below
-# dss = py_dss_interface.DSSDLL(dll_folder_param=r"C:\Users\eniocc\Downloads\py_dss_interface-master\src"
+# dss = py_dss_interface.DSS(dll_folder_param=r"C:\Users\eniocc\Downloads\py_dss_interface-master\src"
 #                                                r"\py_dss_interface\dll/windows\x64", dll_by_user="OpenDSSDirect.dll")
 
 # Select the DSS model

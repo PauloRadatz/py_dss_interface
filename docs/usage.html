@@ -376,15 +376,15 @@ direct dll.</p>
 </pre>
 <p>Creates an OpenDSS object</p>
 <pre class="code ipython3 literal-block">
-<span class="name">dss</span> <span class="operator">=</span> <span class="name">py_dss_interface</span><span class="operator">.</span><span class="name">DSSDLL</span><span class="punctuation">()</span>
+<span class="name">dss</span> <span class="operator">=</span> <span class="name">py_dss_interface</span><span class="operator">.</span><span class="name">DSS</span><span class="punctuation">()</span>
 </pre>
-<p>If you want to use your OpenDSS, you will need to pass the OpenDSS path as argument to the DSSDLL class, as can be seen below:</p>
+<p>If you want to use your OpenDSS, you will need to pass the OpenDSS path as argument to the DSS class, as can be seen below:</p>
 <pre class="code ipython3 literal-block">
 <span class="name">opendss_path</span> <span class="operator">=</span> <span class="literal string affix">r</span><span class="literal string double">&quot;C:\Program Files\OpenDSS&quot;</span>
 </pre>
 <p>Creates a dss object with your OpenDSS</p>
 <pre class="code ipython3 literal-block">
-<span class="name">dss</span> <span class="operator">=</span> <span class="name">py_dss_interface</span><span class="operator">.</span><span class="name">DSSDLL</span><span class="punctuation">(</span><span class="name">opendss_path</span><span class="punctuation">)</span>
+<span class="name">dss</span> <span class="operator">=</span> <span class="name">py_dss_interface</span><span class="operator">.</span><span class="name">DSS</span><span class="punctuation">(</span><span class="name">opendss_path</span><span class="punctuation">)</span>
 </pre>
 <p>Select the DSS model</p>
 <pre class="code ipython3 literal-block">

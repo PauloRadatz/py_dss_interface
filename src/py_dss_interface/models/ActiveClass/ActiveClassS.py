@@ -20,18 +20,18 @@ class ActiveClassS(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def get_name(self) -> str:
+    def _name(self) -> str:
         """Gets the name of the active Element of the Active class."""
         return (self.dss_obj.ActiveClassS(0, 0)).decode('ascii')
 
-    def write_name(self, argument) -> str:
+    def _name_write(self, argument) -> str:
         """Sets the name of the active Element of the Active class. """
         return (self.dss_obj.ActiveClassS(1, argument.encode('ascii'))).decode('ascii')
 
-    def get_class_name(self) -> str:
+    def _class_name(self) -> str:
         """Sets the name of the active Element of the Active class."""
         return (self.dss_obj.ActiveClassS(2, 0)).decode('ascii')
 
-    def parent_class_name(self) -> str:
+    def _parent_class_name(self) -> str:
         """Gets the name of the Parent Element of the Active class."""
         return (self.dss_obj.ActiveClassS(3, 0)).decode('ascii')
