@@ -10,7 +10,7 @@ import py_dss_interface
 import pathlib
 import os
 # Creates an OpenDSS object
-dss = py_dss_interface.DSSDLL(r"C:\OpenDSS_svn\Version8\Source")
+dss = py_dss_interface.DSS(r"C:\OpenDSS_svn\Version8\Source")
 
 dss_file = r"C:\Users\ppra005\Box\Documents_PC\OpenDSS_forum\Jouni\line_impedances.dss"
 
