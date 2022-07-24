@@ -17,7 +17,7 @@ print(f'dss.circuit_first_pd_element(): {dss.pd_element_first()}')
 print(f'dss.circuit_next_pd_element(): {dss.pd_element_next()}')
 print(f'dss.circuit_sample(): {dss.sample()}')
 
-print(f'dss.circuit_set_active_bus_i(): {dss.activate_bus_i(1)}')
+print(f'dss.circuit_set_active_bus_i(): {dss.activate_bus_i_on_circuit(1)}')
 print(f'dss.circuit_first_element(): {dss.first_element()}')
 print(f'dss.circuit_next_element(): {dss.next_element()}')
 

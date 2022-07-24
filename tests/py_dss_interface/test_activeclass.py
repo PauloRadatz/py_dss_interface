@@ -23,10 +23,9 @@ class TestActiveClass13Bus:
         actual = dss.active_class.first
         assert actual == expected
 
-    # TODO: It is failing now.
     def test_next(self, dss):
         expected = 2
-        dss.first()
+        dss.active_class.first
         actual = dss.active_class.next
         assert actual == expected
 
