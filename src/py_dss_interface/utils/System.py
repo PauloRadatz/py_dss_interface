@@ -23,7 +23,6 @@ class System:
         :param dll_folder: Folder that contains dll
         :return path: A string contains the path based on the architecture
         """
-        path = "Nothing was decided about the architecture"
         if platform.architecture()[0] == "64bit":
             path = os.path.join(dll_folder, "x64")
             System.check_path_environment(path)
