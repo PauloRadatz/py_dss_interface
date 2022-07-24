@@ -44,17 +44,17 @@ print(f'dss.linecodes_read_cmatrix(): {dss.cmatrix_read()}')
 print(f'dss.linecodes_allnames(): {dss.names()}')
 
 # Lines
-print(f'dss.lines_allnames(): {dss.lines_all_names()}')
+print(f'dss.lines_allnames(): {dss.names()}')
 
-print(f'dss.lines_read_rmatrix(): {dss.lines_read_rmatrix()}')
-print(f'dss.lines_write_rmatrix(): {dss.lines_write_rmatrix(rmatrix)}')
-print(f'dss.lines_read_rmatrix(): {dss.lines_read_rmatrix()}')
+print(f'dss.lines_read_rmatrix(): {dss.rmatrix_read()}')
+print(f'dss.lines_write_rmatrix(): {dss.rmatrix_write(rmatrix)}')
+print(f'dss.lines_read_rmatrix(): {dss.rmatrix_read()}')
 
-print(f'dss.lines_read_rmatrix(): {dss.lines_read_cmatrix()}')
-print(f'dss.lines_write_cmatrix(): {dss.lines_write_cmatrix(cmatrix)}')
-print(f'dss.lines_read_rmatrix(): {dss.lines_read_cmatrix()}')
+print(f'dss.lines_read_rmatrix(): {dss.cmatrix_read()}')
+print(f'dss.lines_write_cmatrix(): {dss.cmatrix_write(cmatrix)}')
+print(f'dss.lines_read_rmatrix(): {dss.cmatrix_read()}')
 
-print(f'dss.lines_read_yprim(): {dss.lines_read_yprim()}')
+print(f'dss.lines_read_yprim(): {dss.yprim_read()}')
 
 # Loads
 print()
