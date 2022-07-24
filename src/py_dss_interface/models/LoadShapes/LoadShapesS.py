@@ -18,12 +18,12 @@ class LoadShapesS(Base):
     which can be one of the following.
     """
 
-    def loadshapes_read_name(self):
+    def name_read(self):
         """Gets the name of the active LoadShape object."""
         result = ctypes.c_char_p(self.dss_obj.LoadShapeS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def loadshapes_write_name(self, argument):
+    def name_write(self, argument):
         """Sets the name of the active LoadShape object."""
         result = ctypes.c_char_p(self.dss_obj.LoadShapeS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')

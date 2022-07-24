@@ -20,40 +20,40 @@ class LoadShapesV(Base):
     This interface returns a Variant with the result of the query according to the value of the variable Parameter,
     which can be one of the following. """
 
-    def loadshapes_all_names(self):
+    def names(self):
         """Gets a variant array of strings containing names of all LoadShape objects currently defined."""
         return Bridge.var_array_function(self.dss_obj.LoadShapeV, 0, None, '')
 
-    def loadshapes_read_p_mult(self):
+    def p_mult_read(self):
         """Gets a variant array of doubles for the P multiplier in the LoadShape."""
         return Bridge.var_array_function(self.dss_obj.LoadShapeV, 1, None, '')
 
-    def loadshapes_write_p_mult(self, argument):
+    def p_mult_write(self, argument):
         """Sets a variant array of doubles for the P multiplier in the LoadShape."""
         t = Text(self.dss_obj)
         ls = LoadShapesS(self.dss_obj)
-        ls_name = ls.loadshapes_read_name()
+        ls_name = ls.name_read()
         return t.text(f'edit LoadShape.{ls_name} pmult = {argument}')
 
-    def loadshapes_read_q_mult(self):
+    def q_mult_read(self):
         """Gets a variant array of doubles for the Q multiplier in the LoadShape."""
         return Bridge.var_array_function(self.dss_obj.LoadShapeV, 3, None, '')
 
-    def loadshapes_write_q_mult(self, argument):
+    def q_mult_write(self, argument):
         """Sets a variant array of doubles for the Q multiplier in the LoadShape."""
         t = Text(self.dss_obj)
         ls = LoadShapesS(self.dss_obj)
-        ls_name = ls.loadshapes_read_name()
+        ls_name = ls.name_read()
         return t.text(f'edit LoadShape.{ls_name} qmult = {argument}')
 
-    def loadshapes_read_time_array(self):
+    def time_array_read(self):
         """Gets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
         return Bridge.var_array_function(self.dss_obj.LoadShapeV, ctypes.c_int(5), ctypes.c_int(0), None)
 
-    def loadshapes_write_time_array(self, argument):
+    def time_array_write(self, argument):
         """Sets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
-        # TODO it might get a str like load'zip?
+        # TODO it might get a str like load zip?
         t = Text(self.dss_obj)
         ls = LoadShapesS(self.dss_obj)
-        ls_name = ls.loadshapes_read_name()
+        ls_name = ls.name_read()
         return t.text(f'edit LoadShape.{ls_name} hour = {argument}')

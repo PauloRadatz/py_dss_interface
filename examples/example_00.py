@@ -14,15 +14,15 @@ dss = ExampleBase("13").dss
 dss.text("? Load.611.kw")
 dss.solution_solve()
 # dss.text("solve")
-dss.loadshapes_first()
-dss.loadshapes_read_p_mult()
+dss.first()
+dss.p_mult_read()
 
 #
-new = list(dss.loadshapes_read_p_mult())
+new = list(dss.p_mult_read())
 new[2] = 0
 # print(new)
 #
-dss.loadshapes_write_p_mult(new)
+dss.p_mult_write(new)
 # Show Voltage Report
 
 # print(dss.loadshapes_read_pmult())
