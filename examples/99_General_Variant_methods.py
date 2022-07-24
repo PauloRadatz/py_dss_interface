@@ -23,7 +23,7 @@ print(f'dss.generators_registernames(): {dss.register_names()}')
 print(f'dss.generators_registervalues(): {dss.register_values()}')
 
 # ISources
-print(f'dss.isources_allnames(): {dss.isources_all_names()}')
+print(f'dss.isources_allnames(): {dss.names()}')
 
 # LineCodes
 print(f'dss.linecodes_read_rmatrix(): {dss.linecodes_read_rmatrix()}')
