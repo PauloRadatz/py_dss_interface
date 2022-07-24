@@ -16,5 +16,5 @@ dss_file = r"C:\Users\ppra005\Box\Documents_PC\OpenDSS_forum\Jouni\line_impedanc
 
 dss.text(f"compile [{dss_file}]")
 
-dss.lines_write_name("line2")
-dss.lines_read_r1()
+dss.name_write("line2")
+dss.r1_read()

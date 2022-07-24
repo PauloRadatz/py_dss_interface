@@ -22,10 +22,9 @@ overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.name()}_EXP_O
 # dss.text('show voltage')
 dss.solution_solve()
 
-
-dss.lines_first()
+dss.first()
 expected = [1.3569, 0.4591, 0.0, 0.4591, 1.3471, 0.0, 0.0, 0.0, 0.0]
-dss.lines_write_rmatrix([1.3569, 0.4591, 1.3471])
+dss.rmatrix_write([1.3569, 0.4591, 1.3471])
 
 dss.regcontrols_read_ct_primary()
 
