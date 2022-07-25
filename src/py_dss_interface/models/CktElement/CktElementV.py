@@ -19,14 +19,14 @@ class CktElementV(Base):
     the value of the variable Parameter, which can be one of the following.
     """
 
-    def read_bus_names(self) -> List[str]:
+    def _bus_names(self) -> List[str]:
         """Delivers an array of strings with the names of all the buses connected to the active circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 0, None, '')
 
-    def write_bus_names(self, dss, argument: List[str]) -> str:
+    def _bus_names_write(self, dss, argument: List[str]) -> str:
         """Allows to fix an array of strings with the names of all the buses connected to the active circuit element."""
         # 1 get size of number of elements conected to the active circuit
-        total_connected = len(self.read_bus_names())
+        total_connected = len(self._bus_names())
         result = '0'
         for _ in range(total_connected):
             result = dss.text(f"Edit {dss.name()} Bus1={argument[0]} Bus2={argument[1]}")
@@ -36,87 +36,87 @@ class CktElementV(Base):
             return "Buses renamed succesfully!!"
         return result
 
-    def voltages(self) -> List[float]:
+    def _voltages(self) -> List[float]:
         """Delivers an array of doubles with the voltages at terminals of the active circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 2, None, '')
 
-    def currents(self) -> List[float]:
+    def _currents(self) -> List[float]:
         """Delivers an array of doubles with the currents at terminals of the active circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 3, None, '')
 
-    def powers(self) -> List[float]:
+    def _powers(self) -> List[float]:
         """Delivers an array of doubles with the powers at terminals of the active circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 4, None, '')
 
-    def losses(self) -> List[float]:
+    def _losses(self) -> List[float]:
         """Delivers an array of doubles with the Losses at terminals of the active circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 5, None, '')
 
-    def phase_losses(self) -> List[float]:
+    def _phase_losses(self) -> List[float]:
         """Delivers an array of doubles with the Losses per phase at the terminals of the active circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 6, None, '')
 
-    def seq_voltages(self) -> List[float]:
+    def _seq_voltages(self) -> List[float]:
         """Delivers an array of doubles with the symmetrical component voltages per phase at the terminals of the active
          circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 7, None, '')
 
-    def seq_currents(self) -> List[float]:
+    def _seq_currents(self) -> List[float]:
         """Delivers an array of doubles with the symmetrical component Currents per phase at the terminals of the active
          circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 8, None, '')
 
-    def seq_powers(self) -> List[float]:
+    def _seq_powers(self) -> List[float]:
         """Delivers an array of doubles with the symmetrical component powers per phase at the terminals of the active
         circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 9, None, '')
 
-    def property_names(self) -> List[str]:
+    def _property_names(self) -> List[str]:
         """Delivers an array of strings with the names of all the properties of the active circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 10, None, '')
 
-    def residuals_currents(self) -> List[float]:
+    def _residuals_currents(self) -> List[float]:
         """Delivers an array of doubles with the residual currents (magnitude, angle) in all the nodes of the active
         circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 11, None, '')
 
-    def y_prim(self) -> List[float]:
+    def _y_prim(self) -> List[float]:
         """Delivers an array of doubles with the Y primitive matrix (complex) of the active circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 12, None, '')
 
-    def cplx_seq_voltages(self) -> List[float]:
+    def _cplx_seq_voltages(self) -> List[float]:
         """Delivers an array of doubles with the complex of sequence voltages for all terminals of the active circuit
         element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 13, None, '')
 
-    def cktelement_cplx_seq_currents(self) -> List[float]:
+    def _cplx_seq_currents(self) -> List[float]:
         """Delivers an array of doubles with the complex of sequence currents for all terminals of the active circuit
         element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 14, None, '')
 
     # https://github.com/PauloRadatz/py_dss_interface/issues/3
-    def variables_names(self) -> List[str]:
+    def _variables_names(self) -> List[str]:
         """Delivers a Variant array of strings listing all the published state variable names, if the active circuit
         element is a PCElement. Otherwise, null string."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 15, None, '')
 
     # https://github.com/PauloRadatz/py_dss_interface/issues/4
-    def variables_values(self) -> List[float]:
+    def _variables_values(self) -> List[float]:
         """Delivers a Variant array of doubles listing all the values of the state variables, if the active circuit
         element is a PCElement. Otherwise, null string."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 16, None, '')
 
-    def node_order(self) -> List[int]:
+    def _node_order(self) -> List[int]:
         """Delivers a Variant array integers variant array of integer containing the node numbers (representing phases,
         for Example) for each conductor of each terminal."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 17, None, '')
 
-    def currents_mag_ang(self) -> List[float]:
+    def _currents_mag_ang(self) -> List[float]:
         """Delivers the currents in magnitude, angle format as a variant array of doubles of the active circuit
         element. """
         return Bridge.var_array_function(self.dss_obj.CktElementV, 18, None, '')
 
-    def voltages_mag_ang(self) -> List[float]:
+    def _voltages_mag_ang(self) -> List[float]:
         """Delivers the voltages in magnitude, angle format as a variant array of doubles of the active circuit
         element. """
         return Bridge.var_array_function(self.dss_obj.CktElementV, 19, None, '')
