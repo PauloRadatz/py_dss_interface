@@ -18,34 +18,34 @@ class CktElementS(Base):
     Parameter, which can be one of the following.
     """
 
-    def name(self) -> str:
+    def _name(self) -> str:
         """Delivers the full name of the active circuit element."""
         result = ctypes.c_char_p(self.dss_obj.CktElementS(0, 0))
         return result.value.decode('ascii')
 
-    def display_read(self) -> str:
+    def _display(self) -> str:
         """Displays the name of the active circuit element (not necessarily unique)."""
         result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(1), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def display_write(self, argument: str) -> str:
+    def _display_write(self, argument: str) -> str:
         """Allows to modify the name of the active circuit element (not necessarily unique)."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     # TODO include in test
-    def guid(self) -> str:
+    def _guid(self) -> str:
         """Delivers the unique name for the active circuit element."""
         result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(3), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def energymeter(self) -> str:
+    def _energymeter(self) -> str:
         """Delivers the name of the EnergyMeter linked to the active circuit element."""
         result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def controller(self, argument: str) -> str:
+    def _controller(self, argument: str) -> str:
         """Delivers the Full name of the i-th controller attached to the active circuit element.
         The i-th controller index must be specified in the argument arg. Ex: Str = Controller(2).
         See NumControls to determine valid index range."""
