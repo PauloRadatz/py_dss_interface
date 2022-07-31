@@ -4,7 +4,7 @@
 """
 import os
 import json
-from py_dss_interface import DSSDLL as DSS
+from py_dss_interface import DSS as DSS
 
 
 class Case:

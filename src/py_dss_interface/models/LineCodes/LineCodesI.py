@@ -26,23 +26,23 @@ class LineCodesI(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def linecodes_count(self) -> int:
+    def count(self) -> int:
         """Gets the number of Line Objects in Active Circuit."""
         return self.dss_obj.LineCodesI(ctypes.c_int32(0), ctypes.c_int32(0))
 
-    def linecodes_first(self) -> int:
+    def first(self) -> int:
         """Sets the first element active. Returns 0 if no lines. Otherwise, index of the line element."""
         return self.dss_obj.LineCodesI(ctypes.c_int32(1), ctypes.c_int32(0))
 
-    def linecodes_next(self) -> int:
+    def next(self) -> int:
         """Sets the next element active. Returns 0 if no lines. Otherwise, index of the line element."""
         return self.dss_obj.LineCodesI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def linecodes_read_units(self) -> int:
+    def units_read(self) -> int:
         """Delivers the units of the active LineCode as an integer."""
         return self.dss_obj.LineCodesI(ctypes.c_int32(3), ctypes.c_int32(0))
 
-    def linecodes_write_units(self, argument: int) -> int:
+    def units_write(self, argument: int) -> int:
         """Sets the units of the active LineCode. The units must be specified as an integer in the argument.
         Please refer to the OpenDSS User manual for more information.
         UNITS_MAXNUM =9;
@@ -59,15 +59,15 @@ class LineCodesI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.LineCodesI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
-    def linecodes_read_phases(self) -> int:
+    def phases_read(self) -> int:
         """Delivers the number of phases of the active LineCode as an integer."""
         return self.dss_obj.LineCodesI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def linecodes_write_phases(self, argument) -> int:
+    def phases_write(self, argument) -> int:
         """Sets the number of phases of the active LineCode. The units must be specified as an integer in the
         argument. """
         return self.dss_obj.LineCodesI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
-    def linecodes_is_z1z0(self) -> int:
+    def is_z1z0(self) -> int:
         """Gets the flag (Boolean 1/0) denoting whether the impedance data were entered in symmetrical components."""
         return self.dss_obj.LineCodesI(ctypes.c_int32(7), ctypes.c_int32(0))

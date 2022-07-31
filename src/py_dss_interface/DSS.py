@@ -4,7 +4,7 @@ import json
 import os
 import pathlib
 
-from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement
+from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, Base
 from . import DSSExecutive, DSSInterface, DSSProgress, DSSProperties, ErrorOpenDSS, Fuses, Generators, ISources
 from . import LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reclosers
 from . import Relays, RegControls, Sensors, Settings, Solution, SwtControls, Text, Topology, Transformers, VSources
@@ -15,18 +15,10 @@ DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
 
 
-class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement,
-             DSSExecutive, DSSInterface, DSSProgress, DSSProperties, ErrorOpenDSS, Fuses, Generators, Lines, Loads,
-             ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reclosers,
-             Relays, RegControls, Sensors, Settings, Solution, SwtControls, Text, Topology, Transformers, VSources,
-             XYCurves):
-    dll_folder: str
-    dll_path: str
-    my_dss_version: ctypes.c_char_p
-    dss_obj: ctypes.cdll
-    started = False
-    memory_commands = []
-    class_commands = []
+class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, DSSProperties,
+          ErrorOpenDSS, Fuses, Generators, Lines, Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel,
+          Parser, PDElements, PVSystems, Reclosers, Relays, RegControls, Sensors, Settings, Solution, SwtControls,
+          Topology, Transformers, VSources, XYCurves):
 
     # TODO need to be able to get different dll names:
     #  https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
@@ -37,7 +29,9 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
         :param dll_folder_param: None will use the OpenDSS available within the package. The dll path allows to use a
         different OpenDSS
         """
+        self.my_dss_version = None
         self.started = False
+        self.memory_commands = []
         if dll_folder_param is not None and dll_by_user is not None:
             os.chdir(dll_folder_param)
             self.dss_obj = ctypes.cdll.LoadLibrary(os.path.join(dll_folder_param, dll_by_user))
@@ -61,6 +55,16 @@ class DSSDLL(ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMa
             self._allocate_memory()
 
             if self.check_started():
+                self.base = Base(self.dss_obj)
+
+                self.active_class = ActiveClass(self.dss_obj)
+                self.bus = Bus(self.dss_obj)
+                self.capcontrols = CapControls(self.dss_obj)
+                self.capacitors = Capacitors(self.dss_obj)
+                self.circuit = Circuit(self.dss_obj)
+                self.cktelement = CktElement(self.dss_obj)
+                self.cmathlib = CMathLib(self.dss_obj)
+
                 print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
 
             else:

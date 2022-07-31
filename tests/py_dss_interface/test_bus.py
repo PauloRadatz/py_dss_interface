@@ -2,7 +2,7 @@
 # @Time    : 6/22/2021 5:48 PM
 # @Author  : Paulo Radatz
 # @Email   : pradatz@epri.com
-# @File    : test_bus.py
+# @File    : test.py
 # @Software: PyCharm
 
 import pytest
@@ -14,190 +14,195 @@ class TestBus13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.circuit_set_active_bus('692')
+        dss.circuit.activate_bus('692')
 
         return dss
 
-    def test_bus_num_nodes(self, dss):
+    def test_num_nodes(self, dss):
         expected = 3
-        actual = dss.bus_num_nodes()
+        actual = dss.bus.num_nodes
         assert actual == expected
 
-    def test_bus_zsc_refresh(self, dss):
+    def test_zsc_refresh(self, dss):
         expected = 1
-        actual = dss.bus_zsc_refresh()
+        actual = dss.bus.zsc_refresh
         assert actual == expected
 
-    def test_bus_coord_defined(self, dss):
+    def test_coord_defined(self, dss):
         expected = 1
-        actual = dss.bus_coord_defined()
+        actual = dss.bus.coord_defined
         assert actual == expected
 
-    def test_bus_get_unique_node_number(self, dss):
+    def test_get_unique_node_number(self, dss):
         expected = 4
-        actual = dss.bus_get_unique_node_number(1)
+        actual = dss.bus.unique_node_number
         assert actual == expected
 
-    def test_bus_total_customers(self, dss):
+    def test_get_unique_node_number_specific_value(self, dss):
+        expected = 3
+        actual = dss.bus.unique_node_number = 3
+        assert actual == expected
+
+    def test_total_customers(self, dss):
         dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
         dss.text("Relcalc restore=n")
         expected = 3
-        actual = dss.bus_total_customers()
+        actual = dss.bus.total_customers
         assert actual == expected
 
-    def test_bus_section_id(self, dss):
+    def test_section_id(self, dss):
         # TODO returns one for every bus
         dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
         dss.text("Relcalc restore=n")
         expected = 1
-        actual = dss.bus_section_id()
+        actual = dss.bus.section_id
         assert actual == expected
 
-    def test_bus_kv_base(self, dss):
+    def test_kv_base(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = round(2.4017771198288433, 4)
-            actual = round(dss.bus_kv_base(), 4)
+            actual = round(dss.bus.kv_base, 4)
             assert actual == expected
 
-    def test_bus_read_x(self, dss):
+    def test_read_x(self, dss):
         expected = 250
-        actual = dss.bus_read_x()
+        actual = dss.bus.x
         assert actual == expected
 
         expected = 35.921882
-        dss.bus_write_x(expected)
-        actual = dss.bus_read_x()
+        dss.bus.x = expected
+        actual = dss.bus.x
         assert actual == expected
 
-    def test_bus_read_y(self, dss):
+    def test_read_y(self, dss):
         expected = 100
-        actual = dss.bus_read_y()
+        actual = dss.bus.y
         assert actual == expected
 
         expected = -84.141987
-        dss.bus_write_y(expected)
-        actual = dss.bus_read_y()
+        dss.bus.y = expected
+        actual = dss.bus.y
         assert actual == expected
 
-    def test_bus_distance(self, dss):
+    def test_distance(self, dss):
         expected = 1.2202
-        actual = dss.bus_distance()
+        actual = dss.bus.distance
         assert actual == expected
 
-    def test_bus_lambda(self, dss):
+    def test_lambda(self, dss):
         dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
         dss.text("Relcalc restore=n")
         expected = 10
-        actual = dss.bus_lambda()
+        actual = dss.bus.bus_lambda
         assert actual == expected
 
-    def test_bus_interruptions_num(self, dss):
+    def test_interruptions_num(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
             dss.text("Relcalc restore=n")
             expected = 164.00002
-            actual = dss.bus_interruptions_num()
+            actual = dss.bus.interruptions_num
             assert actual == expected
 
-    def test_bus_interruptions_avg_duration(self, dss):
+    def test_interruptions_avg_duration(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
             dss.text("Relcalc restore=n")
             expected = 3.0000000000000004
-            actual = dss.bus_interruptions_avg_duration()
+            actual = dss.bus.interruptions_avg_duration
             assert actual == expected
 
-    def test_bus_interruptions_total_customers(self, dss):
+    def test_interruptions_total_customers(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
             dss.text("Relcalc restore=n")
             expected = 1968.0002400000003
-            actual = dss.bus_interruptions_total_customers()
+            actual = dss.bus.interruptions_total_customers
             assert actual == expected
 
-    def test_bus_outage_customer_accum_duration(self, dss):
+    def test_outage_customer_accum_duration(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
             dss.text("Relcalc restore=n")
             expected = 1968.0002400000003
-            actual = dss.bus_outage_customer_accum_duration()
+            actual = dss.bus.outage_customer_accum_duration
             assert actual == expected
 
-    def test_bus_line_total_miles(self, dss):
+    def test_line_total_miles(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
             dss.text("Relcalc restore=n")
             expected = 0.0946969696969697
-            actual = dss.bus_line_total_miles()
+            actual = dss.bus.line_total_miles
             assert actual == expected
 
-    def test_bus_read_latitude(self, dss):
+    def test_read_latitude(self, dss):
         expected = 0
-        actual = dss.bus_read_latitude()
+        actual = dss.bus.latitude
         assert actual == expected
 
         expected = 35.921882
-        dss.bus_write_latitude(expected)
-        actual = dss.bus_read_latitude()
+        dss.bus.latitude = expected
+        actual = dss.bus.latitude
         assert actual == expected
 
-    def test_bus_read_longitude(self, dss):
+    def test_read_longitude(self, dss):
         expected = 0
-        actual = dss.bus_read_longitude()
+        actual = dss.bus.longitude
         assert actual == expected
 
         expected = -84.141987
-        dss.bus_write_longitude(expected)
-        actual = dss.bus_read_longitude()
+        dss.bus.longitude = expected
+        actual = dss.bus.longitude
         assert actual == expected
 
-    def test_bus_name(self, dss):
+    def test_name(self, dss):
         expected = "692"
-        actual = dss.bus_name()
+        actual = dss.bus.name
         assert actual == expected
 
-    def test_bus_voltages(self, dss):
+    def test_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [2350.0787629180386, -221.07964093085243, -1338.4031344410694, -2109.8005600677147,
                         -1015.4071496666263, 2083.115713199055]
-            actual = dss.bus_voltages()
+            actual = dss.bus.voltages
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_seq_voltages(self, dss):
+    def test_seq_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [82.59752865884842, 2391.5781244654136, 42.2125249966211]
-            actual = dss.bus_seq_voltages()
+            actual = dss.bus.seq_voltages
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_nodes(self, dss):
+    def test_nodes(self, dss):
         expected = [1, 2, 3]
-        actual = dss.bus_nodes()
+        actual = dss.bus.nodes
         assert actual == expected
 
-    def test_bus_voc(self, dss):
+    def test_voc(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("solve mode=faultstudy")
             expected = [-1015.4300936882696, 2083.1333886098464, 2350.084451419252, -221.06489668658924,
                         -1338.4058896357694, -2109.7912876883593]
-            actual = dss.bus_voc()
+            actual = dss.bus.voc
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_isc(self, dss):
+    def test_isc(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("solve mode=faultstudy")
             expected = [3152.0299371281603, 3631.3058759243054, 2198.661801411833, -5249.483826338779,
                         -5239.348623560714, 1851.7201039001266]
-            actual = dss.bus_isc()
+            actual = dss.bus.isc
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_pu_voltages(self, dss):
+    def test_pu_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.9784749565294848, -0.09204835832002893, -0.5572553437166756, -0.8784331163159987,
                         -0.4227732628825221, 0.8673226570446733]
-            actual = dss.bus_pu_voltages()
+            actual = dss.bus.pu_voltages
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_zsc_matrix(self, dss):
+    def test_zsc_matrix(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("solve mode=faultstudy")
             expected = [0.3153473369693269,
@@ -218,24 +223,24 @@ class TestBus13Bus:
                         0.34358501078677667,
                         0.2982018705768556,
                         0.7564753107317581]
-            actual = dss.bus_zsc_matrix()
+            actual = dss.bus.zsc_matrix
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_zsc1(self, dss):
+    def test_zsc1(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("solve mode=faultstudy")
             expected = [0.16118779073342565, 0.42342339346722063]
-            actual = dss.bus_zsc1()
+            actual = dss.bus.zsc1
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_zsc0(self, dss):
+    def test_zsc0(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("solve mode=faultstudy")
             expected = [0.6113010201571722, 1.3170783169496814]
-            actual = dss.bus_zsc0()
+            actual = dss.bus.zsc0
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_ysc_matrix(self, dss):
+    def test_ysc_matrix(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("solve mode=faultstudy")
             expected = [0.593677975565496,
@@ -256,10 +261,10 @@ class TestBus13Bus:
                         0.6193548592255311,
                         0.5768761487247634,
                         -1.5739302565597302]
-            actual = dss.bus_ysc_matrix()
+            actual = dss.bus.ysc_matrix
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_cplx_sequence_voltages(self, dss):
+    def test_cplx_sequence_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [-1.2438403965520592,
                         -82.58816259983746,
@@ -267,10 +272,10 @@ class TestBus13Bus:
                         -162.48664862831083,
                         -34.729368969132395,
                         23.995170297295772]
-            actual = dss.bus_cplx_sequence_voltages()
+            actual = dss.bus.cplx_sequence_voltages
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_vll(self, dss):
+    def test_vll(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [3688.481897359108,
                         1888.7209191368622,
@@ -278,10 +283,10 @@ class TestBus13Bus:
                         -4192.91627326677,
                         -3365.485912584665,
                         2304.195354129907]
-            actual = dss.bus_vll()
+            actual = dss.bus.vll
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_pu_vll(self, dss):
+    def test_pu_vll(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.8866543022497856,
                         0.4540194517155919,
@@ -289,10 +294,10 @@ class TestBus13Bus:
                         -1.0079125656891275,
                         -0.8090110366790061,
                         0.5538931139735354]
-            actual = dss.bus_pu_vll()
+            actual = dss.bus.pu_vll
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_vmag_angle(self, dss):
+    def test_vmag_angle(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [2360.454701864133,
                         -5.374186258749673,
@@ -300,10 +305,10 @@ class TestBus13Bus:
                         -122.38998951620508,
                         2317.4172594012734,
                         115.98674983388848]
-            actual = dss.bus_vmag_angle()
+            actual = dss.bus.vmag_angle
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_pu_vmag_angle(self, dss):
+    def test_pu_vmag_angle(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.9827950655272896,
                         -5.374186258749673,
@@ -311,20 +316,20 @@ class TestBus13Bus:
                         -122.38998951620508,
                         0.9648760662548149,
                         115.98674983388848]
-            actual = dss.bus_pu_vmag_angle()
+            actual = dss.bus.vmag_angle_pu
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_line_list(self, dss):
+    def test_line_list(self, dss):
         expected = ['LINE.692675', 'LINE.671692']
-        actual = dss.bus_line_list()
+        actual = dss.bus.line_list
         assert actual == expected
 
-    def test_bus_load_list(self, dss):
+    def test_load_list(self, dss):
         expected = ['LOAD.692']
-        actual = dss.bus_load_list()
+        actual = dss.bus.load_list
         assert actual == expected
 
-    def test_bus_axc_012_matrix(self, dss):
+    def test_axc_012_matrix(self, dss):
         if platform.architecture()[0] == "64bit":
             dss.text("solve mode=faultstudy")
             expected = [0.6113010201571724,
@@ -345,15 +350,15 @@ class TestBus13Bus:
                         0.04168470714773151,
                         0.161187790758672,
                         0.4234233934675475]
-            actual = dss.bus_axc_012_matrix()
+            actual = dss.bus.axc_012_matrix
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_bus_all_pce_active_bus(self, dss):
+    def test_all_pce_active_bus(self, dss):
         expected = ['Load.692']
-        actual = dss.bus_all_pce_active_bus()
+        actual = dss.bus.all_pce_active_bus
         assert actual == expected
 
-    def test_bus_all_pde_active_bus(self, dss):
+    def test_all_pde_active_bus(self, dss):
         expected = ['Line.692675', 'Line.671692']
-        actual = dss.bus_all_pde_active_bus()
+        actual = dss.bus.all_pde_active_bus
         assert actual == expected

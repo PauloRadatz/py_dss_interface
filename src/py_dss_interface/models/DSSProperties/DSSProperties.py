@@ -21,13 +21,13 @@ class DSSProperties(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def dssproperties_name(self, argument: str) -> str:
+    def name(self, argument: str) -> str:
         """Delivers the name of the active property. The index of the property must be specified in the argument.
         The index minimum value is 1. This value must be entered as string."""
         result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(0), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def dssproperties_description(self, argument: str) -> str:
+    def description(self, argument: str) -> str:
         """This parameter will deliver the description of the active property. This parameter will deliver the name of
         the active property. The index of the property must be specified in the argument. The index minimum value is
         1. This value must be entered as string.
@@ -38,7 +38,7 @@ class DSSProperties(Base):
         result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def dssproperties_read_value(self, argument: str) -> str:
+    def value_read(self, argument: str) -> str:
         """This parameter will deliver the value of the active property. This parameter will deliver the name of the
         active property. The index of the property must be specified in the argument. The index minimum value is 1.
         This value must be entered as string.
@@ -50,7 +50,7 @@ class DSSProperties(Base):
         return result.value.decode('ascii')
 
     # TODO include in test
-    def dssproperties_write_value(self, argument: str) -> str:
+    def value_write(self, argument: str) -> str:
         """This parameter will allow to set the value of the active property. The new value must be specified in the
         variable “argument” as string. This parameter will deliver the name of the active property. The index of the
         property must be specified in the argument. The index minimum value is 1. This value must be entered as string.

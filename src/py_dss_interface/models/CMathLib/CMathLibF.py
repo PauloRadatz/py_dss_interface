@@ -18,12 +18,14 @@ class CMathLibF(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def cmathlib_cabs(self, arg_real: float, arg_imaginary: float) -> float:
+    @staticmethod
+    def cabs(arg_real: float, arg_imaginary: float) -> float:
         """Returns the absolute value of complex number given in real (Argument1) and imaginary (Argument2) doubles."""
         c_number = complex(arg_real, arg_imaginary)
         return float(abs(c_number))
 
-    def cmathlib_cdang(self, arg_real: float, arg_imaginary: float) -> float:
+    @staticmethod
+    def cdang(arg_real: float, arg_imaginary: float) -> float:
         """Returns the angle, in degrees, of a complex number specified as two doubles: Real part (Argument1) and
         imaginary part (Argument2)."""
         c_number = complex(arg_real, arg_imaginary)

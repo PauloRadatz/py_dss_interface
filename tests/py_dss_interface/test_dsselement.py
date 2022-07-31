@@ -13,18 +13,18 @@ class TestBus13DSSElement:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.circuit_set_active_element('Line.671692')
+        dss.set_active_element('Line.671692')
 
         return dss
 
     def test_dsselement_num_properties(self, dss):
         expected = 38
-        actual = dss.dsselement_num_properties()
+        actual = dss.num_properties()
         assert actual == expected
 
     def test_dsselement_name(self, dss):
         expected = "Line.671692"
-        actual = dss.dsselement_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_dsselement_all_property_names(self, dss):
@@ -32,5 +32,5 @@ class TestBus13DSSElement:
                     'xmatrix', 'cmatrix', 'Switch', 'Rg', 'Xg', 'rho', 'geometry', 'units', 'spacing', 'wires',
                     'EarthModel', 'cncables', 'tscables', 'B1', 'B0', 'Seasons', 'Ratings', 'LineType', 'normamps',
                     'emergamps', 'faultrate', 'pctperm', 'repair', 'basefreq', 'enabled', 'like']
-        actual = dss.dsselement_all_property_names()
+        actual = dss.property_names()
         assert actual == expected

@@ -7,62 +7,62 @@ from py_dss_interface.models.Example.ExampleBase import ExampleBase
 dss = ExampleBase("13").dss
 
 # CtrlQueue
-print(f'dss.ctrlqueue_ctrlqueue(): {dss.ctrlqueue_ctrlqueue()}')
+print(f'dss.ctrlqueue_ctrlqueue(): {dss.ctrlqueue()}')
 
 # DSSElement
-print(f'dss.dsselement_allpropertynames(): {dss.dsselement_all_property_names()}')
-print(f'dss.dss_classes(): {dss.dss_classes()}')
-print(f'dss.dss_user_classes(): {dss.dss_user_classes()}')
+print(f'dss.dsselement_allpropertynames(): {dss.property_names()}')
+print(f'dss.dss_classes(): {dss.classes()}')
+print(f'dss.dss_user_classes(): {dss.user_classes()}')
 
 # Fuses
-print(f'dss.fuses_allnames(): {dss.fuses_all_names()}')
+print(f'dss.fuses_allnames(): {dss.names()}')
 
 # Generators
-print(f'dss.generators_allnames(): {dss.generators_all_names()}')
-print(f'dss.generators_registernames(): {dss.generators_register_names()}')
-print(f'dss.generators_registervalues(): {dss.generators_register_values()}')
+print(f'dss.generators_allnames(): {dss.names()}')
+print(f'dss.generators_registernames(): {dss.register_names()}')
+print(f'dss.generators_registervalues(): {dss.register_values()}')
 
 # ISources
-print(f'dss.isources_allnames(): {dss.isources_all_names()}')
+print(f'dss.isources_allnames(): {dss.names()}')
 
 # LineCodes
-print(f'dss.linecodes_read_rmatrix(): {dss.linecodes_read_rmatrix()}')
+print(f'dss.linecodes_read_rmatrix(): {dss.rmatrix_read()}')
 rmatrix = "[0.791721 | 0.318476 0.781649 | 0.28345, 0.318476, 0.791721]"
-print(f'dss.linecodes_write_rmatrix(): {dss.linecodes_write_rmatrix(rmatrix)}')
-print(f'dss.linecodes_read_rmatrix(): {dss.linecodes_read_rmatrix()}')
+print(f'dss.linecodes_write_rmatrix(): {dss.rmatrix_write(rmatrix)}')
+print(f'dss.linecodes_read_rmatrix(): {dss.rmatrix_read()}')
 
-print(f'dss.linecodes_read_xmatrix(): {dss.linecodes_read_xmatrix()}')
+print(f'dss.linecodes_read_xmatrix(): {dss.xmatrix_read()}')
 xmatrix = "[0.438352  |0.0276838  0.396697  |-0.0184204  0.0276838  0.438352  ]"
-print(f'dss.linecodes_write_xmatrix(): {dss.linecodes_write_xmatrix(xmatrix)}')
-print(f'dss.linecodes_read_xmatrix(): {dss.linecodes_read_xmatrix()}')
+print(f'dss.linecodes_write_xmatrix(): {dss.xmatrix_write(xmatrix)}')
+print(f'dss.linecodes_read_xmatrix(): {dss.xmatrix_read()}')
 
-print(f'dss.linecodes_read_cmatrix(): {dss.linecodes_read_cmatrix()}')
+print(f'dss.linecodes_read_cmatrix(): {dss.cmatrix_read()}')
 cmatrix = "[257 | 0 257 | 0 0 257]"
-print(f'dss.linecodes_write_cmatrix(): {dss.linecodes_write_cmatrix(cmatrix)}')
-print(f'dss.linecodes_read_cmatrix(): {dss.linecodes_read_cmatrix()}')
+print(f'dss.linecodes_write_cmatrix(): {dss.cmatrix_write(cmatrix)}')
+print(f'dss.linecodes_read_cmatrix(): {dss.cmatrix_read()}')
 
-print(f'dss.linecodes_allnames(): {dss.linecodes_all_names()}')
+print(f'dss.linecodes_allnames(): {dss.names()}')
 
 # Lines
-print(f'dss.lines_allnames(): {dss.lines_all_names()}')
+print(f'dss.lines_allnames(): {dss.names()}')
 
-print(f'dss.lines_read_rmatrix(): {dss.lines_read_rmatrix()}')
-print(f'dss.lines_write_rmatrix(): {dss.lines_write_rmatrix(rmatrix)}')
-print(f'dss.lines_read_rmatrix(): {dss.lines_read_rmatrix()}')
+print(f'dss.lines_read_rmatrix(): {dss.rmatrix_read()}')
+print(f'dss.lines_write_rmatrix(): {dss.rmatrix_write(rmatrix)}')
+print(f'dss.lines_read_rmatrix(): {dss.rmatrix_read()}')
 
-print(f'dss.lines_read_rmatrix(): {dss.lines_read_cmatrix()}')
-print(f'dss.lines_write_cmatrix(): {dss.lines_write_cmatrix(cmatrix)}')
-print(f'dss.lines_read_rmatrix(): {dss.lines_read_cmatrix()}')
+print(f'dss.lines_read_rmatrix(): {dss.cmatrix_read()}')
+print(f'dss.lines_write_cmatrix(): {dss.cmatrix_write(cmatrix)}')
+print(f'dss.lines_read_rmatrix(): {dss.cmatrix_read()}')
 
-print(f'dss.lines_read_yprim(): {dss.lines_read_yprim()}')
+print(f'dss.lines_read_yprim(): {dss.yprim_read()}')
 
 # Loads
 print()
-print(f'dss.loads_allnames(): {dss.loads_all_names()}')
-print(f'dss.loads_read_zipv(): {dss.loads_read_zipv()}')
+print(f'dss.loads_allnames(): {dss.names()}')
+print(f'dss.loads_read_zipv(): {dss.zipv_read()}')
 zipv = "[0 1 2 3 4 5 6]"
-print(f'dss.loads_write_zipv(): {dss.loads_write_zipv(zipv)}')
-print(f'dss.loads_read_zipv(): {dss.loads_read_zipv()}')
+print(f'dss.loads_write_zipv(): {dss.zipv_write(zipv)}')
+print(f'dss.loads_read_zipv(): {dss.zipv_read()}')
 
 # LoadShapes
 # print()
