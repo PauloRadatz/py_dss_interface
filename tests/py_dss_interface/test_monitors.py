@@ -23,7 +23,7 @@ class TestMonitors13Bus:
             "0.41000000 0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 1.45000005 1.62000000 "
             "1.88999999 1.79999995 1.78999996 1.19000006 0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 "
             "0.23000000)")
-        dss.loads_write_daily("1")
+        dss.daily_write("1")
         dss.text("New monitor.m1 element=Transformer.XFM1 terminal=1 mode=0")
         dss.text(f"Set DataPath={path}")
         dss.text("Set maxcontrol=100")

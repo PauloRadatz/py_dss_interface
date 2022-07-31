@@ -25,15 +25,15 @@ class LinesV(Base):
 
     """
 
-    def lines_all_names(self) -> str:
+    def names(self) -> str:
         """Gets the name of all Line Objects."""
         return Bridge.var_array_function(self.dss_obj.LinesV, 0, None, '')
 
-    def lines_read_rmatrix(self):
+    def rmatrix_read(self):
         """Gets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
         return Bridge.var_array_function(self.dss_obj.LinesV, 1, None, '')
 
-    def lines_write_rmatrix(self, argument) -> str:
+    def rmatrix_write(self, argument) -> str:
         """Sets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
         # argument = Base.check_string_param(argument)
         # t = Text(self.dss_obj)
@@ -43,42 +43,42 @@ class LinesV(Base):
 
         return Bridge.var_array_function(self.dss_obj.LinesV, 2, None, argument)
 
-    def lines_read_xmatrix(self) -> List[float]:
+    def xmatrix_read(self) -> List[float]:
         """Gets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
         return Bridge.var_array_function(self.dss_obj.LinesV, 3, None, '')
 
-    def lines_write_xmatrix(self, argument) -> str:
+    def xmatrix_write(self, argument) -> str:
         """Sets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
         lc = Lines.LinesS(self.dss_obj)
-        lc_name = lc.lines_read_name()
+        lc_name = lc.name_read()
         return t.text(f'edit Line.{lc_name} Xmatrix = {argument}')
 
     # TODO include in test
-    def lines_read_cmatrix(self) -> str:
+    def cmatrix_read(self) -> str:
         """Gets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
         return Bridge.var_array_function(self.dss_obj.LinesV, 5, None, '')
 
     # TODO include in test
-    def lines_write_cmatrix(self, argument) -> int:
+    def cmatrix_write(self, argument) -> int:
         """Sets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
         lc = Lines.LinesS(self.dss_obj)
-        lc_name = lc.lines_read_name()
+        lc_name = lc.name_read()
         return t.text(f'edit Line.{lc_name} Cmatrix = {argument}')
 
-    def lines_read_yprim(self) -> str:
+    def yprim_read(self) -> str:
         """Gets the YPrimitive of the active Line."""
         return Bridge.var_array_function(self.dss_obj.LinesV, 7, None, '')
 
     # TODO include in test
-    def lines_write_yprim(self, argument) -> str:
+    def yprim_write(self, argument) -> str:
         """
-        According the oficial documentation this parameter does nothing at present.
+        According to the official documentation this parameter does nothing at present.
         """
-        return "According the oficial documentation this parameter does nothing at present."
+        return "According the official documentation this parameter does nothing at present."
         # Below we can see a possible future implementation
         # argument = Base.check_string_param(argument)
         # t = Text(self.dss_obj)

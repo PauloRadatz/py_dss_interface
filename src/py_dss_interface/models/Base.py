@@ -33,15 +33,18 @@ class Base:
         second = Base.check_float_param(second)
         return float(self.dss_obj.type(self).__name__(ctypes.c_int32(first), ctypes.c_double(second)))
 
+    def get_dss_obj(self):
+        return self.dss_obj
+
     @classmethod
     def check_assertion_result(cls, param: int, message_1: Optional[str] = None, message_2: Optional[str] = None,
                                expected_value=0) -> None:
         """
-            Check if the method converges to a expected result.
+            Check if the method converges to an expected result.
             :param param: value compared
             :param expected_value value expected, most cases is 0 but in others could be 1
             :param message_1: a generic message if assertion fails
-            :param message_2: a more especific message could be appear when AsserionError raise
+            :param message_2: a more specific message could be appeared when AssertionError raise
             :return:
             """
         if not isinstance(expected_value, int):
@@ -54,7 +57,7 @@ class Base:
     @classmethod
     def check_int_param(cls, param: int, default=0) -> int:
         """
-        Check if the parameter is a int and if it exists. If not exist or if it isn't a int it will be 0.
+        Check if the parameter is a int and if it exists. If not exist or if it isn't an int it will be 0.
         :param default: self explained
         :param param: any int number
         """
