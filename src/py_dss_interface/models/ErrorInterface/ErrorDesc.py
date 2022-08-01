@@ -19,7 +19,7 @@ class ErrorDesc(Base):
 
     # TODO include in test
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/12
-    def desc(self) -> str:
+    def error_desc(self) -> str:
         """
         This interface returns a string with description of the latest error code delivered by OpenDSS.
         """
