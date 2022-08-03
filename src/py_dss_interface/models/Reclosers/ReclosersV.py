@@ -17,10 +17,10 @@ class ReclosersV(Base):
     which can be one of the following.
     """
 
-    def reclosers_all_names(self):
+    def all_names(self):
         """Gets a variant array of strings with names of all reclosers in active circuit."""
         return Bridge.var_array_function(self.dss_obj.ReclosersV, ctypes.c_int(0), ctypes.c_int(0), None)
 
-    def reclosers_reclose_intervals(self):
+    def reclose_intervals(self):
         """Gets a variant array of doubles: reclose intervals (s) between shots."""
         return Bridge.var_array_function(self.dss_obj.ReclosersV, ctypes.c_int(1), ctypes.c_int(0), None)

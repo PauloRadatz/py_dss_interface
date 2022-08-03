@@ -17,7 +17,7 @@ DLL_NAME_LINUX = "libopendssdirect.so"
 
 class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, ErrorOpenDSS, Fuses, Generators, Lines,
           Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel,
-          Parser, PDElements, PVSystems, Reclosers, Relays, RegControls, Settings, Solution, SwtControls,
+          Parser, PDElements, PVSystems, Relays, RegControls, Settings, Solution, SwtControls,
           Topology, Transformers, VSources, XYCurves):
 
     # TODO need to be able to get different dll names:
@@ -66,6 +66,7 @@ class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, 
                 self.cmathlib = CMathLib(self.dss_obj)
                 self.dssproperties = DSSProperties(self.dss_obj)
                 self.sensors = Sensors(self.dss_obj)
+                self.reclosers = Reclosers(self.dss_obj)
 
                 print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
 
