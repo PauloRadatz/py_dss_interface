@@ -24,7 +24,7 @@ class TestRelays13Bus:
                  r"                PhaseTrip=800 "
                  r"                GroundTrip=250")
         dss.solution_solve()
-        dss.relays_write_name("test1")
+        dss.relays.name = "test1"
 
         return dss
 
@@ -33,50 +33,50 @@ class TestRelays13Bus:
     # ===================================================================
     def test_relays_count(self, dss):
         expected = 2
-        actual = dss.relays_count()
+        actual = dss.relays.count
         assert actual == expected
 
     def test_relays_first(self, dss):
         expected = 1
-        actual = dss.relays_first()
+        actual = dss.relays.first
         assert actual == expected
 
     def test_relays_next(self, dss):
         expected = 2
-        actual = dss.relays_next()
+        actual = dss.relays.next
         assert actual == expected
 
     def test_relays_read_monitored_term(self, dss):
         expected = 1
-        actual = dss.relays_read_monitored_term()
+        actual = dss.relays.monitored_term
         assert actual == expected
 
     def test_relays_write_monitored_term(self, dss):
         expected = 2
-        dss.relays_write_monitored_term(expected)
-        actual = dss.relays_read_monitored_term()
+        dss.relays.monitored_term = expected
+        actual = dss.relays.monitored_term
         assert actual == expected
 
     def test_relays_read_switched_term(self, dss):
         exptected = 1
-        actual = dss.relays_read_switched_term()
+        actual = dss.relays.switched_term
         assert exptected == actual
 
     def test_relays_write_switched_term(self, dss):
         expected = 2
-        dss.relays_write_switched_term(expected)
-        actual = dss.relays_read_switched_term()
+        dss.relays.switched_term = expected
+        actual = dss.relays.switched_term
         assert actual == expected
 
     def test_relays_read_idx(self, dss):
         expected = 1
-        actual = dss.relays_read_idx()
+        actual = dss.relays.idx
         assert actual == expected
 
     def test_relays_write_idx(self, dss):
         expected = 2
-        dss.relays_write_idx(expected)
-        actual = dss.relays_read_idx()
+        dss.relays.idx = expected
+        actual = dss.relays.idx
         assert actual == expected
 
     # ===================================================================
@@ -84,35 +84,35 @@ class TestRelays13Bus:
     # ===================================================================
     def test_relays_read_name(self, dss):
         expected = "test1"
-        actual = dss.relays_read_name()
+        actual = dss.relays.name
         assert actual == expected
 
     def test_relays_write_name(self, dss):
         expected = "test2"
-        dss.relays_write_name(expected)
-        actual = dss.relays_read_name()
+        dss.relays.name = expected
+        actual = dss.relays.name
         assert actual == expected
 
     def test_relays_read_monitored_obj(self, dss):
         expected = "line.650632"
-        actual = dss.relays_read_monitored_obj()
+        actual = dss.relays.monitored_obj
         assert actual == expected
 
     def test_relays_write_monitored_obj(self, dss):
         expected = "line.632645"
-        dss.relays_write_monitored_obj(expected)
-        actual = dss.relays_read_monitored_obj()
+        dss.relays.monitored_obj = expected
+        actual = dss.relays.monitored_obj
         assert actual == expected
 
     def test_relays_read_switched_obj(self, dss):
         expected = "line.650632"
-        actual = dss.relays_read_switched_obj()
+        actual = dss.relays.switched_obj
         assert actual == expected
 
     def test_relays_write_switched_obj(self, dss):
         expected = "line.632645"
-        dss.relays_write_switched_obj(expected)
-        actual = dss.relays_read_switched_obj()
+        dss.relays.switched_obj = expected
+        actual = dss.relays.switched_obj
         assert actual == expected
 
     # ===================================================================
@@ -120,5 +120,5 @@ class TestRelays13Bus:
     # ===================================================================
     def test_relays_all_names(self, dss):
         expected = ["test1", "test2"]
-        actual = dss.relays_all_names()
+        actual = dss.relays.all_names
         assert actual == expected
