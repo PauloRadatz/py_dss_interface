@@ -20,86 +20,86 @@ class LoadsS(Base):
     Reading and writing properties are separated and require a different parameter number to be executed.
     """
 
-    def name_read(self) -> str:
+    def _name(self) -> str:
         """Allows to read the Name property of the active load. The parameter argument can be filled with an empty
         string. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def name_write(self, argument) -> str:
+    def _name_write(self, argument) -> str:
         """allows to set the active load by specifying the Name load. The parameter argument must contain the Name of
         the load to activate. The return value will be equal to empty. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def cvr_curve_read(self) -> str:
+    def _cvr_curve(self) -> str:
         """Allows to read the CVRCurve property of the active load. The parameter argument can be filled with an
         empty string. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def cvr_curve_write(self, argument) -> str:
+    def _cvr_curve_write(self, argument) -> str:
         """Allows to set the CVRCurve property for the active load. The parameter argument must contain the Name of
         the new CVRCurve to be linked to the active load. The return value will be equal to empty. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def daily_read(self) -> str:
+    def _daily(self) -> str:
         """Allows to read the daily property of the active load. The parameter argument can be filled with an empty
         string. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def daily_write(self, argument) -> str:
+    def _daily_write(self, argument) -> str:
         """Allows to set the daily property for the active load. The parameter argument must contain the Name of the
         new daily to be linked to the active load. The return value will be equal to empty. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(5), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def duty_read(self) -> str:
+    def _duty(self) -> str:
         """Allows to read the duty property of the active load. The parameter argument can be filled with an empty
         string. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(6), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     # TODO include in test
-    def duty_write(self, argument) -> str:
+    def _duty_write(self, argument) -> str:
         """Allows to set the dduty property for the active load. The parameter argument must contain the Name of the
         new duty to be linked to the active load. The return value will be equal to empty. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(7), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def spectrum_read(self) -> str:
+    def _spectrum(self) -> str:
         """Allows to read the Spectrum property of the active load. The parameter argument can be filled with an
         empty string. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(8), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def spectrum_write(self, argument) -> str:
+    def _spectrum_write(self, argument) -> str:
         """Allows to set the Spectrum property for the active load. The parameter argument must contain the Name of
         the new Spectrum to be linked to the active load. The return value will be equal to empty. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(9), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def yearly_read(self) -> str:
+    def _yearly(self) -> str:
         """Allows to read the Yearly property of the active load. The parameter argument can be filled with an empty
         string. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(10), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def yearly_write(self, argument) -> str:
+    def _yearly_write(self, argument) -> str:
         """Allows to set the Yearly property for the active load. The parameter argument must contain the Name of the
         new Yearly to be linked to the active load. The return value will be equal to empty. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(11), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def growth_read(self) -> str:
+    def _growth(self) -> str:
         """Allows to read the Growth property of the active load. The parameter argument can be filled with an empty
         string. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(12), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def growth_write(self, argument) -> str:
+    def _growth_write(self, argument) -> str:
         """Allows to set the Growth property for the active load. The parameter argument must contain the Name of the
         new Growth to be linked to the active load. The return value will be equal to empty. """
         result = ctypes.c_char_p(self.dss_obj.DSSLoadsS(ctypes.c_int32(13), argument.encode('ascii')))
