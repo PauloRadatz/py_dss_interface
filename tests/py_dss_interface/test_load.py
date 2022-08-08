@@ -15,7 +15,8 @@ class TestLoad13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.name_write('671')
+        dss.solution_solve()
+        dss.loads.name = '671'
 
         return dss
 
@@ -24,83 +25,83 @@ class TestLoad13Bus:
     # ===================================================================
     def test_loads_count(self, dss):
         expected = 15
-        actual = dss.count()
+        actual = dss.loads.count
         assert actual == expected
 
     def test_loads_first(self, dss):
         expected = 1
-        actual = dss.first()
+        actual = dss.loads.first
         assert actual == expected
 
     def test_loads_next(self, dss):
         expected = 2
-        actual = dss.next()
+        actual = dss.loads.next
         assert actual == expected
 
     def test_loads_read_idx(self, dss):
         expected = 1
-        actual = dss.idx_read()
+        actual = dss.loads.idx
         assert actual == expected
 
     def test_loads_write_idx(self, dss):
         expected = 2
-        dss.idx_write(expected)
-        actual = dss.idx_read()
+        dss.idx = expected
+        actual = dss.loads.idx
         assert actual == expected
 
     def test_loads_read_class(self, dss):
         expected = 1
-        actual = dss.class_read()
+        actual = dss.loads.class_number
         assert actual == expected
 
     def test_loads_write_class(self, dss):
         expected = 2
-        dss.class_write(expected)
-        actual = dss.class_read()
+        dss.loads.class_number = expected
+        actual = dss.loads.class_number
         assert actual == expected
 
     def test_loads_read_model(self, dss):
         expected = 1
-        actual = dss.model_read()
+        actual = dss.loads.model
         assert actual == expected
 
     def test_loads_write_model(self, dss):
         expected = 2
-        dss.model_write(expected)
-        actual = dss.model_read()
+        dss.loads.model = expected
+        actual = dss.loads.model
         assert actual == expected
 
     def test_loads_read_num_cust(self, dss):
         expected = 1
-        actual = dss.num_cust_read()
+        actual = dss.loads.num_cust
         assert actual == expected
 
     def test_loads_write_num_cust(self, dss):
         expected = 12
-        dss.num_cust_write(expected)
-        actual = dss.num_cust_read()
+        dss.loads.num_cust = expected
+        actual = dss.loads.num_cust
         assert actual == expected
 
     def test_loads_read_status(self, dss):
         expected = 0
-        actual = dss.status_read()
+        actual = dss.loads.status
         assert actual == expected
 
     def test_loads_write_status(self, dss):
         expected = 1
-        dss.status_write(expected)
-        actual = dss.status_read()
+        dss.loads.status = expected
+        actual = dss.loads.status
         assert actual == expected
 
     def test_loads_read_is_delta(self, dss):
         expected = 1
-        actual = dss.is_delta()
+        actual = dss.loads.is_delta
         assert actual == expected
 
     def test_loads_write_is_delta(self, dss):
         expected = 0
-        dss.is_delta_write(expected)
-        actual = dss.is_delta()
+        dss.loads.is_delta = expected
+        actual = dss.loads.is_delta
         assert actual == expected
 
     # ===================================================================
@@ -108,18 +109,18 @@ class TestLoad13Bus:
     # ===================================================================
     def test_loads_read_name(self, dss):
         expected = '671'
-        actual = dss.name_read()
+        actual = dss.loads.name
         assert actual == expected
 
     def test_loads_write_name(self, dss):
         expected = '634a'
-        dss.name_write(expected)
-        actual = dss.name_read()
+        dss.loads.name = expected
+        actual = dss.loads.name
         assert actual == expected
 
     def test_loads_read_cvr_curve(self, dss):
         expected = ''
-        actual = dss.cvr_curve_read()
+        actual = dss.loads.cvr_curve
         assert actual == expected
 
     def test_loads_write_cvr_curve(self, dss):
@@ -130,13 +131,13 @@ class TestLoad13Bus:
                  "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
                  "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
         expected = 'Test'
-        dss.cvr_curve_write(expected)
-        actual = dss.cvr_curve_read()
+        dss.loads.cvr_curve = expected
+        actual = dss.loads.cvr_curve
         assert actual == expected
 
     def test_loads_read_daily(self, dss):
         expected = ''
-        actual = dss.daily_read()
+        actual = dss.loads.daily
         assert actual == expected
 
     def test_loads_write_daily(self, dss):
@@ -147,18 +148,18 @@ class TestLoad13Bus:
                  "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
                  "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
         expected = 'Test'
-        dss.daily_write(expected)
-        actual = dss.daily_read()
+        dss.loads.daily = expected
+        actual = dss.loads.daily
         assert actual == expected
 
     def test_loads_read_duty(self, dss):
         expected = ''
-        actual = dss.duty_read()
+        actual = dss.loads.duty
         assert actual == expected
 
     def test_loads_read_spectrum(self, dss):
         expected = 'defaultload'
-        actual = dss.spectrum_read()
+        actual = dss.loads.spectrum
         assert actual == expected
 
     def test_loads_write_spectrum(self, dss):
@@ -168,13 +169,13 @@ class TestLoad13Bus:
                  "%mag=(100, 1.5, 20, 14, 1, 9, 7, ) "
                  "angle=(0, 180, 180, 180, 180, 180, 180, )")
         expected = 'Test'
-        dss.spectrum_write(expected)
-        actual = dss.spectrum_read()
+        dss.loads.spectrum = expected
+        actual = dss.loads.spectrum
         assert actual == expected
 
     def test_loads_read_yearly(self, dss):
         expected = ''
-        actual = dss.yearly_read()
+        actual = dss.loads.yearly
         assert actual == expected
 
     def test_loads_write_yearly(self, dss):
@@ -185,20 +186,20 @@ class TestLoad13Bus:
                  "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
                  "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
         expected = 'Test'
-        dss.yearly_write(expected)
-        actual = dss.yearly_read()
+        dss.loads.yearly = expected
+        actual = dss.loads.yearly
         assert actual == expected
 
     def test_loads_read_growth(self, dss):
         expected = ''
-        actual = dss.growth_read()
+        actual = dss.loads.growth
         assert actual == expected
 
     def test_loads_write_growth(self, dss):
         dss.text("New GrowthShape.default npts=2 year=(1, 20, ) mult=(1.025, 1.025, )")
         expected = 'default'
-        dss.growth_write(expected)
-        actual = dss.growth_read()
+        dss.loads.growth = expected
+        actual = dss.loads.growth
         assert actual == expected
 
     # ===================================================================
@@ -206,246 +207,246 @@ class TestLoad13Bus:
     # ===================================================================
     def test_loads_read_kv(self, dss):
         expected = 4.16
-        actual = dss.kv_read()
+        actual = dss.loads.kv
         assert actual == expected
 
     def test_loads_write_kv(self, dss):
         expected = 0.48
-        dss.kv_write(expected)
-        actual = dss.kv_read()
+        dss.loads.kv = expected
+        actual = dss.loads.kv
         assert actual == expected
 
     def test_loads_read_kw(self, dss):
         expected = 1155
-        actual = dss.kw_read()
+        actual = dss.loads.kw
         assert actual == expected
 
     def test_loads_write_kw(self, dss):
         expected = 1000
-        dss.kw_write(expected)
-        actual = dss.kw_read()
+        dss.loads.kw = expected
+        actual = dss.loads.kw
         assert actual == expected
 
     def test_loads_read_kvar(self, dss):
         expected = 660
-        actual = dss.kvar_read()
+        actual = dss.loads.kvar
         assert actual == expected
 
     def test_loads_write_kvar(self, dss):
         expected = 600
-        dss.kvar_write(expected)
-        actual = dss.kvar_read()
+        dss.loads.kvar = expected
+        actual = dss.loads.kvar
         assert actual == expected
 
     def test_loads_read_pf(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = 0.8682431421244591
-            actual = dss.pf_read()
+            actual = dss.loads.pf
             assert actual == expected
 
     def test_loads_write_pf(self, dss):
         expected = 1
-        dss.pf_write(expected)
-        actual = dss.pf_read()
+        dss.loads.pf = expected
+        actual = dss.loads.pf
         assert actual == expected
 
     def test_loads_read_pct_mean(self, dss):
         expected = 50
-        actual = dss.pct_mean_read()
+        actual = dss.loads.pct_mean
         assert actual == expected
 
     def test_loads_write_pct_mean(self, dss):
         expected = 123
-        dss.pct_mean_write(expected)
-        actual = dss.pct_mean_read()
+        dss.loads.pct_mean = expected
+        actual = dss.loads.pct_mean
         assert actual == expected
 
     def test_loads_read_pct_std_dev(self, dss):
         expected = 10
-        actual = dss.pct_std_dev_read()
+        actual = dss.loads.pct_std_dev
         assert actual == expected
 
     def test_loads_write_pct_std_dev(self, dss):
         expected = 123
-        dss.pct_std_dev_write(expected)
-        actual = dss.pct_std_dev_read()
+        dss.loads.pct_std_dev = expected
+        actual = dss.loads.pct_std_dev
         assert actual == expected
 
     def test_loads_read_pct_series_rl(self, dss):
         expected = 50
-        actual = dss.rl_read()
+        actual = dss.loads.rl
         assert actual == expected
 
     def test_loads_write_pct_series_rl(self, dss):
         expected = 123
-        dss.rl_write(expected)
-        actual = dss.rl_read()
+        dss.loads.rl = expected
+        actual = dss.loads.rl
         assert actual == expected
 
     def test_loads_read_allocation_factor(self, dss):
         expected = 0.5
-        actual = dss.allocation_factor_read()
+        actual = dss.loads.allocation_factor
         assert actual == expected
 
     def test_loads_write_allocation_factor(self, dss):
         expected = 123
-        dss.allocation_factor_write(expected)
-        actual = dss.allocation_factor_read()
+        dss.loads.allocation_factor = expected
+        actual = dss.loads.allocation_factor
         assert actual == expected
 
     def test_loads_read_c_factor(self, dss):
         expected = 4
-        actual = dss.c_factor_read()
+        actual = dss.loads.c_factor
         assert actual == expected
 
     def test_loads_write_c_factor(self, dss):
         expected = 123
-        dss.c_factor_write(expected)
-        actual = dss.c_factor_read()
+        dss.loads.c_factor = expected
+        actual = dss.loads.c_factor
         assert actual == expected
 
     def test_loads_read_cvr_watts(self, dss):
         expected = 1
-        actual = dss.cvr_watts_read()
+        actual = dss.loads.cvr_watts
         assert actual == expected
 
     def test_loads_write_cvr_watts(self, dss):
         expected = 123
-        dss.cvr_watts_write(expected)
-        actual = dss.cvr_watts_read()
+        dss.loads.cvr_watts = expected
+        actual = dss.loads.cvr_watts
         assert actual == expected
 
     def test_loads_read_cvr_vars(self, dss):
         expected = 2
-        actual = dss.cvr_vars_read()
+        actual = dss.loads.cvr_vars
         assert actual == expected
 
     def test_loads_write_cvr_vars(self, dss):
         expected = 123
-        dss.cvr_vars_write(expected)
-        actual = dss.cvr_vars_read()
+        dss.loads.cvr_vars = expected
+        actual = dss.loads.cvr_vars
         assert actual == expected
 
     def test_loads_read_kva(self, dss):
         if platform.architecture()[0] == "64bit":
-            expected = (dss.kw_read() ** 2 + dss.kvar_read() ** 2) ** (1 / 2)
-            actual = dss.kva_read()
+            expected = (dss.loads.kw ** 2 + dss.loads.kvar ** 2) ** (1 / 2)
+            actual = dss.loads.kva
             assert actual == expected
 
     def test_loads_write_kva(self, dss):
         expected = 1500
-        dss.kva_write(expected)
-        actual = dss.kva_read()
+        dss.loads.kva = expected
+        actual = dss.loads.kva
         assert actual == expected
 
     def test_loads_read_kwh(self, dss):
         expected = 0
-        actual = dss.kwh_read()
+        actual = dss.loads.kwh
         assert actual == expected
 
     def test_loads_write_kwh(self, dss):
         expected = 123
-        dss.kwh_write(expected)
-        actual = dss.kwh_read()
+        dss.loads.kwh = expected
+        actual = dss.loads.kwh
         assert actual == expected
 
     def test_loads_read_kwh_days(self, dss):
         expected = 30
-        actual = dss.kwh_days_read()
+        actual = dss.loads.kwh_days
         assert actual == expected
 
     def test_loads_write_kwh_days(self, dss):
         expected = 60
-        dss.kwh_days_write(expected)
-        actual = dss.kwh_days_read()
+        dss.loads.kwh_days = expected
+        actual = dss.loads.kwh_days
         assert actual == expected
 
     def test_loads_read_r_neut(self, dss):
         expected = -1
-        actual = dss.r_neut_read()
+        actual = dss.loads.r_neut
         assert actual == expected
 
     def test_loads_write_r_neut(self, dss):
         expected = 60.0
-        dss.r_neut_write(expected)
-        actual = dss.r_neut_read()
+        dss.loads.r_neut = expected
+        actual = dss.loads.r_neut
         assert actual == expected
 
     def test_loads_read_x_neut(self, dss):
         expected = 0
-        actual = dss.x_neut_read()
+        actual = dss.loads.x_neut
         assert actual == expected
 
     def test_loads_write_x_neut(self, dss):
         expected = 60.0
-        dss.x_neut_write(expected)
-        actual = dss.x_neut_read()
+        dss.loads.x_neut = expected
+        actual = dss.loads.x_neut
         assert actual == expected
 
     def test_loads_read_vmax_pu(self, dss):
         expected = 1.05
-        actual = dss.vmax_pu_read()
+        actual = dss.loads.vmax_pu
         assert actual == expected
 
     def test_loads_write_vmax_pu(self, dss):
         expected = 1.1
-        dss.loads_write_vmax_pu(expected)
-        actual = dss.vmax_pu_read()
+        dss.loads.vmax_pu = expected
+        actual = dss.loads.vmax_pu
         assert actual == expected
 
     def test_loads_read_vmin_pu(self, dss):
         expected = 0.95
-        actual = dss.vmin_pu_read()
+        actual = dss.loads.vmin_pu
         assert actual == expected
 
     def test_loads_write_vmin_pu(self, dss):
         expected = 0.9
-        dss.vmin_pu_write(expected)
-        actual = dss.vmin_pu_read()
+        dss.loads.vmin_pu = expected
+        actual = dss.loads.vmin_pu
         assert actual == expected
 
     def test_loads_read_vmin_emerg(self, dss):
         expected = 0
-        actual = dss.vmin_emerg_read()
+        actual = dss.loads.vmin_emerg
         assert actual == expected
 
     def test_loads_write_vmin_emerg(self, dss):
         expected = 0.5
-        dss.vmin_emerg_write(expected)
-        actual = dss.vmin_emerg_read()
+        dss.loads.vmin_emerg = expected
+        actual = dss.loads.vmin_emerg
         assert actual == expected
 
     def test_loads_read_vmin_norm(self, dss):
         expected = 0
-        actual = dss.vmin_norm_read()
+        actual = dss.loads.vmin_norm
         assert actual == expected
 
     def test_loads_write_vmin_norm(self, dss):
         expected = 0.8
-        dss.vmin_norm_write(expected)
-        actual = dss.vmin_norm_read()
+        dss.loads.vmin_norm = expected
+        actual = dss.loads.vmin_norm
         assert actual == expected
 
     def test_loads_read_xfkva(self, dss):
         expected = 0
-        actual = dss.xfkva_read()
+        actual = dss.loads.xfkva
         assert actual == expected
 
     def test_loads_write_xfkva(self, dss):
         expected = 123.1
-        dss.xfkva_write(expected)
-        actual = dss.xfkva_read()
+        dss.loads.xfkva = expected
+        actual = dss.loads.xfkva
         assert actual == expected
 
     def test_loads_read_rel_weight(self, dss):
         expected = 1
-        actual = dss.rel_weight_read()
+        actual = dss.loads.rel_weight
         assert actual == expected
 
     def test_loads_write_rel_weight(self, dss):
         expected = 123.1
-        dss.rel_weight_write(expected)
-        actual = dss.rel_weight_read()
+        dss.loads.rel_weight = expected
+        actual = dss.loads.rel_weight
         assert actual == expected
 
     # ===================================================================
@@ -455,16 +456,16 @@ class TestLoad13Bus:
         expected = ['671', '634a', '634b', '634c', '645', '646', '692',
                     '675a', '675b', '675c', '611', '652', '670a', '670b',
                     '670c']
-        actual = dss.names()
+        actual = dss.loads.names
         assert actual == expected
 
     def test_loads_read_zipv(self, dss):
         expected = []
-        actual = dss.zipv_read()
+        actual = dss.loads.zipv
         assert actual == expected
 
     def test_loads_write_zipv(self, dss):
         expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
-        dss.zipv_write(str(expected))
-        actual = dss.zipv_read()
+        dss.loads.zipv = str(expected)
+        actual = dss.loads.zipv
         assert actual == expected
