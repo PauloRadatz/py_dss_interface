@@ -22,78 +22,78 @@ class LoadsI(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def first(self) -> int:
+    def _first(self) -> int:
         """Allows to set the active load into the first load registered in the active circuit. As a result,
         this property will return the number 1. The parameter argument can be filled with a 0. """
         return self.dss_obj.DSSLoads(ctypes.c_int32(0), ctypes.c_int32(0))
 
-    def next(self) -> int:
+    def _next(self) -> int:
         """Sets the active load into the next load registered in the active circuit. As a result, this property will
         deliver the index of the active load. The parameter argument can be filled with a 0. """
         return self.dss_obj.DSSLoads(ctypes.c_int32(1), ctypes.c_int32(0))
 
-    def idx_read(self) -> int:
+    def _idx(self) -> int:
         """Allows to read the index of the active load. The parameter argument can be filled with a 0."""
         return self.dss_obj.DSSLoads(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def idx_write(self, argument) -> int:
+    def _idx_write(self, argument) -> int:
         """Allows to write the index of the active load. The parameter argument must contain the index of the desired
         active load. The return value will be equal to 0."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.DSSLoads(ctypes.c_int32(3), ctypes.c_int32(argument))
 
-    def count(self) -> int:
+    def _count(self) -> int:
         """Returns the number of load elements within the active circuit. The parameter argument can be filled with a
         0. """
         return self.dss_obj.DSSLoads(ctypes.c_int32(4), ctypes.c_int32(0))
 
-    def class_read(self) -> int:
+    def _class(self) -> int:
         """Allows to read the code number used to separate loads by class or group. The parameter argument can be
         filled with a 0. """
         return self.dss_obj.DSSLoads(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def class_write(self, argument) -> int:
+    def _class_write(self, argument) -> int:
         """Allows to read the code number used to separate loads by class or group. The parameter argument can be
         filled with a 0. """
         argument = Base.check_int_param(argument)
         return self.dss_obj.DSSLoads(ctypes.c_int32(6), ctypes.c_int32(argument))
 
-    def model_read(self) -> int:
+    def _model(self) -> int:
         """Allows to read the model of the active load. The parameter argument can be filled with a 0."""
         return self.dss_obj.DSSLoads(ctypes.c_int32(7), ctypes.c_int32(0))
 
-    def model_write(self, argument) -> int:
+    def _model_write(self, argument) -> int:
         """Allows to write the model of the active load using the parameter argument. This parameter will return a 0."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.DSSLoads(ctypes.c_int32(8), ctypes.c_int32(argument))
 
-    def num_cust_read(self) -> int:
+    def _num_cust(self) -> int:
         """Allows to read the number of customer of the active load. The parameter argument can be filled with a 0."""
         return self.dss_obj.DSSLoads(ctypes.c_int32(9), ctypes.c_int32(0))
 
-    def num_cust_write(self, argument) -> int:
+    def _num_cust_write(self, argument) -> int:
         """Allows to write the number of customers of the active load using the parameter argument. This parameter
         will return a 0. """
         argument = Base.check_int_param(argument)
         return self.dss_obj.DSSLoads(ctypes.c_int32(10), ctypes.c_int32(argument))
 
-    def status_read(self) -> int:
+    def _status(self) -> int:
         """Allows to read Response to load multipliers: Fixed (growth only - 1), Exempt (no LD curve - 2), Variable (
         all - 0), of the active load. The parameter argument can be filled with a 0. """
         return self.dss_obj.DSSLoads(ctypes.c_int32(11), ctypes.c_int32(0))
 
-    def status_write(self, argument) -> int:
+    def _status_write(self, argument) -> int:
         """Allows to read Response to load multipliers: Fixed (growth only - 1), Exempt (no LD curve - 2), Variable (
         all - 0), of the active load. This parameter will return a 0. """
         argument = Base.check_int_param(argument)
         return self.dss_obj.DSSLoads(ctypes.c_int32(12), ctypes.c_int32(argument))
 
-    def is_delta(self) -> int:
+    def _is_delta(self) -> int:
         """Allows to read if the active load is connected in delta, if the answer is positive, this function will
         deliver a 1; otherwise, the answer will be 0. The parameter argument can be filled with a 0. """
         return self.dss_obj.DSSLoads(ctypes.c_int32(13), ctypes.c_int32(0))
 
-    def is_delta_write(self, argument) -> int:
+    def _is_delta_write(self, argument) -> int:
         """Allows to read if the active load is connected in delta, if the answer is positive, this function will
         deliver a 1; otherwise, the answer will be 0. This parameter will return a 0. """
         argument = Base.check_int_param(argument)
