@@ -69,6 +69,7 @@ class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, 
                 self.reclosers = Reclosers(self.dss_obj)
                 self.relays = Relays(self.dss_obj)
                 self.loads = Loads(self.dss_obj)
+                self.vsources = VSources(self.dss_obj)
 
                 print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
 
