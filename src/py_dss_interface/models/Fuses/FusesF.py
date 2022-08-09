@@ -18,23 +18,23 @@ class FusesF(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def rated_current_read(self) -> float:
+    def _rated_current(self) -> float:
         """Gets the multiplier or actual amps for the TCCcurve object. Defaults to 1.0, Multiply current values of
         TCC curve by this to get actual amps. """
         return float(self.dss_obj.FusesF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def rated_current_write(self, argument: float) -> float:
+    def _rated_current_write(self, argument: float) -> float:
         """Sets the multiplier or actual amps for the TCCcurve object. Defaults to 1.0, Multiply current values of
         TCC curve by this to get actual amps. """
         argument = Base.check_float_param(argument, 1.0)
         return float(self.dss_obj.FusesF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
-    def delay_read(self) -> float:
+    def _delay(self) -> float:
         """Gets the fixed delay time in seconds added to the fuse blowing time determined by the TCC curve. Default
         is 0. """
         return float(self.dss_obj.FusesF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def delay_write(self, argument: float) -> float:
+    def _delay_write(self, argument: float) -> float:
         """Sets the fixed delay time in seconds added to the fuse blowing time determined by the TCC curve. Default
         is 0. """
         argument = Base.check_float_param(argument, 0.0)

@@ -18,44 +18,42 @@ class FusesS(Base):
     which can be one of the following.
     """
 
-    def name_read(self) -> str:
+    def _name(self) -> str:
         """Gets the name of the active fuse."""
         result = ctypes.c_char_p(self.dss_obj.FusesS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def name_write(self, argument: str) -> str:
+    def _name_write(self, argument: str) -> str:
         """Sets the name of the active fuse."""
         result = ctypes.c_char_p(self.dss_obj.FusesS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    # TODO include in test
-    def monitored_obj_read(self) -> str:
+    def _monitored_obj(self) -> str:
         """Gets the name of the Monitored Object by the active fuse."""
         result = ctypes.c_char_p(self.dss_obj.FusesS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    # TODO include in test
-    def monitored_obj_write(self, argument: str) -> str:
+    def _monitored_obj_write(self, argument: str) -> str:
         """Sets the name of the Monitored Object by the active fuse."""
         result = ctypes.c_char_p(self.dss_obj.FusesS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def switched_obj_read(self) -> str:
+    def _switched_obj(self) -> str:
         """Gets the full name of the circuit element switch that the fuse controls. Defaults to the MonitoredObj."""
         result = ctypes.c_char_p(self.dss_obj.FusesS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def switched_obj_write(self, argument) -> str:
+    def _switched_obj_write(self, argument) -> str:
         """Sets the full name of the circuit element switch that the fuse controls. Defaults to the MonitoredObj."""
         result = ctypes.c_char_p(self.dss_obj.FusesS(ctypes.c_int32(5), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def tcc_curve_read(self) -> str:
+    def _tcc_curve(self) -> str:
         """Gets the name of the TCCcurve object that determines fuse blowing."""
         result = ctypes.c_char_p(self.dss_obj.FusesS(ctypes.c_int32(6), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def tcc_curve_write(self, argument: str) -> str:
+    def _tcc_curve_write(self, argument: str) -> str:
         """Sets the name of the TCCcurve object that determines fuse blowing."""
         result = ctypes.c_char_p(self.dss_obj.FusesS(ctypes.c_int32(7), argument.encode('ascii')))
         return result.value.decode('ascii')

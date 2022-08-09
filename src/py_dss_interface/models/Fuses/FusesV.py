@@ -19,30 +19,30 @@ class FusesV(Base):
     which can be one of the following.
     """
 
-    def names(self) -> List[str]:
+    def _names(self) -> List[str]:
         """Gets the variant array of string containing names of all fuses in the circuit."""
         return Bridge.var_array_function(self.dss_obj.FusesV, 0, None, '')
 
-    def state_read(self):
+    def _state(self):
         """Gets a variant array of strings[0..Nphases-1] indicating the present state for all phases of the active fuse.
         If value is -1 an error has occurred."""
         return Bridge.var_array_function(self.dss_obj.FusesV, 1, None, '')
 
     # TODO include in test
-    def state_write(self, argument):
+    def _state_write(self, argument):
         """Sets a variant array of strings [0..Nphases-1] indicating the state for all phases of the active fuse.
         If value is -1 an error has occurred."""
         argument = Base.check_int_param(argument, default=1)  # Phase 1 as default
         return Bridge.var_array_function(self.dss_obj.FusesV, 2, argument, '')
 
     # TODO include in test
-    def normal_read(self):
+    def _normal(self):
         """Gets a variant array of strings[0..Nphases-1] indicating the normal state for all phases of the active fuse.
         If value is -1 an error has occurred."""
         return Bridge.var_array_function(self.dss_obj.FusesV, 3, None, '')
 
     # TODO include in test
-    def normal_write(self, argument):
+    def _normal_write(self, argument):
         """Sets a variant array of strings [0..Nphases-1] indicating the state for all phases of the active fuse.
         If value is -1 an error has occurred."""
         argument = Base.check_int_param(argument, default=1)

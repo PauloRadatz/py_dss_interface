@@ -71,6 +71,8 @@ class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, 
                 self.loads = Loads(self.dss_obj)
                 self.vsources = VSources(self.dss_obj)
                 self.loadshapes = LoadShapes(self.dss_obj)
+                self.generators = Generators(self.dss_obj)
+                self.fuses = Fuses(self.dss_obj)
 
                 print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
 
