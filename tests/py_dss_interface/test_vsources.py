@@ -15,7 +15,7 @@ class TestVSources13Bus:
         dss = solve_snap_13bus
         dss.text('New Vsource.Fonte1 basekv=2.4 pu=1.0001 phases=3 bus1=611.3 angle=30 MVAsc3=1000 MVAsc1=2000')
         dss.solution_solve()
-        dss.vsources_write_name('fonte1')
+        dss.vsources.name = 'fonte1'
 
         return dss
 
@@ -24,29 +24,29 @@ class TestVSources13Bus:
     # ===================================================================
     def test_vsources_count(self, dss):
         expected = 2
-        actual = dss.vsources_count()
+        actual = dss.vsources.count
         assert actual == expected
 
     def test_vsources_first(self, dss):
         expected = 1
-        actual = dss.vsources_first()
+        actual = dss.vsources.first
         assert actual == expected
 
     def test_vsources_next(self, dss):
         expected = 2
-        dss.vsources_first()
-        actual = dss.vsources_next()
+        dss.vsources.first
+        actual = dss.vsources.next
         assert actual == expected
 
     def test_vsources_read_phases(self, dss):
         expected = 3
-        actual = dss.vsources_read_phases()
+        actual = dss.vsources.phases
         assert actual == expected
 
     def test_vsources_write_phases(self, dss):
         expected = 2
-        dss.vsources_write_phases(expected)
-        actual = dss.vsources_read_phases()
+        dss.vsources.phases = expected
+        actual = dss.vsources.phases
         assert actual == expected
 
     # ===================================================================
@@ -54,46 +54,46 @@ class TestVSources13Bus:
     # ===================================================================
     def test_vsources_read_base_kv(self, dss):
         expected = 2.4
-        actual = dss.vsources_read_base_kv()
+        actual = dss.vsources.base_kv
         assert actual == expected
 
     def test_vsources_write_base_kv(self, dss):
         expected = 13.8
-        dss.vsources_write_base_kv(expected)
-        actual = dss.vsources_read_base_kv()
+        dss.vsources.base_kv = expected
+        actual = dss.vsources.base_kv
         assert actual == expected
 
     def test_vsources_read_pu(self, dss):
         expected = 1.0001
-        actual = dss.vsources_read_pu()
+        actual = dss.vsources.pu
         assert actual == expected
 
     def test_vsources_write_pu(self, dss):
         expected = 1.1
-        dss.vsources_write_pu(expected)
-        actual = dss.vsources_read_pu()
+        dss.vsources.pu = expected
+        actual = dss.vsources.pu
         assert actual == expected
 
     def test_vsources_read_angle_deg(self, dss):
         expected = 30
-        actual = dss.vsources_read_angle_deg()
+        actual = dss.vsources.angle_deg
         assert actual == expected
 
     def test_vsources_write_angle_deg(self, dss):
         expected = 45
-        dss.vsources_write_angle_deg(expected)
-        actual = dss.vsources_read_angle_deg()
+        dss.vsources.angle_deg = expected
+        actual = dss.vsources.angle_deg
         assert actual == expected
 
     def test_vsources_read_frequency(self, dss):
         expected = 60
-        actual = dss.vsources_read_frequency()
+        actual = dss.vsources.frequency
         assert actual == expected
 
     def test_vsources_write_frequency(self, dss):
         expected = 50
-        dss.vsources_write_frequency(expected)
-        actual = dss.vsources_read_frequency()
+        dss.vsources.frequency = expected
+        actual = dss.vsources.frequency
         assert actual == expected
 
     # ===================================================================
@@ -101,13 +101,13 @@ class TestVSources13Bus:
     # ===================================================================
     def test_vsources_read_name(self, dss):
         expected = 'fonte1'
-        actual = dss.vsources_read_name()
+        actual = dss.vsources.name
         assert actual == expected
 
     def test_vsources_write_name(self, dss):
         expected = 'source'
-        dss.vsources_write_name(expected)
-        actual = dss.vsources_read_name()
+        dss.vsources.name = expected
+        actual = dss.vsources.name
         assert actual == expected
 
     # ===================================================================
@@ -115,5 +115,5 @@ class TestVSources13Bus:
     # ===================================================================
     def test_vsources_all_names(self, dss):
         expected = ['source', 'fonte1']
-        actual = dss.vsources_all_names()
+        actual = dss.vsources.all_names
         assert actual == expected
