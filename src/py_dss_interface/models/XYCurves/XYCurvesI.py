@@ -18,23 +18,23 @@ class XYCurvesI(Base):
     which can be one of the following.
     """
 
-    def xycurves_count(self) -> int:
+    def _count(self) -> int:
         """Gets number of XYCurves in active circuit."""
         return self.dss_obj.XYCurvesI(ctypes.c_int32(0), ctypes.c_int32(0))
 
-    def xycurves_first(self) -> int:
+    def _first(self) -> int:
         """Sets first XYCurves object active; returns 0 if none."""
         return self.dss_obj.XYCurvesI(ctypes.c_int32(1), ctypes.c_int32(0))
 
-    def xycurves_next(self) -> int:
+    def _next(self) -> int:
         """Sets next XYCurves object active; returns 0 if none."""
         return self.dss_obj.XYCurvesI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def xycurves_read_npts(self) -> int:
+    def _npts(self) -> int:
         """Gets the number of points in X-Y curve."""
         return self.dss_obj.XYCurvesI(ctypes.c_int32(3), ctypes.c_int32(0))
 
-    def xycurves_write_npts(self, argument) -> int:
+    def _npts_write(self, argument) -> int:
         """Sets the number of points in X-Y curve."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.XYCurvesI(ctypes.c_int32(4), ctypes.c_int32(argument))
