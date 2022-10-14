@@ -21,7 +21,7 @@ class TestDSSExecutive13Bus:
     # Integer methods
     # ===================================================================
     def test_executive_num_commands(self, dss):
-        expected = 129
+        expected = 130
         actual = dss.executive_num_commands()
         assert actual == expected
 
