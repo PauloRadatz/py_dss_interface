@@ -19,23 +19,23 @@ class SwtControlsS(Base):
     which can be one of the following.
     """
 
-    def swtcontrols_read_name(self):
+    def _name(self):
         """Gets the active swtcontrol name."""
         result = ctypes.c_char_p(self.dss_obj.SwtControlsS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def swtcontrols_write_name(self, argument):
+    def _name_write(self, argument):
         """Sets the active swtcontrol by name."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.SwtControlsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def swtcontrols_read_switched_obj(self):
+    def _switched_obj(self):
         """Gets the name of the switched object by the active SwtControl """
         result = ctypes.c_char_p(self.dss_obj.SwtControlsS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def swtcontrols_write_switched_obj(self, argument):
+    def _switched_obj_write(self, argument):
         """Sets the switched object by name."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.SwtControlsS(ctypes.c_int32(3), argument.encode('ascii')))

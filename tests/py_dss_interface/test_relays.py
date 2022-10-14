@@ -33,7 +33,7 @@ class TestRelays13Bus:
     # ===================================================================
     def test_relays_count(self, dss):
         expected = 2
-        actual = dss.relays.count
+        actual = dss.relays._count
         assert actual == expected
 
     def test_relays_first(self, dss):

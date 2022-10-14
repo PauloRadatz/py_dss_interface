@@ -61,7 +61,7 @@ class TestBus13Bus:
     def test_kv_base(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = round(2.4017771198288433, 4)
-            actual = round(dss.bus.kv_base, 4)
+            actual = round(dss.bus._kv_base, 4)
             assert actual == expected
 
     def test_read_x(self, dss):

@@ -9,7 +9,7 @@ dss.text("new isource.MyISource phases=3 amps=100 bus1=692 angle=30")
 
 # Integer methods
 print(45 * '=' + ' Integer Methods' + 45 * '=')
-print(f'dss.isources_count(): {dss.count()}')
+print(f'dss.isources_count(): {dss._count()}')
 print(f'dss.isources_first(): {dss.first()}')
 print(f'dss.isources_next(): {dss.next()}')
 

@@ -21,64 +21,64 @@ class LinesS(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def name_read(self) -> str:
+    def _name_read(self) -> str:
         """Gets the name of the active Line element."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def name_write(self, argument: str) -> str:
+    def _name_write(self, argument: str) -> str:
         """Sets the name of the Line element to set it active."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def bus1_read(self) -> str:
+    def _bus1_read(self) -> str:
         """Gets the name of bus for terminal 1."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def bus1_write(self, argument: str) -> str:
+    def _bus1_write(self, argument: str) -> str:
         """Sets the name of bus for terminal 1."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def bus2_read(self) -> str:
+    def _bus2_read(self) -> str:
         """Gets the name of bus for terminal 2."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def bus2_write(self, argument: str) -> str:
+    def _bus2_write(self, argument: str) -> str:
         """Sets the name of bus for terminal 2."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(5), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     # TODO: check conflict with another method in this class. Are they the same?
-    def linecode_read(self) -> str:
+    def _linecode_read(self) -> str:
         """Gets the name of LineCode object that defines the impedances."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(6), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     # TODO: check conflict with another method in this class. Are they the same?
-    def linecode_write(self, argument: str) -> str:
+    def _linecode_write(self, argument: str) -> str:
         """Sets the name of LineCode object that defines the impedances."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(7), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def geometry_read(self) -> str:
+    def _geometry_read(self) -> str:
         """Gets the name of the Line geometry code."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(8), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def geometry_write(self, argument: str) -> str:
+    def _geometry_write(self, argument: str) -> str:
         """Sets the name of the Line geometry code."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(9), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def spacing_read(self) -> str:
+    def _spacing_read(self) -> str:
         """Gets the name of the Line spacing code."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(10), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def spacing_write(self, argument: str) -> str:
+    def _spacing_write(self, argument: str) -> str:
         """Sets the name of the Line spacing code."""
         result = ctypes.c_char_p(self.dss_obj.LinesS(ctypes.c_int32(11), argument.encode('ascii')))
         return result.value.decode('ascii')

@@ -34,13 +34,13 @@ class TestLoadShapes13Bus:
     # ===================================================================
     def test_loadshapes_count(self, dss):
         expected = 1
-        actual = dss.loadshapes.count
+        actual = dss.loadshapes._count
         assert actual == expected
 
         self.new_loadshape(dss)
 
         expected = 2
-        actual = dss.loadshapes.count
+        actual = dss.loadshapes._count
         assert actual == expected
 
     def test_loadshapes_first(self, dss):

@@ -26,7 +26,7 @@ class TestLoad13Bus:
     # ===================================================================
     def test_loads_count(self, dss):
         expected = 15
-        actual = dss.loads.count
+        actual = dss.loads._count
         assert actual == expected
 
     def test_loads_first(self, dss):

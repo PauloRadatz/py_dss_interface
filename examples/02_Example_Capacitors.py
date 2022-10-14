@@ -18,7 +18,7 @@ print(f'dss.capacitors_read_isdelta(): {dss.is_delta()}')
 print(f'dss.capacitors_write_isdelta(): {dss.write_is_delta()}')
 print(f'dss.capacitors_read_isdelta(): {dss.is_delta()}')
 print()
-print(f'dss.capacitors_count(): {dss.count()}')
+print(f'dss.capacitors_count(): {dss._count()}')
 print(f'dss.capacitors_first(): {dss.first()}')
 print(f'dss.capacitors_read_num_steps(): {dss.read_num_steps()}')
 print(f'dss.capacitors_available_steps(): {dss.available_steps()}')
@@ -41,7 +41,7 @@ print(f'dss.capacitors_available_steps(): {dss.available_steps()}')
 
 # To iterate from begin we must call first()
 dss.first()
-for i in range(dss.count()):
+for i in range(dss._count()):
     print(f'Name: {dss.read_name()} || Index: {i}')
     dss.next()
 

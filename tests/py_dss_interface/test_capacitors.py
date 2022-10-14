@@ -53,7 +53,7 @@ class TestBus13Capacitors:
 
     def test_count(self, dss):
         expected = 2
-        actual = dss.capacitors.count
+        actual = dss.capacitors._count
         assert actual == expected
 
     def test_first(self, dss):

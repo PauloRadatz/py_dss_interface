@@ -8,7 +8,7 @@ dss = ExampleBase("13").dss
 
 # Integer methods
 print(45 * '=' + ' Integer Methods' + 45 * '=')
-print(f'dss.fuses_count(): {dss.count()}')
+print(f'dss.fuses_count(): {dss._count()}')
 print(f'dss.fuses_first(): {dss.first()}')
 print(f'dss.fuses_next(): {dss.next()}')
 print(f'dss.fuses_read_monitored_term(): {dss.monitored_term_read()}')

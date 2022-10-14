@@ -8,7 +8,7 @@ dss = ExampleBase("13").dss
 
 # Integer methods
 print(45 * '=' + ' Integer Methods' + 45 * '=')
-print(f'dss.linecodes_count(): {dss.count()}')
+print(f'dss.linecodes_count(): {dss._count()}')
 print(f'dss.linecodes_first(): {dss.first()}')
 print(f'dss.linecodes_next(): {dss.next()}')
 print(f'dss.linecodes_read_units(): {dss.units_read()}')

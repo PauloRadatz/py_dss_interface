@@ -18,49 +18,49 @@ class SensorsI(Base):
     which can be one of the following.
     """
 
-    def count(self) -> int:
+    def _count(self) -> int:
         """Gets number of sensors in active circuit."""
         return self.dss_obj.SensorsI(ctypes.c_int32(0), ctypes.c_int32(0))
 
-    def first(self) -> int:
+    def _first(self) -> int:
         """Sets the first sensor active. Returns 0 if none."""
         return self.dss_obj.SensorsI(ctypes.c_int32(1), ctypes.c_int32(0))
 
-    def next(self) -> int:
+    def _next(self) -> int:
         """Sets the next sensor active. Returns 0 if none."""
         return self.dss_obj.SensorsI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def is_delta(self) -> int:
+    def _is_delta(self) -> int:
         """Returns 1 if the sensor is connected in delta; otherwise, returns 0."""
         return self.dss_obj.SensorsI(ctypes.c_int32(3), ctypes.c_int32(0))
 
-    def is_delta_write(self, argument) -> int:
+    def _is_delta_write(self, argument) -> int:
         """Allows to set 1 if the sensor is connected in delta; otherwise, set 0 (argument)."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.SensorsI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
-    def reverse_delta(self) -> int:
+    def _reverse_delta(self) -> int:
         """Returns 1 if voltage measurements are 1-3, 3-2, 2-1; otherwise 0."""
         return self.dss_obj.SensorsI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def reverse_delta_write(self, argument) -> int:
+    def _reverse_delta_write(self, argument) -> int:
         """Allows to set 1 if voltage measurements are 1-3, 3-2, 2-1; otherwise 0."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.SensorsI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
-    def metered_terminal(self) -> int:
+    def _metered_terminal(self) -> int:
         """Gets the number of the measured terminal in the measured element."""
         return self.dss_obj.SensorsI(ctypes.c_int32(7), ctypes.c_int32(0))
 
-    def metered_terminal_write(self, argument) -> int:
+    def _metered_terminal_write(self, argument) -> int:
         """Sets the number of the measured terminal in the measured element."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.SensorsI(ctypes.c_int32(8), ctypes.c_int32(argument))
 
-    def reset(self) -> int:
+    def _reset(self) -> int:
         """Clears the active sensor."""
         return self.dss_obj.SensorsI(ctypes.c_int32(9), ctypes.c_int32(0))
 
-    def reset_all(self) -> int:
+    def _reset_all(self) -> int:
         """Clears all sensors in the active circuit."""
         return self.dss_obj.SensorsI(ctypes.c_int32(10), ctypes.c_int32(0))

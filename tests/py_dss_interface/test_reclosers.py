@@ -57,7 +57,7 @@ class TestReclosers13Bus:
                  r"Shots=4 "
                  r"RecloseIntervals=(0.5, 2, 2, )")
         expected = 2
-        actual = dss.reclosers.count
+        actual = dss.reclosers._count
         assert actual == expected
 
     def test_reclosers_first(self, dss):
