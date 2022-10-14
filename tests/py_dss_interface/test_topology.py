@@ -118,7 +118,7 @@ class TestTopology13Bus:
 
         expected = "Load.634a"
         dss.topology_first_load()
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
         expected = 1
@@ -126,7 +126,7 @@ class TestTopology13Bus:
         assert actual == expected
 
         expected = "Load.634b"
-        actual = dss.cktelement_name()
+        actual = dss.name()
         assert actual == expected
 
     def test_topology_active_level(self, dss):
@@ -153,7 +153,7 @@ class TestTopology13Bus:
 
     def test_topology_read_bus_name(self, dss):
         dss.topology_write_branch_name('Transformer.sub')
-        expected = 'sourcebus'
+        expected = "sourcebus"
         actual = dss.topology_read_bus_name()
         assert actual == expected
 

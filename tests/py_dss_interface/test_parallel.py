@@ -13,9 +13,7 @@ class TestParallel13Bus:
 
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
-        dss = solve_snap_13bus
-
-        return dss
+        return solve_snap_13bus
 
     # ===================================================================
     # Integer methods
@@ -23,7 +21,7 @@ class TestParallel13Bus:
     def test_parallel_num_cpus(self, dss):
         expected = 4
         actual = dss.parallel_num_cpus()
-        #assert actual == expected
+        # assert actual == expected
 
     def test_parallel_num_cores(self, dss):
         expected = 2

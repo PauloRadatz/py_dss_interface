@@ -18,38 +18,38 @@ class VSourcesF(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def vsources_read_base_kv(self) -> float:
+    def _base_kv(self) -> float:
         """Gets the source voltage in kV."""
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def vsources_write_base_kv(self, argument) -> float:
+    def _base_kv_write(self, argument) -> float:
         """Sets the source voltage in kV."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
-    def vsources_read_pu(self) -> float:
+    def _pu(self) -> float:
         """Gets the source voltage in pu."""
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def vsources_write_pu(self, argument) -> float:
+    def _pu_write(self, argument) -> float:
         """Sets the source voltage in pu."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    def vsources_read_angle_deg(self) -> float:
+    def _angle_deg(self) -> float:
         """Gets the source phase angle of first phase in degrees."""
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def vsources_write_angle_deg(self, argument) -> float:
+    def _angle_deg_write(self, argument) -> float:
         """Sets the source phase angle of first phase in degrees."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(5), ctypes.c_double(argument)))
 
-    def vsources_read_frequency(self) -> float:
+    def _frequency(self) -> float:
         """Gets the source frequency in Hz."""
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(6), ctypes.c_double(0)))
 
-    def vsources_write_frequency(self, argument) -> float:
+    def _frequency_write(self, argument) -> float:
         """Sets the source frequency in Hz."""
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.VsourcesF(ctypes.c_int32(7), ctypes.c_double(argument)))

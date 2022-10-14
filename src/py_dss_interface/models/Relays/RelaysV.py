@@ -19,6 +19,6 @@ class RelaysV(Base):
     which can be one of the following.
     """
 
-    def relays_all_names(self):
+    def all_names(self):
         """Getsa variant array of strings containing names of all relay elements."""
         return Bridge.var_array_function(self.dss_obj.RelaysV, ctypes.c_int(0), ctypes.c_int(0), None)

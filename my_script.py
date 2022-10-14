@@ -4,24 +4,19 @@ import pathlib
 import numpy as np
 import os
 # Creates an OpenDSS object
-dss = py_dss_interface.DSSDLL("C:\OpenDSS_rep\Version8\Source")
-
-# dss = py_dss_interface.DSSDLL(r"C:\Program Files\OpenDSS")
+dss = py_dss_interface.DSS("C:\OpenDSS_rep\Version8\Source")
+# dss = py_dss_interface.DSS(r"C:\Program Files\OpenDSS")
 
 # If specific DLL Version, use this line below
-# dss = py_dss_interface.DSSDLL(dll_folder_param=r"C:\Users\eniocc\Downloads\py_dss_interface-master\src"
+# dss = py_dss_interface.DSS(dll_folder_param=r"C:\Users\eniocc\Downloads\py_dss_interface-master\src"
 #                                                r"\py_dss_interface\dll/windows\x64", dll_by_user="OpenDSSDirect.dll")
 
 # Select the DSS model
 dss_file = r"C:\MeuTCC\Paulo_Example\DSSFiles\MASTER_RedeTeste13Barras.dss"
 dss_file = r"C:\Program Files\OpenDSS\IEEETestCases\13Bus\IEEE13Nodeckt.dss"
 # Compile
-dss.text("compile [{}]".format(dss_file))
-
-
-dss.ctrlqueue_push([1.0, 1.0, 1.0, 1.0])
-
-overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.circuit_name()}_EXP_OVERLOADS.CSV")
+dss.text(f"compile [{dss_file}]")
+overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.name()}_EXP_OVERLOADS.CSV")
 # dss.text("batchedit load..* enabled=no")
 # dss.text("set mode=yearly")
 #
@@ -39,11 +34,17 @@ dss.circuit_all_bus_names()
 # dss.text('show voltage')
 # dss.solution_solve()
 
+<<<<<<< .mine
 dss.lines_write_name("650632")
 
 dss.lines_first()
+=======
+dss.first()
+
+
+>>>>>>> .theirs
 expected = [1.3569, 0.4591, 0.0, 0.4591, 1.3471, 0.0, 0.0, 0.0, 0.0]
-dss.lines_write_rmatrix([1.3569, 0.4591, 1.3471])
+dss.rmatrix_write([1.3569, 0.4591, 1.3471])
 
 dss.regcontrols_read_ct_primary()
 
@@ -51,9 +52,9 @@ dss.swtcontrols_write_action()
 
 
 dss.text("New Storage.Battery phases=3 Bus1=680 kV=4.16 kWrated=350 kWhrated=2000")
-dss.circuit_set_active_element("Storage.str")
-dss.cktelement_all_variables_names()
-dss.cktelement_all_variables_values()
+dss.set_active_element("Storage.str")
+dss.variables_names()
+dss.variables_values()
 
 #
 
@@ -61,9 +62,9 @@ dss.regcontrols_write_name('reg1')
 dss.regcontrols_write_monitored_bus("672")
 dss.regcontrols_read_monitored_bus()
 
-dss.dss_read_datapath()
+dss.datapath_read()
 
-dss.circuit_all_node_vmag_pu_by_phase()
+dss.nodes_vmag_pu_by_phase()
 
 
 # dss.text("var @ZZ=671_test")

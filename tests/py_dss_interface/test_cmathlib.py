@@ -14,9 +14,7 @@ class TestCMathLib13Bus:
 
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
-        dss = solve_snap_13bus
-
-        return dss
+        return solve_snap_13bus
 
     # ===================================================================
     # Float methods
@@ -24,13 +22,12 @@ class TestCMathLib13Bus:
     def test_cmathlib_cabs(self, dss):
         real, imag = -3, 4
         expected = (real ** 2 + imag ** 2) ** 0.5
-        actual = dss.cmathlib_cabs(real, imag)
+        actual = dss.cmathlib.cabs(real, imag)
         assert actual == expected
 
     def test_cmathlib_cdang(self, dss):
-        real, imag = 1, 1
         expected = 45
-        actual = dss.cmathlib_cdang(1, 1)
+        actual = dss.cmathlib.cdang(1, 1)
         assert actual == expected
 
     # ===================================================================
@@ -39,16 +36,19 @@ class TestCMathLib13Bus:
     def test_cmathlib_cmplx(self, dss):
         real, imag = 1, 1
         expected = complex(real, imag)
-        actual = dss.cmathlib_cmplx(real, imag)
+        actual = dss.cmathlib.cmplx(real, imag)
         assert actual == expected
 
     def test_cmathlib_ctopolardeg(self, dss):
         real, imag = 1, 3
         expected = (abs(complex(real, imag)), math.atan2(imag, real))
-        actual = dss.cmathlib_ctopolardeg(real, imag)
+        actual = dss.cmathlib.ctopolardeg(real, imag)
         assert actual == expected
 
+    # TODO: error
     def test_cmathlib_pdegtocomplex(self, dss):
         real, imag = 3.1622776601683795, 1.2490457723982544
-        actual = dss.cmathlib_pdegtocomplex(real, imag)
+        actual = dss.cmathlib.pdegtocomplex(real, imag)
         expected = complex(real, imag)
+        assert actual == expected
+

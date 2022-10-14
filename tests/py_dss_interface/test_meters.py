@@ -264,7 +264,7 @@ class TestMeters13Bus:
 
     def test_meters_write_peak_current(self, dss):
         expected = [550.0, 600.0, 680.0]
-        expected_str = '(' + str(expected[0]) + ',' + str(expected[1]) + ',' + str(expected[2]) + ')'
+        expected_str = f'({str(expected[0])},{str(expected[1])},{str(expected[2])})'
         dss.meters_write_peak_current(expected_str)
         actual = dss.meters_read_peak_current()
         assert actual == expected
@@ -305,7 +305,7 @@ class TestMeters13Bus:
         actual = dss.meters_all_end_elements()
         assert actual == expected
 
-    def test_meters_all_pce_in_zone(selfself, dss):
+    def test_meters_all_pce_in_zone(self, dss):
         expected = ['Load.645',
                     'Load.646',
                     'Load.634a',
