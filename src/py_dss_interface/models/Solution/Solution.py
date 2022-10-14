@@ -15,8 +15,8 @@ class Solution(SolutionI, SolutionF, SolutionS, SolutionV):
     the different properties included in this interface: SolutionI, SolutionF, SolutionS, SolutionV.
     """
 
-    def __init__(self, dss_obj):
-        super().__init__(dss_obj)
+    def __init__(self, obj_dss):
+        super().__init__(obj_dss)
 
     @property
     def solve(self) -> int:

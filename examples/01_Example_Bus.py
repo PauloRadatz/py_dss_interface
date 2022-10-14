@@ -6,7 +6,7 @@ from py_dss_interface.models.Example.ExampleBase import ExampleBase
 
 dss = ExampleBase("13").dss
 
-dss.set_active_bus('692')
+dss.dss.solution.solve('692')
 print(dss.name())
 
 # # Integer methods

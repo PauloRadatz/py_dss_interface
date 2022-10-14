@@ -22,5 +22,5 @@ class DSSInterface(DSSInterfaceS, DSSInterfaceI, DSSInterfaceV):
         return DSSInterfaceI._allow_forms(self)
 
     @allow_forms.setter
-    def delay(self, value: int):
+    def allow_forms(self, value: int):
         DSSInterfaceI._allow_forms_write(self, value)

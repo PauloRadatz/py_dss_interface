@@ -11,6 +11,4 @@ class CMathLib(CMathLibF, CMathLibV):
     This interface implements the CmathLib (ICmathLib) interface of OpenDSS by declaring 2 procedures for accessing
     the different properties included in this interface: CMathLibF, CMathLibV.
     """
-
-    def __init__(self, obj_dss):
-        super().__init__(obj_dss)
+    pass
