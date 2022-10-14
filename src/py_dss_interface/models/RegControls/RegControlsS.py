@@ -18,34 +18,34 @@ class RegControlsS(Base):
     which can be one of the following.
     """
 
-    def regcontrols_read_name(self):
+    def _name(self):
         """Gets the active RegControl name."""
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def regcontrols_write_name(self, argument):
+    def _name(self, argument):
         """Sets the active RegControl name."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def regcontrols_read_monitored_bus(self):
+    def _monitored_bus(self):
         """Gets the name of the remote regulated bus, in lieu of LDC settings."""
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def regcontrols_write_monitored_bus(self, argument):
+    def _monitored_bus(self, argument):
         """Sets the name of the remote regulated bus, in lieu of LDC settings."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def regcontrols_read_transformer(self):
+    def _transformer(self):
         """Gets the name of the transformer this regulator controls."""
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def regcontrols_write_transformer(self, argument):
+    def _transformer(self, argument):
         """Sets the name of the transformer this regulator controls."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.RegControlsS(ctypes.c_int32(5), argument.encode('ascii')))

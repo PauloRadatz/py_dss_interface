@@ -19,7 +19,7 @@ class TestBus13ISources:
 
     def test_isources_count(self, dss):
         expected = 1
-        actual = dss.count()
+        actual = dss._count()
         assert actual == expected
 
     def test_isources_first(self, dss):

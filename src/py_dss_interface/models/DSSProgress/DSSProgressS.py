@@ -18,7 +18,7 @@ class DSSProgressS(Base):
     which can be one of the following.
     """
 
-    def caption(self, arg: str) -> str:
+    def _caption(self, arg: str) -> str:
         """Sets the caption to appear on the bottom of the DSS Progress form."""
 
         arg = Base.check_string_param(arg)

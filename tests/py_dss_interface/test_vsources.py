@@ -24,7 +24,7 @@ class TestVSources13Bus:
     # ===================================================================
     def test_vsources_count(self, dss):
         expected = 2
-        actual = dss.vsources.count
+        actual = dss.vsources._count
         assert actual == expected
 
     def test_vsources_first(self, dss):

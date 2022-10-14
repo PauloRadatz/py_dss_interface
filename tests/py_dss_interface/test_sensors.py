@@ -28,7 +28,7 @@ class TestSensors13Bus:
     # ===================================================================
     def test_sensors_count(self, dss):
         expected = 1
-        actual = dss.sensors.count
+        actual = dss.sensors._count
         assert actual == expected
 
     def test_sensors_first(self, dss):
@@ -95,35 +95,35 @@ class TestSensors13Bus:
     # ===================================================================
     def test_sensors_read_pct_error(self, dss):
         expected = 1
-        actual = dss.sensors.pct_error
+        actual = dss.sensors._pct_error
         assert actual == expected
 
     def test_sensors_write_pct_error(self, dss):
         expected = 1.0
-        dss.sensors.pct_error = expected
-        actual = dss.sensors.pct_error
+        dss.sensors._pct_error = expected
+        actual = dss.sensors._pct_error
         assert actual == expected
 
     def test_sensors_read_weight(self, dss):
         expected = 1.0
-        actual = dss.sensors.weight
+        actual = dss.sensors._weight
         assert actual == expected
 
     def test_sensors_write_weight(self, dss):
         expected = 1.0
-        dss.sensors.weight = expected
-        actual = dss.sensors.weight
+        dss.sensors._weight = expected
+        actual = dss.sensors._weight
         assert actual == expected
 
     def test_sensors_read_kv_base(self, dss):
         expected = 4.16
-        actual = dss.sensors.kv_base
+        actual = dss.sensors._kv_base
         assert actual == expected
 
     def test_sensors_write_kv_base(self, dss):
         expected = 0.48
-        dss.sensors.kv_base = expected
-        actual = dss.sensors.kv_base
+        dss.sensors._kv_base = expected
+        actual = dss.sensors._kv_base
         assert actual == expected
 
     # ===================================================================

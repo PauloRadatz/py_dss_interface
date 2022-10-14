@@ -16,23 +16,23 @@ class SensorsS(Base):
     of the following.
     """
 
-    def name(self) -> str:
+    def _name(self) -> str:
         """Gets the name of the active sensor object."""
         result = ctypes.c_char_p(self.dss_obj.SensorsS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def name_write(self, argument):
+    def _name_write(self, argument):
         """Sets the name of the active sensor object."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.SensorsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def metered_element(self) -> str:
+    def _metered_element(self) -> str:
         """Gets the full name of the measured element."""
         result = ctypes.c_char_p(self.dss_obj.SensorsS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def metered_element_write(self, argument):
+    def _metered_element_write(self, argument):
         """Sets the full name of the measured element."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.SensorsS(ctypes.c_int32(3), argument.encode('ascii')))

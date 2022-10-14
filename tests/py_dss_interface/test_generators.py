@@ -38,7 +38,7 @@ class TestGenerators13Bus:
 
     def test_generators_count(self, dss):
         expected = 1
-        actual = dss.generators.count
+        actual = dss.generators._count
         assert actual == expected
 
     def test_generators_read_forced_on(self, dss):

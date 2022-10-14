@@ -51,7 +51,7 @@ class TestCapControls13Bus:
 
     def test_count(self, dss):
         expected = 3
-        actual = dss.capcontrols.count
+        actual = dss.capcontrols._count
         assert actual == expected
 
     def test_read_mode(self, dss):

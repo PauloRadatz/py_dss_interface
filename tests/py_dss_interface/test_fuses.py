@@ -37,7 +37,7 @@ class TestFuses13Bus:
 
     def test_fuses_count(self, dss):
         expected = 2
-        actual = dss.fuses.count
+        actual = dss.fuses._count
         assert actual == expected
 
     def test_fuses_open(self, dss):
