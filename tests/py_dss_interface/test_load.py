@@ -15,6 +15,7 @@ class TestLoad13Bus:
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.loads_write_name('671')
+        # dss.circuit_set_active_element('load.671')
 
         return dss
 

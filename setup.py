@@ -71,12 +71,8 @@ setup(
     ],
     python_requires='>=3.6',
     install_requires=["numpy", "pandas", "colorama"
-                      # eg: 'aspectlib==1.1.1', 'six>=1.7',
                       ],
     extras_require={
         "dev": ["pytest", "pytest-cov", "sphinx-rtd-theme", "nbsphinx", "black", "pre-commit", "tox", "twine"],
-        # eg:
-        #   'rst': ['docutils>=0.11'],
-        #   ':python_version=="2.6"': ['argparse'],
     },
 )
