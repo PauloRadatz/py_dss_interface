@@ -29,7 +29,7 @@ class TestCapControls13Bus:
             "New CapControl.CAPBank2C_Ctrl Capacitor=CAPBank2C element=line.670671 "
             "terminal=1 type=kvar ptratio=1 ctratio=1 ONsetting=150 OFFsetting=-225 "
             "VoltOverride=Y Vmin=7110 Vmax=7740 Delay=102 Delayoff=102")
-        dss.solution_solve()
+        dss.solution.solve
 
         dss.capcontrols.name = "CAPBank2C_Ctrl"
 
@@ -51,7 +51,7 @@ class TestCapControls13Bus:
 
     def test_count(self, dss):
         expected = 3
-        actual = dss.capcontrols._count
+        actual = dss.capcontrols.count
         assert actual == expected
 
     def test_read_mode(self, dss):

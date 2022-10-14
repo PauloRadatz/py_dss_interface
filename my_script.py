@@ -32,7 +32,7 @@ dss.text("solve")
 dss.circuit_all_bus_names()
 # Solve
 # dss.text('show voltage')
-# dss.solution_solve()
+# dss.solution.solve
 
 <<<<<<< .mine
 dss.lines_write_name("650632")

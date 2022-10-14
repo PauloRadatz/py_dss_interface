@@ -13,7 +13,7 @@ class TestRegcontrols13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.solution_solve()
+        dss.solution.solve
 
         dss.regcontrols_write_name('reg1')
 

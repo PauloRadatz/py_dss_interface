@@ -20,7 +20,7 @@ print(f"Original R0 {dss.text('? line.line.r0')}")
 print(f"Original X1 {dss.text('? line.line.x1')}")
 print(f"Original X1 {dss.text('? line.line.x0')}")
 
-dss.solution_solve()
+dss.solution.solve
 
 y_original_text = dss.circuit_system_y()
 
@@ -31,7 +31,7 @@ print(f"New R0 {dss.text('? line.line.r0')}")
 print(f"New X1 {dss.text('? line.line.x1')}")
 print(f"New X1 {dss.text('? line.line.x0')}")
 
-dss.solution_solve()
+dss.solution.solve
 
 y_new_text = dss.circuit_system_y()
 
@@ -45,7 +45,7 @@ print(f"Original R0 {dss.lines_read_r0()}")
 print(f"Original X1 {dss.lines_read_x1()}")
 print(f"Original X1 {dss.lines_read_x0()}")
 
-dss.solution_solve()
+dss.solution.solve
 
 y_original_dll = dss.circuit_system_y()
 
@@ -56,7 +56,7 @@ print(f"New R0 {dss.lines_read_r0()}")
 print(f"New X1 {dss.lines_read_x1()}")
 print(f"New X1 {dss.lines_read_x0()}")
 
-dss.solution_solve()
+dss.solution.solve
 
 y_new_dll = dss.circuit_system_y()
 
