@@ -13,7 +13,7 @@ class TestLoadShapes13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.solution_solve()
+        dss.solution.solve
         dss.loadshapes.name = 'default'
 
         return dss
@@ -34,13 +34,13 @@ class TestLoadShapes13Bus:
     # ===================================================================
     def test_loadshapes_count(self, dss):
         expected = 1
-        actual = dss.loadshapes._count
+        actual = dss.loadshapes.count
         assert actual == expected
 
         self.new_loadshape(dss)
 
         expected = 2
-        actual = dss.loadshapes._count
+        actual = dss.loadshapes.count
         assert actual == expected
 
     def test_loadshapes_first(self, dss):

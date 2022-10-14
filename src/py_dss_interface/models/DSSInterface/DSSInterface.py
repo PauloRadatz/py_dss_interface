@@ -13,4 +13,14 @@ class DSSInterface(DSSInterfaceS, DSSInterfaceI, DSSInterfaceV):
     This interface implements the DSS interface (IDSS - DDSS.pas) of OpenDSS by declaring 3 procedures for accessing the
     different properties included in this interface: DSSInterfaceS, DSSInterfaceI, DSSInterfaceV
     """
-    pass
+
+    def __init__(self, dss_obj):
+        super().__init__(dss_obj)
+
+    @property
+    def allow_forms(self) -> int:
+        return DSSInterfaceI._allow_forms(self)
+
+    @allow_forms.setter
+    def delay(self, value: int):
+        DSSInterfaceI._allow_forms_write(self, value)

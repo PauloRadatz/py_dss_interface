@@ -23,7 +23,7 @@ class TestRelays13Bus:
                  r"                Type=Current "
                  r"                PhaseTrip=800 "
                  r"                GroundTrip=250")
-        dss.solution_solve()
+        dss.solution.solve
         dss.relays.name = "test1"
 
         return dss
@@ -33,7 +33,7 @@ class TestRelays13Bus:
     # ===================================================================
     def test_relays_count(self, dss):
         expected = 2
-        actual = dss.relays._count
+        actual = dss.relays.count
         assert actual == expected
 
     def test_relays_first(self, dss):

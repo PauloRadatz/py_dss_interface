@@ -30,7 +30,7 @@ class TestReclosers13Bus:
                  r"GroundInst=1200 "
                  r"Shots=4 "
                  r"RecloseIntervals=(0.5, 2, 2, )")
-        dss.solution_solve
+        dss.solution.solve
         dss.reclosers.name = 'cb1'
 
         return dss
@@ -57,7 +57,7 @@ class TestReclosers13Bus:
                  r"Shots=4 "
                  r"RecloseIntervals=(0.5, 2, 2, )")
         expected = 2
-        actual = dss.reclosers._count
+        actual = dss.reclosers.count
         assert actual == expected
 
     def test_reclosers_first(self, dss):

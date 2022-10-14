@@ -14,9 +14,9 @@ class TestBus13CtrlQueue:
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.text("set loadmult=0.2")
-        dss.solution_init_snap()
-        dss.solution_solve_no_control()
-        dss.solution_sample_control_devices()
+        dss.solution.init_snap()
+        dss.solution.solve_no_control()
+        dss.solution.sample_control_devices()
         return dss
 
     def test_ctrlqueue_ctrlqueue(self, dss):

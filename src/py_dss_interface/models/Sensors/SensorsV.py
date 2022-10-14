@@ -6,7 +6,6 @@ import ctypes
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
-from py_dss_interface.models.Sensors.SensorsS import SensorsS
 from py_dss_interface.models.Text.Text import Text
 
 
@@ -33,8 +32,8 @@ class SensorsV(Base):
         """Sets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
-        sen = SensorsS(self.dss_obj)
-        sen_name = sen.name()
+        sen = self.dss_obj.sensors.name
+        sen_name = sen.name
         return t.text(f'edit Sensor.{sen_name} currents = {argument}')
 
     def _kvars(self):
@@ -45,8 +44,8 @@ class SensorsV(Base):
         """Sets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
-        sen = SensorsS(self.dss_obj)
-        sen_name = sen.name()
+        sen = self.dss_obj.sensors.name
+        sen_name = sen.name
         return t.text(f'edit Sensor.{sen_name} kvars = {argument}')
 
     def _kws(self):
@@ -57,6 +56,6 @@ class SensorsV(Base):
         """Sets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
-        sen = SensorsS(self.dss_obj)
-        sen_name = sen.name()
+        sen = self.dss_obj.sensors.name
+        sen_name = sen.name
         return t.text(f'edit Sensor.{sen_name} kws = {argument}')

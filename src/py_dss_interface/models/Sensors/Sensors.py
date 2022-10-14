@@ -27,7 +27,7 @@ class Sensors(SensorsV, SensorsS, SensorsI, SensorsF):
         SensorsF._pct_error_write(self, argument)
 
     @property
-    def _weight(self) -> float:
+    def weight(self) -> float:
         return SensorsF._weight(self)
 
     @weight.setter

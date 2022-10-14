@@ -15,6 +15,7 @@ DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
 
 
+# TODO I am seeing dss with a lot of properties - check that
 class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, ErrorOpenDSS, Fuses, Generators, Lines,
           Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel,
           Parser, PDElements, PVSystems, RegControls, Settings, Solution, SwtControls,
@@ -59,20 +60,43 @@ class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, 
 
                 self.active_class = ActiveClass(self.dss_obj)
                 self.bus = Bus(self.dss_obj)
-                self.capcontrols = CapControls(self.dss_obj)
                 self.capacitors = Capacitors(self.dss_obj)
+                self.capcontrols = CapControls(self.dss_obj)
                 self.circuit = Circuit(self.dss_obj)
                 self.cktelement = CktElement(self.dss_obj)
                 self.cmathlib = CMathLib(self.dss_obj)
+                self.ctrlqueue = CtrlQueue(self.dss_obj)
+                self.dsselement = DSSElement(self.dss_obj)
+                self.dssexecutive = DSSExecutive(self.dss_obj)
+                self.dssinterface = DSSInterface(self.dss_obj)
+                self.dssprogress = DSSProgress(self.dss_obj)
                 self.dssproperties = DSSProperties(self.dss_obj)
-                self.sensors = Sensors(self.dss_obj)
-                self.reclosers = Reclosers(self.dss_obj)
-                self.relays = Relays(self.dss_obj)
-                self.loads = Loads(self.dss_obj)
-                self.vsources = VSources(self.dss_obj)
-                self.loadshapes = LoadShapes(self.dss_obj)
-                self.generators = Generators(self.dss_obj)
+                self.errorinterface = DSSInterface(self.dss_obj)
                 self.fuses = Fuses(self.dss_obj)
+                self.generators = Generators(self.dss_obj)
+                self.isource = ISources(self.dss_obj)
+                self.linecodes = LineCodes(self.dss_obj)
+                self.lines = Lines(self.dss_obj)
+                self.loads = Loads(self.dss_obj)
+                self.loadshapes = LoadShapes(self.dss_obj)
+                self.meters = Meters(self.dss_obj)
+                self.monitors = Monitors(self.dss_obj)
+                self.parallel = Parallel(self.dss_obj)
+                self.parser = Parser(self.dss_obj)
+                self.pdelements = PDElements(self.dss_obj)
+                self.pvsystems = PVSystems(self.dss_obj)
+                self.reclosers = Reclosers(self.dss_obj)
+                self.regcontrols = RegControls(self.dss_obj)
+                self.relays = Relays(self.dss_obj)
+                self.sensors = Sensors(self.dss_obj)
+                self.settings = Settings(self.dss_obj)
+                self.solution = Solution(self.dss_obj)
+                self.swtcontrols = SwtControls(self.dss_obj)
+                # self.text = Text(self.dss_obj)
+                self.topology = Topology(self.dss_obj)
+                self.transformer = Transformers(self.dss_obj)
+                self.vsources = VSources(self.dss_obj)
+                self.xycurve = XYCurves(self.dss_obj)
 
                 print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
 

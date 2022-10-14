@@ -31,7 +31,7 @@ class TestMonitors13Bus:
         dss.text("Set controlmode=off")
         dss.text("Set mode=daily stepsize=1.0h number=24")
 
-        dss.solution_solve()
+        dss.solution.solve
 
         return dss
 

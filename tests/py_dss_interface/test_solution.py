@@ -13,7 +13,7 @@ class TestSolution13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.solution_solve()
+        dss.solution.solve
 
         return dss
 
@@ -530,5 +530,5 @@ class TestSolution13Bus:
 
     def test_solution_solve(self, dss):
         expected = 0
-        actual = dss.solution_solve()
+        actual = dss.solution.solve
         assert actual == expected

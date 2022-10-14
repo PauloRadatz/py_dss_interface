@@ -36,7 +36,7 @@ class TestActiveClass13Bus:
 
     def test_count(self, dss):
         expected = 12
-        actual = dss.active_class._count
+        actual = dss.active_class.count
         assert actual == expected
 
     # ===================================================================

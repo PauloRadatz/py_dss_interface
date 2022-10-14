@@ -15,7 +15,7 @@ class TestSwtControls13Bus:
         dss = solve_snap_13bus
         dss.text("new swtcontrol.1  SwitchedObj=line.650632  SwitchedTerm=1 Action=c")
         dss.text("new swtcontrol.2  SwitchedObj=line.692675  SwitchedTerm=1 Action=o")
-        dss.solution_solve()
+        dss.solution.solve
         dss.swtcontrols_write_name('1')
 
         return dss

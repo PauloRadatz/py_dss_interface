@@ -14,8 +14,8 @@ class Fuses(FusesI, FusesS, FusesF, FusesV):
     """" This interface implements the Fuses (IFuses) interface of OpenDSS by declaring 4 procedures for accessing
     the different properties included in this interface: FusesI, FusesS, FusesF, FusesV """
 
-    def __init__(self, dss_obj):
-        super().__init__(dss_obj)
+    def __init__(self, obj_dss):
+        super().__init__(obj_dss)
 
     @property
     def close(self) -> int:

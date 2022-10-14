@@ -14,7 +14,7 @@ class TestVSources13Bus:
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
         dss.text('New Vsource.Fonte1 basekv=2.4 pu=1.0001 phases=3 bus1=611.3 angle=30 MVAsc3=1000 MVAsc1=2000')
-        dss.solution_solve()
+        dss.solution.solve
         dss.vsources.name = 'fonte1'
 
         return dss
@@ -24,7 +24,7 @@ class TestVSources13Bus:
     # ===================================================================
     def test_vsources_count(self, dss):
         expected = 2
-        actual = dss.vsources._count
+        actual = dss.vsources.count
         assert actual == expected
 
     def test_vsources_first(self, dss):

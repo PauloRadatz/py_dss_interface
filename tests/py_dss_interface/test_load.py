@@ -15,7 +15,7 @@ class TestLoad13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.solution_solve()
+        dss.solution.solve
         dss.loads.name = '671'
         # dss.circuit_set_active_element('load.671')
 
@@ -26,7 +26,7 @@ class TestLoad13Bus:
     # ===================================================================
     def test_loads_count(self, dss):
         expected = 15
-        actual = dss.loads._count
+        actual = dss.loads.count
         assert actual == expected
 
     def test_loads_first(self, dss):
@@ -46,7 +46,6 @@ class TestLoad13Bus:
 
     def test_loads_write_idx(self, dss):
         expected = 2
-        dss.idx = expected
         actual = dss.loads.idx
         assert actual == expected
 
