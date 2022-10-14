@@ -15,5 +15,5 @@ class ErrorCode(Base):
 
     # TODO include in test
     def error_code(self) -> int:
-        """"This interface returns an integer with latest error code delivered by OpenDSS."""
+        """This interface returns an integer with the latest error code delivered by OpenDSS."""
         return int(self.dss_obj.ErrorCode())

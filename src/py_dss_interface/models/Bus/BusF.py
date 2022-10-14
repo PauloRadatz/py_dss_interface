@@ -18,15 +18,15 @@ class BusF(Base):
     “parameter”. The parameter can be one of the following.
     """
 
-    def bus_kv_base(self) -> float:
+    def _kv_base(self) -> float:
         """Returns the base voltage at bus in kV."""
         return self.dss_obj.BUSF(0, 0)
 
-    def bus_read_x(self) -> float:
+    def _x(self) -> float:
         """Returns the X coordinate for the bus."""
         return self.dss_obj.BUSF(1, 0)
 
-    def bus_write_x(self, param_coordinate) -> int:
+    def _x_write(self, param_coordinate: float) -> int:
         """Allows to write the X coordinate for the bus. Returns 0.
         :param param_coordinate: The X coordinate, if it's None, X will be 0.0
         """
@@ -36,11 +36,11 @@ class BusF(Base):
                                                                           "coordinate!")
         return result
 
-    def bus_read_y(self) -> float:
+    def _y(self) -> float:
         """Returns the X coordinate for the bus."""
         return self.dss_obj.BUSF(3, 0)
 
-    def bus_write_y(self, param_coordinate: float) -> int:
+    def _y_write(self, param_coordinate: float) -> int:
         """Allows to write the Y coordinate for the bus. Returns 0.
         :param param_coordinate: The Y coordinate, if it's None, Y will be 0.0
         """
@@ -50,48 +50,49 @@ class BusF(Base):
                                                                           "coordinate!")
         return result
 
-    def bus_distance(self) -> float:
+    def _distance(self) -> float:
         """Returns the distance from the energymeter (if non-zero)."""
         return self.dss_obj.BUSF(5, 0)
 
-    def bus_lambda(self) -> float:
+    # TODO: need more studies
+    def _bus_lambda(self) -> float:
         """Returns the accumulated failure rate downstream from this bus, faults per year."""
         return self.dss_obj.BUSF(6, 0)
 
-    def bus_interruptions_num(self) -> float:
+    def _interruptions_num(self) -> float:
         """Returns the number of interruptions this bus per year."""
         return self.dss_obj.BUSF(7, 0)
 
-    def bus_interruptions_avg_duration(self) -> float:
+    def _interruptions_avg_duration(self) -> float:
         """Returns the average interruption duration in hours."""
         return self.dss_obj.BUSF(8, 0)
 
-    def bus_interruptions_total_customers(self) -> float:
+    def _interruptions_total_customers(self) -> float:
         """Returns the annual number of customer interruptions from this bus."""
         return self.dss_obj.BUSF(9, 0)
 
-    def bus_outage_customer_accum_duration(self) -> float:
+    def _outage_customer_accum_duration(self) -> float:
         """Returns the accumulated customer outage durations."""
         return self.dss_obj.BUSF(10, 0)
 
-    def bus_line_total_miles(self) -> float:
+    def _line_total_miles(self) -> float:
         """Returns the total length of line downline from this bus, in miles. For recloser siting algorithm."""
         return self.dss_obj.BUSF(11, 0)
 
-    def bus_read_latitude(self) -> float:
+    def _latitude(self) -> float:
         """This parameter returns the GIS latitude assigned to the active bus (if any)."""
         return self.dss_obj.BUSF(12, 0)
 
-    def bus_write_latitude(self, latitude_param: float) -> float:
+    def _latitude_write(self, latitude_param: float) -> float:
         """This parameter sets the GIS latitude to the active bus using the value given at the argument.."""
         latitude_param = Base.check_float_param(latitude_param)
         return self.dss_obj.BUSF(13, ctypes.c_double(latitude_param))
 
-    def bus_read_longitude(self) -> float:
+    def _longitude(self) -> float:
         """This parameter returns the GIS longitude assigned to the active bus (if any)."""
         return self.dss_obj.BUSF(14, 0)
 
-    def bus_write_longitude(self, longitude_param: float) -> float:
+    def _longitude_write(self, longitude_param: float) -> float:
         """This parameter sets the GIS longitude to the active bus using the value given at the argument.."""
         longitude_param = Base.check_float_param(longitude_param)
         return self.dss_obj.BUSF(15, ctypes.c_double(longitude_param))

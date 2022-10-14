@@ -8,10 +8,10 @@ dss = ExampleBase("13").dss
 
 # Integer methods
 print(45 * '=' + ' Integer Methods' + 45 * '=')
-print(f'dss.dssprogress_pct_progress(): {dss.dssprogress_pct_progress(12.5)}')
-print(f'dss.dssprogress_show(): {dss.dssprogress_show()}')
-print(f'dss.dssprogress_close(): {dss.dssprogress_close()}')
+print(f'dss.dssprogress_pct_progress(): {dss.pct_progress(12.5)}')
+print(f'dss.dssprogress_show(): {dss.show()}')
+print(f'dss.dssprogress_close(): {dss.close()}')
 
 # String methods
 print(45 * '=' + ' String Methods ' + 45 * '=')
-print(f'dss.dssprogress_caption(): {dss.dssprogress_caption("My Caption")}')
+print(f'dss.dssprogress_caption(): {dss.caption("My Caption")}')

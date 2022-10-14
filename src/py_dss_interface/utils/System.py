@@ -14,9 +14,7 @@ class System:
         :return: plat: A string contains the platform name like 'Windows', 'Linux'.
         """
         plat = platform.system()
-        if plat == 0:
-            return 'System cannot be determined'
-        return plat
+        return 'System cannot be determined' if plat == 0 else plat
 
     @staticmethod
     def get_architecture_path(dll_folder):
@@ -25,7 +23,6 @@ class System:
         :param dll_folder: Folder that contains dll
         :return path: A string contains the path based on the architecture
         """
-        path = "Nothing was decided about the architecture"
         if platform.architecture()[0] == "64bit":
             path = os.path.join(dll_folder, "x64")
             System.check_path_environment(path)

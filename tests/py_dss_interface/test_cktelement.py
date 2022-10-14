@@ -14,181 +14,177 @@ class TestCktElement13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.circuit_set_active_element('Line.671692')
+        dss.circuit.activate_element_on_circuit('Line.671692')
 
         return dss
 
-    def test_cktelement_num_terminals(self, dss):
+    def test_num_terminals(self, dss):
         expected = 2
-        actual = dss.cktelement_num_terminals()
+        actual = dss.cktelement.num_terminals
         assert actual == expected
 
-    def test_cktelement_num_conductors(self, dss):
+    def test_num_conductors(self, dss):
         expected = 3
-        actual = dss.cktelement_num_conductors()
+        actual = dss.cktelement.num_conductors
         assert actual == expected
 
-    def test_cktelement_num_phases(self, dss):
+    def test_num_phases(self, dss):
         expected = 3
-        actual = dss.cktelement_num_phases()
+        actual = dss.cktelement.num_phases
         assert actual == expected
 
-    def test_cktelement_open(self, dss):
+    def test_open(self, dss):
         expected = 0
-        actual = dss.cktelement_open(1)
+        actual = dss.cktelement.open_terminal(1)
         assert actual == expected
 
         expected = 1
-        actual = dss.cktelement_is_open()
+        actual = dss.cktelement.is_terminal_open
         assert actual == expected
 
-    def test_cktelement_close(self, dss):
+    def test_close(self, dss):
         expected = 0
-        actual = dss.cktelement_open(2)
+        actual = dss.cktelement.open_terminal(2)
         assert actual == expected
 
         expected = 1
-        actual = dss.cktelement_is_open()
+        actual = dss.cktelement.is_terminal_open
         assert actual == expected
 
         expected = 0
-        actual = dss.cktelement_close(2)
+        actual = dss.cktelement.close_terminal(2)
         assert actual == expected
 
         expected = 0
-        actual = dss.cktelement_is_open()
+        actual = dss.cktelement.is_terminal_open
         assert actual == expected
 
-    def test_cktelement_is_open(self, dss):
+    def test_is_open(self, dss):
         expected = 0
-        actual = dss.cktelement_is_open()
+        actual = dss.cktelement.is_terminal_open
         assert actual == expected
 
-    def test_cktelement_num_properties(self, dss):
+    def test_num_properties(self, dss):
         expected = 38
-        actual = dss.cktelement_num_properties()
+        actual = dss.cktelement.num_properties
         assert actual == expected
 
-    def test_cktelement_has_switch_control(self, dss):
+    def test_has_switch_control(self, dss):
         expected = 0
-        actual = dss.cktelement_has_switch_control()
+        actual = dss.cktelement.has_switch_control
         assert actual == expected
 
-    def test_cktelement_has_volt_control(self, dss):
+    def test_has_volt_control(self, dss):
         expected = 0
-        actual = dss.cktelement_has_volt_control()
+        actual = dss.cktelement.has_volt_control
         assert actual == expected
 
-    def test_cktelement_num_controls(self, dss):
+    def test_num_controls(self, dss):
         expected = 0
-        actual = dss.cktelement_num_controls()
+        actual = dss.cktelement.num_controls
         assert actual == expected
 
-    def test_cktelement_ocp_dev_index(self, dss):
+    def test_ocp_dev_index(self, dss):
         expected = 0
-        actual = dss.cktelement_ocp_dev_index()
+        actual = dss.cktelement.ocp_dev_index
         assert actual == expected
 
-    def test_cktelement_ocp_dev_type(self, dss):
+    def test_ocp_dev_type(self, dss):
         expected = 0
-        actual = dss.cktelement_ocp_dev_type()
+        actual = dss.cktelement.ocp_dev_type
         assert actual == expected
 
-    def test_cktelement_read_enabled(self, dss):
+    def test_read_enabled(self, dss):
         expected = 1
-        actual = dss.cktelement_read_enabled()
+        actual = dss.cktelement.is_enabled
         assert actual == expected
 
-    def test_cktelement_write_enabled(self, dss):
+    def test_write_enabled(self, dss):
         expected = 0
-        actual = dss.cktelement_write_enabled(0)
+        actual = dss.cktelement.enabled(0)
         assert actual == expected
 
         expected = 0
-        actual = dss.cktelement_read_enabled()
+        actual = dss.cktelement.is_enabled
         assert actual == expected
 
-    def test_cktelement_read_norm_amps(self, dss):
+    def test_read_norm_amps(self, dss):
         expected = 400.0
-        actual = dss.cktelement_read_norm_amps()
+        actual = dss.cktelement.norm_amps
         assert actual == expected
 
-    def test_cktelement_write_norm_amps(self, dss):
-        expected = 0
-        actual = dss.cktelement_write_norm_amps(100.0)
-        assert actual == expected
+    def test_write_norm_amps(self, dss):
+        dss.cktelement.norm_amps = 100.0
 
         expected = 100.0
-        actual = dss.cktelement_read_norm_amps()
+        actual = dss.cktelement.norm_amps
         assert actual == expected
 
-    def test_cktelement_read_emerg_amps(self, dss):
+    def test_read_emerg_amps(self, dss):
         expected = 600.0
-        actual = dss.cktelement_read_emerg_amps()
+        actual = dss.cktelement.emerg_amps
         assert actual == expected
 
-    def test_cktelement_write_emerg_amps(self, dss):
-        expected = 0
-        actual = dss.cktelement_write_emerg_amps(150.0)
-        assert actual == expected
+    def test_write_emerg_amps(self, dss):
+        dss.cktelement.emerg_amps = 150.0
 
         expected = 150.0
-        actual = dss.cktelement_read_emerg_amps()
+        actual = dss.cktelement.emerg_amps
         assert actual == expected
 
-    # def test_cktelement_variable_i(self, dss):
+    # def test_variable_i(self, dss):
     #     expected = 3
-    #     actual = dss.test_cktelement_variable_i()
+    #     actual = dss.test_variable_i
 
-    def test_cktelement_name(self, dss):
+    def test_name(self, dss):
         expected = 'Line.671692'
-        actual = dss.cktelement_name()
+        actual = dss.cktelement.name
         assert actual == expected
 
-    def test_cktelement_read_display(self, dss):
+    def test_read_display(self, dss):
         expected = 'Line_671692'
-        actual = dss.cktelement_read_display()
+        actual = dss.cktelement.display
         assert actual == expected
 
-    def test_cktelement_write_display(self, dss):
+    def test_write_display(self, dss):
         expected = "My_Line_671692"
-        dss.cktelement_write_display(expected)
-        actual = dss.cktelement_read_display()
+        dss.cktelement.display = expected
+        actual = dss.cktelement.display
         assert actual == expected
 
-    # def test_cktelement_guid(self, dss):
+    # def test_guid(self, dss):
     #     expected = '{32F8E32C-6A2A-4C64-8EFB-1B6358094F3B}'
-    #     actual = dss.cktelement_guid()
+    #     actual = dss.cktelement.guid
     #     assert actual == expected
 
-    def test_cktelement_energymeter(self, dss):
+    def test_energymeter(self, dss):
         expected = "em1"
-        dss.circuit_set_active_element('Line.650632')
-        actual = dss.cktelement_energymeter()
+        dss.circuit.activate_element_on_circuit('Line.650632')
+        actual = dss.cktelement.energymeter
         assert actual == expected
 
-    def test_cktelement_controller(self, dss):
+    def test_controller(self, dss):
         # https://github.com/PauloRadatz/py_dss_interface/issues/2 - Issue solved =)
         dss.text("New 'Fuse.f1' MonitoredObj=Line.650632 MonitoredTerm=1 FuseCurve=Klink RatedCurrent=65")
-        # After include a new element it become the active element. So, we need activate another element to test the
+        # After include a new element it becomes the active element. So, we need activate another element to test the
         # methods below
-        dss.circuit_set_active_element('Line.650632')
+        dss.circuit.activate_element_on_circuit('Line.650632')
         expected = "Fuse.f1"
-        actual = dss.cktelement_controller("1")
+        actual = dss.cktelement.controller("1")
         assert actual == expected
 
-    def test_cktelement_read_bus_names(self, dss):
+    def test_read_bus_names(self, dss):
         expected = ['671', '692']
-        actual = dss.cktelement_read_bus_names()
+        actual = dss.cktelement.bus_names
         assert actual == expected
 
-    def test_cktelement_write_bus_names(self, dss):
+    def test_write_bus_names(self, dss):
         expected = ['671_new', '692_new']
-        dss.cktelement_write_bus_names(dss, expected)
-        actual = dss.cktelement_read_bus_names()
+        dss.cktelement.bus_names = dss, expected
+        actual = dss.cktelement.bus_names
         assert actual == expected
 
-    def test_cktelement_voltages(self, dss):
+    def test_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [2350.078784828011,
                         -221.0796482325248,
@@ -202,10 +198,10 @@ class TestCktElement13Bus:
                         -2109.8005600677147,
                         -1015.4071496666263,
                         2083.115713199055]
-            actual = dss.cktelement_voltages()
+            actual = dss.cktelement.voltages
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
-    def test_cktelement_currents(self, dss):
+    def test_currents(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [219.09972381591797,
                         -73.0167236328125,
@@ -219,12 +215,10 @@ class TestCktElement13Bus:
                         56.74092102050781,
                         57.895368576049805,
                         -170.77582168579102]
-            actual = dss.cktelement_currents()
+            actual = dss.cktelement.currents
             assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_powers(self, dss):
+    def test_powers(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [531.044124277299,
                         123.15656327805625,
@@ -238,20 +232,16 @@ class TestCktElement13Bus:
                         156.93857539263408,
                         -414.5331687728567,
                         -52.804238327724946]
-            actual = dss.cktelement_powers()
+            actual = dss.cktelement.powers
             assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_losses(self, dss):
+    def test_losses(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.009054574999026954, 5.820766091e-11]
-            actual = dss.cktelement_losses()
+            actual = dss.cktelement.losses
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_phase_losses(self, dss):
+    def test_phase_losses(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [5.33361313864589e-06,
                         2.910383e-14,
@@ -259,12 +249,10 @@ class TestCktElement13Bus:
                         0.0,
                         3.25162545777857e-06,
                         2.910383e-14]
-            actual = dss.cktelement_phase_losses()
+            actual = dss.cktelement.phase_losses
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_seq_voltages(self, dss):
+    def test_seq_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [82.5975271915408,
                         2391.5781387345023,
@@ -272,12 +260,10 @@ class TestCktElement13Bus:
                         82.59752865884842,
                         2391.5781244654136,
                         42.2125249966211]
-            actual = dss.cktelement_seq_voltages()
+            actual = dss.cktelement.seq_voltages
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_seq_currents(self, dss):
+    def test_seq_currents(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [67.92201952740132,
                         142.81151076209932,
@@ -285,12 +271,10 @@ class TestCktElement13Bus:
                         67.92201952740132,
                         142.81151076209932,
                         71.9262709364223]
-            actual = dss.cktelement_seq_currents()
+            actual = dss.cktelement.seq_currents
             assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_seq_powers(self, dss):
+    def test_seq_powers(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [-3.6358786639185694,
                         -16.433154267781457,
@@ -304,28 +288,24 @@ class TestCktElement13Bus:
                         -42.10387788076099,
                         6.226033828412597,
                         6.648497832081523]
-            actual = dss.cktelement_seq_powers()
+            actual = dss.cktelement.seq_powers
             assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_all_property_names(self, dss):
+    def test_all_property_names(self, dss):
         expected = ['bus1', 'bus2', 'linecode', 'length', 'phases', 'r1', 'x1', 'r0', 'x0', 'C1', 'C0', 'rmatrix',
                     'xmatrix', 'cmatrix', 'Switch', 'Rg', 'Xg', 'rho', 'geometry', 'units', 'spacing', 'wires',
                     'EarthModel', 'cncables', 'tscables', 'B1', 'B0', 'Seasons', 'Ratings', 'LineType', 'normamps',
                     'emergamps', 'faultrate', 'pctperm', 'repair', 'basefreq', 'enabled', 'like']
-        actual = dss.cktelement_all_property_names()
+        actual = dss.cktelement.property_names
         assert actual == expected
 
-    def test_cktelement_residuals(self, dss):
+    def test_residuals(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [203.7660585822039, 11.613009723287425, 203.7660585822039, -168.38699026704103]
-            actual = dss.cktelement_residuals()
+            actual = dss.cktelement.residuals_currents
             assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_y_prim(self, dss):
+    def test_y_prim(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [10000000.0, 0.0, 0.0, 0.0, 0.0, 0.0, -10000000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10000000.0,
                         0.0, 0.0, 0.0, 0.0, 0.0, -10000000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10000000.0, 0.0, 0.0,
@@ -335,12 +315,10 @@ class TestCktElement13Bus:
                         0.0, 0.0, 0.0, -10000000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10000000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                         0.0,
                         -10000000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10000000.0, 0.0]
-            actual = dss.cktelement_y_prim()
+            actual = dss.cktelement.y_prim
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_cplx_seq_voltages(self, dss):
+    def test_cplx_seq_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [-1.2438337433894162,
                         -82.58816123256486,
@@ -354,12 +332,10 @@ class TestCktElement13Bus:
                         -162.48664862831083,
                         -34.729368969132395,
                         23.995170297295772]
-            actual = dss.cktelement_cplx_seq_voltages()
+            actual = dss.cktelement.cplx_seq_voltages
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_cplx_seq_currents(self, dss):
+    def test_cplx_seq_currents(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [66.53162638346356,
                         13.672725677490241,
@@ -373,14 +349,12 @@ class TestCktElement13Bus:
                         15.549381656831635,
                         -10.60562233342202,
                         71.1400676534711]
-            actual = dss.cktelement_cplx_seq_currents()
+            actual = dss.cktelement.cplx_seq_currents
             assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_all_variables_names(self, dss):
+    def test_all_variables_names(self, dss):
         dss.text("New Storage.str bus=650 kw=50")
-        dss.circuit_set_active_element("Storage.str")
+        dss.circuit.activate_element_on_circuit("Storage.str")
         expected = ['kWh',
                     'State',
                     'kWOut',
@@ -406,13 +380,13 @@ class TestCktElement13Bus:
                     'kW VW Limit',
                     'Limit kWOut Function',
                     'kVA Exceeded']
-        actual = dss.cktelement_all_variables_names()
+        actual = dss.cktelement.variables_names
         assert actual == expected
 
-    # TODO gives error
-    def test_cktelement_all_variables_values(self, dss):
+    # TODO gives warning
+    def test_all_variables_values(self, dss):
         dss.text("New Storage.str bus=650 kw=50")
-        dss.circuit_set_active_element("Storage.str")
+        dss.circuit.activate_element_on_circuit("Storage.str")
         expected = [50.0,
                     1.0,
                     0.0,
@@ -438,15 +412,15 @@ class TestCktElement13Bus:
                     9999.0,
                     25.0,
                     1.0]
-        actual = dss.cktelement_all_variables_values()
+        actual = dss.cktelement.variables_values
         assert actual == expected
 
-    def test_cktelement_node_order(self, dss):
+    def test_node_order(self, dss):
         expected = [1, 2, 3, 1, 2, 3]
-        actual = dss.cktelement_node_order()
+        actual = dss.cktelement.node_order
         assert actual == expected
 
-    def test_cktelement_currents_mag_ang(self, dss):
+    def test_currents_mag_ang(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [230.9461645195305,
                         -18.43106122609838,
@@ -460,12 +434,10 @@ class TestCktElement13Bus:
                         124.08201640967452,
                         180.3226413266336,
                         -71.27262944761924]
-            actual = dss.cktelement_currents_mag_ang()
+            actual = dss.cktelement.currents_mag_ang
             assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
-        else:
-            assert 1 == 1
 
-    def test_cktelement_voltages_mag_ang(self, dss):
+    def test_voltages_mag_ang(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [2360.454724361668,
                         -5.374186385394906,
@@ -479,7 +451,5 @@ class TestCktElement13Bus:
                         -122.38998951620508,
                         2317.4172594012734,
                         115.98674983388848]
-            actual = dss.cktelement_voltages_mag_ang()
+            actual = dss.cktelement.voltages_mag_ang
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
-        else:
-            assert 1 == 1
