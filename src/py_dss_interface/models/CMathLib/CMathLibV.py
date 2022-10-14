@@ -20,12 +20,12 @@ class CMathLibV(Base):
     """
 
     @staticmethod
-    def _cmplx(real_part: float, imag_part: float) -> complex:
+    def cmplx(real_part: float, imag_part: float) -> complex:
         """Convert real (Argument1) and imaginary (Argument1) doubles to variant array of doubles."""
         return complex(real_part, imag_part)
 
     @staticmethod
-    def _ctopolardeg(double_real: float, double_imag: float) -> Tuple[float, float]:
+    def ctopolardeg(double_real: float, double_imag: float) -> Tuple[float, float]:
         """Convert complex number (Argument1 and Argument2) to magnitude and angle, degrees. Returns variant array of
          two doubles."""
         z = complex(double_real, double_imag)
@@ -33,7 +33,7 @@ class CMathLibV(Base):
         return r, theta
 
     @staticmethod
-    def _pdegtocomplex(double_real: float, double_imag: float) -> complex:
+    def pdegtocomplex(double_real: float, double_imag: float) -> complex:
         """Convert magnitude, angle in degrees (Argument1 and Argument2) to a complex number. Returns variant array of
          two doubles."""
         return cmath.rect(double_real, double_imag)
