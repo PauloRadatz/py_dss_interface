@@ -36,34 +36,16 @@ class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
         CapacitorsI._is_delta_write(self, argument)
 
     @property
-    def first(self) -> int:
-        return CapacitorsI._first(self)
-
-    @property
-    def next(self) -> int:
-        return CapacitorsI._next(self)
-
-    @property
     def count(self) -> int:
         return CapacitorsI._count(self)
-
-    @property
-    def add_step(self) -> int:
-        return CapacitorsI._add_step(self)
-
-    @property
-    def subtract_step(self) -> int:
-        return CapacitorsI._subtract_step(self)
 
     @property
     def available_steps(self) -> int:
         return CapacitorsI._available_steps(self)
 
-    @property
     def open_all_steps(self) -> int:
         return CapacitorsI._open_all_steps(self)
 
-    @property
     def close_all_steps(self) -> int:
         return CapacitorsI._close_all_steps(self)
 
@@ -103,3 +85,15 @@ class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
     def states(self, values):
         dss, argument = values
         CapacitorsV._states_write(self, dss, argument)
+
+    def first(self) -> int:
+        return CapacitorsI._first(self)
+
+    def next(self) -> int:
+        return CapacitorsI._next(self)
+
+    def add_step(self) -> int:
+        return CapacitorsI._add_step(self)
+
+    def subtract_step(self) -> int:
+        return CapacitorsI._subtract_step(self)

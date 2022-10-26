@@ -17,7 +17,6 @@ class Fuses(FusesI, FusesS, FusesF, FusesV):
     def __init__(self, dss_obj):
         super().__init__(dss_obj)
 
-    @property
     def close(self) -> int:
         return FusesI._close(self)
 
@@ -33,7 +32,6 @@ class Fuses(FusesI, FusesS, FusesF, FusesV):
     def delay(self, value: float):
         FusesF._delay_write(self, value)
 
-    @property
     def first(self) -> int:
         return FusesI._first(self)
 

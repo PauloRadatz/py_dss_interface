@@ -19,10 +19,10 @@ class DSSInterfaceV(Base):
     which can be one of the following.
     """
 
-    def classes(self) -> List[str]:
+    def _classes(self) -> List[str]:
         """Gets the list of DSS intrinsic classes (names of the classes)."""
         return Bridge.var_array_function(self.dss_obj.DSSV, 0, None, '')
 
-    def user_classes(self) -> List[str]:
+    def _user_classes(self) -> List[str]:
         """Gets list of user-defined classes (names of the classes)."""
         return Bridge.var_array_function(self.dss_obj.DSSV, 1, None, '')
