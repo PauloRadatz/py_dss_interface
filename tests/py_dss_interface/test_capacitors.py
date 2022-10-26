@@ -81,7 +81,7 @@ class TestBus13Capacitors:
     def test_add_step(self, dss):
         dss.capacitors.num_steps = 5
         expected = 0
-        actual = dss.capacitors.add_step
+        actual = dss.capacitors.add_step()
         assert actual == expected
 
         dss.capacitors.subtract_step()
@@ -93,17 +93,17 @@ class TestBus13Capacitors:
     def test_subtract_step(self, dss):
         dss.capacitors.num_steps = 5
         expected = 1
-        actual = dss.capacitors.subtract_step
+        actual = dss.capacitors.subtract_step()
         assert actual == expected
 
     def test_open(self, dss):
         expected = 0
-        actual = dss.capacitors.open_all_steps
+        actual = dss.capacitors.open_all_steps()
         assert actual == expected
 
     def test_close(self, dss):
         expected = 0
-        actual = dss.capacitors.close_all_steps
+        actual = dss.capacitors.close_all_steps()
         assert actual == expected
 
     def test_read_kv(self, dss):
