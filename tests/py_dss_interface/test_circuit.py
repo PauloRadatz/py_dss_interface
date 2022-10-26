@@ -32,7 +32,7 @@ class TestCircuit13Bus:
 
     def test_first_pc_element(self, dss):
         expected = 1
-        actual = dss.circuit.pc_element_first
+        actual = dss.circuit.pc_element_first()
         assert actual == expected
 
     def test_next_pc_element(self, dss):
@@ -71,13 +71,13 @@ class TestCircuit13Bus:
 
     def test_first_element(self, dss):
         expected = 1
-        actual = dss.circuit.first_element
+        actual = dss.circuit.first_element()
         assert actual == expected
 
     def test_next_element(self, dss):
         expected = 2
         dss.circuit.first_element()
-        actual = dss.circuit.next_element
+        actual = dss.circuit.next_element()
         assert actual == expected
 
     def test_update_storage_t(self, dss):
