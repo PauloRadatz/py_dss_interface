@@ -3,11 +3,12 @@
  Created by eniocc at 11/10/2020
 """
 from dataclasses import dataclass
-from typing import List
 
 from py_dss_interface.models.ActiveClass.ActiveClassI import ActiveClassI
 from py_dss_interface.models.ActiveClass.ActiveClassS import ActiveClassS
 from py_dss_interface.models.ActiveClass.ActiveClassV import ActiveClassV
+
+from typing import List
 
 
 @dataclass
@@ -19,11 +20,9 @@ class ActiveClass(ActiveClassS, ActiveClassI, ActiveClassV):
     def __init__(self, obj_dss):
         super().__init__(obj_dss)
 
-    @property
     def first(self) -> int:
         return ActiveClassI._first(self)
 
-    @property
     def next(self) -> int:
         return ActiveClassI._next(self)
 

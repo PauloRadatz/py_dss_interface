@@ -18,7 +18,7 @@ class ISourcesS(Base):
     which can be one of the following.
     """
 
-    def _name(self) -> str:
+    def _name_read(self) -> str:
         """Gets the name of the active Isource object."""
         result = ctypes.c_char_p(self.dss_obj.IsourceS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')

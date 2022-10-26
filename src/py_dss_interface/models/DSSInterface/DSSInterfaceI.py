@@ -47,7 +47,7 @@ class DSSInterfaceI(Base):
         Source Code """
         return self.dss_obj.DSSI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    def _allow_forms(self):
+    def _allow_forms_read(self):
         """Gets if the DSS allows forms (1) or not (0), default (1)."""
         return self.dss_obj.DSSI(ctypes.c_int32(7), ctypes.c_int32(0))
 
