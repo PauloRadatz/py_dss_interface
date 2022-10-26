@@ -21,14 +21,6 @@ class CapControls(CapControlsF, CapControlsI, CapControlsS, CapControlsV):
         super().__init__(obj_dss)
 
     @property
-    def first(self) -> int:
-        return CapControlsI._first(self)
-
-    @property
-    def next(self) -> int:
-        return CapControlsI._next(self)
-
-    @property
     def mode(self) -> int:
         return CapControlsI._mode(self)
 
@@ -157,3 +149,9 @@ class CapControls(CapControlsF, CapControlsI, CapControlsS, CapControlsV):
     @monitored_object.setter
     def monitored_object(self, argument: str):
         CapControlsS._monitored_object_write(self, argument)
+
+    def first(self) -> int:
+        return CapControlsI._first(self)
+
+    def next(self) -> int:
+        return CapControlsI._next(self)

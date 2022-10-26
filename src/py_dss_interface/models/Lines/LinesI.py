@@ -21,40 +21,40 @@ class LinesI(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def first(self) -> int:
+    def _first(self) -> int:
         """Sets the first element active. Returns 0 if no lines. Otherwise, index of the line element."""
         return self.dss_obj.LinesI(ctypes.c_int32(0), ctypes.c_int32(0))
 
-    def next(self) -> int:
+    def _next(self) -> int:
         """Sets the next element active. Returns 0 if no lines. Otherwise, index of the line element."""
         return self.dss_obj.LinesI(ctypes.c_int32(1), ctypes.c_int32(0))
 
-    def phases_read(self) -> int:
+    def _phases_read(self) -> int:
         """Gets the number of phases of the active line object."""
         return self.dss_obj.LinesI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def phases_write(self, argument: int) -> int:
+    def _phases_write(self, argument: int) -> int:
         """Sets the number of phases of the active line object."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.LinesI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
-    def num_cust(self) -> int:
+    def _num_cust(self) -> int:
         """Gets the number of customers on this line section."""
         return self.dss_obj.LinesI(ctypes.c_int32(4), ctypes.c_int32(0))
 
-    def parent(self) -> int:
+    def _parent(self) -> int:
         """Gets the parents of the active Line to be the active Line. Return 0 if no parent or action fails."""
         return self.dss_obj.LinesI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def count(self) -> int:
+    def _count(self) -> int:
         """Gets the number of Line Objects in Active Circuit."""
         return self.dss_obj.LinesI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    def units_read(self) -> int:
+    def _units_read(self) -> int:
         """Gets the units of the line (distance, check manual for details)."""
         return self.dss_obj.LinesI(ctypes.c_int32(7), ctypes.c_int32(0))
 
-    def units_write(self, argument: int) -> int:
+    def _units_write(self, argument: int) -> int:
         """Sets the units of the line (distance, check manual for details).
         units: {none | mi|kft|km|m|Ft|in|cm }
         UNITS_MAXNUM =9;

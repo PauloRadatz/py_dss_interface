@@ -2,7 +2,6 @@
 """
  Created by eniocc at 11/10/2020
 """
-
 from py_dss_interface.models.Loads.LoadsF import LoadsF
 from py_dss_interface.models.Loads.LoadsI import LoadsI
 from py_dss_interface.models.Loads.LoadsS import LoadsS
@@ -86,7 +85,6 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def duty(self, value: str):
         LoadsS._duty_write(self, value)
 
-    @property
     def first(self) -> int:
         return LoadsI._first(self)
 
@@ -182,7 +180,6 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def names(self):
         return LoadsV._names(self)
 
-    @property
     def next(self) -> int:
         return LoadsI._next(self)
 

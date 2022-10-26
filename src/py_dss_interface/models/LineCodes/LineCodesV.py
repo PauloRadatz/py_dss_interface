@@ -23,11 +23,11 @@ class LineCodesV(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def rmatrix_read(self) -> str:
+    def _rmatrix_read(self) -> str:
         """Gets the resistance matrix in ohms per unit length of the active LineCode."""
         return Bridge.var_array_function(self.dss_obj.LineCodesV, 0, None, '')
 
-    def rmatrix_write(self, argument: str) -> None:
+    def _rmatrix_write(self, argument: str) -> None:
         """Sets the resistance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument.
          :param argument: must be a string like that [0.791721 | 0.318476 0.781649 | 0.28345, 0.318476, 0.791721]
@@ -38,11 +38,11 @@ class LineCodesV(Base):
         lc_name = lc.name_read()
         t.text(f'edit Linecode.{lc_name} Rmatrix = {argument}')
 
-    def xmatrix_read(self) -> str:
+    def _xmatrix_read(self) -> str:
         """Gets the reactance matrix in ohms per unit length of the active LineCode."""
         return Bridge.var_array_function(self.dss_obj.LineCodesV, 2, None, '')
 
-    def xmatrix_write(self, argument: str) -> None:
+    def _xmatrix_write(self, argument: str) -> None:
         """Sets the reactance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument.
 
@@ -53,11 +53,11 @@ class LineCodesV(Base):
         lc_name = lc.name_read()
         t.text(f'edit Linecode.{lc_name} Xmatrix = {argument}')
 
-    def cmatrix_read(self) -> str:
+    def _cmatrix_read(self) -> str:
         """Gets the capacitance matrix in ohms per unit length of the active LineCode."""
         return Bridge.var_array_function(self.dss_obj.LineCodesV, 4, None, '')
 
-    def cmatrix_write(self, argument: str) -> None:
+    def _cmatrix_write(self, argument: str) -> None:
         """Sets the capacitance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument.
          :param argument: must be a string like that [383.948  |0  383.948  |0  0  383.948 ]
@@ -68,6 +68,6 @@ class LineCodesV(Base):
         lc_name = lc.name_read()
         t.text(f'edit Linecode.{lc_name} Cmatrix = {argument}')
 
-    def names(self) -> str:
+    def _names(self) -> str:
         """Gets the capacitance matrix in ohms per unit length of the active LineCode."""
         return Bridge.var_array_function(self.dss_obj.LineCodesV, 6, None, '')
