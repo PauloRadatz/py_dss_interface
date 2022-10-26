@@ -23,7 +23,6 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     def count(self) -> int:
         return GeneratorsI._count(self)
 
-    @property
     def first(self) -> int:
         return GeneratorsI._first(self)
 
