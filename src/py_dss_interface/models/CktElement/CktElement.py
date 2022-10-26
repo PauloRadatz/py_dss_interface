@@ -19,6 +19,21 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
     def __init__(self, obj_dss):
         super().__init__(obj_dss)
 
+    def controller(self, argument: str) -> str:
+        return CktElementS._controller(self, argument)
+
+    def enabled(self, argument: int) -> int:
+        return CktElementI._enabled(self, argument)
+
+    def variable_i(self, argument: float) -> float:
+        return CktElementF._variable_i(self, argument)
+
+    def open_terminal(self, argument: int) -> int:
+        return CktElementI._open_terminal(self, argument)
+
+    def close_terminal(self, argument: int) -> int:
+        return CktElementI._close_terminal(self, argument)
+
     @property
     def norm_amps(self):
         return CktElementF._norm_amps(self)
@@ -179,18 +194,3 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
     @property
     def voltages_mag_ang(self) -> List[float]:
         return CktElementV._voltages_mag_ang(self)
-
-    def controller(self, argument: str) -> str:
-        return CktElementS._controller(self, argument)
-
-    def enabled(self, argument: int) -> int:
-        return CktElementI._enabled(self, argument)
-
-    def variable_i(self, argument: float) -> float:
-        return CktElementF._variable_i(self, argument)
-
-    def open_terminal(self, argument: int) -> int:
-        return CktElementI._open_terminal(self, argument)
-
-    def close_terminal(self, argument: int) -> int:
-        return CktElementI._close_terminal(self, argument)
