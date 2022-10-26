@@ -17,8 +17,8 @@ class ErrorOpenDSS(ErrorCode, ErrorDesc):
 
     @property
     def error_code(self):
-        return ErrorCode.error_code(self)
+        return ErrorCode._error_code(self)
 
     @property
     def error_desc(self):
-        return ErrorDesc.error_desc(self)
+        return ErrorDesc._error_desc(self)

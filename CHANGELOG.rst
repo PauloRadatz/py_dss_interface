@@ -2,7 +2,7 @@
 Changelog
 =========
 
-1.1.0 (2021-10-10)
+1.0.2 (2021-10-10)
 ------------------
 * Code refactored
 * PEP 8 in some methods

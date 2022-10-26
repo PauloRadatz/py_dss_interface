@@ -15,7 +15,7 @@ class TestXYCurves13Bus:
         dss = solve_snap_13bus
         dss.text(r'New XYCurve.xycurve1 npts=4  xarray=[.1  .2  .4  1.0]  yarray=[.86  .9  .93  .97]')
         dss.text(r'New XYCurve.xycurve2 npts=4  xarray=[.1  .2  .4  1.0]  yarray=[.86  .9  .93  .97]')
-        dss.solution_solve()
+        dss.solution.solve
         dss.xycurves_write_name('xycurve1')
 
         return dss

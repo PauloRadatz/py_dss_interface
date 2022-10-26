@@ -14,4 +14,10 @@ class Solution(SolutionI, SolutionF, SolutionS, SolutionV):
     This interface implements the Solution (ISolution) interface of OpenDSS by declaring 4 procedures for accessing
     the different properties included in this interface: SolutionI, SolutionF, SolutionS, SolutionV.
     """
-    pass
+
+    def __init__(self, obj_dss):
+        super().__init__(obj_dss)
+
+    @property
+    def solve(self) -> int:
+        return SolutionI._solve(self)

@@ -18,12 +18,12 @@ class XYCurvesS(Base):
     which can be one of the following.
     """
 
-    def xycurves_read_name(self):
+    def _name(self):
         """Gets the name of the active XYCurve Object."""
         result = ctypes.c_char_p(self.dss_obj.XYCurvesS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def xycurves_write_name(self, argument):
+    def _name_write(self, argument):
         """Sets the name of the active XYCurve Object."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.XYCurvesS(ctypes.c_int32(1), argument.encode('ascii')))

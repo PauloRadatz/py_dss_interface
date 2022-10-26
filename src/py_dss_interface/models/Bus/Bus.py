@@ -40,8 +40,8 @@ class Bus(BusS, BusI, BusV, BusF):
         return BusI._unique_node_number(self, 1)
 
     @unique_node_number.setter
-    def unique_node_number(self, start_number: int) -> int:
-        return BusI._unique_node_number(self, start_number)
+    def unique_node_number(self, start_number: int):
+        BusI._unique_node_number(self, start_number)
 
     @property
     def total_customers(self) -> int:

@@ -23,7 +23,7 @@ class SettingsS(Base):
         result = ctypes.c_char_p(self.dss_obj.SettingsS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def settings_write_auto_bus_list(self, argument):
+    def settings_write_auto_bus_list_write(self, argument):
         """Sets the list of Buses or (File=xxxxx) syntax for the AutoAdd solution mode."""
         argument = Base.check_string_param(argument)
         result = ctypes.c_char_p(self.dss_obj.SettingsS(ctypes.c_int32(1), argument.encode('ascii')))
@@ -35,7 +35,7 @@ class SettingsS(Base):
         result = ctypes.c_char_p(self.dss_obj.SettingsS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def settings_write_price_curve(self, argument):
+    def settings_write_price_curve_write(self, argument):
         """Sets the name of LoadShape object that serves as the source of price signal data for yearly simulations,
         etc."""
         argument = Base.check_string_param(argument)

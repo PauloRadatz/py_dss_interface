@@ -66,7 +66,7 @@ class TestCircuit13Bus:
 
     def test_set_active_bus_i(self, dss):
         expected = 0
-        actual = dss.circuit.activate_bus_i_on_circuit(1)
+        actual = dss.circuit.set_active_bus_i(1)
         assert actual == expected
 
     def test_first_element(self, dss):
@@ -110,24 +110,24 @@ class TestCircuit13Bus:
 
     def test_activate_element(self, dss):
         expected = '26'
-        actual = dss.circuit.activate_element_on_circuit('Line.650632')
+        actual = dss.circuit.set_active_element('Line.650632')
         assert actual == expected
 
     def test_activate_class_get_name(self, dss):
         expected = '650632'
-        dss.circuit.activate_element_on_circuit("Line.650632")
+        dss.circuit.set_active_element("Line.650632")
         actual = dss.active_class.name
         assert actual == expected
 
     def test_set_activate_bus(self, dss):
         expected = '8'
-        actual = dss.circuit.activate_bus("692")
+        actual = dss.circuit.set_active_bus("692")
         assert actual == expected
 
     def test_set_activate_class(self, dss):
         # Not sure how to use it
         expected = '23'
-        actual = dss.circuit.activate_class_on_circuit("Capacitor")
+        actual = dss.circuit.set_active_class("Capacitor")
         assert actual == expected
 
     def test_losses(self, dss):

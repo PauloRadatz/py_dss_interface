@@ -23,5 +23,5 @@ def solve_snap_13bus():
     dss13_path = os.path.join(pathlib.Path(script_path), "cases", "13Bus", "IEEE13Nodeckt.dss")
     dss.text(f"compile {dss13_path}")
 
-    dss.allow_forms_write(0)
+    dss.dssinterface.allow_forms = 0
     return dss

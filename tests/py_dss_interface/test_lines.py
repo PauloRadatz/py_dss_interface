@@ -54,7 +54,7 @@ class TestLines13Bus:
 
     def test_lines_count(self, dss):
         expected = 12
-        actual = dss.count()
+        actual = dss._count()
         assert actual == expected
 
     def test_lines_read_units(self, dss):

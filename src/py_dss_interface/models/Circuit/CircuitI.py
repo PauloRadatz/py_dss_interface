@@ -62,7 +62,7 @@ class CircuitI(Base):
         """Forces all meters and monitors to save their sample buffers, returns 0."""
         return self.integer(8, 0)
 
-    def _activate_bus_i(self, i: int) -> int:
+    def _set_active_bus_i(self, i: int) -> int:
         """Sets active the bus specified by index, which is compatible with the index delivered by AllBusNames,
         returns 0 it everything ok."""
         i = Base.check_int_param(i, 1)

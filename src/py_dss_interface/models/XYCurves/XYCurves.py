@@ -14,4 +14,15 @@ class XYCurves(XYCurvesS, XYCurvesI, XYCurvesF, XYCurvesV):
     This interface implements the XYCurves (IXYCurves) interface of OpenDSS by declaring 4 procedures for accessing
     the different properties included in this interface: XYCurvesS, XYCurvesI, XYCurvesF, XYCurvesV.
     """
-    pass
+
+    def __init__(self, dss_obj):
+        super().__init__(dss_obj)
+
+    @property
+    def x(self) -> float:
+        return XYCurvesF._x(self)
+
+    @x.setter
+    def x(self, value: int):
+        XYCurvesF._x_write(self, value)
+
