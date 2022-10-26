@@ -12,7 +12,7 @@ dss = ExampleBase("13").dss
 # dss.text('export overloads')
 # text.text('export overloads')
 dss.text("? Load.611.kw")
-dss.solution_solve()
+dss.solution.solve
 # dss.text("solve")
 dss.first()
 dss.p_mult_read()

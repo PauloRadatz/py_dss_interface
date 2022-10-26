@@ -78,7 +78,7 @@ Solve - You can use the text interface as well: dss.text(“solve”)
 
 .. code:: ipython3
 
-    dss.solution_solve()
+    dss.solution.solve
 
 
 

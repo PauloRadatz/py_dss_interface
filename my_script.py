@@ -17,16 +17,38 @@ dss_file = r"C:\Program Files\OpenDSS\IEEETestCases\13Bus\IEEE13Nodeckt.dss"
 # Compile
 dss.text(f"compile [{dss_file}]")
 overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.name()}_EXP_OVERLOADS.CSV")
+# dss.text("batchedit load..* enabled=no")
+# dss.text("set mode=yearly")
+#
+#
+#
+# dss.text("set number=24")
+# dss.text("set stepsize=1h")
+dss.text(f"edit line.650632 bus1=rg60.2.3.1")
+dss.text("solve")
 
+
+# dss.circuit_set_active_bus_i()
+dss.circuit_all_bus_names()
 # Solve
 # dss.text('show voltage')
-dss.solution_solve()
+# dss.solution.solve
 
+<<<<<<< .mine
+dss.lines_write_name("650632")
+
+dss.lines_first()
+=======
 dss.first()
+
+
+>>>>>>> .theirs
 expected = [1.3569, 0.4591, 0.0, 0.4591, 1.3471, 0.0, 0.0, 0.0, 0.0]
 dss.rmatrix_write([1.3569, 0.4591, 1.3471])
 
 dss.regcontrols_read_ct_primary()
+
+dss.swtcontrols_write_action()
 
 
 dss.text("New Storage.Battery phases=3 Bus1=680 kV=4.16 kWrated=350 kWhrated=2000")

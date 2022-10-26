@@ -18,12 +18,12 @@ class PVSystemsS(Base):
     which can be one of the following.
     """
 
-    def pvsystems_read_name(self):
+    def _name(self):
         """Gets the name of the active PVSystem."""
         result = ctypes.c_char_p(self.dss_obj.PVsystemsS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def pvsystems_write_name(self, argument):
+    def _name_write(self, argument):
         """Sets the name of the active PVSystem."""
         result = ctypes.c_char_p(self.dss_obj.PVsystemsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')

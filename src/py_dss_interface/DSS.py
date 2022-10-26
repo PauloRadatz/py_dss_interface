@@ -15,10 +15,8 @@ DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
 
 
-class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, ErrorOpenDSS, Fuses, Generators, Lines,
-          Loads, ISources, LineCodes, LoadShapes, Meters, Monitors, Parallel,
-          Parser, PDElements, PVSystems, RegControls, Settings, Solution, SwtControls,
-          Topology, Transformers, VSources, XYCurves):
+# TODO I am seeing dss with a lot of properties - check that
+class DSS:
 
     # TODO need to be able to get different dll names:
     #  https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
@@ -31,7 +29,7 @@ class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, 
         """
         self.my_dss_version = None
         self.started = False
-        self.memory_commands = []
+        self.__memory_commands = []
         if dll_folder_param is not None and dll_by_user is not None:
             os.chdir(dll_folder_param)
             self.dss_obj = ctypes.cdll.LoadLibrary(os.path.join(dll_folder_param, dll_by_user))
@@ -51,28 +49,51 @@ class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, 
             self.dss_obj = ctypes.cdll.LoadLibrary(self.dll_file_path)
             self.started = True
         if self.started:
-            self.load_json()
-            self._allocate_memory()
+            self.__load_json()
+            self.__allocate_memory()
 
-            if self.check_started():
+            if self.__check_started():
                 self.base = Base(self.dss_obj)
 
                 self.active_class = ActiveClass(self.dss_obj)
                 self.bus = Bus(self.dss_obj)
-                self.capcontrols = CapControls(self.dss_obj)
                 self.capacitors = Capacitors(self.dss_obj)
+                self.capcontrols = CapControls(self.dss_obj)
                 self.circuit = Circuit(self.dss_obj)
                 self.cktelement = CktElement(self.dss_obj)
                 self.cmathlib = CMathLib(self.dss_obj)
+                self.ctrlqueue = CtrlQueue(self.dss_obj)
+                self.dsselement = DSSElement(self.dss_obj)
+                self.dssexecutive = DSSExecutive(self.dss_obj)
+                self.dssinterface = DSSInterface(self.dss_obj)
+                self.dssprogress = DSSProgress(self.dss_obj)
                 self.dssproperties = DSSProperties(self.dss_obj)
-                self.sensors = Sensors(self.dss_obj)
-                self.reclosers = Reclosers(self.dss_obj)
-                self.relays = Relays(self.dss_obj)
-                self.loads = Loads(self.dss_obj)
-                self.vsources = VSources(self.dss_obj)
-                self.loadshapes = LoadShapes(self.dss_obj)
-                self.generators = Generators(self.dss_obj)
+                self.errorinterface = DSSInterface(self.dss_obj)
                 self.fuses = Fuses(self.dss_obj)
+                self.generators = Generators(self.dss_obj)
+                self.isource = ISources(self.dss_obj)
+                self.linecodes = LineCodes(self.dss_obj)
+                self.lines = Lines(self.dss_obj)
+                self.loads = Loads(self.dss_obj)
+                self.loadshapes = LoadShapes(self.dss_obj)
+                self.meters = Meters(self.dss_obj)
+                self.monitors = Monitors(self.dss_obj)
+                self.parallel = Parallel(self.dss_obj)
+                self.parser = Parser(self.dss_obj)
+                self.pdelements = PDElements(self.dss_obj)
+                self.pvsystems = PVSystems(self.dss_obj)
+                self.reclosers = Reclosers(self.dss_obj)
+                self.regcontrols = RegControls(self.dss_obj)
+                self.relays = Relays(self.dss_obj)
+                self.sensors = Sensors(self.dss_obj)
+                self.settings = Settings(self.dss_obj)
+                self.solution = Solution(self.dss_obj)
+                self.swtcontrols = SwtControls(self.dss_obj)
+                self.text = Text(self.dss_obj).text
+                self.topology = Topology(self.dss_obj)
+                self.transformer = Transformers(self.dss_obj)
+                self.vsources = VSources(self.dss_obj)
+                self.xycurve = XYCurves(self.dss_obj)
 
                 print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
 
@@ -83,14 +104,14 @@ class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, 
             print("An error occur!")
             exit()
 
-    def check_started(self):
+    def __check_started(self):
         if int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0))) != 1:
             return False
         # TODO: Need refactor this call to use a method that already exists
         self.my_dss_version = ctypes.c_char_p(self.dss_obj.DSSS(ctypes.c_int32(1), "".encode('ascii')))
         return True
 
-    def load_json(self):
+    def __load_json(self):
         dir_path = os.path.dirname(os.path.realpath(__file__))
         with open(f'{dir_path}/configurations.json') as json_f:
             data = json.load(json_f)
@@ -101,11 +122,11 @@ class DSS(Text, CtrlQueue, DSSElement, DSSExecutive, DSSInterface, DSSProgress, 
                     elif t == 'S':
                         ctype = 'c_char_p'
                     command_ = 'self.dss_obj.' + n['name'] + t + '.restype' + ' = ' + 'ctypes.' + ctype
-                    self.memory_commands.append(command_)
+                    self.__memory_commands.append(command_)
 
-    def _allocate_memory(self):
+    def __allocate_memory(self):
         self.dss_obj.DSSPut_Command.restype = ctypes.c_char_p
         self.dss_obj.DSSProperties.restype = ctypes.c_char_p
 
-        for i in self.memory_commands:
+        for i in self.__memory_commands:
             exec(i)

@@ -30,7 +30,7 @@ class TestReclosers13Bus:
                  r"GroundInst=1200 "
                  r"Shots=4 "
                  r"RecloseIntervals=(0.5, 2, 2, )")
-        dss.solution_solve
+        dss.solution.solve
         dss.reclosers.name = 'cb1'
 
         return dss

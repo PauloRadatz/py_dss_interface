@@ -19,12 +19,12 @@ class SwtControlsF(Base):
     the variable Parameter, which can be one of the following.
     """
 
-    def swtcontrols_read_delay(self) -> float:
+    def _delay(self) -> float:
         """Gets the time delay [s] between arming and opening or closing the switch.
         Control may reset before actually operating the switch."""
         return float(self.dss_obj.SwtControlsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def swtcontrols_write_delay(self, argument) -> float:
+    def _delay_write(self, argument) -> float:
         """Sets sets the time delay [s] between arming and opening or closing the switch.
         Control may reset before actually operating the switch."""
         argument = Base.check_float_param(argument)

@@ -18,7 +18,7 @@ class TestSensors13Bus:
                  "terminal=1 "
                  "kVBase=4.16 "
                  "conn=delta ")
-        dss.solution_solve()
+        dss.solution.solve
         dss.sensors.name = "Sensor1"
 
         return dss
@@ -28,7 +28,7 @@ class TestSensors13Bus:
     # ===================================================================
     def test_sensors_count(self, dss):
         expected = 1
-        actual = dss.sensors.count
+        actual = dss.sensors._count
         assert actual == expected
 
     def test_sensors_first(self, dss):
@@ -111,7 +111,7 @@ class TestSensors13Bus:
 
     def test_sensors_write_weight(self, dss):
         expected = 1.0
-        dss.sensors.weight = expected
+        dss.sensors._weight = expected
         actual = dss.sensors.weight
         assert actual == expected
 
@@ -122,7 +122,7 @@ class TestSensors13Bus:
 
     def test_sensors_write_kv_base(self, dss):
         expected = 0.48
-        dss.sensors.kv_base = expected
+        dss.sensors._kv_base = expected
         actual = dss.sensors.kv_base
         assert actual == expected
 

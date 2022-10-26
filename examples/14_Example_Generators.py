@@ -14,7 +14,7 @@ print(f'dss.generators_read_forced_on(): {dss.forced_on_read()}')
 print(f'dss.generators_write_forced_on(): {dss.forced_on_write(1)}')
 print(f'dss.generators_read_phases(): {dss.phases_read()}')
 print(f'dss.generators_write_phases(): {dss.phases_write(2)}')
-print(f'dss.generators_count(): {dss.count()}')
+print(f'dss.generators_count(): {dss._count()}')
 print(f'dss.generators_read_idx(): {dss.idx_read()}')
 print(f'dss.generators_write_idx(): {dss.idx_write(1)}')
 

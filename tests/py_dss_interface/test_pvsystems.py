@@ -28,7 +28,7 @@ class TestPVSystems13Bus:
                  r"%cutout=0.1  "
                  r"effcurve=Myeff  "
                  r"P-TCurve=MyPvsT")
-        dss.solution_solve()
+        dss.solution.solve
         dss.pvsystems_write_name('PV1')
 
         return dss
@@ -96,7 +96,7 @@ class TestPVSystems13Bus:
     def test_pvsystems_write_kvar(self, dss):
         expected = 100
         dss.pvsystems_write_kvar(expected)
-        dss.solution_solve()
+        dss.solution.solve
         actual = dss.pvsystems_read_kvar()
         # assert actual == expected # Todo needs a power flow to get the kvar, it is not the property
 

@@ -8,7 +8,7 @@ dss = ExampleBase("13").dss
 
 # Integer methods
 print(45 * '=' + ' Integer Methods ' + 45 * '=')
-print(f'dss.capcontrols_count(). {dss.count()}')
+print(f'dss.capcontrols_count(). {dss._count()}')
 print(f'dss.capcontrols_first(). {dss.first()}')
 print(f'dss.capcontrols_read_name(). {dss.read_name()}')
 print(f'dss.capcontrols_next(). {dss.next()}')

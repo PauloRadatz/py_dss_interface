@@ -18,22 +18,22 @@ class PVSystemsI(Base):
     Parameter, which can be one of the following.
     """
 
-    def pvsystems_count(self) -> int:
+    def _count(self) -> int:
         """Returns the number of PVSystem objects currently defined in the active circuit."""
         return int(self.dss_obj.PVsystemsI(ctypes.c_int32(0), ctypes.c_int32(0)))
 
-    def pvsystems_first(self) -> int:
+    def _first(self) -> int:
         """Sets the first PVSystem to be active; returns 0 if none."""
         return int(self.dss_obj.PVsystemsI(ctypes.c_int32(1), ctypes.c_int32(0)))
 
-    def pvsystems_next(self) -> int:
+    def _next(self) -> int:
         """Sets the next PVSystem to be active; returns 0 if none."""
         return int(self.dss_obj.PVsystemsI(ctypes.c_int32(2), ctypes.c_int32(0)))
 
-    def pvsystems_read_idx(self) -> int:
+    def _idx(self) -> int:
         """Gets the active PVSystem by index; 1..Count."""
         return int(self.dss_obj.PVsystemsI(ctypes.c_int32(3), ctypes.c_int32(0)))
 
-    def pvsystems_write_idx(self, argument) -> int:
+    def _idx_write(self, argument) -> int:
         """Sets the active PVSystem by index; 1..Count.."""
         return int(self.dss_obj.PVsystemsI(ctypes.c_int32(4), ctypes.c_int32(argument)))

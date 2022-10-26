@@ -8,7 +8,7 @@ dss = ExampleBase("13").dss
 
 # Integer methods
 print(45 * '=' + ' Integer Methods' + 45 * '=')
-print(f'dss.loadshapes_count(): {dss.count()}')
+print(f'dss.loadshapes_count(): {dss._count()}')
 print(f'dss.loadshapes_first(): {dss.first()}')
 print(f'dss.loadshapes_next(): {dss.next()}')
 print(f'dss.loadshapes_read_npts(): {dss.npts_read()}')

@@ -21,30 +21,30 @@ class XYCurvesV(Base):
     which can be one of the following.
     """
 
-    def xycurves_read_x_array(self):
+    def _x_array(self):
         """Gets the X values as a variant array of doubles. Set Npts to max number expected if setting."""
         return Bridge.var_array_function(self.dss_obj.XYCurvesV, ctypes.c_int(0), ctypes.c_int(0), None)
 
-    def xycurves_write_x_array(self, argument):
+    def _x_array_write(self, argument):
         """Sets the X values as a variant array of doubles specified in Argument. Set Npts to max number expected
         if setting."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
         xyc = XYCurvesS(self.dss_obj)
-        xyc_name = xyc.xycurves_read_name()
+        xyc_name = xyc._name() # TODO
         return t.text(f'edit XYCurve.{xyc_name} Xarray = {argument}')
 
-    def xycurves_read_y_array(self):
+    def _y_array(self):
         """Gets the Y values as a variant array of doubles. Set Npts to max number expected if setting.."""
         return Bridge.var_array_function(self.dss_obj.XYCurvesV, ctypes.c_int(2), ctypes.c_int(0), None)
 
-    def xycurves_write_y_array(self, argument):
+    def _y_array_write(self, argument):
         """Sets the Y values as a variant array of doubles specified in Argument. Set Npts to max number expected
         if setting."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
         xyc = XYCurvesS(self.dss_obj)
-        xyc_name = xyc.xycurves_read_name()
+        xyc_name = xyc._name() # TODO
         return t.text(f'edit XYCurve.{xyc_name} Yarray = {argument}')
 
         # variant_pointer = ctypes.pointer(automation.VARIANT())

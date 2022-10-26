@@ -22,7 +22,7 @@ class TestLineCodes13Bus:
     # ===================================================================
     def test_linecodes_count(self, dss):
         expected = 36
-        actual = dss.count()
+        actual = dss._count()
         assert actual == expected
 
     def test_linecodes_first(self, dss):
