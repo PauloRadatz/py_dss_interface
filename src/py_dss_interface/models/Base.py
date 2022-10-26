@@ -41,10 +41,10 @@ class Base:
                                expected_value=0) -> None:
         """
             Check if the method converges to an expected result.
-            :param param: value compared
-            :param expected_value value expected, most cases is 0 but in others could be 1
-            :param message_1: a generic message if assertion fails
-            :param message_2: a more specific message could be appeared when AssertionError raise
+            @param param: value compared
+            @param expected_value value expected, most cases is 0 but in others could be 1
+            @param message_1: a generic message if assertion fails
+            @param message_2: a more specific message could be appeared when AssertionError raise
             :return:
             """
         if not isinstance(expected_value, int):
@@ -55,37 +55,38 @@ class Base:
             warnings.warn(message_2, Warning)
 
     @classmethod
-    def check_int_param(cls, param: int, default=0) -> int:
+    def check_int_param(cls, int_param: int, default=0) -> int:
         """
-        Check if the parameter is a int and if it exists. If not exist or if it isn't an int it will be 0.
-        :param default: self explained
-        :param param: any int number
+        Check if the parameter is an int and if it exists. If not exist or if it isn't an int it will be 0.
+        @param default: self explained
+        @param int_param: any int number
+        @param default:
         """
-        if type(param) is None:
-            print("Param not defined, param is 0")
-            param = default
+        if type(int_param) is None:
+            print("WARNING: Param not defined, param is 0")
+            int_param = default
         elif (
-            type(param) is str
-            or type(param) is not float
-            and type(param) is not int
+            type(int_param) is str
+            or type(int_param) is not float
+            and type(int_param) is not int
         ):
-            param = default
-        elif type(param) is float:
-            print("Your parameter will be truncated")
-            param = int(param)
+            int_param = default
+        elif type(int_param) is float:
+            print("WARNING: Your parameter will be truncated")
+            int_param = int(int_param)
         else:
-            return param
-        return param
+            return int_param
+        return int_param
 
     @classmethod
     def check_float_param(cls, param: float, default=0.0) -> float:
         """
         Check if the parameter is a float and if it exists. If not exist or if it isn't a float it will be 0.0.
-        :param default: self explained
-        :param param: any float number, positive or negative or just 0.0
+        @param default: self explained
+        @param param: any float number, positive or negative or just 0.0
         """
         if type(param) is None or type(param) is str:
-            print("Param not defined, param is 0.0")
+            print("WARNING: Param not defined, param is 0.0")
             param = default
         elif type(param) is int:
             param = float(param)
@@ -99,8 +100,8 @@ class Base:
     def check_string_param(cls, param: str, default='NAME_DEFAULT') -> str:
         """
         Check if the parameter is a string and if it exists. If not exist or if it isn't a str it will be NAME_DEFAULT.
-        :param default: self explained
-        :param param: any str
+        @param default: self explained
+        @param param: any str
         """
         if not isinstance(default, str):
             default = 'NAME_DEFAULT'
