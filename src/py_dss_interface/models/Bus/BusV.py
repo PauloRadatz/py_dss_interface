@@ -70,7 +70,7 @@ class BusV(Base):
 
     def _pu_vll(self):
         """Returns a variant array of complex numbers representing L-L voltages in per unit. Returns -1.0 for 1-phase
-        bus. If more than 3 phases, returns only first 3.. """
+        bus. If more than 3 phases, returns only first 3. """
         return Bridge.var_array_function(self.dss_obj.BUSV, 12, None, '')
 
     def _vmag_angle(self):

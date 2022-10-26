@@ -18,6 +18,5 @@ class Solution(SolutionI, SolutionF, SolutionS, SolutionV):
     def __init__(self, obj_dss):
         super().__init__(obj_dss)
 
-    @property
     def solve(self) -> int:
         return SolutionI._solve(self)

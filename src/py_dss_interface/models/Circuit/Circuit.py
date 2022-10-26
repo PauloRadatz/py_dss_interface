@@ -131,19 +131,15 @@ class Circuit(CircuitI, CircuitS, CircuitF, CircuitV):
     def num_nodes(self) -> int:
         return CircuitI._num_nodes(self)
 
-    @property
     def pc_element_first(self) -> int:
         return CircuitI._pc_element_first(self)
 
-    @property
     def pc_element_next(self) -> int:
         return CircuitI._pc_element_next(self)
 
-    @property
     def pd_element_first(self) -> int:
         return CircuitI._pd_element_first(self)
 
-    @property
     def pd_element_next(self) -> int:
         return CircuitI._pd_element_next(self)
 
