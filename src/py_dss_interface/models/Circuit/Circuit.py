@@ -131,21 +131,23 @@ class Circuit(CircuitI, CircuitS, CircuitF, CircuitV):
     def num_nodes(self) -> int:
         return CircuitI._num_nodes(self)
 
-    @property
     def pc_element_first(self) -> int:
         return CircuitI._pc_element_first(self)
 
-    @property
     def pc_element_next(self) -> int:
         return CircuitI._pc_element_next(self)
 
-    @property
     def pd_element_first(self) -> int:
         return CircuitI._pd_element_first(self)
 
-    @property
     def pd_element_next(self) -> int:
         return CircuitI._pd_element_next(self)
+
+    def first_element(self) -> int:
+        return CircuitI._first_element(self)
+
+    def next_element(self) -> int:
+        return CircuitI._next_element(self)
 
     @property
     def sample(self) -> int:
@@ -154,14 +156,6 @@ class Circuit(CircuitI, CircuitS, CircuitF, CircuitV):
     @property
     def save_sample(self) -> int:
         return CircuitI._save_sample(self)
-
-    @property
-    def first_element(self) -> int:
-        return CircuitI._first_element(self)
-
-    @property
-    def next_element(self) -> int:
-        return CircuitI._next_element(self)
 
     @property
     def update_storage_t(self):

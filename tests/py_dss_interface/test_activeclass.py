@@ -20,13 +20,13 @@ class TestActiveClass13Bus:
     # ===================================================================
     def test_first(self, dss):
         expected = 1
-        actual = dss.active_class.first
+        actual = dss.active_class.first()
         assert actual == expected
 
     def test_next(self, dss):
         expected = 2
-        dss.active_class.first
-        actual = dss.active_class.next
+        dss.active_class.first()
+        actual = dss.active_class.next()
         assert actual == expected
 
     def test_num_elements(self, dss):

@@ -34,8 +34,8 @@ class TestBus13Capacitors:
         assert actual == expected
 
         dss.capacitors.num_steps = 5
-        dss.capacitors.subtract_step
-        dss.capacitors.subtract_step
+        dss.capacitors.subtract_step()
+        dss.capacitors.subtract_step()
         expected = 2
         actual = dss.capacitors.available_steps
         assert actual == expected
@@ -58,7 +58,7 @@ class TestBus13Capacitors:
 
     def test_first(self, dss):
         expected = 1
-        actual = dss.capacitors.first
+        actual = dss.capacitors.first()
         assert actual == expected
 
         expected = 'cap1'
@@ -67,11 +67,11 @@ class TestBus13Capacitors:
 
     def test_next(self, dss):
         expected = 1
-        actual = dss.capacitors.first
+        actual = dss.capacitors.first()
         assert actual == expected
 
         expected = 2
-        actual = dss.capacitors.next
+        actual = dss.capacitors.next()
         assert actual == expected
 
         expected = 'cap2'
@@ -81,11 +81,11 @@ class TestBus13Capacitors:
     def test_add_step(self, dss):
         dss.capacitors.num_steps = 5
         expected = 0
-        actual = dss.capacitors.add_step
+        actual = dss.capacitors.add_step()
         assert actual == expected
 
-        dss.capacitors.subtract_step
-        dss.capacitors.subtract_step
+        dss.capacitors.subtract_step()
+        dss.capacitors.subtract_step()
         expected = 2
         actual = dss.capacitors.available_steps
         assert actual == expected
@@ -93,17 +93,17 @@ class TestBus13Capacitors:
     def test_subtract_step(self, dss):
         dss.capacitors.num_steps = 5
         expected = 1
-        actual = dss.capacitors.subtract_step
+        actual = dss.capacitors.subtract_step()
         assert actual == expected
 
     def test_open(self, dss):
         expected = 0
-        actual = dss.capacitors.open_all_steps
+        actual = dss.capacitors.open_all_steps()
         assert actual == expected
 
     def test_close(self, dss):
         expected = 0
-        actual = dss.capacitors.close_all_steps
+        actual = dss.capacitors.close_all_steps()
         assert actual == expected
 
     def test_read_kv(self, dss):
@@ -129,7 +129,7 @@ class TestBus13Capacitors:
         assert actual == expected
 
     def test_read_name(self, dss):
-        dss.capacitors.first
+        dss.capacitors.first()
         expected = 'cap1'
         actual = dss.capacitors.name
         assert actual == expected
@@ -148,11 +148,11 @@ class TestBus13Capacitors:
     def test_read_states(self, dss):
         dss.capacitors.num_steps = 5
         expected = [1, 1, 1, 0, 0]
-        dss.capacitors.add_step
-        dss.capacitors.add_step
-        dss.capacitors.add_step
-        dss.capacitors.subtract_step
-        dss.capacitors.subtract_step
+        dss.capacitors.add_step()
+        dss.capacitors.add_step()
+        dss.capacitors.add_step()
+        dss.capacitors.subtract_step()
+        dss.capacitors.subtract_step()
         actual = dss.capacitors.states
         assert actual == expected
 
