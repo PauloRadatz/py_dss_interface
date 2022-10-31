@@ -32,26 +32,26 @@ class TestCircuit13Bus:
 
     def test_first_pc_element(self, dss):
         expected = 1
-        actual = dss.circuit.pc_element_first
+        actual = dss.circuit.pc_element_first()
         assert actual == expected
 
     def test_next_pc_element(self, dss):
         expected = 3
-        dss.circuit.pc_element_first
-        dss.circuit.pc_element_next
-        actual = dss.circuit.pc_element_next
+        dss.circuit.pc_element_first()
+        dss.circuit.pc_element_next()
+        actual = dss.circuit.pc_element_next()
         assert actual == expected
 
     def test_first_pd_element(self, dss):
         expected = 1
-        actual = dss.circuit.pd_element_first
+        actual = dss.circuit.pd_element_first()
         assert actual == expected
 
     def test_next_pd_element(self, dss):
         expected = 3
-        dss.circuit.pd_element_first
-        dss.circuit.pd_element_next
-        actual = dss.circuit.pd_element_next
+        dss.circuit.pd_element_first()
+        dss.circuit.pd_element_next()
+        actual = dss.circuit.pd_element_next()
         assert actual == expected
 
     def test_sample(self, dss):
@@ -71,13 +71,13 @@ class TestCircuit13Bus:
 
     def test_first_element(self, dss):
         expected = 1
-        actual = dss.circuit.first_element
+        actual = dss.circuit.first_element()
         assert actual == expected
 
     def test_next_element(self, dss):
         expected = 2
-        dss.circuit.first_element
-        actual = dss.circuit.next_element
+        dss.circuit.first_element()
+        actual = dss.circuit.next_element()
         assert actual == expected
 
     def test_update_storage_t(self, dss):
@@ -87,8 +87,8 @@ class TestCircuit13Bus:
 
     def test_parent_pd_element(self, dss):
         expected = 1
-        dss.circuit.first_element
-        dss.circuit.next_element
+        dss.circuit.first_element()
+        dss.circuit.next_element()
         actual = dss.circuit.parent_pd_element
         assert actual == expected
 
