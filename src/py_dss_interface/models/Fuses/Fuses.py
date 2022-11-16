@@ -75,7 +75,6 @@ class Fuses(FusesI, FusesS, FusesF, FusesV):
     def names(self) -> List[str]:
         return FusesV._names(self)
 
-    @property
     def next(self) -> int:
         return FusesI._next(self)
 
@@ -103,7 +102,6 @@ class Fuses(FusesI, FusesS, FusesF, FusesV):
     def rated_current(self, value: float):
         FusesF._rated_current_write(self, value)
 
-    @property
     def reset(self):
         return FusesI._reset(self)
 

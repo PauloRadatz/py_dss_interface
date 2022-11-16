@@ -27,12 +27,12 @@ class TestFuses13Bus:
     # ===================================================================
     def test_fuses_first(self, dss):
         expected = 1
-        actual = dss.fuses.first
+        actual = dss.fuses.first()
         assert actual == expected
 
     def test_fuses_next(self, dss):
         expected = 2
-        actual = dss.fuses.next
+        actual = dss.fuses.next()
         assert actual == expected
 
     def test_fuses_count(self, dss):
@@ -47,7 +47,7 @@ class TestFuses13Bus:
 
     def test_fuses_close(self, dss):
         expected = ['closed']
-        dss.fuses.close
+        dss.fuses.close()
         actual = dss.fuses.state
         assert actual == expected
 
@@ -96,7 +96,7 @@ class TestFuses13Bus:
 
     def test_fuses_reset_delay(self, dss):
         expected = 0
-        actual = dss.fuses.reset
+        actual = dss.fuses.reset()
         assert actual == expected
 
     # ===================================================================
