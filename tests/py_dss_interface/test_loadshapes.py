@@ -45,12 +45,12 @@ class TestLoadShapes13Bus:
 
     def test_loadshapes_first(self, dss):
         expected = 1
-        actual = dss.loadshapes.first
+        actual = dss.loadshapes.first()
         assert actual == expected
 
     def test_loadshapes_next(self, dss):
         expected = 0
-        actual = dss.loadshapes.next
+        actual = dss.loadshapes.next()
         assert actual == expected
 
     def test_loadshapes_read_npts(self, dss):
@@ -66,7 +66,7 @@ class TestLoadShapes13Bus:
 
     def test_loadshapes_normalize(self, dss):
         expected = 0
-        actual = dss.loadshapes.normalize
+        actual = dss.loadshapes.normalize()
         assert actual == expected
 
     def test_loadshapes_read_use_actual(self, dss):
