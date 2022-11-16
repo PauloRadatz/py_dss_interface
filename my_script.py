@@ -10,7 +10,7 @@ dss = py_dss_interface.DSS("C:\OpenDSS_rep\Version8\Source")
 # If specific DLL Version, use this line below
 # dss = py_dss_interface.DSS(dll_folder_param=r"C:\Users\eniocc\Downloads\py_dss_interface-master\src"
 #                                                r"\py_dss_interface\dll/windows\x64", dll_by_user="OpenDSSDirect.dll")
-
+dss.circuit.
 # Select the DSS model
 dss_file = r"C:\MeuTCC\Paulo_Example\DSSFiles\MASTER_RedeTeste13Barras.dss"
 dss_file = r"C:\Program Files\OpenDSS\IEEETestCases\13Bus\IEEE13Nodeckt.dss"

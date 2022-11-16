@@ -18,7 +18,7 @@ class CtrlQueue(CtrlQueueI, CtrlQueueV):
     def clear_queue(self) -> int:
         return CtrlQueueI._clear_queue(self)
 
-    @staticmethod
+    @staticmethod # TODO check this one - I don't think it is a staticmethod
     def delete(argument: int) -> int:
         return CtrlQueueI._delete(argument)
 
