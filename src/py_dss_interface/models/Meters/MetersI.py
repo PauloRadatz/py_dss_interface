@@ -42,7 +42,7 @@ class MetersI(Base):
         Bytestream or channel data. Most standard solution modes do this automatically. """
         return self.dss_obj.MetersI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def _metered_terminal(self) -> int:
+    def _metered_terminal_read(self) -> int:
         """Returns the number of metered terminal by the active Energy Meter."""
         return self.dss_obj.MetersI(ctypes.c_int32(6), ctypes.c_int32(0))
 
@@ -85,7 +85,7 @@ class MetersI(Base):
         """Returns the number of branches in active Energy Meter zone (same as sequencelist size)."""
         return self.dss_obj.MetersI(ctypes.c_int32(15), ctypes.c_int32(0))
 
-    def _sequence_index(self) -> int:
+    def _sequence_index_read(self) -> int:
         """Returns the index into meter's SequenceList that contains branch pointers in lexical order. Earlier index
         guaranteed to be up line from later index. Sets PDElement active. """
         return self.dss_obj.MetersI(ctypes.c_int32(16), ctypes.c_int32(0))
@@ -108,7 +108,7 @@ class MetersI(Base):
         """Returns the total number of customers in this zone (down line from the Energy Meter)."""
         return self.dss_obj.MetersI(ctypes.c_int32(20), ctypes.c_int32(0))
 
-    def _num_sections(self) -> int:
+    def _num_sections_read(self) -> int:
         """Returns the number of feeder sections in this meter's zone."""
         return self.dss_obj.MetersI(ctypes.c_int32(21), ctypes.c_int32(0))
 

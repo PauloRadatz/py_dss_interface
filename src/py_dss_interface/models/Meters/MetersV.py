@@ -6,7 +6,7 @@ import ctypes
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
-from py_dss_interface.models.Meters.MetersS import MetersS
+from py_dss_interface.models.Meters import Meters
 from py_dss_interface.models.Text.Text import Text
 
 
@@ -21,7 +21,9 @@ class MetersV(Base):
     one of the following.
     """
 
-    def _all_names(self):
+    # TODO add type return
+
+    def _names(self):
         """Returns an array of all Energy Meter names."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(0), ctypes.c_int(0), None)
 
@@ -37,7 +39,7 @@ class MetersV(Base):
         """Returns the totals for all registers of all Meters."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(3), ctypes.c_int(0), None)
 
-    def _peak_current(self):
+    def _peak_current_read(self):
         """Returns an array of doubles with the Peak Current Property."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(4), ctypes.c_int(0), None)
 
@@ -45,11 +47,11 @@ class MetersV(Base):
         """Receives an array of doubles to set values of Peak Current Property."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
-        mt = MetersS(self.dss_obj)
-        mt_name = mt._name()
+        mt = Meters.Meters(self.dss_obj)
+        mt_name = mt.name
         return t.text(f'edit EnergyMeter.{mt_name} peakcurrent = {argument}')
 
-    def _calc_current(self):
+    def _calc_current_read(self):
         """Returns the magnitude of the real part of the Calculated Current (normally determined by solution)
         for the meter to force some behavior on Load Allocation."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(6), ctypes.c_int(0), None)
@@ -61,7 +63,7 @@ class MetersV(Base):
         for the meter to force some behavior on Load Allocation."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(7), argument, None)
 
-    def _alloc_factors(self):
+    def _alloc_factors_read(self):
         """Returns an array of doubles: allocation factors for the active Meter."""
         return Bridge.var_array_function(self.dss_obj.MetersV, ctypes.c_int(8), ctypes.c_int(0), None)
 
