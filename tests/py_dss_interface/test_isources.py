@@ -19,57 +19,58 @@ class TestBus13ISources:
 
     def test_isources_count(self, dss):
         expected = 1
-        actual = dss._count()
+        actual = dss.isource.count
         assert actual == expected
 
     def test_isources_first(self, dss):
         expected = 1
-        actual = dss.first()
+        actual = dss.isource.first()
         assert actual == expected
 
         expected = 'myisource'
-        actual = dss.name_read()
+        actual = dss.isource.name
         assert actual == expected
 
     def test_isources_next(self, dss):
-        dss.name_write('myisource')
+        dss.isource.name = 'myisource'
         expected = 0
-        actual = dss.next()
+        actual = dss.isource.next()
         assert actual == expected
 
         expected = 'myisource'
-        actual = dss.name_read()
+        actual = dss.isource.name
         assert actual == expected
 
     def test_isources_read_amps(self, dss):
         expected = 100.0
-        actual = dss.amps_read()
+        actual = dss.isource.amps
         assert actual == expected
 
     def test_isources_write_amps(self, dss):
         expected = 0.0
-        dss.amps_write(expected)
-        actual = dss.amps_read()
+        dss.isource.amps = expected
+        actual = dss.isource.amps
         assert actual == expected
 
     def test_isources_read_angle_deg(self, dss):
         expected = 30.0
-        actual = dss.angle_deg_read()
+        actual = dss.isource.angle_deg
         assert actual == expected
 
     def test_isources_write_angle_deg(self, dss):
         expected = 0.0
-        dss.angle_deg_write(expected)
-        actual = dss.angle_deg_read()
+        dss.isource.angle_deg = expected
+        actual = dss.isource.angle_deg
         assert actual == expected
 
     def test_isources_read_frequency(self, dss):
         expected = 60.0
-        actual = dss.frequency_read()
+        actual = dss.isource.frequency
         assert actual == expected
 
     def test_isources_write_frequency(self, dss):
         expected = 0.0
-        dss.frequency_write(expected)
-        actual = dss.frequency_read()
+        dss.isource.frequency = expected
+        actual = dss.isource.frequency
         assert actual == expected
+
