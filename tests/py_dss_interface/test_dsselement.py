@@ -19,7 +19,7 @@ class TestBus13DSSElement:
 
     def test_dsselement_num_properties(self, dss):
         expected = 38
-        actual = dss.num_properties()
+        actual = dss.dsselement.num_properties
         assert actual == expected
 
     def test_dsselement_name(self, dss):
@@ -32,5 +32,5 @@ class TestBus13DSSElement:
                     'xmatrix', 'cmatrix', 'Switch', 'Rg', 'Xg', 'rho', 'geometry', 'units', 'spacing', 'wires',
                     'EarthModel', 'cncables', 'tscables', 'B1', 'B0', 'Seasons', 'Ratings', 'LineType', 'normamps',
                     'emergamps', 'faultrate', 'pctperm', 'repair', 'basefreq', 'enabled', 'like']
-        actual = dss.property_names()
+        actual = dss.dsselement.num_properties
         assert actual == expected
