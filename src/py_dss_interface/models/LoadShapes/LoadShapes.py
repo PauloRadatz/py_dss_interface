@@ -22,7 +22,6 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
     def count(self) -> int:
         return LoadShapesI._count(self)
 
-    @property
     def first(self) -> int:
         return LoadShapesI._first(self)
 
@@ -54,11 +53,9 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
     def names(self):
         return LoadShapesV._names(self)
 
-    @property
     def next(self) -> int:
         return LoadShapesI._next(self)
 
-    @property
     def normalize(self) -> int:
         return LoadShapesI._normalize(self)
 
