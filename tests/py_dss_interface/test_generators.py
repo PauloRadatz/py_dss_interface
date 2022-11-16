@@ -28,12 +28,12 @@ class TestGenerators13Bus:
     # ===================================================================
     def test_generators_first(self, dss):
         expected = 1
-        actual = dss.generators.first
+        actual = dss.generators.first()
         assert actual == expected
 
     def test_generators_next(self, dss):
         expected = 0
-        actual = dss.generators.next
+        actual = dss.generators.next()
         assert actual == expected
 
     def test_generators_count(self, dss):
@@ -148,15 +148,15 @@ class TestGenerators13Bus:
         actual = dss.generators.pf
         assert expected == pytest.approx(actual)
 
-    def test_generators_read_kva_rated(self, dss):
+    def test_generators_read_kva(self, dss):
         expected = 120
-        actual = dss.generators.kva_rated
+        actual = dss.generators.kva
         assert expected == pytest.approx(actual)
 
-    def test_generators_write_kva_rated(self, dss):
+    def test_generators_write_kva(self, dss):
         expected = 123
-        dss.generators.kva_rated = expected
-        actual = dss.generators.kva_rated
+        dss.generators.kva = expected
+        actual = dss.generators.kva
         assert expected == pytest.approx(actual)
 
     def test_generators_read_vmax_pu(self, dss):

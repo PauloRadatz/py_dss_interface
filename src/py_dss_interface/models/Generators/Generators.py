@@ -51,11 +51,11 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
         GeneratorsF._kv_write(self, value)
 
     @property
-    def kva_rated(self) -> float:
+    def kva(self) -> float:
         return GeneratorsF._kva_rated(self)
 
-    @kva_rated.setter
-    def kva_rated(self, value: float):
+    @kva.setter
+    def kva(self, value: float):
         GeneratorsF._kva_rated_write(self, value)
 
     @property
@@ -94,7 +94,6 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     def names(self) -> List[str]:
         return GeneratorsV._names(self)
 
-    @property
     def next(self) -> int:
         return GeneratorsI._next(self)
 
