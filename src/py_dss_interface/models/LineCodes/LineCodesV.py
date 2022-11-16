@@ -5,7 +5,7 @@
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
-from py_dss_interface.models.LineCodes import LineCodesS
+from py_dss_interface.models.LineCodes import LineCodes
 from py_dss_interface.models.Text.Text import Text
 
 
@@ -23,6 +23,8 @@ class LineCodesV(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
+    # TODO I do not think they should return str
+
     def _rmatrix_read(self) -> str:
         """Gets the resistance matrix in ohms per unit length of the active LineCode."""
         return Bridge.var_array_function(self.dss_obj.LineCodesV, 0, None, '')
@@ -32,10 +34,11 @@ class LineCodesV(Base):
          a vector of doubles using the argument.
          :param argument: must be a string like that [0.791721 | 0.318476 0.781649 | 0.28345, 0.318476, 0.791721]
          """
+        # TODO work on it
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
-        lc = LineCodesS.LineCodesS(self.dss_obj)
-        lc_name = lc.name_read()
+        lc = LineCodes.LineCodes(self.dss_obj)
+        lc_name = lc.name
         t.text(f'edit Linecode.{lc_name} Rmatrix = {argument}')
 
     def _xmatrix_read(self) -> str:
@@ -49,8 +52,8 @@ class LineCodesV(Base):
          """
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
-        lc = LineCodesS.LineCodesS(self.dss_obj)
-        lc_name = lc.name_read()
+        lc = LineCodes.LineCodes(self.dss_obj)
+        lc_name = lc.name
         t.text(f'edit Linecode.{lc_name} Xmatrix = {argument}')
 
     def _cmatrix_read(self) -> str:
@@ -64,8 +67,8 @@ class LineCodesV(Base):
          """
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
-        lc = LineCodesS.LineCodesS(self.dss_obj)
-        lc_name = lc.name_read()
+        lc = LineCodes.LineCodes(self.dss_obj)
+        lc_name = lc.name
         t.text(f'edit Linecode.{lc_name} Cmatrix = {argument}')
 
     def _names(self) -> str:
