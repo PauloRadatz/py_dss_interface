@@ -25,6 +25,8 @@ class LinesV(Base):
 
     """
 
+    # TODO work on this guy
+
     def _names(self) -> str:
         """Gets the name of all Line Objects."""
         return Bridge.var_array_function(self.dss_obj.LinesV, 0, None, '')
@@ -51,8 +53,8 @@ class LinesV(Base):
         """Sets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
-        lc = Lines.LinesS(self.dss_obj)
-        lc_name = lc.name_read()
+        lc = Lines.Lines(self.dss_obj)
+        lc_name = lc.name
         return t.text(f'edit Line.{lc_name} Xmatrix = {argument}')
 
     # TODO include in test
@@ -65,8 +67,8 @@ class LinesV(Base):
         """Sets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
-        lc = Lines.LinesS(self.dss_obj)
-        lc_name = lc.name_read()
+        lc = Lines.Lines(self.dss_obj)
+        lc_name = lc.name
         return t.text(f'edit Line.{lc_name} Cmatrix = {argument}')
 
     def _yprim_read(self) -> str:
