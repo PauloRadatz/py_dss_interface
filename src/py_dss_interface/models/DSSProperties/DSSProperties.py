@@ -2,12 +2,11 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
 
-from py_dss_interface.models.Base import Base
+from py_dss_interface.models.DSSProperties.DSSPropertiesS import DSSPropertiesS
 
 
-class DSSProperties(Base):
+class DSSProperties(DSSPropertiesS):
     """
     This interface implements the DSSproperties (IDSSProperties) interface of OpenDSS by declaring 4 procedures for
     accessing the different properties included in this interface.
@@ -23,45 +22,16 @@ class DSSProperties(Base):
     def __init__(self, obj_dss):
         super().__init__(obj_dss)
 
-    def _name_active_property(self, argument: str) -> str:
-        """Delivers the name of the active property. The index of the property must be specified in the argument.
-        The index minimum value is 1. This value must be entered as string."""
-        result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(0), argument.encode('ascii')))
-        return result.value.decode('ascii')
+    def name_active_property(self, argument: str) -> str:
+        return DSSPropertiesS._name_active_property(self, argument)
 
-    def _description_active_property(self, argument: str) -> str:
-        """This parameter will deliver the description of the active property. This parameter will deliver the name of
-        the active property. The index of the property must be specified in the argument. The index minimum value is
-        1. This value must be entered as string.
-        """
-        to_int = int(argument)
-        if to_int < 1:
-            return "ERROR: The value must be greater than 1!"
-        result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(1), argument.encode('ascii')))
-        return result.value.decode('ascii')
+    def description_active_property(self, argument: str) -> str:
+        return DSSPropertiesS._description_active_property(self, argument)
 
-    def _value_read(self, argument: str) -> str:
-        """This parameter will deliver the value of the active property. This parameter will deliver the name of the
-        active property. The index of the property must be specified in the argument. The index minimum value is 1.
-        This value must be entered as string.
-        """
-        to_int = int(argument)
-        if to_int < 1:
-            return "ERROR: The value must be greater than 1!"
-        result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(2), argument.encode('ascii')))
-        return result.value.decode('ascii')
+    # TODO Understand the value option
+    def value_read(self, argument: str) -> str:
+        return DSSPropertiesS._value_read(self, argument)
 
     # TODO include in test
-    def _value_write(self, argument: str) -> str:
-        """This parameter will allow to set the value of the active property. The new value must be specified in the
-        variable “argument” as string. This parameter will deliver the name of the active property. The index of the
-        property must be specified in the argument. The index minimum value is 1. This value must be entered as string.
-        """
-        to_int = int(argument)
-        if to_int < 1:
-            return "ERROR: The value must be greater than 1!"
-        result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(3), argument.encode('ascii')))
-        result = result.value.decode('ascii')
-        if result == '':
-            print("Value written successfully!")
-        return result
+    def value_write(self, argument: str) -> str:
+        return DSSPropertiesS._value_write(self, argument)
