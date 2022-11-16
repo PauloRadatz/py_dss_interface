@@ -31,12 +31,12 @@ class TestLoad13Bus:
 
     def test_loads_first(self, dss):
         expected = 1
-        actual = dss.loads.first
+        actual = dss.loads.first()
         assert actual == expected
 
     def test_loads_next(self, dss):
         expected = 2
-        actual = dss.loads.next
+        actual = dss.loads.next()
         assert actual == expected
 
     def test_loads_read_idx(self, dss):
