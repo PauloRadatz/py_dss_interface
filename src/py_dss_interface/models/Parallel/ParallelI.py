@@ -29,11 +29,11 @@ class ParallelI(Base):
         https://www.howtogeek.com/194756/cpu-basics-multiple-cpus-cores-and-hyper-threading-explained/. """
         return self.dss_obj.ParallelI(ctypes.c_int32(1), ctypes.c_int32(0))
 
-    def _active_actor(self) -> int:
+    def _active_actor_read(self) -> int:
         """Returns the ID of the active actor."""
         return self.dss_obj.ParallelI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def _active_actor_write(self, argument) -> int:
+    def _active_actor_write(self, argument: int) -> int:
         """Sets the ID of the active actor; this number cannot be higher than the number of existing actors."""
         return self.dss_obj.ParallelI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
@@ -42,11 +42,11 @@ class ParallelI(Base):
         more CPUs available, the system will not allow the creation of the new actor. """
         return self.dss_obj.ParallelI(ctypes.c_int32(4), ctypes.c_int32(0))
 
-    def _actor_cpu(self) -> int:
+    def _actor_cpu_read(self) -> int:
         """Gets the ID of the CPU assigned for the execution of the active actor."""
         return self.dss_obj.ParallelI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    def _actor_cpu_write(self, argument) -> int:
+    def _actor_cpu_write(self, argument: int) -> int:
         """Sets the CPU for the execution of the active actor."""
         return self.dss_obj.ParallelI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
@@ -58,17 +58,17 @@ class ParallelI(Base):
         """Waits until all the actors are free and ready to receive a new command."""
         return self.dss_obj.ParallelI(ctypes.c_int32(8), ctypes.c_int32(0))
 
-    def _active_parallel(self) -> int:
+    def _active_parallel_read(self) -> int:
         """Gets if the parallel features of OpenDSS-PM are active. If active, this parameter will return 1, otherwise,
          will return 0 and OpenDSS-PM will behave sequentially."""
         return self.dss_obj.ParallelI(ctypes.c_int32(9), ctypes.c_int32(0))
 
-    def _active_(self, argument) -> int:
+    def _active_parallel_write(self, argument) -> int:
         """Sets enables/disables the parallel features of OpenDSS-PM. To enable set the argument in 1, otherwise,
         the argument should be 0 and OpenDSS-PM will behave sequentially. """
         return self.dss_obj.ParallelI(ctypes.c_int32(10), ctypes.c_int32(argument))
 
-    def _concatenate_reportsl(self) -> int:
+    def _concatenate_reportsl_read(self) -> int:
         """Gets the state of the ConcatenateReports property of OpenDSS-PM. If 1, means that every time the user
         executes a Show/Export monitor operation, the data stored on the monitors with the same name for each actor
         will be concatenated one after the other. Otherwise (0), to get access of each monitor the user will have to
