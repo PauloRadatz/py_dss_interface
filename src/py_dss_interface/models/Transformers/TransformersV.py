@@ -22,7 +22,7 @@ class TransformersV(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def _all_names(self):
+    def _names(self):
         """Gets a variant array of strings with all Transformer names in the active circuit."""
         return Bridge.var_array_function(self.dss_obj.TransformersV, ctypes.c_int(0), ctypes.c_int(0), None)
 

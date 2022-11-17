@@ -13,8 +13,8 @@ class TestTransformers13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.solution.solve
-        dss.transformers_write_name('sub')
+        dss.solution.solve()
+        dss.transformers.name = 'sub'
 
         return dss
 
@@ -23,61 +23,61 @@ class TestTransformers13Bus:
     # ===================================================================
     def test_transformers_read_num_windings(self, dss):
         expected = 2
-        actual = dss.transformers_read_num_windings()
+        actual = dss.transformers.num_windings
         assert actual == expected
 
     def test_transformers_write_num_windings(self, dss):
         expected = 3
-        dss.transformers_write_num_windings(expected)
-        actual = dss.transformers_read_num_windings()
+        dss.transformers.num_windings = expected
+        actual = dss.transformers.num_windings
         assert actual == expected
 
     def test_transformers_read_wdg(self, dss):
         expected = 2
-        actual = dss.transformers_read_wdg()
+        actual = dss.transformers.wdg
         assert actual == expected
 
     def test_transformers_write_wdg(self, dss):
         expected = 1
-        dss.transformers_write_wdg(expected)
-        actual = dss.transformers_read_wdg()
+        dss.transformers.wdg = expected
+        actual = dss.transformers.wdg
         assert actual == expected
 
     def test_transformers_read_num_taps(self, dss):
         expected = 32
-        actual = dss.transformers_read_num_taps()
+        actual = dss.transformers.num_taps
         assert actual == expected
 
     def test_transformers_write_num_taps(self, dss):
         expected = 16
-        dss.transformers_write_num_taps(expected)
-        actual = dss.transformers_read_num_taps()
+        dss.transformers.num_taps = expected
+        actual = dss.transformers.num_taps
         assert actual == expected
 
     def test_transformers_read_is_delta(self, dss):
         expected = 0
-        actual = dss.transformers_read_is_delta()
+        actual = dss.transformers.is_delta
         assert actual == expected
 
     def test_transformers_write_is_delta(self, dss):
         expected = 1
-        dss.transformers_write_is_delta(expected)
-        actual = dss.transformers_read_is_delta()
+        dss.transformers.is_delta = expected
+        actual = dss.transformers.is_delta
         assert actual == expected
 
     def test_transformers_first(self, dss):
         expected = 1
-        actual = dss.transformers_first()
+        actual = dss.transformers.first()
         assert actual == expected
 
     def test_transformers_next(self, dss):
         expected = 2
-        actual = dss.transformers_next()
+        actual = dss.transformers.next()
         assert actual == expected
 
     def test_transformers_count(self, dss):
         expected = 5
-        actual = dss.transformers_count()
+        actual = dss.transformers.count
         assert actual == expected
 
     # ===================================================================
@@ -85,123 +85,123 @@ class TestTransformers13Bus:
     # ===================================================================
     def test_transformers_read_r(self, dss):
         expected = 0.0005
-        actual = dss.transformers_read_r()
+        actual = dss.transformers.r
         assert actual == expected
 
     def test_transformers_write_r(self, dss):
         expected = 0.01
-        dss.transformers_write_r(expected)
-        actual = dss.transformers_read_r()
+        dss.transformers.r = expected
+        actual = dss.transformers.r
         assert actual == expected
 
     def test_transformers_read_tap(self, dss):
         expected = 1
-        actual = dss.transformers_read_tap()
+        actual = dss.transformers.tap
         assert actual == expected
 
     def test_transformers_write_tap(self, dss):
         expected = 5
-        dss.transformers_write_tap(expected)
-        actual = dss.transformers_read_tap()
+        dss.transformers.tap = expected
+        actual = dss.transformers.tap
         assert actual == expected
 
     def test_transformers_read_min_tap(self, dss):
         expected = 0.9
-        actual = dss.transformers_read_min_tap()
+        actual = dss.transformers.min_tap
         assert actual == expected
 
     def test_transformers_write_min_tap(self, dss):
         expected = 0.5
-        dss.transformers_write_min_tap(expected)
-        actual = dss.transformers_read_min_tap()
+        dss.transformers.min_tap = expected
+        actual = dss.transformers.min_tap
         assert actual == expected
 
     def test_transformers_read_max_tap(self, dss):
         expected = 1.1
-        actual = dss.transformers_read_max_tap()
+        actual = dss.transformers.max_tap
         assert actual == expected
 
     def test_transformers_write_max_tap(self, dss):
         expected = 1.5
-        dss.transformers_write_max_tap(expected)
-        actual = dss.transformers_read_max_tap()
+        dss.transformers.max_tap = expected
+        actual = dss.transformers.max_tap
         assert actual == expected
 
     def test_transformers_read_kv(self, dss):
         expected = 4.16
-        actual = dss.transformers_read_kv()
+        actual = dss.transformers.kv
         assert actual == expected
 
     def test_transformers_write_kv(self, dss):
         expected = 3.8
-        dss.transformers_write_kv(expected)
-        actual = dss.transformers_read_kv()
+        dss.transformers.kv = expected
+        actual = dss.transformers.kv
         assert actual == expected
 
     def test_transformers_read_kva(self, dss):
         expected = 5000
-        actual = dss.transformers_read_kva()
+        actual = dss.transformers.kva
         assert actual == expected
 
     def test_transformers_write_kva(self, dss):
         expected = 10000
-        dss.transformers_write_kva(expected)
-        actual = dss.transformers_read_kva()
+        dss.transformers.kva = expected
+        actual = dss.transformers.kva
         assert actual == expected
 
     def test_transformers_read_x_neut(self, dss):
         expected = 0
-        actual = dss.transformers_read_x_neut()
+        actual = dss.transformers.x_neut
         assert actual == expected
 
     def test_transformers_write_x_neut(self, dss):
         expected = 1
-        dss.transformers_write_x_neut(expected)
-        actual = dss.transformers_read_x_neut()
+        dss.transformers.x_neut = expected
+        actual = dss.transformers.x_neut
         assert actual == expected
 
     def test_transformers_read_r_neut(self, dss):
         expected = -1
-        actual = dss.transformers_read_r_neut()
+        actual = dss.transformers.r_neut
         assert actual == expected
 
     def test_transformers_write_r_neut(self, dss):
         expected = 1
-        dss.transformers_write_r_neut(expected)
-        actual = dss.transformers_read_r_neut()
+        dss.transformers.r_neut = expected
+        actual = dss.transformers.r_neut
         assert actual == expected
 
     def test_transformers_read_xhl(self, dss):
         expected = 0.008
-        actual = dss.transformers_read_xhl()
+        actual = dss.transformers.xhl
         assert actual == expected
 
     def test_transformers_write_xhl(self, dss):
         expected = 0.008
-        dss.transformers_write_xhl(expected)
-        actual = dss.transformers_read_xhl()
+        dss.transformers.xhl = expected
+        actual = dss.transformers.xhl
         assert actual == expected
 
     def test_transformers_read_xht(self, dss):
         expected = 4
-        actual = dss.transformers_read_xht()
+        actual = dss.transformers.xht
         assert actual == expected
 
     def test_transformers_write_xht(self, dss):
         expected = 5
-        dss.transformers_write_xht(expected)
-        actual = dss.transformers_read_xht()
+        dss.transformers.xht = expected
+        actual = dss.transformers.xht
         assert actual == expected
 
     def test_transformers_read_xlt(self, dss):
         expected = 4
-        actual = dss.transformers_read_xlt()
+        actual = dss.transformers.xlt
         assert actual == expected
 
     def test_transformers_write_xlt(self, dss):
         expected = 5
-        dss.transformers_write_xlt(expected)
-        actual = dss.transformers_read_xlt()
+        dss.transformers.xlt = expected
+        actual = dss.transformers.xlt
         assert actual == expected
 
     # ===================================================================
@@ -209,30 +209,30 @@ class TestTransformers13Bus:
     # ===================================================================
     def test_transformers_read_xfmr_code(self, dss):
         expected = ''
-        actual = dss.transformers_read_xfmr_code()
+        actual = dss.transformers.xfmr_code
         assert actual == expected
 
     def test_transformers_write_xfmr_code(self, dss):
         dss.text(r'New XfmrCode.test phases=1 xhl=0.01 kvas=[1666 1666] kvs=[2.4 2.4] %LoadLoss=0.01 ')
         expected = 'test'
-        dss.transformers_write_xfmr_code(expected)
-        actual = dss.transformers_read_xfmr_code()
+        dss.transformers.xfmr_code = expected
+        actual = dss.transformers.xfmr_code
         assert actual == expected
 
     def test_transformers_read_name(self, dss):
         expected = 'sub'
-        actual = dss.transformers_read_name()
+        actual = dss.transformers.name
         assert actual == expected
 
     def test_transformers_write_name(self, dss):
         expected = 'reg1'
-        dss.transformers_write_name(expected)
-        actual = dss.transformers_read_name()
+        dss.transformers.name = expected
+        actual = dss.transformers.name
         assert actual == expected
 
     def test_transformers_str_wdg_voltages(self, dss):
         expected = '1'
-        actual = dss.transformers_str_wdg_voltages()
+        actual = dss.transformers.str_wdg_voltages
         assert actual == expected
 
     # ===================================================================
@@ -240,7 +240,7 @@ class TestTransformers13Bus:
     # ===================================================================
     def test_transformers_all_names(self, dss):
         expected = ['sub', 'reg1', 'reg2', 'reg3', 'xfm1']
-        actual = dss.transformers_all_Names()
+        actual = dss.transformers.names
         assert actual == expected
 
     def test_transformers_wdg_voltages(self, dss):
@@ -250,7 +250,7 @@ class TestTransformers13Bus:
                     -2079.717523220085,
                     -1200.311654294895,
                     2080.141951753078]
-        actual = dss.transformers_wdg_voltages()
+        actual = dss.transformers.wdg_voltages
         assert actual == expected
 
     def test_transformers_wdg_currents(self, dss):
@@ -278,5 +278,5 @@ class TestTransformers13Bus:
                     -623.934813240543,
                     -36.93970551621169,
                     623.9349866397679]
-        actual = dss.transformers_wdg_currents()
+        actual = dss.transformers.wdg_currents
         assert actual == expected
