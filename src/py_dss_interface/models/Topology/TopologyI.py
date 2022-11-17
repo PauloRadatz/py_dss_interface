@@ -26,7 +26,7 @@ class TopologyI(Base):
         """Gets the number of isolated branches (PD elements and capacitors)."""
         return self.dss_obj.TopologyI(ctypes.c_int32(1), ctypes.c_int32(0))
 
-    def _num_isolated_loadss(self) -> int:
+    def _num_isolated_loads(self) -> int:
         """Gets the number of isolated loads."""
         return self.dss_obj.TopologyI(ctypes.c_int32(2), ctypes.c_int32(0))
 

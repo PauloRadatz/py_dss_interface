@@ -18,23 +18,23 @@ class TopologyS(Base):
     which can be one of the following.
     """
 
-    def _branch_name(self):
+    def _branch_name_read(self) -> str:
         """Gets the name of the active branch."""
         result = ctypes.c_char_p(self.dss_obj.TopologyS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def _branch_name_write(self, argument):
+    def _branch_name_write(self, argument: str) -> str:
         """Sets the name of the active branch."""
         result = ctypes.c_char_p(self.dss_obj.TopologyS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def _bus_name(self):
+    def _bus_name_read(self) -> str:
         """Gets the name of the active Bus."""
         result = ctypes.c_char_p(self.dss_obj.TopologyS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     # TODO include in test
-    def _bus_name_write(self, argument):
+    def _bus_name_write(self, argument: str) -> str:
         """Sets the Bus active by name."""
         result = ctypes.c_char_p(self.dss_obj.TopologyS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
