@@ -52,7 +52,7 @@ class MonitorsI(Base):
         """Returns the monitor mode (bitmask integer - see DSS Help)."""
         return self.dss_obj.MonitorsI(ctypes.c_int32(7), ctypes.c_int32(0))
 
-    def _mode_write(self, argument) -> int:
+    def _mode_write(self, argument: int) -> int:
         """Sets the monitor mode (bitmask integer - see DSS Help).
         Bitmask integer designating the values the monitor is to capture:
         0 = Voltages and currents at designated terminal
@@ -121,6 +121,6 @@ class MonitorsI(Base):
         """Returns the terminal number of element being monitored."""
         return self.dss_obj.MonitorsI(ctypes.c_int32(18), ctypes.c_int32(0))
 
-    def _terminal_write(self, argument) -> int:
+    def _terminal_write(self, argument: int) -> int:
         """Sets sets the terminal number of element being monitored."""
         return self.dss_obj.MonitorsI(ctypes.c_int32(19), ctypes.c_int32(argument))

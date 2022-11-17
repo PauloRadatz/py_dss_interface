@@ -23,7 +23,7 @@ class TestMonitors13Bus:
             "0.41000000 0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 1.45000005 1.62000000 "
             "1.88999999 1.79999995 1.78999996 1.19000006 0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 "
             "0.23000000)")
-        dss.daily_write("1")
+        dss.text("set mode=daily")
         dss.text("New monitor.m1 element=Transformer.XFM1 terminal=1 mode=0")
         dss.text(f"Set DataPath={path}")
         dss.text("Set maxcontrol=100")
@@ -31,7 +31,7 @@ class TestMonitors13Bus:
         dss.text("Set controlmode=off")
         dss.text("Set mode=daily stepsize=1.0h number=24")
 
-        dss.solution.solve
+        dss.solution.solve()
 
         return dss
 
@@ -40,89 +40,89 @@ class TestMonitors13Bus:
     # ===================================================================
     def test_monitors_first(self, dss):
         expected = 1
-        actual = dss.monitors_first()
+        actual = dss.monitors.first()
         assert actual == expected
 
     def test_monitors_next(self, dss):
         expected = 0
-        actual = dss.monitors_next()
+        actual = dss.monitors.next()
         assert actual == expected
 
     def test_monitors_count(self, dss):
         expected = 1
-        actual = dss.monitors_count()
+        actual = dss.monitors.count
         assert actual == expected
 
     def test_monitors_reset(self, dss):
         expected = 0
-        actual = dss.monitors_reset()
+        actual = dss.monitors.reset()
         assert actual == expected
 
     def test_monitors_reset_all(self, dss):
         expected = 0
-        actual = dss.monitors_reset_all()
+        actual = dss.monitors.reset_all()
         assert actual == expected
 
     def test_monitors_sample(self, dss):
         expected = 0
-        actual = dss.monitors_sample()
+        actual = dss.monitors.sample()
         assert actual == expected
 
     def test_monitors_sample_all(self, dss):
         expected = 0
-        actual = dss.monitors_sample_all()
+        actual = dss.monitors.sample_all()
         assert actual == expected
 
     def test_monitors_save(self, dss):
         expected = 0
-        actual = dss.monitors_save()
+        actual = dss.monitors.save()
         assert actual == expected
 
     def test_monitors_save_all(self, dss):
         expected = 0
-        actual = dss.monitors_save_all()
+        actual = dss.monitors.save_all()
         assert actual == expected
 
     def test_monitors_process(self, dss):
         expected = 0
-        actual = dss.monitors_process()
+        actual = dss.monitors.process()
         assert actual == expected
 
     def test_monitors_process_all(self, dss):
         expected = 0
-        actual = dss.monitors_process_all()
+        actual = dss.monitors.process_all()
         assert actual == expected
 
     def test_monitors_file_version(self, dss):
         # TODO: file_version returns different values each time
         expected = 0
-        actual = dss.monitors_file_version()
+        actual = dss.monitors.file_version
         assert type(actual) == type(expected)
 
     def test_monitors_sample_count(self, dss):
         expected = 24
-        actual = dss.monitors_sample_count()
+        actual = dss.monitors.sample_count
         assert actual == expected
 
     def test_monitors_record_size(self, dss):
         expected = 16
-        actual = dss.monitors_record_size()
+        actual = dss.monitors.record_size
         assert actual == expected
 
     def test_monitors_num_channels(self, dss):
         expected = 16
-        actual = dss.monitors_num_channels()
+        actual = dss.monitors.num_channels
         assert actual == expected
 
     def test_monitors_read_terminal(self, dss):
         expected = 1
-        actual = dss.monitors_read_terminal()
+        actual = dss.monitors.terminal
         assert actual == expected
 
     def test_monitors_write_terminal(self, dss):
         expected = 2
-        dss.monitors_write_terminal(expected)
-        actual = dss.monitors_read_terminal()
+        dss.monitors.terminal = expected
+        actual = dss.monitors.terminal
         assert actual == expected
 
     # ===================================================================
@@ -130,30 +130,30 @@ class TestMonitors13Bus:
     # ===================================================================
     def test_monitors_file_name(self, dss):
         expected = os.path.join(path, "IEEE13Nodeckt_Mon_m1_1.csv")
-        actual = dss.monitors_file_name()
+        actual = dss.monitors.file_name
         assert expected.lower() == actual.lower()
 
     def test_monitors_read_name(self, dss):
         expected = "m1"
-        actual = dss.monitors_read_name()
+        actual = dss.monitors.name
         assert expected.lower() == actual.lower()
 
     def test_monitors_write_name(self, dss):
         dss.text("New monitor.m2 element=Transformer.XFM1 terminal=2 mode=0")
         expected = "m2"
-        dss.monitors_write_name(expected)
-        actual = dss.monitors_read_name()
+        dss.monitors.name = expected
+        actual = dss.monitors.name
         assert expected.lower() == actual.lower()
 
     def test_monitors_read_element(self, dss):
         expected = "transformer.xfm1"
-        actual = dss.monitors_read_element()
+        actual = dss.monitors.element
         assert actual == expected
 
     def test_monitors_write_element(self, dss):
         expected = "load.671"
-        dss.monitors_write_element(expected)
-        actual = dss.monitors_read_element()
+        dss.monitors.element = expected
+        actual = dss.monitors.element
         assert actual == expected
 
     # ===================================================================
@@ -162,7 +162,7 @@ class TestMonitors13Bus:
     def test_monitors_all_names(self, dss):
         dss.text("New monitor.m2 element=Transformer.XFM1 terminal=2 mode=0")
         expected = ["m1", "m2"]
-        actual = dss.monitors_all_names()
+        actual = dss.monitors.names
         assert actual == expected
 
     def test_monitors_byte_stream(self, dss):
@@ -599,27 +599,27 @@ class TestMonitors13Bus:
                     19.87200355529785,
                     150.3905487060547]
 
-        dss.monitors_save()
+        dss.monitors.save()
 
         actual = []
-        for i in dss.monitors_byte_stream().values.tolist():
+        for i in dss.monitors.byte_stream.values.tolist():
             actual.extend(iter(i))
         assert actual == expected
 
     def test_monitors_header(self, dss):
         expected = [' V1', ' VAngle1', ' V2', ' VAngle2', ' V3', ' VAngle3', ' V4', ' VAngle4',
                     ' I1', ' IAngle1', ' I2', ' IAngle2', ' I3', ' IAngle3', ' I4', ' IAngle4\x00']
-        actual = dss.monitors_header()
+        actual = dss.monitors.header
         assert actual == expected
 
     def test_monitors_dbl_hour(self, dss):
         expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
-        actual = dss.monitors_dbl_hour()
+        actual = dss.monitors.dbl_hour
         assert actual == expected
 
     def test_monitors_dbl_freq(self, dss):
         expected = [0.0]
-        actual = dss.monitors_dbl_freq()
+        actual = dss.monitors.dbl_freq
         assert actual == expected
 
     def test_monitors_channel(self, dss):
@@ -647,6 +647,6 @@ class TestMonitors13Bus:
                     2423.14,
                     2421.99,
                     2421.52]
-        # dss.monitors_save_all()
-        actual = dss.monitors_channel(1)
+        # dss.monitors.save_all()
+        actual = dss.monitors.channel(1)
         assert [round(value, 2) for value in actual] == [round(value, 2) for value in expected]

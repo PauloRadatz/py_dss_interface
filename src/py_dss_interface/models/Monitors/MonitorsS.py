@@ -23,7 +23,7 @@ class MonitorsS(Base):
         result = ctypes.c_char_p(self.dss_obj.MonitorsS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def _name(self) -> str:
+    def _name_read(self) -> str:
         """Returns the active Monitor object by name."""
         result = ctypes.c_char_p(self.dss_obj.MonitorsS(ctypes.c_int32(1), ctypes.c_int32(0)))
         return result.value.decode('ascii')
@@ -33,7 +33,7 @@ class MonitorsS(Base):
         result = ctypes.c_char_p(self.dss_obj.MonitorsS(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def _element(self) -> str:
+    def _element_read(self) -> str:
         """Returns the full name of element being monitored by the active Monitor."""
         result = ctypes.c_char_p(self.dss_obj.MonitorsS(ctypes.c_int32(3), ctypes.c_int32(0)))
         return result.value.decode('ascii')
