@@ -26,20 +26,25 @@ class Parser(ParserI, ParserS, ParserF, ParserV):
     which can be one of the following.
     """
 
-    pass
+    def __init__(self, obj_dss):
+        super().__init__(obj_dss)
 
-    # # TODO include in test
-    # def parser_vector(self):
-    #     """Returns token as variant array of doubles. For parsing quoted array syntax."""
-    #     return Bridge.var_array_function(self.dss_obj.ParserV, 0, None, '')
-    #
-    # # TODO include in test
-    # def parser_matrix(self):
-    #     """Use this property to parse a Matrix token in OpenDSS format. Returns square matrix of order specified.
-    #     Order same as default fortran order: column by column."""
-    #     return Bridge.var_array_function(self.dss_obj.ParserV, 1, None, '')
-    #
-    # # TODO include in test
-    # def parser_symmatrix(self):
-    #     """Use this property to parse a Matrix token in lower triangular form. Symmetry is forced."""
-    #     return Bridge.var_array_function(self.dss_obj.ParserV, 2, None, '')
+    @property
+    def dbl_value(self) -> float:
+        return ParserF._dbl_value(self)
+
+    @property
+    def int_value(self) -> int:
+        return ParserI._int_value(self)
+
+    @property
+    def reset_delimiters(self) -> int:
+        return ParserI._reset_delimiters(self)
+
+    @property
+    def auto_increment(self) -> int:
+        return ParserI._auto_increment_read(self)
+
+    @auto_increment.setter
+    def auto_increment(self, argument: int):
+        ParserI._auto_increment_write(self, argument)
