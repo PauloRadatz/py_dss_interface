@@ -7,6 +7,7 @@ from py_dss_interface.models.Monitors.MonitorsS import MonitorsS
 from py_dss_interface.models.Monitors.MonitorsV import MonitorsV
 from typing import List
 
+
 class Monitors(MonitorsI, MonitorsV, MonitorsS):
     """
     This interface implements the Monitors (IMonitors) interface of OpenDSS by declaring 3 procedures for accessing
