@@ -15,8 +15,8 @@ class TestXYCurves13Bus:
         dss = solve_snap_13bus
         dss.text(r'New XYCurve.xycurve1 npts=4  xarray=[.1  .2  .4  1.0]  yarray=[.86  .9  .93  .97]')
         dss.text(r'New XYCurve.xycurve2 npts=4  xarray=[.1  .2  .4  1.0]  yarray=[.86  .9  .93  .97]')
-        dss.solution.solve
-        dss.xycurves_write_name('xycurve1')
+        dss.solution.solve()
+        dss.xycurves.name = 'xycurve1'
 
         return dss
 
@@ -25,28 +25,28 @@ class TestXYCurves13Bus:
     # ===================================================================
     def test_xycurves_count(self, dss):
         expected = 2
-        actual = dss.xycurves_count()
+        actual = dss.xycurves.count
         assert actual == expected
 
     def test_xycurves_first(self, dss):
         expected = 1
-        actual = dss.xycurves_first()
+        actual = dss.xycurves.first()
         assert actual == expected
 
     def test_xycurves_next(self, dss):
         expected = 2
-        actual = dss.xycurves_next()
+        actual = dss.xycurves.next()
         assert actual == expected
 
     def test_xycurves_read_npts(self, dss):
         expected = 4
-        actual = dss.xycurves_read_npts()
+        actual = dss.xycurves.npts
         assert actual == expected
 
     def test_xycurves_write_npts(self, dss):
         expected = 8
-        dss.xycurves_write_npts(expected)
-        actual = dss.xycurves_read_npts()
+        dss.xycurves.npts = expected
+        actual = dss.xycurves.npts
         assert actual == expected
 
     # ===================================================================
@@ -54,68 +54,68 @@ class TestXYCurves13Bus:
     # ===================================================================
     def test_xycurves_read_x(self, dss):
         expected = 0.1
-        actual = dss.xycurves_read_x()
+        actual = dss.xycurves.x
         assert actual == expected
 
     def test_xycurves_write_x(self, dss):
         expected = 1
-        dss.xycurves_write_x(expected)
-        actual = dss.xycurves_read_x()
+        dss.xycurves.x = expected
+        actual = dss.xycurves.x
         assert actual == expected
 
     def test_xycurves_read_y(self, dss):
         expected = 1
-        actual = dss.xycurves_read_y()
+        actual = dss.xycurves.y
         assert actual == expected
 
     def test_xycurves_write_y(self, dss):
         expected = 1
-        dss.xycurves_write_y(expected)
-        actual = dss.xycurves_read_y()
+        dss.xycurves.y = expected
+        actual = dss.xycurves.y
         assert actual == expected
 
     def test_xycurves_read_x_shift(self, dss):
         expected = 0
-        actual = dss.xycurves_read_x_shift()
+        actual = dss.xycurves.x_shift
         assert actual == expected
 
     def test_xycurves_write_x_shift(self, dss):
         expected = 1
-        dss.xycurves_write_x_shift(expected)
-        actual = dss.xycurves_read_x_shift()
+        dss.xycurves.x_shift = expected
+        actual = dss.xycurves.x_shift
         assert actual == expected
 
     def test_xycurves_read_y_shift(self, dss):
         expected = 0
-        actual = dss.xycurves_read_y_shift()
+        actual = dss.xycurves.y_shift
         assert actual == expected
 
     def test_xycurves_write_y_shift(self, dss):
         expected = 1
-        dss.xycurves_write_y_shift(expected)
-        actual = dss.xycurves_read_y_shift()
+        dss.xycurves.y_shift = expected
+        actual = dss.xycurves.y_shift
         assert actual == expected
 
     def test_xycurves_read_x_scale(self, dss):
         expected = 1
-        actual = dss.xycurves_read_x_scale()
+        actual = dss.xycurves.x_scale
         assert actual == expected
 
     def test_xycurves_write_x_scale(self, dss):
         expected = 1
-        dss.xycurves_write_x_scale(expected)
-        actual = dss.xycurves_read_x_scale()
+        dss.xycurves.x_scale = expected
+        actual = dss.xycurves.x_scale
         assert actual == expected
 
     def test_xycurves_read_y_scale(self, dss):
         expected = 1
-        actual = dss.xycurves_read_y_scale()
+        actual = dss.xycurves.y_scale
         assert actual == expected
 
     def test_xycurves_write_y_scale(self, dss):
         expected = 1
-        dss.xycurves_write_y_scale(expected)
-        actual = dss.xycurves_read_y_scale()
+        dss.xycurves.y_scale = expected
+        actual = dss.xycurves.y_scale
         assert actual == expected
 
     # ===================================================================
@@ -123,13 +123,13 @@ class TestXYCurves13Bus:
     # ===================================================================
     def test_xycurves_read_name(self, dss):
         expected = 'xycurve1'
-        actual = dss.xycurves_read_name()
+        actual = dss.xycurves.name
         assert actual == expected
 
     def test_xycurves_write_name(self, dss):
         expected = 'xycurve2'
-        dss.xycurves_write_name(expected)
-        actual = dss.xycurves_read_name()
+        dss.xycurves.name = expected
+        actual = dss.xycurves.name
         assert actual == expected
 
     # ===================================================================
@@ -137,22 +137,22 @@ class TestXYCurves13Bus:
     # ===================================================================
     def test_xycurves_read_x_array(self, dss):
         expected = [.1, .2, .4, 1.0]
-        actual = dss.xycurves_read_x_array()
+        actual = dss.xycurves.x_array
         assert actual == expected
 
     def test_xycurves_write_x_array(self, dss):
         expected = [1, 1, 1, 1]
-        dss.xycurves_write_x_array(str(expected))
-        actual = dss.xycurves_read_x_array()
+        dss.xycurves.x_array = expected
+        actual = dss.xycurves.x_array
         assert actual == expected
 
     def test_xycurves_read_y_array(self, dss):
         expected = [.86, .9, .93, .97]
-        actual = dss.xycurves_read_y_array()
+        actual = dss.xycurves.y_array
         assert actual == expected
 
     def test_xycurves_write_y_array(self, dss):
         expected = [1, 1, 1, 1]
-        dss.xycurves_write_y_array(str(expected))
-        actual = dss.xycurves_read_y_array()
+        dss.xycurves.y_array = expected
+        actual = dss.xycurves.y_array
         assert actual == expected

@@ -30,11 +30,11 @@ class XYCurvesI(Base):
         """Sets next XYCurves object active; returns 0 if none."""
         return self.dss_obj.XYCurvesI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def _npts(self) -> int:
+    def _npts_read(self) -> int:
         """Gets the number of points in X-Y curve."""
         return self.dss_obj.XYCurvesI(ctypes.c_int32(3), ctypes.c_int32(0))
 
-    def _npts_write(self, argument) -> int:
+    def _npts_write(self, argument: int) -> int:
         """Sets the number of points in X-Y curve."""
         argument = Base.check_int_param(argument)
         return self.dss_obj.XYCurvesI(ctypes.c_int32(4), ctypes.c_int32(argument))

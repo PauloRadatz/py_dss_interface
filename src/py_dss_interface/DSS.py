@@ -71,7 +71,7 @@ class DSS:
                 self.errorinterface = DSSInterface(self.dss_obj)
                 self.fuses = Fuses(self.dss_obj)
                 self.generators = Generators(self.dss_obj)
-                self.isource = ISources(self.dss_obj)
+                self.isources = ISources(self.dss_obj)
                 self.linecodes = LineCodes(self.dss_obj)
                 self.lines = Lines(self.dss_obj)
                 self.loads = Loads(self.dss_obj)
@@ -91,9 +91,9 @@ class DSS:
                 self.swtcontrols = SwtControls(self.dss_obj)
                 self.text = Text(self.dss_obj).text
                 self.topology = Topology(self.dss_obj)
-                self.transformer = Transformers(self.dss_obj)
+                self.transformers = Transformers(self.dss_obj)
                 self.vsources = VSources(self.dss_obj)
-                self.xycurve = XYCurves(self.dss_obj)
+                self.xycurves = XYCurves(self.dss_obj)
 
                 print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
 
