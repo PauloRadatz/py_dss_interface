@@ -30,7 +30,7 @@ class VSourcesI(Base):
         """Sets the next VSource to be active; returns 0 if none."""
         return self.dss_obj.VsourcesI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def _phases(self) -> int:
+    def _phases_read(self) -> int:
         """Gets the number of phases of the active VSource."""
         return self.dss_obj.VsourcesI(ctypes.c_int32(3), ctypes.c_int32(0))
 

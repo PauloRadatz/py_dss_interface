@@ -29,13 +29,13 @@ class TestVSources13Bus:
 
     def test_vsources_first(self, dss):
         expected = 1
-        actual = dss.vsources.first
+        actual = dss.vsources.first()
         assert actual == expected
 
     def test_vsources_next(self, dss):
         expected = 2
-        dss.vsources.first
-        actual = dss.vsources.next
+        dss.vsources.first()
+        actual = dss.vsources.next()
         assert actual == expected
 
     def test_vsources_read_phases(self, dss):
@@ -115,5 +115,5 @@ class TestVSources13Bus:
     # ===================================================================
     def test_vsources_all_names(self, dss):
         expected = ['source', 'fonte1']
-        actual = dss.vsources.all_names
+        actual = dss.vsources.names
         assert actual == expected
