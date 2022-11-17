@@ -19,7 +19,7 @@ class PDElementsS(Base):
 
     """
 
-    def _name(self):
+    def _name_read(self):
         """Gets the name of the active PDElement, returns null string if active element id not PDElement."""
         result = ctypes.c_char_p(self.dss_obj.PDElementsS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
