@@ -18,7 +18,7 @@ class VSourcesS(Base):
     which can be one of the following.
     """
 
-    def _name(self):
+    def _name_read(self):
         """Gets the name of the active VSource."""
         result = ctypes.c_char_p(self.dss_obj.VsourcesS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
