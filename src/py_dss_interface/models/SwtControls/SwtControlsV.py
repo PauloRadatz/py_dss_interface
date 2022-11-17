@@ -7,6 +7,7 @@ import ctypes
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
+from typing import List
 
 
 class SwtControlsV(Base):
@@ -20,6 +21,6 @@ class SwtControlsV(Base):
     which can be one of the following.
     """
 
-    def _all_names(self):
+    def _names(self) -> List[str]:
         """Gets a variant array of strings with all SwtControl names in the active circuit."""
         return Bridge.var_array_function(self.dss_obj.SwtControlsV, ctypes.c_int(0), ctypes.c_int(0), None)
