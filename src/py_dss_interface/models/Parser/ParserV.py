@@ -6,6 +6,7 @@ import ctypes
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
+from typing import List
 
 
 class ParserV(Base):
@@ -20,17 +21,17 @@ class ParserV(Base):
     """
 
     # TODO include in test
-    def _vector(self):
+    def _vector(self) -> List[float]:
         """Returns token as variant array of doubles. For parsing quoted array syntax."""
         return Bridge.var_array_function(self.dss_obj.ParserV, ctypes.c_int(0), ctypes.c_int(0), None)
 
     # TODO include in test
-    def _matrix(self):
+    def _matrix(self) -> List[float]:
         """Use this property to parse a Matrix token in OpenDSS format. Returns square matrix of order specified.
         Order same as default fortran order: column by column. """
         return Bridge.var_array_function(self.dss_obj.ParserV, ctypes.c_int(1), ctypes.c_int(0), None)
 
     # TODO include in test
-    def _sym_matrix(self):
+    def _sym_matrix(self) -> List[float]:
         """Use this property to parse a Matrix token in lower triangular form. Symmetry is forced."""
         return Bridge.var_array_function(self.dss_obj.ParserV, ctypes.c_int(2), ctypes.c_int(0), None)
