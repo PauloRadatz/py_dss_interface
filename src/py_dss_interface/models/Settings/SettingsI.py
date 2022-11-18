@@ -18,7 +18,7 @@ class SettingsI(Base):
     which can be one of the following.
     """
 
-    def _allow_duplicates(self) -> int:
+    def _allow_duplicates_read(self) -> int:
         """Gets if OpenDSS allows duplicate names of objects: {1 allow, 0 not allow}."""
         return self.dss_obj.SettingsI(ctypes.c_int32(0), ctypes.c_int32(0))
 
@@ -27,7 +27,7 @@ class SettingsI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.SettingsI(ctypes.c_int32(1), ctypes.c_int32(argument))
 
-    def _zone_lock(self) -> int:
+    def _zone_lock_read(self) -> int:
         """Gets the status of Lock zones on energy meters to prevent rebuilding if a circuit
         change occurs: {1= true, 0= False}."""
         return self.dss_obj.SettingsI(ctypes.c_int32(2), ctypes.c_int32(0))
@@ -38,7 +38,7 @@ class SettingsI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.SettingsI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
-    def _ckt_model(self) -> int:
+    def _ckt_model_read(self) -> int:
         """Gets {dssMultiphase* | dssPositiveSeq} Indicate if the circuit model is positive sequence."""
         return self.dss_obj.SettingsI(ctypes.c_int32(4), ctypes.c_int32(0))
 
@@ -47,7 +47,7 @@ class SettingsI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.SettingsI(ctypes.c_int32(5), ctypes.c_int32(argument))
 
-    def _trapezoidal(self) -> int:
+    def _trapezoidal_read(self) -> int:
         """Gets {True (1) | False (0)} value of trapezoidal integration flag in Energy Meters."""
         return self.dss_obj.SettingsI(ctypes.c_int32(6), ctypes.c_int32(0))
 
