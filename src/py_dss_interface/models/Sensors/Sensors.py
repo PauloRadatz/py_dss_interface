@@ -7,6 +7,7 @@ from py_dss_interface.models.Sensors.SensorsF import SensorsF
 from py_dss_interface.models.Sensors.SensorsI import SensorsI
 from py_dss_interface.models.Sensors.SensorsS import SensorsS
 from py_dss_interface.models.Sensors.SensorsV import SensorsV
+from typing import List
 
 
 class Sensors(SensorsV, SensorsS, SensorsI, SensorsF):
@@ -20,112 +21,108 @@ class Sensors(SensorsV, SensorsS, SensorsI, SensorsF):
 
     @property
     def pct_error(self) -> float:
-        return SensorsF._pct_error(self)
+        return SensorsF._pct_error_read(self)
 
     @pct_error.setter
-    def pct_error(self, argument):
-        SensorsF._pct_error_write(self, argument)
+    def pct_error(self, arg: float):
+        SensorsF._pct_error_write(self, arg)
 
     @property
     def weight(self) -> float:
-        return SensorsF._weight(self)
+        return SensorsF._weight_read(self)
 
     @weight.setter
-    def weight(self, argument):
-        SensorsF._weight_write(self, argument)
+    def weight(self, arg: float):
+        SensorsF._weight_write(self, arg)
 
     @property
     def kv_base(self) -> float:
-        return SensorsF._kv_base(self)
+        return SensorsF._kv_base_read(self)
 
     @kv_base.setter
-    def kv_base(self, argument):
-        SensorsF._kv_base_write(self, argument)
+    def kv_base(self, arg: float):
+        SensorsF._kv_base_write(self, arg)
 
     @property
     def _count(self) -> int:
         return SensorsI._count(self)
 
-    @property
     def first(self) -> int:
         return SensorsI._first(self)
 
-    @property
     def next(self) -> int:
         return SensorsI._next(self)
 
     @property
     def is_delta(self) -> int:
-        return SensorsI._is_delta(self)
+        return SensorsI._is_delta_read(self)
 
     @is_delta.setter
-    def is_delta(self, argument):
-        SensorsI._is_delta_write(self, argument)
+    def is_delta(self, arg: int):
+        SensorsI._is_delta_write(self, arg)
 
     @property
     def reverse_delta(self) -> int:
-        return SensorsI._reverse_delta(self)
+        return SensorsI._reverse_delta_read(self)
 
     @reverse_delta.setter
-    def reverse_delta(self, argument):
-        SensorsI._reverse_delta_write(self, argument)
+    def reverse_delta(self, arg: int):
+        SensorsI._reverse_delta_write(self, arg)
 
     @property
     def metered_terminal(self) -> int:
-        return SensorsI._metered_terminal(self)
+        return SensorsI._metered_terminal_read(self)
 
     @metered_terminal.setter
-    def metered_terminal(self, argument):
-        SensorsI._metered_terminal_write(self, argument)
+    def metered_terminal(self, arg: int):
+        SensorsI._metered_terminal_write(self, arg)
 
-    @property
     def reset(self) -> int:
         return SensorsI._reset(self)
 
-    @property
     def reset_all(self) -> int:
         return SensorsI._reset_all(self)
 
     @property
-    def name(self):
-        return SensorsS._name(self)
+    def name(self) -> str:
+        return SensorsS._name_read(self)
 
     @name.setter
-    def name(self, argument):
-        SensorsS._name_write(self, argument)
+    def name(self, arg: str):
+        SensorsS._name_write(self, arg)
 
     @property
     def metered_element(self) -> str:
-        return SensorsS._metered_element(self)
+        return SensorsS._metered_element_read(self)
 
     @metered_element.setter
-    def metered_element(self, argument):
-        SensorsS._metered_element_write(self, argument)
+    def metered_element(self, arg: str):
+        SensorsS._metered_element_write(self, arg)
 
     @property
-    def all_names(self):
-        return SensorsV._all_names(self)
+    def names(self) -> List[str]:
+        return SensorsV._names(self)
 
     @property
-    def currents(self):
-        return SensorsV._currents(self)
+    def currents(self) -> List[float]:
+        return SensorsV._currents_read(self)
 
     @currents.setter
-    def currents(self, argument):
-        SensorsV._currents_write(self, argument)
+    def currents(self, arg: List[float]):
+        SensorsV._currents_write(self, arg)
 
     @property
-    def kvars(self):
-        return SensorsV._kvars(self)
+    def kvars(self) -> List[float]:
+        return SensorsV._kvars_read(self)
 
     @kvars.setter
-    def kvars(self, argument):
-        SensorsV._kvars_write(self, argument)
+    def kvars(self, arg: List[float]):
+        SensorsV._kvars_write(self, arg)
 
     @property
-    def kws(self):
-        return SensorsV._kws(self)
+    def kws(self) -> List[float]:
+        return SensorsV._kws_read(self)
 
     @kws.setter
-    def kws(self, argument):
-        SensorsV._kws_write(self, argument)
+    def kws(self, arg: List[float]):
+        SensorsV._kws_write(self, arg)

@@ -30,7 +30,7 @@ class SensorsI(Base):
         """Sets the next sensor active. Returns 0 if none."""
         return self.dss_obj.SensorsI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def _is_delta(self) -> int:
+    def _is_delta_read(self) -> int:
         """Returns 1 if the sensor is connected in delta; otherwise, returns 0."""
         return self.dss_obj.SensorsI(ctypes.c_int32(3), ctypes.c_int32(0))
 
@@ -39,7 +39,7 @@ class SensorsI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.SensorsI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
-    def _reverse_delta(self) -> int:
+    def _reverse_delta_read(self) -> int:
         """Returns 1 if voltage measurements are 1-3, 3-2, 2-1; otherwise 0."""
         return self.dss_obj.SensorsI(ctypes.c_int32(5), ctypes.c_int32(0))
 
@@ -48,7 +48,7 @@ class SensorsI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.SensorsI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
-    def _metered_terminal(self) -> int:
+    def _metered_terminal_read(self) -> int:
         """Gets the number of the measured terminal in the measured element."""
         return self.dss_obj.SensorsI(ctypes.c_int32(7), ctypes.c_int32(0))
 

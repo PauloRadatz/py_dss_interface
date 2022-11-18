@@ -33,7 +33,7 @@ class TestSensors13Bus:
 
     def test_sensors_first(self, dss):
         expected = 1
-        actual = dss.sensors.first
+        actual = dss.sensors.first()
         assert actual == expected
 
     def test_sensors_next(self, dss):
@@ -43,8 +43,8 @@ class TestSensors13Bus:
                  "kVBase=4.16 "
                  "conn=wye ")
         expected = 2
-        dss.sensors.first
-        actual = dss.sensors.next
+        dss.sensors.first()
+        actual = dss.sensors.next()
         assert actual == expected
 
     def test_sensors_read_is_delta(self, dss):
@@ -82,12 +82,12 @@ class TestSensors13Bus:
 
     def test_sensors_reset(self, dss):
         expected = 0
-        actual = dss.sensors.reset
+        actual = dss.sensors.reset()
         assert actual == expected
 
     def test_sensors_reset_all(self, dss):
         expected = 0
-        actual = dss.sensors.reset_all
+        actual = dss.sensors.reset_all()
         assert actual == expected
 
     # ===================================================================
@@ -166,7 +166,7 @@ class TestSensors13Bus:
                  "kVBase=4.16 "
                  "conn=wye ")
         expected = ["sensor1", "sensor2"]
-        actual = dss.sensors.all_names
+        actual = dss.sensors.names
         assert actual == expected
 
     def test_sensors_read_currents(self, dss):
@@ -176,7 +176,7 @@ class TestSensors13Bus:
 
     def test_sensors_write_currents(self, dss):
         expected = [1, 1, 1]
-        dss.sensors.currents = str(expected)
+        dss.sensors.currents = expected
         actual = dss.sensors.currents
         assert actual == expected
 
@@ -187,7 +187,7 @@ class TestSensors13Bus:
 
     def test_sensors_write_kvars(self, dss):
         expected = [0.0, 0.0, 0.0]
-        dss.sensors.kvars = str(expected)
+        dss.sensors.kvars = expected
         actual = dss.sensors.kvars
         assert actual == expected
 
@@ -198,6 +198,6 @@ class TestSensors13Bus:
 
     def test_sensors_write_kws(self, dss):
         expected = [10, 10, 10]
-        dss.sensors.kws = str(expected)
+        dss.sensors.kws = expected
         actual = dss.sensors.kws
         assert actual == expected
