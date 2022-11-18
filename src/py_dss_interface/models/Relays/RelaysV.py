@@ -6,6 +6,7 @@ import ctypes
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
+from typing import List
 
 
 class RelaysV(Base):
@@ -19,6 +20,6 @@ class RelaysV(Base):
     which can be one of the following.
     """
 
-    def _all_names(self):
+    def _names(self) -> List[str]:
         """Getsa variant array of strings containing names of all relay elements."""
         return Bridge.var_array_function(self.dss_obj.RelaysV, ctypes.c_int(0), ctypes.c_int(0), None)
