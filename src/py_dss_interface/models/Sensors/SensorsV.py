@@ -7,6 +7,7 @@ import ctypes
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 from py_dss_interface.models.Text.Text import Text
+from typing import List
 
 
 class SensorsV(Base):
@@ -20,15 +21,15 @@ class SensorsV(Base):
     which can be one of the following.
     """
 
-    def _all_names(self):
+    def _names(self) -> List[str]:
         """Returns a variant array of sensor names."""
         return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(0), ctypes.c_int(0), None)
 
-    def _currents(self):
+    def _currents_read(self) -> List[float]:
         """Gets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
         return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(1), ctypes.c_int(0), None)
 
-    def _currents_write(self, argument):
+    def _currents_write(self, argument: List[float]):
         """Sets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
@@ -36,11 +37,11 @@ class SensorsV(Base):
         sen_name = sen.name
         return t.text(f'edit Sensor.{sen_name} currents = {argument}')
 
-    def _kvars(self):
+    def _kvars_read(self) -> List[float]:
         """Gets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
         return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(3), ctypes.c_int(0), None)
 
-    def _kvars_write(self, argument):
+    def _kvars_write(self, argument: List[float]):
         """Sets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
@@ -48,11 +49,11 @@ class SensorsV(Base):
         sen_name = sen.name
         return t.text(f'edit Sensor.{sen_name} kvars = {argument}')
 
-    def _kws(self):
+    def _kws_read(self) -> List[float]:
         """Gets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""
         return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(5), ctypes.c_int(0), None)
 
-    def _kws_write(self, argument):
+    def _kws_write(self, argument: List[float]):
         """Sets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""
         argument = Base.check_string_param(argument)
         t = Text(self.dss_obj)
