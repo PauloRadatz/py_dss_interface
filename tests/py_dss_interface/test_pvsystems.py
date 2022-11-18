@@ -28,19 +28,19 @@ class TestPVSystems13Bus:
                  r"%cutout=0.1  "
                  r"effcurve=Myeff  "
                  r"P-TCurve=MyPvsT")
-        dss.solution.solve
-        dss.pvsystems_write_name('PV1')
+        dss.solution.solve()
+        dss.pvsystems.name = 'PV1'
 
         return dss
 
     def test_pvsystems_count(self, dss):
         expected = 1
-        actual = dss.pvsystems_count()
+        actual = dss.pvsystems.count
         assert actual == expected
 
     def test_pvsystems_first(self, dss):
         expected = 1
-        actual = dss.pvsystems_first()
+        actual = dss.pvsystems.first()
         assert actual == expected
 
     def test_pvsystems_next(self, dss):
@@ -57,85 +57,85 @@ class TestPVSystems13Bus:
                  r"effcurve=Myeff  "
                  r"P-TCurve=MyPvsT")
         expected = 2
-        dss.pvsystems_first()
-        actual = dss.pvsystems_next()
+        dss.pvsystems.first()
+        actual = dss.pvsystems.next()
         assert actual == expected
 
     def test_pvsystems_read_idx(self, dss):
         expected = 1
-        actual = dss.pvsystems_read_idx()
+        actual = dss.pvsystems.idx
         assert actual == expected
 
     def test_pvsystems_write_idx(self, dss):
         expected = 1
-        dss.pvsystems_write_idx(1)
-        actual = dss.pvsystems_read_idx()
+        dss.pvsystems.idx = 1
+        actual = dss.pvsystems.idx
         assert actual == expected
 
     def test_pvsystems_read_irradiance(self, dss):
         expected = 1.0
-        actual = dss.pvsystems_read_irradiance()
+        actual = dss.pvsystems.irradiance
         assert actual == expected
 
     def test_pvsystems_write_irradiance(self, dss):
         expected = 0.5
-        dss.pvsystems_write_irradiance(expected)
-        actual = dss.pvsystems_read_irradiance()
+        dss.pvsystems.irradiance = expected
+        actual = dss.pvsystems.irradiance
         assert actual == expected
 
     def test_pvsystems_kw(self, dss):
         expected = 500.0
-        actual = dss.pvsystems_kw()
+        actual = dss.pvsystems.kw_output
         assert actual == expected
 
     def test_pvsystems_read_kvar(self, dss):
         expected = 0
-        actual = dss.pvsystems_read_kvar()
+        actual = dss.pvsystems.kvar
         assert actual == expected
 
     def test_pvsystems_write_kvar(self, dss):
         expected = 100
-        dss.pvsystems_write_kvar(expected)
-        dss.solution.solve
-        actual = dss.pvsystems_read_kvar()
+        dss.pvsystems.kvar = expected
+        dss.solution.solve()
+        actual = dss.pvsystems.kvar
         # assert actual == expected # Todo needs a power flow to get the kvar, it is not the property
 
     def test_pvsystems_read_pf(self, dss):
         expected = 1
-        actual = dss.pvsystems_read_pf()
+        actual = dss.pvsystems.pf
         assert actual == expected
 
     def test_pvsystems_write_pf(self, dss):
         expected = -0.97
-        dss.pvsystems_write_pf(expected)
-        actual = dss.pvsystems_read_pf()
+        dss.pvsystems.pf = expected
+        actual = dss.pvsystems.pf
         assert actual == expected
 
     def test_pvsystems_read_kva_rated(self, dss):
         expected = 600
-        actual = dss.pvsystems_read_kva_rated()
+        actual = dss.pvsystems.kva_rated
         assert actual == expected
 
     def test_pvsystems_write_kva_rated(self, dss):
         expected = 1000
-        dss.pvsystems_write_kva_rated(expected)
-        actual = dss.pvsystems_read_kva_rated()
+        dss.pvsystems.kva_rated = expected
+        actual = dss.pvsystems.kva_rated
         assert actual == expected
 
     def test_pvsystems_read_pmpp(self, dss):
         expected = 500.0
-        actual = dss.pvsystems_read_pmpp()
+        actual = dss.pvsystems.pmpp
         assert actual == expected
 
     def test_pvsystems_write_pmpp(self, dss):
         expected = 1000.0
-        dss.pvsystems_write_pmpp(expected)
-        actual = dss.pvsystems_read_pmpp()
+        dss.pvsystems.pmpp = expected
+        actual = dss.pvsystems.pmpp
         assert actual == expected
 
     def test_pvsystems_read_name(self, dss):
         expected = "pv1"
-        actual = dss.pvsystems_read_name()
+        actual = dss.pvsystems.name
         assert actual == expected
 
     def test_pvsystems_write_name(self, dss):
@@ -152,8 +152,8 @@ class TestPVSystems13Bus:
                  r"effcurve=Myeff  "
                  r"P-TCurve=MyPvsT")
         expected = "pv2"
-        dss.pvsystems_write_name(expected)
-        actual = dss.pvsystems_read_name()
+        dss.pvsystems.name = expected
+        actual = dss.pvsystems.name
         assert actual == expected
 
     def test_pvsystems_all_names(self, dss):
@@ -170,5 +170,5 @@ class TestPVSystems13Bus:
                  r"effcurve=Myeff  "
                  r"P-TCurve=MyPvsT")
         expected = ["pv1", "pv2"]
-        actual = dss.pvsystems_all_names()
+        actual = dss.pvsystems.names
         assert actual == expected
