@@ -19,7 +19,7 @@ class PDElementsF(Base):
 
     """
 
-    def _fault_rate(self) -> float:
+    def _fault_rate_read(self) -> float:
         """Gets the number of failures per year. For LINE elements: Number of failures per unit length per year."""
         return float(self.dss_obj.PDElementsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
@@ -28,7 +28,7 @@ class PDElementsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.PDElementsF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
-    def _pct_permanent(self) -> float:
+    def _pct_permanent_read(self) -> float:
         """Gets the percent of faults that are permanent (require repair). Otherwise,
         fault is assumed to be transient/temporary."""
         return float(self.dss_obj.PDElementsF(ctypes.c_int32(2), ctypes.c_double(0)))
@@ -43,7 +43,7 @@ class PDElementsF(Base):
         """Gets the failure rate for this branch. Faults per year including length of line."""
         return float(self.dss_obj.PDElementsF(ctypes.c_int32(4), ctypes.c_double(0)))
 
-    def _accumulated_l(self) -> float:
+    def _accumulated_failure_rate(self) -> float:
         """Gets the accumulated failure rate for this branch on down line."""
         return float(self.dss_obj.PDElementsF(ctypes.c_int32(5), ctypes.c_double(0)))
 
