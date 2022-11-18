@@ -18,7 +18,7 @@ class RelaysS(Base):
     which can be one of the following.
     """
 
-    def _name(self):
+    def _name_read(self):
         """Gets the name of the active Relay."""
         result = ctypes.c_char_p(self.dss_obj.RelaysS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
@@ -29,7 +29,7 @@ class RelaysS(Base):
         result = ctypes.c_char_p(self.dss_obj.RelaysS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def _monitored_obj(self):
+    def _monitored_obj_read(self):
         """Gets the full name of the object this relay is monitoring."""
         result = ctypes.c_char_p(self.dss_obj.RelaysS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
@@ -40,7 +40,7 @@ class RelaysS(Base):
         result = ctypes.c_char_p(self.dss_obj.RelaysS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def _switched_obj(self):
+    def _switched_obj_read(self):
         """Gets the full name of element that will switched when relay trips."""
         result = ctypes.c_char_p(self.dss_obj.RelaysS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')

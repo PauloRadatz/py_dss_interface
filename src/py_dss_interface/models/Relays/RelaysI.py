@@ -30,7 +30,7 @@ class RelaysI(Base):
         """Sets next relay active. If none, returns 0."""
         return self.dss_obj.RelaysI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def _monitored_term(self) -> int:
+    def _monitored_term_read(self) -> int:
         """Gets the number of terminal of monitored element that this relay is monitoring."""
         return self.dss_obj.RelaysI(ctypes.c_int32(3), ctypes.c_int32(0))
 
@@ -39,7 +39,7 @@ class RelaysI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.RelaysI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
-    def _switched_term(self) -> int:
+    def _switched_term_read(self) -> int:
         """Gets the number of terminal of the switched object that will be opened when the relay trips."""
         return self.dss_obj.RelaysI(ctypes.c_int32(5), ctypes.c_int32(0))
 
@@ -48,7 +48,7 @@ class RelaysI(Base):
         argument = Base.check_int_param(argument)
         return self.dss_obj.RelaysI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
-    def _idx(self) -> int:
+    def _idx_read(self) -> int:
         """Gets the active relay by index into the Relay list. 1..Count."""
         return self.dss_obj.RelaysI(ctypes.c_int32(7), ctypes.c_int32(0))
 

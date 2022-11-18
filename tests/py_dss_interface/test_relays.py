@@ -38,12 +38,12 @@ class TestRelays13Bus:
 
     def test_relays_first(self, dss):
         expected = 1
-        actual = dss.relays.first
+        actual = dss.relays.first()
         assert actual == expected
 
     def test_relays_next(self, dss):
         expected = 2
-        actual = dss.relays.next
+        actual = dss.relays.next()
         assert actual == expected
 
     def test_relays_read_monitored_term(self, dss):
@@ -120,5 +120,5 @@ class TestRelays13Bus:
     # ===================================================================
     def test_relays_all_names(self, dss):
         expected = ["test1", "test2"]
-        actual = dss.relays.all_names
+        actual = dss.relays.names
         assert actual == expected
