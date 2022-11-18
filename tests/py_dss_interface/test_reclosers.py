@@ -62,7 +62,7 @@ class TestReclosers13Bus:
 
     def test_reclosers_first(self, dss):
         expected = 1
-        actual = dss.reclosers.first
+        actual = dss.reclosers.first()
         assert actual == expected
 
     def test_reclosers_next(self, dss):
@@ -84,8 +84,8 @@ class TestReclosers13Bus:
                  r"Shots=4 "
                  r"RecloseIntervals=(0.5, 2, 2, )")
         expected = 2
-        dss.reclosers.first
-        actual = dss.reclosers.next
+        dss.reclosers.first()
+        actual = dss.reclosers.next()
         assert actual == expected
 
     def test_reclosers_read_monitored_term(self, dss):
@@ -134,12 +134,12 @@ class TestReclosers13Bus:
 
     def test_reclosers_open(self, dss):
         expected = 0
-        actual = dss.reclosers.open
+        actual = dss.reclosers.open()
         assert actual == expected
 
     def test_reclosers_close(self, dss):
         expected = 0
-        actual = dss.reclosers.close
+        actual = dss.reclosers.close()
         assert actual == expected
 
     def test_reclosers_read_idx(self, dss):
@@ -292,7 +292,7 @@ class TestReclosers13Bus:
                  r"Shots=4 "
                  r"RecloseIntervals=(0.5, 2, 2, )")
         expected = ['cb1', 'cb2']
-        actual = dss.reclosers.all_names
+        actual = dss.reclosers.names
         assert actual == expected
 
     def test_reclosers_reclose_intervals(self, dss):
