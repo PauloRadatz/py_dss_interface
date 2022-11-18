@@ -22,7 +22,7 @@ class SettingsF(Base):
         """Sets all load allocation factors for all loads defined by XFKVA property to this value."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def _norm_vmin_pu(self) -> float:
+    def _norm_vmin_pu_read(self) -> float:
         """Gets the per unit minimum voltage for Normal conditions."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(1), ctypes.c_double(0)))
 
@@ -31,7 +31,7 @@ class SettingsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(2), ctypes.c_double(argument)))
 
-    def _norm_vmax_pu(self) -> float:
+    def _norm_vmax_pu_read(self) -> float:
         """Gets the per unit maximum voltage for Normal conditions."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(3), ctypes.c_double(0)))
 
@@ -40,7 +40,7 @@ class SettingsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(4), ctypes.c_double(argument)))
 
-    def _emerg_vmin_pu(self) -> float:
+    def _emerg_vmin_pu_read(self) -> float:
         """Gets the per unit minimum voltage for Emergency conditions."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(5), ctypes.c_double(0)))
 
@@ -49,7 +49,7 @@ class SettingsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(6), ctypes.c_double(argument)))
 
-    def _emerg_vmax_pu(self) -> float:
+    def _emerg_vmax_pu_read(self) -> float:
         """Gets the per unit maximum voltage for Emergency conditions."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(7), ctypes.c_double(0)))
 
@@ -58,7 +58,7 @@ class SettingsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(8), ctypes.c_double(argument)))
 
-    def _ue_weight(self) -> float:
+    def _ue_weight_read(self) -> float:
         """Gets the weighting factor applied to UE register values."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(9), ctypes.c_double(0)))
 
@@ -67,7 +67,7 @@ class SettingsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(10), ctypes.c_double(argument)))
 
-    def _loss_weight(self) -> float:
+    def _loss_weight_read(self) -> float:
         """Gets the weighting factor applied to Loss register values."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(11), ctypes.c_double(0)))
 
@@ -76,7 +76,7 @@ class SettingsF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SettingsF(ctypes.c_int32(12), ctypes.c_double(argument)))
 
-    def _price_signal(self) -> float:
+    def _price_signal_read(self) -> float:
         """Gets the price signal for the circuit."""
         return float(self.dss_obj.SettingsF(ctypes.c_int32(13), ctypes.c_double(0)))
 
