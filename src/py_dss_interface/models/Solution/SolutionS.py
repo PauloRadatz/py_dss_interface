@@ -23,7 +23,7 @@ class SolutionS(Base):
         result = ctypes.c_char_p(self.dss_obj.SolutionS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def _ld_curve(self):
+    def _ld_curve_read(self):
         """Returns the Load-Duration Curve name for LD modes."""
         result = ctypes.c_char_p(self.dss_obj.SolutionS(ctypes.c_int32(1), ctypes.c_int32(0)))
         return result.value.decode('ascii')
@@ -34,7 +34,7 @@ class SolutionS(Base):
         result = ctypes.c_char_p(self.dss_obj.SolutionS(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def _default_daily(self):
+    def _default_daily_read(self):
         """Returns the default daily load shape (defaults to "Default")."""
         result = ctypes.c_char_p(self.dss_obj.SolutionS(ctypes.c_int32(3), ctypes.c_int32(0)))
         return result.value.decode('ascii')
@@ -45,7 +45,7 @@ class SolutionS(Base):
         result = ctypes.c_char_p(self.dss_obj.SolutionS(ctypes.c_int32(4), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def _default_yearly(self):
+    def _default_yearly_read(self):
         """Returns the default yearly load shape (defaults to "Default")."""
         result = ctypes.c_char_p(self.dss_obj.SolutionS(ctypes.c_int32(5), ctypes.c_int32(0)))
         return result.value.decode('ascii')
