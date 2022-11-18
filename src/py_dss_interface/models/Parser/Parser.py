@@ -8,6 +8,7 @@ from py_dss_interface.models.Parser.ParserF import ParserF
 from py_dss_interface.models.Parser.ParserI import ParserI
 from py_dss_interface.models.Parser.ParserS import ParserS
 from py_dss_interface.models.Parser.ParserV import ParserV
+from typing import List
 
 
 class Parser(ParserI, ParserS, ParserF, ParserV):
@@ -48,3 +49,65 @@ class Parser(ParserI, ParserS, ParserF, ParserV):
     @auto_increment.setter
     def auto_increment(self, argument: int):
         ParserI._auto_increment_write(self, argument)
+
+    @property
+    def cmd_string(self) -> str:
+        return ParserS._cmd_string_read(self)
+
+    @cmd_string.setter
+    def cmd_string(self, arg: str):
+        ParserS._cmd_string_write(self, arg)
+
+    @property
+    def parser_next_param(self) -> str:
+        return ParserS._parser_next_param(self)
+
+    @property
+    def parser_str_value(self) -> str:
+        return ParserS._parser_str_value(self)
+
+    @property
+    def white_space(self) -> str:
+        return ParserS._white_space_read(self)
+
+    @white_space.setter
+    def white_space(self, arg: str):
+        ParserS._white_space_write(self, arg)
+
+    @property
+    def begin_quote(self) -> str:
+        return ParserS._begin_quote_read(self)
+
+    @begin_quote.setter
+    def begin_quote(self, arg: str):
+        ParserS._begin_quote_write(self, arg)
+
+    @property
+    def end_quote(self) -> str:
+        return ParserS._end_quote_read(self)
+
+    @end_quote.setter
+    def end_quote(self, arg: str):
+        ParserS._end_quote_write(self, arg)
+
+    @property
+    def delimiters(self) -> str:
+        return ParserS._delimiters_read(self)
+
+    @delimiters.setter
+    def delimiters(self, arg: str):
+        ParserS._delimiters_write(self, arg)
+
+    @property
+    def vector(self) -> List[float]:
+        return ParserV._vector(self)
+
+    @property
+    def matrix(self) -> List[float]:
+        return ParserV._matrix(self)
+
+    @property
+    def sym_matrix(self) -> List[float]:
+        return ParserV._sym_matrix(self)
+
+

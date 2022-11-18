@@ -33,12 +33,12 @@ class ParserS(Base):
         result = ctypes.c_char_p(self.dss_obj.ParserS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def parser_next_param(self):
+    def _parser_next_param(self):
         """Gets next token and return tag name (before = sign) if any. See Autoincrement."""
         result = ctypes.c_char_p(self.dss_obj.ParserS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
-    def parser_str_value(self):
+    def _parser_str_value(self):
         """Returns next parameter as a string."""
         result = ctypes.c_char_p(self.dss_obj.ParserS(ctypes.c_int32(3), ctypes.c_int32(0)))
         return result.value.decode('ascii')
