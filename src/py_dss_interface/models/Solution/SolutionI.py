@@ -22,7 +22,7 @@ class SolutionI(Base):
         """Solution for the present solution mode. Returns 0. """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(0), ctypes.c_int32(0)))
 
-    def _mode(self) -> int:
+    def _mode_read(self) -> int:
         """Returns the present solution mode (See DSS help). """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(1), ctypes.c_int32(0)))
 
@@ -31,7 +31,7 @@ class SolutionI(Base):
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(2), ctypes.c_int32(argument)))
 
-    def _hour(self) -> int:
+    def _hour_read(self) -> int:
         """Returns the present hour (See DSS help). """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(3), ctypes.c_int32(0)))
 
@@ -40,7 +40,7 @@ class SolutionI(Base):
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(4), ctypes.c_int32(argument)))
 
-    def _year(self) -> int:
+    def _year_read(self) -> int:
         """Returns the present Year (See DSS help). """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(5), ctypes.c_int32(0)))
 
@@ -53,7 +53,7 @@ class SolutionI(Base):
         """Returns the number of iterations taken for the last solution. """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(7), ctypes.c_int32(0)))
 
-    def _max_iterations(self) -> int:
+    def _max_iterations_read(self) -> int:
         """Returns the Maximum number of iterations used to solve the circuit. """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(8), ctypes.c_int32(0)))
 
@@ -62,7 +62,7 @@ class SolutionI(Base):
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(9), ctypes.c_int32(argument)))
 
-    def _number(self) -> int:
+    def _number_read(self) -> int:
         """Returns the number of solutions to perform for MonteCarlo and time series simulations. """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(10), ctypes.c_int32(0)))
 
@@ -71,7 +71,7 @@ class SolutionI(Base):
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(11), ctypes.c_int32(argument)))
 
-    def _random(self) -> int:
+    def _random_read(self) -> int:
         """Returns the randomization mode for random variables "Gaussian" o "Uniform". """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(12), ctypes.c_int32(0)))
 
@@ -80,7 +80,7 @@ class SolutionI(Base):
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(13), ctypes.c_int32(argument)))
 
-    def _load_model(self) -> int:
+    def _load_model_read(self) -> int:
         """Returns the Load Model: {dssPowerFlow (default)|dssAdmittance}. """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(14), ctypes.c_int32(0)))
 
@@ -89,7 +89,7 @@ class SolutionI(Base):
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(15), ctypes.c_int32(argument)))
 
-    def _add_type(self) -> int:
+    def _add_type_read(self) -> int:
         """Returns the type of device to add in AutoAdd Mode: {dssGen (default)|dssCap}. """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(16), ctypes.c_int32(0)))
 
@@ -98,7 +98,7 @@ class SolutionI(Base):
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(17), ctypes.c_int32(argument)))
 
-    def _algorithm(self) -> int:
+    def _algorithm_read(self) -> int:
         """Returns the base solution algorithm: {dssNormalSolve | dssNewtonSolve}. """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(18), ctypes.c_int32(0)))
 
@@ -107,7 +107,7 @@ class SolutionI(Base):
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(19), ctypes.c_int32(argument)))
 
-    def _control_mode(self) -> int:
+    def _control_mode_read(self) -> int:
         """Returns the mode for control devices: {dssStatic (default) | dssEvent | dssTime}. """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(20), ctypes.c_int32(0)))
 
@@ -116,7 +116,7 @@ class SolutionI(Base):
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(21), ctypes.c_int32(argument)))
 
-    def _control_iterations(self) -> int:
+    def _control_iterations_read(self) -> int:
         """Returns the current value of the control iteration counter. """
         return int(self.dss_obj.SolutionI(ctypes.c_int32(22), ctypes.c_int32(0)))
 
@@ -125,7 +125,7 @@ class SolutionI(Base):
         argument = Base.check_int_param(argument)
         return int(self.dss_obj.SolutionI(ctypes.c_int32(23), ctypes.c_int32(argument)))
 
-    def _max_control_iterations(self) -> int:
+    def _max_control_iterations_read(self) -> int:
         """Returns the maximum allowable control iterations."""
         return int(self.dss_obj.SolutionI(ctypes.c_int32(24), ctypes.c_int32(0)))
 
@@ -188,7 +188,7 @@ class SolutionI(Base):
         otherwise 0."""
         return int(self.dss_obj.SolutionI(ctypes.c_int32(37), ctypes.c_int32(0)))
 
-    def _converged(self) -> int:
+    def _converged_read(self) -> int:
         """Indicates whether the circuit solution converged (1 converged | 0 not converged)."""
         return int(self.dss_obj.SolutionI(ctypes.c_int32(38), ctypes.c_int32(0)))
 
@@ -206,7 +206,7 @@ class SolutionI(Base):
         solution.."""
         return int(self.dss_obj.SolutionI(ctypes.c_int32(41), ctypes.c_int32(0)))
 
-    def _control_actions_done(self) -> int:
+    def _control_actions_done_read(self) -> int:
         """Indicates that the control actions are done: {1 done, 0 not done}."""
         return int(self.dss_obj.SolutionI(ctypes.c_int32(42), ctypes.c_int32(0)))
 

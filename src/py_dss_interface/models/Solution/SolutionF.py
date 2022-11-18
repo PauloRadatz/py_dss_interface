@@ -18,7 +18,7 @@ class SolutionF(Base):
     parameter can be one of the following.
     """
 
-    def _frequency(self) -> float:
+    def _frequency_read(self) -> float:
         """Returns the frequency for the next solution."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(0), ctypes.c_double(0)))
 
@@ -27,7 +27,7 @@ class SolutionF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SolutionF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
-    def _seconds(self) -> float:
+    def _seconds_read(self) -> float:
         """Returns the seconds from top of the hour."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(2), ctypes.c_double(0)))
 
@@ -36,7 +36,7 @@ class SolutionF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SolutionF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    def _step_size(self) -> float:
+    def _step_size_read(self) -> float:
         """Returns the step size for the next solution."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(4), ctypes.c_double(0)))
 
@@ -45,7 +45,7 @@ class SolutionF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SolutionF(ctypes.c_int32(5), ctypes.c_double(argument)))
 
-    def _load_mult(self) -> float:
+    def _load_mult_read(self) -> float:
         """Returns the default load multiplier applied to all non-fixed loads."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(6), ctypes.c_double(0)))
 
@@ -54,7 +54,7 @@ class SolutionF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SolutionF(ctypes.c_int32(7), ctypes.c_double(argument)))
 
-    def _tolerance(self) -> float:
+    def _tolerance_read(self) -> float:
         """Returns the solution convergence tolerance."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(8), ctypes.c_double(0)))
 
@@ -63,7 +63,7 @@ class SolutionF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SolutionF(ctypes.c_int32(9), ctypes.c_double(argument)))
 
-    def _pct_growth(self) -> float:
+    def _pct_growth_read(self) -> float:
         """Returns the percent default annual load growth rate."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(10), ctypes.c_double(0)))
 
@@ -72,7 +72,7 @@ class SolutionF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SolutionF(ctypes.c_int32(11), ctypes.c_double(argument)))
 
-    def _gen_kw(self) -> float:
+    def _gen_kw_read(self) -> float:
         """Returns the generator kW for AutoAdd mode."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(12), ctypes.c_double(0)))
 
@@ -81,7 +81,7 @@ class SolutionF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SolutionF(ctypes.c_int32(13), ctypes.c_double(argument)))
 
-    def _gen_pf(self) -> float:
+    def _gen_pf_read(self) -> float:
         """Returns the pf for generators in AutoAdd mode."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(14), ctypes.c_double(0)))
 
@@ -90,7 +90,7 @@ class SolutionF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SolutionF(ctypes.c_int32(15), ctypes.c_double(argument)))
 
-    def _cap_kvar(self) -> float:
+    def _cap_kvar_read(self) -> float:
         """Returns the capacitor kvar for adding in AutoAdd mode."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(16), ctypes.c_double(0)))
 
@@ -99,7 +99,7 @@ class SolutionF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SolutionF(ctypes.c_int32(17), ctypes.c_double(argument)))
 
-    def _gen_mult(self) -> float:
+    def _gen_mult_read(self) -> float:
         """Returns the default multiplier applied to generators (like LoadMult)."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(18), ctypes.c_double(0)))
 
@@ -108,7 +108,7 @@ class SolutionF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.SolutionF(ctypes.c_int32(19), ctypes.c_double(argument)))
 
-    def _dbl_hour(self) -> float:
+    def _dbl_hour_read(self) -> float:
         """Returns the hour as a double, including fractional part."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(20), ctypes.c_double(0)))
 
@@ -130,7 +130,7 @@ class SolutionF(Base):
         this time does not include the time required for sampling meters/monitors."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(24), ctypes.c_double(0)))
 
-    def _total_time(self) -> float:
+    def _total_time_read(self) -> float:
         """Retrieves the accumulated time required (microseconds) to perform the simulation."""
         return float(self.dss_obj.SolutionF(ctypes.c_int32(25), ctypes.c_double(0)))
 
