@@ -16,7 +16,7 @@ class ReclosersF(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def _phase_trip(self) -> float:
+    def _phase_trip_read(self) -> float:
         """Gets the phase trip curve multiplier or actual amps."""
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(0), ctypes.c_double(0)))
 
@@ -25,7 +25,7 @@ class ReclosersF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
-    def _phase_inst(self) -> float:
+    def _phase_inst_read(self) -> float:
         """Gets the phase instantaneous curve multiplier or actual amps."""
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(2), ctypes.c_double(0)))
 
@@ -34,7 +34,7 @@ class ReclosersF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    def _ground_trip(self) -> float:
+    def _ground_trip_read(self) -> float:
         """Gets the ground (3I0) trip multiplier or actual amps."""
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(4), ctypes.c_double(0)))
 
@@ -43,7 +43,7 @@ class ReclosersF(Base):
         argument = Base.check_float_param(argument)
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(5), ctypes.c_double(argument)))
 
-    def _ground_inst(self) -> float:
+    def _ground_inst_read(self) -> float:
         """Gets the ground (3I0) instantaneous trip setting - curve multiplier or actual amps."""
         return float(self.dss_obj.ReclosersF(ctypes.c_int32(6), ctypes.c_double(0)))
 

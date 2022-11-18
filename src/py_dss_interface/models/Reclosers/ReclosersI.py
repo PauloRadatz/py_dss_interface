@@ -28,7 +28,7 @@ class ReclosersI(Base):
         """Sets next recloser to be active Circuit Element. Returns 0 if none."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def _monitored_term(self) -> int:
+    def _monitored_term_read(self) -> int:
         """Gets the terminal number of Monitored Object for the Recloser."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(3), ctypes.c_int32(0))
 
@@ -36,7 +36,7 @@ class ReclosersI(Base):
         """Sets the terminal number of Monitored Object for the Recloser."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
-    def _switched_term(self) -> int:
+    def _switched_term_read(self) -> int:
         """Gets the terminal of the controlled device being switched by the Recloser."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(5), ctypes.c_int32(0))
 
@@ -44,7 +44,7 @@ class ReclosersI(Base):
         """Sets the terminal of the controlled device being switched by the Recloser."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
-    def _num_fast(self) -> int:
+    def _num_fast_read(self) -> int:
         """Gets the number of fast shots."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(7), ctypes.c_int32(0))
 
@@ -52,7 +52,7 @@ class ReclosersI(Base):
         """Sets the number of fast shots."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(8), ctypes.c_int32(argument))
 
-    def _shots(self) -> int:
+    def _shots_read(self) -> int:
         """Gets the number of shots to lockout (fast + delayed)."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(9), ctypes.c_int32(0))
 
@@ -68,7 +68,7 @@ class ReclosersI(Base):
         """Close the switched object controlled by the recloser. Resets recloser to first operation."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(12), ctypes.c_int32(0))
 
-    def _idx(self) -> int:
+    def _idx_read(self) -> int:
         """Gets the active recloser by index into the recloser list. 1..Count."""
         return self.dss_obj.ReclosersI(ctypes.c_int32(13), ctypes.c_int32(0))
 
