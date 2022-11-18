@@ -179,15 +179,10 @@ class TestLineCodes13Bus:
         assert actual == expected
 
     def test_linecodes_write_rmatrix(self, dss):
-        expected_list = [0.791721, 0.31, 0.781649, 0.28345, 0.32, 0.791721]
-        expected = format_matrix(expected_list)
-        expected_str = format_matrix_str(expected)
+        expected = [0.086, 0.029, 0.02, 0.029, 0.088, 0.029, 0.02, 0.029, 0.08]
 
-        dss.linecodes.rmatrix = expected_str
+        dss.linecodes.rmatrix = expected
         actual = dss.linecodes.rmatrix
-
-        actual = [truncate(x, 6) for x in actual]
-        expected = [truncate(x, 6) for x in expected]
 
         assert actual == expected
 

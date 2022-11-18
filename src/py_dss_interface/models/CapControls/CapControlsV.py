@@ -20,7 +20,5 @@ class CapControlsV(Base):
     """
 
     def _names(self) -> List[str]:
-        result = Bridge.var_array_function(self.dss_obj.CapControlsV, 0, None, '')
-        if result == -1:
-            raise ValueError("An error occurred when tries to READ CapControls states! ")
-        return result
+        return Bridge.variant_pointer_read(self.dss_obj.CapControlsV, 0)
+

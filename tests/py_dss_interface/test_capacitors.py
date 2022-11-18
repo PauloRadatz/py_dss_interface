@@ -159,6 +159,6 @@ class TestBus13Capacitors:
     def test_write_states(self, dss):
         dss.capacitors.num_steps = 5
         expected = [0, 1, 0, 1, 1]
-        dss.capacitors.states = dss, expected
+        dss.capacitors.states = expected
         actual = dss.capacitors.states
         assert actual == expected

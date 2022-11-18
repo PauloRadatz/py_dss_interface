@@ -25,21 +25,23 @@ class LineCodesV(Base):
 
     # TODO I do not think they should return str
 
-    def _rmatrix_read(self) -> str:
+    def _rmatrix_read(self):
         """Gets the resistance matrix in ohms per unit length of the active LineCode."""
-        return Bridge.var_array_function(self.dss_obj.LineCodesV, 0, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LineCodesV, 0)
 
-    def _rmatrix_write(self, argument: str) -> None:
+    def _rmatrix_write(self, argument):
         """Sets the resistance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument.
-         :param argument: must be a string like that [0.791721 | 0.318476 0.781649 | 0.28345, 0.318476, 0.791721]
          """
-        # TODO work on it
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        lc = LineCodes.LineCodes(self.dss_obj)
-        lc_name = lc.name
-        t.text(f'edit Linecode.{lc_name} Rmatrix = {argument}')
+
+        return Bridge.variant_pointer_write(self.dss_obj.LineCodesV, 1, argument)
+
+        # # TODO work on it
+        # argument = Base.check_string_param(argument)
+        # t = Text(self.dss_obj)
+        # lc = LineCodes.LineCodes(self.dss_obj)
+        # lc_name = lc.name
+        # t.text(f'edit Linecode.{lc_name} Rmatrix = {argument}')
 
     def _xmatrix_read(self) -> str:
         """Gets the reactance matrix in ohms per unit length of the active LineCode."""

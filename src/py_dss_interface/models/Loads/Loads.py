@@ -314,7 +314,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
 
     @property
     def zipv(self):
-        return LoadsV._zipv(self)
+        return LoadsV._zipv_read(self)
 
     @zipv.setter
     def zipv(self, value):

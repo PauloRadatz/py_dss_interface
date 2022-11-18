@@ -119,9 +119,8 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
         return CktElementV._bus_names(self)
 
     @bus_names.setter
-    def bus_names(self, values):
-        dss, argument = values
-        CktElementV._bus_names_write(self, dss, argument)
+    def bus_names(self, argument):
+        CktElementV._bus_names_write(self, argument)
 
     @property
     def voltages(self) -> List[float]:

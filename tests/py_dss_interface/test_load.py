@@ -466,6 +466,6 @@ class TestLoad13Bus:
 
     def test_loads_write_zipv(self, dss):
         expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
-        dss.loads.zipv = str(expected)
+        dss.loads.zipv = expected
         actual = dss.loads.zipv
         assert actual == expected
