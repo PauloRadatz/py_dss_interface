@@ -28,9 +28,9 @@ class CktElementV(Base):
     def _bus_names_write(self, argument: List[str]):
         """Allows to fix an array of strings with the names of all the buses connected to the active circuit element."""
 
-        # TODO learn what to do.
-        for i in range(len(argument)):
-            argument[i] = argument[i].encode('ascii')
+        # # TODO learn what to do.
+        # for i in range(len(argument)):
+        #     argument[i] = argument[i].encode('ascii')
 
         return Bridge.variant_pointer_write(self.dss_obj.CktElementV, 1, argument)
 
