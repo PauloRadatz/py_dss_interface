@@ -30,10 +30,10 @@ class PVSystemsI(Base):
         """Sets the next PVSystem to be active; returns 0 if none."""
         return int(self.dss_obj.PVsystemsI(ctypes.c_int32(2), ctypes.c_int32(0)))
 
-    def _idx(self) -> int:
+    def _idx_read(self) -> int:
         """Gets the active PVSystem by index; 1..Count."""
         return int(self.dss_obj.PVsystemsI(ctypes.c_int32(3), ctypes.c_int32(0)))
 
-    def _idx_write(self, argument) -> int:
+    def _idx_write(self, argument: int) -> int:
         """Sets the active PVSystem by index; 1..Count.."""
         return int(self.dss_obj.PVsystemsI(ctypes.c_int32(4), ctypes.c_int32(argument)))

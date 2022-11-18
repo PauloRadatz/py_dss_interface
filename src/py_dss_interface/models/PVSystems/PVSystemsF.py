@@ -19,7 +19,7 @@ class PVSystemsF(Base):
 
     """
 
-    def _irradiance(self) -> float:
+    def _irradiance_read(self) -> float:
         """Gets the present value of the Irradiance property in W/sq-m."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
@@ -31,7 +31,7 @@ class PVSystemsF(Base):
         """Gets the kW output."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(2), ctypes.c_double(0)))
 
-    def _kvar(self) -> float:
+    def _kvar_read(self) -> float:
         """Gets the kvar value."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(3), ctypes.c_double(0)))
 
@@ -39,7 +39,7 @@ class PVSystemsF(Base):
         """Sets the kvar value."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(4), ctypes.c_double(argument)))
 
-    def _pf(self) -> float:
+    def _pf_read(self) -> float:
         """Gets the power factor value."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(5), ctypes.c_double(0)))
 
@@ -47,7 +47,7 @@ class PVSystemsF(Base):
         """Sets the power factor value."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(6), ctypes.c_double(argument)))
 
-    def _kva_rated(self) -> float:
+    def _kva_rated_read(self) -> float:
         """Gets the rated kVA of the PVSystem."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(7), ctypes.c_double(0)))
 
@@ -55,7 +55,7 @@ class PVSystemsF(Base):
         """Sets the rated kVA of the PVSystem."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(8), ctypes.c_double(argument)))
 
-    def _pmpp(self) -> float:
+    def _pmpp_read(self) -> float:
         """Gets the Pmpp."""
         return float(self.dss_obj.PVsystemsF(ctypes.c_int32(9), ctypes.c_double(0)))
 
