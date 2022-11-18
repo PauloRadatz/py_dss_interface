@@ -24,11 +24,11 @@ class LoadsV(Base):
     def _names(self):
         """Allows to read the names of all the loads present in the active circuit. The result is delivered as
         variant, however, the content of this variant is an array of strings. """
-        return Bridge.var_array_function(self.dss_obj.DSSLoadsV, 0, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.DSSLoadsV, 0)
 
-    def _zipv(self):
+    def _zipv_read(self):
         """Allows to read the array of 7 elements (doubles) for ZIP property of the active Load object."""
-        return Bridge.var_array_function(self.dss_obj.DSSLoadsV, 1, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.DSSLoadsV, 1)
 
     def _zipv_write(self, argument):
         """Allows to write the array of 7 elements (doubles) for ZIP property of the active Load object.
@@ -38,8 +38,10 @@ class LoadsV(Base):
                     Last 1 is cut-off voltage in p.u. of base kV; load is 0 below this cut-off
                     No defaults; all coefficients must be specified if using model=8.
         """
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        load = Loads.Loads(self.dss_obj)
-        load_name = load.name
-        return t.text(f'edit Load.{load_name} zipv = {argument}')
+
+        return Bridge.variant_pointer_write(self.dss_obj.DSSLoadsV, 2, argument)
+        # argument = Base.check_string_param(argument)
+        # t = Text(self.dss_obj)
+        # load = Loads.Loads(self.dss_obj)
+        # load_name = load.name
+        # return t.text(f'edit Load.{load_name} zipv = {argument}')

@@ -37,9 +37,8 @@ class CtrlQueue(CtrlQueueI, CtrlQueueV):
     def device_handle(self) -> int:
         return CtrlQueueI._device_handle(self)
 
-    @property
-    def push(self) -> int:
-        return CtrlQueueI._push(self)
+    def push(self, arg):
+        return CtrlQueueV._push(self, arg)
 
     @property
     def show(self) -> int:

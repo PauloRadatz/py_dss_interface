@@ -79,12 +79,11 @@ class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
 
     @property
     def states(self) -> List[int]:
-        return CapacitorsV._states(self)
+        return CapacitorsV._states_read(self)
 
     @states.setter
-    def states(self, values):
-        dss, argument = values
-        CapacitorsV._states_write(self, dss, argument)
+    def states(self, argument: List[int]):
+        CapacitorsV._states_write(self, argument)
 
     def first(self) -> int:
         return CapacitorsI._first(self)

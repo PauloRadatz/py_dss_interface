@@ -49,12 +49,6 @@ class CtrlQueueI(Base):
         """Gets the handle (user defined) to device that must act on the pending action."""
         return self.dss_obj.CtrlQueueI(ctypes.c_int32(5), ctypes.c_int32(0))
 
-    # TODO it is not a int, it is a variant
-    def _push(self) -> int:
-        """Pushes a control action onto the DSS control queue by time, action code, and device handle. Returns
-        Control Queue handle. """
-        return self.dss_obj.CtrlQueueI(ctypes.c_int32(6), ctypes.c_int32(0))
-
     def _show(self) -> int:
         """Shows the entire control queue in CSV format."""
         try:

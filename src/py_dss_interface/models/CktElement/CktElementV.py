@@ -25,24 +25,14 @@ class CktElementV(Base):
         """Delivers an array of strings with the names of all the buses connected to the active circuit element."""
         return Bridge.var_array_function(self.dss_obj.CktElementV, 0, None, '')
 
-    def _bus_names_write(self, dss, argument: List[str]):
+    def _bus_names_write(self, argument: List[str]):
         """Allows to fix an array of strings with the names of all the buses connected to the active circuit element."""
-        # 1 get size of number of elements connected to the active circuit
-        # total_connected = len(self._bus_names())
-        # result = '0'
-        # for _ in range(total_connected):
-        #     result = dss.text(f"Edit {dss.name()} Bus1={argument[0]} Bus2={argument[1]}")
-        #     if result != '':
-        #         result = Base.warn_msg(f"An error occur when tried to *rename Buses* connected to "
-        #                                f"*{dss.name()}*", Exception)
-        #     return "Buses renamed successfully!!"
-        # return result
 
-        self.dss_obj.CktElementV.restype = None
-        self.dss_obj.CktElementV.argtypes = [ctypes.c_char, automation.VARIANT()]
+        # TODO learn what to do.
+        for i in range(len(argument)):
+            argument[i] = argument[i].encode('ascii')
 
-        v = automation.VARIANT(argument)
-        return self.dss_obj.CktElementV(ctypes.c_int32(1), v)
+        return Bridge.variant_pointer_write(self.dss_obj.CktElementV, 1, argument)
 
     def _voltages(self) -> List[float]:
         """Delivers an array of doubles with the voltages at terminals of the active circuit element."""

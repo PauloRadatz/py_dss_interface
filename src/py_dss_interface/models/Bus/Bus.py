@@ -52,11 +52,11 @@ class Bus(BusS, BusI, BusV, BusF):
         return BusI._section_id(self)
 
     @property
-    def voltages(self):
+    def voltages(self) -> List[float]:
         return BusV._voltages(self)
 
     @property
-    def seq_voltages(self):
+    def seq_voltages(self) -> List[float]:
         return BusV._seq_voltages(self)
 
     @property
@@ -64,63 +64,63 @@ class Bus(BusS, BusI, BusV, BusF):
         return BusV._nodes(self)
 
     @property
-    def voc(self):
+    def voc(self) -> List[float]:
         return BusV._voc(self)
 
     @property
-    def isc(self):
+    def isc(self) -> List[float]:
         return BusV._isc(self)
 
     @property
-    def pu_voltages(self):
+    def pu_voltages(self) -> List[float]:
         return BusV._pu_voltages(self)
 
     @property
-    def zsc_matrix(self):
+    def zsc_matrix(self) -> List[float]:
         return BusV._zsc_matrix(self)
 
     @property
-    def zsc1(self):
+    def zsc1(self) -> List[float]:
         return BusV._zsc1(self)
 
     @property
-    def zsc0(self):
+    def zsc0(self) -> List[float]:
         return BusV._zsc0(self)
 
     @property
-    def ysc_matrix(self):
+    def ysc_matrix(self) -> List[float]:
         return BusV._ysc_matrix(self)
 
     @property
-    def cplx_sequence_voltages(self):
+    def cplx_sequence_voltages(self) -> List[float]:
         return BusV._cplx_sequence_voltages(self)
 
     @property
-    def vll(self):
+    def vll(self) -> List[float]:
         return BusV._vll(self)
 
     @property
-    def pu_vll(self):
+    def pu_vll(self) -> List[float]:
         return BusV._pu_vll(self)
 
     @property
-    def vmag_angle(self):
+    def vmag_angle(self) -> List[float]:
         return BusV._vmag_angle(self)
 
     @property
-    def vmag_angle_pu(self):
+    def vmag_angle_pu(self) -> List[float]:
         return BusV._vmag_angle_pu(self)
 
     @property
-    def line_list(self):
+    def line_list(self) -> List[str]:
         return BusV._line_list(self)
 
     @property
-    def load_list(self):
+    def load_list(self) -> List[str]:
         return BusV._load_list(self)
 
     @property
-    def axc_012_matrix(self):
+    def axc_012_matrix(self) -> List[float]:
         return BusV._axc_012_matrix(self)
 
     @property

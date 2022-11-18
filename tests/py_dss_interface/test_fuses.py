@@ -185,20 +185,19 @@ class TestFuses13Bus:
         assert actual == expected
 
     # TODO: Correct this test
-    # def test_fuses_write_state(self, dss):
-    #     expected = [0]
-    #     dss.fuses.state = expected
-    #     actual = dss.fuses.state
-    #     assert actual == expected
+    def test_fuses_write_state(self, dss):
+        expected = ["closed"]
+        dss.fuses.state = expected
+        actual = dss.fuses.state
+        assert actual == expected
 
     def test_fuses_read_normal(self, dss):
         expected = ['closed']
         actual = dss.fuses.normal
         assert actual == expected
 
-    # TODO: Correct this test
-    # def test_fuses_write_normal(self, dss):
-    #     expected = [0, 0, 0]
-    #     dss.fuses.normal = expected
-    #     actual = dss.fuses.normal
-    #     assert actual == expected
+    def test_fuses_write_normal(self, dss):
+        expected = [0, 0, 0]
+        dss.fuses.normal = expected
+        actual = dss.fuses.normal
+        assert actual == expected

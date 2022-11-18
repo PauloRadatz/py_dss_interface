@@ -180,7 +180,7 @@ class TestCktElement13Bus:
 
     def test_write_bus_names(self, dss):
         expected = ['671_new', '692_new']
-        dss.cktelement.bus_names = dss, expected
+        dss.cktelement.bus_names = expected
         actual = dss.cktelement.bus_names
         assert actual == expected
 

@@ -24,3 +24,11 @@ class CtrlQueueV(Base):
     def _ctrlqueue(self) -> str:
         """Delivers the control actions contained in the CtrlQueue after the latest solve command."""
         return Bridge.var_array_function(self.dss_obj.CtrlQueueV, 0, None, '')
+
+        # TODO it is not a int, it is a variant
+    def _push(self, arg):
+        """Pushes a control action onto the DSS control queue by time, action code, and device handle. Returns
+        Control Queue handle. """
+
+        return Bridge.variant_pointer_write(self.dss_obj.CtrlQueueV, 1, arg)
+        # return self.dss_obj.CtrlQueueI(ctypes.c_int32(6), ctypes.c_int32(0))

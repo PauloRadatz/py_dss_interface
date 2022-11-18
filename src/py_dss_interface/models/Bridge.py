@@ -9,6 +9,7 @@ import sys
 
 import numpy as np
 import pandas as pd
+from comtypes import automation
 
 logger = logging.getLogger('opendssdirect.core')
 
@@ -64,6 +65,19 @@ def c_types_function(f, param, dss_arg, name):
         r = r.decode('ascii')
     return r
 
+def variant_pointer_read(f, param: int, optional=None) -> list:
+    variant_pointer = ctypes.pointer(automation.VARIANT())
+    if optional:
+        f(ctypes.c_int(param), variant_pointer, optional)
+    else:
+        f(ctypes.c_int(param), variant_pointer)
+    return list(variant_pointer.contents.value)
+
+def variant_pointer_write(f, param: int, arg: list) -> list:
+    variant_pointer = ctypes.pointer(automation.VARIANT())
+    variant_pointer.contents.value = arg
+    f(ctypes.c_int(param), variant_pointer)
+    return list(variant_pointer.contents.value)
 
 def var_array_function(f, param, optional, name):
     varg = VArg(0, None, 0, 0)
