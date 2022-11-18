@@ -26,7 +26,7 @@ class RegControlsI(Base):
         """Sets the next RegControl active. Returns 0 if no more"""
         return self.dss_obj.RegControlsI(ctypes.c_int32(1), ctypes.c_int32(0))
 
-    def _tap_winding(self) -> int:
+    def _tap_winding_read(self) -> int:
         """Gets the tapped winding number."""
         return self.dss_obj.RegControlsI(ctypes.c_int32(2), ctypes.c_int32(0))
 
@@ -34,7 +34,7 @@ class RegControlsI(Base):
         """Sets the tapped winding number."""
         return self.dss_obj.RegControlsI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
-    def _winding(self) -> int:
+    def _winding_read(self) -> int:
         """Gets the winding number for PT and CT connections."""
         return self.dss_obj.RegControlsI(ctypes.c_int32(4), ctypes.c_int32(0))
 
@@ -42,7 +42,7 @@ class RegControlsI(Base):
         """Sets the winding number for PT and CT connections."""
         return self.dss_obj.RegControlsI(ctypes.c_int32(5), ctypes.c_int32(argument))
 
-    def _is_reversible(self) -> int:
+    def _is_reversible_read(self) -> int:
         """Gets the setting in the reverse direction, usually not applicable to substation transformers."""
         return self.dss_obj.RegControlsI(ctypes.c_int32(6), ctypes.c_int32(0))
 
@@ -51,7 +51,7 @@ class RegControlsI(Base):
         usually not applicable to substation transformers."""
         return self.dss_obj.RegControlsI(ctypes.c_int32(7), ctypes.c_int32(argument))
 
-    def _is_inverse_time(self) -> int:
+    def _is_inverse_time_read(self) -> int:
         """Gets the inverse time feature. Time delay is inversely adjusted, proportional to the amount of voltage
          outside the regulator band."""
         return self.dss_obj.RegControlsI(ctypes.c_int32(8), ctypes.c_int32(0))
@@ -61,7 +61,7 @@ class RegControlsI(Base):
          outside the regulator band."""
         return self.dss_obj.RegControlsI(ctypes.c_int32(9), ctypes.c_int32(argument))
 
-    def _max_tap_change(self) -> int:
+    def _max_tap_change_read(self) -> int:
         """Gets the maximum tap change per iteration in STATIC solution mode. 1 is more realistic, 16 is the default for
          faster solution."""
         return self.dss_obj.RegControlsI(ctypes.c_int32(10), ctypes.c_int32(0))
@@ -75,7 +75,7 @@ class RegControlsI(Base):
         """Gets the number of RegControl objects in Active Circuit."""
         return self.dss_obj.RegControlsI(ctypes.c_int32(12), ctypes.c_int32(0))
 
-    def _tap_number(self) -> int:
+    def _tap_number_read(self) -> int:
         """Gets the actual tap number of the active RegControl."""
         return self.dss_obj.RegControlsI(ctypes.c_int32(13), ctypes.c_int32(0))
 
