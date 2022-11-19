@@ -43,7 +43,7 @@ class TestDSSInterface13Bus:
         assert actual == expected
 
     def test_dss_num_classes(self, dss):
-        expected = 52
+        expected = 53
         actual = dss.dssinterface.num_classes
         assert actual == expected
 

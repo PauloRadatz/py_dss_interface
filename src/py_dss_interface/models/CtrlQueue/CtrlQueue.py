@@ -18,9 +18,8 @@ class CtrlQueue(CtrlQueueI, CtrlQueueV):
     def clear_queue(self) -> int:
         return CtrlQueueI._clear_queue(self)
 
-    @staticmethod # TODO check this one - I don't think it is a staticmethod
-    def delete(argument: int) -> int:
-        return CtrlQueueI._delete(argument)
+    def delete(self, argument: int) -> int:
+        return CtrlQueueI._delete(self, argument)
 
     @property
     def num_actions(self) -> int:
@@ -56,9 +55,9 @@ class CtrlQueue(CtrlQueueI, CtrlQueueV):
     def queue_size(self) -> int:
         return CtrlQueueI._queue_size(self)
 
-    @property
     def do_all_queue(self) -> int:
         return CtrlQueueI._do_all_queue(self)
 
+    @property
     def ctrlqueue(self) -> List[str]:
         return CtrlQueueV._ctrlqueue(self)
