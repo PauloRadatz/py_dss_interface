@@ -106,11 +106,11 @@ class Fuses(FusesI, FusesS, FusesF, FusesV):
         return FusesI._reset(self)
 
     @property
-    def state(self):
+    def state(self) -> List[str]:
         return FusesV._state(self)
 
     @state.setter
-    def state(self, value):
+    def state(self, value: List[str]):
         FusesV._state_write(self, value)
 
     @property

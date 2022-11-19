@@ -100,7 +100,7 @@ class Circuit(CircuitI, CircuitS, CircuitF, CircuitV):
         return CircuitV._y_node_order(self)
 
     @property
-    def y_currents(self):
+    def y_currents(self) -> List[float]:
         return CircuitV._y_currents(self)
 
     @property

@@ -201,11 +201,11 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
         LinesS._spacing_write(self, arg)
 
     @property
-    def rmatrix(self) -> str:
+    def rmatrix(self) -> List[float]:
         return LinesV._rmatrix_read(self)
 
     @rmatrix.setter
-    def rmatrix(self, arg: str):
+    def rmatrix(self, arg: List[float]):
         LinesV._rmatrix_write(self, arg)
 
     @property
@@ -213,27 +213,27 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
         return LinesV._xmatrix_read(self)
 
     @xmatrix.setter
-    def xmatrix(self, arg: str):
+    def xmatrix(self, arg: List[float]):
         LinesV._xmatrix_write(self, arg)
 
     @property
-    def cmatrix(self) -> str:
+    def cmatrix(self) -> List[float]:
         return LinesV._cmatrix_read(self)
 
     @cmatrix.setter
-    def cmatrix(self, arg: str):
+    def cmatrix(self, arg: List[float]):
         LinesV._cmatrix_write(self, arg)
 
     @property
-    def names(self) -> str:
+    def names(self) -> List[str]:
         return LinesV._names(self)
 
     @property
-    def yprim(self) -> str:
+    def yprim(self) -> List[float]:
         return LinesV._yprim_read(self)
 
     @yprim.setter
-    def yprim(self, arg: str):
+    def yprim(self, arg: List[float]):
         LinesV._yprim_write(self, arg)
 
 

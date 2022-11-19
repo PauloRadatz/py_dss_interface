@@ -113,7 +113,7 @@ class CircuitV(Base):
         argument = Base.check_int_param(argument, default=1)  # Phase 1 as default
         return Bridge.variant_pointer_read(self.dss_obj.CircuitV, 17, argument)
 
-    def _y_node_varray(self):
+    def _y_node_varray(self) -> List[float]:
         """Returns a complex array of actual node voltages in same order as SystemY Matrix. Argument2 must be 0."""
         return Bridge.variant_pointer_read(self.dss_obj.CircuitV, 18)
 
@@ -122,7 +122,7 @@ class CircuitV(Base):
         Argument2 must be 0."""
         return Bridge.variant_pointer_read(self.dss_obj.CircuitV, 19)
 
-    def _y_currents(self):
+    def _y_currents(self) -> List[float]:
         """Returns a variant array of doubles containing complex injection currents for the present solution.
         It is the "I" vector of I=YV. Argument2 must be 0."""
         return Bridge.variant_pointer_read(self.dss_obj.CircuitV, 20)

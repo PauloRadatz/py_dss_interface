@@ -7,6 +7,7 @@ from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 from py_dss_interface.models.LineCodes import LineCodes
 from py_dss_interface.models.Text.Text import Text
+from typing import List
 
 
 class LineCodesV(Base):
@@ -25,54 +26,36 @@ class LineCodesV(Base):
 
     # TODO I do not think they should return str
 
-    def _rmatrix_read(self):
+    def _rmatrix_read(self) -> List[float]:
         """Gets the resistance matrix in ohms per unit length of the active LineCode."""
         return Bridge.variant_pointer_read(self.dss_obj.LineCodesV, 0)
 
-    def _rmatrix_write(self, argument):
+    def _rmatrix_write(self, argument: List[float]) -> List[float]:
         """Sets the resistance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument.
          """
-
         return Bridge.variant_pointer_write(self.dss_obj.LineCodesV, 1, argument)
 
-        # # TODO work on it
-        # argument = Base.check_string_param(argument)
-        # t = Text(self.dss_obj)
-        # lc = LineCodes.LineCodes(self.dss_obj)
-        # lc_name = lc.name
-        # t.text(f'edit Linecode.{lc_name} Rmatrix = {argument}')
-
-    def _xmatrix_read(self) -> str:
+    def _xmatrix_read(self) -> List[float]:
         """Gets the reactance matrix in ohms per unit length of the active LineCode."""
-        return Bridge.var_array_function(self.dss_obj.LineCodesV, 2, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LineCodesV, 2)
 
-    def _xmatrix_write(self, argument: str) -> None:
+    def _xmatrix_write(self, argument: List[float]) -> List[float]:
         """Sets the reactance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument.
-
          """
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        lc = LineCodes.LineCodes(self.dss_obj)
-        lc_name = lc.name
-        t.text(f'edit Linecode.{lc_name} Xmatrix = {argument}')
+        return Bridge.variant_pointer_write(self.dss_obj.LineCodesV, 3, argument)
 
-    def _cmatrix_read(self) -> str:
+    def _cmatrix_read(self) -> List[float]:
         """Gets the capacitance matrix in ohms per unit length of the active LineCode."""
-        return Bridge.var_array_function(self.dss_obj.LineCodesV, 4, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LineCodesV, 4)
 
-    def _cmatrix_write(self, argument: str) -> None:
+    def _cmatrix_write(self, argument: List[float]) -> List[float]:
         """Sets the capacitance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument.
-         :param argument: must be a string like that [383.948  |0  383.948  |0  0  383.948 ]
          """
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        lc = LineCodes.LineCodes(self.dss_obj)
-        lc_name = lc.name
-        t.text(f'edit Linecode.{lc_name} Cmatrix = {argument}')
+        return Bridge.variant_pointer_write(self.dss_obj.LineCodesV, 5, argument)
 
-    def _names(self) -> str:
+    def _names(self) -> List[str]:
         """Gets the capacitance matrix in ohms per unit length of the active LineCode."""
-        return Bridge.var_array_function(self.dss_obj.LineCodesV, 6, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LineCodesV, 6)

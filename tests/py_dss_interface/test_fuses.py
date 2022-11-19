@@ -201,3 +201,4 @@ class TestFuses13Bus:
         dss.fuses.normal = expected
         actual = dss.fuses.normal
         assert actual == expected
+
