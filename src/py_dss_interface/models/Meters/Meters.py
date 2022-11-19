@@ -7,6 +7,7 @@ from py_dss_interface.models.Meters.MetersF import MetersF
 from py_dss_interface.models.Meters.MetersI import MetersI
 from py_dss_interface.models.Meters.MetersS import MetersS
 from py_dss_interface.models.Meters.MetersV import MetersV
+from typing import List
 
 
 class Meters(MetersV, MetersS, MetersF, MetersI):
@@ -75,8 +76,8 @@ class Meters(MetersV, MetersS, MetersF, MetersI):
         return MetersI._metered_terminal_read(self)
 
     @metered_terminal.setter
-    def metered_terminal(self, value: int):
-        MetersI._metered_terminal_write(self, value)
+    def metered_terminal(self, arg: int):
+        MetersI._metered_terminal_write(self, arg)
 
     @property
     def di_files_are_open(self) -> int:
@@ -105,8 +106,8 @@ class Meters(MetersV, MetersS, MetersF, MetersI):
         return MetersI._sequence_index_read(self)
 
     @sequence_index.setter
-    def sequence_index(self, value: int):
-        MetersI._sequence_index_write(self, value)
+    def sequence_index(self, arg: int):
+        MetersI._sequence_index_write(self, arg)
 
     def do_reliability_calc(self) -> int:
         return MetersI._do_reliability_calc(self)
@@ -123,8 +124,8 @@ class Meters(MetersV, MetersS, MetersF, MetersI):
     def num_sections(self) -> int:
         return MetersI._num_sections_read(self)
 
-    def set_active_section(self, value: int):
-        MetersI._set_active_section_write(self, value)
+    def set_active_section(self, arg: int):
+        MetersI._set_active_section_write(self, arg)
 
     @property
     def ocp_device_type(self) -> int:
@@ -151,67 +152,66 @@ class Meters(MetersV, MetersS, MetersF, MetersI):
         return MetersS._name_read(self)
 
     @name.setter
-    def name(self, value: str):
-        MetersS._name_write(self, value)
+    def name(self, arg: str):
+        MetersS._name_write(self, arg)
 
     @property
     def metered_element(self) -> str:
         return MetersS._metered_element_read(self)
 
     @metered_element.setter
-    def metered_element(self, value: str):
-        MetersS._metered_element_write(self, value)
+    def metered_element(self, arg: str):
+        MetersS._metered_element_write(self, arg)
 
-    # TODO add types
     @property
-    def names(self):
+    def names(self) -> List[str]:
         return MetersV._names(self)
 
     @property
-    def register_names(self):
+    def register_names(self) -> List[str]:
         return MetersV._register_names(self)
 
     @property
-    def register_values(self):
+    def register_values(self) -> List[float]:
         return MetersV._register_values(self)
 
     @property
-    def totals(self):
+    def totals(self) -> List[float]:
         return MetersV._totals(self)
 
     @property
-    def peak_current(self):
+    def peak_current(self) -> List[float]:
         return MetersV._peak_current_read(self)
 
     @peak_current.setter
-    def peak_current(self, value):
-        MetersV._peak_current_write(self, value)
+    def peak_current(self, arg: List[float]):
+        MetersV._peak_current_write(self, arg)
 
     @property
-    def calc_current(self):
+    def calc_current(self) -> List[float]:
         return MetersV._calc_current_read(self)
 
     @calc_current.setter
-    def calc_current(self, value):
-        MetersV._calc_current_write(self, value)
+    def calc_current(self, arg: List[float]):
+        MetersV._calc_current_write(self, arg)
 
     @property
-    def alloc_factors(self):
+    def alloc_factors(self) -> List[float]:
         return MetersV._alloc_factors_read(self)
 
     @alloc_factors.setter
-    def alloc_factors(self, value):
-        MetersV._alloc_factors_write(self, value)
+    def alloc_factors(self, arg: List[float]):
+        MetersV._alloc_factors_write(self, arg)
 
     @property
-    def all_end_elements(self):
+    def all_end_elements(self) -> List[str]:
         return MetersV._all_end_elements(self)
 
     @property
-    def all_branches_in_zone(self):
+    def all_branches_in_zone(self) -> List[str]:
         return MetersV._all_branches_in_zone(self)
 
     @property
-    def all_pce_in_zone(self):
+    def all_pce_in_zone(self) -> List[str]:
         return MetersV._all_pce_in_zone(self)
 
