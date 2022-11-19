@@ -111,7 +111,7 @@ class Monitors(MonitorsI, MonitorsV, MonitorsS):
         return MonitorsV._names(self)
 
     @property
-    def byte_stream(self) -> List[str]:
+    def byte_stream(self) -> List[int]:
         return MonitorsV._byte_stream(self)
 
     @property
@@ -119,12 +119,12 @@ class Monitors(MonitorsI, MonitorsV, MonitorsS):
         return MonitorsV._header(self)
 
     @property
-    def dbl_hour(self) -> List[str]:
+    def dbl_hour(self) -> List[float]:
         return MonitorsV._dbl_hour(self)
 
     @property
-    def dbl_freq(self) -> List[str]:
+    def dbl_freq(self) -> List[float]:
         return MonitorsV._dbl_freq(self)
 
-    def channel(self, argument) -> List[str]:
+    def channel(self, argument) -> List[float]:
         return MonitorsV._channel(self, argument)

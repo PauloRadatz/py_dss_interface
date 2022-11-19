@@ -601,9 +601,7 @@ class TestMonitors13Bus:
 
         dss.monitors.save()
 
-        actual = []
-        for i in dss.monitors.byte_stream.values.tolist():
-            actual.extend(iter(i))
+        actual = dss.monitors.byte_stream
         assert actual == expected
 
     def test_monitors_header(self, dss):
@@ -647,6 +645,6 @@ class TestMonitors13Bus:
                     2423.14,
                     2421.99,
                     2421.52]
-        # dss.monitors.save_all()
+
         actual = dss.monitors.channel(1)
         assert [round(value, 2) for value in actual] == [round(value, 2) for value in expected]

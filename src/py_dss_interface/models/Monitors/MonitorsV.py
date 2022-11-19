@@ -19,33 +19,29 @@ class MonitorsV(Base):
 
     def _names(self) -> List[str]:
         """Returns an array of all Monitor names (array of strings)."""
-        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.MonitorsV, 0)
 
-    def _byte_stream(self) -> List[str]:
+    def _byte_stream(self) -> List[int]:
         """Returns a byte array containing monitor stream values. Make sure a "save" is done first (standard solution
         modes do this automatically). """
-        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(1), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.MonitorsV, 1)
 
     def _header(self) -> List[str]:
         """Returns the header string; Variant array of strings containing Channel Names."""
-        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(2), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.MonitorsV, 2)
 
-    def _dbl_hour(self) -> List[str]:
+    def _dbl_hour(self) -> List[float]:
         """Returns returns a variant array of doubles containing time value in hours for the time-sampled monitor
         values; empty if frequency-sampled values for harmonics solution (see dblFreq)."""
-        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(3), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.MonitorsV, 3)
 
-    def _dbl_freq(self) -> List[str]:
+    def _dbl_freq(self) -> List[float]:
         """Returns a variant array of doubles containing time values for harmonics mode solutions; empty for time
         mode solutions (use dblHour). """
-        return Bridge.var_array_function(self.dss_obj.MonitorsV, ctypes.c_int(4), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.MonitorsV, 4)
 
-    # todo check type of argument
-    def _channel(self, argument) -> List[str]:
+    def _channel(self, arg: int) -> List[float]:
         """Returns a variant array of doubles for the specified channel (usage: MyArray = DSSmonitor. Channel(i)) A
         save or SaveAll should be executed first. Done automatically by most standard solution modes. """
-        r = np.array(self._byte_stream())
-        r = np.reshape(r, (len(self._dbl_hour()), len(self._header()) + 2))
-        # return r[:, [0, 1, argument+1]]
-        return list(r[:, argument + 1]) # TODO fix it
+        return Bridge.variant_pointer_read(self.dss_obj.MonitorsV, 5, arg)
 
