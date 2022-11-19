@@ -30,7 +30,7 @@ class TestBus13CtrlQueue:
         assert actual_2 == '8, 0, 15, 0, 0, reg2 '
         assert actual_3 == '7, 0, 15, 0, 0, reg1 '
 
-        dss.solution_do_control_actions()
+        dss.solution.do_control_actions()
 
         expected = ['No events']
         actual = dss.ctrlqueue.ctrlqueue
@@ -38,14 +38,14 @@ class TestBus13CtrlQueue:
         assert actual == expected
 
     def test_ctrlqueue_clear_queue(self, dss):
-        dss.clear_queue()
+        dss.ctrlqueue.clear_queue()
         expected = ['No events']
         actual = dss.ctrlqueue.ctrlqueue
 
         assert actual == expected
 
     def test_ctrlqueue_delete(self, dss):
-        dss.delete(8)
+        dss.ctrlqueue.delete(8)
         actual_0 = dss.ctrlqueue.ctrlqueue[0]
         actual_1 = dss.ctrlqueue.ctrlqueue[1]
         actual_2 = dss.ctrlqueue.ctrlqueue[2]
@@ -54,7 +54,7 @@ class TestBus13CtrlQueue:
         assert actual_1 == '9, 0, 15, 0, 0, reg3 '
         assert actual_2 == '7, 0, 15, 0, 0, reg1 '
 
-        dss.delete(0)
+        dss.ctrlqueue.delete(0)
         actual_0 = dss.ctrlqueue.ctrlqueue[0]
         actual_1 = dss.ctrlqueue.ctrlqueue[1]
         actual_2 = dss.ctrlqueue.ctrlqueue[2]
@@ -82,11 +82,11 @@ class TestBus13CtrlQueue:
 
     def test_ctrlqueue_device_handle(self, dss):
         # TODO
-        dss.device_handle()
+        dss.ctrlqueue.device_handle()
 
     def test_ctrlqueue_queue_size(self, dss):
         expected = 3
-        actual = dss.queue_size()
+        actual = dss.ctrlqueue.queue_size
         assert actual == expected
 
     def test_ctrlqueue_pop_action(self, dss):
@@ -96,7 +96,7 @@ class TestBus13CtrlQueue:
 
     def test_ctrlqueue_do_all_queue(self, dss):
         expected = 0
-        actual = dss.do_all_queue()
+        actual = dss.ctrlqueue.do_all_queue()
         assert actual == expected
 
         expected = ['No events']

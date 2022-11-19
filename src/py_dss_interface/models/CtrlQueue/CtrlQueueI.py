@@ -21,6 +21,8 @@ class CtrlQueueI(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
+    # TODO lets not have try and except here
+
     def _clear_queue(self) -> int:
         """Clears the control queue."""
         return self.dss_obj.CtrlQueueI(ctypes.c_int32(0), ctypes.c_int32(0))
