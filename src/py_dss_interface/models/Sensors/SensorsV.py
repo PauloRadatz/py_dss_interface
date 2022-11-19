@@ -23,40 +23,28 @@ class SensorsV(Base):
 
     def _names(self) -> List[str]:
         """Returns a variant array of sensor names."""
-        return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.SensorsV, 0)
 
     def _currents_read(self) -> List[float]:
         """Gets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
-        return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(1), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.SensorsV, 1)
 
-    def _currents_write(self, argument: List[float]):
+    def _currents_write(self, arg: List[float]) -> List[float]:
         """Sets an array of doubles for the line current measurements; don't use with KWS and KVARS."""
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        sen = self.dss_obj.sensors.name
-        sen_name = sen.name
-        return t.text(f'edit Sensor.{sen_name} currents = {argument}')
+        return Bridge.variant_pointer_write(self.dss_obj.SensorsV, 2, arg)
 
     def _kvars_read(self) -> List[float]:
         """Gets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
-        return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(3), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.SensorsV, 3)
 
-    def _kvars_write(self, argument: List[float]):
+    def _kvars_write(self, arg: List[float]) -> List[float]:
         """Sets an array of doubles for Q measurements; overwrites currents with a new estimate using KWS."""
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        sen = self.dss_obj.sensors.name
-        sen_name = sen.name
-        return t.text(f'edit Sensor.{sen_name} kvars = {argument}')
+        return Bridge.variant_pointer_write(self.dss_obj.SensorsV, 4, arg)
 
     def _kws_read(self) -> List[float]:
         """Gets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""
-        return Bridge.var_array_function(self.dss_obj.SensorsV, ctypes.c_int(5), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.SensorsV, 5)
 
-    def _kws_write(self, argument: List[float]):
+    def _kws_write(self, arg: List[float]) -> List[float]:
         """Sets an array of doubles for P measurements; overwrites currents with a new estimate using KVARS."""
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        sen = self.dss_obj.sensors.name
-        sen_name = sen.name
-        return t.text(f'edit Sensor.{sen_name} kws = {argument}')
+        return Bridge.variant_pointer_write(self.dss_obj.SensorsV, 6, arg)

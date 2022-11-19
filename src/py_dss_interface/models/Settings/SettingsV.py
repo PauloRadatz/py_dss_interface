@@ -20,6 +20,8 @@ class SettingsV(Base):
     which can be one of the following.
     """
 
+    # TODO work here
+
     def _ue_regs_read(self) -> List[int]:
         """Gets the array of Integers defining Energy Meter registers to use for computing UE."""
         return Bridge.var_array_function(self.dss_obj.SettingsV, 0, None, '')

@@ -23,4 +23,4 @@ class SwtControlsV(Base):
 
     def _names(self) -> List[str]:
         """Gets a variant array of strings with all SwtControl names in the active circuit."""
-        return Bridge.var_array_function(self.dss_obj.SwtControlsV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.SwtControlsV, 0)
