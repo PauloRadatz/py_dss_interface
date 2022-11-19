@@ -8,6 +8,7 @@ from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 from py_dss_interface.models.LoadShapes import LoadShapes
 from py_dss_interface.models.Text.Text import Text
+from typing import List
 
 
 class LoadShapesV(Base):
@@ -15,45 +16,35 @@ class LoadShapesV(Base):
     This interface can be used to read/write certain properties of the active DSS object.
 
     The structure of the interface is as follows:
-        void LoadShapeV(int32_t Parameter, VARIANT *Argument);
+        void LoadShapeV(int32_t Parameter, VARIANT *arg);
 
     This interface returns a Variant with the result of the query according to the value of the variable Parameter,
     which can be one of the following. """
 
-    def _names(self):
+    def _names(self) -> List[str]:
         """Gets a variant array of strings containing names of all LoadShape objects currently defi_ned."""
-        return Bridge.var_array_function(self.dss_obj.LoadShapeV, 0, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LoadShapeV, 0)
 
-    def _p_mult(self):
+    def _p_mult(self) -> List[float]:
         """Gets a variant array of doubles for the P multiplier in the LoadShape."""
-        return Bridge.var_array_function(self.dss_obj.LoadShapeV, 1, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LoadShapeV, 1)
 
-    def _p_mult_write(self, argument):
+    def _p_mult_write(self, arg: List[float]) -> List[float]:
         """Sets a variant array of doubles for the P multiplier in the LoadShape."""
-        t = Text(self.dss_obj)
-        ls = LoadShapes.LoadShapes(self.dss_obj)
-        ls_name = ls.name
-        return t.text(f'edit LoadShape.{ls_name} pmult = {argument}')
+        return Bridge.variant_pointer_read(self.dss_obj.LoadShapeV, 2, arg)
 
-    def _q_mult(self):
+    def _q_mult(self) -> List[float]:
         """Gets a variant array of doubles for the Q multiplier in the LoadShape."""
-        return Bridge.var_array_function(self.dss_obj.LoadShapeV, 3, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LoadShapeV, 3)
 
-    def _q_mult_write(self, argument):
+    def _q_mult_write(self, arg: List[float]) -> List[float]:
         """Sets a variant array of doubles for the Q multiplier in the LoadShape."""
-        t = Text(self.dss_obj)
-        ls = LoadShapes.LoadShapes(self.dss_obj)
-        ls_name = ls.name
-        return t.text(f'edit LoadShape.{ls_name} qmult = {argument}')
+        return Bridge.variant_pointer_read(self.dss_obj.LoadShapeV, 4, arg)
 
-    def _time_array(self):
+    def _time_array(self) -> List[float]:
         """Gets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
-        return Bridge.var_array_function(self.dss_obj.LoadShapeV, ctypes.c_int(5), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.LoadShapeV, 5)
 
-    def _time_array_write(self, argument):
+    def _time_array_write(self, arg: List[float]) -> List[float]:
         """Sets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
-        # TODO it might get a str like load zip?
-        t = Text(self.dss_obj)
-        ls = LoadShapes.LoadShapes(self.dss_obj)
-        ls_name = ls.name
-        return t.text(f'edit LoadShape.{ls_name} hour = {argument}')
+        return Bridge.variant_pointer_read(self.dss_obj.LoadShapeV, 6, arg)
