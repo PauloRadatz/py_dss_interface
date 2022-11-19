@@ -27,56 +27,42 @@ class LinesV(Base):
 
     # TODO work on this guy
 
-    def _names(self) -> str:
+    def _names(self) -> List[str]:
         """Gets the name of all Line Objects."""
-        return Bridge.var_array_function(self.dss_obj.LinesV, 0, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LinesV, 0)
 
-    def _rmatrix_read(self):
+    def _rmatrix_read(self) -> List[float]:
         """Gets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
-        return Bridge.var_array_function(self.dss_obj.LinesV, 1, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LinesV, 1)
 
-    def _rmatrix_write(self, argument) -> str:
+    def _rmatrix_write(self, argument: List[float]) -> List[float]:
         """Sets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
-        # argument = Base.check_string_param(argument)
-        # t = Text(self.dss_obj)
-        # lc = Lines.LinesS(self.dss_obj)
-        # lc_name = lc.lines_read_name()
-        # return t.text(f'edit Line.{lc_name} Rmatrix = {argument}')
-
-        return Bridge.var_array_function(self.dss_obj.LinesV, 2, None, argument)
+        return Bridge.variant_pointer_write(self.dss_obj.LinesV, 2, argument)
 
     def _xmatrix_read(self) -> List[float]:
         """Gets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
-        return Bridge.var_array_function(self.dss_obj.LinesV, 3, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LinesV, 3)
 
-    def _xmatrix_write(self, argument) -> str:
+    def _xmatrix_write(self, argument: List[float]) -> List[float]:
         """Sets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        lc = Lines.Lines(self.dss_obj)
-        lc_name = lc.name
-        return t.text(f'edit Line.{lc_name} Xmatrix = {argument}')
+        return Bridge.variant_pointer_write(self.dss_obj.LinesV, 4, argument)
 
     # TODO include in test
-    def _cmatrix_read(self) -> str:
+    def _cmatrix_read(self) -> List[float]:
         """Gets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
-        return Bridge.var_array_function(self.dss_obj.LinesV, 5, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LinesV, 5)
 
     # TODO include in test
-    def _cmatrix_write(self, argument) -> int:
+    def _cmatrix_write(self, argument: List[float]) -> List[float]:
         """Sets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        lc = Lines.Lines(self.dss_obj)
-        lc_name = lc.name
-        return t.text(f'edit Line.{lc_name} Cmatrix = {argument}')
+        return Bridge.variant_pointer_read(self.dss_obj.LinesV, 6, argument)
 
-    def _yprim_read(self) -> str:
+    def _yprim_read(self) -> List[float]:
         """Gets the YPrimitive of the active Line."""
-        return Bridge.var_array_function(self.dss_obj.LinesV, 7, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.LinesV, 7)
 
     # TODO include in test
-    def _yprim_write(self, argument) -> str:
+    def _yprim_write(self, argument: List[float]) -> List[float]:
         """
         According to the official documentation this parameter does nothing at present.
         """

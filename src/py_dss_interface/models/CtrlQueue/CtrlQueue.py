@@ -4,7 +4,7 @@
 """
 from py_dss_interface.models.CtrlQueue.CtrlQueueI import CtrlQueueI
 from py_dss_interface.models.CtrlQueue.CtrlQueueV import CtrlQueueV
-
+from typing import List
 
 class CtrlQueue(CtrlQueueI, CtrlQueueV):
     """
@@ -37,7 +37,7 @@ class CtrlQueue(CtrlQueueI, CtrlQueueV):
     def device_handle(self) -> int:
         return CtrlQueueI._device_handle(self)
 
-    def push(self, arg):
+    def push(self, arg: List[float]) -> List[float]:
         return CtrlQueueV._push(self, arg)
 
     @property
@@ -60,5 +60,5 @@ class CtrlQueue(CtrlQueueI, CtrlQueueV):
     def do_all_queue(self) -> int:
         return CtrlQueueI._do_all_queue(self)
 
-    def ctrlqueue(self) -> str:
+    def ctrlqueue(self) -> List[str]:
         return CtrlQueueV._ctrlqueue(self)

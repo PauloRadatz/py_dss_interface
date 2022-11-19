@@ -6,7 +6,7 @@ from py_dss_interface.models.LineCodes.LineCodesF import LineCodesF
 from py_dss_interface.models.LineCodes.LineCodesI import LineCodesI
 from py_dss_interface.models.LineCodes.LineCodesS import LineCodesS
 from py_dss_interface.models.LineCodes.LineCodesV import LineCodesV
-
+from typing import List
 
 class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     """
@@ -120,29 +120,29 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
         LineCodesS._name_write(self, arg)
 
     @property
-    def rmatrix(self) -> str:
+    def rmatrix(self) -> List[float]:
         return LineCodesV._rmatrix_read(self)
 
     @rmatrix.setter
-    def rmatrix(self, arg: str):
+    def rmatrix(self, arg: List[float]):
         LineCodesV._rmatrix_write(self, arg)
 
     @property
-    def xmatrix(self) -> str:
+    def xmatrix(self) -> List[float]:
         return LineCodesV._xmatrix_read(self)
 
     @xmatrix.setter
-    def xmatrix(self, arg: str):
+    def xmatrix(self, arg: List[float]):
         LineCodesV._xmatrix_write(self, arg)
 
     @property
-    def cmatrix(self) -> str:
+    def cmatrix(self) -> List[float]:
         return LineCodesV._cmatrix_read(self)
 
     @cmatrix.setter
-    def cmatrix(self, arg: str):
+    def cmatrix(self, arg: List[float]):
         LineCodesV._cmatrix_write(self, arg)
 
     @property
-    def names(self) -> str:
+    def names(self) -> List[str]:
         return LineCodesV._names(self)

@@ -6,6 +6,7 @@ from py_dss_interface.models.Loads.LoadsF import LoadsF
 from py_dss_interface.models.Loads.LoadsI import LoadsI
 from py_dss_interface.models.Loads.LoadsS import LoadsS
 from py_dss_interface.models.Loads.LoadsV import LoadsV
+from typing import List
 
 
 class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
@@ -313,9 +314,9 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
         LoadsS._yearly_write(self, value)
 
     @property
-    def zipv(self):
+    def zipv(self) -> List[float]:
         return LoadsV._zipv_read(self)
 
     @zipv.setter
-    def zipv(self, value):
+    def zipv(self, value: List[float]):
         LoadsV._zipv_write(self, value)
