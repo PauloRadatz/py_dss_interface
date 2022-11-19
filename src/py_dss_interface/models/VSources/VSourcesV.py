@@ -6,6 +6,7 @@ import ctypes
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
+from typing import List
 
 
 class VSourcesV(Base):
@@ -19,6 +20,6 @@ class VSourcesV(Base):
     which can be one of the following.
     """
 
-    def _names(self):
+    def _names(self) -> List[str]:
         """Gets the name of the active VSource."""
-        return Bridge.var_array_function(self.dss_obj.VsourcesV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.VsourcesV, 0)

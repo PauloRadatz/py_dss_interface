@@ -22,4 +22,4 @@ class RelaysV(Base):
 
     def _names(self) -> List[str]:
         """Getsa variant array of strings containing names of all relay elements."""
-        return Bridge.var_array_function(self.dss_obj.RelaysV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.RelaysV, 0)

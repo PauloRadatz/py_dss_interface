@@ -6,7 +6,7 @@ import ctypes
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
-
+from typing import List
 
 class TransformersV(Base):
     """
@@ -22,16 +22,16 @@ class TransformersV(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def _names(self):
+    def _names(self) -> List[str]:
         """Gets a variant array of strings with all Transformer names in the active circuit."""
-        return Bridge.var_array_function(self.dss_obj.TransformersV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.TransformersV, 0)
 
-    def _wdg_voltages(self):
+    def _wdg_voltages(self) -> List[float]:
         """Gets a variant array of doubles containing the voltages at the active winding on the active transformer.
         These voltages come as complex pairs."""
-        return Bridge.var_array_function(self.dss_obj.TransformersV, ctypes.c_int(1), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.TransformersV, 1)
 
-    def _wdg_currents(self):
+    def _wdg_currents(self) -> List[float]:
         """Gets a a variant array of doubles containing the currents at the active winding on the active transformer.
         These currents come as complex pairs."""
-        return Bridge.var_array_function(self.dss_obj.TransformersV, ctypes.c_int(2), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.TransformersV, 2)

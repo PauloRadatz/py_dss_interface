@@ -7,6 +7,7 @@ from py_dss_interface.models.VSources.VSourcesF import VSourcesF
 from py_dss_interface.models.VSources.VSourcesI import VSourcesI
 from py_dss_interface.models.VSources.VSourcesS import VSourcesS
 from py_dss_interface.models.VSources.VSourcesV import VSourcesV
+from typing import List
 
 
 class VSources(VSourcesS, VSourcesV, VSourcesI, VSourcesF):
@@ -77,7 +78,7 @@ class VSources(VSourcesS, VSourcesV, VSourcesI, VSourcesF):
         VSourcesS._name_write(self, name)
 
     @property
-    def names(self):
+    def names(self) -> List[str]:
         return VSourcesV._names(self)
 
 

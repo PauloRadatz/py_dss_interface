@@ -22,12 +22,12 @@ class TopologyV(Base):
 
     def _all_looped_pairs(self) -> List[str]:
         """Gets a variant array of all looped element names, by pairs."""
-        return Bridge.var_array_function(self.dss_obj.TopologyV, ctypes.c_int(0), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.TopologyV, 0)
 
     def _all_isolated_branches(self) -> List[str]:
         """Gets a variant array of all isolated branch names."""
-        return Bridge.var_array_function(self.dss_obj.TopologyV, ctypes.c_int(1), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.TopologyV, 1)
 
     def _all_isolated_loads(self) -> List[str]:
         """Gets a variant array of all isolated load names."""
-        return Bridge.var_array_function(self.dss_obj.TopologyV, ctypes.c_int(2), ctypes.c_int(0), None)
+        return Bridge.variant_pointer_read(self.dss_obj.TopologyV, 2)
