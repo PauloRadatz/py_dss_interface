@@ -187,8 +187,7 @@ class TestLineCodes13Bus:
         assert actual == expected
 
     def test_linecodes_read_xmatrix(self, dss):
-        expected = [0.20416667, 0.09501894, 0.07289773, 0.09501894, 0.19852273, 0.08022727, 0.07289773, 0.08022727,
-                    0.20172349]
+        expected = [0.20416667, 0.09501894, 0.07289773, 0.09501894, 0.19852273, 0.08022727, 0.07289773, 0.08022727, 0.20172349]
         expected = [truncate(x, 6) for x in expected]
 
         actual = dss.linecodes.xmatrix
@@ -197,21 +196,15 @@ class TestLineCodes13Bus:
         assert actual == expected
 
     def test_linecodes_write_xmatrix(self, dss):
-        expected_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
-        expected = format_matrix(expected_list)
-        expected_str = format_matrix_str(expected)
+        expected = [0.086, 0.029, 0.02, 0.029, 0.088, 0.029, 0.02, 0.029, 0.08]
 
-        dss.linecodes.xmatrix = expected_str
+        dss.linecodes.xmatrix = expected
         actual = dss.linecodes.xmatrix
-
-        actual = [truncate(x, 9) for x in actual]
-        expected = [truncate(x, 9) for x in expected]
 
         assert actual == expected
 
     def test_linecodes_read_cmatrix(self, dss):
-        expected = [2.85171007, -0.92029379, -0.35075557, -0.92029379, 3.00463186, -0.58501125, -0.35075557,
-                    -0.58501125, 2.71134756]
+        expected = [2.85171007, -0.92029379, -0.35075557, -0.92029379, 3.00463186, -0.58501125, -0.35075557, -0.58501125, 2.71134756]
 
         actual = dss.linecodes.cmatrix
         actual = [truncate(x, 6) for x in actual]
@@ -220,14 +213,13 @@ class TestLineCodes13Bus:
         assert actual == expected
 
     def test_linecodes_write_cmatrix(self, dss):
-        expected_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
-        expected = format_matrix(expected_list)
-        expected_str = format_matrix_str(expected)
-        dss.linecodes.cmatrix = expected_str
+        expected = [0.0861100, 0.0291100, 0.021100, 0.0291100, 0.0881100, 0.0291100, 0.021100, 0.0291100, 0.081100]
+
+        dss.linecodes.cmatrix = expected
         actual = dss.linecodes.cmatrix
 
-        actual = [truncate(x, 9) for x in actual]
-        expected = [truncate(x, 9) for x in expected]
+        actual = [truncate(x, 3) for x in actual]
+        expected = [truncate(x, 3) for x in expected]
 
         assert actual == expected
 

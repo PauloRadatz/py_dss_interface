@@ -264,8 +264,7 @@ class TestMeters13Bus:
 
     def test_meters_write_peak_current(self, dss):
         expected = [550.0, 600.0, 680.0]
-        expected_str = f'({str(expected[0])},{str(expected[1])},{str(expected[2])})'
-        dss.meters.peak_current = expected_str
+        dss.meters.peak_current = expected
         actual = dss.meters.peak_current
         assert actual == expected
 
@@ -281,7 +280,7 @@ class TestMeters13Bus:
     #     expected = [394, 301, 403]
     #     dss.meters.calc_current = expected
     #     dss.text("Allocateloads")
-    #     actual = dss.meters.calc_current()
+    #     actual = dss.meters.calc_current
     #     assert actual == expected
 
     def test_meters_read_alloc_factors(self, dss):

@@ -122,7 +122,7 @@ class TestSensors13Bus:
 
     def test_sensors_write_kv_base(self, dss):
         expected = 0.48
-        dss.sensors._kv_base = expected
+        dss.sensors.kv_base = expected
         actual = dss.sensors.kv_base
         assert actual == expected
 
