@@ -20,8 +20,8 @@ dss.text(f"compile [{dss_file}]")
 dss.loads.first()
 expected = ['671_new']
 dss.cktelement.bus_names = expected
-expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
-dss.loads.zipv = expected
+# expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+# dss.loads.zipv = expected
 
 # overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.name()}_EXP_OVERLOADS.CSV")
 # # dss.text("batchedit load..* enabled=no")
