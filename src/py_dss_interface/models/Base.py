@@ -3,6 +3,7 @@
  Created by eniocc at 11/10/2020
 """
 import ctypes
+import logging
 import warnings
 from typing import Optional
 
@@ -23,11 +24,6 @@ class Base:
         second = Base.check_int_param(second)
         return int(self.dss_obj.type(self).__name__(ctypes.c_int32(first), ctypes.c_int32(second)))
 
-    # def get_variant(self, first):
-    #     variant_pointer = ctypes.pointer(automation.VARIANT())
-    #     self.dss_obj.type(self).__name__(ctypes.c_int32(first), variant_pointer)
-    #     return variant_pointer.contents.value
-
     def get_float(self, first, second):
         first = Base.check_int_param(first)
         second = Base.check_float_param(second)
@@ -40,68 +36,57 @@ class Base:
     def check_assertion_result(cls, param: int, message_1: Optional[str] = None, message_2: Optional[str] = None,
                                expected_value=0) -> None:
         """
-            Check if the method converges to an expected result.
-            @param param: value compared
-            @param expected_value value expected, most cases is 0 but in others could be 1
-            @param message_1: a generic message if assertion fails
-            @param message_2: a more specific message could be appeared when AssertionError raise
-            :return:
-            """
+        Check if the method converges to an expected result.
+        @param param: value compared
+        @param expected_value value expected, most cases is 0 but in others could be 1
+        @param message_1: a generic message if assertion fails
+        @param message_2: a more specific message could be appeared when AssertionError raise
+        :return:
+        """
         if not isinstance(expected_value, int):
             expected_value = 0
         try:
             assert param == expected_value, message_1
-        except AssertionError:
-            warnings.warn(message_2, Warning)
+        except AssertionError as e:
+            raise AssertionError(message_2) from e
 
     @classmethod
-    def check_int_param(cls, int_param: int, default=0) -> int:
+    def check_int_param(cls, int_param: int, default: int = 0) -> int:
         """
         Check if the parameter is an int and if it exists. If not exist or if it isn't an int it will be 0.
-        @param default: self explained
+        @param default: default value to return if int_param is None or not an int
         @param int_param: any int number
-        @param default:
         """
-        if type(int_param) is None:
-            print("WARNING: Param not defined, param is 0")
+        if int_param is None:
+            raise ValueError("int_param is None")
+        elif not isinstance(int_param, (int, float)):
+            logging.warning("int_param is not an int or a float, using default value %d", default)
             int_param = default
-        elif (
-            type(int_param) is str
-            or type(int_param) is not float
-            and type(int_param) is not int
-        ):
-            int_param = default
-        elif type(int_param) is float:
-            print("WARNING: Your parameter will be truncated")
-            int_param = int(int_param)
-        else:
-            return int_param
+        elif isinstance(int_param, float):
+            logging.warning("int_param is a float, converting to int (truncating decimal part)")
+            int_param = int_param
         return int_param
 
     @classmethod
-    def check_float_param(cls, param: float, default=0.0) -> float:
+    def check_float_param(cls, param: float, default: float = 0.0) -> float:
         """
         Check if the parameter is a float and if it exists. If not exist or if it isn't a float it will be 0.0.
-        @param default: self explained
-        @param param: any float number, positive or negative or just 0.0
+        :param default: the default value to be used if the parameter is not a float
+        :param param: any float number, positive or negative or just 0.0
         """
-        if type(param) is None or type(param) is str:
-            print("WARNING: Param not defined, param is 0.0")
+        if param is None or not isinstance(param, (int, float)):
+            warnings.warn("WARNING: Param not defined, param is 0.0", Warning)
             param = default
-        elif type(param) is int:
-            param = float(param)
-        elif type(param) is float:
-            return param
-        else:
-            param = default
+        elif isinstance(param, int):
+            param = param
         return param
 
     @classmethod
-    def check_string_param(cls, param: str, default='NAME_DEFAULT') -> str:
+    def check_string_param(cls, param: Optional[str], default: str = 'NAME_DEFAULT') -> str:
         """
         Check if the parameter is a string and if it exists. If not exist or if it isn't a str it will be NAME_DEFAULT.
-        @param default: self explained
-        @param param: any str
+        @param default_value: the default value to use if `param` is None or not a string
+        @param param: the parameter to check
         """
         if not isinstance(default, str):
             default = 'NAME_DEFAULT'
@@ -111,7 +96,11 @@ class Base:
 
     @classmethod
     def warn_msg(cls, msg, error):
-        count_ = msg._count("*")
+        if not isinstance(msg, str):
+            raise TypeError("msg must be a string")
+        if not isinstance(error, Exception):
+            raise TypeError("error must be an instance of Exception")
+        count_ = msg.count("*")
         it = count_ / 2
         for _ in range(int(it)):
             msg = msg.replace("*", "\033[1m", 1)
