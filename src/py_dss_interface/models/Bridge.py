@@ -6,6 +6,8 @@ import ctypes
 import logging
 import struct
 import sys
+from enum import Enum
+from typing import List, Union
 
 import numpy as np
 import pandas as pd
@@ -14,23 +16,22 @@ from comtypes import automation
 logger = logging.getLogger('opendssdirect.core')
 
 
-def is_x64():
+def is_x64() -> bool:
+    """
+    Returns True if the system is 64-bit, False otherwise.
+    """
     return struct.calcsize("P") == 8
 
 
-def is_delphi():
+def is_delphi() -> bool:
+    """
+    Returns True if the system is running Delphi, False otherwise.
+    """
     return 'darwin' not in sys.platform and 'linux' not in sys.platform
 
 
 POINTER = ctypes.c_int64 if is_x64() else ctypes.c_int32
 HEADER_SIZE = 4 if is_delphi() else 8
-
-
-class ArrayEnio(ctypes.Structure):
-    _fields_ = [
-        ('size', ctypes.c_int),
-        ('data', ctypes.POINTER(ctypes.c_float)),
-    ]
 
 
 class VArg(ctypes.Structure):
@@ -54,7 +55,10 @@ class VarArray(ctypes.Structure):
     ]
 
 
-def c_types_function(f, param, dss_arg, name):
+def c_types_function(f: callable, param: Union[int, str], dss_arg: Union[bytes, str], name: str) -> str:
+    """
+    Calls the given ctypes function with the given parameters, and returns the result as a string.
+    """
     if isinstance(dss_arg, str):
         dss_arg = dss_arg.encode('ascii')
 
@@ -65,7 +69,11 @@ def c_types_function(f, param, dss_arg, name):
         r = r.decode('ascii')
     return r
 
-def variant_pointer_read(f, param: int, optional=None) -> list:
+
+def variant_pointer_read(f: callable, param: int, optional=None) -> List:
+    """
+    Reads a COM variant pointer and returns its value as a list.
+    """
     variant_pointer = ctypes.pointer(automation.VARIANT())
     if optional:
         f(ctypes.c_int(param), variant_pointer, optional)
@@ -73,11 +81,89 @@ def variant_pointer_read(f, param: int, optional=None) -> list:
         f(ctypes.c_int(param), variant_pointer)
     return list(variant_pointer.contents.value)
 
-def variant_pointer_write(f, param: int, arg: list) -> list:
+
+def variant_pointer_write(f: callable, param: int, arg: List) -> List:
+    """
+    Writes a list to a COM variant pointer.
+    """
     variant_pointer = ctypes.pointer(automation.VARIANT())
-    variant_pointer.contents.value = arg
+    variant_pointer.contents.arg = arg
     f(ctypes.c_int(param), variant_pointer)
     return list(variant_pointer.contents.value)
+
+
+class DataType(Enum):
+    Unknown = 0
+    CString = 0x2008
+    Float64 = 0x2005
+    Int32 = 0x2003
+    ByteStream = 0x2011
+
+
+def cast_array(var_arr, dtype):
+    if dtype == DataType.CString:
+        data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_void_p))
+        return [
+            ctypes.cast(s, ctypes.c_char_p).value.decode('utf-8')
+            for s in data.contents[:var_arr.length]
+            if s != 0
+        ]
+    elif dtype == DataType.Float64:
+        data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_double))
+        return np.frombuffer(data.contents, count=var_arr.length)
+    elif dtype == DataType.Int32:
+        data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_int32))
+        return np.frombuffer(data.contents, count=var_arr.length)
+    elif dtype != DataType.ByteStream:
+        raise ValueError(f"Unsupported dtype {dtype}")
+
+
+def process_var_array(var_arr, dtype):
+    """Process a VarArray object and convert it to a list of values.
+
+    Args:
+        var_arr: A VarArray object to process.
+        dtype: The data type of the VarArray object.
+
+    Returns:
+        A list of values extracted from the VarArray object.
+    """
+    if var_arr.length == 0:
+        return []  # or None, depending on the desired behavior
+
+    result = cast_array(var_arr, dtype)
+
+    if dtype == DataType.CString:
+        result = [s for s in result if s.lower() != 'none']
+
+    return result
+
+
+def process_var(varg, name):
+    """Process a Var object and convert it to a list of values.
+
+    Args:
+        varg: A Var object to process.
+        name: The name of the Var object.
+
+    Returns:
+        A list of values extracted from the Var object.
+    """
+    data_types = {
+        DataType.CString: process_var_array,
+        DataType.Float64: process_var_array,
+        DataType.Int32: process_var_array,
+        DataType.ByteStream: process_var_array,  # TODO: implement DataFrame creation
+    }
+
+    data_type = varg.dtype
+    processing_func = data_types.get(data_type)
+
+    if processing_func is None:
+        raise ValueError(f"Unsupported dtype {data_type} returned for {name}. Please contact developer")
+
+    return processing_func(varg.p.contents, data_type)
+
 
 def var_array_function(f, param, optional, name):
     varg = VArg(0, None, 0, 0)
@@ -89,84 +175,6 @@ def var_array_function(f, param, optional, name):
         f(param, p)
 
     logger.debug(f"Successively called and returned from function {name}")
-    var_arr = ctypes.cast(varg.p, ctypes.POINTER(VarArray)).contents
+    # var_arr = ctypes.cast(varg.p, ctypes.POINTER(VarArray)).contents
 
-    l_ = []
-    if varg.dtype == 0x2008 and var_arr.length != 0:  # CString
-        data = ctypes.cast(var_arr.data, ctypes.POINTER(POINTER * var_arr.length))
-        for s in data.contents:
-            if s == 0:
-                continue
-            length = ctypes.cast(s - HEADER_SIZE, ctypes.POINTER(ctypes.c_uint8)).contents.value
-            if is_delphi():
-                length = int(length / 2)
-            s = ctypes.cast(s, ctypes.POINTER(ctypes.c_int16 * length))
-            s = u''.join(chr(x) for x in s.contents[:])
-            if s.lower() != 'none':
-                l_.append(s)
-
-    elif varg.dtype == 0x2005 and var_arr.length != 0:  # Float64
-        data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_double * var_arr.length))
-        # Converting CFloat to Python float, more efficiency could be gained by using NumPy
-        l_.extend(iter(data.contents))
-    elif varg.dtype == 0x2003 and var_arr.length != 0:  # Int32
-        data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_int32 * var_arr.length))
-        # Converting CInt32 to Python float, more efficiency could be gained by using NumPy
-        l_.extend(iter(data.contents))
-    elif varg.dtype == 0x2011 and var_arr.length != 0:
-        signature = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_int32)).contents.value
-
-        if signature != 43756:
-            logger.warning(
-                f"ByteStream did not contain expected signature. Found {signature} but expected 43756"
-            )
-
-        else:
-            # data = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_int32 * 4))
-            # signature, version, size, param = data.contents
-
-            p = ctypes.cast(var_arr.data, ctypes.POINTER(ctypes.c_int32))
-            a_ptr = ctypes.cast(p, ctypes.c_void_p)
-            a_ptr.value += ctypes.sizeof(p._type_)
-            version = ctypes.cast(a_ptr, ctypes.POINTER(ctypes.c_int32)).contents.value
-            a_ptr.value += ctypes.sizeof(p._type_)
-            size = ctypes.cast(a_ptr, ctypes.POINTER(ctypes.c_int32)).contents.value
-            a_ptr.value += ctypes.sizeof(p._type_)
-            param = ctypes.cast(a_ptr, ctypes.POINTER(ctypes.c_int32)).contents.value
-            logger.debug(
-                "version={version}, size={size}, param={param}".format(version=version, size=size, param=param))
-
-            a_ptr.value += ctypes.sizeof(p._type_)
-            header = ctypes.cast(a_ptr, ctypes.POINTER(ctypes.c_char * 256)).contents.value
-            header = [i.strip() for i in header.decode('ascii').strip().rstrip(',').split(',')]
-
-            a_ptr.value = a_ptr.value + 256 * ctypes.sizeof(ctypes.c_char)
-            count = (var_arr.length - 272) / 4 / (size + 2)
-
-            if int(count) != count:
-                logger.error(
-                    "Expected count to be integer but found count={count}".format(
-                        count=count,
-                    )
-                )
-            else:
-                count = int(count)
-
-            data = ctypes.cast(a_ptr, ctypes.POINTER(ctypes.c_float * (size + 2) * count))
-
-            for row in data.contents[:]:
-                l_.extend(iter(row[:]))
-            try:
-                l_ = np.array(l_).reshape([-1, len(header)])
-                l_ = pd.DataFrame(l_, columns=header)
-            except NameError:
-                l_ = [l_, header]
-
-    elif var_arr.length == 0:
-        logger.warning("Empty var_arr found")
-    else:
-        logger.warning(
-            f"Unsupported dtype {varg.dtype} returned for {name}. Please contact developer"
-        )
-
-    return l_
+    return process_var(varg, name)

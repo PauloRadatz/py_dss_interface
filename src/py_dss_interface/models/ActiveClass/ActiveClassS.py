@@ -22,16 +22,28 @@ class ActiveClassS(Base):
 
     def _class_name(self) -> str:
         """Sets the name of the active Element of the Active class."""
-        return (self.dss_obj.ActiveClassS(2, 0)).decode('ascii')
+        try:
+            return (self.dss_obj.ActiveClassS(2, 0)).decode('ascii')
+        except Exception as e:
+            raise Exception(f"Error in _class_name: {e}")
 
     def _name(self) -> str:
         """Gets the name of the active Element of the Active class."""
-        return (self.dss_obj.ActiveClassS(0, 0)).decode('ascii')
+        try:
+            return (self.dss_obj.ActiveClassS(0, 0)).decode('ascii')
+        except Exception as e:
+            raise Exception(f"Error in _name: {e}")
 
     def _name_write(self, argument) -> str:
         """Sets the name of the active Element of the Active class. """
-        return (self.dss_obj.ActiveClassS(1, argument.encode('ascii'))).decode('ascii')
+        try:
+            return (self.dss_obj.ActiveClassS(1, argument.encode('ascii'))).decode('ascii')
+        except Exception as e:
+            raise Exception(f"Error in _name_write: {e}")
 
     def _parent_class_name(self) -> str:
         """Gets the name of the Parent Element of the Active class."""
-        return (self.dss_obj.ActiveClassS(3, 0)).decode('ascii')
+        try:
+            return (self.dss_obj.ActiveClassS(3, 0)).decode('ascii')
+        except Exception as e:
+            raise Exception(f"Error in _parent_class_name: {e}")
