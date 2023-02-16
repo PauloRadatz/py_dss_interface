@@ -22,16 +22,18 @@ class Case:
         self.dss.text("compile {0}".format(self.dss_file))
 
     def load_json_(self, case_param: str, default_file: bool) -> None:
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        with open(f'{dir_path}/configurations.json') as json_f:
-            data = json.load(json_f)
-            for c in data['cases']:
-                if c['case'] == case_param:
-                    if default_file:
-                        self.dss_file = c['dss_file']
-                    elif c['dss_file_alternative'] != '':
-                        self.dss_file = c['dss_file_alternative']
-                    self.path = os.path.join(self.path, r"cases")
-                    self.path = os.path.join(self.path, c['case_folder'])
+        with open(f'{os.path.dirname(__file__)}/configurations.json') as json_file:
+            configurations = json.load(json_file)
+
+            case_found = False
+            for case in configurations['cases']:
+                if case['case'] == case_param:
+                    self.path = os.path.join(self.path, r"cases", case['case_folder'])
+                    self.dss_file = case['dss_file' if default_file else 'dss_file_alternative']
                     self.dss_file = os.path.join(self.path, self.dss_file)
+                    case_found = True
                     break
+
+            if not case_found:
+                raise ValueError(f"Case {case_param} not found in configurations.json")
+

@@ -20,18 +20,31 @@ class ActiveClassI(Base):
 
     def _count(self) -> int:
         """Gets the number of elements in this class. Same as NumElements Property."""
-        return self.dss_obj.ActiveClassI(3, 0)
+        try:
+            return self.dss_obj.ActiveClassI(3, 0)
+        except Exception as e:
+            raise Exception(f"Error in _count: {e}")
 
     def _first(self) -> int:
         """Sets first element in the active class to be the active DSS object. If object is a CktElement,
         ActiveCktElement also points to this element. Returns 0 if none."""
-        return self.dss_obj.ActiveClassI(0, 0)
+        try:
+            return self.dss_obj.ActiveClassI(0, 0)
+        except Exception as e:
+            raise Exception(f"Error in _first: {e}")
 
     def _next(self) -> int:
         """Sets next element in the active class to be the active DSS object.
         If object is a CktElement, ActiveCktElement also points to this element. Returns 0 if none."""
-        return self.dss_obj.ActiveClassI(1, 0)
+        try:
+            return self.dss_obj.ActiveClassI(1, 0)
+        except Exception as e:
+            raise Exception(f"Error in _next: {e}")
 
     def _num_elements(self) -> int:
         """Gets the number of elements in this class. Same as Count Property."""
-        return self.dss_obj.ActiveClassI(2, 0)
+        try:
+            return self.dss_obj.ActiveClassI(2, 0)
+        except Exception as e:
+            raise Exception(f"Error in _num_elements: {e}")
+
