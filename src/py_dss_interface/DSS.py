@@ -15,12 +15,19 @@ DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
 
 
+class DSSDLL:
+
+    def __init__(self, *args):
+        # TODO
+        print("ADD HERE")
+
+
 # TODO I am seeing dss with a lot of properties - check that
 class DSS:
 
     # TODO need to be able to get different dll names:
     #  https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
-    def __init__(self, dll_folder_param=None, dll_by_user=None):
+    def __init__(self, dll_folder_param=None, dll_by_user=None, print_dss_info=False):
         # TODO: dss_write_allowforms
         """
         Class to create an OpenDSS object
@@ -95,7 +102,8 @@ class DSS:
                 self.vsources = VSources(self.dss_obj)
                 self.xycurves = XYCurves(self.dss_obj)
 
-                print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
+                if print_dss_info:
+                    print(f"OpenDSS Started successfully! \nOpenDSS {self.my_dss_version.value.decode('ascii')}\n\n")
 
             else:
                 print("OpenDSS Failed to Start")

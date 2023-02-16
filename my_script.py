@@ -7,6 +7,8 @@ import os
 dss = py_dss_interface.DSS("C:\OpenDSS_rep\Version8\Source")
 # dss = py_dss_interface.DSS(r"C:\Program Files\OpenDSS")
 
+dss_1 = py_dss_interface.DSSDLL()
+
 # If specific DLL Version, use this line below
 # dss = py_dss_interface.DSS(dll_folder_param=r"C:\Users\eniocc\Downloads\py_dss_interface-master\src"
 #                                                r"\py_dss_interface\dll/windows\x64", dll_by_user="OpenDSSDirect.dll")
@@ -22,7 +24,8 @@ expected = ['671_new']
 dss.cktelement.bus_names = expected
 # expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
 # dss.loads.zipv = expected
-
+dss.circuit.elements_losses
+dss.lines.length
 # overload_file_path = pathlib.Path(dss_file).parent.joinpath(f"{dss.name()}_EXP_OVERLOADS.CSV")
 # # dss.text("batchedit load..* enabled=no")
 # # dss.text("set mode=yearly")
