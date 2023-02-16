@@ -15,13 +15,9 @@ DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
 
 
-# TODO I am seeing dss with a lot of properties - check that
 class DSS:
 
-    # TODO need to be able to get different dll names:
-    #  https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
     def __init__(self, dll_folder_param=None, dll_by_user=None):
-        # TODO: dss_write_allowforms
         """
         Class to create an OpenDSS object
         :param dll_folder_param: None will use the OpenDSS available within the package. The dll path allows to use a
