@@ -37,12 +37,14 @@ class DSS:
         self.my_dss_version = None
         self.started = False
         self.__memory_commands = []
-        if dll_folder_param is not None and dll_by_user is not None:
+
+        if dll_folder_param and dll_by_user:
             os.chdir(dll_folder_param)
             self.dss_obj = ctypes.cdll.LoadLibrary(os.path.join(dll_folder_param, dll_by_user))
             self.started = True
-        elif dll_by_user is None:
-            if dll_folder_param is None:
+
+        else:
+            if not dll_folder_param:
                 dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))), "dll")
             if System.detect_platform() == 'Linux':
                 dll_folder_param = pathlib.Path(dll_folder_param)
@@ -54,7 +56,8 @@ class DSS:
             self.dll_path = System.get_architecture_path(dll_folder_param)
             self.dll_file_path = os.path.join(self.dll_path, dll_by_user)
             self.dss_obj = ctypes.cdll.LoadLibrary(self.dll_file_path)
-            self.started = True
+
+        self.started = bool(self.dss_obj)
         if self.started:
             self.__load_json()
             self.__allocate_memory()

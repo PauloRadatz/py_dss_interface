@@ -4,6 +4,7 @@ import pathlib
 import numpy as np
 import os
 # Creates an OpenDSS object
+dss_2 = py_dss_interface.DSS()
 dss = py_dss_interface.DSS("C:\OpenDSS_rep\Version8\Source")
 # dss = py_dss_interface.DSS(r"C:\Program Files\OpenDSS")
 
