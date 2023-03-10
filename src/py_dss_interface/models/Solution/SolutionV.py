@@ -7,6 +7,7 @@ import ctypes
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 from typing import List
+from py_dss_interface.utils.Error import Error
 
 
 class SolutionV(Base):
@@ -22,7 +23,8 @@ class SolutionV(Base):
 
     def _event_log(self) -> List[str]:
         """Returns an array of strings containing the Event Log."""
-        return Bridge.variant_pointer_read(self.dss_obj.SolutionV, 0)
+        Error.method_not_working("getter of dss.solution.event_log")
+        # return Bridge.variant_pointer_read(self.dss_obj.SolutionV, 0)
 
     def _nc_matrix(self) -> List[int]:
         """Returns an array of integers containing the incidence matrix (1-D). Each cell of the incidence matrix is
