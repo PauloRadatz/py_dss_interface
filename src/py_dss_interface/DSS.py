@@ -10,6 +10,7 @@ from . import LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Parallel, P
 from . import Relays, RegControls, Sensors, Settings, Solution, SwtControls, Text, Topology, Transformers, VSources
 from . import XYCurves
 from .utils.System import System
+from .utils.Error import Error
 
 DLL_NAME_WIN = "OpenDSSDirect.dll"
 DLL_NAME_LINUX = "libopendssdirect.so"
@@ -18,9 +19,7 @@ DLL_NAME_LINUX = "libopendssdirect.so"
 class DSSDLL:
 
     def __init__(self, *args):
-        # TODO
-        print("ADD HERE")
-
+        Error.use_package_v1()
 
 # TODO I am seeing dss with a lot of properties - check that
 class DSS:

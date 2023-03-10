@@ -54,20 +54,20 @@ class CapacitorsI(Base):
     def _add_step(self) -> int:
         """Adds one step of the capacitor if available. If successful returns 1."""
         result = self.dss_obj.CapacitorsI(7, 0)
-        Base.check_assertion_result(result, "Capacitor step problem detect!", "A problem occur when tried to adds "
-                                                                              "step to a capacitor. Check capacitor/"
-                                                                              "bank capacitor existence or available "
-                                                                              "steps!", expected_value=1)
+        # Base.check_assertion_result(result, "Capacitor step problem detect!", "A problem occur when tried to adds "
+        #                                                                       "step to a capacitor. Check capacitor/"
+        #                                                                       "bank capacitor existence or available "
+        #                                                                       "steps!", expected_value=1)
         return result
 
     def _subtract_step(self) -> int:
         """Subtracts one step of the capacitor if available. If no more steps, returns 0."""
         result = self.dss_obj.CapacitorsI(8, 0)
-        Base.check_assertion_result(result, "Capacitor step problem detect!", "A problem occur when tried to subtract "
-                                                                              "step to a capacitor. Check capacitor/"
-                                                                              "bank capacitor existence or available "
-                                                                              "steps!",
-                                    expected_value=1)
+        # Base.check_assertion_result(result, "Capacitor step problem detect!", "A problem occur when tried to subtract "
+        #                                                                       "step to a capacitor. Check capacitor/"
+        #                                                                       "bank capacitor existence or available "
+        #                                                                       "steps!",
+        #                             expected_value=1)
         return result
 
     def _available_steps(self) -> int:

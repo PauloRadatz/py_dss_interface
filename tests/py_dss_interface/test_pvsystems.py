@@ -30,6 +30,7 @@ class TestPVSystems13Bus:
                  r"P-TCurve=MyPvsT")
         dss.solution.solve()
         dss.pvsystems.name = 'PV1'
+        dss.circuit.set_active_element("pvsystem.'PV1'")
 
         return dss
 
@@ -78,13 +79,17 @@ class TestPVSystems13Bus:
         assert actual == expected
 
     def test_pvsystems_write_irradiance(self, dss):
+        dss.circuit.set_active_element("pvsystem.'PV1'")
         expected = 0.5
         dss.pvsystems.irradiance = expected
+        dss.text("solve")
         actual = dss.pvsystems.irradiance
         assert actual == expected
 
     def test_pvsystems_kw(self, dss):
+        dss.circuit.set_active_element("pvsystem.'PV1'")
         expected = 500.0
+        dss.text("solve")
         actual = dss.pvsystems.kw_output
         assert actual == expected
 

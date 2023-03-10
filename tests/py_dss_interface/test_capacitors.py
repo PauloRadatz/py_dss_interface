@@ -90,6 +90,11 @@ class TestBus13Capacitors:
         actual = dss.capacitors.available_steps
         assert actual == expected
 
+        expected = 1
+        dss.capacitors.add_step()
+        actual = dss.capacitors.available_steps
+        assert actual == expected
+
     def test_subtract_step(self, dss):
         dss.capacitors.num_steps = 5
         expected = 1

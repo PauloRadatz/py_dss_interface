@@ -34,10 +34,7 @@ class CtrlQueueI(Base):
     def _num_actions(self) -> int:
         """Gets the number of actions on the current action list (that have been popped off the control queue by
         CheckControlActions)."""
-        try:
-            return self.dss_obj.CtrlQueueI(ctypes.c_int32(2), ctypes.c_int32(0))
-        except Exception as e:
-            Base.warn_msg("An error occur when tried to get *Num Actions of CrlQueue* check if *Queue* is NOT empty", e)
+        return self.dss_obj.CtrlQueueI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def _action(self, argument: int) -> int:
         """Sets the active action by index (argument)."""

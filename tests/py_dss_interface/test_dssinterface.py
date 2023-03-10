@@ -43,7 +43,7 @@ class TestDSSInterface13Bus:
         assert actual == expected
 
     def test_dss_num_classes(self, dss):
-        expected = 53
+        expected = 54
         actual = dss.dssinterface.num_classes
         assert actual == expected
 
@@ -105,14 +105,60 @@ class TestDSSInterface13Bus:
     # Variant methods
     # ===================================================================
     def test_dss_classes(self, dss):
-        expected = ['Solution', 'LineCode', 'LoadShape', 'TShape', 'PriceShape', 'XYcurve', 'GrowthShape', 'TCC_Curve',
-                    'Spectrum', 'WireData', 'CNData', 'TSData', 'LineGeometry', 'LineSpacing', 'XfmrCode', 'Line',
-                    'Vsource', 'Isource', 'VCCS', 'Load', 'Transformer', 'RegControl', 'Capacitor', 'Reactor',
-                    'CapControl', 'Fault', 'Generator',
-                    'WindGen', 'GenDispatcher', 'Storage', 'StorageController', 'Relay', 'Recloser', 'Fuse',
-                    'SwtControl', 'PVSystem', 'UPFC', 'UPFCControl', 'ESPVLControl', 'IndMach012', 'GICsource',
-                    'AutoTrans', 'InvControl', 'ExpControl', 'GICLine', 'GICTransformer', 'VSConverter', 'Monitor',
-                    'EnergyMeter', 'Sensor', 'FMonitor', 'Generic5']
+        expected = ['Solution',
+                    'LineCode',
+                    'LoadShape',
+                    'TShape',
+                    'PriceShape',
+                    'XYcurve',
+                    'GrowthShape',
+                    'TCC_Curve',
+                    'Spectrum',
+                    'WireData',
+                    'CNData',
+                    'TSData',
+                    'LineGeometry',
+                    'LineSpacing',
+                    'XfmrCode',
+                    'Line',
+                    'Vsource',
+                    'Isource',
+                    'VCCS',
+                    'Load',
+                    'Transformer',
+                    'RegControl',
+                    'Capacitor',
+                    'Reactor',
+                    'CapControl',
+                    'Fault',
+                    'Generator',
+                    'WindGen',
+                    'GenDispatcher',
+                    'GenController',
+                    'Storage',
+                    'StorageController',
+                    'Relay',
+                    'Recloser',
+                    'Fuse',
+                    'SwtControl',
+                    'PVSystem',
+                    'UPFC',
+                    'UPFCControl',
+                    'ESPVLControl',
+                    'IndMach012',
+                    'GICsource',
+                    'AutoTrans',
+                    'InvControl',
+                    'ExpControl',
+                    'GICLine',
+                    'GICTransformer',
+                    'VSConverter',
+                    'Monitor',
+                    'EnergyMeter',
+                    'Sensor',
+                    'FMonitor',
+                    'Generic5',
+                    'DynamicExp']
         actual = dss.dssinterface.classes
         assert actual == expected
 

@@ -7,6 +7,7 @@ import cmath
 from typing import Tuple
 
 from py_dss_interface.models.Base import Base
+from py_dss_interface.utils.Error import Error
 
 
 class CMathLibV(Base):
@@ -37,4 +38,5 @@ class CMathLibV(Base):
     def _pdegtocomplex(double_real: float, double_imag: float) -> complex:
         """Convert magnitude, angle in degrees (Argument1 and Argument2) to a complex number. Returns variant array of
          two doubles."""
-        return cmath.rect(double_real, double_imag)
+        # return cmath.rect(double_real, double_imag)
+        Error.method_not_working("pdegtocomplex")

@@ -46,6 +46,7 @@ class TestLoad13Bus:
 
     def test_loads_write_idx(self, dss):
         expected = 2
+        dss.loads.idx = expected
         actual = dss.loads.idx
         assert actual == expected
 

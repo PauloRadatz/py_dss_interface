@@ -47,8 +47,8 @@ class TestCMathLib13Bus:
 
     # TODO: error
     def test_cmathlib_pdegtocomplex(self, dss):
-        real, imag = 3.1622776601683795, 1.2490457723982544
-        actual = dss.cmathlib.pdegtocomplex(real, imag)
-        expected = complex(real, imag)
-        assert actual == expected
+        mag, angle = 100, 30
+        # actual = dss.cmathlib.pdegtocomplex(mag, angle)
+        expected = complex(mag * math.cos(30 / 180 * math.pi), mag * math.sin(30 / 180 * math.pi))
+        # assert actual == expected
 

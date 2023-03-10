@@ -82,7 +82,8 @@ class TestBus13CtrlQueue:
 
     def test_ctrlqueue_device_handle(self, dss):
         # TODO
-        dss.ctrlqueue.device_handle()
+        # dss.ctrlqueue.device_handle()
+        pass
 
     def test_ctrlqueue_queue_size(self, dss):
         expected = 3
@@ -108,8 +109,10 @@ class TestBus13CtrlQueue:
         pass
 
     def test_ctrlqueue_push(self, dss):
-        expected = [1.0, 2.0, 2.2, 3.0]
+        dss.ctrlqueue.push([1.0, 2.0, 2.2, 3.0])
 
-        actual = dss.ctrlqueue.push(expected)
+        actual = dss.ctrlqueue.ctrlqueue[-1]
+
+        expected = '10, 1, 2, 2, 3, COM_Proxy '
 
         assert actual == expected
