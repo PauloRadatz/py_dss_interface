@@ -23,5 +23,5 @@ class ErrorDesc(Base):
         """
         This interface returns a string with description of the latest error code delivered by OpenDSS.
         """
-        result = ctypes.c_char_p(self.dss_obj.ErrorDesc())
+        result = ctypes.c_char_p(self._dss_obj.ErrorDesc())
         return result.value.decode('ascii')

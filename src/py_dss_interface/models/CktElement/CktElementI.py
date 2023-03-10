@@ -20,59 +20,59 @@ class CktElementI(Base):
 
     def _num_terminals(self) -> int:
         """Deliver the number of terminals of the active DSS object."""
-        return int(self.dss_obj.CktElementI(ctypes.c_int32(0), ctypes.c_int32(0)))
+        return int(self._dss_obj.CktElementI(ctypes.c_int32(0), ctypes.c_int32(0)))
 
     def _num_conductors(self) -> int:
         """Deliver the number of conductors of the active DSS object."""
-        return int(self.dss_obj.CktElementI(ctypes.c_int32(1), ctypes.c_int32(0)))
+        return int(self._dss_obj.CktElementI(ctypes.c_int32(1), ctypes.c_int32(0)))
 
     def _num_phases(self) -> int:
         """Delivers the number of phases of the active DSS object."""
-        return int(self.dss_obj.CktElementI(ctypes.c_int32(2), ctypes.c_int32(0)))
+        return int(self._dss_obj.CktElementI(ctypes.c_int32(2), ctypes.c_int32(0)))
 
     def _open_terminal(self, argument: int) -> int:
         """Open the specified terminal (Argument) of the active DSS object."""
-        return int(self.dss_obj.CktElementI(ctypes.c_int32(3), ctypes.c_int32(argument)))
+        return int(self._dss_obj.CktElementI(ctypes.c_int32(3), ctypes.c_int32(argument)))
 
     def _close_terminal(self, argument: int) -> int:
         """Close the specified terminal (Argument) of the active DSS object."""
-        return self.dss_obj.CktElementI(ctypes.c_int32(4), ctypes.c_int32(argument))
+        return self._dss_obj.CktElementI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
     def _is_terminal_open(self) -> int:
         """Return a 1 if any terminal of the active DSS object is open, otherwise, it will return a 0."""
-        return self.dss_obj.CktElementI(ctypes.c_int32(5), ctypes.c_int32(0))
+        return self._dss_obj.CktElementI(ctypes.c_int32(5), ctypes.c_int32(0))
 
     def _num_properties(self) -> int:
         """Return the number of properties of the active DSS object."""
-        return self.dss_obj.CktElementI(ctypes.c_int32(6), ctypes.c_int32(0))
+        return self._dss_obj.CktElementI(ctypes.c_int32(6), ctypes.c_int32(0))
 
     def _has_switch_control(self) -> int:
         """Returns 1 if the active DSS object has a Switch Control linked; otherwise, it will return 0."""
-        return self.dss_obj.CktElementI(ctypes.c_int32(7), ctypes.c_int32(0))
+        return self._dss_obj.CktElementI(ctypes.c_int32(7), ctypes.c_int32(0))
 
     def _has_volt_control(self) -> int:
         """Returns 1 if the active DSS object has a Volt Control linked; otherwise, it will return 0."""
-        return self.dss_obj.CktElementI(ctypes.c_int32(8), ctypes.c_int32(0))
+        return self._dss_obj.CktElementI(ctypes.c_int32(8), ctypes.c_int32(0))
 
     def _num_controls(self) -> int:
         """Returns number of controls linked to the active DSS object."""
-        return self.dss_obj.CktElementI(ctypes.c_int32(9), ctypes.c_int32(0))
+        return self._dss_obj.CktElementI(ctypes.c_int32(9), ctypes.c_int32(0))
 
     def _ocp_dev_index(self) -> int:
         """Returns the Index into Controller list of OCP Device controlling the active DSS object."""
-        return self.dss_obj.CktElementI(ctypes.c_int32(10), ctypes.c_int32(0))
+        return self._dss_obj.CktElementI(ctypes.c_int32(10), ctypes.c_int32(0))
 
     def _ocp_dev_type(self) -> int:
         """Returns one of the following values: 0=none; 1=Fuse; 2=Recloser; 3=Relay according to the type of active
         control."""
-        return self.dss_obj.CktElementI(ctypes.c_int32(11), ctypes.c_int32(0))
+        return self._dss_obj.CktElementI(ctypes.c_int32(11), ctypes.c_int32(0))
 
     def _is_enabled(self) -> int:
         """Returns one of the following values: 0 if the active element is disabled or 1 if the active element is
         enabled."""
-        return self.dss_obj.CktElementI(ctypes.c_int32(12), ctypes.c_int32(0))
+        return self._dss_obj.CktElementI(ctypes.c_int32(12), ctypes.c_int32(0))
 
     def _enabled(self, argument: int) -> int:
         """Returns one of the following values: 0 if the active element is disabled or 1 if the active element is
         enabled."""
-        return self.dss_obj.CktElementI(ctypes.c_int32(13), ctypes.c_int32(argument))
+        return self._dss_obj.CktElementI(ctypes.c_int32(13), ctypes.c_int32(argument))

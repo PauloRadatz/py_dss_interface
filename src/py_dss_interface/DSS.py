@@ -20,6 +20,7 @@ class DSSDLL:
 
     def __init__(self, *args):
         Error.use_package_v1()
+        raise
 
 # TODO I am seeing dss with a lot of properties - check that
 class DSS:

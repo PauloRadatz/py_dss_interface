@@ -21,47 +21,47 @@ class PVSystemsF(Base):
 
     def _irradiance_read(self) -> float:
         """Gets the present value of the Irradiance property in W/sq-m."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(0), ctypes.c_double(0)))
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
     def _irradiance_write(self, argument) -> float:
         """Sets the present value of the Irradiance property in W/sq-m."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(1), ctypes.c_double(argument)))
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
     def _kw(self) -> float:
         """Gets the kW output."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(2), ctypes.c_double(0)))
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(2), ctypes.c_double(0)))
 
     def _kvar_read(self) -> float:
         """Gets the kvar value."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(3), ctypes.c_double(0)))
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(3), ctypes.c_double(0)))
 
     def _kvar_write(self, argument) -> float:
         """Sets the kvar value."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(4), ctypes.c_double(argument)))
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(4), ctypes.c_double(argument)))
 
     def _pf_read(self) -> float:
         """Gets the power factor value."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(5), ctypes.c_double(0)))
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(5), ctypes.c_double(0)))
 
     def _pf_write(self, argument) -> float:
         """Sets the power factor value."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(6), ctypes.c_double(argument)))
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(6), ctypes.c_double(argument)))
 
     def _kva_rated_read(self) -> float:
         """Gets the rated kVA of the PVSystem."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(7), ctypes.c_double(0)))
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(7), ctypes.c_double(0)))
 
     def _kva_rated_write(self, argument) -> float:
         """Sets the rated kVA of the PVSystem."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(8), ctypes.c_double(argument)))
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(8), ctypes.c_double(argument)))
 
     def _pmpp_read(self) -> float:
         """Gets the Pmpp."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(9), ctypes.c_double(0)))
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(9), ctypes.c_double(0)))
 
     def _pmpp_write(self, argument) -> float:
         """Sets the Pmpp."""
-        return float(self.dss_obj.PVsystemsF(ctypes.c_int32(10), ctypes.c_double(argument)))
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(10), ctypes.c_double(argument)))
 
     # TODO there are not those guys in the DLL
     # def _kv(self) -> float:

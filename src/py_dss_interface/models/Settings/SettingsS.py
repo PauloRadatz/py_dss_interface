@@ -20,24 +20,24 @@ class SettingsS(Base):
 
     def _auto_bus_list_read(self):
         """Gets the list of Buses or (File=xxxxx) syntax for the AutoAdd solution mode."""
-        result = ctypes.c_char_p(self.dss_obj.SettingsS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.SettingsS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     def _auto_bus_list_write(self, argument):
         """Sets the list of Buses or (File=xxxxx) syntax for the AutoAdd solution mode."""
-        argument = Base.check_string_param(argument)
-        result = ctypes.c_char_p(self.dss_obj.SettingsS(ctypes.c_int32(1), argument.encode('ascii')))
+        argument = Base._check_string_param(argument)
+        result = ctypes.c_char_p(self._dss_obj.SettingsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     def _price_curve_read(self):
         """Gets the name of LoadShape object that serves as the source of price signal data for yearly simulations,
         etc."""
-        result = ctypes.c_char_p(self.dss_obj.SettingsS(ctypes.c_int32(2), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.SettingsS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     def _price_curve_write(self, argument):
         """Sets the name of LoadShape object that serves as the source of price signal data for yearly simulations,
         etc."""
-        argument = Base.check_string_param(argument)
-        result = ctypes.c_char_p(self.dss_obj.SettingsS(ctypes.c_int32(3), argument.encode('ascii')))
+        argument = Base._check_string_param(argument)
+        result = ctypes.c_char_p(self._dss_obj.SettingsS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')

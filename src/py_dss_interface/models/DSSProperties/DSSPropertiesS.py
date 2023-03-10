@@ -26,7 +26,7 @@ class DSSPropertiesS(Base):
     def _name_active_property(self, argument: str) -> str:
         """Delivers the name of the active property. The index of the property must be specified in the argument.
         The index minimum value is 1. This value must be entered as string."""
-        result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(0), argument.encode('ascii')))
+        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(0), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     def _description_active_property(self, argument: str) -> str:
@@ -37,7 +37,7 @@ class DSSPropertiesS(Base):
         to_int = int(argument)
         if to_int < 1:
             return "ERROR: The value must be greater than 1!"
-        result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(1), argument.encode('ascii')))
+        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     def _value_read(self, argument: str) -> str:
@@ -48,7 +48,7 @@ class DSSPropertiesS(Base):
         to_int = int(argument)
         if to_int < 1:
             return "ERROR: The value must be greater than 1!"
-        result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(2), argument.encode('ascii')))
+        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     # TODO include in test
@@ -60,7 +60,7 @@ class DSSPropertiesS(Base):
         to_int = int(argument)
         if to_int < 1:
             return "ERROR: The value must be greater than 1!"
-        result = ctypes.c_char_p(self.dss_obj.DSSProperties(ctypes.c_int32(3), argument.encode('ascii')))
+        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(3), argument.encode('ascii')))
         result = result.value.decode('ascii')
         if result == '':
             print("Value written successfully!")

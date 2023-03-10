@@ -23,27 +23,27 @@ class TransformersS(Base):
 
     def _xfmr_code_read(self):
         """Gets the name of an XfrmCode that supplies electrical parameters for this transformer."""
-        result = ctypes.c_char_p(self.dss_obj.TransformersS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.TransformersS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     def _xfmr_code_write(self, argument):
         """Sets the name of an XfrmCode that supplies electrical parameters for this transformer."""
-        argument = Base.check_string_param(argument)
-        result = ctypes.c_char_p(self.dss_obj.TransformersS(ctypes.c_int32(1), argument.encode('ascii')))
+        argument = Base._check_string_param(argument)
+        result = ctypes.c_char_p(self._dss_obj.TransformersS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     def _name_read(self):
         """Gets the active transformer name."""
-        result = ctypes.c_char_p(self.dss_obj.TransformersS(ctypes.c_int32(2), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.TransformersS(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     def _name_write(self, argument):
         """Sets the active transformer by name."""
-        argument = Base.check_string_param(argument)
-        result = ctypes.c_char_p(self.dss_obj.TransformersS(ctypes.c_int32(3), argument.encode('ascii')))
+        argument = Base._check_string_param(argument)
+        result = ctypes.c_char_p(self._dss_obj.TransformersS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     def _str_wdg_voltages(self):
         """Gets the voltages at the active winding of the active transformer in string format."""
-        result = ctypes.c_char_p(self.dss_obj.TransformersS(ctypes.c_int32(4), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.TransformersS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')

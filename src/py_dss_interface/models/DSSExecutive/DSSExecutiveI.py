@@ -20,8 +20,8 @@ class DSSExecutiveI(Base):
 
     def _num_commands(self) -> int:
         """Gets the number of DSS Executive Commands."""
-        return int(self.dss_obj.DSSExecutiveI(ctypes.c_int32(0), ctypes.c_int32(0)))
+        return int(self._dss_obj.DSSExecutiveI(ctypes.c_int32(0), ctypes.c_int32(0)))
 
     def _num_options(self) -> int:
         """Gets the number of DSS Executive Options."""
-        return int(self.dss_obj.DSSExecutiveI(ctypes.c_int32(1), ctypes.c_int32(0)))
+        return int(self._dss_obj.DSSExecutiveI(ctypes.c_int32(1), ctypes.c_int32(0)))

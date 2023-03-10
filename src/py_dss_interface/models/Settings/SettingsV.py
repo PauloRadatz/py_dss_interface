@@ -25,7 +25,7 @@ class SettingsV(Base):
 
     def _ue_regs_read(self) -> List[int]:
         """Gets the array of Integers defining Energy Meter registers to use for computing UE."""
-        return Bridge.variant_pointer_read(self.dss_obj.SettingsV, 0)
+        return Bridge.variant_pointer_read(self._dss_obj.SettingsV, 0)
 
     def _ue_regs_write(self, argument: List[int]):
         """Sets the array of Integers defining Energy Meter registers to use for computing UE."""
@@ -37,7 +37,7 @@ class SettingsV(Base):
 
     def _loss_regs_read(self) -> List[int]:
         """Gets the array of Integers defining Energy Meter registers to use for computing Losses."""
-        return Bridge.variant_pointer_read(self.dss_obj.SettingsV, 2)
+        return Bridge.variant_pointer_read(self._dss_obj.SettingsV, 2)
 
     def _loss_regs_write(self, argument: List[int]):
         """Sets the array of Integers defining Energy Meter registers to use for computing Losses."""
@@ -48,7 +48,7 @@ class SettingsV(Base):
 
     def _voltage_bases_read(self) -> List[float]:
         """Gets the array of doubles defining the legal voltage bases in kV L-L."""
-        return Bridge.variant_pointer_read(self.dss_obj.SettingsV, 4)
+        return Bridge.variant_pointer_read(self._dss_obj.SettingsV, 4)
 
     def _voltage_bases_write(self, argument: List[float]):
         """Sets the array of doubles defining the legal voltage bases in kV L-L."""

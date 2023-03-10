@@ -24,4 +24,4 @@ class DSSElementV(Base):
 
     def _property_names(self) -> List[str]:
         """Gets a variant array of strings containing the names of all properties for the active DSS object."""
-        return Bridge.variant_pointer_read(self.dss_obj.DSSElementV, 0)
+        return Bridge.variant_pointer_read(self._dss_obj.DSSElementV, 0)

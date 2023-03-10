@@ -20,20 +20,20 @@ class PVSystemsI(Base):
 
     def _count(self) -> int:
         """Returns the number of PVSystem objects currently defined in the active circuit."""
-        return int(self.dss_obj.PVsystemsI(ctypes.c_int32(0), ctypes.c_int32(0)))
+        return int(self._dss_obj.PVsystemsI(ctypes.c_int32(0), ctypes.c_int32(0)))
 
     def _first(self) -> int:
         """Sets the first PVSystem to be active; returns 0 if none."""
-        return int(self.dss_obj.PVsystemsI(ctypes.c_int32(1), ctypes.c_int32(0)))
+        return int(self._dss_obj.PVsystemsI(ctypes.c_int32(1), ctypes.c_int32(0)))
 
     def _next(self) -> int:
         """Sets the next PVSystem to be active; returns 0 if none."""
-        return int(self.dss_obj.PVsystemsI(ctypes.c_int32(2), ctypes.c_int32(0)))
+        return int(self._dss_obj.PVsystemsI(ctypes.c_int32(2), ctypes.c_int32(0)))
 
     def _idx_read(self) -> int:
         """Gets the active PVSystem by index; 1..Count."""
-        return int(self.dss_obj.PVsystemsI(ctypes.c_int32(3), ctypes.c_int32(0)))
+        return int(self._dss_obj.PVsystemsI(ctypes.c_int32(3), ctypes.c_int32(0)))
 
     def _idx_write(self, argument: int) -> int:
         """Sets the active PVSystem by index; 1..Count.."""
-        return int(self.dss_obj.PVsystemsI(ctypes.c_int32(4), ctypes.c_int32(argument)))
+        return int(self._dss_obj.PVsystemsI(ctypes.c_int32(4), ctypes.c_int32(argument)))

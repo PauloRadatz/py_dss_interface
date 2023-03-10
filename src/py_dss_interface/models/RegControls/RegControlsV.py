@@ -22,4 +22,4 @@ class RegControlsV(Base):
 
     def _names(self) -> List[str]:
         """Gets a variant array of strings containing all RegControl names."""
-        return Bridge.variant_pointer_read(self.dss_obj.RegControlsV, 0)
+        return Bridge.variant_pointer_read(self._dss_obj.RegControlsV, 0)

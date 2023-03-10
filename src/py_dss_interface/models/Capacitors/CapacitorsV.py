@@ -24,16 +24,16 @@ class CapacitorsV(Base):
 
     def _names(self) -> List[str]:
         """Gets a variant array of strings with all Capacitor names in the circuit."""
-        return Bridge.variant_pointer_read(self.dss_obj.CapacitorsV, 0)
+        return Bridge.variant_pointer_read(self._dss_obj.CapacitorsV, 0)
 
     def _states_read(self) -> List[int]:
         """Gets a variant array of integers [0..numsteps-1] indicating the state of each step.
         If value is -1 and error has occurred."""
-        return Bridge.variant_pointer_read(self.dss_obj.CapacitorsV, 1)
+        return Bridge.variant_pointer_read(self._dss_obj.CapacitorsV, 1)
 
     def _states_write(self, argument: List[int]) -> List[int]:
         """Sets a variant array of integers [0..numsteps-1] indicating the state of each step. If value is -1 and
         error has occurred.
         """
-        return Bridge.variant_pointer_write(self.dss_obj.CapacitorsV, 2, argument)
+        return Bridge.variant_pointer_write(self._dss_obj.CapacitorsV, 2, argument)
 

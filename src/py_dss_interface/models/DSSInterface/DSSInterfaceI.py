@@ -20,38 +20,38 @@ class DSSInterfaceI(Base):
 
     def _num_circuits(self) -> int:
         """Gets the number of circuits currently defined."""
-        return int(self.dss_obj.DSSI(ctypes.c_int32(0), ctypes.c_int32(0)))
+        return int(self._dss_obj.DSSI(ctypes.c_int32(0), ctypes.c_int32(0)))
 
     def _clear_all(self):
         """Clears all circuit definitions."""
-        return self.dss_obj.DSSI(ctypes.c_int32(1), ctypes.c_int32(0))
+        return self._dss_obj.DSSI(ctypes.c_int32(1), ctypes.c_int32(0))
 
     def _show_panel(self):
         """Shows non-MDI child form of the Main DSS Edit form."""
-        return self.dss_obj.DSSI(ctypes.c_int32(2), ctypes.c_int32(0))
+        return self._dss_obj.DSSI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def _start(self) -> int:
         """Validates the user and starts the DSS. Returns TRUE (1) if successful."""
-        return int(self.dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0)))
+        return int(self._dss_obj.DSSI(ctypes.c_int32(3), ctypes.c_int32(0)))
 
     def _num_classes(self) -> int:
         """Gets the number of DSS intrinsic classes."""
-        return int(self.dss_obj.DSSI(ctypes.c_int32(4), ctypes.c_int32(0)))
+        return int(self._dss_obj.DSSI(ctypes.c_int32(4), ctypes.c_int32(0)))
 
     def _num_user_classes(self) -> int:
         """Gets the number of user-defined classes."""
-        return int(self.dss_obj.DSSI(ctypes.c_int32(5), ctypes.c_int32(0)))
+        return int(self._dss_obj.DSSI(ctypes.c_int32(5), ctypes.c_int32(0)))
 
     def _reset(self):
         """Resets DSS initialization for restarts, etc. from applets. Nothing implemented in the OpenDSS Original
         Source Code """
-        return self.dss_obj.DSSI(ctypes.c_int32(6), ctypes.c_int32(0))
+        return self._dss_obj.DSSI(ctypes.c_int32(6), ctypes.c_int32(0))
 
     def _allow_forms_read(self):
         """Gets if the DSS allows forms (1) or not (0), default (1)."""
-        return self.dss_obj.DSSI(ctypes.c_int32(7), ctypes.c_int32(0))
+        return self._dss_obj.DSSI(ctypes.c_int32(7), ctypes.c_int32(0))
 
     def _allow_forms_write(self, argument: int):
         """Sets if the DSS allows forms (1) or not (0), default (1). PAY ATTENTION: If arg=0 Then NoFormsAllowed :=
         TRUE (Only set to False) else NoFormsAllowed := FALSE; """
-        return self.dss_obj.DSSI(ctypes.c_int32(8), argument)
+        return self._dss_obj.DSSI(ctypes.c_int32(8), argument)

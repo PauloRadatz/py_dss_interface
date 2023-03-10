@@ -26,6 +26,6 @@ class ActiveClassV(Base):
         """Gets a variant array of strings consisting of all element names in the active Class."""
         # return Bridge.var_array_function(self.dss_obj.ActiveClassV, 0, None, '')
         try:
-            return Bridge.variant_pointer_read(self.dss_obj.ActiveClassV, 0)
+            return Bridge.variant_pointer_read(self._dss_obj.ActiveClassV, 0)
         except Exception as e:
             raise Exception(f"Error while retrieving element names: {e}")
