@@ -1,4 +1,4 @@
-__version__ = '1.0.2'
+__version__ = '2.0.0'
 
 from py_dss_interface.models.ActiveClass.ActiveClass import ActiveClass
 from py_dss_interface.models.Base import Base
