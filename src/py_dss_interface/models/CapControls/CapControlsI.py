@@ -18,11 +18,11 @@ class CapControlsI(Base):
 
     def _first(self) -> int:
         """Sets the first CapControl active. Returns 0 if no more."""
-        return self.dss_obj.CapControlsI(0, 0)
+        return self._dss_obj.CapControlsI(0, 0)
 
     def _next(self) -> int:
         """Sets the next CapControl active. Returns 0 if no more."""
-        return self.dss_obj.CapControlsI(1, 0)
+        return self._dss_obj.CapControlsI(1, 0)
 
     def _mode(self) -> int:
         """Gets the type of automatic controller (see manual for details).
@@ -33,7 +33,7 @@ class CapControlsI(Base):
         PFCONTROL: Result := 4;
         USERCONTROL: Result := 4;
         """
-        return self.dss_obj.CapControlsI(2, 0)
+        return self._dss_obj.CapControlsI(2, 0)
 
     def _mode_write(self, argument: int) -> int:
         """Sets the type of automatic controller (see manual for details).
@@ -43,11 +43,11 @@ class CapControlsI(Base):
         3: elem.CapControlType := TIMECONTROL;
         4: elem.CapControlType := PFCONTROL;
         """
-        return self.dss_obj.CapControlsI(3, argument)
+        return self._dss_obj.CapControlsI(3, argument)
 
     def _monitored_term(self) -> int:
         """Gets the terminal number on the element that PT and CT are connected to."""
-        return self.dss_obj.CapControlsI(4, 0)
+        return self._dss_obj.CapControlsI(4, 0)
 
     def _monitored_term_write(self, dss, argument: int) -> int:
         """Sets the terminal number on the element that PT and CT are connected to. There is not a explicit return
@@ -79,4 +79,4 @@ class CapControlsI(Base):
 
     def _count(self) -> int:
         """Gets the number of CapControls in Active Circuit."""
-        return self.dss_obj.CapControlsI(8, 0)
+        return self._dss_obj.CapControlsI(8, 0)

@@ -18,4 +18,4 @@ class BusS(Base):
 
     def _name(self) -> str:
         """Returns the name of the active bus."""
-        return (self.dss_obj.BUSS(0)).decode('ascii')
+        return (self._dss_obj.BUSS(0)).decode('ascii')

@@ -23,80 +23,80 @@ class LineCodesF(Base):
 
     def _r1_read(self) -> float:
         """Gets the Positive-sequence resistance in ohms per unit length for the active LineCode."""
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(0), ctypes.c_double(0)))
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(0), ctypes.c_double(0)))
 
     def _r1_write(self, arg: float) -> float:
         """Sets the Positive-sequence resistance in ohms per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
-        arg = Base.check_float_param(arg)
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(1), ctypes.c_double(arg)))
+        arg = Base._check_float_param(arg)
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(1), ctypes.c_double(arg)))
 
     def _x1_read(self) -> float:
         """Gets the Positive-sequence reactance in ohms per unit length for the active LineCode."""
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(2), ctypes.c_double(0)))
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(2), ctypes.c_double(0)))
 
     def _x1_write(self, arg: float) -> float:
         """Sets the Positive-sequence reactance in ohms per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
-        arg = Base.check_float_param(arg)
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(3), ctypes.c_double(arg)))
+        arg = Base._check_float_param(arg)
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(3), ctypes.c_double(arg)))
 
     def _r0_read(self) -> float:
         """Gets the Zero-sequence resistance in ohms per unit length for the active LineCode."""
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(4), ctypes.c_double(0)))
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(4), ctypes.c_double(0)))
 
     def _r0_write(self, arg: float) -> float:
         """Sets the Zero-sequence resistance in ohms per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
-        arg = Base.check_float_param(arg)
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(5), ctypes.c_double(arg)))
+        arg = Base._check_float_param(arg)
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(5), ctypes.c_double(arg)))
 
     def _x0_read(self) -> float:
         """Gets the Zero-sequence reactance in ohms per unit length for the active LineCode."""
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(6), ctypes.c_double(0)))
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(6), ctypes.c_double(0)))
 
     def _x0_write(self, arg: float) -> float:
         """Sets the Zero-sequence reactance in ohms per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
-        arg = Base.check_float_param(arg)
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(7), ctypes.c_double(arg)))
+        arg = Base._check_float_param(arg)
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(7), ctypes.c_double(arg)))
 
     def _c1_read(self) -> float:
         """Gets the Positive-sequence capacitance in nF per unit length for the active LineCode."""
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(8), ctypes.c_double(0)))
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(8), ctypes.c_double(0)))
 
     def _c1_write(self, arg: float) -> float:
         """Sets the Positive-sequence capacitance in nF per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
-        arg = Base.check_float_param(arg)
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(9), ctypes.c_double(arg)))
+        arg = Base._check_float_param(arg)
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(9), ctypes.c_double(arg)))
 
     def _c0_read(self) -> float:
         """Gets the Zero-sequence capacitance in ohms per unit length for the active LineCode."""
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(10), ctypes.c_double(0)))
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(10), ctypes.c_double(0)))
 
     def _c0_write(self, arg: float) -> float:
         """Sets the Zero-sequence capacitance in ohms per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
-        arg = Base.check_float_param(arg)
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(11), ctypes.c_double(arg)))
+        arg = Base._check_float_param(arg)
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(11), ctypes.c_double(arg)))
 
     def _norm_amps_read(self) -> float:
         """Gets the normal ampere rating for the active LineCode."""
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(12), ctypes.c_double(0)))
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(12), ctypes.c_double(0)))
 
     def _norm_amps_write(self, arg: float) -> float:
         """Sets the normal ampere rating for the active LineCode. This value must be specified in the argument
         as a double."""
-        arg = Base.check_float_param(arg)
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(13), ctypes.c_double(arg)))
+        arg = Base._check_float_param(arg)
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(13), ctypes.c_double(arg)))
 
     def _emerg_amps_read(self) -> float:
         """Gets the Emergency ampere rating for the active LineCode."""
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(14), ctypes.c_double(0)))
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(14), ctypes.c_double(0)))
 
     def _emerg_amps_write(self, arg: float) -> float:
         """Sets the Emergency ampere rating for the active LineCode. This value must be specified in the argument
         as a double."""
-        arg = Base.check_float_param(arg)
-        return float(self.dss_obj.LineCodesF(ctypes.c_int32(15), ctypes.c_double(arg)))
+        arg = Base._check_float_param(arg)
+        return float(self._dss_obj.LineCodesF(ctypes.c_int32(15), ctypes.c_double(arg)))

@@ -22,4 +22,4 @@ class PVSystemsV(Base):
 
     def _names(self) -> List[str]:
         """Gets the variant array of string containing names of all PVSystems in the circuit."""
-        return Bridge.variant_pointer_read(self.dss_obj.PVsystemsV, 0)
+        return Bridge.variant_pointer_read(self._dss_obj.PVsystemsV, 0)

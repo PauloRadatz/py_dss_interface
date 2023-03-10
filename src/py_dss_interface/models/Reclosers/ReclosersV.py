@@ -20,8 +20,8 @@ class ReclosersV(Base):
 
     def _names(self) -> List[str]:
         """Gets a variant array of strings with names of all reclosers in active circuit."""
-        return Bridge.variant_pointer_read(self.dss_obj.ReclosersV, 0)
+        return Bridge.variant_pointer_read(self._dss_obj.ReclosersV, 0)
 
     def _reclose_intervals(self) -> List[float]:
         """Gets a variant array of doubles: reclose intervals (s) between shots."""
-        return Bridge.variant_pointer_read(self.dss_obj.ReclosersV, 1)
+        return Bridge.variant_pointer_read(self._dss_obj.ReclosersV, 1)

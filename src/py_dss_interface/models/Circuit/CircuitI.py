@@ -20,7 +20,7 @@ class CircuitI(Base):
 
     # TODO: Must be reviewed
     def integer(self, first: int, second: int) -> int:
-        return int(self.dss_obj.CircuitI(ctypes.c_int32(first), ctypes.c_int32(second)))
+        return int(self._dss_obj.CircuitI(ctypes.c_int32(first), ctypes.c_int32(second)))
 
     def _num_ckt_elements(self) -> int:
         """Will deliver the number of CktElements included in the active circuit."""
@@ -65,7 +65,7 @@ class CircuitI(Base):
     def _set_active_bus_i(self, i: int) -> int:
         """Sets active the bus specified by index, which is compatible with the index delivered by AllBusNames,
         returns 0 it everything ok."""
-        i = Base.check_int_param(i, 1)
+        i = Base._check_int_param(i, 1)
         return self.integer(9, i)
 
     def _first_element(self) -> int:

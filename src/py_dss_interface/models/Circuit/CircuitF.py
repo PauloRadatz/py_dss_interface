@@ -20,7 +20,7 @@ class CircuitF(Base):
 
     # TODO include in test. What is it?
     def _circuit_float(self, first, second, third) -> float:
-        return float(self.dss_obj.CircuitF(ctypes.c_int32(first), ctypes.c_double(second), ctypes.c_double(third)))
+        return float(self._dss_obj.CircuitF(ctypes.c_int32(first), ctypes.c_double(second), ctypes.c_double(third)))
 
     def _capacity(self, capacity_start=0, capacity_increment=0.1) -> float:
         """Returns the total capacity of the active circuit. Or this parameter it is necessary to specify the start

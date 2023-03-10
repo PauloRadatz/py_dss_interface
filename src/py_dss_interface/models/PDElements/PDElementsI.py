@@ -20,38 +20,38 @@ class PDElementsI(Base):
 
     def _count(self) -> int:
         """Gets number of PDElements in active circuit."""
-        return self.dss_obj.PDElementsI(ctypes.c_int32(0), ctypes.c_int32(0))
+        return self._dss_obj.PDElementsI(ctypes.c_int32(0), ctypes.c_int32(0))
 
     def _first(self) -> int:
         """Sets the first enabled PD element to be the active element. Returns 0 if none found."""
-        return self.dss_obj.PDElementsI(ctypes.c_int32(1), ctypes.c_int32(0))
+        return self._dss_obj.PDElementsI(ctypes.c_int32(1), ctypes.c_int32(0))
 
     def _next(self) -> int:
         """Sets the next enabled PD element to be the active element. Returns 0 if none found."""
-        return self.dss_obj.PDElementsI(ctypes.c_int32(2), ctypes.c_int32(0))
+        return self._dss_obj.PDElementsI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def _is_shunt(self) -> int:
         """Sets returns 1 if the PD element should be treated as a shunt element rather than a series element.
         Applies to capacitor and reactor elements in particular. """
-        return self.dss_obj.PDElementsI(ctypes.c_int32(3), ctypes.c_int32(0))
+        return self._dss_obj.PDElementsI(ctypes.c_int32(3), ctypes.c_int32(0))
 
     def _num_customers(self) -> int:
         """Gets the number of customers in this branch."""
-        return self.dss_obj.PDElementsI(ctypes.c_int32(4), ctypes.c_int32(0))
+        return self._dss_obj.PDElementsI(ctypes.c_int32(4), ctypes.c_int32(0))
 
     def _total_customers(self) -> int:
         """Gets the total number of customers from this branch to the end of the zone."""
-        return self.dss_obj.PDElementsI(ctypes.c_int32(5), ctypes.c_int32(0))
+        return self._dss_obj.PDElementsI(ctypes.c_int32(5), ctypes.c_int32(0))
 
     def _parent_pd_element(self) -> int:
         """Gets the parent PD element to be the active circuit element. Returns 0 if no more elements upline."""
-        return self.dss_obj.PDElementsI(ctypes.c_int32(6), ctypes.c_int32(0))
+        return self._dss_obj.PDElementsI(ctypes.c_int32(6), ctypes.c_int32(0))
 
     def _from_terminal(self) -> int:
         """Gets the number of the terminal of active PD element that is on the "from" side.
         This is set after the meter zone is determined."""
-        return self.dss_obj.PDElementsI(ctypes.c_int32(7), ctypes.c_int32(0))
+        return self._dss_obj.PDElementsI(ctypes.c_int32(7), ctypes.c_int32(0))
 
     def _section_id(self) -> int:
         """Gets the integer ID of the feeder section that this PDElement branch is part of."""
-        return self.dss_obj.PDElementsI(ctypes.c_int32(8), ctypes.c_int32(0))
+        return self._dss_obj.PDElementsI(ctypes.c_int32(8), ctypes.c_int32(0))

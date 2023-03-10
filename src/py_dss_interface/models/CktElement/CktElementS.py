@@ -20,29 +20,29 @@ class CktElementS(Base):
 
     def _name(self) -> str:
         """Delivers the full name of the active circuit element."""
-        result = ctypes.c_char_p(self.dss_obj.CktElementS(0, 0))
+        result = ctypes.c_char_p(self._dss_obj.CktElementS(0, 0))
         return result.value.decode('ascii')
 
     def _display(self) -> str:
         """Displays the name of the active circuit element (not necessarily unique)."""
-        result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(1), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.CktElementS(ctypes.c_int32(1), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     def _display_write(self, argument: str) -> str:
         """Allows to modify the name of the active circuit element (not necessarily unique)."""
-        argument = Base.check_string_param(argument)
-        result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(2), argument.encode('ascii')))
+        argument = Base._check_string_param(argument)
+        result = ctypes.c_char_p(self._dss_obj.CktElementS(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     # TODO include in test
     def _guid(self) -> str:
         """Delivers the unique name for the active circuit element."""
-        result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(3), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.CktElementS(ctypes.c_int32(3), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     def _energymeter(self) -> str:
         """Delivers the name of the EnergyMeter linked to the active circuit element."""
-        result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(4), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.CktElementS(ctypes.c_int32(4), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     def _controller(self, argument: str) -> str:
@@ -51,7 +51,7 @@ class CktElementS(Base):
         See NumControls to determine valid index range."""
         # argument = Base.check_string_param(argument)
         # argument = ctypes.c_char_p(argument.encode('utf-8'))
-        result = self.dss_obj.CktElementS(5, argument)
+        result = self._dss_obj.CktElementS(5, argument)
         return result.decode('ascii')
 
         # try:

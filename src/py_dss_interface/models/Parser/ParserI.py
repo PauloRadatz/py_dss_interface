@@ -21,21 +21,21 @@ class ParserI(Base):
     # TODO include in test
     def _int_value(self) -> int:
         """Returns next parameter as a long integer."""
-        return self.dss_obj.ParserI(ctypes.c_int32(0), ctypes.c_int32(0))
+        return self._dss_obj.ParserI(ctypes.c_int32(0), ctypes.c_int32(0))
 
     # TODO include in test
     def _reset_delimiters(self) -> int:
         """Reset delimiters to their default values."""
-        return self.dss_obj.ParserI(ctypes.c_int32(1), ctypes.c_int32(0))
+        return self._dss_obj.ParserI(ctypes.c_int32(1), ctypes.c_int32(0))
 
     # TODO include in test
     def _auto_increment_read(self) -> int:
         """In this parameter the default is false (0). If true (1) parser automatically advances to next token after
          DblValue, IntValue, or StrValue. Simpler when you don't need to check for parameter names."""
-        return self.dss_obj.ParserI(ctypes.c_int32(2), ctypes.c_int32(0))
+        return self._dss_obj.ParserI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     # TODO include in test
     def _auto_increment_write(self, argument: int) -> int:
         """In this parameter the default is false (0). If true (1) parser automatically advances to next token after
          DblValue, IntValue, or StrValue. Simpler when you don't need to check for parameter names."""
-        return self.dss_obj.ParserI(ctypes.c_int32(3), ctypes.c_int32(argument))
+        return self._dss_obj.ParserI(ctypes.c_int32(3), ctypes.c_int32(argument))

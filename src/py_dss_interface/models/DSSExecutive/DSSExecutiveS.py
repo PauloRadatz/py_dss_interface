@@ -20,30 +20,30 @@ class DSSExecutiveS(Base):
 
     def _command(self, arg: str) -> str:
         """Gets i-th command (specified in the argument as string)."""
-        arg = Base.check_string_param(arg)
+        arg = Base._check_string_param(arg)
         ctypes.c_char_p(arg.encode('utf-8'))
-        return (self.dss_obj.DSSExecutiveS(0, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
+        return (self._dss_obj.DSSExecutiveS(0, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
 
     def _option(self, arg: str) -> str:
         """Gets i-th option (specified in the argument as string)."""
-        arg = Base.check_string_param(arg)
+        arg = Base._check_string_param(arg)
         ctypes.c_char_p(arg.encode('utf-8'))
-        return (self.dss_obj.DSSExecutiveS(1, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
+        return (self._dss_obj.DSSExecutiveS(1, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
 
     def _command_help(self, arg: str) -> str:
         """Gets help string for i-th command (specified in the argument as string)."""
-        arg = Base.check_string_param(arg)
+        arg = Base._check_string_param(arg)
         ctypes.c_char_p(arg.encode('utf-8'))
-        return (self.dss_obj.DSSExecutiveS(2, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
+        return (self._dss_obj.DSSExecutiveS(2, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
 
     def _option_help(self, arg: str) -> str:
         """Gets help string for i-th option (specified in the argument as string)."""
-        arg = Base.check_string_param(arg)
+        arg = Base._check_string_param(arg)
         ctypes.c_char_p(arg.encode('utf-8'))
-        return (self.dss_obj.DSSExecutiveS(3, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
+        return (self._dss_obj.DSSExecutiveS(3, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
 
     def _option_value(self, arg: str) -> str:
         """Gets present value for i-th option (specified in the argument as string)."""
-        arg = Base.check_string_param(arg)
+        arg = Base._check_string_param(arg)
         ctypes.c_char_p(arg.encode('utf-8'))
-        return (self.dss_obj.DSSExecutiveS(4, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')
+        return (self._dss_obj.DSSExecutiveS(4, ctypes.c_char_p(arg.encode('utf-8')))).decode('ascii')

@@ -20,4 +20,4 @@ class ParserF(Base):
     # TODO include in test
     def _dbl_value(self) -> float:
         """Returns next parameter as a double."""
-        return float(self.dss_obj.ParserF(ctypes.c_int32(0), ctypes.c_double(0)))
+        return float(self._dss_obj.ParserF(ctypes.c_int32(0), ctypes.c_double(0)))

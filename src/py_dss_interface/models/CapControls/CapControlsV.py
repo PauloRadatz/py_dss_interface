@@ -20,5 +20,5 @@ class CapControlsV(Base):
     """
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self.dss_obj.CapControlsV, 0)
+        return Bridge.variant_pointer_read(self._dss_obj.CapControlsV, 0)
 
