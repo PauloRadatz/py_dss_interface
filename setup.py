@@ -25,7 +25,7 @@ def read(*names, **kwargs):
 
 setup(
     name='py-dss-interface',
-    version='1.0.2',
+    version='2.0.0',
     license='MIT',
     description='opendsspy is a Windows/Linux Python package providing access to OpenDSS direct dll version of'
                 ' OpenDSS.',
@@ -72,7 +72,7 @@ setup(
         # eg: 'keyword1', 'keyword2', 'keyword3',
     ],
     python_requires='>=3.6',
-    install_requires=["numpy", "pandas", "colorama", "comtypes"
+    install_requires=["numpy", "pandas", "colorama"
                       ],
     extras_require={
         "dev": ["pytest", "pytest-cov", "sphinx-rtd-theme", "nbsphinx", "black", "pre-commit", "tox", "twine"],
