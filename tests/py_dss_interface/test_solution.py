@@ -13,6 +13,7 @@ class TestSolution13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
+        dss.text("batchedit regcontrol..* eventlog=True")
         dss.solution.solve()
 
         return dss

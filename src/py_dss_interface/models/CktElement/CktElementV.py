@@ -8,6 +8,7 @@ from typing import List
 
 from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
+from py_dss_interface.utils.Error import Error
 
 
 class CktElementV(Base):
@@ -32,7 +33,8 @@ class CktElementV(Base):
         # for i in range(len(argument)):
         #     argument[i] = argument[i].encode('ascii')
 
-        return Bridge.variant_pointer_write(self.dss_obj.CktElementV, 1, argument)
+        Error.method_not_working("setter of dss.cktelement.bus_names")
+        # return Bridge.variant_pointer_write(self.dss_obj.CktElementV, 1, argument)
 
     def _voltages(self) -> List[float]:
         """Delivers an array of doubles with the voltages at terminals of the active circuit element."""

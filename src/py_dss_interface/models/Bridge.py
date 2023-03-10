@@ -79,17 +79,27 @@ def variant_pointer_read(f: callable, param: int, optional=None) -> List:
         f(ctypes.c_int(param), variant_pointer, optional)
     else:
         f(ctypes.c_int(param), variant_pointer)
-    return list(variant_pointer.contents.value)
+
+    r = list(variant_pointer.contents.value)
+    while None in r:
+        r.remove(None)
+    return r
 
 
-def variant_pointer_write(f: callable, param: int, arg: List) -> List:
+def variant_pointer_write(f: callable, param: int, arg: List) -> Union[List, int]:
     """
     Writes a list to a COM variant pointer.
     """
     variant_pointer = ctypes.pointer(automation.VARIANT())
-    variant_pointer.contents.arg = arg
+    variant_pointer.contents.value = arg
     f(ctypes.c_int(param), variant_pointer)
-    return list(variant_pointer.contents.value)
+
+    r = variant_pointer.contents.value
+
+    if isinstance(r, int):
+        return r
+    else:
+        return list(variant_pointer.contents.value)
 
 
 class DataType(Enum):

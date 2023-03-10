@@ -72,7 +72,7 @@ setup(
         # eg: 'keyword1', 'keyword2', 'keyword3',
     ],
     python_requires='>=3.6',
-    install_requires=["numpy", "pandas", "colorama"
+    install_requires=["numpy", "pandas", "colorama", "comtypes"
                       ],
     extras_require={
         "dev": ["pytest", "pytest-cov", "sphinx-rtd-theme", "nbsphinx", "black", "pre-commit", "tox", "twine"],

@@ -5,6 +5,7 @@
 import ctypes
 
 from py_dss_interface.models.Base import Base
+from py_dss_interface.utils.Error import Error
 
 
 class MetersI(Base):
@@ -114,7 +115,8 @@ class MetersI(Base):
 
     def _set_active_section_write(self, argument) -> int:
         """Sets the designated section (argument) if the index is valid."""
-        return self.dss_obj.MetersI(ctypes.c_int32(22), ctypes.c_int32(argument))
+        # return self.dss_obj.MetersI(ctypes.c_int32(22), ctypes.c_int32(argument))
+        Error.method_not_working("dss.meters.set_active_section")
 
     def _ocp_device_type(self) -> int:
         """Returns the type of OCP device: {1=fuse | 2+ recloser | 3= relay}."""

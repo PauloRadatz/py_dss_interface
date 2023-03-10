@@ -55,7 +55,7 @@ class LinesV(Base):
     # TODO include in test
     def _cmatrix_write(self, argument: List[float]) -> List[float]:
         """Sets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
-        return Bridge.variant_pointer_read(self.dss_obj.LinesV, 6, argument)
+        return Bridge.variant_pointer_write(self.dss_obj.LinesV, 6, argument)
 
     def _yprim_read(self) -> List[float]:
         """Gets the YPrimitive of the active Line."""
