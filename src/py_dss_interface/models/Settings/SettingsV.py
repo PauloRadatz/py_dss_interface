@@ -7,6 +7,7 @@ from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 from py_dss_interface.models.Text.Text import Text
 from typing import List
+from py_dss_interface.utils.Error import Error
 
 
 class SettingsV(Base):
@@ -24,30 +25,35 @@ class SettingsV(Base):
 
     def _ue_regs_read(self) -> List[int]:
         """Gets the array of Integers defining Energy Meter registers to use for computing UE."""
-        return Bridge.var_array_function(self.dss_obj.SettingsV, 0, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.SettingsV, 0)
 
     def _ue_regs_write(self, argument: List[int]):
         """Sets the array of Integers defining Energy Meter registers to use for computing UE."""
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        return t.text(f'Set UEregs = {argument}')
+        Error.method_not_working("setter of dss.settings.ue_regs")
+        # return Bridge.variant_pointer_write(self.dss_obj.SettingsV, 1, argument)
+        # argument = Base.check_string_param(argument)
+        # t = Text(self.dss_obj)
+        # return t.text(f'Set UEregs = {argument}')
 
     def _loss_regs_read(self) -> List[int]:
         """Gets the array of Integers defining Energy Meter registers to use for computing Losses."""
-        return Bridge.var_array_function(self.dss_obj.SettingsV, 2, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.SettingsV, 2)
 
     def _loss_regs_write(self, argument: List[int]):
         """Sets the array of Integers defining Energy Meter registers to use for computing Losses."""
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        return t.text(f'Set Lossregs = {argument}')
+        Error.method_not_working("setter of dss.settings.loss_regs")
+        # argument = Base.check_string_param(argument)
+        # t = Text(self.dss_obj)
+        # return t.text(f'Set Lossregs = {argument}')
 
     def _voltage_bases_read(self) -> List[float]:
         """Gets the array of doubles defining the legal voltage bases in kV L-L."""
-        return Bridge.var_array_function(self.dss_obj.SettingsV, 4, None, '')
+        return Bridge.variant_pointer_read(self.dss_obj.SettingsV, 4)
 
     def _voltage_bases_write(self, argument: List[float]):
         """Sets the array of doubles defining the legal voltage bases in kV L-L."""
-        argument = Base.check_string_param(argument)
-        t = Text(self.dss_obj)
-        return t.text(f'Set Voltagebases = {argument}')
+        Error.method_not_working("setter of dss.settings.voltage_bases")
+        # return Bridge.variant_pointer_write(self.dss_obj.SettingsV, 5, argument)
+        # argument = Base.check_string_param(argument)
+        # t = Text(self.dss_obj)
+        # return t.text(f'Set Voltagebases = {argument}')

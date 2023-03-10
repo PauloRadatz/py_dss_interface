@@ -38,11 +38,12 @@ class FusesV(Base):
     def _normal(self):
         """Gets a variant array of strings[0..Nphases-1] indicating the normal state for all phases of the active fuse.
         If value is -1 an error has occurred."""
-        # return Bridge.variant_pointer_read(self.dss_obj.FusesV, 3)
-        Error.method_not_working("setter of dss.fuses.normal")
+        return Bridge.variant_pointer_read(self.dss_obj.FusesV, 3)
+        # Error.method_not_working("getter of dss.fuses.normal")
 
     # TODO include in test
     def _normal_write(self, argument: List[str]) -> List[str]:
         """Sets a variant array of strings [0..Nphases-1] indicating the state for all phases of the active fuse.
         If value is -1 an error has occurred."""
-        return Bridge.variant_pointer_write(self.dss_obj.FusesV, 4, argument)
+        # return Bridge.variant_pointer_write(self.dss_obj.FusesV, 4, argument)
+        Error.method_not_working("setter of dss.fuses.normal")

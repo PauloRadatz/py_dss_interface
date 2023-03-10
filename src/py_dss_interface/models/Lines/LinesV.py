@@ -8,6 +8,7 @@ from py_dss_interface.models import Bridge
 from py_dss_interface.models.Base import Base
 from py_dss_interface.models.Lines import Lines
 from py_dss_interface.models.Text.Text import Text
+from py_dss_interface.utils.Error import Error
 
 
 class LinesV(Base):
@@ -37,7 +38,9 @@ class LinesV(Base):
 
     def _rmatrix_write(self, argument: List[float]) -> List[float]:
         """Sets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
-        return Bridge.variant_pointer_write(self.dss_obj.LinesV, 2, argument)
+        # return Bridge.variant_pointer_write(self.dss_obj.LinesV, 2, argument)
+
+        Error.method_not_working("setter of dss.lines.rmatrix")
 
     def _xmatrix_read(self) -> List[float]:
         """Gets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
@@ -45,7 +48,9 @@ class LinesV(Base):
 
     def _xmatrix_write(self, argument: List[float]) -> List[float]:
         """Sets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
-        return Bridge.variant_pointer_write(self.dss_obj.LinesV, 4, argument)
+        # return Bridge.variant_pointer_write(self.dss_obj.LinesV, 4, argument)
+
+        Error.method_not_working("setter of dss.lines.xmatrix")
 
     # TODO include in test
     def _cmatrix_read(self) -> List[float]:
@@ -55,7 +60,9 @@ class LinesV(Base):
     # TODO include in test
     def _cmatrix_write(self, argument: List[float]) -> List[float]:
         """Sets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
-        return Bridge.variant_pointer_write(self.dss_obj.LinesV, 6, argument)
+        # return Bridge.variant_pointer_write(self.dss_obj.LinesV, 6, argument)
+
+        Error.method_not_working("setter of dss.lines.cmatrix")
 
     def _yprim_read(self) -> List[float]:
         """Gets the YPrimitive of the active Line."""
