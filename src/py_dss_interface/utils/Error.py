@@ -43,3 +43,13 @@ class Error:
             You can try to use a workaround, but if it is impossible, please get in touch with Paulo Radatz."""
         print(message_1)
         print(message_2)
+
+    @staticmethod
+    def linux_version():
+        message_1 = f"\n{Fore.RED}{Style.BRIGHT}Operation System Error"
+        message_2 = f"""
+                    py-dss-interface uses only the official version of OpenDSS.
+                    EPRI provides OpenDSS only for Windows machines. """
+
+        print(message_1)
+        print(message_2)
