@@ -1,2 +1,14 @@
 Sphinx==4.3.0
+Babel==2.8.0
+imagesize==1.2.0
+readme-renderer==26.0
+sphinx-argparse
 sphinx-rtd-theme
+sphinxcontrib-applehelp
+sphinxcontrib-devhelp
+sphinxcontrib-htmlhelp
+sphinxcontrib-images
+sphinxcontrib-jsmath
+sphinxcontrib-napoleon
+sphinxcontrib-qthelp
+sphinxcontrib-serializinghtml
