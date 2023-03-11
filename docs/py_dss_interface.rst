@@ -21,7 +21,7 @@ Capacitors
 ---------------
 
 .. automodule:: py_dss_interface.models.Capacitors.Capacitors
-   :members: Capacitors, CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV
+   :members: Capacitors
    :undoc-members:
    :show-inheritance:
 
@@ -29,7 +29,7 @@ CapControls
 ---------------
 
 .. automodule:: py_dss_interface.models.CapControls.CapControls
-   :members: CapControls, CapControlsF, CapControlsI, CapControlsS, CapControlsV
+   :members: CapControls
    :undoc-members:
    :show-inheritance:
 
