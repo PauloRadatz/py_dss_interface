@@ -5,7 +5,7 @@ ActiveClass
 ---------------
 
 .. automodule:: py_dss_interface.models.ActiveClass.ActiveClass
-   :members: ActiveClass, ActiveClassI, ActiveClassS, ActiveClassV
+   :members: ActiveClass
    :undoc-members:
    :show-inheritance:
 
@@ -13,7 +13,7 @@ Bus
 ---------------
 
 .. automodule:: py_dss_interface.models.Bus.Bus
-   :members: Bus, BusF, BusI, BusS, BusV
+   :members: Bus
    :undoc-members:
    :show-inheritance:
 

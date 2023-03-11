@@ -74,10 +74,6 @@ You can access the documentation through:
 
 https://py_dss_interface.readthedocs.io/
 
-2 - Another good resource is the OpenDSS_Direct_DLL.pdf doc created by Davis Montenegro. The package has been done based on this documentation.
-
-https://sourceforge.net/p/electricdss/code/HEAD/tree/trunk/Version8/Distrib/Doc/OpenDSS_Direct_DLL.pdf
-
 
 Thanks
 =============
