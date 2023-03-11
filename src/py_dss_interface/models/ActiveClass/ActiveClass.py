@@ -11,7 +11,6 @@ from py_dss_interface.models.ActiveClass.ActiveClassV import ActiveClassV
 from typing import List
 
 
-@dataclass
 class ActiveClass(ActiveClassS, ActiveClassI, ActiveClassV):
     """This class implements the ActiveClass interface of OpenDSS.
 
