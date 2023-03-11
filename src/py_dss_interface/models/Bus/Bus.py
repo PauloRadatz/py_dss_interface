@@ -134,6 +134,7 @@ class Bus(BusS, BusI, BusV, BusF):
 
     @property
     def kv_base(self) -> float:
+        """Returns the base voltage at bus in kV."""
         return BusF._kv_base(self)
 
     @property
