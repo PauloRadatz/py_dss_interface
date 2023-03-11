@@ -14,6 +14,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath("../../"))
 
 # sys.path.insert(0, os.path.abspath('./../src/py_dss_interface'))
 
@@ -37,7 +38,11 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
-]
+    'readthedocs_ext.readthedocs',
+    'sphinx.ext.viewcode',
+    'sphinx_toolbox.more_autodoc',
+    'sphinx.ext.autodoc'
+] # TODO https://stackoverflow.com/questions/25012658/read-the-docs-not-working-with-automodule
 
 pygments_style = 'trac'
 templates_path = ['_templates']
