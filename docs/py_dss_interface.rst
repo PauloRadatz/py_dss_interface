@@ -38,7 +38,7 @@ Circuit
 ---------------
 
 .. automodule:: py_dss_interface.models.Circuit.Circuit
-   :members: Circuit, CircuitF, CircuitI, CircuitS, CircuitV
+   :members: Circuit
    :undoc-members:
    :show-inheritance:
 
@@ -47,7 +47,7 @@ CktElement
 ---------------
 
 .. automodule:: py_dss_interface.models.CktElement.CktElement
-   :members: CktElement, CktElementF, CktElementI, CktElementS, CktElementV
+   :members: CktElement
    :undoc-members:
    :show-inheritance:
 
@@ -56,7 +56,7 @@ CMathLib
 ---------------
 
 .. automodule:: py_dss_interface.models.CMathLib.CMathLib
-   :members: CMathLib, CMathLibF, CMathLibV
+   :members: CMathLib
    :undoc-members:
    :show-inheritance:
 
@@ -64,7 +64,7 @@ CtrlQueue
 ---------------
 
 .. automodule:: py_dss_interface.models.CtrlQueue.CtrlQueue
-   :members: CtrlQueue, CtrlQueueI, CtrlQueueV
+   :members: CtrlQueue
    :undoc-members:
    :show-inheritance:
 
@@ -72,7 +72,7 @@ DSSElement
 ---------------
 
 .. automodule:: py_dss_interface.models.DSSElement.DSSElement
-   :members: DSSElement, DSSElementI, DSSElementS, DSSElementV
+   :members: DSSElement
    :undoc-members:
    :show-inheritance:
 
@@ -80,7 +80,7 @@ DSSExecutive
 ---------------
 
 .. automodule:: py_dss_interface.models.DSSExecutive.DSSExecutive
-   :members: DSSExecutive, DSSExecutiveI, DSSExecutiveS
+   :members: DSSExecutive
    :undoc-members:
    :show-inheritance:
 
@@ -88,7 +88,7 @@ DSSInterface
 ---------------
 
 .. automodule:: py_dss_interface.models.DSSInterface.DSSInterface
-   :members: DSSInterface, DSSInterfaceI, DSSInterfaceS, DSSInterfaceV
+   :members: DSSInterface
    :undoc-members:
    :show-inheritance:
 
@@ -96,7 +96,7 @@ DSSProgress
 ---------------
 
 .. automodule:: py_dss_interface.models.DSSProgress.DSSProgress
-   :members: DSSProgress, DSSProgressI, DSSProgressS
+   :members: DSSProgress
    :undoc-members:
    :show-inheritance:
 
@@ -120,7 +120,7 @@ Fuses
 ---------------
 
 .. automodule:: py_dss_interface.models.Fuses.Fuses
-   :members: Fuses, FusesF, FusesI, FusesS, FusesV
+   :members: Fuses
    :undoc-members:
    :show-inheritance:
 
@@ -128,7 +128,7 @@ Generators
 ---------------
 
 .. automodule:: py_dss_interface.models.Generators.Generators
-   :members: Generators, GeneratorsF, GeneratorsI, GeneratorsS, GeneratorsV
+   :members: Generators
    :undoc-members:
    :show-inheritance:
 
@@ -136,7 +136,7 @@ ISources
 ---------------
 
 .. automodule:: py_dss_interface.models.ISources.ISources
-   :members: ISources, ISourcesF, ISourcesI, ISourcesS, ISourcesV
+   :members: ISources
    :undoc-members:
    :show-inheritance:
 
@@ -144,7 +144,7 @@ LineCodes
 ---------------
 
 .. automodule:: py_dss_interface.models.LineCodes.LineCodes
-   :members: LineCodes, LineCodesF, LineCodesI, LineCodesS, LineCodesV
+   :members: LineCodes
    :undoc-members:
    :show-inheritance:
 
@@ -152,7 +152,7 @@ Lines
 ---------------
 
 .. automodule:: py_dss_interface.models.Lines.Lines
-   :members: Lines, LinesF, LinesI, LinesS, LinesV
+   :members: Lines
    :undoc-members:
    :show-inheritance:
 
@@ -160,7 +160,7 @@ Loads
 ---------------
 
 .. automodule:: py_dss_interface.models.Loads.Loads
-   :members: Loads, LoadsF, LoadsI, LoadsS, LoadsV
+   :members: Loads
    :undoc-members:
    :show-inheritance:
 
@@ -168,7 +168,7 @@ LoadShapes
 ---------------
 
 .. automodule:: py_dss_interface.models.LoadShapes.LoadShapes
-   :members: LoadShapes, LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV
+   :members: LoadShapes
    :undoc-members:
    :show-inheritance:
 
@@ -176,7 +176,7 @@ Meters
 ---------------
 
 .. automodule:: py_dss_interface.models.Meters.Meters
-   :members: Meters, MetersF, MetersI, MetersS, MetersV
+   :members: Meters
    :undoc-members:
    :show-inheritance:
 
@@ -184,7 +184,7 @@ Monitors
 ---------------
 
 .. automodule:: py_dss_interface.models.Monitors.Monitors
-   :members: Monitors, MonitorsF, MonitorsI, MonitorsS, MonitorsV
+   :members: Monitors
    :undoc-members:
    :show-inheritance:
 
@@ -192,7 +192,7 @@ Parallel
 ---------------
 
 .. automodule:: py_dss_interface.models.Parallel.Parallel
-   :members: Parallel, ParallelI, ParallelV
+   :members: Parallel
    :undoc-members:
    :show-inheritance:
 
@@ -200,7 +200,7 @@ Parser
 ---------------
 
 .. automodule:: py_dss_interface.models.Parser.Parser
-   :members: Parser, ParserF, ParserI, ParserS, ParserV
+   :members: Parser
    :undoc-members:
    :show-inheritance:
 
@@ -208,7 +208,7 @@ PDElements
 ---------------
 
 .. automodule:: py_dss_interface.models.PDElements.PDElements
-   :members: PDElements, PDElementsF, PDElementsI, PDElementsS
+   :members: PDElements
    :undoc-members:
    :show-inheritance:
 
@@ -216,7 +216,7 @@ PVSystems
 ---------------
 
 .. automodule:: py_dss_interface.models.PVSystems.PVSystems
-   :members: PVSystems, PVSystemsF, PVSystemsI, PVSystemsS, PVSystemsV
+   :members: PVSystems
    :undoc-members:
    :show-inheritance:
 
@@ -224,7 +224,7 @@ Reclosers
 ---------------
 
 .. automodule:: py_dss_interface.models.Reclosers.Reclosers
-   :members: Reclosers, ReclosersF, ReclosersI, ReclosersS, ReclosersV
+   :members: Reclosers
    :undoc-members:
    :show-inheritance:
 
@@ -232,7 +232,7 @@ RegControls
 ---------------
 
 .. automodule:: py_dss_interface.models.RegControls.RegControls
-   :members: RegControls, RegControlsF, RegControlsI, RegControlsS, RegControlsV
+   :members: RegControls
    :undoc-members:
    :show-inheritance:
 
@@ -240,7 +240,7 @@ Relays
 ---------------
 
 .. automodule:: py_dss_interface.models.Relays.Relays
-   :members: Relays, RelaysF, RelaysI, RelaysS, RelaysV
+   :members: Relays
    :undoc-members:
    :show-inheritance:
 
@@ -248,7 +248,7 @@ Sensors
 ---------------
 
 .. automodule:: py_dss_interface.models.Sensors.Sensors
-   :members: Sensors, SensorsF, SensorsI, SensorsS, SensorsV
+   :members: Sensors
    :undoc-members:
    :show-inheritance:
 
@@ -256,7 +256,7 @@ Settings
 ---------------
 
 .. automodule:: py_dss_interface.models.Settings.Settings
-   :members: Settings, SettingsF, SettingsI, SettingsS, SettingsV
+   :members: Settings
    :undoc-members:
    :show-inheritance:
 
@@ -264,7 +264,7 @@ Solution
 ---------------
 
 .. automodule:: py_dss_interface.models.Solution.Solution
-   :members: Solution, SolutionF, SolutionI, SolutionS, SolutionV
+   :members: Solution
    :undoc-members:
    :show-inheritance:
 
@@ -272,7 +272,7 @@ SwtControls
 ---------------
 
 .. automodule:: py_dss_interface.models.SwtControls.SwtControls
-   :members: SwtControls, SwtControlsF, SwtControlsI, SwtControlsS, SwtControlsV
+   :members: SwtControls
    :undoc-members:
    :show-inheritance:
 
@@ -288,7 +288,7 @@ Topology
 ---------------
 
 .. automodule:: py_dss_interface.models.Topology.Topology
-   :members: Topology, TopologyI, TopologyS, TopologyV
+   :members: Topology
    :undoc-members:
    :show-inheritance:
 
@@ -296,7 +296,7 @@ Transformers
 ---------------
 
 .. automodule:: py_dss_interface.models.Transformers.Transformers
-   :members: Transformers, TransformersF, TransformersI, TransformersS, TransformersV
+   :members: Transformers
    :undoc-members:
    :show-inheritance:
 
@@ -304,7 +304,7 @@ VSources
 ---------------
 
 .. automodule:: py_dss_interface.models.VSources.VSources
-   :members: VSources, VSourcesF, VSourcesI, VSourcesS, VSourcesV
+   :members: VSources
    :undoc-members:
    :show-inheritance:
 
@@ -312,6 +312,6 @@ XYCurves
 ---------------
 
 .. automodule:: py_dss_interface.models.XYCurves.XYCurves
-   :members: XYCurves, XYCurvesF, XYCurvesI, XYCurvesS, XYCurvesV
+   :members: XYCurves
    :undoc-members:
    :show-inheritance:
