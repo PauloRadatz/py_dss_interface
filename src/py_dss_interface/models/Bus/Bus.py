@@ -21,6 +21,7 @@ class Bus(BusS, BusI, BusV, BusF):
 
     @property
     def name(self) -> str:
+        """Returns the name of the active bus."""
         return BusS._name(self)
 
     @property
