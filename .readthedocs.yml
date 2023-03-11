@@ -2,7 +2,8 @@
 version: 2
 sphinx:
   configuration: docs/conf.py
-formats: all
+  builder: html
+  fail_on_warning: false
 python:
   install:
     - requirements: docs/requirements.txt
