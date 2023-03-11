@@ -112,7 +112,7 @@ ErrorInterface
 ---------------
 
 .. automodule:: py_dss_interface.models.ErrorInterface.ErrorInterface
-   :members: ErrorCode, ErrorDesc, ErrorInterface
+   :members: ErrorCode, ErrorDesc
    :undoc-members:
    :show-inheritance:
 
