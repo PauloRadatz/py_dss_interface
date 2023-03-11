@@ -40,7 +40,6 @@ extensions = [
     'sphinx.ext.viewcode',
     'readthedocs_ext.readthedocs',
     'sphinx.ext.viewcode',
-    'sphinx_toolbox.more_autodoc',
     'sphinx.ext.autodoc'
 ] # TODO https://stackoverflow.com/questions/25012658/read-the-docs-not-working-with-automodule
 
