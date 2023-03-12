@@ -18,12 +18,12 @@ class TestDSSProgress13Bus:
     # ===================================================================
     # Integer methods
     # ===================================================================
-    # def test_dssprogress_pct_progress(self, dss):
-    #     # TODO: Returning zero, is it correct?
-    #     expected = 0
-    #     actual = dss.dssprogress_pct_progress(12.5)
-    #     dss.dssprogress_close()
-    #     assert actual == expected
+    def test_dssprogress_pct_progress(self, dss):
+        # TODO: Returning zero, is it correct?
+        expected = 0
+        # actual = dss.dssprogress_pct_progress(12.5)
+        # dss.dssprogress_close()
+        # assert actual == expected
     #
     # def test_dssprogress_show(self, dss):
     #     expected = 0
