@@ -22,11 +22,9 @@ class DSSDLL:
         Error.use_package_v1()
         raise
 
-# TODO I am seeing dss with a lot of properties - check that
+
 class DSS:
 
-    # TODO need to be able to get different dll names:
-    #  https://www.youtube.com/watch?v=74hCbYfdZdU&list=PLhdRxvt3nJ8x74v7XWcp6iLJL_nCOjxjK&index=9&t=2827s
     def __init__(self, dll_folder_param=None, dll_by_user=None, print_dss_info=False):
         # TODO: dss_write_allowforms
         """
