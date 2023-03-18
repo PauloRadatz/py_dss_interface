@@ -18,30 +18,20 @@ class MonitorsV(Base):
     """
 
     def _names(self) -> List[str]:
-        """Returns an array of all Monitor names (array of strings)."""
         return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 0)
 
     def _byte_stream(self) -> List[int]:
-        """Returns a byte array containing monitor stream values. Make sure a "save" is done first (standard solution
-        modes do this automatically). """
         return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 1)
 
     def _header(self) -> List[str]:
-        """Returns the header string; Variant array of strings containing Channel Names."""
         return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 2)
 
     def _dbl_hour(self) -> List[float]:
-        """Returns returns a variant array of doubles containing time value in hours for the time-sampled monitor
-        values; empty if frequency-sampled values for harmonics solution (see dblFreq)."""
         return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 3)
 
     def _dbl_freq(self) -> List[float]:
-        """Returns a variant array of doubles containing time values for harmonics mode solutions; empty for time
-        mode solutions (use dblHour). """
         return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 4)
 
     def _channel(self, arg: int) -> List[float]:
-        """Returns a variant array of doubles for the specified channel (usage: MyArray = DSSmonitor. Channel(i)) A
-        save or SaveAll should be executed first. Done automatically by most standard solution modes. """
         return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 5, arg)
 
