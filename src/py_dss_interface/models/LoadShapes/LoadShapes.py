@@ -21,13 +21,17 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
 
     @property
     def count(self) -> int:
+        """Returns the number of LoadShape objects currently _defined in LoadShape collection."""
         return LoadShapesI._count(self)
 
     def first(self) -> int:
+        """sets the first loadshape active and return integer index of the loadshape. Returns 0 if no more."""
         return LoadShapesI._first(self)
 
     @property
     def hr_interval(self) -> float:
+        """Gets the fixed interval time value, hours.
+        Sets the fixed interval time value, hours."""
         return LoadShapesF._hr_interval(self)
 
     @hr_interval.setter
@@ -36,6 +40,8 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
 
     @property
     def min_interval(self) -> float:
+        """Gets the fixed interval time value, in minutes.
+        Sets the fixed interval time value, in minutes."""
         return LoadShapesF._min_interval(self)
 
     @min_interval.setter
@@ -44,6 +50,8 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
 
     @property
     def name(self) -> str:
+        """Gets the name of the active LoadShape object.
+        Sets the name of the active LoadShape object."""
         return LoadShapesS._name(self)
 
     @name.setter
@@ -52,16 +60,21 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
 
     @property
     def names(self) -> List[str]:
+        """Gets a variant array of strings containing names of all LoadShape objects currently defined."""
         return LoadShapesV._names(self)
 
     def next(self) -> int:
+        """Sets the next loadshape active and return integer index of the loadshape. Returns 0 if no more."""
         return LoadShapesI._next(self)
 
     def normalize(self) -> int:
+        """Normalizes the P and Q curves based on either Pbase, Qbase or simply the peak value of the curve."""
         return LoadShapesI._normalize(self)
 
     @property
     def npts(self) -> int:
+        """Gets the number of points in active LoadShape.
+        Sets the number of points in active LoadShape."""
         return LoadShapesI._npts(self)
 
     @npts.setter
@@ -70,6 +83,8 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
 
     @property
     def p_base(self) -> float:
+        """Gets the base for normalizing P curve. If left at zero, the peak value is used.
+        Sets the base for normalizing P curve. If left at zero, the peak value is used."""
         return LoadShapesF._p_base(self)
 
     @p_base.setter
@@ -78,6 +93,8 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
 
     @property
     def p_mult(self) -> List[float]:
+        """Gets a variant array of doubles for the P multiplier in the LoadShape.
+        Sets a variant array of doubles for the P multiplier in the LoadShape."""
         return LoadShapesV._p_mult(self)
 
     @p_mult.setter
@@ -86,6 +103,8 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
 
     @property
     def q_base(self) -> float:
+        """Gets the base for normalizing Q curve. If left at zero, the peak value is used.
+        Sets the base for normalizing Q curve. If left at zero, the peak value is used."""
         return LoadShapesF._q_base(self)
 
     @q_base.setter
@@ -94,6 +113,8 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
 
     @property
     def q_mult(self) -> List[float]:
+        """Gets a variant array of doubles for the Q multiplier in the LoadShape.
+        Sets a variant array of doubles for the Q multiplier in the LoadShape."""
         return LoadShapesV._q_mult(self)
 
     @q_mult.setter
@@ -102,6 +123,8 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
 
     @property
     def s_interval(self) -> float:
+        """Gets the fixed interval data time interval, seconds.
+        Sets the fixed interval data time interval, seconds."""
         return LoadShapesF._s_interval(self)
 
     @s_interval.setter
@@ -110,6 +133,8 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
 
     @property
     def time_array(self) -> List[float]:
+        """Gets a time array in hours corresponding to P and Q multipliers when the Interval = 0.
+        Sets a time array in hours corresponding to P and Q multipliers when the Interval = 0."""
         return LoadShapesV._time_array(self)
 
     @time_array.setter
@@ -118,6 +143,10 @@ class LoadShapes(LoadShapesF, LoadShapesI, LoadShapesS, LoadShapesV):
 
     @property
     def use_actual(self) -> int:
+        """Gets a TRUE/FALSE (1/0) to let Loads know to use the actual value in the curve rather than use the value as
+                 a multiplier.
+        Sets a TRUE/FALSE (1/0 - Argument) to let Loads know to use the actual value in the curve rather than use
+         the value as a multiplier."""
         return LoadShapesI._use_actual(self)
 
     @use_actual.setter
