@@ -22,21 +22,15 @@ class CapacitorsF(Base):
     """
 
     def _kv(self) -> float:
-        """Gets the bank rating. Use LL for 2 or 3 phases, or actual can rating for 1 phase."""
         return self._dss_obj.CapacitorsF(0, 0)
 
     def _kv_write(self, argument: float):
-        """Sets the bank rating. Use LL for 2 or 3 phases, or actual can rating for 1 phase. There is not a explicit
-        return type in the oficial documentation, because of this we choose not put a explicit return too."""
         argument = Base._check_float_param(argument)
         return self._dss_obj.CapacitorsF(1, ctypes.c_double(argument))
 
     def _kvar(self) -> float:
-        """Gets the total bank kvar, distributed equally among phases and steps."""
         return self._dss_obj.CapacitorsF(2, 0)
 
     def _kvar_write(self, argument: float):
-        """Sets the total bank kvar, distributed equally among phases and steps. There is not a explicit return type
-        in the oficial documentation, because of this we choose not put a explicit return too. """
         argument = Base._check_float_param(argument)
         return self._dss_obj.CapacitorsF(3, ctypes.c_double(argument))

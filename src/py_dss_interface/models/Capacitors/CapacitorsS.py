@@ -22,14 +22,9 @@ class CapacitorsS(Base):
     """
 
     def _name(self) -> str:
-        """Gets the name of the active Capacitor element."""
         return (self._dss_obj.CapacitorsS(0, 0)).decode('ascii')
 
     def _name_write(self, capacitor_name: str) -> str:
-        """Sets the name of the Capacitor element to set it active. There is not a explicit return type in the
-        oficial documentation, because of this we choose not put a explicit return too.
-        :param capacitor_name: the intended name to the capacitor
-        """
         capacitor_name = Base._check_string_param(capacitor_name)
-        ctypes.c_char_p(capacitor_name.encode('utf-8'))
+        ctypes.c_char_p(capacitor_name.encode('utf-8'))  # TODO why it is different
         return (self._dss_obj.CapacitorsS(1, ctypes.c_char_p(capacitor_name.encode('utf-8')))).decode('ascii')
