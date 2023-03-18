@@ -20,6 +20,8 @@ class ISources(ISourcesI, ISourcesF, ISourcesS, ISourcesV):
 
     @property
     def amps(self) -> float:
+        """Gets the magnitude of the Isource in Amps.
+        Sets the magnitude of the Isource in Amps."""
         return ISourcesF._amps_read(self)
 
     @amps.setter
@@ -28,6 +30,8 @@ class ISources(ISourcesI, ISourcesF, ISourcesS, ISourcesV):
 
     @property
     def angle_deg(self) -> float:
+        """Gets the phase angle of the Isource in degrees.
+        Sets the phase angle of the Isource in degrees."""
         return ISourcesF._angle_deg_read(self)
 
     @angle_deg.setter
@@ -36,6 +40,8 @@ class ISources(ISourcesI, ISourcesF, ISourcesS, ISourcesV):
 
     @property
     def frequency(self) -> float:
+        """Gets the frequency of the Isource in Hz.
+        Sets the frequency of the Isource in Hz."""
         return ISourcesF._frequency_read(self)
 
     @frequency.setter
@@ -44,16 +50,21 @@ class ISources(ISourcesI, ISourcesF, ISourcesS, ISourcesV):
 
     @property
     def count(self) -> int:
+        """Returns the number of Isource objects currently defined in the active circuit."""
         return ISourcesI._count(self)
 
     def first(self) -> int:
+        """Sets the first ISource to be active; returns 0 if none."""
         return ISourcesI._first(self)
 
     def next(self) -> int:
+        """Sets the next ISource to be active; returns 0 if none."""
         return ISourcesI._next(self)
 
     @property
     def name(self) -> str:
+        """Gets the name of the active Isource object.
+        Sets the name of the active Isource object."""
         return ISourcesS._name_read(self)
 
     @name.setter
@@ -62,4 +73,5 @@ class ISources(ISourcesI, ISourcesF, ISourcesS, ISourcesV):
 
     @property
     def names(self) -> List[str]:
+        """Gets the variant array of string containing names of all ISources in the circuit."""
         return ISourcesV._names(self)
