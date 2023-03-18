@@ -21,11 +21,7 @@ class ParallelV(Base):
     """
 
     def _actor_progress(self) -> List[int]:
-        """Returns an array of integers containing the progress in percentage for each active actor."""
         return Bridge.variant_pointer_read(self._dss_obj.ParallelV, 0)
 
     def _actor_status(self) -> List[int]:
-        """Returns an array of integers containing the status of each active actor. If 1, the actor is ready to
-        receive new commands, if 0, the actor is busy performing a simulation and cannot take new ?solve? commands at
-        this time. However, the actor is capable to deliver values while the simulation is being performed. """
         return Bridge.variant_pointer_read(self._dss_obj.ParallelV, 1)
