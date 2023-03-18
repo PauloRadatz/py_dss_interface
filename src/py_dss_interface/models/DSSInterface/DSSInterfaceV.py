@@ -20,9 +20,7 @@ class DSSInterfaceV(Base):
     """
 
     def _classes(self) -> List[str]:
-        """Gets the list of DSS intrinsic classes (names of the classes)."""
         return Bridge.variant_pointer_read(self._dss_obj.DSSV, 0)
 
     def _user_classes(self) -> List[str]:
-        """Gets list of user-defined classes (names of the classes)."""
         return Bridge.variant_pointer_read(self._dss_obj.DSSV, 1)
