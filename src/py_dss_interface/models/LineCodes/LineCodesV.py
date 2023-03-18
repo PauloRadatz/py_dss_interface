@@ -27,35 +27,22 @@ class LineCodesV(Base):
     # TODO I do not think they should return str
 
     def _rmatrix_read(self) -> List[float]:
-        """Gets the resistance matrix in ohms per unit length of the active LineCode."""
         return Bridge.variant_pointer_read(self._dss_obj.LineCodesV, 0)
 
     def _rmatrix_write(self, argument: List[float]) -> List[float]:
-        """Sets the resistance matrix in ohms per unit length of the active LineCode. The new values must be entered as
-         a vector of doubles using the argument.
-         """
         return Bridge.variant_pointer_write(self._dss_obj.LineCodesV, 1, argument)
 
     def _xmatrix_read(self) -> List[float]:
-        """Gets the reactance matrix in ohms per unit length of the active LineCode."""
         return Bridge.variant_pointer_read(self._dss_obj.LineCodesV, 2)
 
     def _xmatrix_write(self, argument: List[float]) -> List[float]:
-        """Sets the reactance matrix in ohms per unit length of the active LineCode. The new values must be entered as
-         a vector of doubles using the argument.
-         """
         return Bridge.variant_pointer_write(self._dss_obj.LineCodesV, 3, argument)
 
     def _cmatrix_read(self) -> List[float]:
-        """Gets the capacitance matrix in ohms per unit length of the active LineCode."""
         return Bridge.variant_pointer_read(self._dss_obj.LineCodesV, 4)
 
     def _cmatrix_write(self, argument: List[float]) -> List[float]:
-        """Sets the capacitance matrix in ohms per unit length of the active LineCode. The new values must be entered as
-         a vector of doubles using the argument.
-         """
         return Bridge.variant_pointer_write(self._dss_obj.LineCodesV, 5, argument)
 
     def _names(self) -> List[str]:
-        """Gets the capacitance matrix in ohms per unit length of the active LineCode."""
         return Bridge.variant_pointer_read(self._dss_obj.LineCodesV, 6)
