@@ -21,20 +21,10 @@ class LoadsV(Base):
     """
 
     def _names(self) -> List[str]:
-        """Allows to read the names of all the loads present in the active circuit. The result is delivered as
-        variant, however, the content of this variant is an array of strings. """
         return Bridge.variant_pointer_read(self._dss_obj.DSSLoadsV, 0)
 
     def _zipv_read(self) -> List[float]:
-        """Allows to read the array of 7 elements (doubles) for ZIP property of the active Load object."""
         return Bridge.variant_pointer_read(self._dss_obj.DSSLoadsV, 1)
 
     def _zipv_write(self, argument: List[float]) -> List[float]:
-        """Allows to write the array of 7 elements (doubles) for ZIP property of the active Load object.
-        :param argument: Array of 7 coefficients:
-                    First 3 are ZIP weighting factors for real power (should sum to 1)
-                    Next 3 are ZIP weighting factors for reactive power (should sum to 1)
-                    Last 1 is cut-off voltage in p.u. of base kV; load is 0 below this cut-off
-                    No defaults; all coefficients must be specified if using model=8.
-        """
         return Bridge.variant_pointer_write(self._dss_obj.DSSLoadsV, 2, argument)
