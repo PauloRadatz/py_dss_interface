@@ -22,47 +22,34 @@ class TransformersI(Base):
     """
 
     def _num_windings_read(self) -> int:
-        """Gets the number of windings on this transformer. Allocates memory; set or change this property first."""
         return self._dss_obj.TransformersI(ctypes.c_int32(0), ctypes.c_int32(0))
 
     def _num_windings_write(self, argument) -> int:
-        """Sets the number of windings on this transformer. Allocates memory; set or change this property first."""
         return self._dss_obj.TransformersI(ctypes.c_int32(1), ctypes.c_int32(argument))
 
     def _wdg_read(self) -> int:
-        """Gets the active winding number from 1..NumWindings.
-        Update this before reading or setting a sequence of winding properties (R, Tap, kV, kVA, etc.)."""
         return self._dss_obj.TransformersI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def _wdg_write(self, argument) -> int:
-        """Sets the active winding number from 1..NumWindings.
-        Update this before reading or setting a sequence of winding properties (R, Tap, kV, kVA, etc.)."""
         return self._dss_obj.TransformersI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
     def _num_taps_read(self) -> int:
-        """Gets the active winding number of tap steps between MinTap and MaxTap."""
         return self._dss_obj.TransformersI(ctypes.c_int32(4), ctypes.c_int32(0))
 
     def _num_taps_write(self, argument) -> int:
-        """Sets the active winding number of tap steps between MinTap and MaxTap."""
         return self._dss_obj.TransformersI(ctypes.c_int32(5), ctypes.c_int32(argument))
 
     def _is_delta_read(self) -> int:
-        """Gets the information about if the active winding is delta (1) or wye (0) connection."""
         return self._dss_obj.TransformersI(ctypes.c_int32(6), ctypes.c_int32(0))
 
     def _is_delta_write(self, argument) -> int:
-        """Sets the information about if the active winding is delta (1) or wye (0) connection."""
         return self._dss_obj.TransformersI(ctypes.c_int32(7), ctypes.c_int32(argument))
 
     def _first(self) -> int:
-        """Sets the first Transformer active. Return 0 if no more."""
         return self._dss_obj.TransformersI(ctypes.c_int32(8), ctypes.c_int32(0))
 
     def _next(self) -> int:
-        """Sets the next Transformer active. Return 0 if no more."""
         return self._dss_obj.TransformersI(ctypes.c_int32(9), ctypes.c_int32(0))
 
     def _count(self) -> int:
-        """Gets the number of transformers within the active circuit."""
         return self._dss_obj.TransformersI(ctypes.c_int32(10), ctypes.c_int32(0))

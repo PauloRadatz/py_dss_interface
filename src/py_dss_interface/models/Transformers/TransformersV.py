@@ -23,15 +23,10 @@ class TransformersV(Base):
     """
 
     def _names(self) -> List[str]:
-        """Gets a variant array of strings with all Transformer names in the active circuit."""
         return Bridge.variant_pointer_read(self._dss_obj.TransformersV, 0)
 
     def _wdg_voltages(self) -> List[float]:
-        """Gets a variant array of doubles containing the voltages at the active winding on the active transformer.
-        These voltages come as complex pairs."""
         return Bridge.variant_pointer_read(self._dss_obj.TransformersV, 1)
 
     def _wdg_currents(self) -> List[float]:
-        """Gets a a variant array of doubles containing the currents at the active winding on the active transformer.
-        These currents come as complex pairs."""
         return Bridge.variant_pointer_read(self._dss_obj.TransformersV, 2)
