@@ -22,6 +22,5 @@ class DSSElementS(Base):
     """
 
     def _name(self) -> str:
-        """Gets the full name of the active DSS object (general element or circuit element)."""
         result = ctypes.c_char_p(self._dss_obj.DSSElementS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
