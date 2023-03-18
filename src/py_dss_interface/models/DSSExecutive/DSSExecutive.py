@@ -17,24 +17,31 @@ class DSSExecutive(DSSExecutiveS, DSSExecutiveI):
 
     @property
     def num_commands(self) -> int:
+        """Gets the number of DSS Executive Commands."""
         return DSSExecutiveI._num_commands(self)
 
     @property
     def num_options(self) -> int:
+        """Gets the number of DSS Executive Options."""
         return DSSExecutiveI._num_options(self)
 
     def command(self, arg: str) -> str:
+        """Gets i-th command (specified in the argument as string)."""
         return DSSExecutiveS._command(self, arg)
 
     def option(self, arg: str) -> str:
+        """Gets i-th option (specified in the argument as string)."""
         return DSSExecutiveS._option(self, arg)
 
     def command_help(self, arg: str) -> str:
+        """Gets help string for i-th command (specified in the argument as string)."""
         return DSSExecutiveS._command_help(self, arg)
 
     def option_help(self, arg: str) -> str:
+        """Gets help string for i-th option (specified in the argument as string)."""
         return DSSExecutiveS._option_help(self, arg)
 
     def option_value(self, arg: str) -> str:
+        """Gets present value for i-th option (specified in the argument as string)."""
         return DSSExecutiveS._option_value(self, arg)
 
