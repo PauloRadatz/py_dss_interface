@@ -89,6 +89,7 @@ class Fuses(FusesI, FusesS, FusesF, FusesV):
 
     @property
     def names(self) -> List[str]:
+        """Gets the variant array of string containing names of all fuses in the circuit."""
         return FusesV._names(self)
 
     def next(self) -> int:

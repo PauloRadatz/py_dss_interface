@@ -19,11 +19,9 @@ class GeneratorsS(Base):
     """
 
     def _name(self) -> str:
-        """Gets the name of the active Generator."""
         result = ctypes.c_char_p(self._dss_obj.GeneratorsS(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     def _name_write(self, argument: str) -> str:
-        """Sets the name of the active Generator."""
         result = ctypes.c_char_p(self._dss_obj.GeneratorsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
