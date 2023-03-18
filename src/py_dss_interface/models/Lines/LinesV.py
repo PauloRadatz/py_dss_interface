@@ -29,50 +29,39 @@ class LinesV(Base):
     # TODO work on this guy
 
     def _names(self) -> List[str]:
-        """Gets the name of all Line Objects."""
         return Bridge.variant_pointer_read(self._dss_obj.LinesV, 0)
 
     def _rmatrix_read(self) -> List[float]:
-        """Gets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
         return Bridge.variant_pointer_read(self._dss_obj.LinesV, 1)
 
     def _rmatrix_write(self, argument: List[float]) -> List[float]:
-        """Sets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
         # return Bridge.variant_pointer_write(self.dss_obj.LinesV, 2, argument)
 
         Error.method_not_working("setter of dss.lines.rmatrix")
 
     def _xmatrix_read(self) -> List[float]:
-        """Gets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
         return Bridge.variant_pointer_read(self._dss_obj.LinesV, 3)
 
     def _xmatrix_write(self, argument: List[float]) -> List[float]:
-        """Sets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
         # return Bridge.variant_pointer_write(self.dss_obj.LinesV, 4, argument)
 
         Error.method_not_working("setter of dss.lines.xmatrix")
 
     # TODO include in test
     def _cmatrix_read(self) -> List[float]:
-        """Gets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
         return Bridge.variant_pointer_read(self._dss_obj.LinesV, 5)
 
     # TODO include in test
     def _cmatrix_write(self, argument: List[float]) -> List[float]:
-        """Sets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
         # return Bridge.variant_pointer_write(self.dss_obj.LinesV, 6, argument)
 
         Error.method_not_working("setter of dss.lines.cmatrix")
 
     def _yprim_read(self) -> List[float]:
-        """Gets the YPrimitive of the active Line."""
         return Bridge.variant_pointer_read(self._dss_obj.LinesV, 7)
 
     # TODO include in test
     def _yprim_write(self, argument: List[float]) -> List[float]:
-        """
-        According to the official documentation this parameter does nothing at present.
-        """
         return "According the official documentation this parameter does nothing at present."
         # Below we can see a possible future implementation
         # argument = Base.check_string_param(argument)
