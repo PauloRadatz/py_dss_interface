@@ -24,54 +24,42 @@ class CtrlQueueI(Base):
     # TODO lets not have try and except here
 
     def _clear_queue(self) -> int:
-        """Clears the control queue."""
         return self._dss_obj.CtrlQueueI(ctypes.c_int32(0), ctypes.c_int32(0))
 
     def _delete(self, argument: int) -> int:
-        """Deletes a control action from the DSS control queue by referencing the handle of the action (Argument)."""
         return self._dss_obj.CtrlQueueI(ctypes.c_int32(1), ctypes.c_int32(argument))
 
     def _num_actions(self) -> int:
-        """Gets the number of actions on the current action list (that have been popped off the control queue by
-        CheckControlActions)."""
         return self._dss_obj.CtrlQueueI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def _action(self, argument: int) -> int:
-        """Sets the active action by index (argument)."""
         return self._dss_obj.CtrlQueueI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
     def _action_code(self) -> int:
-        """Gets the code for the active action. Long integer code to tell the control device what to do."""
         return self._dss_obj.CtrlQueueI(ctypes.c_int32(4), ctypes.c_int32(0))
 
     def _device_handle(self) -> int:
-        """Gets the handle (user defined) to device that must act on the pending action."""
         return self._dss_obj.CtrlQueueI(ctypes.c_int32(5), ctypes.c_int32(0))
 
     def _show(self) -> int:
-        """Shows the entire control queue in CSV format."""
         try:
             return self._dss_obj.CtrlQueueI(ctypes.c_int32(7), ctypes.c_int32(0))
         except Exception as e:
             Base._warn_msg("An error occur when tried to get *Num Actions of CrlQueue* check if *Queue* is NOT empty", e)
 
     def _clear_actions(self) -> int:
-        """Clears the action list."""
         return self._dss_obj.CtrlQueueI(ctypes.c_int32(8), ctypes.c_int32(0))
 
     def _pop_action(self) -> int:
-        """Pops next action off the action list and makes it the active action. Returns zero if none."""
         try:
             return self._dss_obj.CtrlQueueI(ctypes.c_int32(9), ctypes.c_int32(0))
         except Exception as e:
             Base._warn_msg("An error occur when tried to *Pop Next Action of CrlQueue* check if *Queue* is NOT empty", e)
 
     def _queue_size(self) -> int:
-        """Delivers the size of the current control queue. Returns zero if none."""
         return self._dss_obj.CtrlQueueI(ctypes.c_int32(10), ctypes.c_int32(0))
 
     def _do_all_queue(self) -> int:
-        """Forces the execution of all control actions stored at the control queue. Returns 0."""
         try:
             return self._dss_obj.CtrlQueueI(ctypes.c_int32(11), ctypes.c_int32(0))
         except Exception as e:
