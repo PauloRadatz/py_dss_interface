@@ -21,5 +21,4 @@ class VSourcesV(Base):
     """
 
     def _names(self) -> List[str]:
-        """Gets the name of the active VSource."""
         return Bridge.variant_pointer_read(self._dss_obj.VsourcesV, 0)

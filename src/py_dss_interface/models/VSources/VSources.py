@@ -21,6 +21,8 @@ class VSources(VSourcesS, VSourcesV, VSourcesI, VSourcesF):
 
     @property
     def base_kv(self) -> float:
+        """Gets the source voltage in kV.
+        Sets the source voltage in kV."""
         return VSourcesF._base_kv_read(self)
 
     @base_kv.setter
@@ -29,6 +31,8 @@ class VSources(VSourcesS, VSourcesV, VSourcesI, VSourcesF):
 
     @property
     def pu(self) -> float:
+        """Gets the source voltage in pu.
+        Sets the source voltage in pu."""
         return VSourcesF._pu_read(self)
 
     @pu.setter
@@ -37,6 +41,8 @@ class VSources(VSourcesS, VSourcesV, VSourcesI, VSourcesF):
 
     @property
     def angle_deg(self) -> float:
+        """Gets the source phase angle of first phase in degrees.
+        Sets the source phase angle of first phase in degrees."""
         return VSourcesF._angle_deg_read(self)
 
     @angle_deg.setter
@@ -45,6 +51,8 @@ class VSources(VSourcesS, VSourcesV, VSourcesI, VSourcesF):
 
     @property
     def frequency(self) -> float:
+        """Gets the source frequency in Hz.
+        Sets the source frequency in Hz."""
         return VSourcesF._frequency_read(self)
 
     @frequency.setter
@@ -53,16 +61,21 @@ class VSources(VSourcesS, VSourcesV, VSourcesI, VSourcesF):
 
     @property
     def count(self) -> int:
+        """Returns the number of VSource objects currently defined in the active circuit."""
         return VSourcesI._count(self)
 
     def first(self) -> int:
+        """Sets the first VSource to be active; returns 0 if none."""
         return VSourcesI._first(self)
 
     def next(self) -> int:
+        """Sets the next VSource to be active; returns 0 if none."""
         return VSourcesI._next(self)
 
     @property
     def phases(self) -> int:
+        """Gets the number of phases of the active VSource.
+        Sets the number of phases of the active VSource."""
         return VSourcesI._phases_read(self)
 
     @phases.setter
@@ -71,6 +84,8 @@ class VSources(VSourcesS, VSourcesV, VSourcesI, VSourcesF):
 
     @property
     def name(self) -> str:
+        """Gets the name of the active VSource.
+        Sets the name of the active VSource."""
         return VSourcesS._name_read(self)
 
     @name.setter
@@ -79,6 +94,7 @@ class VSources(VSourcesS, VSourcesV, VSourcesI, VSourcesF):
 
     @property
     def names(self) -> List[str]:
+        """Gets the name of the active VSource."""
         return VSourcesV._names(self)
 
 
