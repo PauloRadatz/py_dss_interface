@@ -17,8 +17,11 @@ class ErrorOpenDSS(ErrorCode, ErrorDesc):
 
     @property
     def error_code(self):
+        """This interface returns an integer with the latest error code delivered by OpenDSS."""
         return ErrorCode._error_code(self)
 
     @property
     def error_desc(self):
+        """This interface returns a string with description of the latest error code delivered by OpenDSS.
+                """
         return ErrorDesc._error_desc(self)
