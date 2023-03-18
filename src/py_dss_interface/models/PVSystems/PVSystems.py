@@ -21,6 +21,8 @@ class PVSystems(PVSystemsV, PVSystemsS, PVSystemsI, PVSystemsF):
 
     @property
     def irradiance(self) -> float:
+        """Gets the present value of the Irradiance property in W/sq-m.
+        Sets the present value of the Irradiance property in W/sq-m."""
         return PVSystemsF._irradiance_read(self)
 
     @irradiance.setter
@@ -29,10 +31,13 @@ class PVSystems(PVSystemsV, PVSystemsS, PVSystemsI, PVSystemsF):
 
     @property
     def kw_output(self) -> float:
+        """Gets the kW output."""
         return PVSystemsF._kw(self)
 
     @property
     def kvar(self) -> float:
+        """Gets the kvar value.
+        Sets the kvar value."""
         return PVSystemsF._kvar_read(self)
 
     @kvar.setter
@@ -41,6 +46,8 @@ class PVSystems(PVSystemsV, PVSystemsS, PVSystemsI, PVSystemsF):
 
     @property
     def pf(self) -> float:
+        """Gets the power factor value.
+        Sets the power factor value."""
         return PVSystemsF._pf_read(self)
 
     @pf.setter
@@ -48,15 +55,19 @@ class PVSystems(PVSystemsV, PVSystemsS, PVSystemsI, PVSystemsF):
         PVSystemsF._pf_write(self, argument)
 
     @property
-    def kva_rated(self) -> float:
+    def kva(self) -> float:
+        """Gets the rated kVA of the PVSystem.
+        Sets the rated kVA of the PVSystem."""
         return PVSystemsF._kva_rated_read(self)
 
-    @kva_rated.setter
-    def kva_rated(self, argument: float):
+    @kva.setter
+    def kva(self, argument: float):
         PVSystemsF._kva_rated_write(self, argument)
 
     @property
     def pmpp(self) -> float:
+        """Gets the Pmpp.
+        Sets the Pmpp."""
         return PVSystemsF._pmpp_read(self)
 
     @pmpp.setter
@@ -65,16 +76,21 @@ class PVSystems(PVSystemsV, PVSystemsS, PVSystemsI, PVSystemsF):
 
     @property
     def count(self) -> int:
+        """Returns the number of PVSystem objects currently defined in the active circuit."""
         return PVSystemsI._count(self)
 
     def first(self) -> int:
+        """Sets the first PVSystem to be active; returns 0 if none."""
         return PVSystemsI._first(self)
 
     def next(self) -> int:
+        """Sets the next PVSystem to be active; returns 0 if none."""
         return PVSystemsI._next(self)
 
     @property
     def idx(self) -> int:
+        """Gets the active PVSystem by index; 1..Count.
+        Sets the active PVSystem by index; 1..Count.."""
         return PVSystemsI._idx_read(self)
 
     @idx.setter
@@ -83,6 +99,8 @@ class PVSystems(PVSystemsV, PVSystemsS, PVSystemsI, PVSystemsF):
 
     @property
     def name(self) -> str:
+        """Gets the name of the active PVSystem.
+        Sets the name of the active PVSystem."""
         return PVSystemsS._name_read(self)
 
     @name.setter
@@ -91,4 +109,5 @@ class PVSystems(PVSystemsV, PVSystemsS, PVSystemsI, PVSystemsF):
 
     @property
     def names(self) -> List[str]:
+        """Gets the variant array of string containing names of all PVSystems in the circuit."""
         return PVSystemsV._names(self)

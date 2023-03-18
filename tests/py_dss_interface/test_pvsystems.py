@@ -118,13 +118,13 @@ class TestPVSystems13Bus:
 
     def test_pvsystems_read_kva_rated(self, dss):
         expected = 600
-        actual = dss.pvsystems.kva_rated
+        actual = dss.pvsystems.kva
         assert actual == expected
 
     def test_pvsystems_write_kva_rated(self, dss):
         expected = 1000
-        dss.pvsystems.kva_rated = expected
-        actual = dss.pvsystems.kva_rated
+        dss.pvsystems.kva = expected
+        actual = dss.pvsystems.kva
         assert actual == expected
 
     def test_pvsystems_read_pmpp(self, dss):
