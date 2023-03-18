@@ -24,16 +24,10 @@ class DSSPropertiesS(Base):
     """
 
     def _name_active_property(self, argument: str) -> str:
-        """Delivers the name of the active property. The index of the property must be specified in the argument.
-        The index minimum value is 1. This value must be entered as string."""
         result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(0), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     def _description_active_property(self, argument: str) -> str:
-        """This parameter will deliver the description of the active property. This parameter will deliver the name of
-        the active property. The index of the property must be specified in the argument. The index minimum value is
-        1. This value must be entered as string.
-        """
         to_int = int(argument)
         if to_int < 1:
             return "ERROR: The value must be greater than 1!"
@@ -41,10 +35,7 @@ class DSSPropertiesS(Base):
         return result.value.decode('ascii')
 
     def _value_read(self, argument: str) -> str:
-        """This parameter will deliver the value of the active property. This parameter will deliver the name of the
-        active property. The index of the property must be specified in the argument. The index minimum value is 1.
-        This value must be entered as string.
-        """
+
         to_int = int(argument)
         if to_int < 1:
             return "ERROR: The value must be greater than 1!"
@@ -53,10 +44,6 @@ class DSSPropertiesS(Base):
 
     # TODO include in test
     def _value_write(self, argument: str) -> str:
-        """This parameter will allow to set the value of the active property. The new value must be specified in the
-        variable “argument” as string. This parameter will deliver the name of the active property. The index of the
-        property must be specified in the argument. The index minimum value is 1. This value must be entered as string.
-        """
         to_int = int(argument)
         if to_int < 1:
             return "ERROR: The value must be greater than 1!"
