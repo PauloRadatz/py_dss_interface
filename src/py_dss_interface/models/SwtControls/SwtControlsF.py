@@ -20,12 +20,8 @@ class SwtControlsF(Base):
     """
 
     def _delay_read(self) -> float:
-        """Gets the time delay [s] between arming and opening or closing the switch.
-        Control may reset before actually operating the switch."""
         return float(self._dss_obj.SwtControlsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
     def _delay_write(self, argument) -> float:
-        """Sets sets the time delay [s] between arming and opening or closing the switch.
-        Control may reset before actually operating the switch."""
         argument = Base._check_float_param(argument)
         return float(self._dss_obj.SwtControlsF(ctypes.c_int32(1), ctypes.c_double(argument)))
