@@ -41,6 +41,8 @@ class Bus(BusS, BusI, BusV, BusF):
 
     @property
     def unique_node_number(self) -> int:
+        """Returns a unique node number at the active bus to avoid node collisions and adds it to the node list for
+                the bus. The start number can be specified in the second parameter."""
         return BusI._unique_node_number(self, 1)
 
     @unique_node_number.setter
@@ -168,7 +170,8 @@ class Bus(BusS, BusI, BusV, BusF):
 
     @property
     def x(self) -> float:
-        """Returns the X coordinate for the bus."""
+        """Returns the X coordinate for the bus.
+        Allows to write the X coordinate for the bus. Returns 0."""
         return BusF._x(self)
 
     @x.setter
@@ -177,7 +180,8 @@ class Bus(BusS, BusI, BusV, BusF):
 
     @property
     def y(self) -> float:
-        """Returns the Y coordinate for the bus."""
+        """Returns the Y coordinate for the bus.
+        Allows to write the Y coordinate for the bus. Returns 0."""
         return BusF._y(self)
 
     @y.setter
@@ -221,7 +225,8 @@ class Bus(BusS, BusI, BusV, BusF):
 
     @property
     def latitude(self) -> float:
-        """Returns the GIS latitude assigned to the active bus (if any)."""
+        """Returns the GIS latitude assigned to the active bus (if any).
+        Sets the GIS latitude to the active bus using the value given at the argument."""
         return BusF._latitude(self)
 
     @latitude.setter
@@ -230,7 +235,8 @@ class Bus(BusS, BusI, BusV, BusF):
 
     @property
     def longitude(self) -> float:
-        """Returns the GIS longitude assigned to the active bus (if any)."""
+        """Returns the GIS longitude assigned to the active bus (if any).
+        Sets the GIS longitude to the active bus using the value given at the argument."""
         return BusF._longitude(self)
 
     @longitude.setter
