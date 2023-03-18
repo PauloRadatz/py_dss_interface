@@ -22,5 +22,4 @@ class DSSElementI(Base):
     """
 
     def _num_properties(self) -> int:
-        """Gets the number of properties for the active DSS object."""
         return int(self._dss_obj.DSSElementI(ctypes.c_int32(0), ctypes.c_int32(0)))

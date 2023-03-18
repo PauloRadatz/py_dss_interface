@@ -20,12 +20,15 @@ class DSSElement(DSSElementI, DSSElementS, DSSElementV):
 
     @property
     def num_properties(self) -> int:
+        """Gets the number of properties for the active DSS object."""
         return DSSElementI._num_properties(self)
 
     @property
     def name(self) -> str:
+        """Gets the full name of the active DSS object (general element or circuit element)."""
         return DSSElementS._name(self)
 
     @property
     def property_names(self) -> List[str]:
+        """Gets a variant array of strings containing the names of all properties for the active DSS object."""
         return DSSElementV._property_names(self)
