@@ -22,6 +22,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def ct_primary(self) -> float:
+        """Gets the CT primary ampere rating (secondary is 0.2 amperes).
+        Sets the CT primary ampere rating (secondary is 0.2 amperes)."""
         return RegControlsF._ct_primary_read(self)
 
     @ct_primary.setter
@@ -30,6 +32,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def pt_ratio(self) -> float:
+        """Gets the PT ratio for voltage control settings.
+        Sets the PT ratio for voltage control settings."""
         return RegControlsF._pt_ratio_read(self)
 
     @pt_ratio.setter
@@ -38,6 +42,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def forward_r(self) -> float:
+        """Gets the LDC R settings in Volts.
+        Sets the LDC R settings in Volts."""
         return RegControlsF._forward_r_read(self)
 
     @forward_r.setter
@@ -46,6 +52,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def forward_x(self) -> float:
+        """Gets the LDC X settings in Volts.
+        Sets sets the LDC X settings in Volts."""
         return RegControlsF._forward_x_read(self)
 
     @forward_x.setter
@@ -54,6 +62,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def reverse_r(self) -> float:
+        """Gets the reverse LDC R settings in Volts.
+        Sets the reverse LDC R settings in Volts."""
         return RegControlsF._reverse_r_read(self)
 
     @reverse_r.setter
@@ -62,6 +72,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def reverse_x(self) -> float:
+        """Gets the reverse LDC X settings in Volts.
+        Sets the reverse LDC X settings in Volts."""
         return RegControlsF._reverse_x_read(self)
 
     @reverse_x.setter
@@ -70,6 +82,10 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def delay(self) -> float:
+        """Gets the time delay [s] after arming before the first tap change.
+                Control may reset before actually changing taps.
+        Sets the time delay [s] after arming before the first tap change. Control may reset before actually
+                changing taps. """
         return RegControlsF._delay_read(self)
 
     @delay.setter
@@ -78,6 +94,10 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def tap_delay(self) -> float:
+        """Gets the time delay [s] for subsequent tap changes in a set. Control may reset before actually changing
+                taps.
+        Sets the time delay [s] for subsequent tap changes in a set. Control may reset before actually changing
+                taps."""
         return RegControlsF._tap_delay_read(self)
 
     @tap_delay.setter
@@ -90,10 +110,14 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @voltage_limit.setter
     def voltage_limit(self, arg: float):
+        """Gets the first house voltage limit on PT secondary base. Setting to 0 disables this function.
+        Sets the first house voltage limit on PT secondary base. Setting to 0 disables this function."""
         RegControlsF._voltage_limit_write(self, arg)
 
     @property
     def forward_band(self) -> float:
+        """Gets the regulation bandwidth in forward direction, centered on Vreg.
+        Sets the regulation bandwidth in forward direction, centered on Vreg."""
         return RegControlsF._forward_band_read(self)
 
     @forward_band.setter
@@ -102,6 +126,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def forward_vreg(self) -> float:
+        """Gets the target voltage in the forward direction, on PT secondary base.
+        Sets the target voltage in the forward direction, on PT secondary base."""
         return RegControlsF._forward_vreg_read(self)
 
     @forward_vreg.setter
@@ -110,6 +136,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def reverse_band(self) -> float:
+        """Gets the bandwidth in reverse direction, centered on reverse Vreg.
+        Sets the bandwidth in reverse direction, centered on reverse Vreg."""
         return RegControlsF._reverse_band_read(self)
 
     @reverse_band.setter
@@ -118,6 +146,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def reverse_vreg(self) -> float:
+        """Gets the target voltage in the reverse direction, on PT secondary base.
+        Sets the target voltage in the reverse direction, on PT secondary base."""
         return RegControlsF._reverse_vreg_read(self)
 
     @reverse_vreg.setter
@@ -125,13 +155,17 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
         RegControlsF._reverse_vreg_write(self, arg)
 
     def first(self) -> int:
+        """Sets the first RegControl active. Returns 0 if no more."""
         return RegControlsI._first(self)
 
     def next(self) -> int:
+        """Sets the next RegControl active. Returns 0 if no more"""
         return RegControlsI._next(self)
 
     @property
     def tap_winding(self) -> int:
+        """Gets the tapped winding number.
+        Sets the tapped winding number."""
         return RegControlsI._tap_winding_read(self)
 
     @tap_winding.setter
@@ -140,6 +174,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def winding(self) -> int:
+        """Gets the winding number for PT and CT connections.
+        Sets the winding number for PT and CT connections."""
         return RegControlsI._winding_read(self)
 
     @winding.setter
@@ -148,6 +184,9 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def is_reversible(self) -> int:
+        """Gets the setting in the reverse direction, usually not applicable to substation transformers.
+        Sets the different settings for the reverse direction (see Manual for details),
+        usually not applicable to substation transformers."""
         return RegControlsI._is_reversible_read(self)
 
     @is_reversible.setter
@@ -156,6 +195,10 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def is_inverse_time(self) -> int:
+        """Gets the inverse time feature. Time delay is inversely adjusted, proportional to the amount of voltage
+                 outside the regulator band.
+        Sets the inverse time feature. Time delay is inversely adjusted, proportional to the amount of voltage
+         outside the regulator band."""
         return RegControlsI._is_inverse_time_read(self)
 
     @is_inverse_time.setter
@@ -164,6 +207,10 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def max_tap_change(self) -> int:
+        """Gets the maximum tap change per iteration in STATIC solution mode. 1 is more realistic, 16 is the default for
+                 faster solution.
+        Sets the maximum tap change per iteration in STATIC solution mode. 1 is more realistic, 16 is the default for
+         faster solution."""
         return RegControlsI._max_tap_change_read(self)
 
     @max_tap_change.setter
@@ -172,10 +219,13 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def count(self) -> int:
+        """Gets the number of RegControl objects in Active Circuit."""
         return RegControlsI._count(self)
 
     @property
     def tap_number(self) -> int:
+        """Gets the actual tap number of the active RegControl.
+        Sets the actual tap number of the active RegControl."""
         return RegControlsI._tap_number_read(self)
 
     @tap_number.setter
@@ -184,6 +234,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def name(self) -> str:
+        """Gets the active RegControl name.
+        Sets the active RegControl name."""
         return RegControlsS._name_read(self)
 
     @name.setter
@@ -192,6 +244,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def monitored_bus(self) -> str:
+        """Gets the name of the remote regulated bus, in lieu of LDC settings.
+        Sets the name of the remote regulated bus, in lieu of LDC settings."""
         return RegControlsS._monitored_bus_read(self)
 
     @monitored_bus.setter
@@ -200,6 +254,8 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def transformer(self) -> str:
+        """Gets the name of the transformer this regulator controls.
+        Sets the name of the transformer this regulator controls."""
         return RegControlsS._transformer_read(self)
 
     @transformer.setter
@@ -208,4 +264,5 @@ class RegControls(RegControlsI, RegControlsF, RegControlsV, RegControlsS):
 
     @property
     def names(self) -> List[str]:
+        """Gets a variant array of strings containing all RegControl names."""
         return RegControlsV._names(self)
