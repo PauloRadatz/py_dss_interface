@@ -18,17 +18,14 @@ class BusI(Base):
     """
 
     def _num_nodes(self) -> int:
-        """Returns the number of nodes of this bus."""
         return self._dss_obj.BUSI(0, 0)
 
     def _zsc_refresh(self) -> int:
-        """Recomputes Zsc for active bus for present circuit configuration. Return 1 if the procedure was successful."""
         result = self._dss_obj.BUSI(1, 0) # TODO
         Base._check_assertion_result(result, "Zsc recomputes failed!", "Zsc can not be recomputed!", expected_value=1)
         return result
 
     def _coord_defined(self) -> int:
-        """Returns 1 if a coordinate has been defined for this bus; otherwise, it will return 0."""
         result = self._dss_obj.BUSI(2, 0)
         Base._check_assertion_result(result, "Bus coordinate not defined!", "Bus coordinates not find! The program "
                                                                            "will run normally",
@@ -36,20 +33,11 @@ class BusI(Base):
         return result
 
     def _unique_node_number(self, start_number: int = 1) -> int:  # TODO
-        """Returns a unique node number at the active bus to avoid node collisions and adds it to the node list for
-        the bus. The start number can be specified in the second parameter.
-
-        :param start_number: The first number corresponding the initial bus node number
-        :returns: int
-        :rtype: int
-        """
         start_number = Base._check_int_param(start_number)
         return self._dss_obj.BUSI(3, start_number)
 
     def _total_customers(self) -> int:
-        """Returns returns the total number of customers served down line from this bus."""
         return self._dss_obj.BUSI(4, 0)
 
     def _section_id(self) -> int:
-        """Returns the integer ID of the feeder section in which this bus is located."""
         return self._dss_obj.BUSI(5, 0)
