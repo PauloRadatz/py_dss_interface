@@ -23,6 +23,4 @@ class CircuitF(Base):
         return float(self._dss_obj.CircuitF(ctypes.c_int32(first), ctypes.c_double(second), ctypes.c_double(third)))
 
     def _capacity(self, capacity_start=0, capacity_increment=0.1) -> float:
-        """Returns the total capacity of the active circuit. Or this parameter it is necessary to specify the start
-        and increment of the capacity in the arguments argument1 and argument2 respectively. """
         return self._circuit_float(0, capacity_start, capacity_increment)
