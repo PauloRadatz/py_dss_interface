@@ -20,13 +20,10 @@ class CMathLibF(Base):
 
     @staticmethod
     def _cabs(arg_real: float, arg_imaginary: float) -> float:
-        """Returns the absolute value of complex number given in real (Argument1) and imaginary (Argument2) doubles."""
         c_number = complex(arg_real, arg_imaginary)
         return float(abs(c_number))
 
     @staticmethod
     def _cdang(arg_real: float, arg_imaginary: float) -> float:
-        """Returns the angle, in degrees, of a complex number specified as two doubles: Real part (Argument1) and
-        imaginary part (Argument2)."""
         c_number = complex(arg_real, arg_imaginary)
         return np.angle([c_number], deg=True)
