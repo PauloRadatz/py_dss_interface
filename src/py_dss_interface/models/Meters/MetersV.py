@@ -25,23 +25,18 @@ class MetersV(Base):
     # TODO add type return
 
     def _names(self) -> List[str]:
-        """Returns an array of all Energy Meter names."""
         return Bridge.variant_pointer_read(self._dss_obj.MetersV, 0)
 
     def _register_names(self) -> List[str]:
-        """Returns an array of strings containing the names of the registers."""
         return Bridge.variant_pointer_read(self._dss_obj.MetersV, 1)
 
     def _register_values(self) -> List[float]:
-        """Returns an array of values contained in the Meter registers for the active Meter."""
         return Bridge.variant_pointer_read(self._dss_obj.MetersV, 2)
 
     def _totals(self) -> List[float]:
-        """Returns the totals for all registers of all Meters."""
         return Bridge.variant_pointer_read(self._dss_obj.MetersV, 3)
 
     def _peak_current_read(self) -> List[float]:
-        """Returns an array of doubles with the Peak Current Property."""
         return Bridge.variant_pointer_read(self._dss_obj.MetersV, 4)
 
     def _peak_current_write(self, arg: List[float]) -> List[float]:
@@ -49,37 +44,28 @@ class MetersV(Base):
         return Bridge.variant_pointer_write(self._dss_obj.MetersV, 5, arg)
 
     def _calc_current_read(self) -> List[float]:
-        """Returns the magnitude of the real part of the Calculated Current (normally determined by solution)
-        for the meter to force some behavior on Load Allocation."""
         return Bridge.variant_pointer_read(self._dss_obj.MetersV, 6)
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/6
     # TODO include in test
     def _calc_current_write(self, arg: List[float]) -> List[float]:
-        """Sets the magnitude of the real part of the Calculated Current (normally determined by solution)
-        for the meter to force some behavior on Load Allocation."""
         return Bridge.variant_pointer_write(self._dss_obj.MetersV, 7, arg)
 
     def _alloc_factors_read(self) -> List[float]:
-        """Returns an array of doubles: allocation factors for the active Meter."""
         return Bridge.variant_pointer_read(self._dss_obj.MetersV, 8)
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/7
     def _alloc_factors_write(self, arg: List[float]) -> List[float]:
-        """Receives an array of doubles to set the phase allocation factors for the active Meter."""
         return Bridge.variant_pointer_write(self._dss_obj.MetersV, 9, arg)
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/8
     def _all_end_elements(self) -> List[str]:
-        """Returns a variant array of names of all zone end elements."""
         return Bridge.variant_pointer_read(self._dss_obj.MetersV, 10)
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/9
     # TODO include in test
     def _all_branches_in_zone(self) -> List[str]:
-        """Returns a wide string list of all branches in zone of the active Energy Meter object."""
         return Bridge.variant_pointer_read(self._dss_obj.MetersV, 11)
 
     def _all_pce_in_zone(self) -> List[str]:
-        """This parameter returns a wide string list of all the PCE in zone of the active Energy Meter object."""
         return Bridge.variant_pointer_read(self._dss_obj.MetersV, 12)
