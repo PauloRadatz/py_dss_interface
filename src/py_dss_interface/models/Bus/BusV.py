@@ -48,7 +48,7 @@ class BusV(Base):
         return Bridge.variant_pointer_read(self._dss_obj.BUSV, 6)
 
     def _zsc1(self) -> List[float]:
-        """Returns the complex array of Zsc matrix at bus, column by column."""
+        """Returns the complex positive-sequence short circuit impedance at bus."""
         return Bridge.variant_pointer_read(self._dss_obj.BUSV, 7)
 
     def _zsc0(self) -> List[float]:
@@ -82,23 +82,18 @@ class BusV(Base):
         return Bridge.variant_pointer_read(self._dss_obj.BUSV, 14)
 
     def _line_list(self) -> List[str]:
-        """This parameter returns a variant array of strings containing the names of the lines connected to the
+        """Returns a variant array of strings containing the names of the lines connected to the
         active bus. The names of the lines include the class name 'Line.' """
         return Bridge.variant_pointer_read(self._dss_obj.BUSV, 15)
 
     def _load_list(self) -> List[str]:
-        """This parameter returns a variant array of strings containing the names of the loads connected to the
-        active bus. The names of the lines include the class name 'Load.'. """
         return Bridge.variant_pointer_read(self._dss_obj.BUSV, 16)
 
     def _axc_012_matrix(self) -> List[float]:
-        """Variant array of doubles (complex) containing the complete 012 Zsc matrix."""
         return Bridge.variant_pointer_read(self._dss_obj.BUSV, 17)
 
     def _all_pce_active_bus(self) -> List[str]:
-        """Returns an array with the names of all PCE connected to the active bus."""
         return Bridge.variant_pointer_read(self._dss_obj.BUSV, 18)
 
     def _all_pde_active_bus(self) -> List[str]:
-        """Returns an array with the names of all PDE connected to the active bus."""
         return Bridge.variant_pointer_read(self._dss_obj.BUSV, 19)

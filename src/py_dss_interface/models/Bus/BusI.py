@@ -23,7 +23,7 @@ class BusI(Base):
 
     def _zsc_refresh(self) -> int:
         """Recomputes Zsc for active bus for present circuit configuration. Return 1 if the procedure was successful."""
-        result = self._dss_obj.BUSI(1, 0)
+        result = self._dss_obj.BUSI(1, 0) # TODO
         Base._check_assertion_result(result, "Zsc recomputes failed!", "Zsc can not be recomputed!", expected_value=1)
         return result
 
@@ -35,7 +35,7 @@ class BusI(Base):
                                      expected_value=1)
         return result
 
-    def _unique_node_number(self, start_number: int = 1) -> int:
+    def _unique_node_number(self, start_number: int = 1) -> int:  # TODO
         """Returns a unique node number at the active bus to avoid node collisions and adds it to the node list for
         the bus. The start number can be specified in the second parameter.
 

@@ -27,9 +27,7 @@ class BusF(Base):
         return self._dss_obj.BUSF(1, 0)
 
     def _x_write(self, param_coordinate: float) -> int:
-        """Allows to write the X coordinate for the bus. Returns 0.
-        ::param param_coordinate: The X coordinate, if it's None, X will be 0.0
-        """
+        """Allows to write the X coordinate for the bus. Returns 0."""
         param_coordinate = Base._check_float_param(param_coordinate)
         result = self._dss_obj.BUSF(2, ctypes.c_double(param_coordinate))
         Base._check_assertion_result(result, "Write X coordinate failed!", "Something wrong when tried defined the X "
@@ -37,7 +35,7 @@ class BusF(Base):
         return result
 
     def _y(self) -> float:
-        """Returns the X coordinate for the bus."""
+        """Returns the Y coordinate for the bus."""
         return self._dss_obj.BUSF(3, 0)
 
     def _y_write(self, param_coordinate: float) -> int:
@@ -80,19 +78,19 @@ class BusF(Base):
         return self._dss_obj.BUSF(11, 0)
 
     def _latitude(self) -> float:
-        """This parameter returns the GIS latitude assigned to the active bus (if any)."""
+        """Returns the GIS latitude assigned to the active bus (if any)."""
         return self._dss_obj.BUSF(12, 0)
 
     def _latitude_write(self, latitude_param: float) -> float:
-        """This parameter sets the GIS latitude to the active bus using the value given at the argument."""
+        """Sets the GIS latitude to the active bus using the value given at the argument."""
         latitude_param = Base._check_float_param(latitude_param)
         return self._dss_obj.BUSF(13, ctypes.c_double(latitude_param))
 
     def _longitude(self) -> float:
-        """This parameter returns the GIS longitude assigned to the active bus (if any)."""
+        """Returns the GIS longitude assigned to the active bus (if any)."""
         return self._dss_obj.BUSF(14, 0)
 
     def _longitude_write(self, longitude_param: float) -> float:
-        """This parameter sets the GIS longitude to the active bus using the value given at the argument."""
+        """Sets the GIS longitude to the active bus using the value given at the argument."""
         longitude_param = Base._check_float_param(longitude_param)
         return self._dss_obj.BUSF(15, ctypes.c_double(longitude_param))
