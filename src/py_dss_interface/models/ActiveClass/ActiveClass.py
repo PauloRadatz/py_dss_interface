@@ -19,7 +19,7 @@ class ActiveClass(ActiveClassS, ActiveClassI, ActiveClassV):
     ActiveClassS, ActiveClassI, ActiveClassV.
 
     Args:
-        obj_dss: The COM object that provides access to the OpenDSS engine.
+        obj_dss: The object that provides access to the OpenDSS engine.
     """
 
     def __init__(self, obj_dss):
@@ -33,8 +33,7 @@ class ActiveClass(ActiveClassS, ActiveClassI, ActiveClassV):
 
     def next(self) -> int:
         """Sets next element in the active class to be the active DSS object.
-        If object is a CktElement, ActiveCktElement also points to this element.
-        Returns 0 if none."""
+        If object is a CktElement, ActiveCktElement also points to this element. Returns 0 if none."""
         return ActiveClassI._next(self)
 
     @property
@@ -49,12 +48,12 @@ class ActiveClass(ActiveClassS, ActiveClassI, ActiveClassV):
 
     @property
     def name(self) -> str:
-        """Gets the name of the active Element of the Active class."""
+        """Gets the name of the active Element of the Active class.
+        Sets the name of the active Element of the Active class."""
         return ActiveClassS._name(self)
 
     @name.setter
     def name(self, argument: str):
-        """Sets the name of the active Element of the Active class."""
         ActiveClassS._name_write(self, argument)
 
     @property
@@ -69,6 +68,6 @@ class ActiveClass(ActiveClassS, ActiveClassI, ActiveClassV):
 
     @property
     def names(self) -> List[str]:
-        """Gets a list of all element names in the active Class."""
+        """Gets a variant array of strings consisting of all element names in the active Class."""
         return ActiveClassV._names(self)
 
