@@ -27,47 +27,26 @@ class LineCodesI(Base):
     """
 
     def _count(self) -> int:
-        """Gets the number of Line Objects in Active Circuit."""
         return self._dss_obj.LineCodesI(ctypes.c_int32(0), ctypes.c_int32(0))
 
     def _first(self) -> int:
-        """Sets the first element active. Returns 0 if no lines. Otherwise, index of the line element."""
         return self._dss_obj.LineCodesI(ctypes.c_int32(1), ctypes.c_int32(0))
 
     def _next(self) -> int:
-        """Sets the next element active. Returns 0 if no lines. Otherwise, index of the line element."""
         return self._dss_obj.LineCodesI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def _units_read(self) -> int:
-        """Delivers the units of the active LineCode as an integer."""
         return self._dss_obj.LineCodesI(ctypes.c_int32(3), ctypes.c_int32(0))
 
     def _units_write(self, argument: int) -> int:
-        """Sets the units of the active LineCode. The units must be specified as an integer in the argument.
-        Please refer to the OpenDSS User manual for more information.
-        UNITS_MAXNUM =9;
-        UNITS_NONE   =0;
-        UNITS_MILES =1;
-        UNITS_KFT   =2;
-        UNITS_KM    =3;
-        UNITS_M     =4;
-        UNITS_FT    =5;
-        UNITS_IN    =6;
-        UNITS_CM    =7;
-        UNITS_MM    =8;
-        """
         argument = Base._check_int_param(argument)
         return self._dss_obj.LineCodesI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
     def _phases_read(self) -> int:
-        """Delivers the number of phases of the active LineCode as an integer."""
         return self._dss_obj.LineCodesI(ctypes.c_int32(5), ctypes.c_int32(0))
 
     def _phases_write(self, argument) -> int:
-        """Sets the number of phases of the active LineCode. The units must be specified as an integer in the
-        argument. """
         return self._dss_obj.LineCodesI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
     def _is_z1z0(self) -> int:
-        """Gets the flag (Boolean 1/0) denoting whether the impedance data were entered in symmetrical components."""
         return self._dss_obj.LineCodesI(ctypes.c_int32(7), ctypes.c_int32(0))
