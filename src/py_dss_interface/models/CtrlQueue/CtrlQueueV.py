@@ -22,10 +22,7 @@ class CtrlQueueV(Base):
     """
 
     def _ctrlqueue(self) -> List[str]:
-        """Delivers the control actions contained in the CtrlQueue after the latest solve command."""
         return Bridge.variant_pointer_read(self._dss_obj.CtrlQueueV, 0)
 
     def _push(self, arg: List[float]) -> List[float]:
-        """Pushes a control action onto the DSS control queue by time, action code, and device handle. Returns
-        Control Queue handle. """
         return Bridge.variant_pointer_write(self._dss_obj.CtrlQueueV, 1, arg)
