@@ -7,11 +7,11 @@ environment:
 #      PYTHON_HOME: C:\Python36
 #      PYTHON_VERSION: '3.6'
 #      PYTHON_ARCH: '32'
-    - TOXENV: py36,codecov
-      TOXPYTHON: C:\Python36-x64\python.exe
-      PYTHON_HOME: C:\Python36-x64
-      PYTHON_VERSION: '3.6'
-      PYTHON_ARCH: '64'
+#    - TOXENV: py36,codecov
+#      TOXPYTHON: C:\Python36-x64\python.exe
+#      PYTHON_HOME: C:\Python36-x64
+#      PYTHON_VERSION: '3.6'
+#      PYTHON_ARCH: '64'
 #    - TOXENV: py37,codecov
 #      TOXPYTHON: C:\Python37\python.exe
 #      PYTHON_HOME: C:\Python37
@@ -32,6 +32,21 @@ environment:
       PYTHON_HOME: C:\Python38-x64
       PYTHON_VERSION: '3.8'
       PYTHON_ARCH: '64'
+    - TOXENV: py39,codecov
+      TOXPYTHON: C:\Python39-x64\python.exe
+      PYTHON_HOME: C:\Python39-x64
+      PYTHON_VERSION: '3.9'
+      PYTHON_ARCH: '64'
+    - TOXENV: py310,codecov
+        TOXPYTHON: C:\Python310-x64\python.exe
+        PYTHON_HOME: C:\Python310-x64
+        PYTHON_VERSION: '3.10'
+        PYTHON_ARCH: '64'
+    - TOXENV: py311,codecov
+        TOXPYTHON: C:\Python311-x64\python.exe
+        PYTHON_HOME: C:\Python311-x64
+        PYTHON_VERSION: '3.11'
+        PYTHON_ARCH: '64'
 init:
   - ps: echo $env:TOXENV
   - ps: ls C:\Python*
