@@ -5,7 +5,7 @@ import os
 import pathlib
 
 from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, Base
-from . import DSSExecutive, DSSInterface, DSSProgress, DSSProperties, ErrorOpenDSS, Fuses, Generators, ISources
+from . import DSSExecutive, DSSInterface, DSSProperties, ErrorOpenDSS, Fuses, Generators, ISources
 from . import LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reclosers
 from . import Relays, RegControls, Sensors, Settings, Solution, SwtControls, Text, Topology, Transformers, VSources
 from . import XYCurves
@@ -77,7 +77,7 @@ class DSS:
                 self.dsselement = DSSElement(self._dss_obj)
                 self.dssexecutive = DSSExecutive(self._dss_obj)
                 self.dssinterface = DSSInterface(self._dss_obj)
-                self.dssprogress = DSSProgress(self._dss_obj)
+                # self.dssprogress = DSSProgress(self._dss_obj)
                 self.dssproperties = DSSProperties(self._dss_obj)
                 self.errorinterface = DSSInterface(self._dss_obj)
                 self.fuses = Fuses(self._dss_obj)

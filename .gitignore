@@ -9,8 +9,9 @@ env
 *.DSV
 *.dbl
 # Results Generated in Text File
-tests/py_dss_interface/13Bus/*.csv
-tests/py_dss_interface/13Bus/*.txt
+tests/py_dss_interface/case/13Bus/*.csv
+tests/py_dss_interface/case/13Bus/*.txt
+
 # Packages
 *.egg
 *.egg-info
@@ -58,8 +59,6 @@ htmlcov
 output/*.html
 output/*/index.html
 
-# Sphinx
-docs/_build
 
 .DS_Store
 *~
@@ -81,7 +80,6 @@ docs/_build
 .vscode
 
 # Environment
-env
 tests/py_dss_interface/cases/13Bus/IEEE13Node_BusXY.csv
 tests/py_dss_interface/cases/13Bus/IEEE13Nodeckt_EXP_SEQVOLTAGES.CSV
 tests/py_dss_interface/cases/13Bus/IEEE13Nodeckt_VLL.Txt

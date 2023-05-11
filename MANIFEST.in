@@ -7,6 +7,9 @@ include .bumpversion.cfg
 include .coveragerc
 include .cookiecutterrc
 include .editorconfig
+include *.ipynb
+include *.txt
+include *.pdf
 
 include AUTHORS.rst
 include CHANGELOG.rst

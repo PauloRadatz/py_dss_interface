@@ -24,6 +24,7 @@ class SwtControls(SwtControlsS, SwtControlsV, SwtControlsI, SwtControlsF):
     def delay(self) -> float:
         """Gets the time delay [s] between arming and opening or closing the switch.
                 Control may reset before actually operating the switch.
+
         Sets sets the time delay [s] between arming and opening or closing the switch.
         Control may reset before actually operating the switch."""
         return SwtControlsF._delay_read(self)
@@ -44,6 +45,7 @@ class SwtControls(SwtControlsS, SwtControlsV, SwtControlsI, SwtControlsF):
     def action(self) -> int:
         """Gets the open (1) or close (2) action of the switch. No effect if switch is locked.
                 However, reset removes any lock and then closes the switch (shelf state). 0 = none action.
+
         Sets open (1) or close (2) the switch. No effect if switch is locked. However,
         reset removes any lock and then closes the switch (shelf state). 0 = none action (see manual for details). """
         return SwtControlsI._action_read(self)
@@ -55,6 +57,7 @@ class SwtControls(SwtControlsS, SwtControlsV, SwtControlsI, SwtControlsF):
     @property
     def is_locked(self) -> int:
         """Gets the lock state: {1 locked | 0 not locked}.
+
         Sets the lock to prevent both manual and automatic switch operation. """
         return SwtControlsI._is_locked_read(self)
 
@@ -65,6 +68,7 @@ class SwtControls(SwtControlsS, SwtControlsV, SwtControlsI, SwtControlsF):
     @property
     def switched_term(self) -> int:
         """Gets the terminal number where the switch is located on the SwitchedObj.
+
         Sets the terminal number where the switch is located on the SwitchedObj. """
         return SwtControlsI._switched_term_read(self)
 
@@ -80,6 +84,7 @@ class SwtControls(SwtControlsS, SwtControlsV, SwtControlsI, SwtControlsF):
     @property
     def name(self) -> str:
         """Gets the active swtcontrol name.
+
         Sets the active swtcontrol by name."""
         return SwtControlsS._name_read(self)
 
@@ -90,6 +95,7 @@ class SwtControls(SwtControlsS, SwtControlsV, SwtControlsI, SwtControlsF):
     @property
     def switched_obj(self) -> str:
         """Gets the name of the switched object by the active SwtControl.
+
         Sets the switched object by name."""
         return SwtControlsS._switched_obj_read(self)
 

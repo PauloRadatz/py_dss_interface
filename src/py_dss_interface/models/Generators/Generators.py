@@ -31,6 +31,7 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     @property
     def forced_on(self) -> int:
         """Returns 1 if the generator is forced ON regardless of other dispatch criteria; otherwise, returns 0.
+
         Allows to force ON regardless of other dispatch criteria. To force ON put 1 in the argument, otherwise put
                 0. """
         return GeneratorsI._forced_on(self)
@@ -42,6 +43,7 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     @property
     def idx(self) -> int:
         """Gets the active generator by Index into generators list. 1..Count.
+
         Sets the active generator (argument) by Index into generators list. 1..Count."""
         return GeneratorsI._idx(self)
 
@@ -52,6 +54,7 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     @property
     def kv(self) -> float:
         """Gets the voltage base for the active generator, kV.
+
         Sets the voltage base for the active generator, kV."""
         return GeneratorsF._kv(self)
 
@@ -62,6 +65,7 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     @property
     def kva(self) -> float:
         """Gets the KVA rating of the generator.
+
         Sets the KVA rating of the generator."""
         return GeneratorsF._kva_rated(self)
 
@@ -72,6 +76,7 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     @property
     def kvar(self) -> float:
         """Gets the kvar output for the active generator, kW is updated for current power factor.
+
         Sets the kvar output for the active generator, kW is updated for current power factor."""
         return GeneratorsF._kvar(self)
 
@@ -82,6 +87,7 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     @property
     def kw(self) -> float:
         """Gets the kW output for the active generator, kvar is updated for current power factor.
+
         Sets the kW output for the active generator, kvar is updated for current power factor."""
         return GeneratorsF._kw(self)
 
@@ -118,6 +124,7 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     @property
     def name(self) -> str:
         """Gets the name of the active Generator.
+
         Sets the name of the active Generator."""
         return GeneratorsS._name(self)
 
@@ -137,6 +144,7 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     @property
     def pf(self) -> float:
         """Gets the power factor (pos. = producing vars). Updates kvar based on present kW value.
+
         Sets the power factor (pos. = producing vars). Updates kvar based on present kW value."""
         return GeneratorsF._pf(self)
 
@@ -151,6 +159,7 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     @phases.setter
     def phases(self, value: int):
         """Returns the number of phases of the active generator.
+
         Sets the number of phases (argument) of the active generator."""
         GeneratorsI._phases_write(self, value)
 
@@ -167,6 +176,7 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     @property
     def vmax_pu(self) -> float:
         """Gets the Vmaxpu for Generator Model.
+
         Sets the Vmaxpu for Generator Model."""
         return GeneratorsF._vmax_pu(self)
 
@@ -177,6 +187,7 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
     @property
     def vmin_pu(self) -> float:
         """Gets the Vminpu for Generator Model.
+
         Sets the Vminpu for Generator Model."""
         return GeneratorsF._vmin_pu(self)
 

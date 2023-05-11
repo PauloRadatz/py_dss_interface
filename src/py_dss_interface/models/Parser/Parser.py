@@ -49,6 +49,7 @@ class Parser(ParserI, ParserS, ParserF, ParserV):
     def auto_increment(self) -> int:
         """In this parameter the default is false (0). If true (1) parser automatically advances to next token after
                  DblValue, IntValue, or StrValue. Simpler when you don't need to check for parameter names.
+
         In this parameter the default is false (0). If true (1) parser automatically advances to next token after
                  DblValue, IntValue, or StrValue. Simpler when you don't need to check for parameter names."""
         return ParserI._auto_increment_read(self)
@@ -61,6 +62,7 @@ class Parser(ParserI, ParserS, ParserF, ParserV):
     def cmd_string(self) -> str:
         """Gets a string to be parsed. Loading this string resets the parser to the beginning of the line.
                 Then parse off the tokens in sequence.
+
         Sets a string to be parsed. Loading this string resets the parser to the beginning of the line.
         Then parse off the tokens in sequence."""
         return ParserS._cmd_string_read(self)
@@ -82,6 +84,7 @@ class Parser(ParserI, ParserS, ParserF, ParserV):
     @property
     def white_space(self) -> str:
         """Gets the characters used for White space in the command string. Default in blank and Tab.
+
         Sets the characters used for White space in the command string. Default in blank and Tab."""
         return ParserS._white_space_read(self)
 
@@ -93,6 +96,7 @@ class Parser(ParserI, ParserS, ParserF, ParserV):
     def begin_quote(self) -> str:
         """Gets the string containing the characters for quoting in OpenDSS scripts. Matching pairs defined in EndQuote.
                  Default is "([{.
+
         Sets the string containing the characters for quoting in OpenDSS scripts. Matching pairs defined in EndQuote.
          Default is "([{."""
         return ParserS._begin_quote_read(self)
@@ -105,6 +109,7 @@ class Parser(ParserI, ParserS, ParserF, ParserV):
     def end_quote(self) -> str:
         """Gets the string containing the characters, in order, that match the beginning quote characters in BeginQuote.
                  Default is ")]}.
+
         Sets the string containing the characters, in order, that match the beginning quote characters in BeginQuote.
          Default is ")]}."""
         return ParserS._end_quote_read(self)
@@ -117,6 +122,7 @@ class Parser(ParserI, ParserS, ParserF, ParserV):
     def delimiters(self) -> str:
         """Gets the string defining hard delimiters used to separate token on the command string. Default is ,
                 and =. The = separates token name from token value. These override whitespaces to separate tokens.
+
         Sets the string defining hard delimiters used to separate token on the command string. Default is ,
         and =. The = separates token name from token value. These override whitespace to separate tokens. """
         return ParserS._delimiters_read(self)

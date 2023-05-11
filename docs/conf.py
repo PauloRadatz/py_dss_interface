@@ -39,7 +39,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
     'sphinx.ext.viewcode',
-    'sphinx.ext.autodoc',
+    'sphinx.ext.autodoc'
 ] # TODO https://stackoverflow.com/questions/25012658/read-the-docs-not-working-with-automodule
 
 pygments_style = 'trac'

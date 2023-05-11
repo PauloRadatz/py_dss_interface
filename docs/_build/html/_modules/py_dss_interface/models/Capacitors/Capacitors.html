@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>py_dss_interface.models.Capacitors.Capacitors &mdash; py_dss_interface 2.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> py_dss_interface
+          </a>
+              <div class="version">
+                2.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">How to Use py-dss-interface Python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#indices-and-tables">Indices and Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">py_dss_interface</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>py_dss_interface.models.Capacitors.Capacitors</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for py_dss_interface.models.Capacitors.Capacitors</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- encoding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> Created by eniocc at 11/10/2020</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Capacitors.CapacitorsF</span> <span class="kn">import</span> <span class="n">CapacitorsF</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Capacitors.CapacitorsI</span> <span class="kn">import</span> <span class="n">CapacitorsI</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Capacitors.CapacitorsS</span> <span class="kn">import</span> <span class="n">CapacitorsS</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Capacitors.CapacitorsV</span> <span class="kn">import</span> <span class="n">CapacitorsV</span>
+
+
+<div class="viewcode-block" id="Capacitors"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Capacitors.Capacitors.Capacitors">[docs]</a><span class="k">class</span> <span class="nc">Capacitors</span><span class="p">(</span><span class="n">CapacitorsF</span><span class="p">,</span> <span class="n">CapacitorsI</span><span class="p">,</span> <span class="n">CapacitorsS</span><span class="p">,</span> <span class="n">CapacitorsV</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This interface implements the Capacitors (ICapacitors) interface of OpenDSS by declaring 4 procedures for</span>
+<span class="sd">    accessing the different properties included in this interface: CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_dss</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">obj_dss</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the number of steps (defaults 1) for distributing and switching the total bank kvar.</span>
+
+<span class="sd">        Sets the number of steps (defaults 1) for distributing and switching the total bank kvar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">_num_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@num_steps</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">num_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">_num_steps_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets 1 if delta connection, otherwise will return 0 for distributing and switching the total kvar.</span>
+
+<span class="sd">        Sets (Argument) 1 if delta connection, otherwise will return 0 for distributing and switching the total</span>
+<span class="sd">        kvar.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">is_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@is_delta</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">is_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">_is_delta_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the number of capacitor objects in active circuit.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">_count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">available_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the number of steps available in cap bank to be switched ON.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">_available_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Capacitors.open_all_steps"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Capacitors.Capacitors.Capacitors.open_all_steps">[docs]</a>    <span class="k">def</span> <span class="nf">open_all_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Opens all steps, all phases of the capacitor.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">_open_all_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Capacitors.close_all_steps"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Capacitors.Capacitors.Capacitors.close_all_steps">[docs]</a>    <span class="k">def</span> <span class="nf">close_all_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Closes all steps, all phases of the capacitor.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">_close_all_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">kv</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the bank rating. Use LL for 2 or 3 phases, or actual can rating for 1 phase.</span>
+
+<span class="sd">        Sets the bank rating. Use LL for 2 or 3 phases, or actual can rating for 1 phase. There is not a explicit</span>
+<span class="sd">        return type in the oficial documentation, because of this we choose not put a explicit return too.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsF</span><span class="o">.</span><span class="n">_kv</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@kv</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">kv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">CapacitorsF</span><span class="o">.</span><span class="n">_kv_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">kvar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the total bank kvar, distributed equally among phases and steps.</span>
+
+<span class="sd">        Sets the total bank kvar, distributed equally among phases and steps. There is not a explicit return type</span>
+<span class="sd">        in the oficial documentation, because of this we choose not put a explicit return too. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsF</span><span class="o">.</span><span class="n">_kvar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@kvar</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">kvar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">CapacitorsF</span><span class="o">.</span><span class="n">_kvar_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the name of the active Capacitor element.</span>
+
+<span class="sd">        Sets the name of the Capacitor element to set it active. There is not a explicit return type in the</span>
+<span class="sd">        oficial documentation, because of this we choose not put a explicit return too.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsS</span><span class="o">.</span><span class="n">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">CapacitorsS</span><span class="o">.</span><span class="n">_name_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets a variant array of strings with all Capacitor names in the circuit.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsV</span><span class="o">.</span><span class="n">_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">states</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets a variant array of integers [0..numsteps-1] indicating the state of each step.</span>
+<span class="sd">                If value is -1 and error has occurred.</span>
+
+<span class="sd">        Sets a variant array of integers [0..numsteps-1] indicating the state of each step. If value is -1 and</span>
+<span class="sd">        error has occurred.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsV</span><span class="o">.</span><span class="n">_states_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@states</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">states</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+        <span class="n">CapacitorsV</span><span class="o">.</span><span class="n">_states_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Capacitors.first"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Capacitors.Capacitors.Capacitors.first">[docs]</a>    <span class="k">def</span> <span class="nf">first</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the first capacitor active. Returns 0 if no more.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">_first</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Capacitors.next"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Capacitors.Capacitors.Capacitors.next">[docs]</a>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the next capacitor active. Returns 0 if no more.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">_next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Capacitors.add_step"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Capacitors.Capacitors.Capacitors.add_step">[docs]</a>    <span class="k">def</span> <span class="nf">add_step</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds one step of the capacitor if available. If successful returns 1.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">_add_step</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Capacitors.subtract_step"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Capacitors.Capacitors.Capacitors.subtract_step">[docs]</a>    <span class="k">def</span> <span class="nf">subtract_step</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subtracts one step of the capacitor if available. If no more steps, returns 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CapacitorsI</span><span class="o">.</span><span class="n">_subtract_step</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Paulo Radatz, Ênio Viana, Rodolfo Londero.
+      <span class="lastupdated">Last updated on May 11, 2023.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

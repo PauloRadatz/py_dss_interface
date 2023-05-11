@@ -18,7 +18,7 @@ class TestSensors13Bus:
                  "terminal=1 "
                  "kVBase=4.16 "
                  "conn=delta ")
-        dss.solution.solve
+        dss.solution.solve()
         dss.sensors.name = "Sensor1"
 
         return dss
