@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>py_dss_interface.models.Parallel.Parallel &mdash; py_dss_interface 2.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> py_dss_interface
+          </a>
+              <div class="version">
+                2.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">How to Use py-dss-interface Python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#indices-and-tables">Indices and Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">py_dss_interface</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>py_dss_interface.models.Parallel.Parallel</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for py_dss_interface.models.Parallel.Parallel</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- encoding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> Created by eniocc at 11/10/2020</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Parallel.ParallelI</span> <span class="kn">import</span> <span class="n">ParallelI</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Parallel.ParallelV</span> <span class="kn">import</span> <span class="n">ParallelV</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<div class="viewcode-block" id="Parallel"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Parallel.Parallel.Parallel">[docs]</a><span class="k">class</span> <span class="nc">Parallel</span><span class="p">(</span><span class="n">ParallelI</span><span class="p">,</span> <span class="n">ParallelV</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    These interfaces allows users to use the parallel processing features included in OpenDSS-PM. With this interface</span>
+<span class="sd">    it is possible to create multiple actors, specify the CPU where the actor will be executed, control the execution</span>
+<span class="sd">    of the actors, check the actors status and progress among many other functionalities.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_dss</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">obj_dss</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_cpus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of CPUs available in the local computer.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParallelI</span><span class="o">.</span><span class="n">_num_cpus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_cores</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of physical cores available in the local computer. If your computer has less than 64</span>
+<span class="sd">                Cores, this number should be the number of CPUs/2. For more information, please check:</span>
+<span class="sd">                https://www.howtogeek.com/194756/cpu-basics-multiple-cpus-cores-and-hyper-threading-explained/. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParallelI</span><span class="o">.</span><span class="n">_num_cores</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">active_actor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the ID of the active actor.</span>
+<span class="sd">        Sets the ID of the active actor; this number cannot be higher than the number of existing actors.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParallelI</span><span class="o">.</span><span class="n">_active_actor_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@active_actor</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">active_actor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">ParallelI</span><span class="o">.</span><span class="n">_active_actor_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Parallel.create_actor"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Parallel.Parallel.Parallel.create_actor">[docs]</a>    <span class="k">def</span> <span class="nf">create_actor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new actor and sets the active actor ID as the ID for the recently created actor. If there are no</span>
+<span class="sd">                more CPUs available, the system will not allow the creation of the new actor. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParallelI</span><span class="o">.</span><span class="n">_create_actor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">actor_cpu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the ID of the CPU assigned for the execution of the active actor.</span>
+
+<span class="sd">        Sets the CPU for the execution of the active actor.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParallelI</span><span class="o">.</span><span class="n">_actor_cpu_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@actor_cpu</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">actor_cpu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">ParallelI</span><span class="o">.</span><span class="n">_actor_cpu_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_actors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the number of actors created in the actual session.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParallelI</span><span class="o">.</span><span class="n">_num_actors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Parallel.wait"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Parallel.Parallel.Parallel.wait">[docs]</a>    <span class="k">def</span> <span class="nf">wait</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Waits until all the actors are free and ready to receive a new command.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParallelI</span><span class="o">.</span><span class="n">_wait</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">active_parallel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets if the parallel features of OpenDSS-PM are active. If active, this parameter will return 1, otherwise,</span>
+<span class="sd">                 will return 0 and OpenDSS-PM will behave sequentially.</span>
+
+<span class="sd">        Sets enables/disables the parallel features of OpenDSS-PM. To enable set the argument in 1, otherwise,</span>
+<span class="sd">        the argument should be 0 and OpenDSS-PM will behave sequentially. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParallelI</span><span class="o">.</span><span class="n">_active_parallel_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@active_parallel</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">active_parallel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">ParallelI</span><span class="o">.</span><span class="n">_active_parallel_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">concatenate_reportsl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the state of the ConcatenateReports property of OpenDSS-PM. If 1, means that every time the user</span>
+<span class="sd">                executes a Show/Export monitor operation, the data stored on the monitors with the same name for each actor</span>
+<span class="sd">                will be concatenated one after the other. Otherwise (0), to get access of each monitor the user will have to</span>
+<span class="sd">                activate the actor of interest and then perform the Show/Export command on the desired monitor.</span>
+
+<span class="sd">        Sets the state of the ConcatenateReports property of OpenDSS-PM. If 1, means that every time the user</span>
+<span class="sd">        executes a Show/Export monitor operation, the data stored on the monitors with the same name for each actor</span>
+<span class="sd">        will be concatenated one after the other. Otherwise (0), to get access of each monitor the user will have to</span>
+<span class="sd">        activate the actor of interest and then perform the Show/Export command on the desired monitor. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParallelI</span><span class="o">.</span><span class="n">_concatenate_reportsl_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@concatenate_reportsl</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">concatenate_reportsl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">ParallelI</span><span class="o">.</span><span class="n">_concatenate_reportsl_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">actor_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of integers containing the progress in percentage for each active actor.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParallelV</span><span class="o">.</span><span class="n">_actor_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">actor_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of integers containing the status of each active actor. If 1, the actor is ready to</span>
+<span class="sd">                receive new commands, if 0, the actor is busy performing a simulation and cannot take new ?solve? commands at</span>
+<span class="sd">                this time. However, the actor is capable to deliver values while the simulation is being performed. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParallelV</span><span class="o">.</span><span class="n">_actor_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Paulo Radatz, Ênio Viana, Rodolfo Londero.
+      <span class="lastupdated">Last updated on May 11, 2023.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

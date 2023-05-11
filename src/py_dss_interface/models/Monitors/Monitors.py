@@ -49,31 +49,49 @@ class Monitors(MonitorsI, MonitorsV, MonitorsS):
     @property
     def mode(self) -> int:
         """Returns the monitor mode (bitmask integer - see DSS Help).
+
         Sets the monitor mode (bitmask integer - see DSS Help).
+
         Bitmask integer designating the values the monitor is to capture:
-        0 = Voltages and currents at designated terminal
-        1 = Powers at designated terminal
-        2 = Tap Position (Transformer Device only)
-        3 = State Variables (PCElements only)
-        4 = Flicker level and severity index (Pst) for voltages. No adders apply.
-            Flicker level at simulation time step, Pst at 10-minute time step.
-        5 = Solution variables (Iterations, etc).
-        Normally, these would be actual phasor quantities from solution.
-        6 = Capacitor Switching (Capacitors only)
-        7 = Storage state vars (Storage device only)
-        8 = All winding currents (Transformer device only)
-        9 = Losses, watts and var (of monitored device)
-        10 = All Winding voltages (Transformer device only)
-        Normally, these would be actual phasor quantities from solution.
-        11 = All terminal node voltages and line currents of monitored device
-        Combine mode with adders below to achieve other results for terminal quantities:
-        +16 = Sequence quantities
-        +32 = Magnitude only
-        +64 = Positive sequence only or avg of all phases
+
+            0 = Voltages and currents at designated terminal
+
+            1 = Powers at designated terminal
+
+            2 = Tap Position (Transformer Device only)
+            3 = State Variables (PCElements only)
+
+            4 = Flicker level and severity index (Pst) for voltages. No adders apply.
+                Flicker level at simulation time step, Pst at 10-minute time step.
+
+            5 = Solution variables (Iterations, etc).
+            Normally, these would be actual phasor quantities from solution.
+
+            6 = Capacitor Switching (Capacitors only)
+
+            7 = Storage state vars (Storage device only)
+
+            8 = All winding currents (Transformer device only)
+
+            9 = Losses, watts and var (of monitored device)
+
+            10 = All Winding voltages (Transformer device only)
+            Normally, these would be actual phasor quantities from solution.
+
+            11 = All terminal node voltages and line currents of monitored device
+            Combine mode with adders below to achieve other results for terminal quantities:
+
+            +16 = Sequence quantities
+
+            +32 = Magnitude only
+
+            +64 = Positive sequence only or avg of all phases
 
         Mix adder to obtain desired results. For example:
-        Mode=112 will save positive sequence voltage and current magnitudes only
-        Mode=48 will save all sequence voltages and currents, but magnitude only.
+
+            Mode=112 will save positive sequence voltage and current magnitudes only
+
+            Mode=48 will save all sequence voltages and currents, but magnitude only.
         """
         return MonitorsI._mode(self)
 
@@ -125,6 +143,7 @@ class Monitors(MonitorsI, MonitorsV, MonitorsS):
     @property
     def terminal(self) -> int:
         """Returns the terminal number of element being monitored.
+
         Sets sets the terminal number of element being monitored."""
         return MonitorsI._terminal(self)
 
@@ -140,6 +159,7 @@ class Monitors(MonitorsI, MonitorsV, MonitorsS):
     @property
     def name(self) -> str:
         """Returns the active Monitor object by name.
+
         Sets the active Monitor object by name."""
         return MonitorsS._name_read(self)
 
@@ -150,6 +170,7 @@ class Monitors(MonitorsI, MonitorsV, MonitorsS):
     @property
     def element(self) -> str:
         """Returns the full name of element being monitored by the active Monitor.
+
         Sets the full name of element being monitored by the active Monitor."""
         return MonitorsS._element_read(self)
 

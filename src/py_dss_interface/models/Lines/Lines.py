@@ -21,6 +21,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def length(self) -> float:
         """Gets the length of line section in units compatible with the LineCode definition.
+
         Sets the length of line section in units compatible with the LineCode definition."""
         return LinesF._length_read(self)
 
@@ -31,6 +32,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def r1(self) -> float:
         """Gets the positive sequence resistance, ohm per unit length.
+
         Sets the positive sequence resistance, ohm per unit length."""
         return LinesF._r1_read(self)
 
@@ -41,6 +43,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def x1(self) -> float:
         """Gets the positive sequence reactance, ohm per unit length.
+
         Sets the positive sequence reactance, ohm per unit length."""
         return LinesF._x1_read(self)
 
@@ -51,6 +54,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def r0(self) -> float:
         """Gets the zero sequence resistance, ohm per unit length.
+
         Sets the zero sequence resistance, ohm per unit length."""
         return LinesF._r0_read(self)
 
@@ -61,6 +65,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def x0(self) -> float:
         """Gets the zero sequence reactance, ohm per unit length.
+
         Sets the zero sequence reactance, ohm per unit length."""
         return LinesF._x0_read(self)
 
@@ -71,6 +76,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def c1(self) -> float:
         """Gets the positive sequence capacitance, nanofarads per unit length.
+
         Sets the positive sequence capacitance, nanofarads per unit length."""
         return LinesF._c1_read(self)
 
@@ -81,6 +87,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def c0(self) -> float:
         """Gets the zero sequence capacitance, nanofarads per unit length.
+
         Sets the zero sequence capacitance, nanofarads per unit length."""
         return LinesF._c0_read(self)
 
@@ -91,6 +98,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def norm_amps(self) -> float:
         """Gets the normal ampere rating of line section.
+
         Sets the normal ampere rating of Line."""
         return LinesF._norm_amps_read(self)
 
@@ -101,6 +109,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def emerg_amps(self) -> float:
         """Gets the emergency (maximum) ampere rating of Line.
+
         Sets the emergency (maximum) ampere rating of Line."""
         return LinesF._emerg_amps_read(self)
 
@@ -111,6 +120,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def rg(self) -> float:
         """Gets the earth return value used to compute line impedance's at power frequency.
+
         Sets the earth return value used to compute line impedances at power frequency."""
         return LinesF._rg_read(self)
 
@@ -121,6 +131,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def xg(self) -> float:
         """Gets the earth return reactance value used to compute line impedances at power frequency.
+
         Sets the earth return reactance value used to compute line impedances at power frequency."""
         return LinesF._xg_read(self)
 
@@ -131,6 +142,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def rho(self) -> float:
         """Gets the earth resistivity, m-ohms.
+
         Sets the earth resistivity, m-ohms."""
         return LinesF._rho_read(self)
 
@@ -159,6 +171,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def units(self) -> int:
         """Gets the units of the line (distance, check manual for details).
+
         Sets the units of the line (distance, check manual for details).
                 units: {none | mi|kft|km|m|Ft|in|cm }
                 UNITS_MAXNUM =9;
@@ -181,6 +194,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def phases(self) -> int:
         """Gets the number of phases of the active line object.
+
         Sets the number of phases of the active line object."""
         return LinesI._phases_read(self)
 
@@ -211,6 +225,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def bus1(self) -> str:
         """Gets the name of bus for terminal 1.
+
         Sets the name of bus for terminal 1."""
         return LinesS._bus1_read(self)
 
@@ -221,6 +236,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def bus2(self) -> str:
         """Gets the name of bus for terminal 2.
+
         Sets the name of bus for terminal 2."""
         return LinesS._bus2_read(self)
 
@@ -231,6 +247,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def linecode(self) -> str:
         """Gets the name of LineCode object that defines the impedances.
+
         Sets the name of LineCode object that defines the impedances."""
         return LinesS._linecode_read(self)
 
@@ -241,6 +258,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def geometry(self) -> str:
         """Gets the name of the Line geometry code.
+
         Sets the name of the Line geometry code."""
         return LinesS._geometry_read(self)
 
@@ -251,6 +269,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def spacing(self) -> str:
         """Gets the name of the Line spacing code.
+
         Sets the name of the Line spacing code."""
         return LinesS._spacing_read(self)
 
@@ -261,6 +280,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def rmatrix(self) -> List[float]:
         """Gets the resistance matrix (full), ohms per unit length. Variant array of doubles.
+
         Sets the resistance matrix (full), ohms per unit length. Variant array of doubles."""
         return LinesV._rmatrix_read(self)
 
@@ -271,6 +291,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def xmatrix(self) -> List[float]:
         """Gets the reactance matrix (full), ohms per unit length. Variant array of doubles.
+
         Sets the reactance matrix (full), ohms per unit length. Variant array of doubles."""
         return LinesV._xmatrix_read(self)
 
@@ -281,6 +302,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def cmatrix(self) -> List[float]:
         """Gets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles.
+
         Sets the capacitance matrix (full), nanofarads per unit length. Variant array of doubles."""
         return LinesV._cmatrix_read(self)
 
@@ -296,6 +318,7 @@ class Lines(LinesV, LinesS, LinesI, LinesF):
     @property
     def yprim(self) -> List[float]:
         """Gets the YPrimitive of the active Line.
+
         According to the official documentation this parameter does nothing at present."""
         return LinesV._yprim_read(self)
 

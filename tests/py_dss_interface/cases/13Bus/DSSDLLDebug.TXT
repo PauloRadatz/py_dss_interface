@@ -1,0 +1,146 @@
+Meter, SectionID, BranchName, FaultRate, AccumulatedBrFltRate, BranchFltRate, RepairHrs, NCustomers, Num_Interrupt
+EnergyMeter.em1, 1, Line.671680, 0.1, 20, 20, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.684611, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.684652, 0.1, 16, 16, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.671684, 0.1, 28, 6, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.692675, 0.1, 10, 10, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Line.671692, 0.1, 10.00002, 2E-005, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.670671, 0.1, 84.66002, 26.66, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632670, 0.1, 98.00002, 13.34, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Transformer.xfm1, 0.007, 0, 0, 0, 3, 164.00002 
+EnergyMeter.em1, 1, Line.632633, 0.1, 10, 10, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.645646, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632645, 0.1, 16, 10, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.650632, 0.1, 164.00002, 40, 3, 0, 164.00002 
+Meter, SectionID, NBranches, NCustomers, AvgRepairHrs, AvgRepairMins, FailureRate*RepairtimeHrs, SumFailureRates
+EnergyMeter.em1, 0, 0, 0, 0, 0, 0, 0 
+EnergyMeter.em1, 1, 13, 15, 3, 180, 80688.01968, 26896.00656 
+Meter, SectionID, BranchName, FaultRate, AccumulatedBrFltRate, BranchFltRate, RepairHrs, NCustomers, Num_Interrupt
+EnergyMeter.em1, 1, Line.671680, 0.1, 20, 20, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.684611, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.684652, 0.1, 16, 16, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.671684, 0.1, 28, 6, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.692675, 0.1, 10, 10, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Line.671692, 0.1, 10.00002, 2E-005, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.670671, 0.1, 84.66002, 26.66, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632670, 0.1, 98.00002, 13.34, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Transformer.xfm1, 0.007, 0, 0, 0, 3, 164.00002 
+EnergyMeter.em1, 1, Line.632633, 0.1, 10, 10, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.645646, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632645, 0.1, 16, 10, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.650632, 0.1, 164.00002, 40, 3, 0, 164.00002 
+Meter, SectionID, NBranches, NCustomers, AvgRepairHrs, AvgRepairMins, FailureRate*RepairtimeHrs, SumFailureRates
+EnergyMeter.em1, 0, 0, 0, 0, 0, 0, 0 
+EnergyMeter.em1, 1, 13, 15, 3, 180, 80688.01968, 26896.00656 
+Meter, SectionID, BranchName, FaultRate, AccumulatedBrFltRate, BranchFltRate, RepairHrs, NCustomers, Num_Interrupt
+EnergyMeter.em1, 1, Line.671680, 0.1, 20, 20, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.684611, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.684652, 0.1, 16, 16, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.671684, 0.1, 28, 6, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.692675, 0.1, 10, 10, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Line.671692, 0.1, 10.00002, 2E-005, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.670671, 0.1, 84.66002, 26.66, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632670, 0.1, 98.00002, 13.34, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Transformer.xfm1, 0.007, 0, 0, 0, 3, 164.00002 
+EnergyMeter.em1, 1, Line.632633, 0.1, 10, 10, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.645646, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632645, 0.1, 16, 10, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.650632, 0.1, 164.00002, 40, 3, 0, 164.00002 
+Meter, SectionID, NBranches, NCustomers, AvgRepairHrs, AvgRepairMins, FailureRate*RepairtimeHrs, SumFailureRates
+EnergyMeter.em1, 0, 0, 0, 0, 0, 0, 0 
+EnergyMeter.em1, 1, 13, 15, 3, 180, 80688.01968, 26896.00656 
+Meter, SectionID, BranchName, FaultRate, AccumulatedBrFltRate, BranchFltRate, RepairHrs, NCustomers, Num_Interrupt
+EnergyMeter.em1, 1, Line.671680, 0.1, 20, 20, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.684611, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.684652, 0.1, 16, 16, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.671684, 0.1, 28, 6, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.692675, 0.1, 10, 10, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Line.671692, 0.1, 10.00002, 2E-005, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.670671, 0.1, 84.66002, 26.66, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632670, 0.1, 98.00002, 13.34, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Transformer.xfm1, 0.007, 0, 0, 0, 3, 164.00002 
+EnergyMeter.em1, 1, Line.632633, 0.1, 10, 10, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.645646, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632645, 0.1, 16, 10, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.650632, 0.1, 164.00002, 40, 3, 0, 164.00002 
+Meter, SectionID, NBranches, NCustomers, AvgRepairHrs, AvgRepairMins, FailureRate*RepairtimeHrs, SumFailureRates
+EnergyMeter.em1, 0, 0, 0, 0, 0, 0, 0 
+EnergyMeter.em1, 1, 13, 15, 3, 180, 80688.01968, 26896.00656 
+Meter, SectionID, BranchName, FaultRate, AccumulatedBrFltRate, BranchFltRate, RepairHrs, NCustomers, Num_Interrupt
+EnergyMeter.em1, 1, Line.671680, 0.1, 20, 20, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.684611, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.684652, 0.1, 16, 16, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.671684, 0.1, 28, 6, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.692675, 0.1, 10, 10, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Line.671692, 0.1, 10.00002, 2E-005, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.670671, 0.1, 84.66002, 26.66, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632670, 0.1, 98.00002, 13.34, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Transformer.xfm1, 0.007, 0, 0, 0, 3, 164.00002 
+EnergyMeter.em1, 1, Line.632633, 0.1, 10, 10, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.645646, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632645, 0.1, 16, 10, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.650632, 0.1, 164.00002, 40, 3, 0, 164.00002 
+Meter, SectionID, NBranches, NCustomers, AvgRepairHrs, AvgRepairMins, FailureRate*RepairtimeHrs, SumFailureRates
+EnergyMeter.em1, 0, 0, 0, 0, 0, 0, 0 
+EnergyMeter.em1, 1, 13, 15, 3, 180, 80688.01968, 26896.00656 
+Meter, SectionID, BranchName, FaultRate, AccumulatedBrFltRate, BranchFltRate, RepairHrs, NCustomers, Num_Interrupt
+EnergyMeter.em1, 1, Line.671680, 0.1, 20, 20, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.684611, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.684652, 0.1, 16, 16, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.671684, 0.1, 28, 6, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.692675, 0.1, 10, 10, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Line.671692, 0.1, 10.00002, 2E-005, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.670671, 0.1, 84.66002, 26.66, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632670, 0.1, 98.00002, 13.34, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Transformer.xfm1, 0.007, 0, 0, 0, 3, 164.00002 
+EnergyMeter.em1, 1, Line.632633, 0.1, 10, 10, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.645646, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632645, 0.1, 16, 10, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.650632, 0.1, 164.00002, 40, 3, 0, 164.00002 
+Meter, SectionID, NBranches, NCustomers, AvgRepairHrs, AvgRepairMins, FailureRate*RepairtimeHrs, SumFailureRates
+EnergyMeter.em1, 0, 0, 0, 0, 0, 0, 0 
+EnergyMeter.em1, 1, 13, 15, 3, 180, 80688.01968, 26896.00656 
+Meter, SectionID, BranchName, FaultRate, AccumulatedBrFltRate, BranchFltRate, RepairHrs, NCustomers, Num_Interrupt
+EnergyMeter.em1, 1, Line.671680, 0.1, 20, 20, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.684611, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.684652, 0.1, 16, 16, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.671684, 0.1, 28, 6, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.692675, 0.1, 10, 10, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Line.671692, 0.1, 10.00002, 2E-005, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.670671, 0.1, 84.66002, 26.66, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632670, 0.1, 98.00002, 13.34, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Transformer.xfm1, 0.007, 0, 0, 0, 3, 164.00002 
+EnergyMeter.em1, 1, Line.632633, 0.1, 10, 10, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.645646, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632645, 0.1, 16, 10, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.650632, 0.1, 164.00002, 40, 3, 0, 164.00002 
+Meter, SectionID, NBranches, NCustomers, AvgRepairHrs, AvgRepairMins, FailureRate*RepairtimeHrs, SumFailureRates
+EnergyMeter.em1, 0, 0, 0, 0, 0, 0, 0 
+EnergyMeter.em1, 1, 13, 15, 3, 180, 80688.01968, 26896.00656 
+Meter, SectionID, BranchName, FaultRate, AccumulatedBrFltRate, BranchFltRate, RepairHrs, NCustomers, Num_Interrupt
+EnergyMeter.em1, 1, Line.671680, 0.1, 20, 20, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.684611, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.684652, 0.1, 16, 16, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.671684, 0.1, 28, 6, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.692675, 0.1, 10, 10, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Line.671692, 0.1, 10.00002, 2E-005, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.670671, 0.1, 84.66002, 26.66, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632670, 0.1, 98.00002, 13.34, 3, 3, 164.00002 
+EnergyMeter.em1, 1, Transformer.xfm1, 0.007, 0, 0, 0, 3, 164.00002 
+EnergyMeter.em1, 1, Line.632633, 0.1, 10, 10, 3, 0, 164.00002 
+EnergyMeter.em1, 1, Line.645646, 0.1, 6, 6, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.632645, 0.1, 16, 10, 3, 1, 164.00002 
+EnergyMeter.em1, 1, Line.650632, 0.1, 164.00002, 40, 3, 0, 164.00002 
+Meter, SectionID, NBranches, NCustomers, AvgRepairHrs, AvgRepairMins, FailureRate*RepairtimeHrs, SumFailureRates
+EnergyMeter.em1, 0, 0, 0, 0, 0, 0, 0 
+EnergyMeter.em1, 1, 13, 15, 3, 180, 80688.01968, 26896.00656 
+Meter, SectionID, BranchName, FaultRate, AccumulatedBrFltRate, BranchFltRate, RepairHrs, NCustomers, Num_Interrupt
+EnergyMeter.em1, 1, Line.632670, 0.1, 13.34, 13.34, 3, 3, 79.34 
+EnergyMeter.em1, 1, Transformer.xfm1, 0.007, 0, 0, 0, 3, 79.34 
+EnergyMeter.em1, 1, Line.632633, 0.1, 10, 10, 3, 0, 79.34 
+EnergyMeter.em1, 1, Line.645646, 0.1, 6, 6, 3, 1, 79.34 
+EnergyMeter.em1, 1, Line.632645, 0.1, 16, 10, 3, 1, 79.34 
+EnergyMeter.em1, 1, Line.650632, 0.1, 79.34, 40, 3, 0, 79.34 
+Meter, SectionID, NBranches, NCustomers, AvgRepairHrs, AvgRepairMins, FailureRate*RepairtimeHrs, SumFailureRates
+EnergyMeter.em1, 0, 0, 0, 0, 0, 0, 0 
+EnergyMeter.em1, 1, 6, 8, 3, 180, 18884.5068, 6294.8356 

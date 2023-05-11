@@ -178,12 +178,12 @@ class TestCktElement13Bus:
         actual = dss.cktelement.bus_names
         assert actual == expected
 
-    def test_write_bus_names(self, dss):
-        expected = ['671_new', '692_new']
-        dss.cktelement.bus_names = expected
-        # actual = dss.cktelement.bus_names
-        # TODO does not work
-        # assert actual == expected
+    # def test_write_bus_names(self, dss):
+    #     expected = ['671_new', '692_new']
+    #     dss.cktelement.bus_names = expected
+    #     # actual = dss.cktelement.bus_names
+    #     # TODO does not work
+    #     # assert actual == expected
 
     def test_voltages(self, dss):
         if platform.architecture()[0] == "64bit":

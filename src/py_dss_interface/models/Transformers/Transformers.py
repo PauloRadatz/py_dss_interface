@@ -22,6 +22,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def r(self) -> float:
         """Gets the active winding resistance in %.
+
         Sets the active winding resistance in %."""
         return TransformersF._r_read(self)
 
@@ -32,6 +33,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def tap(self) -> float:
         """Gets the active winding tap in per-unit.
+
         Sets the active winding tap in per-unit."""
         return TransformersF._tap_read(self)
 
@@ -42,6 +44,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def min_tap(self) -> float:
         """Gets the active winding minimum tap in per-unit.
+
         Sets the active winding minimum tap in per-unit."""
         return TransformersF._min_tap_read(self)
 
@@ -52,6 +55,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def max_tap(self) -> float:
         """Gets the active winding maximum tap in per-unit.
+
         Sets the active winding maximum tap in per-unit."""
         return TransformersF._max_tap_read(self)
 
@@ -62,6 +66,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def kv(self) -> float:
         """Gets the active winding kV rating. Phase-phase for 2 or 3 phases, actual winding kV 1 phase transformer.
+
         Sets the active winding kV rating. Phase-phase for 2 or 3 phases, actual winding kV 1 phase transformer."""
         return TransformersF._kv_read(self)
 
@@ -73,6 +78,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     def kva(self) -> float:
         """Gets the active winding kVA rating. On winding 1, this also determines normal and emergency current
                 ratings for all windings.
+
         Sets the active winding kVA rating. On winding 1, this also determines normal and emergency current
         ratings for all windings. """
         return TransformersF._kva_read(self)
@@ -84,6 +90,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def x_neut(self) -> float:
         """Gets the active winding neutral reactance [ohms] for wye connections.
+
         Sets the active winding neutral reactance [ohms] for wye connections."""
         return TransformersF._x_neut_read(self)
 
@@ -94,6 +101,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def r_neut(self) -> float:
         """Gets the active winding neutral resistance [ohms] for wye connections. Set less than zero ungrounded wye.
+
         Sets the active winding neutral resistance [ohms] for wye connections. Set less than zero ungrounded wye."""
         return TransformersF._r_neut_read(self)
 
@@ -105,6 +113,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     def xhl(self) -> float:
         """Gets the percent reactance between windings 1 and 2, on winding 1 kVA base. Use for 2 winding or 3 winding
                 transformers.
+
         Sets the percent reactance between windings 1 and 2, on winding 1 kVA base. Use for 2 winding or 3 winding
         transformers. """
         return TransformersF._xhl_read(self)
@@ -117,6 +126,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     def xht(self) -> float:
         """Gets the percent reactance between windings 1 and 3, on winding 1 kVA base. Use for 3 winding transformers
                 only.
+
         Sets the percent reactance between windings 1 and 3, on winding 1 kVA base. Use for 3 winding transformers
         only. """
         return TransformersF._xht_read(self)
@@ -129,6 +139,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     def xlt(self) -> float:
         """Gets he percent reactance between windings 2 and 3, on winding 1 kVA base. Use for 3 winding transformers
                 only.
+
         Sets the percent reactance between windings 2 and 3, on winding 1 kVA base. Use for 3 winding transformers
         only. """
         return TransformersF._xlt_read(self)
@@ -140,6 +151,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def num_windings(self) -> int:
         """Gets the number of windings on this transformer. Allocates memory; set or change this property first.
+
         Sets the number of windings on this transformer. Allocates memory; set or change this property first."""
         return TransformersI._num_windings_read(self)
 
@@ -151,6 +163,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     def wdg(self) -> int:
         """Gets the active winding number from 1..NumWindings.
                 Update this before reading or setting a sequence of winding properties (R, Tap, kV, kVA, etc.).
+
         Sets the active winding number from 1..NumWindings.
         Update this before reading or setting a sequence of winding properties (R, Tap, kV, kVA, etc.)."""
         return TransformersI._wdg_read(self)
@@ -162,6 +175,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def num_taps(self) -> int:
         """Gets the active winding number of tap steps between MinTap and MaxTap.
+
         Sets the active winding number of tap steps between MinTap and MaxTap."""
         return TransformersI._num_taps_read(self)
 
@@ -172,6 +186,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def is_delta(self) -> int:
         """Gets the information about if the active winding is delta (1) or wye (0) connection.
+
         Sets the information about if the active winding is delta (1) or wye (0) connection."""
         return TransformersI._is_delta_read(self)
 
@@ -195,6 +210,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def xfmr_code(self) -> str:
         """Gets the name of an XfrmCode that supplies electrical parameters for this transformer.
+
         Sets the name of an XfrmCode that supplies electrical parameters for this transformer."""
         return TransformersS._xfmr_code_read(self)
 
@@ -205,6 +221,7 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     @property
     def name(self) -> str:
         """Gets the active transformer name.
+
         Sets the active transformer by name."""
         return TransformersS._name_read(self)
 

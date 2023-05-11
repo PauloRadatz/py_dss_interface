@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>py_dss_interface.models.Loads.LoadsI &mdash; py_dss_interface 2.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> py_dss_interface
+          </a>
+              <div class="version">
+                2.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">How to Use py-dss-interface Python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">src</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">py_dss_interface</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>py_dss_interface.models.Loads.LoadsI</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for py_dss_interface.models.Loads.LoadsI</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- encoding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> Created by eniocc at 11/10/2020</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">ctypes</span>
+
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Base</span> <span class="kn">import</span> <span class="n">Base</span>
+
+
+<div class="viewcode-block" id="LoadsI"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Loads.Loads.LoadsI">[docs]</a><span class="k">class</span> <span class="nc">LoadsI</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This interface can be used to read/modify the properties of the Loads Class where the values are integers.</span>
+
+<span class="sd">    The structure of the interface is as follows:</span>
+<span class="sd">        int32_t DSSLoads(int32_t Parameter, int32_t argument)</span>
+
+<span class="sd">    This interface returns an integer (signed 32 bits), the variable “parameter” is used to specify the property of</span>
+<span class="sd">    the class to be used and the variable “argument” can be used to modify the value of the property when necessary.</span>
+<span class="sd">    Reading and writing properties are separated and require a different parameter number to be executed.</span>
+
+<span class="sd">    The properties (parameter) are integer numbers and are described as follows.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_first</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to set the active load into the first load registered in the active circuit. As a result,</span>
+<span class="sd">        this property will return the number 1. The parameter argument can be filled with a 0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets the active load into the next load registered in the active circuit. As a result, this property will</span>
+<span class="sd">        deliver the index of the active load. The parameter argument can be filled with a 0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_idx</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to read the index of the active load. The parameter argument can be filled with a 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_idx_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to write the index of the active load. The parameter argument must contain the index of the desired</span>
+<span class="sd">        active load. The return value will be equal to 0.&quot;&quot;&quot;</span>
+        <span class="n">argument</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">_check_int_param</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="n">argument</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns the number of load elements within the active circuit. The parameter argument can be filled with a</span>
+<span class="sd">        0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_class</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to read the code number used to separate loads by class or group. The parameter argument can be</span>
+<span class="sd">        filled with a 0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_class_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to read the code number used to separate loads by class or group. The parameter argument can be</span>
+<span class="sd">        filled with a 0. &quot;&quot;&quot;</span>
+        <span class="n">argument</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">_check_int_param</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="n">argument</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to read the model of the active load. The parameter argument can be filled with a 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_model_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to write the model of the active load using the parameter argument. This parameter will return a 0.&quot;&quot;&quot;</span>
+        <span class="n">argument</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">_check_int_param</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="n">argument</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_num_cust</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to read the number of customer of the active load. The parameter argument can be filled with a 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_num_cust_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to write the number of customers of the active load using the parameter argument. This parameter</span>
+<span class="sd">        will return a 0. &quot;&quot;&quot;</span>
+        <span class="n">argument</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">_check_int_param</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="n">argument</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to read Response to load multipliers: Fixed (growth only - 1), Exempt (no LD curve - 2), Variable (</span>
+<span class="sd">        all - 0), of the active load. The parameter argument can be filled with a 0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_status_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to read Response to load multipliers: Fixed (growth only - 1), Exempt (no LD curve - 2), Variable (</span>
+<span class="sd">        all - 0), of the active load. This parameter will return a 0. &quot;&quot;&quot;</span>
+        <span class="n">argument</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">_check_int_param</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="n">argument</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_is_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to read if the active load is connected in delta, if the answer is positive, this function will</span>
+<span class="sd">        deliver a 1; otherwise, the answer will be 0. The parameter argument can be filled with a 0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_is_delta_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Allows to read if the active load is connected in delta, if the answer is positive, this function will</span>
+<span class="sd">        deliver a 1; otherwise, the answer will be 0. This parameter will return a 0. &quot;&quot;&quot;</span>
+        <span class="n">argument</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">_check_int_param</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dss_obj</span><span class="o">.</span><span class="n">DSSLoads</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="mi">14</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int32</span><span class="p">(</span><span class="n">argument</span><span class="p">))</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Paulo Radatz, Ênio Viana, Rodolfo Londero.
+      <span class="lastupdated">Last updated on Mar 11, 2023.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

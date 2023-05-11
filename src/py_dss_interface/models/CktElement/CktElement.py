@@ -55,6 +55,7 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
     @property
     def emerg_amps(self) -> float:
         """Deliver the Emergency ampere rating for the active PDElement.
+
         Allows to fix the Emergency ampere rating for the active PDElement. The new value must be defined in the
                 variable ?Argument?."""
         return CktElementF._emerg_amps(self)
@@ -128,6 +129,7 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
     @property
     def display(self) -> str:
         """Displays the name of the active circuit element (not necessarily unique).
+
         Allows to modify the name of the active circuit element (not necessarily unique)."""
         return CktElementS._display(self)
 
@@ -148,6 +150,7 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
     @property
     def bus_names(self) -> List[str]:
         """Delivers an array of strings with the names of all the buses connected to the active circuit element.
+
         Allows to fix an array of strings with the names of all the buses connected to the active circuit element."""
         return CktElementV._bus_names(self)
 

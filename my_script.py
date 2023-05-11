@@ -8,7 +8,7 @@ dss_2 = py_dss_interface.DSS()
 dss = py_dss_interface.DSS("C:\OpenDSS_rep\Version8\Source")
 # dss = py_dss_interface.DSS(r"C:\Program Files\OpenDSS")
 
-dss_1 = py_dss_interface.DSSDLL()
+# dss_1 = py_dss_interface.DSSDLL()
 
 # If specific DLL Version, use this line below
 # dss = py_dss_interface.DSS(dll_folder_param=r"C:\Users\eniocc\Downloads\py_dss_interface-master\src"

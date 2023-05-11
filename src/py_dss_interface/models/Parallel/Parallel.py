@@ -46,6 +46,7 @@ class Parallel(ParallelI, ParallelV):
     @property
     def actor_cpu(self) -> int:
         """Gets the ID of the CPU assigned for the execution of the active actor.
+
         Sets the CPU for the execution of the active actor."""
         return ParallelI._actor_cpu_read(self)
 
@@ -66,6 +67,7 @@ class Parallel(ParallelI, ParallelV):
     def active_parallel(self) -> int:
         """Gets if the parallel features of OpenDSS-PM are active. If active, this parameter will return 1, otherwise,
                  will return 0 and OpenDSS-PM will behave sequentially.
+
         Sets enables/disables the parallel features of OpenDSS-PM. To enable set the argument in 1, otherwise,
         the argument should be 0 and OpenDSS-PM will behave sequentially. """
         return ParallelI._active_parallel_read(self)
@@ -80,6 +82,7 @@ class Parallel(ParallelI, ParallelV):
                 executes a Show/Export monitor operation, the data stored on the monitors with the same name for each actor
                 will be concatenated one after the other. Otherwise (0), to get access of each monitor the user will have to
                 activate the actor of interest and then perform the Show/Export command on the desired monitor.
+
         Sets the state of the ConcatenateReports property of OpenDSS-PM. If 1, means that every time the user
         executes a Show/Export monitor operation, the data stored on the monitors with the same name for each actor
         will be concatenated one after the other. Otherwise (0), to get access of each monitor the user will have to

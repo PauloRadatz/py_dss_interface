@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>py_dss_interface.models.CktElement.CktElement &mdash; py_dss_interface 2.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> py_dss_interface
+          </a>
+              <div class="version">
+                2.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">How to Use py-dss-interface Python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#indices-and-tables">Indices and Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">py_dss_interface</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>py_dss_interface.models.CktElement.CktElement</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for py_dss_interface.models.CktElement.CktElement</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- encoding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> Created by eniocc at 11/10/2020</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.CktElement.CktElementF</span> <span class="kn">import</span> <span class="n">CktElementF</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.CktElement.CktElementI</span> <span class="kn">import</span> <span class="n">CktElementI</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.CktElement.CktElementS</span> <span class="kn">import</span> <span class="n">CktElementS</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.CktElement.CktElementV</span> <span class="kn">import</span> <span class="n">CktElementV</span>
+
+
+<div class="viewcode-block" id="CktElement"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.CktElement.CktElement.CktElement">[docs]</a><span class="k">class</span> <span class="nc">CktElement</span><span class="p">(</span><span class="n">CktElementI</span><span class="p">,</span> <span class="n">CktElementS</span><span class="p">,</span> <span class="n">CktElementF</span><span class="p">,</span> <span class="n">CktElementV</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This interface implements the CktElement interface of OpenDSS by declaring 4 procedures for accessing the</span>
+<span class="sd">    different properties included in this interface: CktElementI, CktElementS, CktElementF, CktElementV</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_dss</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">obj_dss</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CktElement.controller"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.CktElement.CktElement.CktElement.controller">[docs]</a>    <span class="k">def</span> <span class="nf">controller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers the Full name of the i-th controller attached to the active circuit element.</span>
+<span class="sd">                The i-th controller index must be specified in the argument arg. Ex: Str = Controller(2).</span>
+<span class="sd">                See NumControls to determine valid index range.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementS</span><span class="o">.</span><span class="n">_controller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CktElement.enabled"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.CktElement.CktElement.CktElement.enabled">[docs]</a>    <span class="k">def</span> <span class="nf">enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns one of the following values: 0 if the active element is disabled or 1 if the active element is</span>
+<span class="sd">                enabled.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CktElement.variable_i"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.CktElement.CktElement.CktElement.variable_i">[docs]</a>    <span class="k">def</span> <span class="nf">variable_i</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers get the value of a variable by index for the active PCElement.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementF</span><span class="o">.</span><span class="n">_variable_i</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CktElement.open_terminal"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.CktElement.CktElement.CktElement.open_terminal">[docs]</a>    <span class="k">def</span> <span class="nf">open_terminal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Open the specified terminal (Argument) of the active DSS object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_open_terminal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CktElement.close_terminal"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.CktElement.CktElement.CktElement.close_terminal">[docs]</a>    <span class="k">def</span> <span class="nf">close_terminal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close the specified terminal (Argument) of the active DSS object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_close_terminal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">norm_amps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deliver the normal ampere rating for the active PDElement.</span>
+<span class="sd">                Allows to fix the normal ampere rating for the active PDElement.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementF</span><span class="o">.</span><span class="n">_norm_amps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@norm_amps</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">norm_amps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">CktElementF</span><span class="o">.</span><span class="n">_norm_amps_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">emerg_amps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deliver the Emergency ampere rating for the active PDElement.</span>
+
+<span class="sd">        Allows to fix the Emergency ampere rating for the active PDElement. The new value must be defined in the</span>
+<span class="sd">                variable ?Argument?.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementF</span><span class="o">.</span><span class="n">_emerg_amps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@emerg_amps</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">emerg_amps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">CktElementF</span><span class="o">.</span><span class="n">_emerg_amps_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_terminals</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deliver the number of terminals of the active DSS object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_num_terminals</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_conductors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deliver the number of conductors of the active DSS object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_num_conductors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_phases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers the number of phases of the active DSS object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_num_phases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_terminal_open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a 1 if any terminal of the active DSS object is open, otherwise, it will return a 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_is_terminal_open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of properties of the active DSS object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_num_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">has_switch_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns 1 if the active DSS object has a Switch Control linked; otherwise, it will return 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_has_switch_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">has_volt_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns 1 if the active DSS object has a Volt Control linked; otherwise, it will return 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_has_volt_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns number of controls linked to the active DSS object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_num_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ocp_dev_index</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Index into Controller list of OCP Device controlling the active DSS object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_ocp_dev_index</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ocp_dev_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns one of the following values: 0=none; 1=Fuse; 2=Recloser; 3=Relay according to the type of active</span>
+<span class="sd">                control.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_ocp_dev_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns one of the following values: 0 if the active element is disabled or 1 if the active element is</span>
+<span class="sd">                enabled.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementI</span><span class="o">.</span><span class="n">_is_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers the full name of the active circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementS</span><span class="o">.</span><span class="n">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Displays the name of the active circuit element (not necessarily unique).</span>
+
+<span class="sd">        Allows to modify the name of the active circuit element (not necessarily unique).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementS</span><span class="o">.</span><span class="n">_display</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@display</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">CktElementS</span><span class="o">.</span><span class="n">_display_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">guid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers the unique name for the active circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementS</span><span class="o">.</span><span class="n">_guid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">energymeter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers the name of the EnergyMeter linked to the active circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementS</span><span class="o">.</span><span class="n">_energymeter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bus_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of strings with the names of all the buses connected to the active circuit element.</span>
+
+<span class="sd">        Allows to fix an array of strings with the names of all the buses connected to the active circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_bus_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@bus_names</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">bus_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
+        <span class="n">CktElementV</span><span class="o">.</span><span class="n">_bus_names_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the voltages at terminals of the active circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the currents at terminals of the active circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">powers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the powers at terminals of the active circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_powers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the Losses at terminals of the active circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">phase_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the Losses per phase at the terminals of the active circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_phase_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">seq_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the symmetrical component voltages per phase at the terminals of the active</span>
+<span class="sd">                 circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_seq_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">seq_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the symmetrical component Currents per phase at the terminals of the active</span>
+<span class="sd">                 circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_seq_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">seq_powers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the symmetrical component powers per phase at the terminals of the active</span>
+<span class="sd">                circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_seq_powers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">property_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of strings with the names of all the properties of the active circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_property_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">residuals_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the residual currents (magnitude, angle) in all the nodes of the active</span>
+<span class="sd">                circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_residuals_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">y_prim</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the Y primitive matrix (complex) of the active circuit element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_y_prim</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cplx_seq_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the complex of sequence voltages for all terminals of the active circuit</span>
+<span class="sd">                element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_cplx_seq_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cplx_seq_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers an array of doubles with the complex of sequence currents for all terminals of the active circuit</span>
+<span class="sd">                element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_cplx_seq_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">variables_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers a Variant array of strings listing all the published state variable names, if the active circuit</span>
+<span class="sd">                element is a PCElement. Otherwise, null string.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_variables_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">variables_values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers a Variant array of doubles listing all the values of the state variables, if the active circuit</span>
+<span class="sd">                element is a PCElement. Otherwise, null string.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_variables_values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">node_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers a Variant array integers variant array of integer containing the node numbers (representing phases,</span>
+<span class="sd">                for Example) for each conductor of each terminal.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_node_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">currents_mag_ang</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers the currents in magnitude, angle format as a variant array of doubles of the active circuit</span>
+<span class="sd">                element. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_currents_mag_ang</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">voltages_mag_ang</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delivers the voltages in magnitude, angle format as a variant array of doubles of the active circuit</span>
+<span class="sd">                element. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CktElementV</span><span class="o">.</span><span class="n">_voltages_mag_ang</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Paulo Radatz, Ênio Viana, Rodolfo Londero.
+      <span class="lastupdated">Last updated on May 11, 2023.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

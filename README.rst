@@ -10,7 +10,7 @@ Overview
     * - docs
       - |docs|
     * - tests
-      - | |appveyor| |requires|
+      - | |appveyor|
         | |codecov|
     * - package
       - | |version| |wheel| |supported-versions| |supported-implementations|
@@ -51,9 +51,26 @@ Overview
 
 .. end-badges
 
-py-dss-interface is a Windows Python package providing access to OpenDSS direct dll version of OpenDSS - Version 9.6.1.1 (64-bit build); License Status: Open and Version 9.6.1.1 (32-bit build); License Status: Open.
+The py-dss-interface is a Python package that provides a Python interface to the official version of OpenDSS (Open Distribution System Simulator) software. OpenDSS is a free, open-source software for simulating and analyzing power distribution systems.
 
 * Free software: MIT license
+
+The current py-dss-interface works only with Windows. The reason is that EPRI provides only Windows versions of OpenDSS. The package will work for Linux when EPRI releases the Linux version of OpenDSS.
+
+The py-dss-interface package allows users to interact with OpenDSS using Python code, which can be particularly useful for automating tasks, performing simulations, and analyzing results. The package provides a range of functionality, including:
+
+* Creating and modifying OpenDSS circuit models
+
+* Running simulations and analyzing results
+
+* Accessing and manipulating data within the circuit model
+
+* Plotting results
+
+The package is available on the Python Package Index (PyPI) and can be installed using pip, the Python package installer. OpenDSS does not have to be installed on the user's system to use the package, as the py-dss-interface provides an OpenDSS version.
+
+Overall, the py-dss-interface is a powerful tool for anyone working with power distribution systems who wants to use Python for simulation and analysis.
+
 
 Disclaimer
 ============
@@ -72,7 +89,7 @@ You can access the documentation through:
 
 1 - The Read the Docs.
 
-https://py_dss_interface.readthedocs.io/
+https://py-dss-interface.readthedocs.io/en/latest/
 
 
 Thanks

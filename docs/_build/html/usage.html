@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Use py-dss-interface Python package &mdash; py_dss_interface 2.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Source Code Documentation" href="modules.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> py_dss_interface
+          </a>
+              <div class="version">
+                2.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to Use py-dss-interface Python package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#py-dss-interface-python-package">py-dss-interface Python package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-usage">Simple Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#indices-and-tables">Indices and Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">py_dss_interface</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>How to Use py-dss-interface Python package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-use-py-dss-interface-python-package">
+<h1>How to Use py-dss-interface Python package<a class="headerlink" href="#how-to-use-py-dss-interface-python-package" title="Permalink to this headline"></a></h1>
+<section id="py-dss-interface-python-package">
+<h2>py-dss-interface Python package<a class="headerlink" href="#py-dss-interface-python-package" title="Permalink to this headline"></a></h2>
+<p>py-dss-interface is a Windows Python package providing access to OpenDSS
+direct dll.</p>
+</section>
+<section id="simple-usage">
+<h2>Simple Usage<a class="headerlink" href="#simple-usage" title="Permalink to this headline"></a></h2>
+<p>First import the Package</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">py_dss_interface</span>
+</pre></div>
+</div>
+<p>Creates an OpenDSS object</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dss</span> <span class="o">=</span> <span class="n">py_dss_interface</span><span class="o">.</span><span class="n">DSS</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OpenDSS Started successfully!
+OpenDSS Version 9.3.0.1 (64-bit build); License Status: Open
+</pre></div>
+</div>
+<p>If you want to use your OpenDSS, you will need to pass the OpenDSS path
+as argument to the DSS class, as can be seen below:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opendss_path</span> <span class="o">=</span> <span class="s2">&quot;C:/Program Files/OpenDSS&quot;</span>
+</pre></div>
+</div>
+<p>Creates a dss object with your OpenDSS</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dss</span> <span class="o">=</span> <span class="n">py_dss_interface</span><span class="o">.</span><span class="n">DSS</span><span class="p">(</span><span class="n">opendss_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OpenDSS Started successfully!
+OpenDSS Version 9.2.0.1 (64-bit build); License Status: Open
+</pre></div>
+</div>
+<p>Select the DSS model</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dss_file</span> <span class="o">=</span> <span class="s2">&quot;C:/MeuTCC/Paulo_Example/DSSFiles/MASTER_RedeTeste13Barras.dss&quot;</span>
+</pre></div>
+</div>
+<p>Compile</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dss</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;compile </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dss_file</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Solve - You can use the text interface as well: dss.text(“solve”)</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dss</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Show Voltage Report</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dss</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;show voltages&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Get all buses voltages</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">allbusvolts</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">circuit_all_bus_volts</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dss</span><span class="o">.</span><span class="n">circuit_all_bus_volts</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mf">57499.9999611886</span><span class="p">,</span> <span class="mf">33197.64035949601</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.00013449617643016606</span><span class="p">,</span> <span class="o">-</span><span class="mf">66395.28088703856</span><span class="p">,</span> <span class="o">-</span><span class="mf">57499.99982669239</span><span class="p">,</span> <span class="mf">33197.64054049976</span><span class="p">,</span> <span class="mf">2521.7954836507547</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.11910264415748555</span><span class="p">,</span> <span class="o">-</span><span class="mf">1245.983653171188</span><span class="p">,</span> <span class="o">-</span><span class="mf">2157.930119652756</span><span class="p">,</span> <span class="o">-</span><span class="mf">1260.782309001901</span><span class="p">,</span> <span class="mf">2184.0080773974814</span><span class="p">,</span> <span class="mf">2461.932156820345</span><span class="p">,</span> <span class="o">-</span><span class="mf">76.36035906329018</span><span class="p">,</span> <span class="o">-</span><span class="mf">1284.5460767592406</span><span class="p">,</span> <span class="o">-</span><span class="mf">2134.6137221915546</span><span class="p">,</span> <span class="o">-</span><span class="mf">1162.2387444138396</span><span class="p">,</span> <span class="mf">2149.367176421046</span><span class="p">,</span> <span class="mf">2447.622527822158</span><span class="p">,</span> <span class="o">-</span><span class="mf">105.33323048056116</span><span class="p">,</span> <span class="o">-</span><span class="mf">1292.0799754959983</span><span class="p">,</span> <span class="o">-</span><span class="mf">2145.0014944867958</span><span class="p">,</span> <span class="o">-</span><span class="mf">1135.8268535116601</span><span class="p">,</span> <span class="mf">2139.8329412956255</span><span class="p">,</span> <span class="mf">2416.0125196180225</span><span class="p">,</span> <span class="o">-</span><span class="mf">163.36016245424702</span><span class="p">,</span> <span class="o">-</span><span class="mf">1309.7330667771344</span><span class="p">,</span> <span class="o">-</span><span class="mf">2170.4745203525963</span><span class="p">,</span> <span class="o">-</span><span class="mf">1094.9726480270429</span><span class="p">,</span> <span class="mf">2123.26458714393</span><span class="p">,</span> <span class="mf">2416.0126942531097</span><span class="p">,</span> <span class="o">-</span><span class="mf">163.3602301351151</span><span class="p">,</span> <span class="o">-</span><span class="mf">1309.733210696227</span><span class="p">,</span> <span class="o">-</span><span class="mf">2170.474634870388</span><span class="p">,</span> <span class="o">-</span><span class="mf">1094.9726875020344</span><span class="p">,</span> <span class="mf">2123.2647662400955</span><span class="p">,</span> <span class="mf">2456.6075093447926</span><span class="p">,</span> <span class="o">-</span><span class="mf">77.22909111556126</span><span class="p">,</span> <span class="o">-</span><span class="mf">1283.252068702874</span><span class="p">,</span> <span class="o">-</span><span class="mf">2130.2151765650274</span><span class="p">,</span> <span class="o">-</span><span class="mf">1159.8081395939932</span><span class="p">,</span> <span class="mf">2145.242676822373</span><span class="p">,</span> <span class="o">-</span><span class="mf">1161.1768654509938</span><span class="p">,</span> <span class="mf">2145.138477965435</span><span class="p">,</span> <span class="o">-</span><span class="mf">1280.4300435279195</span><span class="p">,</span> <span class="o">-</span><span class="mf">2113.915974006277</span><span class="p">,</span> <span class="o">-</span><span class="mf">1160.6073109958113</span><span class="p">,</span> <span class="mf">2140.403981134188</span><span class="p">,</span> <span class="o">-</span><span class="mf">1281.0373135073385</span><span class="p">,</span> <span class="o">-</span><span class="mf">2109.180381738326</span><span class="p">,</span> <span class="mf">2415.769857096313</span><span class="p">,</span> <span class="o">-</span><span class="mf">163.5069028811886</span><span class="p">,</span> <span class="o">-</span><span class="mf">1309.832637909631</span><span class="p">,</span> <span class="o">-</span><span class="mf">2170.4632089820057</span><span class="p">,</span> <span class="o">-</span><span class="mf">1094.7636605550108</span><span class="p">,</span> <span class="mf">2123.186733078666</span><span class="p">,</span> <span class="mf">2401.861193733008</span><span class="p">,</span> <span class="o">-</span><span class="mf">172.353118727211</span><span class="p">,</span> <span class="o">-</span><span class="mf">1318.579879780884</span><span class="p">,</span> <span class="o">-</span><span class="mf">2171.2963607061065</span><span class="p">,</span> <span class="o">-</span><span class="mf">1093.1900162376958</span><span class="p">,</span> <span class="mf">2120.0426886068794</span><span class="p">,</span> <span class="mf">2411.6393197737566</span><span class="p">,</span> <span class="o">-</span><span class="mf">163.81660155967867</span><span class="p">,</span> <span class="o">-</span><span class="mf">1089.5319085584983</span><span class="p">,</span> <span class="mf">2121.576761353844</span><span class="p">,</span> <span class="o">-</span><span class="mf">1082.6282761181412</span><span class="p">,</span> <span class="mf">2120.6709717842764</span><span class="p">,</span> <span class="mf">2399.6753950529396</span><span class="p">,</span> <span class="o">-</span><span class="mf">160.25426417938482</span><span class="p">,</span> <span class="mf">278.27148663424725</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.493493912035552</span><span class="p">,</span> <span class="o">-</span><span class="mf">146.96678765905787</span><span class="p">,</span> <span class="o">-</span><span class="mf">241.22429003185408</span><span class="p">,</span> <span class="o">-</span><span class="mf">130.42325689990824</span><span class="p">,</span> <span class="mf">244.48803229938719</span><span class="p">,</span> <span class="mf">206.94129996491046</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.38505415088836</span><span class="p">,</span> <span class="o">-</span><span class="mf">142.73287289392556</span><span class="p">,</span> <span class="o">-</span><span class="mf">183.59574244679482</span><span class="p">,</span> <span class="o">-</span><span class="mf">91.6887699449892</span><span class="p">,</span> <span class="mf">207.03653181237675</span><span class="p">,</span> <span class="mf">2401.7765548121</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0011773940893547467</span><span class="p">,</span> <span class="o">-</span><span class="mf">1200.8892060353498</span><span class="p">,</span> <span class="o">-</span><span class="mf">2079.9993861623666</span><span class="p">,</span> <span class="o">-</span><span class="mf">1200.8871497819646</span><span class="p">,</span> <span class="mf">2080.0002010072703</span><span class="p">,</span> <span class="mf">278.77068751378476</span><span class="p">,</span> <span class="o">-</span><span class="mf">18.84925622382503</span><span class="p">,</span> <span class="o">-</span><span class="mf">151.12305792697495</span><span class="p">,</span> <span class="o">-</span><span class="mf">250.4393740486974</span><span class="p">,</span> <span class="o">-</span><span class="mf">126.34299926170385</span><span class="p">,</span> <span class="mf">244.99208111611046</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="Source Code Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Paulo Radatz, Ênio Viana, Rodolfo Londero.
+      <span class="lastupdated">Last updated on May 11, 2023.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

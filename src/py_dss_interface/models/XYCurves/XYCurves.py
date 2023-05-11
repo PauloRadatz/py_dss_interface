@@ -22,6 +22,7 @@ class XYCurves(XYCurvesS, XYCurvesI, XYCurvesF, XYCurvesV):
     @property
     def x(self) -> float:
         """Gets the interpolated value after setting X.
+
         Sets the X value."""
         return XYCurvesF._x_read(self)
 
@@ -32,6 +33,7 @@ class XYCurves(XYCurvesS, XYCurvesI, XYCurvesF, XYCurvesV):
     @property
     def y(self) -> float:
         """Gets the interpolated value after setting Y.
+
         Sets the Y value."""
         return XYCurvesF._y_read(self)
 
@@ -42,6 +44,7 @@ class XYCurves(XYCurvesS, XYCurvesI, XYCurvesF, XYCurvesV):
     @property
     def x_shift(self) -> float:
         """Gets the amount to shift X value from original curve.
+
         Sets the amount to shift X value from original curve."""
         return XYCurvesF._x_shift_read(self)
 
@@ -52,6 +55,7 @@ class XYCurves(XYCurvesS, XYCurvesI, XYCurvesF, XYCurvesV):
     @property
     def y_shift(self) -> float:
         """Gets the amount to shift Y value from original curve.
+
         Sets the amount to shift Y value from original curve."""
         return XYCurvesF._y_shift_read(self)
 
@@ -62,6 +66,7 @@ class XYCurves(XYCurvesS, XYCurvesI, XYCurvesF, XYCurvesV):
     @property
     def x_scale(self) -> float:
         """Gets the factor to scale X values from original curve.
+
         Sets the factor to scale X values from original curve."""
         return XYCurvesF._x_scale_read(self)
 
@@ -72,6 +77,7 @@ class XYCurves(XYCurvesS, XYCurvesI, XYCurvesF, XYCurvesV):
     @property
     def y_scale(self) -> float:
         """Gets the factor to scale Y values from original curve.
+
         Sets the factor to scale Y values from original curve."""
         return XYCurvesF._y_scale_read(self)
 
@@ -99,12 +105,14 @@ class XYCurves(XYCurvesS, XYCurvesI, XYCurvesF, XYCurvesV):
     @npts.setter
     def npts(self, argument: int):
         """Gets the number of points in X-Y curve.
+
         Sets the number of points in X-Y curve."""
         XYCurvesI._npts_write(self, argument)
 
     @property
     def name(self) -> str:
         """Gets the name of the active XYCurve Object.
+
         Sets the name of the active XYCurve Object."""
         return XYCurvesS._name_read(self)
 
@@ -115,6 +123,7 @@ class XYCurves(XYCurvesS, XYCurvesI, XYCurvesF, XYCurvesV):
     @property
     def x_array(self) -> List[float]:
         """Gets the X values as a variant array of doubles. Set Npts to max number expected if setting.
+
         Sets the X values as a variant array of doubles specified in Argument. Set Npts to max number expected
         if setting."""
         return XYCurvesV._x_array_read(self)
@@ -126,6 +135,7 @@ class XYCurves(XYCurvesS, XYCurvesI, XYCurvesF, XYCurvesV):
     @property
     def y_array(self) -> List[float]:
         """Gets the Y values as a variant array of doubles. Set Npts to max number expected if setting..
+
         Sets the Y values as a variant array of doubles specified in Argument. Set Npts to max number expected
         if setting."""
         return XYCurvesV._y_array_read(self)

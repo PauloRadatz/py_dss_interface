@@ -53,6 +53,7 @@ class DSSInterface(DSSInterfaceS, DSSInterfaceI, DSSInterfaceV):
     @property
     def allow_forms(self) -> int:
         """Gets if the DSS allows forms (1) or not (0), default (1).
+
         Sets if the DSS allows forms (1) or not (0), default (1). PAY ATTENTION: If arg=0 Then NoFormsAllowed :=
                 TRUE (Only set to False) else NoFormsAllowed := FALSE; """
         return DSSInterfaceI._allow_forms_read(self)
@@ -73,6 +74,7 @@ class DSSInterface(DSSInterfaceS, DSSInterfaceI, DSSInterfaceV):
     @property
     def datapath(self) -> str:
         """Gets the Data File Path. Default for reports, etc. from DSS.
+
         Sets the Data File Path. Default for reports, etc. from DSS."""
         return DSSInterfaceS._datapath_read(self)
 

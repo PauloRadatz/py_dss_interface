@@ -20,6 +20,7 @@ class PDElements(PDElementsF, PDElementsI, PDElementsS):
     @property
     def fault_rate(self) -> float:
         """Gets the number of failures per year. For LINE elements: Number of failures per unit length per year.
+
         Sets the number of failures per year. For LINE elements: Number of failures per unit length per year."""
         return PDElementsF._fault_rate_read(self)
 
@@ -31,6 +32,7 @@ class PDElements(PDElementsF, PDElementsI, PDElementsS):
     def pct_permanent(self) -> float:
         """Gets the percent of faults that are permanent (require repair). Otherwise,
                 fault is assumed to be transient/temporary.
+
         Sets the percent of faults that are permanent (require repair). Otherwise, fault is assumed to be
         transient/temporary. """
         return PDElementsF._pct_permanent_read(self)
@@ -107,6 +109,7 @@ class PDElements(PDElementsF, PDElementsI, PDElementsS):
     @property
     def name(self) -> str:
         """Gets the name of the active PDElement, returns null string if active element id not PDElement.
+
         Sets the name of the active PDElement, returns null string if active element id not PDElement."""
         return PDElementsS._name_read(self)
 

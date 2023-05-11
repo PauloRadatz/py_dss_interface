@@ -75,6 +75,6 @@ setup(
     install_requires=["numpy", "pandas", "colorama", "comtypes"
                       ],
     extras_require={
-        "dev": ["pytest", "pytest-cov", "sphinx-rtd-theme", "nbsphinx", "black", "pre-commit", "tox", "twine"],
+        "dev": ["pytest", "pytest-cov", "sphinx-rtd-theme", "nbsphinx", "black", "pre-commit", "tox", "twine", "ipython"],
     },
 )

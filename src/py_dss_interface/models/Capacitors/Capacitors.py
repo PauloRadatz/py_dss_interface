@@ -22,6 +22,7 @@ class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
     @property
     def num_steps(self) -> int:
         """Gets the number of steps (defaults 1) for distributing and switching the total bank kvar.
+
         Sets the number of steps (defaults 1) for distributing and switching the total bank kvar.
         """
         return CapacitorsI._num_steps(self)
@@ -33,6 +34,7 @@ class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
     @property
     def is_delta(self) -> int:
         """Gets 1 if delta connection, otherwise will return 0 for distributing and switching the total kvar.
+
         Sets (Argument) 1 if delta connection, otherwise will return 0 for distributing and switching the total
         kvar."""
         return CapacitorsI.is_delta(self)
@@ -62,6 +64,7 @@ class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
     @property
     def kv(self) -> float:
         """Gets the bank rating. Use LL for 2 or 3 phases, or actual can rating for 1 phase.
+
         Sets the bank rating. Use LL for 2 or 3 phases, or actual can rating for 1 phase. There is not a explicit
         return type in the oficial documentation, because of this we choose not put a explicit return too."""
         return CapacitorsF._kv(self)
@@ -73,6 +76,7 @@ class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
     @property
     def kvar(self) -> float:
         """Gets the total bank kvar, distributed equally among phases and steps.
+
         Sets the total bank kvar, distributed equally among phases and steps. There is not a explicit return type
         in the oficial documentation, because of this we choose not put a explicit return too. """
         return CapacitorsF._kvar(self)
@@ -84,6 +88,7 @@ class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
     @property
     def name(self) -> str:
         """Gets the name of the active Capacitor element.
+
         Sets the name of the Capacitor element to set it active. There is not a explicit return type in the
         oficial documentation, because of this we choose not put a explicit return too.
         """
@@ -102,6 +107,7 @@ class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
     def states(self) -> List[int]:
         """Gets a variant array of integers [0..numsteps-1] indicating the state of each step.
                 If value is -1 and error has occurred.
+
         Sets a variant array of integers [0..numsteps-1] indicating the state of each step. If value is -1 and
         error has occurred.
         """
@@ -126,3 +132,4 @@ class Capacitors(CapacitorsF, CapacitorsI, CapacitorsS, CapacitorsV):
     def subtract_step(self) -> int:
         """Subtracts one step of the capacitor if available. If no more steps, returns 0."""
         return CapacitorsI._subtract_step(self)
+

@@ -22,6 +22,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def allocation_factor(self) -> float:
         """Allows to read the AllocationFactor property of the active load. The parameter argument can be filled with
                 a 0.
+
         Allows to write the AllocationFactor property of the active load. The parameter argument must contain the
                 new value in AllocationFactor for the desired active load. The return value will be equal to 0. """
 
@@ -34,6 +35,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def c_factor(self) -> float:
         """Allows to read the CFactor property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the CFactor property of the active load. The parameter argument must contain the new value
                 in CFactor for the desired active load. The return value will be equal to 0. """
         return LoadsF._c_factor(self)
@@ -46,6 +48,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def class_number(self) -> int:
         """Allows to read the code number used to separate loads by class or group. The parameter argument can be
                 filled with a 0.
+
         Allows to read the code number used to separate loads by class or group. The parameter argument can be
         filled with a 0. """
         return LoadsI._class(self)
@@ -64,6 +67,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def cvr_curve(self) -> str:
         """Allows to read the CVRCurve property of the active load. The parameter argument can be filled with an
                 empty string.
+
         Allows to set the CVRCurve property for the active load. The parameter argument must contain the Name of
                 the new CVRCurve to be linked to the active load. The return value will be equal to empty. """
         return LoadsS._cvr_curve(self)
@@ -75,6 +79,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def cvr_vars(self) -> float:
         """Allows to read the CVRvars property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the CVRvars property of the active load. The parameter argument must contain the new value
                 in CVRWatts for the desired active load. The return value will be equal to 0. """
         return LoadsF._cvr_vars(self)
@@ -86,6 +91,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def cvr_watts(self) -> float:
         """Allows to read the CVRWatts property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the CVRWatts property of the active load. The parameter argument must contain the new
                 value in CVRWatts for the desired active load. The return value will be equal to 0. """
         return LoadsF._cvr_watts(self)
@@ -98,6 +104,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def daily(self) -> str:
         """Allows to read the daily property of the active load. The parameter argument can be filled with an empty
                 string.
+
         Allows to set the daily property for the active load. The parameter argument must contain the Name of the
         new daily to be linked to the active load. The return value will be equal to empty. """
         return LoadsS._daily(self)
@@ -110,6 +117,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def duty(self) -> str:
         """Allows to read the duty property of the active load. The parameter argument can be filled with an empty
                 string.
+
         Allows to set the dduty property for the active load. The parameter argument must contain the Name of the
         new duty to be linked to the active load. The return value will be equal to empty. """
         return LoadsS._duty(self)
@@ -127,6 +135,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def growth(self) -> str:
         """Allows to read the Growth property of the active load. The parameter argument can be filled with an empty
                 string.
+
         Allows to set the Growth property for the active load. The parameter argument must contain the Name of the
         new Growth to be linked to the active load. The return value will be equal to empty. """
         return LoadsS._growth(self)
@@ -138,6 +147,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def idx(self) -> int:
         """Allows to read the index of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the index of the active load. The parameter argument must contain the index of the desired
         active load. The return value will be equal to 0."""
         return LoadsI._idx(self)
@@ -150,6 +160,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def is_delta(self) -> int:
         """Allows to read if the active load is connected in delta, if the answer is positive, this function will
                 deliver a 1; otherwise, the answer will be 0. The parameter argument can be filled with a 0.
+
         Allows to read if the active load is connected in delta, if the answer is positive, this function will
         deliver a 1; otherwise, the answer will be 0. This parameter will return a 0. """
         return LoadsI._is_delta(self)
@@ -161,6 +172,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def kv(self) -> float:
         """Allows to read the kV property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the kV property of the active load. The parameter argument must contain the new value in
                 kV for the desired active load. The return value will be equal to 0. """
         return LoadsF._kv(self)
@@ -172,6 +184,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def kva(self) -> float:
         """Allows to read the kva property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the kva property of the active load. The parameter argument must contain the new value in
                 kva for the desired active load. The return value will be equal to 0. """
         return LoadsF._kva(self)
@@ -183,6 +196,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def kvar(self) -> float:
         """Allows to read the kvar property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the kvar property of the active load. The parameter argument must contain the new value in
                 kvar for the desired active load. The return value will be equal to 0. """
         return LoadsF._kvar(self)
@@ -194,6 +208,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def kw(self) -> float:
         """Allows to read the kW property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the kW property of the active load. The parameter argument must contain the new value in
                 kW for the desired active load. The return value will be equal to 0. """
         return LoadsF._kw(self)
@@ -205,6 +220,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def kwh(self) -> float:
         """Allows to read the kWh property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the kWh property of the active load. The parameter argument must contain the new value in
         kWh for the desired active load. The return value will be equal to 0. """
         return LoadsF._kwh(self)
@@ -216,6 +232,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def kwh_days(self) -> float:
         """Allows to read the kWhdays property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the kWhdays property of the active load. The parameter argument must contain the new value
         in kWhdays for the desired active load. The return value will be equal to 0. """
         return LoadsF._kwh_days(self)
@@ -227,6 +244,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def model(self) -> int:
         """Allows to read the model of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the model of the active load using the parameter argument. This parameter will return a 0."""
         return LoadsI._model(self)
 
@@ -238,7 +256,8 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def name(self) -> str:
         """Allows to read the Name property of the active load. The parameter argument can be filled with an empty
                 string.
-        allows to set the active load by specifying the Name load. The parameter argument must contain the Name of
+
+        Allows to set the active load by specifying the Name load. The parameter argument must contain the Name of
         the load to activate. The return value will be equal to empty. """
         return LoadsS._name(self)
 
@@ -260,6 +279,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def num_cust(self) -> int:
         """Allows to read the number of customer of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the number of customers of the active load using the parameter argument. This parameter
         will return a 0. """
         return LoadsI._num_cust(self)
@@ -271,6 +291,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def pct_mean(self) -> float:
         """Allows to read the PctMean property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the PctMean property of the active load. The parameter argument must contain the new value
                 in PctMean for the desired active load. The return value will be equal to 0. """
         return LoadsF._pct_mean(self)
@@ -282,6 +303,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def pct_std_dev(self) -> float:
         """Allows to read the PctStdDev property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the PctStdDev property of the active load. The parameter argument must contain the new
                 value in PctStdDev for the desired active load. The return value will be equal to 0. """
         return LoadsF._pct_std_dev(self)
@@ -293,6 +315,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def pf(self) -> float:
         """Allows to read the pf property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the pf property of the active load. The parameter argument must contain the new value in
         pf for the desired active load. The return value will be equal to 0. """
         return LoadsF._pf(self)
@@ -305,6 +328,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def r_neut(self) -> float:
         """Allows to read the RNeut (neutral resistance for wye connected loads) property of the active load. The
                 parameter argument can be filled with a 0.
+
         Allows to write the RNeut (neutral resistance for wye connected loads) property of the active load. The
         parameter argument must contain the new value in RNeut for the desired active load. The return value will be
         equal to 0. """
@@ -318,6 +342,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def rel_weight(self) -> float:
         """Allows to read the RelWeight (relative weighting factor) property of the active load. The parameter
                 argument can be filled with a 0.
+
         Allows to write the RelWeight (relative weighting factor) property of the active load. The parameter
         argument must contain the new value in RelWeight for the desired active load. The return value will be equal
         to 0. """
@@ -329,9 +354,10 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
 
     @property
     def rl(self) -> float:
-        """allows to read the PctSeriesRL (Percent of Load that is modeled as series R-L for harmonic studies)
+        """Allows to read the PctSeriesRL (Percent of Load that is modeled as series R-L for harmonic studies)
                 property of the active load. The parameter argument can be filled with a 0.
-        allows to write the PctSeriesRL (Percent of Load that is modeled as series R-L for harmonic studies)
+
+        Allows to write the PctSeriesRL (Percent of Load that is modeled as series R-L for harmonic studies)
         property of the active load. The parameter argument must contain the new value in PctSeriesRL for the desired
         active load. The return value will be equal to 0. """
         return LoadsF._rl(self)
@@ -344,6 +370,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def spectrum(self) -> str:
         """Allows to read the Spectrum property of the active load. The parameter argument can be filled with an
                 empty string.
+
         Allows to set the Spectrum property for the active load. The parameter argument must contain the Name of
         the new Spectrum to be linked to the active load. The return value will be equal to empty. """
         return LoadsS._spectrum(self)
@@ -356,6 +383,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def status(self) -> int:
         """Allows to read Response to load multipliers: Fixed (growth only - 1), Exempt (no LD curve - 2), Variable (
                 all - 0), of the active load. The parameter argument can be filled with a 0.
+
         Allows to read Response to load multipliers: Fixed (growth only - 1), Exempt (no LD curve - 2), Variable (
         all - 0), of the active load. This parameter will return a 0. """
         return LoadsI._status(self)
@@ -367,6 +395,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def vmax_pu(self) -> float:
         """Allows to read the VMaxpu property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the VMaxpu property of the active load. The parameter argument must contain the new value
                 in VMaxpu for the desired active load. The return value will be equal to 0. """
         return LoadsF._vmax_pu(self)
@@ -378,6 +407,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def vmin_emerg(self) -> float:
         """Allows to read the VMinemerg property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the VMinemerg property of the active load. The parameter argument must contain the new
                 value in VMinemerg for the desired active load. The return value will be equal to 0. """
         return LoadsF._vmin_emerg(self)
@@ -389,6 +419,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def vmin_norm(self) -> float:
         """Allows to read the VMinnorm property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the VMinnorm property of the active load. The parameter argument must contain the new
                 value in VMinnorm for the desired active load. The return value will be equal to 0. """
         return LoadsF._vmin_norm(self)
@@ -396,6 +427,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @vmin_norm.setter
     def vmin_norm(self, value: float):
         """Allows to read the VMinpu property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the VMinpu property of the active load. The parameter argument must contain the new value
                 in VMinpu for the desired active load. The return value will be equal to 0. """
         LoadsF._vmin_norm_write(self, value)
@@ -411,6 +443,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def x_neut(self) -> float:
         """Allows to read the Xneut property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the Xneut property of the active load. The parameter argument must contain the new value
                 in Xneut for the desired active load. The return value will be equal to 0. """
         return LoadsF._x_neut(self)
@@ -423,6 +456,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def xfkva(self) -> float:
         """Allows to read the xfKVA (Rated service transformer KVA for load allocation, using Allocationfactor.
                 Affects kW, kvar and pf.) property of the active load. The parameter argument can be filled with a 0.
+
         Allows to write the xfKVA (Rated service transformer KVA for load allocation, using Allocationfactor.
         Affects kW, kvar and pf.) property of the active load. The parameter argument must contain the new value in
         xfKVA for the desired active load. The return value will be equal to 0. """
@@ -436,6 +470,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     def yearly(self) -> str:
         """Allows to read the Yearly property of the active load. The parameter argument can be filled with an empty
                 string.
+
         Allows to set the Yearly property for the active load. The parameter argument must contain the Name of the
         new Yearly to be linked to the active load. The return value will be equal to empty. """
         return LoadsS._yearly(self)
@@ -447,6 +482,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def zipv(self) -> List[float]:
         """Allows to read the array of 7 elements (doubles) for ZIP property of the active Load object.
+
         Allows to write the array of 7 elements (doubles) for ZIP property of the active Load object."""
         return LoadsV._zipv_read(self)
 

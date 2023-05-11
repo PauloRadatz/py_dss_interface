@@ -23,7 +23,7 @@ class TestRelays13Bus:
                  r"                Type=Current "
                  r"                PhaseTrip=800 "
                  r"                GroundTrip=250")
-        dss.solution.solve
+        dss.solution.solve()
         dss.relays.name = "test1"
 
         return dss

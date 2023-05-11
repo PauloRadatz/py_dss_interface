@@ -90,6 +90,7 @@ class Meters(MetersV, MetersS, MetersF, MetersI):
     @property
     def metered_terminal(self) -> int:
         """Returns the number of metered terminal by the active Energy Meter.
+
         Sets the number of metered terminal by the active Energy Meter."""
         return MetersI._metered_terminal_read(self)
 
@@ -130,6 +131,7 @@ class Meters(MetersV, MetersS, MetersF, MetersI):
     def sequence_index(self) -> int:
         """Returns the index into meter's SequenceList that contains branch pointers in lexical order. Earlier index
                 guaranteed to be up line from later index. Sets PDElement active.
+
         Sets the index into meter's SequenceList that contains branch pointers in lexical order. Earlier index
         guaranteed to be up line from later index. Sets PDElement active. """
         return MetersI._sequence_index_read(self)
@@ -189,6 +191,7 @@ class Meters(MetersV, MetersS, MetersF, MetersI):
     @property
     def name(self) -> str:
         """Returns the active Energy Meter's name.
+
         Sets the active Energy Meter's name."""
         return MetersS._name_read(self)
 
@@ -199,6 +202,7 @@ class Meters(MetersV, MetersS, MetersF, MetersI):
     @property
     def metered_element(self) -> str:
         """Returns the name of the metered element (considering the active Energy Meter).
+
         Sets the name of the metered element (considering the active Energy Meter)."""
         return MetersS._metered_element_read(self)
 
@@ -229,6 +233,7 @@ class Meters(MetersV, MetersS, MetersF, MetersI):
     @property
     def peak_current(self) -> List[float]:
         """Returns an array of doubles with the Peak Current Property.
+
         Receives an array of doubles to set values of Peak Current Property."""
         return MetersV._peak_current_read(self)
 
@@ -240,6 +245,7 @@ class Meters(MetersV, MetersS, MetersF, MetersI):
     def calc_current(self) -> List[float]:
         """Returns the magnitude of the real part of the Calculated Current (normally determined by solution)
                 for the meter to force some behavior on Load Allocation.
+
         Sets the magnitude of the real part of the Calculated Current (normally determined by solution)
         for the meter to force some behavior on Load Allocation."""
         return MetersV._calc_current_read(self)
@@ -251,6 +257,7 @@ class Meters(MetersV, MetersS, MetersF, MetersI):
     @property
     def alloc_factors(self) -> List[float]:
         """Returns an array of doubles: allocation factors for the active Meter.
+
         Receives an array of doubles to set the phase allocation factors for the active Meter."""
         return MetersV._alloc_factors_read(self)
 

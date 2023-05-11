@@ -20,6 +20,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def r1(self) -> float:
         """Gets the Positive-sequence resistance in ohms per unit length for the active LineCode.
+
         Sets the Positive-sequence resistance in ohms per unit length for the active LineCode.
                 This value must be specified in the argument as a double."""
         return LineCodesF._r1_read(self)
@@ -31,6 +32,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def x1(self) -> float:
         """Gets the Positive-sequence reactance in ohms per unit length for the active LineCode.
+
         Sets the Positive-sequence reactance in ohms per unit length for the active LineCode.
                 This value must be specified in the argument as a double."""
         return LineCodesF._x1_read(self)
@@ -42,6 +44,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def r0(self) -> float:
         """Gets the Zero-sequence resistance in ohms per unit length for the active LineCode.
+
         Sets the Zero-sequence resistance in ohms per unit length for the active LineCode.
                 This value must be specified in the argument as a double."""
         return LineCodesF._r0_read(self)
@@ -53,6 +56,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def x0(self) -> float:
         """Gets the Zero-sequence reactance in ohms per unit length for the active LineCode.
+
         Sets the Zero-sequence reactance in ohms per unit length for the active LineCode.
                 This value must be specified in the argument as a double."""
         return LineCodesF._x0_read(self)
@@ -64,6 +68,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def c1(self) -> float:
         """Gets the Positive-sequence capacitance in nF per unit length for the active LineCode.
+
         Sets the Positive-sequence capacitance in nF per unit length for the active LineCode.
         This value must be specified in the argument as a double."""
         return LineCodesF._c1_read(self)
@@ -75,6 +80,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def c0(self) -> float:
         """Gets the Zero-sequence capacitance in ohms per unit length for the active LineCode.
+
         Sets the Zero-sequence capacitance in ohms per unit length for the active LineCode.
                 This value must be specified in the argument as a double."""
         return LineCodesF._c0_read(self)
@@ -86,6 +92,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def norm_amps(self) -> float:
         """Gets the normal ampere rating for the active LineCode.
+
         Sets the normal ampere rating for the active LineCode. This value must be specified in the argument
                 as a double."""
         return LineCodesF._norm_amps_read(self)
@@ -97,6 +104,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def emerg_amps(self) -> float:
         """Gets the Emergency ampere rating for the active LineCode.
+
         Sets the Emergency ampere rating for the active LineCode. This value must be specified in the argument
                 as a double."""
         return LineCodesF._emerg_amps_read(self)
@@ -121,6 +129,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def units(self) -> int:
         """Delivers the units of the active LineCode as an integer.
+
         Sets the units of the active LineCode. The units must be specified as an integer in the argument.
                 Please refer to the OpenDSS User manual for more information.
                 UNITS_MAXNUM =9;
@@ -143,6 +152,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def phases(self) -> int:
         """Delivers the number of phases of the active LineCode as an integer.
+
         Sets the number of phases of the active LineCode. The units must be specified as an integer in the
                 argument. """
         return LineCodesI._phases_read(self)
@@ -159,6 +169,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def name(self) -> str:
         """Gets the name of the active LineCode element.
+
         Sets the name of the active LineCode element. The new value must be specified in the argument as a string."""
         return LineCodesS._name_read(self)
 
@@ -169,6 +180,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def rmatrix(self) -> List[float]:
         """Gets the resistance matrix in ohms per unit length of the active LineCode.
+
         Sets the resistance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument.
          """
@@ -181,6 +193,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def xmatrix(self) -> List[float]:
         """Gets the reactance matrix in ohms per unit length of the active LineCode.
+
         Sets the reactance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument.
          """
@@ -193,6 +206,7 @@ class LineCodes(LineCodesF, LineCodesS, LineCodesI, LineCodesV):
     @property
     def cmatrix(self) -> List[float]:
         """Gets the capacitance matrix in ohms per unit length of the active LineCode.
+
         Sets the capacitance matrix in ohms per unit length of the active LineCode. The new values must be entered as
          a vector of doubles using the argument.
          """
