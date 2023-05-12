@@ -35,3 +35,5 @@ voltage_results = list()
 #
 #     if v < 0.95:
 #         dss.text("edit generation.g XRdp=1e12 Xdp=0.3 Xdpp=0.25 H=3.5 D=0")
+
+dss.lines.bus1
