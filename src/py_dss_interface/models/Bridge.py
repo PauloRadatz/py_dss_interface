@@ -10,8 +10,11 @@ from enum import Enum
 from typing import List, Union
 
 import numpy as np
-import pandas as pd
-from comtypes import automation
+try:
+    from comtypes import automation
+except:
+    print("Error in importing ctypes")
+
 
 logger = logging.getLogger('opendssdirect.core')
 

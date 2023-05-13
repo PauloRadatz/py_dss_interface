@@ -2,8 +2,6 @@
 """
  Created by eniocc at 11/10/2020
 """
-import ctypes
-from comtypes import automation
 from typing import List
 
 from py_dss_interface.models import Bridge

@@ -1,9 +1,7 @@
 # -*- coding: iso-8859-15 -*-
 # TODO to work the docs
-try:
-    import ctypes
-except:
-    print("Error in importing ctypes")
+
+import ctypes
 import json
 import os
 import pathlib
