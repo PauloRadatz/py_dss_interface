@@ -137,7 +137,7 @@ latex_elements = {
 latex_documents = [
     (master_doc, 'py_dss_interface.tex',
      py_dss_interface_doc,
-     'Ênio Rodrigues', 'manual'),
+     'Paulo Radatz', 'manual'),
 ]
 
 # -- Options for manual page output ------------------------------------
@@ -160,6 +160,6 @@ texinfo_documents = [
      py_dss_interface_doc,
      author,
      'py_dss_interface',
-     'One line description of project.',
+     'The py-dss-interface is a Python package that provides a Python interface to the official version of OpenDSS (Open Distribution System Simulator) software. OpenDSS is a free, open-source software for simulating and analyzing power distribution systems.',
      'Miscellaneous'),
 ]
