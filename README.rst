@@ -2,6 +2,8 @@
 Overview
 ========
 
+The py-dss-interface is a Python package that provides a Python interface to the OFFICIAL version of OpenDSS (Open-source Distribution System Simulator) software. OpenDSS is a free, open-source software for simulating and analyzing power distribution systems.
+
 .. start-badges
 
 .. list-table::
@@ -13,8 +15,7 @@ Overview
       - | |appveyor|
         | |codecov|
     * - package
-      - | |version| |wheel| |supported-versions| |supported-implementations|
-        | |commits-since|
+      - | |version| |wheel| |supported-versions|
 .. |docs| image:: https://readthedocs.org/projects/py_dss_interface/badge/?style=flat
     :target: https://readthedocs.org/projects/py_dss_interface
     :alt: Documentation Status
@@ -39,21 +40,12 @@ Overview
     :alt: Supported versions
     :target: https://pypi.org/project/py-dss-interface
 
-.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/py-dss-interface.svg
-    :alt: Supported implementations
-    :target: https://pypi.org/project/py-dss-interface
-
-.. |commits-since| image:: https://img.shields.io/github/commits-since/PauloRadatz/py_dss_interface/v0.0.0.svg
-    :alt: Commits since latest release
-    :target: https://github.com/PauloRadatz/py_dss_interface/compare/v0.0.0...master
-
 
 
 .. end-badges
 
-The py-dss-interface is a Python package that provides a Python interface to the official version of OpenDSS (Open Distribution System Simulator) software. OpenDSS is a free, open-source software for simulating and analyzing power distribution systems.
-
 * Free software: MIT license
+* Documentation: https://py-dss-interface.readthedocs.io/en/latest/
 
 The current py-dss-interface works only with Windows. The reason is that EPRI provides only Windows versions of OpenDSS. The package will work for Linux when EPRI releases the Linux version of OpenDSS.
 
@@ -83,14 +75,9 @@ Installation
 
     pip install py-dss-interface
 
-Documentation
-=============
-You can access the documentation through:
-
-1 - The Read the Docs.
-
-https://py-dss-interface.readthedocs.io/en/latest/
-
+Examples
+============
+You can find several examples of Python scripts at this link: https://github.com/PauloRadatz/py-dss-interface-examples
 
 Thanks
 =============
