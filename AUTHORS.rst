@@ -11,4 +11,5 @@ Development Lead
 Contributors
 ------------
 
-None yet. Why not be the first?
+* Rodolfo Pilar Londero - https://www.linkedin.com/in/rodolfolondero/ and rodolfopl@gmail.com
+
