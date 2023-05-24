@@ -2,7 +2,7 @@
 Changelog
 =========
 
-2.0.0 (2022-05-21)
+2.0.0 (2022-05-24)
 ------------------
 * py-dss-interface version 2 or above does not have backward compatibility with version 1
 * Methods replaced by Python property and setter. For example, instead of using dss.lines_read_r1() and dss.lines_write_r1() to read and write, respectively, we can use dss.lines.r1 to either read (variable = dss.lines.r1) or write (dss.lines.r1 = value) in the current version.
@@ -12,6 +12,10 @@ Changelog
 ------------------
 * Code refactored
 * PEP 8 in some methods
+
+1.0.1
+------------------
+* Working only on Windows due EPRI offical OpenDSS is available only on Windows
 
 1.0.0 (2021-01-21)
 ------------------
