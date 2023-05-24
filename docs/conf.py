@@ -60,7 +60,7 @@ year = '2020'
 author = 'Paulo Radatz and Ênio Viana'
 copyright = '{0}, {1}'.format(year, author)
 py_dss_interface_doc = 'py-dss-interface Documentation'
-version = release = '2.0.0'
+version = release = '2.0.1'
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
 # the built documents.

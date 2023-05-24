@@ -25,10 +25,9 @@ def read(*names, **kwargs):
 
 setup(
     name='py-dss-interface',
-    version='2.0.0',
+    version='2.0.1',
     license='MIT',
-    description='opendsspy is a Windows/Linux Python package providing access to OpenDSS direct dll version of'
-                ' OpenDSS.',
+    description='The py-dss-interface is a Python package that provides a Python interface to the OFFICIAL version of OpenDSS (Open-source Distribution System Simulator) software. OpenDSS is a free, open-source software for simulating and analyzing power distribution systems.',
     long_description='%s\n%s' % (
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
