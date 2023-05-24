@@ -2,6 +2,10 @@
 Changelog
 =========
 
+2.0.1 (2022-05-24)
+------------------
+* Description corrected
+
 2.0.0 (2022-05-24)
 ------------------
 * py-dss-interface version 2 or above does not have backward compatibility with version 1
