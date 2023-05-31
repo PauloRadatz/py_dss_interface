@@ -112,14 +112,16 @@ def pointer_read(f: callable, param: int, optional=None) -> List:
     ctypes.byref(mySize)
     )
 
+    num_type = 0
     if myType.value == 1:
         c_type = ctypes.c_int32
+        num_type = 4
     elif myType.value == 4:
         c_type = ctypes.c_char
     # elif myType.value ==
 
     # Access the returned array
-    array_length = mySize.value
+    array_length = int(mySize.value / num_type)
     # data_array = ctypes.cast(myPointer, ctypes.POINTER(ctypes.c_int * array_length)).contents
     data_array = ctypes.cast(myPointer, ctypes.POINTER(c_type * array_length)).contents
 
@@ -150,20 +152,18 @@ def pointer_write(f: callable, param: int, arg: List) -> Union[List, int]:
     # Prepare input values
     data = arg
 
-    c_array = (ctypes.c_int * len(data))()
+    c_array = (ctypes.c_int32 * len(data))(*data)
 
-    for i, d in enumerate(data):
-        c_array[i] = d
     # c_array = (ctypes.c_void_p * len(data))(*data)
     # c_array = ctypes.c_int
 
     # Declare variables for the procedure parameters
     # my_pointer = ctypes.
-    my_type = ctypes.c_long()
+    my_type = ctypes.c_long(1)
     my_size = ctypes.c_long(len(data))
 
     # n1 = ctypes.c_int32(2)
-    n = ctypes.POINTER(ctypes.byref(c_array))
+    # n = ctypes.POINTER(ctypes.byref(c_array))
 
     # Update the pointer value with the C array
     # ctypes.memmove(my_pointer, c_array, len(c_array) * ctypes.sizeof(ctypes.c_long))
@@ -172,7 +172,9 @@ def pointer_write(f: callable, param: int, arg: List) -> Union[List, int]:
     # f(mode, ctypes.byref(c_array), ctypes.byref(my_type), ctypes.byref(my_size))
     # ctypes.cast(c_array, ctypes.c_void_p)
     # ctypes.cast(n, ctypes.c_void_p)
-    f(mode, ctypes.byref(c_array), ctypes.byref(my_type), ctypes.byref(my_size))
+    # pc_array = ctypes.cast(c_array, ctypes.POINTER(ctypes.c_void_p))
+    pc_array = ctypes.cast(c_array, ctypes.c_void_p)
+    f(mode, ctypes.byref(pc_array), ctypes.byref(my_type), ctypes.byref(my_size))
 
 
 
