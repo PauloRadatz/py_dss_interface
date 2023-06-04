@@ -1,12 +1,17 @@
 
 Changelog
 =========
+2.0.2 (2023-06-04)
+------------------
+* Tom updated OpenDSS to DDLL built as v9.6.1.2
+* Moving away from variant. Capacitor is done. Need other elements
+* Tom worked on direct dll with progress bar wired in for daily solution mode
 
-2.0.1 (2022-05-24)
+2.0.1 (2023-05-24)
 ------------------
 * Description corrected
 
-2.0.0 (2022-05-24)
+2.0.0 (2023-05-24)
 ------------------
 * py-dss-interface version 2 or above does not have backward compatibility with version 1
 * Methods replaced by Python property and setter. For example, instead of using dss.lines_read_r1() and dss.lines_write_r1() to read and write, respectively, we can use dss.lines.r1 to either read (variable = dss.lines.r1) or write (dss.lines.r1 = value) in the current version.
