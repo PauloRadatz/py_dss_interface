@@ -118,6 +118,7 @@ def pointer_read(f: callable, param: int, optional=None) -> List:
         num_type = 4
     elif myType.value == 4:
         c_type = ctypes.c_char
+        num_type = 1
     # elif myType.value ==
 
     # Access the returned array
@@ -126,13 +127,16 @@ def pointer_read(f: callable, param: int, optional=None) -> List:
     data_array = ctypes.cast(myPointer, ctypes.POINTER(c_type * array_length)).contents
 
     # Convert the data_array to a Python list
-    python_list = list(data_array)
-
-    # data_array.raw.decode().replace('\x00', " ").split(" ")[1:]
+    if myType.value == 4:
+        python_list = list(data_array.raw.decode().replace('\x00', '__SPLITHERE__').split('__SPLITHERE__')[1:])
+    else:
+        python_list = list(data_array)
     # Access the returned values
-    print(f"Data array: {python_list}")
-    print(f"myType: {myType.value}")
-    print(f"mySize: {mySize.value}")
+    # print(f"Data array: {python_list}")
+    # print(f"myType: {myType.value}")
+    # print(f"mySize: {mySize.value}")
+
+    return python_list
 
 def pointer_write(f: callable, param: int, arg: List) -> Union[List, int]:
     """
@@ -180,8 +184,8 @@ def pointer_write(f: callable, param: int, arg: List) -> Union[List, int]:
 
     # Access the returned values
     # print(f"Data array: {python_list}")
-    print(f"myType: {my_type.value}")
-    print(f"mySize: {my_size.value}")
+    # print(f"myType: {my_type.value}")
+    # print(f"mySize: {my_size.value}")
 
 def variant_pointer_write(f: callable, param: int, arg: List) -> Union[List, int]:
     """

@@ -23,11 +23,11 @@ class CapacitorsV(Base):
     """
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.CapacitorsV, 0)
+        return Bridge.pointer_read(self._dss_obj.CapacitorsV, 0)
 
     def _states_read(self) -> List[int]:
-        return Bridge.variant_pointer_read(self._dss_obj.CapacitorsV, 1)
+        return Bridge.pointer_read(self._dss_obj.CapacitorsV, 1)
 
     def _states_write(self, argument: List[int]) -> List[int]:
-        return Bridge.variant_pointer_write(self._dss_obj.CapacitorsV, 2, argument)
+        return Bridge.pointer_write(self._dss_obj.CapacitorsV, 2, argument)
 
