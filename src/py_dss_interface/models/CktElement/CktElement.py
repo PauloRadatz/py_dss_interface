@@ -26,8 +26,7 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
         return CktElementS._controller(self, argument)
 
     def enabled(self, argument: int) -> int:
-        """Returns one of the following values: 0 if the active element is disabled or 1 if the active element is
-                enabled."""
+        """Allows to modify the enabled status of the active element (1=enabled, 0=disabled)."""
         return CktElementI._enabled(self, argument)
 
     def variable_i(self, argument: float) -> float:
