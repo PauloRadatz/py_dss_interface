@@ -20,10 +20,10 @@ class GeneratorsV(Base):
     """
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.GeneratorsV, 0)
+        return Bridge.pointer_read(self._dss_obj.GeneratorsV, 0)
 
     def _register_names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.GeneratorsV, 1)
+        return Bridge.pointer_read(self._dss_obj.GeneratorsV, 1)
 
     def _register_values(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.GeneratorsV, 2)
+        return Bridge.pointer_read(self._dss_obj.GeneratorsV, 2)

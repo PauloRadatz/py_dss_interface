@@ -22,12 +22,12 @@ class ParserV(Base):
 
     # TODO include in test
     def _vector(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.ParserV, 0)
+        return Bridge.pointer_read(self._dss_obj.ParserV, 0)
 
     # TODO include in test
     def _matrix(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.ParserV, 1)
+        return Bridge.pointer_read(self._dss_obj.ParserV, 1)
 
     # TODO include in test
     def _sym_matrix(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.ParserV, 2)
+        return Bridge.pointer_read(self._dss_obj.ParserV, 2)

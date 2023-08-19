@@ -21,4 +21,4 @@ class RegControlsV(Base):
     """
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.RegControlsV, 0)
+        return Bridge.pointer_read(self._dss_obj.RegControlsV, 0)

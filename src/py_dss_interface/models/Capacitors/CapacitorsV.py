@@ -29,5 +29,5 @@ class CapacitorsV(Base):
         return Bridge.pointer_read(self._dss_obj.CapacitorsV, 1)
 
     def _states_write(self, argument: List[int]) -> List[int]:
-        return Bridge.pointer_write(self._dss_obj.CapacitorsV, 2, argument)
+        return Bridge.pointer_write(self._dss_obj.CapacitorsV, 2, argument, 1)
 

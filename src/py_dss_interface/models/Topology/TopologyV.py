@@ -21,10 +21,10 @@ class TopologyV(Base):
     """
 
     def _all_looped_pairs(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.TopologyV, 0)
+        return Bridge.pointer_read(self._dss_obj.TopologyV, 0)
 
     def _all_isolated_branches(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.TopologyV, 1)
+        return Bridge.pointer_read(self._dss_obj.TopologyV, 1)
 
     def _all_isolated_loads(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.TopologyV, 2)
+        return Bridge.pointer_read(self._dss_obj.TopologyV, 2)

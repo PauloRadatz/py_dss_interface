@@ -20,7 +20,7 @@ class DSSInterfaceV(Base):
     """
 
     def _classes(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.DSSV, 0)
+        return Bridge.pointer_read(self._dss_obj.DSSV, 0)
 
     def _user_classes(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.DSSV, 1)
+        return Bridge.pointer_read(self._dss_obj.DSSV, 1)

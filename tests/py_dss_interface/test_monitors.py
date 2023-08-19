@@ -2172,7 +2172,7 @@ class TestMonitors13Bus:
 
     def test_monitors_header(self, dss):
         expected = [' V1', ' VAngle1', ' V2', ' VAngle2', ' V3', ' VAngle3', ' V4', ' VAngle4',
-                    ' I1', ' IAngle1', ' I2', ' IAngle2', ' I3', ' IAngle3', ' I4', ' IAngle4\x00']
+                    ' I1', ' IAngle1', ' I2', ' IAngle2', ' I3', ' IAngle3', ' I4', ' IAngle4']
         actual = dss.monitors.header
         assert actual == expected
 
@@ -2182,7 +2182,8 @@ class TestMonitors13Bus:
         assert actual == expected
 
     def test_monitors_dbl_freq(self, dss):
-        expected = [0.0]
+        expected = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 0.0]  # TODO C++ version would have values
         actual = dss.monitors.dbl_freq
         assert actual == expected
 

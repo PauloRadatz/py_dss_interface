@@ -19,7 +19,7 @@ class ReclosersV(Base):
     """
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.ReclosersV, 0)
+        return Bridge.pointer_read(self._dss_obj.ReclosersV, 0)
 
     def _reclose_intervals(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.ReclosersV, 1)
+        return Bridge.pointer_read(self._dss_obj.ReclosersV, 1)

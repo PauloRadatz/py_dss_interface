@@ -21,10 +21,10 @@ class LoadsV(Base):
     """
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.DSSLoadsV, 0)
+        return Bridge.pointer_read(self._dss_obj.DSSLoadsV, 0)
 
     def _zipv_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.DSSLoadsV, 1)
+        return Bridge.pointer_read(self._dss_obj.DSSLoadsV, 1)
 
     def _zipv_write(self, argument: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.DSSLoadsV, 2, argument)
+        return Bridge.pointer_write(self._dss_obj.DSSLoadsV, 2, argument, 2)

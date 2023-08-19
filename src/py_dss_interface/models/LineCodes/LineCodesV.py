@@ -27,22 +27,22 @@ class LineCodesV(Base):
     # TODO I do not think they should return str
 
     def _rmatrix_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.LineCodesV, 0)
+        return Bridge.pointer_read(self._dss_obj.LineCodesV, 0)
 
     def _rmatrix_write(self, argument: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.LineCodesV, 1, argument)
+        return Bridge.pointer_write(self._dss_obj.LineCodesV, 1, argument, 2)
 
     def _xmatrix_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.LineCodesV, 2)
+        return Bridge.pointer_read(self._dss_obj.LineCodesV, 2)
 
     def _xmatrix_write(self, argument: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.LineCodesV, 3, argument)
+        return Bridge.pointer_write(self._dss_obj.LineCodesV, 3, argument, 2)
 
     def _cmatrix_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.LineCodesV, 4)
+        return Bridge.pointer_read(self._dss_obj.LineCodesV, 4)
 
     def _cmatrix_write(self, argument: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.LineCodesV, 5, argument)
+        return Bridge.pointer_write(self._dss_obj.LineCodesV, 5, argument, 2)
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.LineCodesV, 6)
+        return Bridge.pointer_read(self._dss_obj.LineCodesV, 6)

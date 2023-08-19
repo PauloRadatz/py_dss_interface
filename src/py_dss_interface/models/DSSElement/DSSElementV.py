@@ -23,4 +23,4 @@ class DSSElementV(Base):
     """
 
     def _property_names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.DSSElementV, 0)
+        return Bridge.pointer_read(self._dss_obj.DSSElementV, 0)

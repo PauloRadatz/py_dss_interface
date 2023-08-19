@@ -18,20 +18,20 @@ class MonitorsV(Base):
     """
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 0)
+        return Bridge.pointer_read(self._dss_obj.MonitorsV, 0)
 
     def _byte_stream(self) -> List[int]:
-        return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 1)
+        return Bridge.pointer_read(self._dss_obj.MonitorsV, 1)
 
     def _header(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 2)
+        return Bridge.pointer_read(self._dss_obj.MonitorsV, 2)
 
     def _dbl_hour(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 3)
+        return Bridge.pointer_read(self._dss_obj.MonitorsV, 3)
 
     def _dbl_freq(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 4)
+        return Bridge.pointer_read(self._dss_obj.MonitorsV, 4)
 
     def _channel(self, arg: int) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.MonitorsV, 5, arg)
+        return Bridge.pointer_read(self._dss_obj.MonitorsV, 5, arg)
 

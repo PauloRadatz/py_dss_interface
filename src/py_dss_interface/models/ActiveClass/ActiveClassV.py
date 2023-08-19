@@ -23,7 +23,5 @@ class ActiveClassV(Base):
     """
 
     def _names(self) -> List[str]:
-        try:
-            return Bridge.variant_pointer_read(self._dss_obj.ActiveClassV, 0)
-        except Exception as e:
-            raise Exception(f"Error while retrieving element names: {e}")
+        return Bridge.pointer_read(self._dss_obj.ActiveClassV, 0)
+

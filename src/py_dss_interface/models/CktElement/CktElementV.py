@@ -21,7 +21,7 @@ class CktElementV(Base):
     """
 
     def _bus_names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 0)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 0)
 
     def _bus_names_write(self, argument: List[str]):
         # # TODO learn what to do.
@@ -29,60 +29,60 @@ class CktElementV(Base):
         #     argument[i] = argument[i].encode('ascii')
 
         Error.method_not_working("setter of dss.cktelement.bus_names")
-        # return Bridge.variant_pointer_write(self.dss_obj.CktElementV, 1, argument)
+        # return Bridge.pointer_write(self.dss_obj.CktElementV, 1, argument)
 
     def _voltages(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 2)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 2)
 
     def _currents(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 3)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 3)
 
     def _powers(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 4)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 4)
 
     def _losses(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 5)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 5)
 
     def _phase_losses(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 6)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 6)
 
     def _seq_voltages(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 7)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 7)
 
     def _seq_currents(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 8)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 8)
 
     def _seq_powers(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 9)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 9)
 
     def _property_names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 10)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 10)
 
     def _residuals_currents(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 11)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 11)
 
     def _y_prim(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 12)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 12)
 
     def _cplx_seq_voltages(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 13)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 13)
 
     def _cplx_seq_currents(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 14)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 14)
 
     # https://github.com/PauloRadatz/py_dss_interface/issues/3
     def _variables_names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 15)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 15)
 
     # https://github.com/PauloRadatz/py_dss_interface/issues/4
     def _variables_values(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 16)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 16)
 
     def _node_order(self) -> List[int]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 17)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 17)
 
     def _currents_mag_ang(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 18)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 18)
 
     def _voltages_mag_ang(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.CktElementV, 19)
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 19)
