@@ -89,9 +89,6 @@ def variant_pointer_read(f: callable, param: int, optional=None) -> List:
     return r
 
 def pointer_read(f: callable, param: int, optional=None) -> List:
-    """
-    Reads a COM variant pointer and returns its value as a list.
-    """
     f.argtypes = [
     ctypes.c_long,
     ctypes.POINTER(ctypes.c_void_p),
@@ -105,30 +102,45 @@ def pointer_read(f: callable, param: int, optional=None) -> List:
     myType = ctypes.c_long()
     mySize = ctypes.c_long()
 
-    f(
-    param,
-    ctypes.byref(myPointer),
-    ctypes.byref(myType),
-    ctypes.byref(mySize)
+    if optional:
+        op_list = [optional]
+        c_array = (ctypes.c_int32 * len(op_list))(*op_list)
+        myPointer = ctypes.cast(c_array, ctypes.c_void_p)
+
+        f(param, ctypes.byref(myPointer), ctypes.byref(myType), ctypes.byref(mySize))
+    else:
+        f(
+        param,
+        ctypes.byref(myPointer),
+        ctypes.byref(myType),
+        ctypes.byref(mySize)
     )
 
+    # 0 - Boolean, 1- Integer (32 bit), 2- double (64 bit), 3- Complex, 4- String.
     num_type = 0
     if myType.value == 1:
         c_type = ctypes.c_int32
         num_type = 4
+    elif myType.value == 2:
+        c_type = ctypes.c_double
+        num_type = 8
+    elif myType.value == 3:
+        c_type = ctypes.c_double
+        num_type = 8
     elif myType.value == 4:
         c_type = ctypes.c_char
         num_type = 1
-    # elif myType.value ==
-
     # Access the returned array
     array_length = int(mySize.value / num_type)
     # data_array = ctypes.cast(myPointer, ctypes.POINTER(ctypes.c_int * array_length)).contents
+
     data_array = ctypes.cast(myPointer, ctypes.POINTER(c_type * array_length)).contents
 
     # Convert the data_array to a Python list
     if myType.value == 4:
-        python_list = list(data_array.raw.decode().replace('\x00', '__SPLITHERE__').split('__SPLITHERE__')[1:])
+        python_list = list(data_array.raw.decode().replace('\x00', '__SPLITHERE__').split('__SPLITHERE__')[:])
+        while "" in python_list:
+            python_list.remove("")
     else:
         python_list = list(data_array)
     # Access the returned values
@@ -138,7 +150,7 @@ def pointer_read(f: callable, param: int, optional=None) -> List:
 
     return python_list
 
-def pointer_write(f: callable, param: int, arg: List) -> Union[List, int]:
+def pointer_write(f: callable, param: int, arg: List, myType):
     """
     Writes a list to a COM variant pointer.
     """
@@ -153,18 +165,35 @@ def pointer_write(f: callable, param: int, arg: List) -> Union[List, int]:
 
     f.restype = None
 
+    if myType == 1:
+        c_type = ctypes.c_int32
+    elif myType == 2:
+        c_type = ctypes.c_double
+    elif myType == 3:
+        c_type = ctypes.c_double
+    elif myType == 4:
+        c_type = ctypes.c_char
+
     # Prepare input values
     data = arg
 
-    c_array = (ctypes.c_int32 * len(data))(*data)
+    c_array = (c_type * len(data))(*data)
+    my_type = ctypes.c_long(myType)
+    my_size = ctypes.c_long(len(data))
+    pc_array = ctypes.cast(c_array, ctypes.c_void_p)
+    f(mode, ctypes.byref(pc_array), ctypes.byref(my_type), ctypes.byref(my_size))
+
+    # elif myType.value == 2:
+    #     c_type = ctypes.c_double
+    #     num_type = 8
 
     # c_array = (ctypes.c_void_p * len(data))(*data)
     # c_array = ctypes.c_int
 
     # Declare variables for the procedure parameters
     # my_pointer = ctypes.
-    my_type = ctypes.c_long(1)
-    my_size = ctypes.c_long(len(data))
+    # my_type = ctypes.c_long(1)
+
 
     # n1 = ctypes.c_int32(2)
     # n = ctypes.POINTER(ctypes.byref(c_array))
@@ -177,8 +206,7 @@ def pointer_write(f: callable, param: int, arg: List) -> Union[List, int]:
     # ctypes.cast(c_array, ctypes.c_void_p)
     # ctypes.cast(n, ctypes.c_void_p)
     # pc_array = ctypes.cast(c_array, ctypes.POINTER(ctypes.c_void_p))
-    pc_array = ctypes.cast(c_array, ctypes.c_void_p)
-    f(mode, ctypes.byref(pc_array), ctypes.byref(my_type), ctypes.byref(my_size))
+
 
 
 
@@ -289,3 +317,7 @@ def var_array_function(f, param, optional, name):
     # var_arr = ctypes.cast(varg.p, ctypes.POINTER(VarArray)).contents
 
     return process_var(varg, name)
+
+class MyComplex(ctypes.Structure):
+    _fields_ = [("re", ctypes.c_double),
+                ("im", ctypes.c_double)]

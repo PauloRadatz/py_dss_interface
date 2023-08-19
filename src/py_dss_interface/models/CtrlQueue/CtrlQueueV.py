@@ -22,7 +22,7 @@ class CtrlQueueV(Base):
     """
 
     def _ctrlqueue(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.CtrlQueueV, 0)
+        return Bridge.pointer_read(self._dss_obj.CtrlQueueV, 0)
 
     def _push(self, arg: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.CtrlQueueV, 1, arg)
+        return Bridge.pointer_write(self._dss_obj.CtrlQueueV, 1, arg, 2)

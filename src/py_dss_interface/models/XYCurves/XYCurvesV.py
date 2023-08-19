@@ -23,13 +23,13 @@ class XYCurvesV(Base):
     """
 
     def _x_array_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.XYCurvesV, 0)
+        return Bridge.pointer_read(self._dss_obj.XYCurvesV, 0)
 
     def _x_array_write(self, arg: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.XYCurvesV, 1, arg)
+        return Bridge.pointer_write(self._dss_obj.XYCurvesV, 1, arg, 2)
 
     def _y_array_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.XYCurvesV, 2)
+        return Bridge.pointer_read(self._dss_obj.XYCurvesV, 2)
 
     def _y_array_write(self, arg: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.XYCurvesV, 3, arg)
+        return Bridge.pointer_write(self._dss_obj.XYCurvesV, 3, arg, 2)

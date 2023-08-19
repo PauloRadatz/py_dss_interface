@@ -21,7 +21,7 @@ class ParallelV(Base):
     """
 
     def _actor_progress(self) -> List[int]:
-        return Bridge.variant_pointer_read(self._dss_obj.ParallelV, 0)
+        return Bridge.pointer_read(self._dss_obj.ParallelV, 0)
 
     def _actor_status(self) -> List[int]:
-        return Bridge.variant_pointer_read(self._dss_obj.ParallelV, 1)
+        return Bridge.pointer_read(self._dss_obj.ParallelV, 1)

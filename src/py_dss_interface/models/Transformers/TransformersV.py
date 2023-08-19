@@ -23,10 +23,10 @@ class TransformersV(Base):
     """
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.TransformersV, 0)
+        return Bridge.pointer_read(self._dss_obj.TransformersV, 0)
 
     def _wdg_voltages(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.TransformersV, 1)
+        return Bridge.pointer_read(self._dss_obj.TransformersV, 1)
 
     def _wdg_currents(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.TransformersV, 2)
+        return Bridge.pointer_read(self._dss_obj.TransformersV, 2)

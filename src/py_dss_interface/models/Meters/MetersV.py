@@ -25,47 +25,47 @@ class MetersV(Base):
     # TODO add type return
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.MetersV, 0)
+        return Bridge.pointer_read(self._dss_obj.MetersV, 0)
 
     def _register_names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.MetersV, 1)
+        return Bridge.pointer_read(self._dss_obj.MetersV, 1)
 
     def _register_values(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.MetersV, 2)
+        return Bridge.pointer_read(self._dss_obj.MetersV, 2)
 
     def _totals(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.MetersV, 3)
+        return Bridge.pointer_read(self._dss_obj.MetersV, 3)
 
     def _peak_current_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.MetersV, 4)
+        return Bridge.pointer_read(self._dss_obj.MetersV, 4)
 
     def _peak_current_write(self, arg: List[float]) -> List[float]:
         """Receives an array of doubles to set values of Peak Current Property."""
-        return Bridge.variant_pointer_write(self._dss_obj.MetersV, 5, arg)
+        return Bridge.pointer_write(self._dss_obj.MetersV, 5, arg, 2)
 
     def _calc_current_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.MetersV, 6)
+        return Bridge.pointer_read(self._dss_obj.MetersV, 6)
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/6
     # TODO include in test
     def _calc_current_write(self, arg: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.MetersV, 7, arg)
+        return Bridge.pointer_write(self._dss_obj.MetersV, 7, arg, 2)
 
     def _alloc_factors_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.MetersV, 8)
+        return Bridge.pointer_read(self._dss_obj.MetersV, 8)
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/7
     def _alloc_factors_write(self, arg: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.MetersV, 9, arg)
+        return Bridge.pointer_write(self._dss_obj.MetersV, 9, arg, 2)
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/8
     def _all_end_elements(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.MetersV, 10)
+        return Bridge.pointer_read(self._dss_obj.MetersV, 10)
 
     # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/9
     # TODO include in test
     def _all_branches_in_zone(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.MetersV, 11)
+        return Bridge.pointer_read(self._dss_obj.MetersV, 11)
 
     def _all_pce_in_zone(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.MetersV, 12)
+        return Bridge.pointer_read(self._dss_obj.MetersV, 12)

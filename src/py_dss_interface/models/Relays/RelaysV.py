@@ -21,4 +21,4 @@ class RelaysV(Base):
     """
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.RelaysV, 0)
+        return Bridge.pointer_read(self._dss_obj.RelaysV, 0)

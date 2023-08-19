@@ -29,36 +29,36 @@ class LinesV(Base):
     # TODO work on this guy
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.LinesV, 0)
+        return Bridge.pointer_read(self._dss_obj.LinesV, 0)
 
     def _rmatrix_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.LinesV, 1)
+        return Bridge.pointer_read(self._dss_obj.LinesV, 1)
 
     def _rmatrix_write(self, argument: List[float]) -> List[float]:
-        # return Bridge.variant_pointer_write(self.dss_obj.LinesV, 2, argument)
+        # return Bridge.pointer_write(self.dss_obj.LinesV, 2, argument)
 
         Error.method_not_working("setter of dss.lines.rmatrix")
 
     def _xmatrix_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.LinesV, 3)
+        return Bridge.pointer_read(self._dss_obj.LinesV, 3)
 
     def _xmatrix_write(self, argument: List[float]) -> List[float]:
-        # return Bridge.variant_pointer_write(self.dss_obj.LinesV, 4, argument)
+        # return Bridge.pointer_write(self.dss_obj.LinesV, 4, argument)
 
         Error.method_not_working("setter of dss.lines.xmatrix")
 
     # TODO include in test
     def _cmatrix_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.LinesV, 5)
+        return Bridge.pointer_read(self._dss_obj.LinesV, 5)
 
     # TODO include in test
     def _cmatrix_write(self, argument: List[float]) -> List[float]:
-        # return Bridge.variant_pointer_write(self.dss_obj.LinesV, 6, argument)
+        # return Bridge.pointer_write(self.dss_obj.LinesV, 6, argument)
 
         Error.method_not_working("setter of dss.lines.cmatrix")
 
     def _yprim_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.LinesV, 7)
+        return Bridge.pointer_read(self._dss_obj.LinesV, 7)
 
     # TODO include in test
     def _yprim_write(self, argument: List[float]) -> List[float]:

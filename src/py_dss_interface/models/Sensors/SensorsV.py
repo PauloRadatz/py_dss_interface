@@ -22,22 +22,22 @@ class SensorsV(Base):
     """
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.SensorsV, 0)
+        return Bridge.pointer_read(self._dss_obj.SensorsV, 0)
 
     def _currents_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.SensorsV, 1)
+        return Bridge.pointer_read(self._dss_obj.SensorsV, 1)
 
     def _currents_write(self, arg: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.SensorsV, 2, arg)
+        return Bridge.pointer_write(self._dss_obj.SensorsV, 2, arg, 2)
 
     def _kvars_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.SensorsV, 3)
+        return Bridge.pointer_read(self._dss_obj.SensorsV, 3)
 
     def _kvars_write(self, arg: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.SensorsV, 4, arg)
+        return Bridge.pointer_write(self._dss_obj.SensorsV, 4, arg, 2)
 
     def _kws_read(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.SensorsV, 5)
+        return Bridge.pointer_read(self._dss_obj.SensorsV, 5)
 
     def _kws_write(self, arg: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.SensorsV, 6, arg)
+        return Bridge.pointer_write(self._dss_obj.SensorsV, 6, arg, 2)

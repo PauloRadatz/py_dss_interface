@@ -3868,8 +3868,8 @@ class TestCircuit13Bus:
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
     def test_all_node_names_by_phase(self, dss):
-        expected = ['sourcebus.0', '650.0', 'rg60.0', '633.0', '634.0', '671.0', '645.0', '646.0', '692.0', '675.0',
-                    '670.0', '632.0', '680.0']
+        expected = ['sourcebus.2', '650.2', 'rg60.2', '633.2', '634.2', '671.2', '645.2', '646.2', '692.2', '675.2',
+                    '670.2', '632.2', '680.2']
         actual = dss.circuit.nodes_names_by_phase(2)
         assert actual == expected
 

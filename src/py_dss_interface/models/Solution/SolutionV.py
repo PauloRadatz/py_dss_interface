@@ -23,19 +23,19 @@ class SolutionV(Base):
 
     def _event_log(self) -> List[str]:
         # Error.method_not_working("getter of dss.solution.event_log")
-        return Bridge.variant_pointer_read(self._dss_obj.SolutionV, 0)
+        return Bridge.pointer_read(self._dss_obj.SolutionV, 0)
 
     def _nc_matrix(self) -> List[int]:
-        return Bridge.variant_pointer_read(self._dss_obj.SolutionV, 1)
+        return Bridge.pointer_read(self._dss_obj.SolutionV, 1)
 
     def _bus_levels(self) -> List[int]:
-        return Bridge.variant_pointer_read(self._dss_obj.SolutionV, 2)
+        return Bridge.pointer_read(self._dss_obj.SolutionV, 2)
 
     def _inc_matrix_rows(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.SolutionV, 3)
+        return Bridge.pointer_read(self._dss_obj.SolutionV, 3)
 
     def _inc_matrix_cols(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.SolutionV, 4)
+        return Bridge.pointer_read(self._dss_obj.SolutionV, 4)
 
     def _laplacian(self) -> List[int]:
-        return Bridge.variant_pointer_read(self._dss_obj.SolutionV, 5)
+        return Bridge.pointer_read(self._dss_obj.SolutionV, 5)

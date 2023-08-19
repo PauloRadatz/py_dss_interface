@@ -22,22 +22,22 @@ class LoadShapesV(Base):
     which can be one of the following. """
 
     def _names(self) -> List[str]:
-        return Bridge.variant_pointer_read(self._dss_obj.LoadShapeV, 0)
+        return Bridge.pointer_read(self._dss_obj.LoadShapeV, 0)
 
     def _p_mult(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.LoadShapeV, 1)
+        return Bridge.pointer_read(self._dss_obj.LoadShapeV, 1)
 
     def _p_mult_write(self, arg: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.LoadShapeV, 2, arg)
+        return Bridge.pointer_write(self._dss_obj.LoadShapeV, 2, arg, 2)
 
     def _q_mult(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.LoadShapeV, 3)
+        return Bridge.pointer_read(self._dss_obj.LoadShapeV, 3)
 
     def _q_mult_write(self, arg: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.LoadShapeV, 4, arg)
+        return Bridge.pointer_write(self._dss_obj.LoadShapeV, 4, arg, 2)
 
     def _time_array(self) -> List[float]:
-        return Bridge.variant_pointer_read(self._dss_obj.LoadShapeV, 5)
+        return Bridge.pointer_read(self._dss_obj.LoadShapeV, 5)
 
     def _time_array_write(self, arg: List[float]) -> List[float]:
-        return Bridge.variant_pointer_write(self._dss_obj.LoadShapeV, 6, arg)
+        return Bridge.pointer_write(self._dss_obj.LoadShapeV, 6, arg, 2)
