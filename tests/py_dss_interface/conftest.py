@@ -17,7 +17,8 @@ script_path = os.path.dirname(os.path.abspath(__file__))
 
 @pytest.fixture(scope='function')
 def solve_snap_13bus():
-    dss = py_dss_interface.DSS("C:\OpenDSS_rep\Version8\Source")
+    # dss = py_dss_interface.DSS("C:\OpenDSS_rep\Version8\Source")
+    dss = py_dss_interface.DSS()
 
     dss.text("set DefaultBaseFrequency=60")
     dss.text("Set EventLogDefault=yes")
