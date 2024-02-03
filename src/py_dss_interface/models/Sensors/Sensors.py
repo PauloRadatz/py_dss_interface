@@ -50,7 +50,7 @@ class Sensors(SensorsV, SensorsS, SensorsI, SensorsF):
         SensorsF._kv_base_write(self, arg)
 
     @property
-    def _count(self) -> int:
+    def count(self) -> int:
         """Gets number of sensors in active circuit."""
         return SensorsI._count(self)
 

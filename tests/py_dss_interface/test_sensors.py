@@ -28,7 +28,7 @@ class TestSensors13Bus:
     # ===================================================================
     def test_sensors_count(self, dss):
         expected = 1
-        actual = dss.sensors._count
+        actual = dss.sensors.count
         assert actual == expected
 
     def test_sensors_first(self, dss):
