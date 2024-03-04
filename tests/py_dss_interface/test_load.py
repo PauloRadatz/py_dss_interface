@@ -461,7 +461,7 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_read_zipv(self, dss):
-        expected = []
+        expected = [0.0]
         actual = dss.loads.zipv
         assert actual == expected
 

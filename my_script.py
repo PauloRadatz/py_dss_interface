@@ -5,7 +5,7 @@ import numpy as np
 import os
 # Creates an OpenDSS object
 dss_2 = py_dss_interface.DSS()
-dss = py_dss_interface.DSS("C:\OpenDSS_rep\Version8\Source")
+dss = py_dss_interface.DSS()
 # dss = py_dss_interface.DSS(r"C:\Program Files\OpenDSS")
 
 # dss_1 = py_dss_interface.DSSDLL()
@@ -20,7 +20,13 @@ dss_file = r"C:\Program Files\OpenDSS\IEEETestCases\13Bus\IEEE13Nodeckt.dss"
 # Compile
 dss.text(f"compile [{dss_file}]")
 
-dss.loads.first()
+# dss.text("edit Load.671 zipv=[0.4 0.4 0.2 0.4 0.4 0.2 0.2]")
+dss.loads.name = "671"
+
+
+
+
+
 expected = ['671_new']
 dss.cktelement.bus_names = expected
 # expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]

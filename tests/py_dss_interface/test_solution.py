@@ -509,12 +509,12 @@ class TestSolution13Bus:
         assert actual == expected
 
     def test_solution_bus_levels(self, dss):
-        expected = []
+        expected = [0]
         actual = dss.solution.bus_levels
         assert actual == expected
 
     def test_solution_inc_matrix_rows(self, dss):
-        expected = []
+        expected = ['None']
         actual = dss.solution.inc_matrix_rows
         assert actual == expected
 

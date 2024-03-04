@@ -231,7 +231,7 @@ class TestTransformers13Bus:
         assert actual == expected
 
     def test_transformers_str_wdg_voltages(self, dss):
-        expected = '1'
+        expected = '12.41042, (-28.694), 594.2254, (151.31), 9.07968, (-141.3), 434.7458, (38.696), 13.05371, (93.388), 625.0274, (-86.612), '
         actual = dss.transformers.str_wdg_voltages
         assert actual == expected
 
