@@ -2168,6 +2168,7 @@ class TestMonitors13Bus:
         dss.monitors.save()
 
         actual = dss.monitors.byte_stream
+        actual = [ord(v) for v in actual]
         assert actual == expected
 
     def test_monitors_header(self, dss):

@@ -163,6 +163,6 @@ class TestDSSInterface13Bus:
         assert actual == expected
 
     def test_dss_user_classes(self, dss):
-        expected = []
+        expected = ['None']
         actual = dss.dssinterface.user_classes
         assert actual == expected

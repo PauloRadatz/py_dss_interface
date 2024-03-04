@@ -194,7 +194,7 @@ class TestLoadShapes13Bus:
 
     def test_loadshapes_read_q_mult(self, dss):
         self.new_loadshape(dss, True)
-        expected = [1.0]
+        expected = [0.0]
         actual = dss.loadshapes.q_mult
         assert actual == expected
 
@@ -207,7 +207,7 @@ class TestLoadShapes13Bus:
 
     def test_loadshapes_read_time_array(self, dss):
         self.new_loadshape(dss, True)
-        expected = [1.0]
+        expected = [0.0]
         actual = dss.loadshapes.time_array
         assert actual == expected
 

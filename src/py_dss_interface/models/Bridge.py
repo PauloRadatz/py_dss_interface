@@ -116,7 +116,7 @@ def pointer_read(f: callable, param: int, optional=None) -> List:
         ctypes.byref(mySize)
     )
 
-    # 0 - Boolean, 1- Integer (32 bit), 2- double (64 bit), 3- Complex, 4- String.
+    # 0 - Boolean, 1- Integer (32 bit), 2- double (64 bit), 3- Complex, 4- String, 5-byte stream.
     num_type = 0
     if myType.value == 1:
         c_type = ctypes.c_int32
@@ -130,15 +130,20 @@ def pointer_read(f: callable, param: int, optional=None) -> List:
     elif myType.value == 4:
         c_type = ctypes.c_char
         num_type = 1
+    elif myType.value == 5:  # byte stream
+        c_type = ctypes.c_char
+        num_type = 1
     # Access the returned array
     array_length = int(mySize.value / num_type)
     # data_array = ctypes.cast(myPointer, ctypes.POINTER(ctypes.c_int * array_length)).contents
 
+    if not bool(myPointer):
+        return []
     data_array = ctypes.cast(myPointer, ctypes.POINTER(c_type * array_length)).contents
 
     # Convert the data_array to a Python list
     if myType.value == 4:
-        python_list = list(data_array.raw.decode().replace('\x00', '__SPLITHERE__').split('__SPLITHERE__')[:])
+        python_list = list(data_array.raw.decode('utf-8').replace('\x00', '__SPLITHERE__').split('__SPLITHERE__')[:])
         while "" in python_list:
             python_list.remove("")
     else:
