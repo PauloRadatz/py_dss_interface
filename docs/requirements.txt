@@ -1,4 +1,4 @@
-Sphinx==4.3.0
+Sphinx==7.2.6
 sphinx-toolbox
 Babel==2.8.0
 imagesize==1.2.0
