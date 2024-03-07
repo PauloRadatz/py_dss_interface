@@ -1,6 +1,11 @@
 
 Changelog
 =========
+2.0.3 (2024-03-05)
+------------------
+* Tom updated OpenDSS to DDLL built as v9.8.0.1
+* OpenDSS is using pointers now instead of variants.
+
 2.0.2 (2023-06-04)
 ------------------
 * Tom updated OpenDSS to DDLL built as v9.6.1.2
