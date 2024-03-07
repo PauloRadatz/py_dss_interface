@@ -33,24 +33,6 @@ class Base:
         return self._dss_obj
 
     @classmethod
-    def _check_assertion_result(cls, param: int, message_1: Optional[str] = None, message_2: Optional[str] = None,
-                                expected_value=0) -> None:
-        """
-        Check if the method converges to an expected result.
-        @param param: value compared
-        @param expected_value value expected, most cases is 0 but in others could be 1
-        @param message_1: a generic message if assertion fails
-        @param message_2: a more specific message could be appeared when AssertionError raise
-        :return:
-        """
-        if not isinstance(expected_value, int):
-            expected_value = 0
-        try:
-            assert param == expected_value, message_1
-        except AssertionError as e:
-            raise AssertionError(message_2) from e
-
-    @classmethod
     def _check_int_param(cls, int_param: int, default: int = 0) -> int:
         """
         Check if the parameter is an int and if it exists. If not exist or if it isn't an int it will be 0.

@@ -27,8 +27,6 @@ class BusF(Base):
     def _x_write(self, param_coordinate: float) -> int:
         param_coordinate = Base._check_float_param(param_coordinate)
         result = self._dss_obj.BUSF(2, ctypes.c_double(param_coordinate))
-        Base._check_assertion_result(result, "Write X coordinate failed!", "Something wrong when tried defined the X "
-                                                                          "coordinate!")
         return result
 
     def _y(self) -> float:
@@ -37,8 +35,6 @@ class BusF(Base):
     def _y_write(self, param_coordinate: float) -> int:
         param_coordinate = Base._check_float_param(param_coordinate)
         result = self._dss_obj.BUSF(4, ctypes.c_double(param_coordinate))
-        Base._check_assertion_result(result, "Write Y coordinate failed!", "Something wrong when tried defined the Y "
-                                                                          "coordinate!")
         return result
 
     def _distance(self) -> float:
