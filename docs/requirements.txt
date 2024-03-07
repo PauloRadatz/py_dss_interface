@@ -1,8 +1,8 @@
-Sphinx==4.3.0
+Sphinx
 sphinx-toolbox
-Babel==2.8.0
-imagesize==1.2.0
-readme-renderer==26.0
+Babel
+imagesize
+readme-renderer
 sphinx-argparse
 sphinx-rtd-theme
 sphinxcontrib-applehelp

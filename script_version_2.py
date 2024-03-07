@@ -10,7 +10,7 @@ import pathlib
 import numpy as np
 import os
 
-dss = py_dss_interface.DSS("C:\OpenDSS_rep\Version8\Source")
+dss = py_dss_interface.DSS()
 
 dss.text("set DefaultBaseFrequency=60")
 script_path = os.path.dirname(os.path.abspath(__file__))

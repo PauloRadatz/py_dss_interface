@@ -25,7 +25,7 @@ def read(*names, **kwargs):
 
 setup(
     name='py-dss-interface',
-    version='2.0.2',
+    version='2.0.3',
     license='MIT',
     description='The py-dss-interface is a Python package that provides a Python interface to the OFFICIAL version of OpenDSS (Open-source Distribution System Simulator) software. OpenDSS is a free, open-source software for simulating and analyzing power distribution systems.',
     long_description='%s\n%s' % (
