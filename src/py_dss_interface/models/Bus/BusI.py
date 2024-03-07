@@ -22,14 +22,10 @@ class BusI(Base):
 
     def _zsc_refresh(self) -> int:
         result = self._dss_obj.BUSI(1, 0) # TODO
-        Base._check_assertion_result(result, "Zsc recomputes failed!", "Zsc can not be recomputed!", expected_value=1)
         return result
 
     def _coord_defined(self) -> int:
         result = self._dss_obj.BUSI(2, 0)
-        Base._check_assertion_result(result, "Bus coordinate not defined!", "Bus coordinates not find! The program "
-                                                                           "will run normally",
-                                     expected_value=1)
         return result
 
     def _unique_node_number(self, start_number: int = 1) -> int:  # TODO
