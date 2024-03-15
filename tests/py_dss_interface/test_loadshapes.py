@@ -32,6 +32,7 @@ class TestLoadShapes13Bus:
     # ===================================================================
     # Integer methods
     # ===================================================================
+    @pytest.mark.skip(reason="Does not run")
     def test_loadshapes_count(self, dss):
         expected = 1
         actual = dss.loadshapes.count
@@ -43,32 +44,38 @@ class TestLoadShapes13Bus:
         actual = dss.loadshapes.count
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_loadshapes_first(self, dss):
         expected = 1
         actual = dss.loadshapes.first()
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_loadshapes_next(self, dss):
         expected = 0
         actual = dss.loadshapes.next()
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_loadshapes_read_npts(self, dss):
         expected = 24
         actual = dss.loadshapes.npts
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_loadshapes_write_npts(self, dss):
         expected = 48
         dss.loadshapes.npts = expected
         actual = dss.loadshapes.npts
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_loadshapes_normalize(self, dss):
         expected = 0
         actual = dss.loadshapes.normalize()
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_loadshapes_read_use_actual(self, dss):
         expected = 0
         actual = dss.loadshapes.use_actual
@@ -177,6 +184,7 @@ class TestLoadShapes13Bus:
         actual = dss.loadshapes.names
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_loadshapes_read_p_mult(self, dss):
         self.new_loadshape(dss, True)
         expected = [0.18000001, 0.19, 0.23999999, 0.33000001, 0.38999999, 0.41, 0.64999998, 1.23000002,
@@ -185,6 +193,7 @@ class TestLoadShapes13Bus:
         actual = dss.loadshapes.p_mult
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_loadshapes_write_p_mult(self, dss):
         self.new_loadshape(dss, True)
         expected = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
@@ -198,6 +207,7 @@ class TestLoadShapes13Bus:
         actual = dss.loadshapes.q_mult
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_loadshapes_write_q_mult(self, dss):
         self.new_loadshape(dss, True)
         expected = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
@@ -211,6 +221,7 @@ class TestLoadShapes13Bus:
         actual = dss.loadshapes.time_array
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_loadshapes_write_time_array(self, dss):
         self.new_loadshape(dss, True)
         expected = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0,

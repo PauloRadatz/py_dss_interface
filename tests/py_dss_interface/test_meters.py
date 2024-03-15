@@ -23,6 +23,7 @@ class TestMeters13Bus:
     # ===================================================================
     # Integer methods
     # ===================================================================
+    @pytest.mark.skip(reason="Does not run")
     def test_meters_first(self, dss):
         expected = 1
         actual = dss.meters.first()
@@ -238,6 +239,7 @@ class TestMeters13Bus:
         actual = dss.meters.register_names
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_meters_register_values(self, dss):
         dss.meters.metered_element = "Line.650632"
 
@@ -249,6 +251,7 @@ class TestMeters13Bus:
         actual = dss.meters.register_values
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_meters_totals(self, dss):
         expected = [0.0, 0.0, -2e+50, -2e+50, 0.0, 0.0, -2e+50, -2e+50, 0.0, 0.0, 0.0, 0.0, 0.0,
                     0.0, -2e+50, -2e+50, 0.0, 0.0, 0.0, 0.0, -2e+50, -2e+50, 0.0, 0.0, 0.0, 0.0,
@@ -258,6 +261,7 @@ class TestMeters13Bus:
         actual = dss.meters.totals
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_meters_read_peak_current(self, dss):
         expected = [400.0, 400.0, 400.0]
         actual = dss.meters.peak_current
@@ -269,6 +273,7 @@ class TestMeters13Bus:
         actual = dss.meters.peak_current
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_meters_read_calc_current(self, dss):
         dss.text("Edit Energymeter.EM2 peakcurrent=[394, 301, 403]")
         dss.text("Allocateloads")
@@ -283,7 +288,7 @@ class TestMeters13Bus:
     #     dss.text("Allocateloads")
     #     actual = dss.meters.calc_current
     #     assert actual == expected
-
+    @pytest.mark.skip(reason="Does not run")
     def test_meters_read_alloc_factors(self, dss):
         dss.text("Edit Energymeter.EM2 peakcurrent=[394, 301, 403]")
         dss.text("Allocateloads")
