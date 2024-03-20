@@ -75,12 +75,12 @@ class DSS:
                 self.circuit = Circuit(self._dss_obj)
                 self.cktelement = CktElement(self._dss_obj)
                 self.cmathlib = CMathLib(self._dss_obj)
-                self.ctrlqueue = CtrlQueue(self._dss_obj)
+                # self.ctrlqueue = CtrlQueue(self._dss_obj)
                 self.dsselement = DSSElement(self._dss_obj)
                 self.dssexecutive = DSSExecutive(self._dss_obj)
                 self.dssinterface = DSSInterface(self._dss_obj)
                 # self.dssprogress = DSSProgress(self._dss_obj)
-                self.dssproperties = DSSProperties(self._dss_obj)
+                # self.dssproperties = DSSProperties(self._dss_obj)
                 self.errorinterface = DSSInterface(self._dss_obj)
                 self.fuses = Fuses(self._dss_obj)
                 self.generators = Generators(self._dss_obj)
@@ -140,7 +140,7 @@ class DSS:
 
     def __allocate_memory(self):
         self._dss_obj.DSSPut_Command.restype = ctypes.c_char_p
-        self._dss_obj.DSSProperties.restype = ctypes.c_char_p
+        # self._dss_obj.DSSProperties.restype = ctypes.c_char_p
 
         for i in self.__memory_commands:
             exec(i)
