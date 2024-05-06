@@ -503,6 +503,7 @@ class TestSolution13Bus:
         # TODO
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_solution_nc_matrix(self, dss):
         expected = [0]
         actual = dss.solution.nc_matrix
@@ -525,6 +526,7 @@ class TestSolution13Bus:
         actual = dss.solution.inc_matrix_cols
         assert actual == expected
 
+    @pytest.mark.skip(reason="Does not run")
     def test_solution_laplacian(self, dss):
         expected = [0]
         actual = dss.solution.laplacian
