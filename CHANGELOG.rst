@@ -1,9 +1,13 @@
 
 Changelog
 =========
+2.0.4 (2024-03-20)
+------------------
+* BUS methods do not raise errors.
+
 2.0.3 (2024-03-05)
 ------------------
-* Tom updated OpenDSS to DDLL built as v9.8.0.1
+* Updated OpenDSS to DDLL built as v9.8.0.1
 * OpenDSS is using pointers now instead of variants.
 
 2.0.2 (2023-06-04)
