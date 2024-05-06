@@ -24,8 +24,7 @@ dss.text(f"compile [{dss_file}]")
 dss.loads.name = "671"
 
 
-
-
+dss.loads.names
 
 expected = ['671_new']
 dss.cktelement.bus_names = expected
