@@ -9,7 +9,7 @@ import pathlib
 from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, Base
 from . import DSSExecutive, DSSInterface, DSSProperties, ErrorOpenDSS, Fuses, Generators, ISources
 from . import LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reclosers
-from . import Relays, RegControls, Sensors, Settings, Solution, SwtControls, Text, Topology, Transformers, VSources
+from . import Relays, RegControls, Sensors, Settings, Solution, Storages, SwtControls, Text, Topology, Transformers, VSources
 from . import XYCurves
 from .utils.System import System
 from .utils.Error import Error
@@ -101,6 +101,7 @@ class DSS:
                 self.sensors = Sensors(self._dss_obj)
                 self.settings = Settings(self._dss_obj)
                 self.solution = Solution(self._dss_obj)
+                self.storages = Storages(self._dss_obj)
                 self.swtcontrols = SwtControls(self._dss_obj)
                 self.text = Text(self._dss_obj).text
                 self.topology = Topology(self._dss_obj)
