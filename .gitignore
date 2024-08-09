@@ -4,7 +4,6 @@ __pycache__
 env
 
 # C extensions
-*.so
 # OpenDSS
 *.DSV
 *.dbl
