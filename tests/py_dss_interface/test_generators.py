@@ -14,14 +14,14 @@ class TestGenerators13Bus:
     @pytest.fixture(scope='function')
     def dss(self, solve_snap_13bus):
         dss = solve_snap_13bus
-        dss.text("New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=3 Vpu=1 Maxkvar=500 Minkvar=-400")
+        dss.text("New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=1 Vpu=1 Maxkvar=500 Minkvar=-400")
         dss.generators.name = "G1"
 
         return dss
 
     @staticmethod
     def include_generator(dss):
-        dss.text('New Generator.G2 Bus1=645.1 phases=1  kV=2.4 kW=100 Model=3 Vpu=1 Maxkvar=500 Minkvar=-400')
+        dss.text('New Generator.G2 Bus1=645.1 phases=1  kV=2.4 kW=100 Model=1 Vpu=1 Maxkvar=500 Minkvar=-400')
 
     # ===================================================================
     # Integer methods
@@ -76,7 +76,7 @@ class TestGenerators13Bus:
         assert actual == expected
 
     def test_generators_read_model(self, dss):
-        expected = 3
+        expected = 1
         actual = dss.generators.model
         assert actual == expected
 
