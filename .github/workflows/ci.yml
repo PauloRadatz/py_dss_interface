@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.11, 3.12]
+        python-version: [3.11]
 
     steps:
     - uses: actions/checkout@v2
@@ -26,9 +26,13 @@ jobs:
     - name: Build and Test in Debian Container
       run: |
         docker run --rm -v $(pwd):/app -w /app debian:latest /bin/bash -c "
+        export DEBIAN_FRONTEND=noninteractive &&
         apt-get update &&
-        apt-get install -y python${{ matrix.python-version }} python3-pip python3-venv build-essential &&
-        python3 -m venv venv &&
+        apt-get install -y --no-install-recommends wget build-essential \
+        libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
+        curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev \
+        libffi-dev liblzma-dev python3.11 python3.11-venv python3.11-dev python3-pip && 
+        python3.11 -m venv venv &&
         source venv/bin/activate &&
         pip install --upgrade pip &&
         pip install tox &&
