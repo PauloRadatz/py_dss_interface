@@ -15,7 +15,7 @@ from .utils.System import System
 from .utils.Error import Error
 
 DLL_NAME_WIN = "OpenDSSDirect.dll"
-DLL_NAME_LINUX = "libopendssdirect.so"
+DLL_NAME_LINUX = "libOpenDSSC.so"
 
 
 class DSSDLL:
@@ -27,7 +27,7 @@ class DSSDLL:
 
 class DSS:
 
-    def __init__(self, dll_folder_param=None, dll_by_user=None, print_dss_info=False):
+    def __init__(self, dll_folder_param=None, dll_by_user=None, print_dss_info=False, windows_version: str = "delphi"):
         # TODO: dss_write_allowforms
         """
         Class to create an OpenDSS object
@@ -45,14 +45,19 @@ class DSS:
             self.started = True
 
         else:
-            if not dll_folder_param:
-                dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))), "dll")
             if System.detect_platform() == 'Linux':
-                Error.linux_version()
-                raise
-                # dll_folder_param = pathlib.Path(dll_folder_param)
-                # dll_by_user = DLL_NAME_LINUX
+                if not dll_folder_param:
+                    dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))),
+                                                    "opendss_official", "linux", "cpp")
+                dll_folder_param = pathlib.Path(dll_folder_param)
+                dll_by_user = DLL_NAME_LINUX
             elif System.detect_platform() == 'Windows':
+                if not dll_folder_param:
+                    valid_versions = ["cpp", "delphi"]
+                    if windows_version not in valid_versions:
+                        raise ValueError(f"Invalid version '{windows_version}'. Valid options are {valid_versions}.")
+                    dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))),
+                                                    "opendss_official", "windows", windows_version)
                 dll_folder_param = pathlib.Path(dll_folder_param)
                 dll_by_user = DLL_NAME_WIN
 

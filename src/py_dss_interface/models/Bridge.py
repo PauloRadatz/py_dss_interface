@@ -9,13 +9,6 @@ import sys
 from enum import Enum
 from typing import List, Union
 
-import numpy as np
-try:
-    from comtypes import automation
-except:
-    print("Error in importing ctypes")
-
-
 logger = logging.getLogger('opendssdirect.core')
 
 
@@ -70,22 +63,6 @@ def c_types_function(f: callable, param: Union[int, str], dss_arg: Union[bytes, 
 
     if isinstance(r, bytes):
         r = r.decode('ascii')
-    return r
-
-
-def variant_pointer_read(f: callable, param: int, optional=None) -> List:
-    """
-    Reads a COM variant pointer and returns its value as a list.
-    """
-    variant_pointer = ctypes.pointer(automation.VARIANT())
-    if optional:
-        f(ctypes.c_int(param), variant_pointer, optional)
-    else:
-        f(ctypes.c_int(param), variant_pointer)
-
-    r = list(variant_pointer.contents.value)
-    while None in r:
-        r.remove(None)
     return r
 
 def pointer_read(f: callable, param: int, optional=None) -> List:
@@ -219,22 +196,6 @@ def pointer_write(f: callable, param: int, arg: List, myType):
     # print(f"Data array: {python_list}")
     # print(f"myType: {my_type.value}")
     # print(f"mySize: {my_size.value}")
-
-def variant_pointer_write(f: callable, param: int, arg: List) -> Union[List, int]:
-    """
-    Writes a list to a COM variant pointer.
-    """
-    variant_pointer = ctypes.pointer(automation.VARIANT())
-    variant_pointer.contents.value = arg
-    f(ctypes.c_int(param), variant_pointer)
-
-    r = variant_pointer.contents.value
-
-    if isinstance(r, int):
-        return r
-    else:
-        return list(variant_pointer.contents.value)
-
 
 class DataType(Enum):
     Unknown = 0
