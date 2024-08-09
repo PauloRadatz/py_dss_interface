@@ -25,7 +25,7 @@ dss.loads.name = "671"
 
 
 
-
+dss.dssinterface.allow_forms = 0
 
 expected = ['671_new']
 dss.cktelement.bus_names = expected
