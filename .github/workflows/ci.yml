@@ -1,12 +1,12 @@
-#name: CI
+name: CI
 
-#on:
-  #push:
-    #branches:
-      #- master
-  #pull_request:
-    #branches:
-      #- master
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   test:
