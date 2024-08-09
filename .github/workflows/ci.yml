@@ -10,7 +10,6 @@ on:
 
 jobs:
   test:
-    if: ${{ env.RUN_CI == 'true' }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
