@@ -5,7 +5,7 @@ import numpy as np
 import os
 # Creates an OpenDSS object
 dss_2 = py_dss_interface.DSS()
-dss = py_dss_interface.DSS()
+dss = py_dss_interface.DSS(print_dss_info=True)
 # dss = py_dss_interface.DSS(r"C:\Program Files\OpenDSS")
 
 # dss_1 = py_dss_interface.DSSDLL()
