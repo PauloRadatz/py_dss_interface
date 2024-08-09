@@ -34,8 +34,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox
     - name: Run tests
-      run: |
-        tox -e py${{ matrix.python-version }}
+      run: tox
       
   build-windows:
 
@@ -53,11 +52,12 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Add OpenDSS DLL to PATH
       run: |
-        echo "PYTHONPATH=$PYTHONPATH;C:\path\to\py_dss_interface\src\py_dss_interface\opendss_official\windows\delphi\x64" >> $Env:Path
+        $currentPath = [System.Environment]::GetEnvironmentVariable('Path', [System.EnvironmentVariableTarget]::Process)
+        $newPath = "$currentPath;C:\path\to\py_dss_interface\src\py_dss_interface\opendss_official\windows\delphi\x64"
+        [System.Environment]::SetEnvironmentVariable('Path', $newPath, [System.EnvironmentVariableTarget]::Process)
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install tox
     - name: Run tests
-      run: |
-        tox -e py${{ matrix.python-version }}
+      run: tox
