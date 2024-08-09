@@ -9,32 +9,55 @@ on:
       - master
 
 jobs:
-  test:
-    runs-on: ${{ matrix.os }}
+  build-linux:
+
+    runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        python-version: [3.11, 3.12]
+        python-version: [3.10, 3.11]
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
+    - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-
-    - name: Upgrade pip, setuptools, and wheel
+    - name: Install system dependencies
       run: |
-        python -m pip install --upgrade pip setuptools wheel
-
+        sudo apt-get update
+        sudo apt-get install -y build-essential  # Install other required packages as needed
+    - name: Set library path
+      run: echo "LD_LIBRARY_PATH=/home/runner/work/py_dss_interface/py_dss_interface/src/py_dss_interface/opendss_official/linux/cpp/x64" >> $GITHUB_ENV
     - name: Install dependencies
-      run: pip install tox
-      
+      run: |
+        python -m pip install --upgrade pip
+        pip install tox
     - name: Run tests
-      run: tox
+      run: |
+        tox -e py${{ matrix.python-version }}
+      
+  build-windows:
 
-    - name: Upload coverage report
-      if: success()
-      uses: codecov/codecov-action@v3
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        python-version: [3.10, 3.11]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Add OpenDSS DLL to PATH
+      run: |
+        echo "PYTHONPATH=$PYTHONPATH;C:\path\to\py_dss_interface\src\py_dss_interface\opendss_official\windows\delphi\x64" >> $Env:Path
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install tox
+    - name: Run tests
+      run: |
+        tox -e py${{ matrix.python-version }}
