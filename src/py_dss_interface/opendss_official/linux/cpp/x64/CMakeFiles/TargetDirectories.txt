@@ -1,0 +1,14 @@
+/home/myuser/Documents/OpenDSSC/build/CMakeFiles/OpenDSSC.dir
+/home/myuser/Documents/OpenDSSC/build/CMakeFiles/edit_cache.dir
+/home/myuser/Documents/OpenDSSC/build/CMakeFiles/rebuild_cache.dir
+/home/myuser/Documents/OpenDSSC/build/CMakeFiles/list_install_components.dir
+/home/myuser/Documents/OpenDSSC/build/CMakeFiles/install.dir
+/home/myuser/Documents/OpenDSSC/build/CMakeFiles/install/local.dir
+/home/myuser/Documents/OpenDSSC/build/CMakeFiles/install/strip.dir
+/home/myuser/Documents/OpenDSSC/build/klusolve/CMakeFiles/klusolve_all.dir
+/home/myuser/Documents/OpenDSSC/build/klusolve/CMakeFiles/edit_cache.dir
+/home/myuser/Documents/OpenDSSC/build/klusolve/CMakeFiles/rebuild_cache.dir
+/home/myuser/Documents/OpenDSSC/build/klusolve/CMakeFiles/list_install_components.dir
+/home/myuser/Documents/OpenDSSC/build/klusolve/CMakeFiles/install.dir
+/home/myuser/Documents/OpenDSSC/build/klusolve/CMakeFiles/install/local.dir
+/home/myuser/Documents/OpenDSSC/build/klusolve/CMakeFiles/install/strip.dir
