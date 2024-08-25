@@ -79,6 +79,29 @@ Examples
 ============
 You can find several examples of Python scripts at this link: https://github.com/PauloRadatz/py-dss-interface-examples
 
+How to Cite
+-----------
+
+If you use `py-dss-interface` in your academic work, please reference it as follows:
+
+**APA Style:**
+
+    Radatz, P. (2024). py-dss-interface: A Python package that interfaces with the OFFICIAL version of OpenDSS (Version X.X.X) [Computer software]. GitHub. https://github.com/PauloRadatz/py_dss_interface
+
+**BibTeX Entry:**
+
+.. code-block:: bibtex
+
+    @software{radatz2024bdgd2opendss,
+      author = {Paulo Radatz},
+      title = {py-dss-interface: A Python package that interfaces with the OFFICIAL version of OpenDSS},
+      year = {2024},
+      version = {X.X.X},
+      url = {https://github.com/PauloRadatz/py_dss_interface}
+    }
+
+Please replace `X.X.X` with the version of the package you are using.
+
 Thanks
 =============
 I want to thank Ênio Viana and Rodolfo Pilar Londero for all their contribution to the new version of the tool.
