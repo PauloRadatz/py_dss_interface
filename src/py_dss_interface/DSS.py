@@ -14,7 +14,8 @@ from . import XYCurves
 from .utils.System import System
 from .utils.Error import Error
 
-DLL_NAME_WIN = "OpenDSSDirect.dll"
+DLL_NAME_WIN_DELPHI = "OpenDSSDirect.dll"
+DLL_NAME_WIN_CPP = "OpenDSSC.dll"
 DLL_NAME_LINUX = "libOpenDSSC.so"
 
 
@@ -59,7 +60,10 @@ class DSS:
                     dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))),
                                                     "opendss_official", "windows", windows_version)
                 dll_folder_param = pathlib.Path(dll_folder_param)
-                dll_by_user = DLL_NAME_WIN
+                if windows_version == "delphi":
+                    dll_by_user = DLL_NAME_WIN_DELPHI
+                if windows_version == "cpp":
+                    dll_by_user = DLL_NAME_WIN_CPP
 
             self._dll_path = System.get_architecture_path(dll_folder_param)
             self.dll_file_path = os.path.join(self._dll_path, dll_by_user)
