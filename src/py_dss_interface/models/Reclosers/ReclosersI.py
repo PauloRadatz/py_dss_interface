@@ -60,3 +60,6 @@ class ReclosersI(Base):
 
     def _idx_write(self, argument) -> int:
         return self._dss_obj.ReclosersI(ctypes.c_int32(14), ctypes.c_int32(argument))
+
+    def _reset(self) -> int:
+        return self._dss_obj.ReclosersI(ctypes.c_int32(15), ctypes.c_int32(0))

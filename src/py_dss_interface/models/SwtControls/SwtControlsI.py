@@ -29,21 +29,18 @@ class SwtControlsI(Base):
         return self._dss_obj.SwtControlsI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def _action_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.SwtControlsI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
     def _is_locked_read(self) -> int:
         return self._dss_obj.SwtControlsI(ctypes.c_int32(4), ctypes.c_int32(0))
 
     def _is_locked_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.SwtControlsI(ctypes.c_int32(5), ctypes.c_int32(argument))
 
     def _switched_term_read(self) -> int:
         return self._dss_obj.SwtControlsI(ctypes.c_int32(6), ctypes.c_int32(0))
 
     def _switched_term_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.SwtControlsI(ctypes.c_int32(7), ctypes.c_int32(argument))
 
     def _count(self) -> int:

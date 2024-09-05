@@ -25,21 +25,18 @@ class SolutionI(Base):
         return int(self._dss_obj.SolutionI(ctypes.c_int32(1), ctypes.c_int32(0)))
 
     def _mode_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(2), ctypes.c_int32(argument)))
 
     def _hour_read(self) -> int:
         return int(self._dss_obj.SolutionI(ctypes.c_int32(3), ctypes.c_int32(0)))
 
     def _hour_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(4), ctypes.c_int32(argument)))
 
     def _year_read(self) -> int:
         return int(self._dss_obj.SolutionI(ctypes.c_int32(5), ctypes.c_int32(0)))
 
     def _year_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(6), ctypes.c_int32(argument)))
 
     def _iterations(self) -> int:
@@ -49,63 +46,54 @@ class SolutionI(Base):
         return int(self._dss_obj.SolutionI(ctypes.c_int32(8), ctypes.c_int32(0)))
 
     def _max_iterations_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(9), ctypes.c_int32(argument)))
 
     def _number_read(self) -> int:
         return int(self._dss_obj.SolutionI(ctypes.c_int32(10), ctypes.c_int32(0)))
 
     def _number_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(11), ctypes.c_int32(argument)))
 
     def _random_read(self) -> int:
         return int(self._dss_obj.SolutionI(ctypes.c_int32(12), ctypes.c_int32(0)))
 
     def _random_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(13), ctypes.c_int32(argument)))
 
     def _load_model_read(self) -> int:
         return int(self._dss_obj.SolutionI(ctypes.c_int32(14), ctypes.c_int32(0)))
 
     def _load_model_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(15), ctypes.c_int32(argument)))
 
     def _add_type_read(self) -> int:
         return int(self._dss_obj.SolutionI(ctypes.c_int32(16), ctypes.c_int32(0)))
 
     def _add_type_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(17), ctypes.c_int32(argument)))
 
     def _algorithm_read(self) -> int:
         return int(self._dss_obj.SolutionI(ctypes.c_int32(18), ctypes.c_int32(0)))
 
     def _algorithm_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(19), ctypes.c_int32(argument)))
 
     def _control_mode_read(self) -> int:
         return int(self._dss_obj.SolutionI(ctypes.c_int32(20), ctypes.c_int32(0)))
 
     def _control_mode_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(21), ctypes.c_int32(argument)))
 
     def _control_iterations_read(self) -> int:
         return int(self._dss_obj.SolutionI(ctypes.c_int32(22), ctypes.c_int32(0)))
 
     def _control_iterations_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(23), ctypes.c_int32(argument)))
 
     def _max_control_iterations_read(self) -> int:
         return int(self._dss_obj.SolutionI(ctypes.c_int32(24), ctypes.c_int32(0)))
 
     def _max_control_iterations_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(25), ctypes.c_int32(argument)))
 
     def _sample_do_control_actions(self) -> int:
@@ -148,7 +136,6 @@ class SolutionI(Base):
         return int(self._dss_obj.SolutionI(ctypes.c_int32(38), ctypes.c_int32(0)))
 
     def _converged_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(39), ctypes.c_int32(argument)))
 
     def _total_iterations(self) -> int:
@@ -161,7 +148,6 @@ class SolutionI(Base):
         return int(self._dss_obj.SolutionI(ctypes.c_int32(42), ctypes.c_int32(0)))
 
     def _control_actions_done_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return int(self._dss_obj.SolutionI(ctypes.c_int32(43), ctypes.c_int32(argument)))
 
     def _finish_time_step(self) -> int:

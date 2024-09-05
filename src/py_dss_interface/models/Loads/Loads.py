@@ -145,6 +145,11 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
         LoadsS._growth_write(self, value)
 
     @property
+    def sensor(self) -> str:
+        """This parameter returns the name of the sensor monitoring the active load."""
+        return LoadsS._growth(self)
+
+    @property
     def idx(self) -> int:
         """Allows to read the index of the active load. The parameter argument can be filled with a 0.
 

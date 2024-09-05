@@ -52,11 +52,5 @@ class PVSystemsF(Base):
     def _pmpp_write(self, argument) -> float:
         return float(self._dss_obj.PVsystemsF(ctypes.c_int32(10), ctypes.c_double(argument)))
 
-    # TODO there are not those guys in the DLL
-    # def _kv(self) -> float:
-    #     """Gets the kV."""
-    #     return float(self.dss_obj.PVsystemsF(ctypes.c_int32(11), ctypes.c_double(0)))
-    #
-    # def _kv_write(self, argument) -> float:
-    #     """Sets the kV."""
-    #     return float(self.dss_obj.PVsystemsF(ctypes.c_int32(12), ctypes.c_double(argument)))
+    def _irradiance_now(self) -> float:
+        return float(self._dss_obj.PVsystemsF(ctypes.c_int32(11), ctypes.c_double(0)))

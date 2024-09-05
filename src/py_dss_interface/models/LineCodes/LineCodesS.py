@@ -26,6 +26,5 @@ class LineCodesS(Base):
         return result.value.decode('ascii')
 
     def _name_write(self, argument: str) -> str:
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.LineCodesS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')

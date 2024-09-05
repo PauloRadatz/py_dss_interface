@@ -19,7 +19,6 @@ class DSSInterfaceS(Base):
     """
 
     def _new_circuit(self, argument: str) -> str:
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.DSSS(ctypes.c_int32(0), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -33,10 +32,7 @@ class DSSInterfaceS(Base):
 
     def _datapath_write(self, argument: str) -> str:
         result = ctypes.c_char_p(self._dss_obj.DSSS(ctypes.c_int32(3), argument.encode('ascii')))
-        result = result.value.decode('ascii')
-        if result == '0':
-            print("Path writen succesfully!")
-        return result
+        return result.value.decode('ascii')
 
     def _default_editor(self) -> str:
         result = ctypes.c_char_p(self._dss_obj.DSSS(ctypes.c_int32(4), ctypes.c_int32(0)))

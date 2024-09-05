@@ -32,7 +32,6 @@ class FusesV(Base):
     # TODO include in test
     def _normal(self) -> List[str]:
         return Bridge.pointer_read(self._dss_obj.FusesV, 3)
-        # Error.method_not_working("getter of dss.fuses.normal")
 
     # TODO include in test
     def _normal_write(self, argument: List[str]) -> List[str]:

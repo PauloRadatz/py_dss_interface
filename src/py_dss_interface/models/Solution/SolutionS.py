@@ -27,7 +27,6 @@ class SolutionS(Base):
         return result.value.decode('ascii')
 
     def _ld_curve_write(self, argument):
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.SolutionS(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -36,7 +35,6 @@ class SolutionS(Base):
         return result.value.decode('ascii')
 
     def _default_daily_write(self, argument):
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.SolutionS(ctypes.c_int32(4), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -45,6 +43,5 @@ class SolutionS(Base):
         return result.value.decode('ascii')
 
     def _default_yearly_write(self, argument):
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.SolutionS(ctypes.c_int32(6), argument.encode('ascii')))
         return result.value.decode('ascii')

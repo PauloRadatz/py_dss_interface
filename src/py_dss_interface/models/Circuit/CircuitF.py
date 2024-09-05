@@ -22,5 +22,5 @@ class CircuitF(Base):
     def _circuit_float(self, first, second, third) -> float:
         return float(self._dss_obj.CircuitF(ctypes.c_int32(first), ctypes.c_double(second), ctypes.c_double(third)))
 
-    def _capacity(self, capacity_start=0, capacity_increment=0.1) -> float:
+    def _capacity(self, capacity_start: float, capacity_increment: float) -> float:
         return self._circuit_float(0, capacity_start, capacity_increment)

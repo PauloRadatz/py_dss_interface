@@ -154,3 +154,8 @@ class Sensors(SensorsV, SensorsS, SensorsI, SensorsF):
     @kws.setter
     def kws(self, arg: List[float]):
         SensorsV._kws_write(self, arg)
+
+    @property
+    def allocation_factor(self) -> List[float]:
+        """This parameter returns a pointer to an array of doubles containing the allocation factors per phase for the active sensor."""
+        return SensorsV._allocation_factor(self)

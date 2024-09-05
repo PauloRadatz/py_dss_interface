@@ -26,16 +26,11 @@ class CapControlsS(Base):
         return (self._dss_obj.CapControlsS(2, 0)).decode('ascii')
 
     def _controlled_capacitor_write(self, argument: str) -> str:
-        try:
-            return self._dss_obj.CapControlsS(3, argument.encode('ascii'))
-        except Exception as e:
-            print(f'capcontrols_write_capacitor: Check if exist at least one CapControl!. {e}')
+        return self._dss_obj.CapControlsS(3, argument.encode('ascii'))
 
     def _monitored_object(self) -> str:
         return (self._dss_obj.CapControlsS(4, 0)).decode('ascii')
 
     def _monitored_object_write(self, argument: str) -> str:
-        try:
-            return self._dss_obj.CapControlsS(5, argument.encode('ascii'))
-        except Exception as e:
-            print(f'capcontrols_write_monitored_obj: Check if exist at least one CapControl!. {e}')
+        return self._dss_obj.CapControlsS(5, argument.encode('ascii'))
+

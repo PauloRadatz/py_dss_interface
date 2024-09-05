@@ -31,21 +31,18 @@ class SensorsI(Base):
         return self._dss_obj.SensorsI(ctypes.c_int32(3), ctypes.c_int32(0))
 
     def _is_delta_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.SensorsI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
     def _reverse_delta_read(self) -> int:
         return self._dss_obj.SensorsI(ctypes.c_int32(5), ctypes.c_int32(0))
 
     def _reverse_delta_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.SensorsI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
     def _metered_terminal_read(self) -> int:
         return self._dss_obj.SensorsI(ctypes.c_int32(7), ctypes.c_int32(0))
 
     def _metered_terminal_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.SensorsI(ctypes.c_int32(8), ctypes.c_int32(argument))
 
     def _reset(self) -> int:

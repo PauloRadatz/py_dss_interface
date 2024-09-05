@@ -22,26 +22,22 @@ class SettingsI(Base):
         return self._dss_obj.SettingsI(ctypes.c_int32(0), ctypes.c_int32(0))
 
     def _allow_duplicates_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.SettingsI(ctypes.c_int32(1), ctypes.c_int32(argument))
 
     def _zone_lock_read(self) -> int:
         return self._dss_obj.SettingsI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def _zone_lock_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.SettingsI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
     def _ckt_model_read(self) -> int:
         return self._dss_obj.SettingsI(ctypes.c_int32(4), ctypes.c_int32(0))
 
     def _ckt_model_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.SettingsI(ctypes.c_int32(5), ctypes.c_int32(argument))
 
     def _trapezoidal_read(self) -> int:
         return self._dss_obj.SettingsI(ctypes.c_int32(6), ctypes.c_int32(0))
 
     def _trapezoidal_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.SettingsI(ctypes.c_int32(7), ctypes.c_int32(argument))

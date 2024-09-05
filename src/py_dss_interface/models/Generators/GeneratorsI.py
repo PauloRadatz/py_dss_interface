@@ -34,7 +34,6 @@ class GeneratorsI(Base):
         return self._dss_obj.GeneratorsI(ctypes.c_int32(4), ctypes.c_int32(0))
 
     def _phases_write(self, argument: int) -> int:
-        argument = Base._check_int_param(argument, 1)  # Phase 1 as defa_ult
         return self._dss_obj.GeneratorsI(ctypes.c_int32(5), ctypes.c_int32(argument))
 
     def _count(self) -> int:
@@ -44,12 +43,10 @@ class GeneratorsI(Base):
         return self._dss_obj.GeneratorsI(ctypes.c_int32(7), ctypes.c_int32(0))
 
     def _idx_write(self, argument: int) -> int:
-        argument = Base._check_int_param(argument, 1)
         return self._dss_obj.GeneratorsI(ctypes.c_int32(8), ctypes.c_int32(argument))
 
     def _model(self) -> int:
         return self._dss_obj.GeneratorsI(ctypes.c_int32(9), ctypes.c_int32(0))
 
     def _model_write(self, argument: int) -> int:
-
         return self._dss_obj.GeneratorsI(ctypes.c_int32(10), ctypes.c_int32(argument))

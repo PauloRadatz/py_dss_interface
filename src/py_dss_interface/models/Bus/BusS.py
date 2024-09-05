@@ -18,3 +18,4 @@ class BusS(Base):
 
     def _name(self) -> str:
         return (self._dss_obj.BUSS(0)).decode('ascii')
+

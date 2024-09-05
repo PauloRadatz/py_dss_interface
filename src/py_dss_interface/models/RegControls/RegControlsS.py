@@ -23,7 +23,6 @@ class RegControlsS(Base):
         return result.value.decode('ascii')
 
     def _name_write(self, argument: str) -> str:
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.RegControlsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -32,7 +31,6 @@ class RegControlsS(Base):
         return result.value.decode('ascii')
 
     def _monitored_bus_write(self, argument: str) -> str:
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.RegControlsS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -41,6 +39,5 @@ class RegControlsS(Base):
         return result.value.decode('ascii')
 
     def _transformer_write(self, argument: str) -> str:
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.RegControlsS(ctypes.c_int32(5), argument.encode('ascii')))
         return result.value.decode('ascii')

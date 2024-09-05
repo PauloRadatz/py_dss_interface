@@ -23,32 +23,19 @@ class DSSPropertiesS(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def _name_active_property(self, argument: str) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(0), argument.encode('ascii')))
+    def _name_active_property(self) -> str:
+        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(0), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     def _description_active_property(self, argument: str) -> str:
-        to_int = int(argument)
-        if to_int < 1:
-            return "ERROR: The value must be greater than 1!"
         result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def _value_read(self, argument: str) -> str:
-
-        to_int = int(argument)
-        if to_int < 1:
-            return "ERROR: The value must be greater than 1!"
-        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(2), argument.encode('ascii')))
+    def _value_read(self) -> str:
+        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(2), ctypes.c_int32(0)))
         return result.value.decode('ascii')
 
     # TODO include in test
     def _value_write(self, argument: str) -> str:
-        to_int = int(argument)
-        if to_int < 1:
-            return "ERROR: The value must be greater than 1!"
         result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(3), argument.encode('ascii')))
-        result = result.value.decode('ascii')
-        if result == '':
-            print("Value written successfully!")
-        return result
+        return result.value.decode('ascii')

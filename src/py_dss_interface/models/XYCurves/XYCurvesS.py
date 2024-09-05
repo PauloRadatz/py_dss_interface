@@ -23,6 +23,5 @@ class XYCurvesS(Base):
         return result.value.decode('ascii')
 
     def _name_write(self, argument):
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.XYCurvesS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')

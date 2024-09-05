@@ -30,6 +30,38 @@ class Relays(RelaysS, RelaysV, RelaysI):
         """Sets next relay active. If none, returns 0."""
         return RelaysI._next(self)
 
+    def open(self) -> int:
+        """This parameter opens recloser's controlled element and lock out the relay."""
+        return RelaysI._open(self)
+
+    def close(self) -> int:
+        """This parameter closes the switched object controlled by the relay. Resets relay to first operation."""
+        return RelaysI._close(self)
+
+    def reset(self) -> int:
+        """This parameter resets the relay to its normal state. If open, lock out the relay. If closed, resets relay to first operation."""
+        return RelaysI._reset(self)
+
+    @property
+    def state(self) -> str:
+        """This property gets the present state of relay.
+        This property sets the present state of relay. If set to open, open relay's controlled element and lock out the relay. If set to close, close relay's controlled element and resets relay to first operation."""
+        return RelaysS._state_read(self)
+
+    @state.setter
+    def state(self, argument: str):
+        RelaysS._state_write(self, argument)
+
+    @property
+    def normal_state(self) -> str:
+        """This property gets the normal state (the state for which the active relay will be forced into at the beginning of the simulation) for the active relay.
+        This property sets the normal state (the state for which the active relay will be forced into at the beginning of the simulation) for the active relay."""
+        return RelaysS._normal_state_read(self)
+
+    @normal_state.setter
+    def normal_state(self, argument: str):
+        RelaysS._normal_state_write(self, argument)
+
     @property
     def monitored_term(self) -> int:
         """Gets the number of terminal of monitored element that this relay is monitoring.

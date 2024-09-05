@@ -61,20 +61,16 @@ class CircuitV(Base):
     def _nodes_distances(self) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.CircuitV, 13)
 
-    def _nodes_vmag_by_phase(self, argument: int = 1) -> List[float]:
-        argument = Base._check_int_param(argument, default=1)  # Phase 1 as default
+    def _nodes_vmag_by_phase(self, argument: int) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.CircuitV, 14, argument)
 
-    def _nodes_vmag_pu_by_phase(self, argument: int = 1) -> List[float]:
-        argument = Base._check_int_param(argument, default=1)  # Phase 1 as default
+    def _nodes_vmag_pu_by_phase(self, argument: int) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.CircuitV, 15, argument)
 
-    def _nodes_distances_by_phase(self, argument: int = 1) -> List[float]:
-        argument = Base._check_int_param(argument, default=1)  # Phase 1 as default
+    def _nodes_distances_by_phase(self, argument: int) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.CircuitV, 16, argument)
 
-    def _nodes_names_by_phase(self, argument: int = 1) -> List[str]:
-        argument = Base._check_int_param(argument, default=1)  # Phase 1 as default
+    def _nodes_names_by_phase(self, argument: int) -> List[str]:
         return Bridge.pointer_read(self._dss_obj.CircuitV, 17, argument)
 
     def _y_node_varray(self) -> List[float]:

@@ -86,3 +86,6 @@ class CktElementV(Base):
 
     def _voltages_mag_ang(self) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.CktElementV, 19)
+
+    def _total_powers(self) -> List[float]:
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 20)

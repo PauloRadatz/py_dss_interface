@@ -25,12 +25,10 @@ class CapacitorsF(Base):
         return self._dss_obj.CapacitorsF(0, 0)
 
     def _kv_write(self, argument: float):
-        argument = Base._check_float_param(argument)
         return self._dss_obj.CapacitorsF(1, ctypes.c_double(argument))
 
     def _kvar(self) -> float:
         return self._dss_obj.CapacitorsF(2, 0)
 
     def _kvar_write(self, argument: float):
-        argument = Base._check_float_param(argument)
         return self._dss_obj.CapacitorsF(3, ctypes.c_double(argument))

@@ -21,7 +21,6 @@ class SensorsS(Base):
         return result.value.decode('ascii')
 
     def _name_write(self, argument):
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.SensorsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -30,6 +29,5 @@ class SensorsS(Base):
         return result.value.decode('ascii')
 
     def _metered_element_write(self, argument):
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.SensorsS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')

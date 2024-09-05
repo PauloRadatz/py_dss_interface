@@ -20,6 +20,12 @@ class PVSystems(PVSystemsV, PVSystemsS, PVSystemsI, PVSystemsF):
         super().__init__(obj_dss)
 
     @property
+    def irradiance_now(self) -> float:
+        """This parameter returns the current irradiance value of the active PVSystem.
+        The current irradiance value is the one provided by the irradiance shape linked to the PV, use it to get this information while running simulations."""
+        return PVSystemsF._irradiance_now(self)
+
+    @property
     def irradiance(self) -> float:
         """Gets the present value of the Irradiance property in W/sq-m.
         Sets the present value of the Irradiance property in W/sq-m."""
@@ -111,3 +117,8 @@ class PVSystems(PVSystemsV, PVSystemsS, PVSystemsI, PVSystemsF):
     def names(self) -> List[str]:
         """Gets the variant array of string containing names of all PVSystems in the circuit."""
         return PVSystemsV._names(self)
+
+    @property
+    def sensor(self) -> str:
+        """This parameter returns the name of the sensor monitoring the active PV System."""
+        return PVSystemsS._sensor(self)

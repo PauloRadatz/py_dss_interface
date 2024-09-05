@@ -18,13 +18,6 @@ class ActiveClassI(Base):
 
     The properties (parameter) are integer numbers and are described as follows."""
 
-    def _count(self) -> int:
-        """Gets the number of elements in this class. Same as NumElements Property."""
-        try:
-            return self._dss_obj.ActiveClassI(3, 0)
-        except Exception as e:
-            raise Exception(f"Error in _count: {e}")
-
     def _first(self) -> int:
         # TODO
         try:
@@ -43,4 +36,10 @@ class ActiveClassI(Base):
             return self._dss_obj.ActiveClassI(2, 0)
         except Exception as e:
             raise Exception(f"Error in _num_elements: {e}")
+
+    def _count(self) -> int:
+        try:
+            return self._dss_obj.ActiveClassI(3, 0)
+        except Exception as e:
+            raise Exception(f"Error in _count: {e}")
 
