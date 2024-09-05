@@ -22,7 +22,6 @@ class SolutionV(Base):
     """
 
     def _event_log(self) -> List[str]:
-        # Error.method_not_working("getter of dss.solution.event_log")
         return Bridge.pointer_read(self._dss_obj.SolutionV, 0)
 
     def _nc_matrix(self) -> List[int]:

@@ -31,7 +31,6 @@ class LinesI(Base):
         return self._dss_obj.LinesI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def _phases_write(self, argument: int) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.LinesI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
     def _num_cust(self) -> int:

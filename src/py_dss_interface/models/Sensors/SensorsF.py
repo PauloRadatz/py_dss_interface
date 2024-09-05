@@ -22,19 +22,16 @@ class SensorsF(Base):
         return float(self._dss_obj.SensorsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
     def _pct_error_write(self, argument) -> float:
-        argument = Base._check_float_param(argument)
         return float(self._dss_obj.SensorsF(ctypes.c_int32(1), ctypes.c_double(argument)))
 
     def _weight_read(self) -> float:
         return float(self._dss_obj.SensorsF(ctypes.c_int32(2), ctypes.c_double(0)))
 
     def _weight_write(self, argument) -> float:
-        argument = Base._check_float_param(argument)
         return float(self._dss_obj.SensorsF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
     def _kv_base_read(self) -> float:
         return float(self._dss_obj.SensorsF(ctypes.c_int32(4), ctypes.c_double(0)))
 
     def _kv_base_write(self, argument) -> float:
-        argument = Base._check_float_param(argument)
         return float(self._dss_obj.SensorsF(ctypes.c_int32(5), ctypes.c_double(argument)))

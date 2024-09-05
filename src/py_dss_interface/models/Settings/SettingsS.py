@@ -23,7 +23,6 @@ class SettingsS(Base):
         return result.value.decode('ascii')
 
     def _auto_bus_list_write(self, argument):
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.SettingsS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -32,6 +31,5 @@ class SettingsS(Base):
         return result.value.decode('ascii')
 
     def _price_curve_write(self, argument):
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.SettingsS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')

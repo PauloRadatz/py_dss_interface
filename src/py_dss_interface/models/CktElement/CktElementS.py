@@ -27,7 +27,6 @@ class CktElementS(Base):
         return result.value.decode('ascii')
 
     def _display_write(self, argument: str) -> str:
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.CktElementS(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -41,14 +40,9 @@ class CktElementS(Base):
         return result.value.decode('ascii')
 
     def _controller(self, argument: str) -> str:
-        # argument = Base.check_string_param(argument)
-        # argument = ctypes.c_char_p(argument.encode('utf-8'))
         result = self._dss_obj.CktElementS(5, argument)
         return result.decode('ascii')
 
-        # try:
-        #     result = ctypes.c_char_p(self.dss_obj.CktElementS(ctypes.c_int32(5), ctypes.(argument)))
-        #     result = result.value.decode('ascii')
-        # except Exception as e:
-        #     result = Base.warn_msg("Check if exist at least one *Controller* in your circuit", e)
-        # return result
+    def _active_variable_name(self, argument: str) -> str:
+        result = self._dss_obj.CktElementS(6, argument)
+        return result.decode('ascii')

@@ -20,12 +20,6 @@ class ActiveClassS(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    def _class_name(self) -> str:
-        try:
-            return (self._dss_obj.ActiveClassS(2, 0)).decode('ascii')
-        except Exception as e:
-            raise Exception(f"Error in _class_name: {e}")
-
     def _name(self) -> str:
         try:
             return (self._dss_obj.ActiveClassS(0, 0)).decode('ascii')
@@ -37,6 +31,12 @@ class ActiveClassS(Base):
             return (self._dss_obj.ActiveClassS(1, argument.encode('ascii'))).decode('ascii')
         except Exception as e:
             raise Exception(f"Error in _name_write: {e}")
+
+    def _class_name(self) -> str:
+        try:
+            return (self._dss_obj.ActiveClassS(2, 0)).decode('ascii')
+        except Exception as e:
+            raise Exception(f"Error in _class_name: {e}")
 
     def _parent_class_name(self) -> str:
         try:

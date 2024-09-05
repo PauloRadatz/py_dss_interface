@@ -41,3 +41,6 @@ class SensorsV(Base):
 
     def _kws_write(self, arg: List[float]) -> List[float]:
         return Bridge.pointer_write(self._dss_obj.SensorsV, 6, arg, 2)
+
+    def _allocation_factor(self) -> List[float]:
+        return Bridge.pointer_read(self._dss_obj.SensorsV, 7)

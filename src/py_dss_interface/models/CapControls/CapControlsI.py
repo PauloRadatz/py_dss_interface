@@ -32,26 +32,13 @@ class CapControlsI(Base):
         return self._dss_obj.CapControlsI(4, 0)
 
     def _monitored_term_write(self, dss, argument: int) -> int:
-        return (
-            dss.text(
-                f'edit CapControl.{dss.capcontrols.name} Terminal={argument}'
-            )
-            if self._count() != 0
-            else 0
-        )
+        return self._dss_obj.CapControlsI(5, argument)
 
-    # TODO
     def _use_volt_override(self) -> int:
-        """return self.dss_obj.CapControlsI(6, 0). """
+        return self._dss_obj.CapControlsI(6, 0)
 
     def _use_volt_override_write(self, dss, argument: int) -> int:
-        return (
-            dss.text(
-                f'edit CapControl.{dss.capcontrols.name} VoltOverride={argument}'
-            )
-            if self._count() != 0
-            else 0
-        )
+        return self._dss_obj.CapControlsI(7, argument)
 
     def _count(self) -> int:
         return self._dss_obj.CapControlsI(8, 0)

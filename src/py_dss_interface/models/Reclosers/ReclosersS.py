@@ -21,7 +21,6 @@ class ReclosersS(Base):
         return result.value.decode('ascii')
 
     def _name_write(self, argument: str):
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -30,7 +29,6 @@ class ReclosersS(Base):
         return result.value.decode('ascii')
 
     def _monitored_obj_write(self, argument: str):
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
@@ -39,6 +37,21 @@ class ReclosersS(Base):
         return result.value.decode('ascii')
 
     def _switched_obj_write(self, argument: str):
-        argument = Base._check_string_param(argument)
         result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(5), argument.encode('ascii')))
+        return result.value.decode('ascii')
+
+    def _state_read(self) -> str:
+        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(6), ctypes.c_int32(0)))
+        return result.value.decode('ascii')
+
+    def _state_write(self, argument: str):
+        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(7), argument.encode('ascii')))
+        return result.value.decode('ascii')
+
+    def _normal_state_read(self) -> str:
+        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(8), ctypes.c_int32(0)))
+        return result.value.decode('ascii')
+
+    def _normal_state_write(self, argument: str):
+        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(9), argument.encode('ascii')))
         return result.value.decode('ascii')

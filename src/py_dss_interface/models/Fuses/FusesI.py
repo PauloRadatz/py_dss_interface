@@ -37,7 +37,6 @@ class FusesI(Base):
         return self._dss_obj.FusesI(ctypes.c_int32(5), ctypes.c_int32(0))
 
     def _switched_term_write(self, argument: int) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.FusesI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
     def _open(self) -> int:
@@ -53,7 +52,6 @@ class FusesI(Base):
         return self._dss_obj.FusesI(ctypes.c_int32(10), ctypes.c_int32(0))
 
     def _idx_write(self, argument: int) -> int:
-        argument = Base._check_int_param(argument, default=1)
         return self._dss_obj.FusesI(ctypes.c_int32(11), ctypes.c_int32(argument))
 
     def _num_phases(self) -> int:

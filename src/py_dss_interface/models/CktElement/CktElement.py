@@ -25,6 +25,12 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
                 See NumControls to determine valid index range."""
         return CktElementS._controller(self, argument)
 
+    def active_variable_name(self, argument: str) -> str:
+        """It can be used to activate a specific state variable by name for the active circuit element.
+        It returns a string “Error” if the variable was not found, otherwise,
+        it will return “OK” signaling that the variable was found and is the active variable."""
+        return CktElementS._active_variable_name(self, argument)
+
     def enabled(self, argument: int) -> int:
         """Allows to modify the enabled status of the active element (1=enabled, 0=disabled)."""
         return CktElementI._enabled(self, argument)
@@ -62,6 +68,20 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
     @emerg_amps.setter
     def emerg_amps(self, argument: float):
         CktElementF._emerg_amps_write(self, argument)
+
+    @property
+    def active_variable(self) -> float:
+        """Gets the value of the active state variable for the active circuit element.
+        The variable must be activated by using “ActiveVariableName” (CktElementS) or “ActiveVariableIdx” (CktElementI)
+        before using this function, otherwise, the value returned will not correspond to the expected one."""
+        return CktElementF._active_variable(self)
+
+    @active_variable.setter
+    def active_variable(self, argument: float):
+        """Sets the value given at the Argument into the active state variable for the active circuit element.
+        The variable must be activated by using “ActiveVariableName” (CktElementS) or “ActiveVariableIdx” (CktElementI) before using this function.
+        If the value assignment is successful, the function will return 0, otherwise, it will return -1."""
+        CktElementF._active_variable_write(self, argument)
 
     @property
     def num_terminals(self) -> int:
@@ -119,6 +139,11 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
         """Returns one of the following values: 0 if the active element is disabled or 1 if the active element is
                 enabled."""
         return CktElementI._is_enabled(self)
+
+    def active_variable_idx(self, argument: int) -> int:
+        """It can be used to activate a specific state variable by index for the active circuit element.
+        It returns -1 if the variable was not found, otherwise, it will return 0 signaling that the variable was found and is the active variable."""
+        return CktElementI._active_variable_idx(self, argument)
 
     @property
     def name(self) -> str:
@@ -256,4 +281,10 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
     def voltages_mag_ang(self) -> List[float]:
         """Delivers the voltages in magnitude, angle format as a variant array of doubles of the active circuit
                 element. """
+        return CktElementV._voltages_mag_ang(self)
+
+    @property
+    def total_powers(self) -> List[float]:
+        """Returns a pointer to an array of complex with the total powers (complex) at ALL terminals of the active circuit element.
+        Each element is a complex structure including real and imaginary parts (double, 16 Bytes per element)."""
         return CktElementV._voltages_mag_ang(self)

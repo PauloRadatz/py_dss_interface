@@ -24,8 +24,6 @@ class LineCodesV(Base):
     The properties (parameter) are integer numbers and are described as follows.
     """
 
-    # TODO I do not think they should return str
-
     def _rmatrix_read(self) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.LineCodesV, 0)
 

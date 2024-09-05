@@ -39,7 +39,6 @@ class LineCodesI(Base):
         return self._dss_obj.LineCodesI(ctypes.c_int32(3), ctypes.c_int32(0))
 
     def _units_write(self, argument: int) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.LineCodesI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
     def _phases_read(self) -> int:

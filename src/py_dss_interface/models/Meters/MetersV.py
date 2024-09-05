@@ -40,7 +40,6 @@ class MetersV(Base):
         return Bridge.pointer_read(self._dss_obj.MetersV, 4)
 
     def _peak_current_write(self, arg: List[float]) -> List[float]:
-        """Receives an array of doubles to set values of Peak Current Property."""
         return Bridge.pointer_write(self._dss_obj.MetersV, 5, arg, 2)
 
     def _calc_current_read(self) -> List[float]:

@@ -43,6 +43,4 @@ class DSSInterfaceI(Base):
         return self._dss_obj.DSSI(ctypes.c_int32(7), ctypes.c_int32(0))
 
     def _allow_forms_write(self, argument: int):
-        """Sets if the DSS allows forms (1) or not (0), default (1). PAY ATTENTION: If arg=0 Then NoFormsAllowed :=
-        TRUE (Only set to False) else NoFormsAllowed := FALSE; """
         return self._dss_obj.DSSI(ctypes.c_int32(8), argument)

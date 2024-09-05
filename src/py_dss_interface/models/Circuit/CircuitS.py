@@ -23,26 +23,24 @@ class CircuitS(Base):
         return result.value.decode('ascii')
 
     # TODO: Must be reimplemented and reviewed
-    def _disable(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.CircuitS(ctypes.c_int32(1), ctypes.c_int32(0)))
+    def _disable(self, argument: str) -> str:
+        result = ctypes.c_char_p(self._dss_obj.CircuitS(ctypes.c_int32(1), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     # TODO: must be reimplemented and reviewed
-    def _enable(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.CircuitS(ctypes.c_int32(2), ctypes.c_int32(0)))
+    def _enable(self, argument: str) -> str:
+        result = ctypes.c_char_p(self._dss_obj.CircuitS(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     def _set_active_element(self, argument: str) -> str:
-        argument = Base._check_string_param(argument, default="")
         result = ctypes.c_char_p(self._dss_obj.CircuitS(ctypes.c_int32(3), argument.encode('ascii')))
         return result.value.decode('ascii')
 
+    def _set_active_bus(self, argument: str) -> str:
+        result = ctypes.c_char_p(self._dss_obj.CircuitS(ctypes.c_int32(4), argument.encode('ascii')))
+        return result.value.decode('ascii')
+
     def _set_active_class(self, argument: str) -> str:
-        argument = Base._check_string_param(argument, default="")
         result = ctypes.c_char_p(self._dss_obj.CircuitS(ctypes.c_int32(5), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    def _set_active_bus(self, argument: str) -> str:
-        argument = Base._check_string_param(argument, default="")
-        result = ctypes.c_char_p(self._dss_obj.CircuitS(ctypes.c_int32(4), argument.encode('ascii')))
-        return result.value.decode('ascii')

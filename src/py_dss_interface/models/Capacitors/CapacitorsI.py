@@ -24,14 +24,12 @@ class CapacitorsI(Base):
         return self._dss_obj.CapacitorsI(0, 0)
 
     def _num_steps_write(self, argument: int) -> int:
-        argument = Base._check_int_param(argument, default=1)
         return self._dss_obj.CapacitorsI(1, argument)
 
     def is_delta(self) -> int:
         return self._dss_obj.CapacitorsI(2, 0)
 
-    def _is_delta_write(self, argument: int = 1) -> int:
-        argument = Base._check_int_param(argument, default=1)
+    def _is_delta_write(self, argument: int) -> int:
         return self._dss_obj.CapacitorsI(3, argument)
 
     def _first(self) -> int:
@@ -45,19 +43,10 @@ class CapacitorsI(Base):
 
     def _add_step(self) -> int:
         result = self._dss_obj.CapacitorsI(7, 0)
-        # Base.check_assertion_result(result, "Capacitor step problem detect!", "A problem occur when tried to adds "
-        #                                                                       "step to a capacitor. Check capacitor/"
-        #                                                                       "bank capacitor existence or available "
-        #                                                                       "steps!", expected_value=1)
         return result
 
     def _subtract_step(self) -> int:
         result = self._dss_obj.CapacitorsI(8, 0)
-        # Base.check_assertion_result(result, "Capacitor step problem detect!", "A problem occur when tried to subtract "
-        #                                                                       "step to a capacitor. Check capacitor/"
-        #                                                                       "bank capacitor existence or available "
-        #                                                                       "steps!",
-        #                             expected_value=1)
         return result
 
     def _available_steps(self) -> int:

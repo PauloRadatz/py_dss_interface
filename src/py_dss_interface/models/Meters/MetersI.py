@@ -78,7 +78,6 @@ class MetersI(Base):
         return self._dss_obj.MetersI(ctypes.c_int32(18), ctypes.c_int32(0))
 
     def _seq_list_size(self) -> int:
-        """Returns the size of Sequence List."""
         return self._dss_obj.MetersI(ctypes.c_int32(19), ctypes.c_int32(0))
 
     def _total_customers(self) -> int:

@@ -24,3 +24,9 @@ class CktElementF(Base):
     # TODO include in test
     def _variable_i(self, argument: float) -> float:
         return float(self._dss_obj.CktElementF(ctypes.c_int32(4), ctypes.c_double(argument)))
+
+    def _active_variable_write(self, argument: float) -> float:
+        return float(self._dss_obj.CktElementF(ctypes.c_int32(5), ctypes.c_double(argument)))
+
+    def _active_variable(self) -> float:
+        return float(self._dss_obj.CktElementF(ctypes.c_int32(6), ctypes.c_double(0)))

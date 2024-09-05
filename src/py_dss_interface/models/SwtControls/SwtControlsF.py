@@ -23,5 +23,4 @@ class SwtControlsF(Base):
         return float(self._dss_obj.SwtControlsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
     def _delay_write(self, argument) -> float:
-        argument = Base._check_float_param(argument)
         return float(self._dss_obj.SwtControlsF(ctypes.c_int32(1), ctypes.c_double(argument)))

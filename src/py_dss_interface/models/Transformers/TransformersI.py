@@ -53,3 +53,9 @@ class TransformersI(Base):
 
     def _count(self) -> int:
         return self._dss_obj.TransformersI(ctypes.c_int32(10), ctypes.c_int32(0))
+
+    def _core_type_read(self) -> int:
+        return self._dss_obj.TransformersI(ctypes.c_int32(11), ctypes.c_int32(0))
+
+    def _core_type_write(self, argument) -> int:
+        return self._dss_obj.TransformersI(ctypes.c_int32(12), ctypes.c_int32(argument))

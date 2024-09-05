@@ -230,7 +230,7 @@ class TestLines13Bus:
         expected = 0.1
         dss.lines.c1 = expected
         actual = dss.lines.c1
-        assert expected == pytest.approx(actual)
+        assert  pytest.approx(actual) == expected
 
     def test_lines_read_r0(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -266,7 +266,7 @@ class TestLines13Bus:
         expected = 0.1
         dss.lines.c0 = expected
         actual = dss.lines.c0
-        assert expected == pytest.approx(actual)
+        assert pytest.approx(actual) == expected
 
     def test_lines_read_norm_amps(self, dss):
         expected = 400

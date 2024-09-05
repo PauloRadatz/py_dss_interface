@@ -18,7 +18,6 @@ class CircuitI(Base):
     one of the following.
     """
 
-    # TODO: Must be reviewed
     def _integer(self, first: int, second: int) -> int:
         return int(self._dss_obj.CircuitI(ctypes.c_int32(first), ctypes.c_int32(second)))
 
@@ -51,7 +50,6 @@ class CircuitI(Base):
         return self._integer(8, 0)
 
     def _set_active_bus_i(self, i: int) -> int:
-        i = Base._check_int_param(i, 1)
         return self._integer(9, i)
 
     def _first_element(self) -> int:

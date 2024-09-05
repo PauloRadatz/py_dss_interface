@@ -24,7 +24,6 @@ class CapacitorsS(Base):
     def _name(self) -> str:
         return (self._dss_obj.CapacitorsS(0, 0)).decode('ascii')
 
-    def _name_write(self, capacitor_name: str) -> str:
-        capacitor_name = Base._check_string_param(capacitor_name)
-        ctypes.c_char_p(capacitor_name.encode('utf-8'))  # TODO why it is different
-        return (self._dss_obj.CapacitorsS(1, ctypes.c_char_p(capacitor_name.encode('utf-8')))).decode('ascii')
+    def _name_write(self, argument: str) -> str:
+        result = ctypes.c_char_p(self._dss_obj.CapacitorsS(ctypes.c_int32(1), argument.encode('ascii')))
+        return result.value.decode('ascii')

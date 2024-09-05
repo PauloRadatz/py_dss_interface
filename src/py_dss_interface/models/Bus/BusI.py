@@ -27,9 +27,7 @@ class BusI(Base):
     def _coord_defined(self) -> int:
         result = self._dss_obj.BUSI(2, 0)
         return result
-
-    def _unique_node_number(self, start_number: int = 1) -> int:  # TODO
-        start_number = Base._check_int_param(start_number)
+    def _unique_node_number(self, start_number: int) -> int:  # TODO
         return self._dss_obj.BUSI(3, start_number)
 
     def _total_customers(self) -> int:

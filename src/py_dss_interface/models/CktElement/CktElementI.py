@@ -19,16 +19,16 @@ class CktElementI(Base):
     """
 
     def _num_terminals(self) -> int:
-        return int(self._dss_obj.CktElementI(ctypes.c_int32(0), ctypes.c_int32(0)))
+        return self._dss_obj.CktElementI(ctypes.c_int32(0), ctypes.c_int32(0))
 
     def _num_conductors(self) -> int:
-        return int(self._dss_obj.CktElementI(ctypes.c_int32(1), ctypes.c_int32(0)))
+        return self._dss_obj.CktElementI(ctypes.c_int32(1), ctypes.c_int32(0))
 
     def _num_phases(self) -> int:
-        return int(self._dss_obj.CktElementI(ctypes.c_int32(2), ctypes.c_int32(0)))
+        return self._dss_obj.CktElementI(ctypes.c_int32(2), ctypes.c_int32(0))
 
     def _open_terminal(self, argument: int) -> int:
-        return int(self._dss_obj.CktElementI(ctypes.c_int32(3), ctypes.c_int32(argument)))
+        return self._dss_obj.CktElementI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
     def _close_terminal(self, argument: int) -> int:
         return self._dss_obj.CktElementI(ctypes.c_int32(4), ctypes.c_int32(argument))
@@ -59,3 +59,6 @@ class CktElementI(Base):
 
     def _enabled(self, argument: int) -> int:
         return self._dss_obj.CktElementI(ctypes.c_int32(13), ctypes.c_int32(argument))
+
+    def _active_variable_idx(self, argument: int) -> int:
+        return self._dss_obj.CktElementI(ctypes.c_int32(14), ctypes.c_int32(argument))

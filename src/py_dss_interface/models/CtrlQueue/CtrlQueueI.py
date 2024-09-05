@@ -42,26 +42,16 @@ class CtrlQueueI(Base):
         return self._dss_obj.CtrlQueueI(ctypes.c_int32(5), ctypes.c_int32(0))
 
     def _show(self) -> int:
-        try:
-            return self._dss_obj.CtrlQueueI(ctypes.c_int32(7), ctypes.c_int32(0))
-        except Exception as e:
-            Base._warn_msg("An error occur when tried to get *Num Actions of CrlQueue* check if *Queue* is NOT empty", e)
+        return self._dss_obj.CtrlQueueI(ctypes.c_int32(6), ctypes.c_int32(0))
 
     def _clear_actions(self) -> int:
-        return self._dss_obj.CtrlQueueI(ctypes.c_int32(8), ctypes.c_int32(0))
+        return self._dss_obj.CtrlQueueI(ctypes.c_int32(7), ctypes.c_int32(0))
 
     def _pop_action(self) -> int:
-        try:
-            return self._dss_obj.CtrlQueueI(ctypes.c_int32(9), ctypes.c_int32(0))
-        except Exception as e:
-            Base._warn_msg("An error occur when tried to *Pop Next Action of CrlQueue* check if *Queue* is NOT empty", e)
+        return self._dss_obj.CtrlQueueI(ctypes.c_int32(8), ctypes.c_int32(0))
 
     def _queue_size(self) -> int:
-        return self._dss_obj.CtrlQueueI(ctypes.c_int32(10), ctypes.c_int32(0))
+        return self._dss_obj.CtrlQueueI(ctypes.c_int32(9), ctypes.c_int32(0))
 
     def _do_all_queue(self) -> int:
-        try:
-            return self._dss_obj.CtrlQueueI(ctypes.c_int32(11), ctypes.c_int32(0))
-        except Exception as e:
-            Base._warn_msg("An error occur when tried to *Do All Control Actions of CrlQueue* check if *Queue* is NOT "
-                          "empty", e)
+        return self._dss_obj.CtrlQueueI(ctypes.c_int32(10), ctypes.c_int32(0))

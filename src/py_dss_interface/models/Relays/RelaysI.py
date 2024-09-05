@@ -31,19 +31,25 @@ class RelaysI(Base):
         return self._dss_obj.RelaysI(ctypes.c_int32(3), ctypes.c_int32(0))
 
     def _monitored_term_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.RelaysI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
     def _switched_term_read(self) -> int:
         return self._dss_obj.RelaysI(ctypes.c_int32(5), ctypes.c_int32(0))
 
     def _switched_term_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.RelaysI(ctypes.c_int32(6), ctypes.c_int32(argument))
 
     def _idx_read(self) -> int:
         return self._dss_obj.RelaysI(ctypes.c_int32(7), ctypes.c_int32(0))
 
     def _idx_write(self, argument) -> int:
-        argument = Base._check_int_param(argument)
         return self._dss_obj.RelaysI(ctypes.c_int32(8), ctypes.c_int32(argument))
+
+    def _open(self) -> int:
+        return self._dss_obj.RelaysI(ctypes.c_int32(9), ctypes.c_int32(0))
+
+    def _close(self) -> int:
+        return self._dss_obj.RelaysI(ctypes.c_int32(10), ctypes.c_int32(0))
+
+    def _reset(self) -> int:
+        return self._dss_obj.RelaysI(ctypes.c_int32(11), ctypes.c_int32(0))

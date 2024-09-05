@@ -194,6 +194,17 @@ class Transformers(TransformersV, TransformersF, TransformersI, TransformersS):
     def is_delta(self, argument: int):
         TransformersI._is_delta_write(self, argument)
 
+    @property
+    def core_type(self) -> int:
+        """This parameter gets the code for the core type of the active transformer.
+
+        This parameter sets the code for the core type of the active transformer using the value given by the user in the argument."""
+        return TransformersI._core_type_read(self)
+
+    @core_type.setter
+    def core_type(self, argument: int):
+        TransformersI._core_type_write(self, argument)
+
     def first(self) -> int:
         """Sets the first Transformer active. Return 0 if no more."""
         return TransformersI._first(self)
