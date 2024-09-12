@@ -287,4 +287,4 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
     def total_powers(self) -> List[float]:
         """Returns a pointer to an array of complex with the total powers (complex) at ALL terminals of the active circuit element.
         Each element is a complex structure including real and imaginary parts (double, 16 Bytes per element)."""
-        return CktElementV._voltages_mag_ang(self)
+        return CktElementV._total_powers(self)

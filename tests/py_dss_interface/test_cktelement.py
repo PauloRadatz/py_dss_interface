@@ -473,3 +473,8 @@ class TestCktElement13Bus:
                         115.98674983388848]
             actual = dss.cktelement.voltages_mag_ang
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
+
+    def test_total_powers(self, dss):
+        expected = [1013.9073261842649, 19.022226213147135, -1013.9073171296899, -19.02222621314708]
+        actual = dss.cktelement.total_powers
+        assert [round(value, 12) for value in actual] == [round(value, 12) for value in expected]
