@@ -19,27 +19,14 @@ class ActiveClassI(Base):
     The properties (parameter) are integer numbers and are described as follows."""
 
     def _first(self) -> int:
-        # TODO
-        try:
-            return self._dss_obj.ActiveClassI(0, 0)
-        except Exception as e:
-            raise Exception(f"Error in _first: {e}")
+        return self._dss_obj.ActiveClassI(0, 0)
 
     def _next(self) -> int:
-        try:
-            return self._dss_obj.ActiveClassI(1, 0)
-        except Exception as e:
-            raise Exception(f"Error in _next: {e}")
+        return self._dss_obj.ActiveClassI(1, 0)
 
     def _num_elements(self) -> int:
-        try:
-            return self._dss_obj.ActiveClassI(2, 0)
-        except Exception as e:
-            raise Exception(f"Error in _num_elements: {e}")
+        return self._dss_obj.ActiveClassI(2, 0)
 
     def _count(self) -> int:
-        try:
-            return self._dss_obj.ActiveClassI(3, 0)
-        except Exception as e:
-            raise Exception(f"Error in _count: {e}")
+        return self._dss_obj.ActiveClassI(3, 0)
 

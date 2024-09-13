@@ -23,8 +23,8 @@ class DSSPropertiesS(Base):
     variable Parameter, which can be one of the following.
     """
 
-    def _name_active_property(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(0), ctypes.c_int32(0)))
+    def _name_active_property(self, argument: str) -> str:
+        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(0), argument.encode('ascii')))
         return result.value.decode('ascii')
 
     def _description_active_property(self, argument: str) -> str:

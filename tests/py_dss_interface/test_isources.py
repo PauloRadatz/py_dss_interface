@@ -74,3 +74,8 @@ class TestBus13ISources:
         actual = dss.isources.frequency
         assert actual == expected
 
+    def test_isources_names(self, dss):
+        expected = ['myisource']
+        actual = dss.isources.names
+        assert actual == expected
+

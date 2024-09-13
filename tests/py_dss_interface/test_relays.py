@@ -31,6 +31,36 @@ class TestRelays13Bus:
     # ===================================================================
     # Integer methods
     # ===================================================================
+
+    def test_relays_read_state(self, dss):
+        expected = "closed"
+        actual = dss.relays.state
+        assert expected == actual
+
+    def test_relays_write_state(self, dss):
+        expected = "open"
+        dss.relays.state = expected
+        actual = dss.relays.state
+        assert expected == actual
+
+    def test_relays_read_normal_state(self, dss):
+        expected = "closed"
+        actual = dss.relays.normal_state
+        assert expected == actual
+
+    def test_relays_write_normal_state(self, dss):
+        expected = "open"
+        dss.relays.normal_state = expected
+        actual = dss.relays.normal_state
+        assert expected == actual
+
+    def test_relays_reset(self, dss):
+        dss.relays.state = "open"
+        expected = "closed"
+        dss.relays.reset()
+        actual = dss.relays.state
+        assert actual == expected
+
     def test_relays_count(self, dss):
         expected = 2
         actual = dss.relays.count

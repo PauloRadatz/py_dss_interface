@@ -36,7 +36,7 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
         return CktElementI._enabled(self, argument)
 
     def variable_i(self, argument: float) -> float:
-        """Delivers get the value of a variable by index for the active PCElement."""
+        """Gets the value of a variable by index for the active PCElement."""
         return CktElementF._variable_i(self, argument)
 
     def open_terminal(self, argument: int) -> int:
