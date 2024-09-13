@@ -478,3 +478,9 @@ class TestCktElement13Bus:
         expected = [1013.9073261842649, 19.022226213147135, -1013.9073171296899, -19.02222621314708]
         actual = dss.cktelement.total_powers
         assert [round(value, 12) for value in actual] == [round(value, 12) for value in expected]
+
+    def test_guid(self, dss):
+        dss.circuit.set_active_element("transformer.sub")
+        expected = type("")
+        actual = type(dss.cktelement.guid)
+        assert actual == expected

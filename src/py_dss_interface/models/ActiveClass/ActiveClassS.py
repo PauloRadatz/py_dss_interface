@@ -21,25 +21,13 @@ class ActiveClassS(Base):
     """
 
     def _name(self) -> str:
-        try:
-            return (self._dss_obj.ActiveClassS(0, 0)).decode('ascii')
-        except Exception as e:
-            raise Exception(f"Error in _name: {e}")
+        return (self._dss_obj.ActiveClassS(0, 0)).decode('ascii')
 
     def _name_write(self, argument) -> str:
-        try:
-            return (self._dss_obj.ActiveClassS(1, argument.encode('ascii'))).decode('ascii')
-        except Exception as e:
-            raise Exception(f"Error in _name_write: {e}")
+        return (self._dss_obj.ActiveClassS(1, argument.encode('ascii'))).decode('ascii')
 
     def _class_name(self) -> str:
-        try:
-            return (self._dss_obj.ActiveClassS(2, 0)).decode('ascii')
-        except Exception as e:
-            raise Exception(f"Error in _class_name: {e}")
+        return (self._dss_obj.ActiveClassS(2, 0)).decode('ascii')
 
     def _parent_class_name(self) -> str:
-        try:
-            return (self._dss_obj.ActiveClassS(3, 0)).decode('ascii')
-        except Exception as e:
-            raise Exception(f"Error in _parent_class_name: {e}")
+        return (self._dss_obj.ActiveClassS(3, 0)).decode('ascii')

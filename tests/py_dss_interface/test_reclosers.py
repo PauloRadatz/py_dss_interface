@@ -38,6 +38,35 @@ class TestReclosers13Bus:
     # ===================================================================
     # Integer methods
     # ===================================================================
+    def test_reclosers_read_state(self, dss):
+        expected = "closed"
+        actual = dss.reclosers.state
+        assert expected == actual
+
+    def test_reclosers_write_state(self, dss):
+        expected = "open"
+        dss.reclosers.state = expected
+        actual = dss.reclosers.state
+        assert expected == actual
+
+    def test_reclosers_read_normal_state(self, dss):
+        expected = "closed"
+        actual = dss.reclosers.normal_state
+        assert expected == actual
+
+    def test_reclosers_write_normal_state(self, dss):
+        expected = "open"
+        dss.reclosers.normal_state = expected
+        actual = dss.reclosers.normal_state
+        assert expected == actual
+
+    def test_reclosers_reset(self, dss):
+        dss.reclosers.state = "open"
+        expected = "closed"
+        dss.reclosers.reset()
+        actual = dss.reclosers.state
+        assert actual == expected
+
     def test_reclosers_count(self, dss):
         dss.text(r"New 'Recloser.cb2' MonitoredObj=Line.684611 "
                  r"MonitoredTerm=2 "

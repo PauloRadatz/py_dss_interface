@@ -103,10 +103,21 @@ class TestCircuit13Bus:
         assert actual == expected
 
     def test_disable(self, dss):
-        pass
+        elem = "transformer.sub"
+        dss.circuit.disable(elem)
+        dss.circuit.set_active_element(elem)
+        expected = False
+        actual = dss.cktelement.is_enabled
+        assert actual == expected
 
     def test_enable(self, dss):
-        pass
+        elem = "transformer.sub"
+        dss.circuit.disable(elem)
+        dss.circuit.enable(elem)
+        dss.circuit.set_active_element(elem)
+        expected = True
+        actual = dss.cktelement.is_enabled
+        assert actual == expected
 
     def test_activate_element(self, dss):
         expected = '26'

@@ -19,8 +19,8 @@ class Circuit(CircuitI, CircuitS, CircuitF, CircuitV):
     def __init__(self, obj_dss):
         super().__init__(obj_dss)
 
-    @property
-    def capacity(self, capacity_start=0, capacity_increment=0.1) -> float:
+
+    def capacity(self, capacity_start, capacity_increment) -> float:
         """Returns the total capacity of the active circuit. Or this parameter it is necessary to specify the start
                 and increment of the capacity in the arguments argument1 and argument2 respectively. """
         return CircuitF._capacity(self, capacity_start, capacity_increment)
@@ -152,17 +152,15 @@ class Circuit(CircuitI, CircuitS, CircuitF, CircuitV):
         """Returns the name of the active circuit."""
         return CircuitS._name(self)
 
-    @property
-    def disable(self) -> str:
+    def disable(self, argument: str) -> str:
         """Allows to disable an element of the active circuit, the element must be specified by name.
                 As a result, this parameter will deliver the string ?Ok?."""
-        return CircuitS._disable(self)
+        return CircuitS._disable(self, argument)
 
-    @property
-    def enable(self) -> str:
+    def enable(self, argument: str) -> str:
         """Allows to enable an element of the active circuit, the element must be specified by name.
                 As a result, this parameter will deliver the string ?Ok?."""
-        return CircuitS._enable(self)
+        return CircuitS._enable(self, argument)
 
     @property
     def num_ckt_elements(self) -> int:

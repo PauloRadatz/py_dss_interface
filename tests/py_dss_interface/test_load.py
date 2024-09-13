@@ -158,6 +158,18 @@ class TestLoad13Bus:
         actual = dss.loads.duty
         assert actual == expected
 
+    def test_loads_write_duty(self, dss):
+        dss.text("New Loadshape.Test npts=24 interval=1 "
+                 "mult= "
+                 "(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 "
+                 "0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 "
+                 "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
+                 "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
+        expected = 'Test'
+        dss.loads.duty = expected
+        actual = dss.loads.duty
+        assert actual == expected
+
     def test_loads_read_spectrum(self, dss):
         expected = 'defaultload'
         actual = dss.loads.spectrum

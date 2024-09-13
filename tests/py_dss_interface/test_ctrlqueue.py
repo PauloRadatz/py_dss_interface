@@ -65,15 +65,14 @@ class TestBus13CtrlQueue:
 
     def test_ctrlqueue_num_actions(self, dss):
         pass
-        # TODO
-        # expected = 3
-        # actual = dss.ctrlqueue_num_actions()
-        # assert actual == expected
+        expected = 3
+        actual = dss.ctrlqueue.num_actions
+        assert actual == expected
 
     def test_ctrlqueue_action(self, dss):
-        # TODO
+        # dss.ctrlqueue.action
         pass
-        # dss.ctrlqueue_action()
+
 
     def test_ctrlqueue_action_code(self, dss):
         # TODO
@@ -88,7 +87,7 @@ class TestBus13CtrlQueue:
     def test_ctrlqueue_queue_size(self, dss):
         expected = 3
         actual = dss.ctrlqueue.queue_size
-        # assert actual == expected
+        assert actual == expected
 
     def test_ctrlqueue_pop_action(self, dss):
         # TODO
@@ -98,12 +97,12 @@ class TestBus13CtrlQueue:
     def test_ctrlqueue_do_all_queue(self, dss):
         expected = 0
         actual = dss.ctrlqueue.do_all_queue()
-        # assert actual == expected
+        assert actual == expected
 
         expected = ['No events']
         actual = dss.ctrlqueue.ctrlqueue
 
-        # assert actual == expected
+        assert actual == expected
 
     def test_ctrlqueue_clear_actions(self, dss):
         pass

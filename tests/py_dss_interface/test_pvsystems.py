@@ -34,6 +34,21 @@ class TestPVSystems13Bus:
 
         return dss
 
+    def test_pvsystems_irradiance_now(self, dss):
+        expected = 1
+        actual = dss.pvsystems.irradiance_now
+        assert actual == expected
+
+    def test_pvsystems_sensor(self, dss):
+        dss.text("New Sensor.Sensor1 "
+                 "element=PVSystem.PV1 "
+                 "terminal=1 "
+                 "kVBase=4.16 "
+                 "conn=delta ")
+        expected = 1
+        actual = dss.pvsystems.sensor
+        assert actual == expected
+
     def test_pvsystems_count(self, dss):
         expected = 1
         actual = dss.pvsystems.count
