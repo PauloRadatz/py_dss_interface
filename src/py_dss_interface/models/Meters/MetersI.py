@@ -42,7 +42,6 @@ class MetersI(Base):
     def _metered_terminal_write(self, argument) -> int:
         return self._dss_obj.MetersI(ctypes.c_int32(7), ctypes.c_int32(argument))
 
-    # TODO include in test
     def _di_files_are_open(self) -> int:
         return self._dss_obj.MetersI(ctypes.c_int32(8), ctypes.c_int32(0))
 
@@ -58,7 +57,6 @@ class MetersI(Base):
     def _close_all_di_files(self) -> int:
         return self._dss_obj.MetersI(ctypes.c_int32(12), ctypes.c_int32(0))
 
-    # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/15
     def _count_end_elements(self) -> int:
         return self._dss_obj.MetersI(ctypes.c_int32(13), ctypes.c_int32(0))
 
@@ -87,8 +85,8 @@ class MetersI(Base):
         return self._dss_obj.MetersI(ctypes.c_int32(21), ctypes.c_int32(0))
 
     def _set_active_section_write(self, argument) -> int:
-        # return self.dss_obj.MetersI(ctypes.c_int32(22), ctypes.c_int32(argument))
-        Error.method_not_working("dss.meters.set_active_section")
+        return self._dss_obj.MetersI(ctypes.c_int32(22), ctypes.c_int32(argument))
+        # Error.method_not_working("dss.meters.set_active_section")
 
     def _ocp_device_type(self) -> int:
         return self._dss_obj.MetersI(ctypes.c_int32(23), ctypes.c_int32(0))

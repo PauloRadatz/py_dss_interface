@@ -111,7 +111,7 @@ class TestSensors13Bus:
 
     def test_sensors_write_weight(self, dss):
         expected = 1.0
-        dss.sensors._weight = expected
+        dss.sensors.weight = expected
         actual = dss.sensors.weight
         assert actual == expected
 
@@ -200,4 +200,11 @@ class TestSensors13Bus:
         expected = [10, 10, 10]
         dss.sensors.kws = expected
         actual = dss.sensors.kws
+        assert actual == expected
+
+    def test_sensors_allocation_factor(self, dss):
+        expected = [2.125336194265532, 1.62369322359071, 2.1728848763244932]
+        dss.text("Edit sensor.sensor1 current=[394, 301, 403]")
+        dss.text("Allocateloads")
+        actual = dss.sensors.allocation_factor
         assert actual == expected

@@ -186,17 +186,30 @@ class TestMeters13Bus:
     # Float methods
     # ===================================================================
     def test_meters_saifi(self, dss):
-        expected = 0
+        dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
+        dss.meters.do_reliability_calc()
+        expected = 79.34000000000002
         actual = dss.meters.saifi
         assert actual == expected
 
     def test_meters_saifi_kw(self, dss):
-        expected = 0
+        dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
+        dss.meters.do_reliability_calc()
+        expected = 79.34
         actual = dss.meters.saifi_kw
         assert actual == expected
 
+    def test_meters_saidi(self, dss):
+        dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
+        dss.meters.do_reliability_calc()
+        expected = 238.02000000000004
+        actual = dss.meters.saidi
+        assert actual == expected
+
     def test_meters_cust_interrupts(self, dss):
-        expected = 0
+        dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
+        dss.meters.do_reliability_calc()
+        expected = 634.7200000000001
         actual = dss.meters.cust_interrupts
         assert actual == expected
 
@@ -276,13 +289,12 @@ class TestMeters13Bus:
         actual = dss.meters.calc_current
         assert actual == expected
 
-    # TODO: Ênio - https://github.com/PauloRadatz/py_dss_interface/issues/6
-    # def test_meters_write_calc_current(self, dss):
-    #     expected = [394, 301, 403]
-    #     dss.meters.calc_current = expected
-    #     dss.text("Allocateloads")
-    #     actual = dss.meters.calc_current
-    #     assert actual == expected
+    def test_meters_write_calc_current(self, dss):
+        dss.meters.calc_current = [394, 301, 403]
+        dss.text("Allocateloads")
+        expected = [473.76911764821904, 188.82002588596725, 424.90119440383563]
+        actual = dss.meters.calc_current
+        assert actual == expected
 
     def test_meters_read_alloc_factors(self, dss):
         dss.text("Edit Energymeter.EM2 peakcurrent=[394, 301, 403]")
@@ -291,14 +303,11 @@ class TestMeters13Bus:
         actual = dss.meters.alloc_factors
         assert actual == expected
 
-    # TODO it changed it
     def test_meters_write_alloc_factors(self, dss):
-        # dss.text("Edit Energymeter.EM2 peakcurrent=[394, 301, 403]")
-        # dss.text("Allocateloads")
         expected = [0.831627229659705, 1.5941085756581377, 0.9484539173579261]
         dss.meters.alloc_factors = expected
         actual = dss.meters.alloc_factors
-        # assert actual == expected
+        assert actual == expected
 
     def test_meters_all_end_elements(self, dss):
         expected = ['Line.645646', 'Transformer.xfm1', 'Line.632670']
@@ -316,3 +325,30 @@ class TestMeters13Bus:
                     'Load.670c']
         actual = dss.meters.all_pce_in_zone
         assert actual == expected
+
+    def test_meters_all_branches_in_zone(self, dss):
+
+        expected = ['Line.650632',
+                    'Line.632645',
+                    'Line.645646',
+                    'Line.632633',
+                    'Transformer.xfm1',
+                    'Line.632670']
+
+        actual = dss.meters.all_branches_in_zone
+        assert actual == expected
+
+    def test_meters_di_files_are_open(self, dss):
+        expected = 0
+        actual = dss.meters.di_files_are_open
+        assert actual == expected
+
+    def test_meter_num_section_customers(self, dss):
+        expected = 0
+        actual = dss.meters.num_section_customers
+        assert actual == expected
+
+    def test_meter_set_active_section(self, dss):
+        expected = 0
+        dss.meters.set_active_section(1)
+        # assert actual == expected

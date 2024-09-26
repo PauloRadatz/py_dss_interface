@@ -2216,3 +2216,14 @@ class TestMonitors13Bus:
 
         actual = dss.monitors.channel(1)
         assert [round(value, 2) for value in actual] == [round(value, 2) for value in expected]
+
+    def test_monitor_mode_read(self, dss):
+        expected = 0
+        actual = dss.monitors.mode
+        assert actual == expected
+
+    def test_monitor_mode_write(self, dss):
+        expected = 1
+        dss.monitors.mode = expected
+        actual = dss.monitors.mode
+        assert actual == expected
