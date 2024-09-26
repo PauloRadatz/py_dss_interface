@@ -63,9 +63,8 @@ class CapControls(CapControlsF, CapControlsI, CapControlsS, CapControlsV):
         return CapControlsI._monitored_term(self)
 
     @monitored_term.setter
-    def monitored_term(self, values):
-        dss, argument = values
-        CapControlsI._monitored_term_write(self, dss, argument)
+    def monitored_term(self, argument):
+        CapControlsI._monitored_term_write(self, argument)
 
     @property
     def use_volt_override(self) -> int:
@@ -78,9 +77,8 @@ class CapControls(CapControlsF, CapControlsI, CapControlsS, CapControlsV):
         return CapControlsI._use_volt_override(self)
 
     @use_volt_override.setter
-    def use_volt_override(self, values):
-        dss, argument = values
-        CapControlsI._use_volt_override_write(self, dss, argument)
+    def use_volt_override(self, argument):
+        CapControlsI._use_volt_override_write(self, argument)
 
     @property
     def count(self) -> int:

@@ -352,12 +352,12 @@ class TestLines13Bus:
             assert actual == expected
 
     def test_lines_write_rmatrix(self, dss):
-        expected = [0.086, 0.029, 0.02, 0.029, 0.088, 0.029, 0.02, 0.029, 0.08]
+        expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
 
-        # dss.lines.rmatrix = expected
-        # actual = dss.lines.rmatrix
-        #
-        # assert actual == expected
+        dss.lines.rmatrix = expected
+        actual = dss.lines.rmatrix
+
+        assert actual == expected
 
     def test_lines_read_xmatrix(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -375,11 +375,11 @@ class TestLines13Bus:
 
     def test_lines_write_xmatrix(self, dss):
         expected = [0.086, 0.029, 0.02, 0.029, 0.088, 0.029, 0.02, 0.029, 0.08]
-        #
-        # dss.lines.xmatrix = expected
-        # actual = dss.lines.xmatrix
-        #
-        # assert actual == expected
+
+        dss.lines.xmatrix = expected
+        actual = dss.lines.xmatrix
+
+        assert actual == expected
 
     def test_lines_read_cmatrix(self, dss):
         expected = [0.00053,

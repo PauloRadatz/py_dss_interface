@@ -28,8 +28,8 @@ class CktElementV(Base):
         # for i in range(len(argument)):
         #     argument[i] = argument[i].encode('ascii')
 
-        Error.method_not_working("setter of dss.cktelement.bus_names")
-        # return Bridge.pointer_write(self.dss_obj.CktElementV, 1, argument)
+        # Error.method_not_working("setter of dss.cktelement.bus_names")
+        return Bridge.pointer_write(self._dss_obj.CktElementV, 1, argument, 4)
 
     def _voltages(self) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.CktElementV, 2)

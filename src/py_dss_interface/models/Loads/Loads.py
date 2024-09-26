@@ -147,7 +147,7 @@ class Loads(LoadsF, LoadsI, LoadsS, LoadsV):
     @property
     def sensor(self) -> str:
         """This parameter returns the name of the sensor monitoring the active load."""
-        return LoadsS._growth(self)
+        return LoadsS._sensor(self)
 
     @property
     def idx(self) -> int:

@@ -22,13 +22,13 @@ class CapControlsF(Base):
         return self._dss_obj.CapControlsF(0, 0)
 
     def _ct_ratio_write(self, argument: float) -> float:
-        return self._dss_obj.CapControlsF(1, argument)
+        return self._dss_obj.CapControlsF(1, ctypes.c_double(argument))
 
     def _pt_ratio(self) -> float:
         return self._dss_obj.CapControlsF(2, 0)
 
     def _pt_ratio_write(self, argument: float) -> float:
-        return self._dss_obj.CapControlsF(3, argument)
+        return self._dss_obj.CapControlsF(3, ctypes.c_double(argument))
 
     def _on_setting(self) -> float:
         return self._dss_obj.CapControlsF(4, 0)
