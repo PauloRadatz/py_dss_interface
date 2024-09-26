@@ -39,7 +39,6 @@ class MonitorsI(Base):
     def _show(self) -> int:
         return self._dss_obj.MonitorsI(ctypes.c_int32(6), ctypes.c_int32(0))
 
-    # TODO include in test
     def _mode(self) -> int:
         return self._dss_obj.MonitorsI(ctypes.c_int32(7), ctypes.c_int32(0))
 

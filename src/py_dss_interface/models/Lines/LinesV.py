@@ -26,8 +26,6 @@ class LinesV(Base):
 
     """
 
-    # TODO work on this guy
-
     def _names(self) -> List[str]:
         return Bridge.pointer_read(self._dss_obj.LinesV, 0)
 
@@ -37,35 +35,20 @@ class LinesV(Base):
     def _rmatrix_write(self, argument: List[float]) -> List[float]:
         return Bridge.pointer_write(self._dss_obj.LinesV, 2, argument, 2)
 
-        # Error.method_not_working("setter of dss.lines.rmatrix")
-
     def _xmatrix_read(self) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.LinesV, 3)
 
     def _xmatrix_write(self, argument: List[float]) -> List[float]:
         return Bridge.pointer_write(self._dss_obj.LinesV, 4, argument, 2)
 
-        # Error.method_not_working("setter of dss.lines.xmatrix")
-
-    # TODO include in test
     def _cmatrix_read(self) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.LinesV, 5)
 
-    # TODO include in test
     def _cmatrix_write(self, argument: List[float]) -> List[float]:
         return Bridge.pointer_write(self._dss_obj.LinesV, 6, argument, 2)
-
-        # Error.method_not_working("setter of dss.lines.cmatrix")
 
     def _yprim_read(self) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.LinesV, 7)
 
-    # TODO include in test
     def _yprim_write(self, argument: List[float]) -> List[float]:
         return "According the official documentation this parameter does nothing at present."
-        # Below we can see a possible future implementation
-        # argument = Base.check_string_param(argument)
-        # t = Text(self.dss_obj)
-        # lc = Lines.LinesS(self.dss_obj)
-        # lc_name = lc.lines_read_name()
-        # return t.text(f'edit Line.{lc_name} Yprim = {argument}')

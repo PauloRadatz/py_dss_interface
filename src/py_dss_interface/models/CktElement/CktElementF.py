@@ -21,7 +21,6 @@ class CktElementF(Base):
     def _emerg_amps_write(self, argument: float) -> float:
         return float(self._dss_obj.CktElementF(ctypes.c_int32(3), ctypes.c_double(argument)))
 
-    # TODO include in test
     def _variable_i(self, argument: float) -> float:
         return float(self._dss_obj.CktElementF(ctypes.c_int32(4), ctypes.c_double(argument)))
 

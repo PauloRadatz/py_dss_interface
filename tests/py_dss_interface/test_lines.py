@@ -401,13 +401,13 @@ class TestLines13Bus:
     def test_lines_write_cmatrix(self, dss):
         expected = [0.0861100, 0.0291100, 0.021100, 0.0291100, 0.0881100, 0.0291100, 0.021100, 0.0291100, 0.081100]
 
-        # dss.lines.cmatrix = expected
-        # actual = dss.lines.cmatrix
-        #
-        # actual = [truncate(x, 3) for x in actual]
-        # expected = [truncate(x, 3) for x in expected]
-        #
-        # assert actual == expected
+        dss.lines.cmatrix = expected
+        actual = dss.lines.cmatrix
+
+        actual = [truncate(x, 3) for x in actual]
+        expected = [truncate(x, 3) for x in expected]
+
+        assert actual == expected
 
     def test_lines_read_yprim(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -488,14 +488,7 @@ class TestLines13Bus:
 
     # TODO understand it
     def test_lines_write_yprim(self, dss):
-        pass
-        # if platform.architecture()[0] == "64bit":
-        #     expected = [1.3569, 0.4591, 0.0, 0.4591, 1.3471, 0.0, 0.0, 0.0, 0.0]
-        #     dss.lines.lines_write_yprim("[1.3569 | 0.4591 1.3471]")
-        #     actual = dss.lines.lines_read_yprim()
-        #     assert actual == expected
-        # else:
-        #     assert True
+        dss.lines.yprim = [1, 1]
 
 
 def truncate(num, n):

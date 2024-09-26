@@ -483,3 +483,68 @@ class TestCktElement13Bus:
         expected = type("")
         actual = type(dss.cktelement.guid)
         assert actual == expected
+
+    def test_active_variable_name(self, dss):
+        dss.text("New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=1 Vpu=1 Maxkvar=500 Minkvar=-400")
+        dss.circuit.set_active_element("generator.g1")
+
+        expected = "OK"
+        actual = dss.cktelement.active_variable_name("frequency")
+        assert actual == expected
+
+        expected = "Error"
+        actual = dss.cktelement.active_variable_name(" ")
+        assert actual == expected
+
+    def test_active_variable_idx(self, dss):
+        dss.text("New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=1 Vpu=1 Maxkvar=500 Minkvar=-400")
+        dss.circuit.set_active_element("generator.g1")
+
+        expected = 0
+        actual = dss.cktelement.active_variable_idx(1)
+        assert actual == expected
+
+        expected = -1
+        actual = dss.cktelement.active_variable_idx(7)
+        assert actual == expected
+
+    def test_variable_i(self, dss):
+        dss.text("New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=1 Vpu=1 Maxkvar=500 Minkvar=-400")
+        dss.circuit.set_active_element("generator.g1")
+
+        expected = 59.99999999999999
+        actual = dss.cktelement.variable_i(1)
+
+        assert actual == expected
+
+    def test_active_variable(self, dss):
+        dss.text("New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=1 Vpu=1 Maxkvar=500 Minkvar=-400")
+        dss.circuit.set_active_element("generator.g1")
+
+
+        dss.cktelement.active_variable_name("frequency")
+        expected = 59.99999999999999
+        actual = dss.cktelement.active_variable
+        assert actual == expected
+
+        dss.cktelement.active_variable_idx(1)
+        expected = 59.99999999999999
+        actual = dss.cktelement.active_variable
+        assert actual == expected
+
+    def test_active_variable_write(self, dss):
+        dss.text("New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=1 Vpu=1 Maxkvar=500 Minkvar=-400")
+        dss.circuit.set_active_element("generator.g1")
+
+
+        dss.cktelement.active_variable_name("frequency")
+        expected = 70
+        dss.cktelement.active_variable = expected
+        actual = dss.cktelement.active_variable
+        assert actual == expected
+
+        dss.cktelement.active_variable_idx(1)
+        expected = 80
+        dss.cktelement.active_variable = expected
+        actual = dss.cktelement.active_variable
+        assert actual == expected
