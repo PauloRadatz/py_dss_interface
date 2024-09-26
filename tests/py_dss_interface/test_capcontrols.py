@@ -72,18 +72,25 @@ class TestCapControls13Bus:
 
     def test_write_monitored_term(self, dss):
         expected = 1
-        dss.capcontrols.monitored_term = dss, expected
+        dss.capcontrols.monitored_term = expected
         actual = dss.capcontrols.monitored_term
         assert actual == expected
 
     def test_read_use_volt_override(self, dss):
+        expected = 1
         actual = dss.capcontrols.use_volt_override
-        assert actual is None
+        assert actual == expected
 
     def test_write_use_volt_override(self, dss):
-        dss.capcontrols.use_volt_override = dss, 10
+        expected = 0
+        dss.capcontrols.use_volt_override = expected
         actual = dss.capcontrols.use_volt_override
-        assert actual is None
+        assert actual == expected
+
+        expected = 1
+        dss.capcontrols.use_volt_override = expected
+        actual = dss.capcontrols.use_volt_override
+        assert actual == expected
 
     # ===================================================================
     # String methods

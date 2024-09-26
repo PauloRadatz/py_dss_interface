@@ -31,13 +31,13 @@ class CapControlsI(Base):
     def _monitored_term(self) -> int:
         return self._dss_obj.CapControlsI(4, 0)
 
-    def _monitored_term_write(self, dss, argument: int) -> int:
+    def _monitored_term_write(self, argument: int) -> int:
         return self._dss_obj.CapControlsI(5, argument)
 
     def _use_volt_override(self) -> int:
         return self._dss_obj.CapControlsI(6, 0)
 
-    def _use_volt_override_write(self, dss, argument: int) -> int:
+    def _use_volt_override_write(self, argument: int) -> int:
         return self._dss_obj.CapControlsI(7, argument)
 
     def _count(self) -> int:

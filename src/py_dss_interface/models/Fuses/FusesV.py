@@ -26,8 +26,7 @@ class FusesV(Base):
         return Bridge.pointer_read(self._dss_obj.FusesV, 1)
 
     def _state_write(self, argument: List[str]) -> List[str]:
-        # return Bridge.pointer_write(self.dss_obj.FusesV, 2, argument)
-        Error.method_not_working("setter of dss.fuses.state")
+        return Bridge.pointer_write(self._dss_obj.FusesV, 2, argument, 4)
 
     # TODO include in test
     def _normal(self) -> List[str]:
@@ -35,5 +34,4 @@ class FusesV(Base):
 
     # TODO include in test
     def _normal_write(self, argument: List[str]) -> List[str]:
-        # return Bridge.pointer_write(self.dss_obj.FusesV, 4, argument)
-        Error.method_not_working("setter of dss.fuses.normal")
+        return Bridge.pointer_write(self._dss_obj.FusesV, 4, argument, 4)

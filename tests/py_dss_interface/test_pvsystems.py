@@ -45,7 +45,8 @@ class TestPVSystems13Bus:
                  "terminal=1 "
                  "kVBase=4.16 "
                  "conn=delta ")
-        expected = 1
+        dss.text("solve")
+        expected = "sensor1"
         actual = dss.pvsystems.sensor
         assert actual == expected
 

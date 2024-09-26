@@ -132,7 +132,7 @@ def pointer_read(f: callable, param: int, optional=None) -> List:
 
     return python_list
 
-def pointer_write(f: callable, param: int, arg: List, myType):
+def pointer_write(f: callable, param: int, arg: List, myType: int):
     """
     Writes a list to a COM variant pointer.
     """
@@ -157,45 +157,19 @@ def pointer_write(f: callable, param: int, arg: List, myType):
         c_type = ctypes.c_char
 
     # Prepare input values
-    data = arg
+    if myType == 4:  # Handle string or characters
+        data = [s.encode('utf-8') + b'\x00' for s in arg]  # Encode each string and null-terminate
+        c_array = ctypes.create_string_buffer(b''.join(data))  # Concatenate into a single byte buffer
+        my_size = ctypes.c_long(len(c_array))  # Length of the total byte buffer
+    else:
+        data = arg
+        c_array = (c_type * len(data))(*data)
+        my_size = ctypes.c_long(len(data))
 
-    c_array = (c_type * len(data))(*data)
     my_type = ctypes.c_long(myType)
-    my_size = ctypes.c_long(len(data))
     pc_array = ctypes.cast(c_array, ctypes.c_void_p)
     f(mode, ctypes.byref(pc_array), ctypes.byref(my_type), ctypes.byref(my_size))
 
-    # elif myType.value == 2:
-    #     c_type = ctypes.c_double
-    #     num_type = 8
-
-    # c_array = (ctypes.c_void_p * len(data))(*data)
-    # c_array = ctypes.c_int
-
-    # Declare variables for the procedure parameters
-    # my_pointer = ctypes.
-    # my_type = ctypes.c_long(1)
-
-
-    # n1 = ctypes.c_int32(2)
-    # n = ctypes.POINTER(ctypes.byref(c_array))
-
-    # Update the pointer value with the C array
-    # ctypes.memmove(my_pointer, c_array, len(c_array) * ctypes.sizeof(ctypes.c_long))
-
-    # Call the procedure
-    # f(mode, ctypes.byref(c_array), ctypes.byref(my_type), ctypes.byref(my_size))
-    # ctypes.cast(c_array, ctypes.c_void_p)
-    # ctypes.cast(n, ctypes.c_void_p)
-    # pc_array = ctypes.cast(c_array, ctypes.POINTER(ctypes.c_void_p))
-
-
-
-
-    # Access the returned values
-    # print(f"Data array: {python_list}")
-    # print(f"myType: {my_type.value}")
-    # print(f"mySize: {my_size.value}")
 
 class DataType(Enum):
     Unknown = 0

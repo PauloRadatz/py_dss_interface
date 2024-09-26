@@ -280,3 +280,16 @@ class TestTransformers13Bus:
                     623.9349866397679]
         actual = dss.transformers.wdg_currents
         assert actual == expected
+
+    def test_core_type_read(self, dss):
+        expected = 0
+        actual = dss.transformers.core_type
+
+        assert actual == expected
+
+    def test_core_type_write(self, dss):
+        expected = 1
+        dss.transformers.core_type = expected
+        actual = dss.transformers.core_type
+
+        assert actual == expected

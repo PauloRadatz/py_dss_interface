@@ -478,7 +478,19 @@ class TestLoad13Bus:
         assert actual == expected
 
     def test_loads_write_zipv(self, dss):
-        expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+        expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 10.0]
         dss.loads.zipv = expected
         actual = dss.loads.zipv
+        assert actual == expected
+
+    def test_loads_sensor(self, dss):
+        dss.text("New Sensor.Sensor1 "
+                 "element=load.671 "
+                 "terminal=1 "
+                 "kVBase=4.16 "
+                 "conn=delta ")
+        dss.text("solve")
+        expected = "sensor1"
+        dss.loads.name = '671'
+        actual = dss.loads.sensor
         assert actual == expected
