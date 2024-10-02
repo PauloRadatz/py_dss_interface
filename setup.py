@@ -40,12 +40,28 @@ class BuildOpenDSSLinux(Command):
 
         logging.info("Starting custom build process for OpenDSS on Linux...")
         # Step 1: Clone the OpenDSS source code
-        print("Cloning OpenDSS source code...")
-        repo_url = "https://git.code.sf.net/p/electricdss/code"
-        subprocess.run(["git", "clone", repo_url, "OpenDSSSource"], check=True)
+        repo_url = "https://svn.code.sf.net/p/electricdss/code/trunk/VersionC/"
+        print("Downloading OpenDSS source code from SVN: ", repo_url)
+        logging.info(f"Cloning OpenDSS from {repo_url}...")
+        try:
+            subprocess.run(["svn", "checkout", repo_url, "OpenDSSSource"], check=True)
+        except FileNotFoundError as e:
+            print(f"Error: SVN is not installed or not found in PATH. {e}")
+            logging.error("SVN is not installed or not found in PATH.")
+            raise
+        except subprocess.CalledProcessError as e:
+            print(f"Error: Unable to checkout SVN repository. {e}")
+            logging.error(f"SVN checkout failed: {e}")
+            raise
+
+        # Check if the source code directory was created
+        if not os.path.exists("OpenDSSSource"):
+            logging.error("Error: OpenDSSSource directory not found. SVN checkout failed.")
+            print("Error: OpenDSSSource directory not found. SVN checkout failed.")
+            raise FileNotFoundError("OpenDSSSource directory not found. SVN checkout failed.")
 
         # Step 2: Navigate to the OpenDSS source directory
-        os.chdir("OpenDSSSource/trunk/VersionC")
+        os.chdir("OpenDSSSource")
 
         # Step 3: Compile the OpenDSS shared library using make
         print("Building OpenDSS shared library...")
