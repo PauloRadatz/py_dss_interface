@@ -11,7 +11,9 @@ from setuptools import setup, find_packages, Command
 from setuptools.command.install import install
 import logging
 
-logging.basicConfig(filename='build_log.txt', level=logging.INFO)
+# Set up logging
+log_file = 'build_log.txt'
+logging.basicConfig(filename=log_file, level=logging.INFO)
 
 class BuildOpenDSSLinux(Command):
     """Custom command to build OpenDSS for Linux systems."""
@@ -25,7 +27,9 @@ class BuildOpenDSSLinux(Command):
         pass
 
     def run(self):
-        logging.info("Starting custom build process for OpenDSS on Linux...")
+        # Clear the build_log.txt at the start of each installation
+        with open(log_file, 'w') as f:
+            f.write("")  # This will clear the file
         print("Starting custom build process for OpenDSS on Linux...")
 
         # Check if we are on a Linux system
@@ -34,6 +38,7 @@ class BuildOpenDSSLinux(Command):
             print("Skipping OpenDSS build: Not on a Linux system.")
             return
 
+        logging.info("Starting custom build process for OpenDSS on Linux...")
         # Step 1: Clone the OpenDSS source code
         print("Cloning OpenDSS source code...")
         repo_url = "https://git.code.sf.net/p/electricdss/code"
@@ -72,6 +77,7 @@ class BuildOpenDSSLinux(Command):
 class CustomInstallCommand(install):
     """Customized install command to trigger OpenDSS Linux build automatically."""
     def run(self):
+        logging.info("Running custom install command...")
         print("Running custom install command...")
         self.run_command('build_opendss_linux')
         install.run(self)
