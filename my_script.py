@@ -5,7 +5,10 @@ import numpy as np
 import os
 # Creates an OpenDSS object
 dss_2 = py_dss_interface.DSS()
-dss = py_dss_interface.DSS(print_dss_info=True)
+
+dss = py_dss_interface.DSS(print_dss_info=True, windows_version='cpp')
+
+
 # dss = py_dss_interface.DSS(r"C:\Program Files\OpenDSS")
 
 # dss_1 = py_dss_interface.DSSDLL()
@@ -23,7 +26,7 @@ dss.text(f"compile [{dss_file}]")
 # dss.text("edit Load.671 zipv=[0.4 0.4 0.2 0.4 0.4 0.2 0.2]")
 dss.loads.name = "671"
 
-
+dss.circuit.to
 dss.loads.names
 
 expected = ['671_new']

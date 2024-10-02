@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "py-dss-interface"
+version = "2.0.4"
+description = "Python interface for controlling OpenDSS."
+readme = "README.rst"
+license = {text = "MIT"}
+authors = [
+  {name = "Paulo Radatz", email = "paulo.radatz@gmail.com"},
+  {name = "Ênio Viana", email = "eniocc@gmail.com"},
+  {name = "Rodolfo Londero", email = "rodolfopl@gmail.com"}
+]
+dependencies = [
+  "numpy",
+  "pandas",
+  "colorama",
+  "comtypes; sys_platform == 'win32'"
+]
+
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-cov",
+  "sphinx-rtd-theme",
+  "nbsphinx",
+  "black",
+  "pre-commit",
+  "tox",
+  "twine",
+  "ipython",
+  "flake8"
+]
+
+[project.urls]
+"Documentation" = "https://py_dss_interface.readthedocs.io/"
+"Changelog" = "https://py_dss_interface.readthedocs.io/en/latest/changelog.html"
+"Issue Tracker" = "https://github.com/PauloRadatz/py_dss_interface/issues"
+"Source" = "https://github.com/PauloRadatz/py_dss_interface"
+
+[tool.setuptools]
+packages = { find = {where = ["src"]} }
+
+[tool.setuptools.package-data]
+"py_dss_interface" = [
+  "opendss_official/windows/delphi/x64/*.dll",
+  "opendss_official/windows/delphi/x86/*.dll",
+  "opendss_official/windows/cpp/x64/*.dll",
+  "opendss_official/windows/cpp/x86/*.dll",
+  "opendss_official/linux/cpp/*.so"
+]
+
+# Add entry-points for the build command
+[project.entry-points."console_scripts"]
+build_opendss_linux = "build:build_opendss_linux"
+
