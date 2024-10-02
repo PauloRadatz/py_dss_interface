@@ -2,7 +2,7 @@
 # @Time    : 10/2/2024 11:41 AM
 # @Author  : Paulo Radatz
 # @Email   : pradatz@epri.com
-# @File    : build.py
+# @File    : build_delete.py
 # @Software: PyCharm
 
 import os
