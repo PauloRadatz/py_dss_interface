@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "wheel", "setuptools_scm"]
+requires = ["setuptools>=42", "wheel", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -67,7 +67,5 @@ packages = { find = {where = ["src"]} }
   "opendss_official/linux/cpp/*.so"
 ]
 
-# Add entry-points for the build command
-[project.entry-points."console_scripts"]
-build_opendss_linux = "build:build_opendss_linux"
-
+[tool.setuptools.commands]
+build_opendss_linux = "setup:BuildOpenDSSLinux"
