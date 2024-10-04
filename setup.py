@@ -33,10 +33,10 @@ class BuildOpenDSSLinux(Command):
         print("Starting custom build process for OpenDSS on Linux...")
 
         # Check if we are on a Linux system
-        if os.name != 'posix':
-            logging.info("Skipping OpenDSS build: Not on a Linux system.")
-            print("Skipping OpenDSS build: Not on a Linux system.")
-            return
+        # if os.name != 'posix':
+        #     logging.info("Skipping OpenDSS build: Not on a Linux system.")
+        #     print("Skipping OpenDSS build: Not on a Linux system.")
+        #     return
 
         logging.info("Starting custom build process for OpenDSS on Linux...")
         # Step 1: Clone the OpenDSS source code
