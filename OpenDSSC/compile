@@ -1,0 +1,36 @@
+#!/bin/sh
+set -e
+set -u
+# Extract our directory from $0:
+base_dir="${0%/*}"
+if ! test -d "${base_dir}" ; then
+	printf 'Cannot determine base_dir from $0=%s\n' "$0" 1>&2
+	exit 1
+fi
+
+# Always start our build from the top-level:
+cd "${base_dir}"
+
+if test -e build ; then
+	rm -rf build
+fi
+export CC=clang
+export CXX=clang++
+cmake -S . -B build
+if false ; then
+	exec cmake --build build
+else
+	# If cmake is building Makefiles, this is an alternative way which
+	# compiles all source files in parallel (adjust -j16 to your system),
+	# and count of the total numbers of unique warnings and errors.
+	cd build
+	make -k -j16 --output-sync=target 2> make_err.txt && st="$?" || st="$?"
+	# Show a scoreboard of unique warnings & errors:
+	#grep -E '\<(warning|error):' make_err.txt | sort | uniq -c | sort -n || true
+	# Show a scoreboard of warnings & errors summed up over all files:
+	grep -E '\<(warning|error):' make_err.txt | sed -E -s 's/^.*(\<(warning|error):.*$)/\1/' | sort | uniq -c | sort -n || true
+	# And print the total counts of errors and warnings:
+	grep -E '\<(warning|error):' make_err.txt | sed -E -s 's/^.*\<(warning|error):.*/\1/' | sort | uniq -c || true
+	# Now provide make's exit status:
+	exit "${st}"
+fi

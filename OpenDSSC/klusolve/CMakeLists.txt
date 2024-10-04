@@ -1,0 +1,182 @@
+cmake_minimum_required(VERSION 3.15)
+
+project(klusolve VERSION 0.0.0 DESCRIPTION "klusolve")
+
+# klusolve library - Here, we'll bypass this submodule's Makefile system in
+# favor of cmake's default rules on how to build a shared library so that we
+# may automatically produce a .dll for Windows, .so for Linux, .dylib for
+# macOS, etc...
+
+add_library(klusolve_all SHARED
+	KLUSolve/Source/KLUSolve.cpp
+	KLUSolve/Source/KLUSystem.cpp
+	CSparse/Source/cs_add.c
+	CSparse/Source/cs_amd.c
+	CSparse/Source/cs_chol.c
+	CSparse/Source/cs_cholsol.c
+	CSparse/Source/cs_compress.c
+	CSparse/Source/cs_counts.c
+	CSparse/Source/cs_cumsum.c
+	CSparse/Source/cs_dfs.c
+	CSparse/Source/cs_dmperm.c
+	CSparse/Source/cs_droptol.c
+	CSparse/Source/cs_dropzeros.c
+	CSparse/Source/cs_dupl.c
+	CSparse/Source/cs_entry.c
+	CSparse/Source/cs_ereach.c
+	CSparse/Source/cs_etree.c
+	CSparse/Source/cs_fkeep.c
+	CSparse/Source/cs_gaxpy.c
+	CSparse/Source/cs_happly.c
+	CSparse/Source/cs_house.c
+	CSparse/Source/cs_ipvec.c
+	CSparse/Source/cs_leaf.c
+	CSparse/Source/cs_load.c
+	CSparse/Source/cs_lsolve.c
+	CSparse/Source/cs_ltsolve.c
+	CSparse/Source/cs_lu.c
+	CSparse/Source/cs_lusol.c
+	CSparse/Source/cs_malloc.c
+	CSparse/Source/cs_maxtrans.c
+	CSparse/Source/cs_multiply.c
+	CSparse/Source/cs_norm.c
+	CSparse/Source/cs_permute.c
+	CSparse/Source/cs_pinv.c
+	CSparse/Source/cs_post.c
+	CSparse/Source/cs_print.c
+	CSparse/Source/cs_pvec.c
+	CSparse/Source/cs_qr.c
+	CSparse/Source/cs_qrsol.c
+	CSparse/Source/cs_randperm.c
+	CSparse/Source/cs_reach.c
+	CSparse/Source/cs_scatter.c
+	CSparse/Source/cs_scc.c
+	CSparse/Source/cs_schol.c
+	CSparse/Source/cs_spsolve.c
+	CSparse/Source/cs_sqr.c
+	CSparse/Source/cs_symperm.c
+	CSparse/Source/cs_tdfs.c
+	CSparse/Source/cs_transpose.c
+	CSparse/Source/cs_updown.c
+	CSparse/Source/cs_usolve.c
+	CSparse/Source/cs_util.c
+	CSparse/Source/cs_utsolve.c
+	CZSparse/Source/csz_stuff.c
+	KLU/Source/klu.c
+	KLU/Source/klu_analyze.c
+	KLU/Source/klu_analyze_given.c
+	KLU/Source/klu_defaults.c
+	KLU/Source/klu_diagnostics.c
+	KLU/Source/klu_dump.c
+	KLU/Source/klu_extract.c
+	KLU/Source/klu_factor.c
+	KLU/Source/klu_free_numeric.c
+	KLU/Source/klu_free_symbolic.c
+	KLU/Source/klu_kernel.c
+	KLU/Source/klu_memory.c
+	KLU/Source/klu_refactor.c
+	KLU/Source/klu_scale.c
+	KLU/Source/klu_solve.c
+	KLU/Source/klu_sort.c
+	KLU/Source/klu_tsolve.c
+	KLU/Source/klu_l.c
+	KLU/Source/klu_l_analyze.c
+	KLU/Source/klu_l_analyze_given.c
+	KLU/Source/klu_l_defaults.c
+	KLU/Source/klu_l_diagnostics.c
+	KLU/Source/klu_l_dump.c
+	KLU/Source/klu_l_extract.c
+	KLU/Source/klu_l_factor.c
+	KLU/Source/klu_l_free_numeric.c
+	KLU/Source/klu_l_free_symbolic.c
+	KLU/Source/klu_l_kernel.c
+	KLU/Source/klu_l_memory.c
+	KLU/Source/klu_l_refactor.c
+	KLU/Source/klu_l_scale.c
+	KLU/Source/klu_l_solve.c
+	KLU/Source/klu_l_sort.c
+	KLU/Source/klu_l_tsolve.c
+	KLU/Source/klu_z.c
+	KLU/Source/klu_z_diagnostics.c
+	KLU/Source/klu_z_dump.c
+	KLU/Source/klu_z_extract.c
+	KLU/Source/klu_z_factor.c
+	KLU/Source/klu_z_free_numeric.c
+	KLU/Source/klu_z_kernel.c
+	KLU/Source/klu_z_refactor.c
+	KLU/Source/klu_z_scale.c
+	KLU/Source/klu_z_solve.c
+	KLU/Source/klu_z_sort.c
+	KLU/Source/klu_z_tsolve.c
+	KLU/Source/klu_zl.c
+	KLU/Source/klu_zl_diagnostics.c
+	KLU/Source/klu_zl_dump.c
+	KLU/Source/klu_zl_extract.c
+	KLU/Source/klu_zl_factor.c
+	KLU/Source/klu_zl_free_numeric.c
+	KLU/Source/klu_zl_kernel.c
+	KLU/Source/klu_zl_refactor.c
+	KLU/Source/klu_zl_scale.c
+	KLU/Source/klu_zl_solve.c
+	KLU/Source/klu_zl_sort.c
+	KLU/Source/klu_zl_tsolve.c
+	AMD/Source/amd_global.c
+	AMD/Source/amd_i_1.c
+	AMD/Source/amd_i_2.c
+	AMD/Source/amd_i_aat.c
+	AMD/Source/amd_i_control.c
+	AMD/Source/amd_i_defaults.c
+	AMD/Source/amd_i_dump.c
+	AMD/Source/amd_i_info.c
+	AMD/Source/amd_i_order.c
+	AMD/Source/amd_i_postorder.c
+	AMD/Source/amd_i_post_tree.c
+	AMD/Source/amd_i_preprocess.c
+	AMD/Source/amd_i_valid.c
+	AMD/Source/amd_l_1.c
+	AMD/Source/amd_l_2.c
+	AMD/Source/amd_l_aat.c
+	AMD/Source/amd_l_control.c
+	AMD/Source/amd_l_defaults.c
+	AMD/Source/amd_l_dump.c
+	AMD/Source/amd_l_info.c
+	AMD/Source/amd_l_order.c
+	AMD/Source/amd_l_postorder.c
+	AMD/Source/amd_l_post_tree.c
+	AMD/Source/amd_l_preprocess.c
+	AMD/Source/amd_l_valid.c
+	COLAMD/Source/colamd_global.c
+	COLAMD/Source/colamd.c
+	COLAMD/Source/colamd_l.c
+	BTF/Source/btf_maxtrans.c
+	BTF/Source/btf_order.c
+	BTF/Source/btf_strongcomp.c
+	BTF/Source/btf_l_maxtrans.c
+	BTF/Source/btf_l_order.c
+	BTF/Source/btf_l_strongcomp.c
+	UFconfig/UFconfig.c
+)
+set_target_properties(klusolve_all PROPERTIES
+	VERSION 0.0.0
+	SOVERSION 0
+)
+target_include_directories(klusolve_all
+	PUBLIC
+	KLUSolve/Include
+	PRIVATE
+	CSparse/Include
+	CZSparse/Include
+	KLU/Include
+	AMD/Include
+	COLAMD/Include
+	BTF/Include
+	UFconfig
+)
+if(MSVC)
+target_compile_definitions(klusolve_all
+	PRIVATE
+	KLUSOLVE_IMPORTS=0
+	INTERFACE
+	KLUSOLVE_IMPORTS=1
+)
+endif()

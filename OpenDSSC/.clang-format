@@ -1,0 +1,12 @@
+Language:        Cpp
+BasedOnStyle: "Webkit"
+UseTab: Never
+IndentWidth: 4
+BreakBeforeBraces: Allman
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: false
+ColumnLimit: 0
+BreakInheritanceList: BeforeColon
+BreakConstructorInitializers: AfterColon
+SpacesInAngles: Never
+#InsertTrailingCommas: Wrapped
