@@ -10,10 +10,19 @@ import subprocess
 from setuptools import setup, find_packages, Command
 from setuptools.command.install import install
 import logging
+import urllib.request
+import zipfile
+import shutil
 
 # Set up logging
 log_file = 'build_log.txt'
 logging.basicConfig(filename=log_file, level=logging.INFO)
+
+# Paths to source files and build directory
+source_dir = "OpenDSSC_download"
+build_dir = "build"
+download_url = "https://github.com/PauloRadatz/py_dss_interface/archive/refs/heads/master.zip"
+download_folder = "downloaded_source"
 
 class BuildOpenDSSLinux(Command):
     """Custom command to build OpenDSS for Linux systems."""
@@ -39,55 +48,126 @@ class BuildOpenDSSLinux(Command):
         #     return
 
         logging.info("Starting custom build process for OpenDSS on Linux...")
-        # Step 1: Clone the OpenDSS source code
-        repo_url = "https://svn.code.sf.net/p/electricdss/code/trunk/VersionC/"
-        print("Downloading OpenDSS source code from SVN: ", repo_url)
-        logging.info(f"Cloning OpenDSS from {repo_url}...")
+
+        logging.info("Checking for required dependencies...")
+
+
+        # List of required dependencies
+        # dependencies = ["cmake", "make", "gcc", "g++"]
+        #
+        # # Check each dependency and attempt installation if missing
+        # for dep in dependencies:
+        #     try:
+        #         subprocess.check_call([dep, "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        #         logging.info(f"{dep} is installed.")
+        #     except:
+        #         logging.warning(f"{dep} is not installed. Attempting to install...")
+        #         try:
+        #             # Install dependency using apt-get (Debian/Ubuntu)
+        #             subprocess.check_call(["sudo", "apt-get", "update"])
+        #             subprocess.check_call(["sudo", "apt-get", "install", "-y", dep])
+        #             logging.info(f"Successfully installed {dep}.")
+        #         except:
+        #             logging.error(f"Failed to install {dep}. Please install it manually")
+
+        dependencies = ["cmake", "gcc", "make"]
+
+        for dep in dependencies:
+            try:
+                subprocess.check_call([dep, "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                logging.info(f"{dep} is installed.")
+            except:
+                logging.warning(f"{dep} is not installed. Attempting to install...")
+                try:
+                    # First try winget
+                    subprocess.check_call(["winget", "install", "-e", "--id", f"{dep}"])
+                    logging.info(f"Successfully installed {dep} using winget.")
+                except:
+                    logging.warning(f"winget failed to install {dep}. Trying choco...")
+                    try:
+                        subprocess.check_call(["choco", "install", dep, "-y"])
+                        logging.info(f"Successfully installed {dep} using choco.")
+                    except:
+                        logging.error(f"Failed to install {dep}. Please install it manually")
+
+        logging.info(f"OpenDSS source folder '{source_dir}' not found. Downloading from {download_url}...")
+
+        # Check if the OpenDSS source code is available; if not, download it
+        if not os.path.exists(source_dir):
+            self.download_source_code()
+
+        # Create a build directory if it doesn't exist
+        if not os.path.exists(build_dir):
+            os.makedirs(build_dir)
+            logging.info(f"Created build directory: {build_dir}")
+
+        # Run CMake and make to build OpenDSS
+        self.build_opendss()
+
+    def download_source_code(self):
+        """Download and extract OpenDSS source code from GitHub if not available locally."""
+        logging.info(f"OpenDSS source folder '{source_dir}' not found. Downloading from {download_url}...")
+
         try:
-            subprocess.run(["svn", "checkout", repo_url, "OpenDSSSource"], check=True)
-        except FileNotFoundError as e:
-            print(f"Error: SVN is not installed or not found in PATH. {e}")
-            logging.error("SVN is not installed or not found in PATH.")
-            raise
-        except subprocess.CalledProcessError as e:
-            print(f"Error: Unable to checkout SVN repository. {e}")
-            logging.error(f"SVN checkout failed: {e}")
-            raise
+            # Download the repository as a zip file
+            zip_path = f"{download_folder}.zip"
+            urllib.request.urlretrieve(download_url, zip_path)
+            logging.info(f"Downloaded source code to {zip_path}.")
 
-        # Check if the source code directory was created
-        if not os.path.exists("OpenDSSSource"):
-            logging.error("Error: OpenDSSSource directory not found. SVN checkout failed.")
-            print("Error: OpenDSSSource directory not found. SVN checkout failed.")
-            raise FileNotFoundError("OpenDSSSource directory not found. SVN checkout failed.")
+            # Extract the downloaded zip file
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(download_folder)
+                logging.info(f"Extracted source code to {download_folder}.")
 
-        # Step 2: Navigate to the OpenDSS source directory
-        os.chdir("OpenDSSSource")
+            # Move the extracted source files to `OpenDSSC` directory
+            extracted_folder = os.path.join(download_folder, "py_dss_interface-master", "OpenDSSC")
+            if os.path.exists(extracted_folder):
+                # Remove the existing `OpenDSSC_downloaded` directory if it exists
+                if os.path.exists(source_dir):
+                    shutil.rmtree(source_dir)
+                os.rename(extracted_folder, source_dir)
+                logging.info(f"Moved source code to '{source_dir}'.")
+            else:
+                logging.error(f"Failed to find extracted OpenDSS source code in {extracted_folder}.")
 
-        # Step 3: Compile the OpenDSS shared library using make
-        print("Building OpenDSS shared library...")
-        subprocess.run(["make"], check=True)
+            # # Cleanup downloaded files
+            # os.remove(zip_path)
+            # subprocess.check_call(["rm", "-rf", download_folder])  # Remove extracted folder
+            # logging.info(f"Cleaned up downloaded files.")
 
-        # Step 4: Locate the compiled shared library (.so file)
-        shared_library = "libOpenDSSC.so"
-        if not os.path.exists(shared_library):
-            raise FileNotFoundError(f"Build failed. {shared_library} not found.")
+        except:
+            logging.error(f"Error during source code download")
 
-        # Step 5: Determine the destination directory
-        dest_dir = os.path.join(
-            os.path.dirname(__file__),
-            "src",
-            "py_dss_interface",
-            "opendss_official",
-            "linux",
-            "cpp",
-        )
-        os.makedirs(dest_dir, exist_ok=True)
+    def build_opendss(self):
+        """Build OpenDSS shared library using CMake."""
 
-        # Step 6: Copy the shared library to the correct destination
-        print(f"Copying {shared_library} to {dest_dir}...")
-        subprocess.run(["cp", shared_library, dest_dir], check=True)
+        try:
+            logging.info(f"Building OpenDSS from source in {source_dir}.")
 
-        print(f"OpenDSS shared library built and placed in {dest_dir}")
+            # # Run cmake to configure the project
+            # subprocess.check_call(["cmake", f"-S{source_dir}", f"-B{build_dir}"])
+            # logging.info("CMake configuration completed successfully.")
+            #
+            # # Run make to build the shared library
+            # subprocess.check_call(["cmake", "--build", build_dir])
+            # logging.info("OpenDSS build completed successfully.")
+
+            # Define the target directory for the compiled library
+            target_lib_dir = os.path.join("opendss_official", "linux")
+            if not os.path.exists(target_lib_dir):
+                os.makedirs(target_lib_dir)
+                logging.info(f"Created target directory: {target_lib_dir}")
+
+            # Move the compiled library (e.g., libopendssc.so) to the target folder
+            compiled_lib = os.path.join(build_dir, "libopendssc.so")
+            if os.path.exists(compiled_lib):
+                subprocess.check_call(["cp", compiled_lib, target_lib_dir])
+                logging.info(f"Successfully moved {compiled_lib} to {target_lib_dir}")
+            else:
+                logging.error(f"Compiled library not found: {compiled_lib}")
+
+        except:
+            logging.error(f"Error during OpenDSS build")
 
 # Custom install command to ensure the build runs during installation
 class CustomInstallCommand(install):
