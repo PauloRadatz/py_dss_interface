@@ -149,6 +149,13 @@
             ]
         },
         {
+            "name": "Reactors",
+            "types": [
+                "S",
+                "F"
+            ]
+        },
+        {
             "name": "Reclosers",
             "types": [
                 "S",

@@ -8,7 +8,7 @@ import pathlib
 
 from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, Base
 from . import DSSExecutive, DSSInterface, DSSProperties, ErrorOpenDSS, Fuses, Generators, ISources
-from . import LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reclosers
+from . import LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reactors, Reclosers
 from . import Relays, RegControls, Sensors, Settings, Solution, Storages, SwtControls, Text, Topology, Transformers, VSources
 from . import XYCurves
 from .utils.System import System
@@ -104,6 +104,7 @@ class DSS:
                 self.parser = Parser(self._dss_obj)
                 self.pdelements = PDElements(self._dss_obj)
                 self.pvsystems = PVSystems(self._dss_obj)
+                self.reactors = Reactors(self._dss_obj)
                 self.reclosers = Reclosers(self._dss_obj)
                 self.regcontrols = RegControls(self._dss_obj)
                 self.relays = Relays(self._dss_obj)
