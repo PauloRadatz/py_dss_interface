@@ -30,6 +30,7 @@ from py_dss_interface.models.PVSystems.PVSystems import PVSystems
 from py_dss_interface.models.Parallel.Parallel import Parallel
 from py_dss_interface.models.Parallel.Parallel import Parallel
 from py_dss_interface.models.Parser.Parser import Parser
+from py_dss_interface.models.Reactors.Reactors import Reactors
 from py_dss_interface.models.Reclosers.Reclosers import Reclosers
 from py_dss_interface.models.RegControls.RegControls import RegControls
 from py_dss_interface.models.Relays.Relays import Relays
