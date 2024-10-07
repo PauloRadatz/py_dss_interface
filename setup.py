@@ -153,13 +153,18 @@ class BuildOpenDSSLinux(Command):
             # logging.info("OpenDSS build completed successfully.")
 
             # Define the target directory for the compiled library
-            target_lib_dir = os.path.join("opendss_official", "linux")
+            target_lib_dir = os.path.join("src", "py_dss_interface", "opendss_official", "linux", "cpp")
+            compiled_lib = os.path.join(build_dir, "libopendssc.so")
             if not os.path.exists(target_lib_dir):
                 os.makedirs(target_lib_dir)
                 logging.info(f"Created target directory: {target_lib_dir}")
 
+            # Create a text file in the target directory
+            info_file_path = os.path.join(target_lib_dir, "info.so")
+            with open(info_file_path, "w") as file:
+                file.write("OpenDSS build information:\n")
+
             # Move the compiled library (e.g., libopendssc.so) to the target folder
-            compiled_lib = os.path.join(build_dir, "libopendssc.so")
             if os.path.exists(compiled_lib):
                 subprocess.check_call(["cp", compiled_lib, target_lib_dir])
                 logging.info(f"Successfully moved {compiled_lib} to {target_lib_dir}")
@@ -202,7 +207,7 @@ setup(
             'opendss_official/windows/delphi/x86/*.dll',
             'opendss_official/windows/cpp/x64/*.dll',
             'opendss_official/windows/cpp/x86/*.dll',
-            'opendss_official/linux/cpp/x64/*.so',
+            'opendss_official/linux/cpp/*.so',
         ]
     },
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
