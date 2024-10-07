@@ -60,6 +60,10 @@ class TestPVSystems13Bus:
         actual = dss.pvsystems.first()
         assert actual == expected
 
+        expected = 'pv1'
+        actual = dss.pvsystems.name
+        assert actual == expected
+
     def test_pvsystems_next(self, dss):
         dss.text(r"New PVSystem.PV2 phases=3 "
                  r"bus1=680 "

@@ -196,6 +196,13 @@
                 "F"
             ]
         },
+        {
+            "name": "Storages",
+            "types": [
+                "S",
+                "F"
+            ]
+        },
 
         {
             "name": "SwtControls",
