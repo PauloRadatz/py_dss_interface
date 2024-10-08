@@ -144,32 +144,55 @@ class BuildOpenDSSLinux(Command):
         try:
             logging.info(f"Building OpenDSS from source in {source_dir}.")
 
-            # # Run cmake to configure the project
-            # subprocess.check_call(["cmake", f"-S{source_dir}", f"-B{build_dir}"])
-            # logging.info("CMake configuration completed successfully.")
-            #
-            # # Run make to build the shared library
-            # subprocess.check_call(["cmake", "--build", build_dir])
-            # logging.info("OpenDSS build completed successfully.")
+            # Create the Build folder
+            build_folder = os.path.join(os.path.dirname(source_dir), "build_opendss")
+            if not os.path.exists(build_folder):
+                os.makedirs(build_folder)
+                logging.info(f"Created Build directory: {build_folder}")
+            logging.info(f"Build directory: {build_folder}")
+
+            # Determine the appropriate output type for the compilation
+            output_type = "DLL"
+
+            # Step 3: Set the target output type and configure CMake
+            cmake_command = [
+                r"C:\Program Files\CMake\bin\cmake.exe",
+                f"-DCMAKE_BUILD_TYPE=Release",  # Set build type to Release
+                f"-DMyOutputType:STRING={output_type}",  # Specify output type (DLL or EXE)
+                f"../{source_dir}"  # Path to the source directory from the build folder
+            ]
+            logging.info(f"Running CMake command: {' '.join(cmake_command)} in {build_folder}")
+            # subprocess.check_call(cmake_command, cwd=build_folder)
+            result = subprocess.run(cmake_command, cwd=build_folder, capture_output=True, text=True, shell=True)
+            logging.info(f"{result.stdout}")
+            logging.info(f"{result.stderr}")
+            logging.info("CMake configuration completed successfully.")
+
+            # Step 4: Compile
+            compile_command = [r"C:\Program Files\CMake\bin\cmake.exe", "--build", ".", "-j", "4"]
+            logging.info(f"Running compilation command: {' '.join(compile_command)} in {build_folder}")
+            # subprocess.check_call(compile_command, cwd=build_folder)
+            result = subprocess.run(compile_command, cwd=build_folder, capture_output=True, text=True, shell=True)
+            logging.info(f"{result.stdout}")
+            logging.info(f"{result.stderr}")
+            logging.info("OpenDSS build completed successfully.")
 
             # Define the target directory for the compiled library
             target_lib_dir = os.path.join("src", "py_dss_interface", "opendss_official", "linux", "cpp")
-            compiled_lib = os.path.join(build_dir, "libopendssc.so")
+            # Create the target directory if it doesn't exist
             if not os.path.exists(target_lib_dir):
                 os.makedirs(target_lib_dir)
                 logging.info(f"Created target directory: {target_lib_dir}")
 
-            # Create a text file in the target directory
-            info_file_path = os.path.join(target_lib_dir, "info.so")
-            with open(info_file_path, "w") as file:
-                file.write("OpenDSS build information:\n")
+            # Move all files from the build folder to the target directory
+            logging.info(f"Moving all files from {build_folder} to {target_lib_dir}")
+            for filename in os.listdir(build_folder):
+                file_path = os.path.join(build_folder, filename)
+                if os.path.isfile(file_path) or os.path.isdir(file_path):
+                    shutil.move(file_path, os.path.join(target_lib_dir, filename))
+                    logging.info(f"Moved {file_path} to {target_lib_dir}")
 
-            # Move the compiled library (e.g., libopendssc.so) to the target folder
-            if os.path.exists(compiled_lib):
-                subprocess.check_call(["cp", compiled_lib, target_lib_dir])
-                logging.info(f"Successfully moved {compiled_lib} to {target_lib_dir}")
-            else:
-                logging.error(f"Compiled library not found: {compiled_lib}")
+            logging.info(f"All files moved successfully to {target_lib_dir}")
 
         except:
             logging.error(f"Error during OpenDSS build")

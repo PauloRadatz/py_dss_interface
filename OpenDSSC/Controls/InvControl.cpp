@@ -2099,7 +2099,16 @@ void TInvControlObj::DoPendingAction(int Code, int ProxyHdl, int ActorID)
 	}
 }
 
-void TInvControlObj::GetmonVoltage(int ActorID, double& Vpresent, int i, double BaseKV)
+ int TInvControlObj::NextDeltaPhase(int iphs, int i)
+{
+     int Result = iphs + 1;
+    if (Result > CtrlVars[i].NCondsDER)
+        Result = 1;
+
+	return Result;
+ }
+
+void TInvControlObj::GetmonVoltage(int ActorID, double& Vpresent, int i, double BaseKV, int connection)
 {
 	int j = 0;
 	TDSSBus* rBus = nullptr;
@@ -2107,6 +2116,7 @@ void TInvControlObj::GetmonVoltage(int ActorID, double& Vpresent, int i, double 
 	complex V = {};
 	complex vi = {};
 	complex vj = {};
+
 
 	auto& withi = CtrlVars[i];
 	if(FUsingMonBuses)
@@ -2181,11 +2191,20 @@ void TInvControlObj::GetmonVoltage(int ActorID, double& Vpresent, int i, double 
 	else
 	{
 		int stop = 0;
-		( (TDSSCktElement*) withi.ControlledElement )->ComputeVterminal(ActorID);
-		NumNodes = ( (TDSSCktElement*) (withi.ControlledElement) )->Get_NPhases();
+		( withi.ControlledElement )->ComputeVterminal(ActorID);
+		NumNodes = (  (withi.ControlledElement) )->Get_NPhases();
 		for(stop = NumNodes, j = 1; j <= stop; j++)
 		{
-			withi.cBuffer[j - 1] = (withi.ControlledElement)->Vterminal[j - 1];
+			//withi.cBuffer[j - 1] = (withi.ControlledElement)->Vterminal[j - 1]; // change proposed by Celso Rocha, 10/04/2024
+            switch (connection)
+            {
+				case 1: 
+					withi.cBuffer[j - 1] = csub((withi.ControlledElement)->Vterminal[j - 1], (withi.ControlledElement)->Vterminal[NextDeltaPhase(j, i) - 1]);
+					break;
+				default:
+					withi.cBuffer[j - 1] = (withi.ControlledElement)->Vterminal[j - 1];
+					break;
+            }
 		}
 		switch(FMonBusesPhase)
 		{
@@ -2307,7 +2326,11 @@ void TInvControlObj::sample(int ActorID)
 			else
 				Storage = (TStorageObj*) withi.ControlledElement;
 			BaseKV = withi.FVBase / 1000.0; // It's a line-to-ground voltage
-			GetmonVoltage(ActorID, Vpresent, i, BaseKV);
+
+			if (ASSIGNED(PVSyst))
+				GetmonVoltage(ActorID, Vpresent, i, BaseKV,PVSyst->Connection);
+            else
+				GetmonVoltage(ActorID, Vpresent, i, BaseKV, Storage->Connection);
 
             // for reporting Vpriorpu correctly in EventLog (this update is normally perform at DoPendingAction)
 			if(ActiveCircuit[ActorID]->Solution->ControlIteration == 1)
@@ -3479,7 +3502,11 @@ void TInvControlObj::UpdateInvControl(int i, int ActorID)
 		( (TDSSCktElement*) withj.ControlledElement )->ComputeVterminal(ActorID);
           //PVSys.Set_Variable(5,FDRCRollAvgWindow[j].Get_AvgVal); // save rolling average voltage in monitor
 		solnvoltage = 0.0;
-		GetmonVoltage(ActorID, solnvoltage, j, BaseKV);
+
+		if (ASSIGNED(PVSyst))
+			GetmonVoltage(ActorID, solnvoltage, j, BaseKV, PVSyst->Connection);
+		else
+			GetmonVoltage(ActorID, solnvoltage, j, BaseKV, Storage->Connection);
 
           //for k := 1 to localControlledElement.Yorder do tempVbuffer[k] := localControlledElement.Vterminal^[k];
 

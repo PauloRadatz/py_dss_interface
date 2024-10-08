@@ -322,10 +322,12 @@ private:
 	void Calc_PBase(int j, int ActorID);
 	void Check_Plimits(int j, double P, int ActorID);
 	void CalcPVWcurve_limitpu(int j, int ActorID);
-	void GetmonVoltage(int ActorID, double& Vpresent, int i, double BaseKV);
+	void GetmonVoltage(int ActorID, double& Vpresent, int i, double BaseKV, int connection);
 	void Change_deltaQ_factor(int ActorID, int j);
 	void Change_deltaP_factor(int ActorID, int j);
-protected:
+    int NextDeltaPhase(int iphs, int i);
+
+    protected:
 	virtual void Set_Enabled(bool Value);
 public:
 	//System::TMemoryManagerState MyMemoryManagerState;
