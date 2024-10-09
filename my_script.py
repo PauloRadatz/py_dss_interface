@@ -6,16 +6,15 @@ import os
 # Creates an OpenDSS object
 dss_2 = py_dss_interface.DSS()
 
-dss = py_dss_interface.DSS(print_dss_info=True, windows_version='cpp')
+# dss = py_dss_interface.DSS(print_dss_info=True, windows_version='cpp')
 
 
 # dss = py_dss_interface.DSS(r"C:\Program Files\OpenDSS")
 
-# dss_1 = py_dss_interface.DSSDLL()
+# dss_1 = py_dss_interface.DSS()
 
 # If specific DLL Version, use this line below
-# dss = py_dss_interface.DSS(dll_folder_param=r"C:\Users\eniocc\Downloads\py_dss_interface-master\src"
-#                                                r"\py_dss_interface\dll/windows\x64", dll_by_user="OpenDSSDirect.dll")
+dss = py_dss_interface.DSS(dll_folder_param=r"C:\PauloRadatz\GitHub\py-dss-interface\build_opendss\Debug", dll_by_user="OpenDSSC.dll")
 # dss.circuit.
 # Select the DSS model
 # dss_file = r"C:\MeuTCC\Paulo_Example\DSSFiles\MASTER_RedeTeste13Barras.dss"
@@ -26,8 +25,7 @@ dss.text(f"compile [{dss_file}]")
 # dss.text("edit Load.671 zipv=[0.4 0.4 0.2 0.4 0.4 0.2 0.2]")
 dss.loads.name = "671"
 
-dss.circuit.to
-dss.loads.names
+
 
 expected = ['671_new']
 dss.cktelement.bus_names = expected

@@ -13,6 +13,7 @@ import logging
 import urllib.request
 import zipfile
 import shutil
+import pathlib
 
 # Set up logging
 log_file = 'build_log.txt'
@@ -51,49 +52,9 @@ class BuildOpenDSSLinux(Command):
 
         logging.info("Checking for required dependencies...")
 
-
-        # List of required dependencies
-        # dependencies = ["cmake", "make", "gcc", "g++"]
-        #
-        # # Check each dependency and attempt installation if missing
-        # for dep in dependencies:
-        #     try:
-        #         subprocess.check_call([dep, "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        #         logging.info(f"{dep} is installed.")
-        #     except:
-        #         logging.warning(f"{dep} is not installed. Attempting to install...")
-        #         try:
-        #             # Install dependency using apt-get (Debian/Ubuntu)
-        #             subprocess.check_call(["sudo", "apt-get", "update"])
-        #             subprocess.check_call(["sudo", "apt-get", "install", "-y", dep])
-        #             logging.info(f"Successfully installed {dep}.")
-        #         except:
-        #             logging.error(f"Failed to install {dep}. Please install it manually")
-
-        dependencies = ["cmake", "gcc", "make"]
-
-        for dep in dependencies:
-            try:
-                subprocess.check_call([dep, "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                logging.info(f"{dep} is installed.")
-            except:
-                logging.warning(f"{dep} is not installed. Attempting to install...")
-                try:
-                    # First try winget
-                    subprocess.check_call(["winget", "install", "-e", "--id", f"{dep}"])
-                    logging.info(f"Successfully installed {dep} using winget.")
-                except:
-                    logging.warning(f"winget failed to install {dep}. Trying choco...")
-                    try:
-                        subprocess.check_call(["choco", "install", dep, "-y"])
-                        logging.info(f"Successfully installed {dep} using choco.")
-                    except:
-                        logging.error(f"Failed to install {dep}. Please install it manually")
-
-        logging.info(f"OpenDSS source folder '{source_dir}' not found. Downloading from {download_url}...")
-
         # Check if the OpenDSS source code is available; if not, download it
         if not os.path.exists(source_dir):
+            logging.info(f"OpenDSS source folder '{source_dir}' not found. Downloading from {download_url}...")
             self.download_source_code()
 
         # Create a build directory if it doesn't exist
@@ -164,8 +125,8 @@ class BuildOpenDSSLinux(Command):
             logging.info(f"Running CMake command: {' '.join(cmake_command)} in {build_folder}")
             # subprocess.check_call(cmake_command, cwd=build_folder)
             result = subprocess.run(cmake_command, cwd=build_folder, capture_output=True, text=True, shell=True)
-            logging.info(f"{result.stdout}")
-            logging.info(f"{result.stderr}")
+            # logging.info(f"{result.stdout}")
+            # logging.info(f"{result.stderr}")
             logging.info("CMake configuration completed successfully.")
 
             # Step 4: Compile
@@ -173,8 +134,8 @@ class BuildOpenDSSLinux(Command):
             logging.info(f"Running compilation command: {' '.join(compile_command)} in {build_folder}")
             # subprocess.check_call(compile_command, cwd=build_folder)
             result = subprocess.run(compile_command, cwd=build_folder, capture_output=True, text=True, shell=True)
-            logging.info(f"{result.stdout}")
-            logging.info(f"{result.stderr}")
+            # logging.info(f"{result.stdout}")
+            # logging.info(f"{result.stderr}")
             logging.info("OpenDSS build completed successfully.")
 
             # Define the target directory for the compiled library
@@ -184,6 +145,7 @@ class BuildOpenDSSLinux(Command):
                 os.makedirs(target_lib_dir)
                 logging.info(f"Created target directory: {target_lib_dir}")
 
+            build_folder = pathlib.Path(build_folder).joinpath("Debug")
             # Move all files from the build folder to the target directory
             logging.info(f"Moving all files from {build_folder} to {target_lib_dir}")
             for filename in os.listdir(build_folder):
@@ -231,6 +193,7 @@ setup(
             'opendss_official/windows/cpp/x64/*.dll',
             'opendss_official/windows/cpp/x86/*.dll',
             'opendss_official/linux/cpp/*.so',
+            'opendss_official/linux/cpp/*.dll',
         ]
     },
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
@@ -266,8 +229,8 @@ setup(
     extras_require={
         "dev": ["pytest", "pytest-cov", "sphinx-rtd-theme", "nbsphinx", "black", "pre-commit", "tox", "twine", "ipython", "flake8"],
     },
-    cmdclass={
-        'build_opendss_linux': BuildOpenDSSLinux,
-        'install': CustomInstallCommand,  # Custom install command
-    },
+    # cmdclass={
+    #     'build_opendss_linux': BuildOpenDSSLinux,
+    #     'install': CustomInstallCommand,  # Custom install command
+    # },
 )
