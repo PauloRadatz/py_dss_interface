@@ -66,6 +66,3 @@ packages = { find = {where = ["src"]} }
   "opendss_official/windows/cpp/x86/*.dll",
   "opendss_official/linux/cpp/*.so"
 ]
-
-[tool.setuptools.commands]
-build_opendss_linux = "setup:BuildOpenDSSLinux"
