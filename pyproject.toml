@@ -60,5 +60,5 @@ packages = { find = {where = ["src"]} }
   "opendss_official/windows/delphi/x86/*.dll",
   "opendss_official/windows/cpp/x64/*.dll",
   "opendss_official/windows/cpp/x86/*.dll",
-  "opendss_official/linux/cpp/*"
+  "opendss_official/linux/cpp/*.so"
 ]
