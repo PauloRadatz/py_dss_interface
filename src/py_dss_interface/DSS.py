@@ -73,7 +73,7 @@ class DSS:
 
                 self._dll_path = System.get_architecture_path(dll_folder_param)
 
-
+            os.chdir(self._dll_path)
             self.dll_file_path = os.path.join(self._dll_path, dll_by_user)
             print(f'Final Path of DLL : {self.dll_file_path} For DEBUGGING')
             self._dss_obj = ctypes.cdll.LoadLibrary(str(self.dll_file_path))
