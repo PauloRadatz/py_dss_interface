@@ -45,7 +45,7 @@ class DSS:
         if dll_folder_param and dll_by_user:
             os.chdir(dll_folder_param)
             self.dll_file_path = os.path.join(dll_folder_param, dll_by_user)
-            self._dss_obj = ctypes.cdll.LoadLibrary(self.dll_file_path)
+            self._dss_obj = ctypes.cdll.LoadLibrary(str(self.dll_file_path))
             self.started = True
 
         else:
@@ -75,6 +75,7 @@ class DSS:
 
 
             self.dll_file_path = os.path.join(self._dll_path, dll_by_user)
+            print(f'Final Path of DLL : {self.dll_file_path}')
             self._dss_obj = ctypes.cdll.LoadLibrary(self.dll_file_path)
 
         self.started = bool(self._dss_obj)
