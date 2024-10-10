@@ -16,3 +16,6 @@ dss_file = pathlib.Path(script_path).joinpath("feeders", "4Bus-YY-Bal", "4Bus-YY
 
 dss = py_dss_interface.DSS()
 dss.text(f"compile [{dss_file}]")
+dss.text("solve")
+
+print(f"Total Powers : {dss.circuit.total_power}")
