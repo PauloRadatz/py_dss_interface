@@ -53,6 +53,7 @@ class DSS:
                 if not dll_folder_param:
                     dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))),
                                                     "opendss_official", "linux", "cpp")
+                print(dll_folder_param)
                 dll_folder_param = pathlib.Path(dll_folder_param)
                 dll_by_user = DLL_NAME_LINUX
 
