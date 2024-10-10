@@ -8,8 +8,10 @@ import pathlib
 
 from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, Base
 from . import DSSExecutive, DSSInterface, DSSProperties, ErrorOpenDSS, Fuses, Generators, ISources
-from . import LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reactors, Reclosers
-from . import Relays, RegControls, Sensors, Settings, Solution, Storages, SwtControls, Text, Topology, Transformers, VSources
+from . import LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reactors, \
+    Reclosers
+from . import Relays, RegControls, Sensors, Settings, Solution, Storages, SwtControls, Text, Topology, Transformers, \
+    VSources
 from . import XYCurves
 from .utils.System import System
 from .utils.Error import Error
@@ -23,7 +25,8 @@ class DSSDLL:
 
     def __init__(self, *args):
         Error.use_package_v1()
-        raise
+        raise RuntimeError("DSSDLL is not supported in this version of py-dss-interface. "
+                           "Please check the package version or update your code accordingly.")
 
 
 class DSS:

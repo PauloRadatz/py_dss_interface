@@ -2,8 +2,8 @@
 """
  Created by eniocc at 11/10/2020
 """
-import numpy as np
 
+import math
 from py_dss_interface.models.Base import Base
 
 
@@ -26,4 +26,4 @@ class CMathLibF(Base):
     @staticmethod
     def _cdang(arg_real: float, arg_imaginary: float) -> float:
         c_number = complex(arg_real, arg_imaginary)
-        return np.angle([c_number], deg=True)
+        return math.degrees(math.atan2(c_number.imag, c_number.real))

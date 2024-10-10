@@ -14,10 +14,6 @@ authors = [
   {name = "Rodolfo Londero", email = "rodolfopl@gmail.com"}
 ]
 dependencies = [
-  "numpy",
-  "pandas",
-  "colorama",
-  "comtypes; sys_platform == 'win32'"
 ]
 
 classifiers = [
