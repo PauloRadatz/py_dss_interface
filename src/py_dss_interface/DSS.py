@@ -55,6 +55,8 @@ class DSS:
                                                     "opendss_official", "linux", "cpp")
                 dll_folder_param = pathlib.Path(dll_folder_param)
                 dll_by_user = DLL_NAME_LINUX
+
+                self._dll_path = dll_folder_param
             elif System.detect_platform() == 'Windows':
                 if not dll_folder_param:
                     valid_versions = ["cpp", "delphi"]
@@ -68,7 +70,9 @@ class DSS:
                 if windows_version == "cpp":
                     dll_by_user = DLL_NAME_WIN_CPP
 
-            self._dll_path = System.get_architecture_path(dll_folder_param)
+                self._dll_path = System.get_architecture_path(dll_folder_param)
+
+
             self.dll_file_path = os.path.join(self._dll_path, dll_by_user)
             self._dss_obj = ctypes.cdll.LoadLibrary(self.dll_file_path)
 
