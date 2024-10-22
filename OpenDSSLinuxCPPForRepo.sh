@@ -9,6 +9,9 @@ chmod +rwx py_dss_interface
 # Change directory to the cloned repository
 cd py_dss_interface 
 
+# Unzip OpenDSSC file
+unzip OpenDSSC
+
 # Create build directory
 mkdir buildlinux
 
