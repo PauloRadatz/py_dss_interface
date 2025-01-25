@@ -15,7 +15,8 @@ authors = [
 ]
 dependencies = [
 ]
-
+requires-python = ">=3.9"
+keywords = ["OpenDSS", "Python", "Power Systems", "Distribution Systems", "Energy"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Science/Research",
