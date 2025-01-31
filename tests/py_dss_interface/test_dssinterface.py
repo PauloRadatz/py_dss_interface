@@ -57,13 +57,11 @@ class TestDSSInterface13Bus:
         actual = dss.dssinterface.reset()
         assert actual == expected
 
-    # TODO
     def test_dss_read_allow_forms(self, dss):
         expected = 0  # I start it in conftest
         actual = dss.dssinterface.allow_forms
         assert actual == expected
 
-    # Todo
     def test_dss_write_allow_forms(self, dss):
         expected = 0
         dss.dssinterface.allow_forms = 0
