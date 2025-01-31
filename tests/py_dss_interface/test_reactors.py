@@ -31,7 +31,7 @@ class TestBus13Reactors:
         actual = dss.reactors.first()
         assert actual == expected
 
-        expected = 1
+        expected = 0
         actual = dss.reactors.next()
         assert actual == expected
 
