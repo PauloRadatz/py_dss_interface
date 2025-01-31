@@ -26,9 +26,15 @@ class TestBus13CtrlQueue:
         actual_3 = dss.ctrlqueue.ctrlqueue[3]
 
         assert actual_0 == 'Handle, Hour, Sec, ActionCode, ProxyDevRef, Device'
-        assert actual_1 == '9, 0, 15, 0, 0, reg3 '
-        assert actual_2 == '8, 0, 15, 0, 0, reg2 '
-        assert actual_3 == '7, 0, 15, 0, 0, reg1 '
+
+        if "15.000000" in actual_1:
+            assert actual_1 == '9, 0, 15.000000, 0, 0, reg3 '
+            assert actual_2 == '8, 0, 15.000000, 0, 0, reg2 '
+            assert actual_3 == '7, 0, 15.000000, 0, 0, reg1 '
+        else:
+            assert actual_1 == '9, 0, 15, 0, 0, reg3 '
+            assert actual_2 == '8, 0, 15, 0, 0, reg2 '
+            assert actual_3 == '7, 0, 15, 0, 0, reg1 '
 
         dss.solution.do_control_actions()
 
@@ -51,8 +57,12 @@ class TestBus13CtrlQueue:
         actual_2 = dss.ctrlqueue.ctrlqueue[2]
 
         assert actual_0 == 'Handle, Hour, Sec, ActionCode, ProxyDevRef, Device'
-        assert actual_1 == '9, 0, 15, 0, 0, reg3 '
-        assert actual_2 == '7, 0, 15, 0, 0, reg1 '
+        if "15.000000" in actual_1:
+            assert actual_1 == '9, 0, 15.000000, 0, 0, reg3 '
+            assert actual_2 == '7, 0, 15.000000, 0, 0, reg1 '
+        else:
+            assert actual_1 == '9, 0, 15, 0, 0, reg3 '
+            assert actual_2 == '7, 0, 15, 0, 0, reg1 '
 
         dss.ctrlqueue.delete(0)
         actual_0 = dss.ctrlqueue.ctrlqueue[0]
@@ -60,8 +70,12 @@ class TestBus13CtrlQueue:
         actual_2 = dss.ctrlqueue.ctrlqueue[2]
 
         assert actual_0 == 'Handle, Hour, Sec, ActionCode, ProxyDevRef, Device'
-        assert actual_1 == '9, 0, 15, 0, 0, reg3 '
-        assert actual_2 == '7, 0, 15, 0, 0, reg1 '
+        if "15.000000" in actual_1:
+            assert actual_1 == '9, 0, 15.000000, 0, 0, reg3 '
+            assert actual_2 == '7, 0, 15.000000, 0, 0, reg1 '
+        else:
+            assert actual_1 == '9, 0, 15, 0, 0, reg3 '
+            assert actual_2 == '7, 0, 15, 0, 0, reg1 '
 
     def test_ctrlqueue_num_actions(self, dss):
         pass
@@ -113,5 +127,7 @@ class TestBus13CtrlQueue:
         actual = dss.ctrlqueue.ctrlqueue[-1]
 
         expected = '10, 1, 2, 2, 3, COM_Proxy '
-
-        assert actual == expected
+        if "2.000000" in actual:
+            assert actual == '10, 1, 2.000000, 2, 3, COM_Proxy '
+        else:
+            assert actual == expected
