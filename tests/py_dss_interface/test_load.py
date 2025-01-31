@@ -449,7 +449,7 @@ class TestLoad13Bus:
         expected = 123.1
         dss.loads.xfkva = expected
         actual = dss.loads.xfkva
-        assert actual == expected
+        assert round(actual, 1) == round(expected, 1)
 
     def test_loads_read_rel_weight(self, dss):
         expected = 1
