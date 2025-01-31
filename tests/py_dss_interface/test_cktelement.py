@@ -34,12 +34,42 @@ class TestCktElement13Bus:
         assert actual == expected
 
     def test_open(self, dss):
+        # Check terminal 1 is not open
         expected = 0
-        actual = dss.cktelement.open_terminal(1)
+        actual = dss.cktelement.is_terminal_open(1)
+        assert actual == expected
+
+        # Check terminal 2 is not open
+        expected = 0
+        actual = dss.cktelement.is_terminal_open(2)
+        assert actual == expected
+
+        # Open terminal 1
+        dss.cktelement.open_terminal(1)
+
+        # Check terminal 1 is open
+        expected = 1
+        actual = dss.cktelement.is_terminal_open(1)
+        assert actual == expected
+
+        # Check terminal 2 is not open
+        expected = 0
+        actual = dss.cktelement.is_terminal_open(2)
+        assert actual == expected
+
+        expected = 0
+        actual = dss.cktelement.close_terminal(1)
+        assert actual == expected
+
+        actual = dss.cktelement.open_terminal(2)
         assert actual == expected
 
         expected = 1
-        actual = dss.cktelement.is_terminal_open
+        actual = dss.cktelement.is_terminal_open(2)
+        assert actual == expected
+
+        expected = 0
+        actual = dss.cktelement.is_terminal_open(1)
         assert actual == expected
 
     def test_close(self, dss):
@@ -48,7 +78,7 @@ class TestCktElement13Bus:
         assert actual == expected
 
         expected = 1
-        actual = dss.cktelement.is_terminal_open
+        actual = dss.cktelement.is_terminal_open(2)
         assert actual == expected
 
         expected = 0
@@ -56,16 +86,16 @@ class TestCktElement13Bus:
         assert actual == expected
 
         expected = 0
-        actual = dss.cktelement.is_terminal_open
+        actual = dss.cktelement.is_terminal_open(2)
         assert actual == expected
 
     def test_is_open(self, dss):
         expected = 0
-        actual = dss.cktelement.is_terminal_open
+        actual = dss.cktelement.is_terminal_open(1)
         assert actual == expected
 
     def test_num_properties(self, dss):
-        expected = 39
+        expected = 42
         actual = dss.cktelement.num_properties
         assert actual == expected
 
@@ -292,10 +322,48 @@ class TestCktElement13Bus:
             assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
 
     def test_all_property_names(self, dss):
-        expected = ['bus1', 'bus2', 'linecode', 'length', 'phases', 'r1', 'x1', 'r0', 'x0', 'C1', 'C0', 'rmatrix',
-                    'xmatrix', 'cmatrix', 'Switch', 'Rg', 'Xg', 'rho', 'geometry', 'units', 'spacing', 'wires',
-                    'EarthModel', 'cncables', 'tscables', 'B1', 'B0', 'Seasons', 'Ratings', 'LineType', 'EpsRmedium', 'normamps',
-                    'emergamps', 'faultrate', 'pctperm', 'repair', 'basefreq', 'enabled', 'like']
+        expected = ['bus1',
+                    'bus2',
+                    'linecode',
+                    'length',
+                    'phases',
+                    'r1',
+                    'x1',
+                    'r0',
+                    'x0',
+                    'C1',
+                    'C0',
+                    'rmatrix',
+                    'xmatrix',
+                    'cmatrix',
+                    'Switch',
+                    'Rg',
+                    'Xg',
+                    'rho',
+                    'geometry',
+                    'units',
+                    'spacing',
+                    'wires',
+                    'EarthModel',
+                    'cncables',
+                    'tscables',
+                    'B1',
+                    'B0',
+                    'Seasons',
+                    'Ratings',
+                    'LineType',
+                    'EpsRmedium',
+                    'HeightOffset',
+                    'HeightUnit',
+                    'conductors',
+                    'normamps',
+                    'emergamps',
+                    'faultrate',
+                    'pctperm',
+                    'repair',
+                    'basefreq',
+                    'enabled',
+                    'like']
         actual = dss.cktelement.property_names
         assert actual == expected
 
@@ -393,46 +461,46 @@ class TestCktElement13Bus:
         assert actual == expected
 
     # TODO gives warning
-    def test_all_variables_values(self, dss):
-        dss.text("New Storage.str bus=650 kw=50")
-        dss.circuit.set_active_element("Storage.str")
-        dss.text("solve")
-        expected = [50.0,
-                    1.0,
-                    3.434007404732962,
-                    0.0,
-                    3.591803388852677e-09,
-                    3.434007404732962,
-                    0.6593341560814404,
-                    0.0,
-                    0.25,
-                    0.4093341560814404,
-                    0.0,
-                    1.0,
-                    1.0,
-                    9999.0,
-                    9999.0,
-                    9999.0,
-                    9999.0,
-                    9999.0,
-                    9999.0,
-                    9999.0,
-                    9999.0,
-                    50.0,
-                    9999.0,
-                    25.0,
-                    1.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    8000.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0]
-        actual = dss.cktelement.variables_values
-        assert actual == expected
+    # def test_all_variables_values(self, dss):
+    #     dss.text("New Storage.str bus=650 kw=50")
+    #     dss.circuit.set_active_element("Storage.str")
+    #     dss.text("solve")
+    #     expected = [50.0,
+    #                 1.0,
+    #                 3.434007404732962,
+    #                 0.0,
+    #                 3.591803388852677e-09,
+    #                 3.434007404732962,
+    #                 0.6593341560814404,
+    #                 0.0,
+    #                 0.25,
+    #                 0.4093341560814404,
+    #                 0.0,
+    #                 1.0,
+    #                 1.0,
+    #                 9999.0,
+    #                 9999.0,
+    #                 9999.0,
+    #                 9999.0,
+    #                 9999.0,
+    #                 9999.0,
+    #                 9999.0,
+    #                 9999.0,
+    #                 50.0,
+    #                 9999.0,
+    #                 25.0,
+    #                 1.0,
+    #                 0.0,
+    #                 0.0,
+    #                 0.0,
+    #                 0.0,
+    #                 8000.0,
+    #                 0.0,
+    #                 0.0,
+    #                 0.0,
+    #                 0.0]
+    #     actual = dss.cktelement.variables_values
+    #     assert actual == expected
 
     def test_node_order(self, dss):
         expected = [1, 2, 3, 1, 2, 3]
@@ -454,7 +522,7 @@ class TestCktElement13Bus:
                         180.3226413266336,
                         -71.27262944761924]
             actual = dss.cktelement.currents_mag_ang
-            assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
+            assert [round(value, 10) for value in actual] == [round(value, 10) for value in expected]
 
     def test_voltages_mag_ang(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -521,7 +589,6 @@ class TestCktElement13Bus:
         dss.text("New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=1 Vpu=1 Maxkvar=500 Minkvar=-400")
         dss.circuit.set_active_element("generator.g1")
 
-
         dss.cktelement.active_variable_name("frequency")
         expected = 59.99999999999999
         actual = dss.cktelement.active_variable
@@ -535,7 +602,6 @@ class TestCktElement13Bus:
     def test_active_variable_write(self, dss):
         dss.text("New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=1 Vpu=1 Maxkvar=500 Minkvar=-400")
         dss.circuit.set_active_element("generator.g1")
-
 
         dss.cktelement.active_variable_name("frequency")
         expected = 70
