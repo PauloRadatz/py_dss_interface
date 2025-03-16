@@ -5,9 +5,9 @@
 
 # Remove the existing py_dss_interface directory if it exists
 
-chmod +rwx py_dss_interface
+# chmod +rwx py_dss_interface
 # Change directory to the cloned repository
-cd py_dss_interface 
+# cd py_dss_interface 
 
 # Unzip OpenDSSC file
 unzip OpenDSSC
@@ -35,6 +35,6 @@ cd ..
 # Clean up the build directory
 
 rm -rf buildlinux
-cd ..
+# cd ..
 
 
