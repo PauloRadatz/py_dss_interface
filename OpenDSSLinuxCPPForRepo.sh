@@ -1,14 +1,40 @@
 #!/bin/bash
 
-# Print the full path of this script
-# echo "The full path of this script is: $(realpath "$0")"
+# Function to check if a package is installed
+is_installed() {
+    dpkg -l | grep -q "$1"
+}
 
-echo "🚀 Installing required dependencies..."
+echo "🚀 Checking and installing required dependencies..."
 
-# Install required packages: CMake, build-essential (includes g++), and uuid-dev
-sudo apt update && sudo apt install -y cmake build-essential uuid-dev
+# Install missing dependencies
+MISSING_PACKAGES=""
 
-echo "✅ Dependencies installed successfully!"
+# Check and install CMake
+if ! is_installed "cmake"; then
+    echo "⚙️ Installing CMake..."
+    MISSING_PACKAGES+=" cmake"
+fi
+
+# Check and install build-essential (includes g++)
+if ! is_installed "build-essential"; then
+    echo "🛠️ Installing build-essential (includes g++)..."
+    MISSING_PACKAGES+=" build-essential"
+fi
+
+# Check and install uuid-dev
+if ! is_installed "uuid-dev"; then
+    echo "🔑 Installing uuid-dev..."
+    MISSING_PACKAGES+=" uuid-dev"
+fi
+
+# If any package is missing, install them
+if [ -n "$MISSING_PACKAGES" ]; then
+    sudo apt update && sudo apt install -y $MISSING_PACKAGES
+    echo "✅ Required dependencies installed!"
+else
+    echo "✅ All required dependencies are already installed!"
+fi
 
 # Unzip VersionC file
 echo "📦 Unzipping VersionC..."
