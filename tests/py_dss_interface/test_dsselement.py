@@ -18,7 +18,7 @@ class TestBus13DSSElement:
         return dss
 
     def test_dsselement_num_properties(self, dss):
-        expected = 39
+        expected = 42
         actual = dss.dsselement.num_properties
         assert actual == expected
 
@@ -28,9 +28,47 @@ class TestBus13DSSElement:
         assert actual == expected
 
     def test_dsselement_all_property_names(self, dss):
-        expected = ['bus1', 'bus2', 'linecode', 'length', 'phases', 'r1', 'x1', 'r0', 'x0', 'C1', 'C0', 'rmatrix',
-                    'xmatrix', 'cmatrix', 'Switch', 'Rg', 'Xg', 'rho', 'geometry', 'units', 'spacing', 'wires',
-                    'EarthModel', 'cncables', 'tscables', 'B1', 'B0', 'Seasons', 'Ratings', 'LineType', 'EpsRmedium', 'normamps',
-                    'emergamps', 'faultrate', 'pctperm', 'repair', 'basefreq', 'enabled', 'like']
+        expected = ['bus1',
+                    'bus2',
+                    'linecode',
+                    'length',
+                    'phases',
+                    'r1',
+                    'x1',
+                    'r0',
+                    'x0',
+                    'C1',
+                    'C0',
+                    'rmatrix',
+                    'xmatrix',
+                    'cmatrix',
+                    'Switch',
+                    'Rg',
+                    'Xg',
+                    'rho',
+                    'geometry',
+                    'units',
+                    'spacing',
+                    'wires',
+                    'EarthModel',
+                    'cncables',
+                    'tscables',
+                    'B1',
+                    'B0',
+                    'Seasons',
+                    'Ratings',
+                    'LineType',
+                    'EpsRmedium',
+                    'HeightOffset',
+                    'HeightUnit',
+                    'conductors',
+                    'normamps',
+                    'emergamps',
+                    'faultrate',
+                    'pctperm',
+                    'repair',
+                    'basefreq',
+                    'enabled',
+                    'like']
         actual = dss.dsselement.property_names
         assert actual == expected

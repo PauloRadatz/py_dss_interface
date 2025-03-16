@@ -116,7 +116,7 @@ class TestBus13Bus:
         if platform.architecture()[0] == "64bit":
             dss.text("New Fuse.Fuse Line.650632 1 fusecurve=tlink  Ratedcurrent=10")
             dss.text("Relcalc restore=n")
-            expected = 1968.0002400000003
+            expected = 492.00006
             actual = dss.bus.interruptions_total_customers
             assert actual == expected
 
@@ -134,7 +134,7 @@ class TestBus13Bus:
             dss.text("Relcalc restore=n")
             expected = 0.0946969696969697
             actual = dss.bus.line_total_miles
-            # assert actual == expected # TODO there is something strange here
+            assert actual == expected # TODO there is something strange here
 
     def test_read_latitude(self, dss):
         expected = 0
