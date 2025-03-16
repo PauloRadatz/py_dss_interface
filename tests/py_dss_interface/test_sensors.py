@@ -203,6 +203,13 @@ class TestSensors13Bus:
         assert actual == expected
 
     def test_sensors_allocation_factor(self, dss):
+        dss.text("New Sensor.Sensor1 "
+                 "element=Load.671 "
+                 "terminal=1 "
+                 "kVBase=4.16 "
+                 "conn=delta ")
+        dss.solution.solve()
+        dss.sensors.name = "Sensor1"
         expected = [2.125336194265532, 1.62369322359071, 2.1728848763244932]
         dss.text("Edit sensor.sensor1 current=[394, 301, 403]")
         dss.text("Allocateloads")

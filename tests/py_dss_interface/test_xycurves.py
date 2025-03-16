@@ -53,7 +53,8 @@ class TestXYCurves13Bus:
     # Float methods
     # ===================================================================
     def test_xycurves_read_x(self, dss):
-        expected = 0.1
+        dss.xycurves.y = 0.9
+        expected = 0.2
         actual = dss.xycurves.x
         assert actual == expected
 
@@ -64,12 +65,13 @@ class TestXYCurves13Bus:
         assert actual == expected
 
     def test_xycurves_read_y(self, dss):
-        expected = 1
+        dss.xycurves.x = 0.2
+        expected = 0.9
         actual = dss.xycurves.y
         assert actual == expected
 
     def test_xycurves_write_y(self, dss):
-        expected = 1
+        expected = 0.9
         dss.xycurves.y = expected
         actual = dss.xycurves.y
         assert actual == expected
