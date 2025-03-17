@@ -45,6 +45,10 @@ class TestSwtControls13Bus:
         assert actual == expected
 
     def test_swtcontrols_read_is_locked(self, dss):
+        dss.text("new swtcontrol.1  SwitchedObj=line.650632  SwitchedTerm=1 Action=c")
+        dss.text("new swtcontrol.2  SwitchedObj=line.692675  SwitchedTerm=1 Action=o")
+        dss.solution.solve()
+        dss.swtcontrols.name = '1'
         expected = 1
         actual = dss.swtcontrols.is_locked
         assert actual == expected
@@ -61,6 +65,10 @@ class TestSwtControls13Bus:
         assert actual == expected
 
     def test_swtcontrols_write_switched_term(self, dss):
+        dss.text("new swtcontrol.1  SwitchedObj=line.650632  SwitchedTerm=1 Action=c")
+        dss.text("new swtcontrol.2  SwitchedObj=line.692675  SwitchedTerm=1 Action=o")
+        dss.solution.solve()
+        dss.swtcontrols.name = '1'
         expected = 0
         dss.swtcontrols.switched_term = expected
         actual = dss.swtcontrols.switched_term

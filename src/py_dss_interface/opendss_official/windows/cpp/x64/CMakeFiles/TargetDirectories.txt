@@ -1,0 +1,14 @@
+C:/OpenDSS_rep/VersionC/out/build/windows-default/CMakeFiles/OpenDSSC_Common.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/CMakeFiles/OpenDSSC_EXE.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/CMakeFiles/OpenDSSC_LIB.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/CMakeFiles/edit_cache.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/CMakeFiles/rebuild_cache.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/CMakeFiles/list_install_components.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/CMakeFiles/install.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/CMakeFiles/install/local.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/klusolve/CMakeFiles/klusolve_all.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/klusolve/CMakeFiles/edit_cache.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/klusolve/CMakeFiles/rebuild_cache.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/klusolve/CMakeFiles/list_install_components.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/klusolve/CMakeFiles/install.dir
+C:/OpenDSS_rep/VersionC/out/build/windows-default/klusolve/CMakeFiles/install/local.dir

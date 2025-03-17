@@ -1,0 +1,68 @@
+Year, 0,
+"kWh",0
+"kvarh",0
+"Max kW",0
+"Max kVA",0
+"Zone kWh",6909
+"Zone kvarh",4189
+"Zone Max kW",3455
+"Zone Max kVA",4040
+"Overload kWh Normal",915
+"Overload kWh Emerg",0
+"Load EEN",141883
+"Load UE",141883
+"Zone Losses kWh",33426
+"Zone Losses kvarh",96984
+"Zone Max kW Losses",16713
+"Zone Max kvar Losses",48492
+"Load Losses kWh",33426
+"Load Losses kvarh",96984
+"No Load Losses kWh",0
+"No Load Losses kvarh",0
+"Max kW Load Losses",16713
+"Max kW No Load Losses",0
+"Line Losses",33415
+"Transformer Losses",11
+"Line Mode Line Losses",67
+"Zero Mode Line Losses",14
+"3-phase Line Losses",81
+"1- and 2-phase Line Losses",33334
+"Gen kWh",0
+"Gen kvarh",0
+"Gen Max kW",0
+"Gen Max kVA",0
+"4.16 kV Losses",33426
+"Aux1",0
+"Aux6",0
+"Aux11",0
+"Aux16",0
+"Aux21",0
+"Aux26",0
+"4.16 kV Line Loss",33415
+"Aux2",0
+"Aux7",0
+"Aux12",0
+"Aux17",0
+"Aux22",0
+"Aux27",0
+"4.16 kV Load Loss",11
+"Aux3",0
+"Aux8",0
+"Aux13",0
+"Aux18",0
+"Aux23",0
+"Aux28",0
+"4.16 kV No Load Loss",0
+"Aux4",0
+"Aux9",0
+"Aux14",0
+"Aux19",0
+"Aux24",0
+"Aux29",0
+"4.16 kV Load Energy",6909
+"Aux5",0
+"Aux10",0
+"Aux15",0
+"Aux20",0
+"Aux25",0
+"Aux30",0

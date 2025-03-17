@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>py_dss_interface.models.DSSInterface.DSSInterface &#8212; py_dss_interface 2.0.2 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for py_dss_interface.models.DSSInterface.DSSInterface</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- encoding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> Created by eniocc at 11/10/2020</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.DSSInterface.DSSInterfaceI</span> <span class="kn">import</span> <span class="n">DSSInterfaceI</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.DSSInterface.DSSInterfaceS</span> <span class="kn">import</span> <span class="n">DSSInterfaceS</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.DSSInterface.DSSInterfaceV</span> <span class="kn">import</span> <span class="n">DSSInterfaceV</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+
+<div class="viewcode-block" id="DSSInterface"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.DSSInterface.DSSInterface.DSSInterface">[docs]</a><span class="k">class</span> <span class="nc">DSSInterface</span><span class="p">(</span><span class="n">DSSInterfaceS</span><span class="p">,</span> <span class="n">DSSInterfaceI</span><span class="p">,</span> <span class="n">DSSInterfaceV</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This interface implements the DSS interface (IDSS - DDSS.pas) of OpenDSS by declaring 3 procedures for accessing the</span>
+<span class="sd">    different properties included in this interface: DSSInterfaceS, DSSInterfaceI, DSSInterfaceV</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dss_obj</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">dss_obj</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_circuits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the number of circuits currently defined.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceI</span><span class="o">.</span><span class="n">_num_circuits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DSSInterface.clear_all"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.DSSInterface.DSSInterface.DSSInterface.clear_all">[docs]</a>    <span class="k">def</span> <span class="nf">clear_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears all circuit definitions.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceI</span><span class="o">.</span><span class="n">_clear_all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DSSInterface.show_panel"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.DSSInterface.DSSInterface.DSSInterface.show_panel">[docs]</a>    <span class="k">def</span> <span class="nf">show_panel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Shows non-MDI child form of the Main DSS Edit form.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceI</span><span class="o">.</span><span class="n">_show_panel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DSSInterface.start"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.DSSInterface.DSSInterface.DSSInterface.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validates the user and starts the DSS. Returns TRUE (1) if successful.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceI</span><span class="o">.</span><span class="n">_start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the number of DSS intrinsic classes.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceI</span><span class="o">.</span><span class="n">_num_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_user_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the number of user-defined classes.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceI</span><span class="o">.</span><span class="n">_num_user_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DSSInterface.reset"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.DSSInterface.DSSInterface.DSSInterface.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resets DSS initialization for restarts, etc. from applets. Nothing implemented in the OpenDSS Original</span>
+<span class="sd">                Source Code &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceI</span><span class="o">.</span><span class="n">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">allow_forms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets if the DSS allows forms (1) or not (0), default (1).</span>
+
+<span class="sd">        Sets if the DSS allows forms (1) or not (0), default (1). PAY ATTENTION: If arg=0 Then NoFormsAllowed :=</span>
+<span class="sd">                TRUE (Only set to False) else NoFormsAllowed := FALSE; &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceI</span><span class="o">.</span><span class="n">_allow_forms_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@allow_forms</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">allow_forms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">DSSInterfaceI</span><span class="o">.</span><span class="n">_allow_forms_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DSSInterface.new_circuit"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.DSSInterface.DSSInterface.DSSInterface.new_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">new_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a new circuit, the name of the circuit must be specified in the Argument.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceS</span><span class="o">.</span><span class="n">_new_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the version string for the DSS.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceS</span><span class="o">.</span><span class="n">_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">datapath</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the Data File Path. Default for reports, etc. from DSS.</span>
+
+<span class="sd">        Sets the Data File Path. Default for reports, etc. from DSS.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceS</span><span class="o">.</span><span class="n">_datapath_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@datapath</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">datapath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">DSSInterfaceS</span><span class="o">.</span><span class="n">_datapath_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">default_editor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the path name for the default text editor.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceS</span><span class="o">.</span><span class="n">_default_editor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">classes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the list of DSS intrinsic classes (names of the classes).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceV</span><span class="o">.</span><span class="n">_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">user_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets list of user-defined classes (names of the classes).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DSSInterfaceV</span><span class="o">.</span><span class="n">_user_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">py_dss_interface</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">How to Use py-dss-interface Python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#indices-and-tables">Indices and Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Paulo Radatz and Ênio Viana.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
