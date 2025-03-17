@@ -43,7 +43,10 @@ class TestDSSInterface13Bus:
         assert actual == expected
 
     def test_dss_num_classes(self, dss):
-        expected = 55
+        if dss.backend == "Windows-Delphi":
+            expected = 55
+        else:
+            expected = 54
         actual = dss.dssinterface.num_classes
         assert actual == expected
 
@@ -104,6 +107,7 @@ class TestDSSInterface13Bus:
     # ===================================================================
     # Variant methods
     # ===================================================================
+    # TODO I assume pyControl should also be in C++
     def test_dss_classes(self, dss):
         expected = ['Solution',
                     'LineCode',

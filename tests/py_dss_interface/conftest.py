@@ -7,7 +7,6 @@
 
 import os
 import pathlib
-
 import pytest
 
 import py_dss_interface
@@ -21,10 +20,13 @@ def solve_snap_13bus():
     # dss = py_dss_interface.DSS(windows_version="cpp")
     dss = py_dss_interface.DSS()
 
+    dss.text("Clear")
+    dss.text("ClearAll")
     dss.text("set DefaultBaseFrequency=60")
     dss.text("Set EventLogDefault=yes")
     dss13_path = pathlib.Path(script_path).joinpath("cases", "13Bus", "IEEE13Nodeckt.dss")
     dss.text(f"compile [{dss13_path}]")
 
     dss.dssinterface.allow_forms = 0
+
     return dss

@@ -24,7 +24,7 @@ class TestDSSExecutive13Bus:
         assert actual == expected
 
     def test_executive_num_options(self, dss):
-        expected = 147
+        expected = 148
         actual = dss.dssexecutive.num_options
         assert actual == expected
 

@@ -53,6 +53,7 @@ class TestCktElement13Bus:
         assert actual == expected
 
         # Check terminal 2 is not open
+        # TODO Delphi does not work?
         expected = 0
         actual = dss.cktelement.is_terminal_open(2)
         assert actual == expected
@@ -460,47 +461,46 @@ class TestCktElement13Bus:
         actual = dss.cktelement.variables_names
         assert actual == expected
 
-    # TODO gives warning
-    # def test_all_variables_values(self, dss):
-    #     dss.text("New Storage.str bus=650 kw=50")
-    #     dss.circuit.set_active_element("Storage.str")
-    #     dss.text("solve")
-    #     expected = [50.0,
-    #                 1.0,
-    #                 3.434007404732962,
-    #                 0.0,
-    #                 3.591803388852677e-09,
-    #                 3.434007404732962,
-    #                 0.6593341560814404,
-    #                 0.0,
-    #                 0.25,
-    #                 0.4093341560814404,
-    #                 0.0,
-    #                 1.0,
-    #                 1.0,
-    #                 9999.0,
-    #                 9999.0,
-    #                 9999.0,
-    #                 9999.0,
-    #                 9999.0,
-    #                 9999.0,
-    #                 9999.0,
-    #                 9999.0,
-    #                 50.0,
-    #                 9999.0,
-    #                 25.0,
-    #                 1.0,
-    #                 0.0,
-    #                 0.0,
-    #                 0.0,
-    #                 0.0,
-    #                 8000.0,
-    #                 0.0,
-    #                 0.0,
-    #                 0.0,
-    #                 0.0]
-    #     actual = dss.cktelement.variables_values
-    #     assert actual == expected
+    def test_all_variables_values(self, dss):
+        dss.text("New Storage.str bus=650 kw=50")
+        dss.circuit.set_active_element("Storage.str")
+        dss.text("solve")
+        expected = [50.0,
+                    1.0,
+                    3.434007404732962,
+                    0.0,
+                    3.591803388852677e-09,
+                    3.434007404732962,
+                    0.6593341560814404,
+                    0.0,
+                    0.25,
+                    0.4093341560814404,
+                    0.0,
+                    1.0,
+                    1.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    9999.0,
+                    50.0,
+                    9999.0,
+                    25.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    8000.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0]
+        actual = dss.cktelement.variables_values
+        assert actual == expected
 
     def test_node_order(self, dss):
         expected = [1, 2, 3, 1, 2, 3]
