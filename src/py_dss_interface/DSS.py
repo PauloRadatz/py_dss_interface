@@ -41,6 +41,15 @@ class DSS:
         self._my_dss_version = None
         self.started = False
         self.__memory_commands = []
+        self.backend = None
+
+        if System.detect_platform() == 'Linux':
+            self.backend = "Linux-C++"
+        else:
+            if windows_version == "delphi":
+                self.backend = "Windows-Delphi"
+            elif windows_version == "cpp":
+                self.backend = "Windows-C++"
 
         if dll_folder_param and dll_by_user:
             os.chdir(dll_folder_param)

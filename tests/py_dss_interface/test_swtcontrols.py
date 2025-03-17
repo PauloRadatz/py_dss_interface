@@ -44,8 +44,9 @@ class TestSwtControls13Bus:
         actual = dss.swtcontrols.action
         assert actual == expected
 
+    # TODO Does not work for C++
     def test_swtcontrols_read_is_locked(self, dss):
-        dss.text("new swtcontrol.1  SwitchedObj=line.650632  SwitchedTerm=1 Action=c")
+        dss.text("new swtcontrol.1  SwitchedObj=line.650632  SwitchedTerm=1 Action=c lock=Yes")
         dss.text("new swtcontrol.2  SwitchedObj=line.692675  SwitchedTerm=1 Action=o")
         dss.solution.solve()
         dss.swtcontrols.name = '1'

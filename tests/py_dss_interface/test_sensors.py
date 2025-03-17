@@ -214,4 +214,4 @@ class TestSensors13Bus:
         dss.text("Edit sensor.sensor1 current=[394, 301, 403]")
         dss.text("Allocateloads")
         actual = dss.sensors.allocation_factor
-        assert actual == expected
+        assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]

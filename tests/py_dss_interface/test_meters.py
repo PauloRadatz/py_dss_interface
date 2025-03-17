@@ -296,6 +296,7 @@ class TestMeters13Bus:
         actual = dss.meters.calc_current
         assert actual == expected
 
+    # TODO C++ with problems here
     def test_meters_read_alloc_factors(self, dss):
         dss.text("Edit Energymeter.EM2 peakcurrent=[394, 301, 403]")
         dss.text("Allocateloads")
@@ -303,6 +304,7 @@ class TestMeters13Bus:
         actual = dss.meters.alloc_factors
         assert actual == expected
 
+    # TODO C++ with problems here
     def test_meters_write_alloc_factors(self, dss):
         expected = [0.831627229659705, 1.5941085756581377, 0.9484539173579261]
         dss.meters.alloc_factors = expected

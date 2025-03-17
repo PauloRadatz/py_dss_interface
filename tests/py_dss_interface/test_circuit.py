@@ -4066,6 +4066,7 @@ class TestCircuit13Bus:
             actual = dss.circuit.y_currents
             assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
 
+    # TODO Check it in both versions
     def test_capacity(self, dss):
         expected = 3566.65122700374
         actual = dss.circuit.capacity(0.9, 0.005)
