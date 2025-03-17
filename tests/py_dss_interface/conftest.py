@@ -23,8 +23,8 @@ def solve_snap_13bus():
 
     dss.text("set DefaultBaseFrequency=60")
     dss.text("Set EventLogDefault=yes")
-    dss13_path = os.path.join(pathlib.Path(script_path), "cases", "13Bus", "IEEE13Nodeckt.dss")
-    dss.text(f"compile {dss13_path}")
+    dss13_path = pathlib.Path(script_path).joinpath("cases", "13Bus", "IEEE13Nodeckt.dss")
+    dss.text(f"compile [{dss13_path}]")
 
     dss.dssinterface.allow_forms = 0
     return dss
