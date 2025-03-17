@@ -1,0 +1,589 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>py_dss_interface.models.Solution.Solution &#8212; py_dss_interface 2.0.2 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for py_dss_interface.models.Solution.Solution</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- encoding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> Created by eniocc at 11/10/2020</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Solution.SolutionF</span> <span class="kn">import</span> <span class="n">SolutionF</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Solution.SolutionI</span> <span class="kn">import</span> <span class="n">SolutionI</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Solution.SolutionS</span> <span class="kn">import</span> <span class="n">SolutionS</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Solution.SolutionV</span> <span class="kn">import</span> <span class="n">SolutionV</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+
+<div class="viewcode-block" id="Solution"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution">[docs]</a><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="n">SolutionI</span><span class="p">,</span> <span class="n">SolutionF</span><span class="p">,</span> <span class="n">SolutionS</span><span class="p">,</span> <span class="n">SolutionV</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This interface implements the Solution (ISolution) interface of OpenDSS by declaring 4 procedures for accessing</span>
+<span class="sd">    the different properties included in this interface: SolutionI, SolutionF, SolutionS, SolutionV.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_dss</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">obj_dss</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the frequency for the next solution.</span>
+<span class="sd">        Sets the frequency for the next solution.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_frequency_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@frequency</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_frequency_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">seconds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the seconds from top of the hour.</span>
+<span class="sd">        Sets the seconds from top of the hour.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_seconds_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@seconds</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">seconds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_seconds_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">step_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the step size for the next solution.</span>
+<span class="sd">        Sets the step size for the next solution.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_step_size_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@step_size</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">step_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_step_size_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">load_mult</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the default load multiplier applied to all non-fixed loads.</span>
+<span class="sd">        Sets the default load multiplier applied to all non-fixed loads.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_load_mult_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@load_mult</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">load_mult</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_load_mult_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tolerance</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the solution convergence tolerance.</span>
+<span class="sd">        Sets the solution convergence tolerance.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_tolerance_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@tolerance</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">tolerance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_tolerance_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">pct_growth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the percent default annual load growth rate.</span>
+<span class="sd">        Sets the percent default annual load growth rate.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_pct_growth_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@pct_growth</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">pct_growth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_pct_growth_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">gen_kw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the generator kW for AutoAdd mode.</span>
+<span class="sd">        Sets the generator kW for AutoAdd mode.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_gen_kw_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@gen_kw</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">gen_kw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_gen_kw_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">gen_pf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the pf for generators in AutoAdd mode.</span>
+<span class="sd">        Sets the pf for generators in AutoAdd mode.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_gen_pf_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@gen_pf</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">gen_pf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_gen_pf_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cap_kvar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the capacitor kvar for adding in AutoAdd mode.</span>
+<span class="sd">        Sets the capacitor kvar for adding in AutoAdd mode.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_cap_kvar_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@cap_kvar</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">cap_kvar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_cap_kvar_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">gen_mult</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the default multiplier applied to generators (like LoadMult).</span>
+<span class="sd">        Sets the default multiplier applied to generators (like LoadMult).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_gen_mult_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@gen_mult</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">gen_mult</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_gen_mult_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dbl_hour</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the hour as a double, including fractional part.</span>
+<span class="sd">        Sets the hour as a double, including fractional part.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_dbl_hour_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@dbl_hour</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">dbl_hour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_dbl_hour_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">step_size_min</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the step size in minutes.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_step_size_min</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">step_size_hr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the step size in Hours.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_step_size_hr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">process_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the time required (microseconds) to perform the latest solution time step,</span>
+<span class="sd">                this time does not include the time required for sampling meters/monitors.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_process_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">total_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the accumulated time required (microseconds) to perform the simulation.</span>
+<span class="sd">        Sets the accumulated time (microseconds) register. The new value for this register must be specified in</span>
+<span class="sd">        the argument. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_total_time_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@total_time</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">total_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">SolutionF</span><span class="o">.</span><span class="n">_total_time_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">process_time_step</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the time required (microseconds) to perform the latest solution time step including the time</span>
+<span class="sd">                required for sampling meters/monitors.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionF</span><span class="o">.</span><span class="n">_process_time_step</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Solution.solve"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.solve">[docs]</a>    <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solution for the present solution mode. Returns 0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_mode_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the present solution mode (See DSS help).</span>
+<span class="sd">        Modifies the present solution mode (See DSS help). &quot;&quot;&quot;</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_mode_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">hour</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the present hour (See DSS help).</span>
+<span class="sd">        Modifies the present hour (See DSS help). &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_hour_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@hour</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">hour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_hour_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">year</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the present Year (See DSS help).</span>
+<span class="sd">        Modifies the present Year (See DSS help). &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_year_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@year</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">year</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_year_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of iterations taken for the last solution. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">max_iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Maximum number of iterations used to solve the circuit.</span>
+<span class="sd">        Modifies the Maximum number of iterations used to solve the circuit. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_max_iterations_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@max_iterations</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">max_iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_max_iterations_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of solutions to perform for MonteCarlo and time series simulations.</span>
+<span class="sd">        Modifies the number of solutions to perform for MonteCarlo and time series simulations. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_number_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@number</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_number_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">random</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the randomization mode for random variables &quot;Gaussian&quot; o &quot;Uniform&quot;.</span>
+<span class="sd">        Modifies the randomization mode for random variables &quot;Gaussian&quot; o &quot;Uniform&quot;. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_random_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@random</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">random</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_random_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">load_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Load Model: {dssPowerFlow (default)|dssAdmittance}.</span>
+<span class="sd">        Modifies the Load Model: {dssPowerFlow (default)|dssAdmittance}. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_load_model_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@load_model</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">load_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_load_model_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">add_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the type of device to add in AutoAdd Mode: {dssGen (default)|dssCap}.</span>
+<span class="sd">        Modifies the type of device to add in AutoAdd Mode: {dssGen (default)|dssCap}. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_add_type_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@add_type</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">add_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_add_type_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the base solution algorithm: {dssNormalSolve | dssNewtonSolve}.</span>
+<span class="sd">        Modifies the base solution algorithm: {dssNormalSolve | dssNewtonSolve}. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_algorithm_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@algorithm</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_algorithm_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">control_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the mode for control devices: {dssStatic (default) | dssEvent | dssTime}.</span>
+<span class="sd">        Modifies the mode for control devices: {dssStatic (default) | dssEvent | dssTime}. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_control_mode_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@control_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">control_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_control_mode_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">control_iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the current value of the control iteration counter.</span>
+<span class="sd">        Modifies the current value of the control iteration counter. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_control_iterations_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@control_iterations</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">control_iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_control_iterations_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">max_control_iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the maximum allowable control iterations.</span>
+<span class="sd">        Modifies the maximum allowable control iterations. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_max_control_iterations_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@max_control_iterations</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">max_control_iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_max_control_iterations_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Solution.sample_do_control_actions"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.sample_do_control_actions">[docs]</a>    <span class="k">def</span> <span class="nf">sample_do_control_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sample controls and then process the control queue for present control mode and dispatch control actions.</span>
+<span class="sd">                Returns 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_sample_do_control_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.check_fault_status"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.check_fault_status">[docs]</a>    <span class="k">def</span> <span class="nf">check_fault_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Executes status check on all fault objects defined in the circuit. Returns 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_check_fault_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.solve_direct"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.solve_direct">[docs]</a>    <span class="k">def</span> <span class="nf">solve_direct</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Executes a direct solution from the system Y matrix, ignoring compensation currents of loads, generators</span>
+<span class="sd">                (includes Yprim only).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_solve_direct</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.solve_power_flow"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.solve_power_flow">[docs]</a>    <span class="k">def</span> <span class="nf">solve_power_flow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solves using present power flow method. Iterative solution rather than direct solution. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_solve_power_flow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.solve_no_control"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.solve_no_control">[docs]</a>    <span class="k">def</span> <span class="nf">solve_no_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Is similar to SolveSnap except no control actions are checked or executed.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_solve_no_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.solve_plus_control"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.solve_plus_control">[docs]</a>    <span class="k">def</span> <span class="nf">solve_plus_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Executes a power flow solution (SolveNoControl) plus executes a CheckControlActions that executes any</span>
+<span class="sd">                pending control actions.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_solve_plus_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.init_snap"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.init_snap">[docs]</a>    <span class="k">def</span> <span class="nf">init_snap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes some variables for snap shot power flow. SolveSnap does this automatically.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_init_snap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.check_controls"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.check_controls">[docs]</a>    <span class="k">def</span> <span class="nf">check_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Performs the normal process for sampling and executing Control Actions and Fault Status and rebuilds Y</span>
+<span class="sd">                if necessary.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_check_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.sample_control_devices"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.sample_control_devices">[docs]</a>    <span class="k">def</span> <span class="nf">sample_control_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Executes a sampling of all intrinsic control devices, which push control actions into the control queue.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_sample_control_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.do_control_actions"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.do_control_actions">[docs]</a>    <span class="k">def</span> <span class="nf">do_control_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Pops control actions off the control queue and dispatches to the proper control element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_do_control_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.build_y_matrix"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.build_y_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">build_y_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Forces building of the System Y matrix according to the argument:</span>
+<span class="sd">                {1= series elements only | 2= Whole Y matrix}.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_build_y_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">system_y_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Indicates if elements of the System Y have been changed by recent activity. If changed returns 1;</span>
+<span class="sd">                otherwise 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_system_y_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">converged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Indicates whether the circuit solution converged (1 converged | 0 not converged).</span>
+<span class="sd">        Modifies the converged flag (1 converged | 0 not converged). &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_converged_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@converged</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">converged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_converged_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">total_iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the total iterations including control iterations for most recent solution.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_total_iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">most_iterations_done</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the max number of iterations required to converge at any control iteration of the most recent</span>
+<span class="sd">                solution..&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_most_iterations_done</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">control_actions_done</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Indicates that the control actions are done: {1 done, 0 not done}.</span>
+<span class="sd">        Modifies the flag to indicate that the control actions are done: {1 done, 0 not done}. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_control_actions_done_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@control_actions_done</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">control_actions_done</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">SolutionI</span><span class="o">.</span><span class="n">_control_actions_done_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Solution.finish_time_step"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.finish_time_step">[docs]</a>    <span class="k">def</span> <span class="nf">finish_time_step</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calls cleanup, sample monitors, and increment time at end of time step.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_finish_time_step</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.clean_up"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.clean_up">[docs]</a>    <span class="k">def</span> <span class="nf">clean_up</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update storage, invcontrol, etc., at end of time step.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_clean_up</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.solve_all"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.solve_all">[docs]</a>    <span class="k">def</span> <span class="nf">solve_all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Starts the solution process for all the actors created in memory.</span>
+<span class="sd">                Please be sure that the circuits of each actor have been compiled and ready to be solved before using this</span>
+<span class="sd">                command.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_solve_all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.calc_inc_matrix"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.calc_inc_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">calc_inc_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Starts the calculation of the incidence matrix for the active actor.</span>
+<span class="sd">                Please be sure that the circuits of each actor have been compiled and ready to be solved before using this</span>
+<span class="sd">                command.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_calc_inc_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.calc_inc_matrix_0"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Solution.Solution.Solution.calc_inc_matrix_0">[docs]</a>    <span class="k">def</span> <span class="nf">calc_inc_matrix_0</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Starts the calculation of the Branch to Node incidence matrix for the active actor.</span>
+<span class="sd">                Please be sure that the circuits of each actor have been compiled and ready to be solved before</span>
+<span class="sd">                using this command. The difference between this command and the CalcIncMatrix is that the calculated matrix</span>
+<span class="sd">                will be ordered hierarchically from the substation to the feeder end, which can be helpful for many operations.</span>
+<span class="sd">                Additionally, the Bus Levels vector is calculated and the rows (PDElements) and columns (Buses) are permuted so</span>
+<span class="sd">                it is easy to identify their position in the circuit.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionI</span><span class="o">.</span><span class="n">_calc_inc_matrix_0</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">mode_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the ID (text) of the present solution mode.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionS</span><span class="o">.</span><span class="n">_mode_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ld_curve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Load-Duration Curve name for LD modes.</span>
+<span class="sd">        Sets the Load-Duration Curve name for LD modes.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionS</span><span class="o">.</span><span class="n">_ld_curve_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@ld_curve</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">ld_curve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">SolutionS</span><span class="o">.</span><span class="n">_ld_curve_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">default_daily</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the default daily load shape (defaults to &quot;Default&quot;).</span>
+<span class="sd">        Sets the default daily load shape (defaults to &quot;Default&quot;).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionS</span><span class="o">.</span><span class="n">_default_daily_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@default_daily</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">default_daily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">SolutionS</span><span class="o">.</span><span class="n">_default_daily_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">default_yearly</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the default yearly load shape (defaults to &quot;Default&quot;).</span>
+<span class="sd">        Sets the default yearly load shape (defaults to &quot;Default&quot;).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionS</span><span class="o">.</span><span class="n">_default_yearly_read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@default_yearly</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">default_yearly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">SolutionS</span><span class="o">.</span><span class="n">_default_yearly_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">event_log</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of strings containing the Event Log.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionV</span><span class="o">.</span><span class="n">_event_log</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nc_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of integers containing the incidence matrix (1-D). Each cell of the incidence matrix is</span>
+<span class="sd">                delivered using 3 elements of the array delivered, the first is the row, the second is the column and the</span>
+<span class="sd">                third is the value (1/-1). This procedure will only deliver the non-zero elements.. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionV</span><span class="o">.</span><span class="n">_nc_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bus_levels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of integers containing BusLevels array. This array gives a numeric value to each bus to</span>
+<span class="sd">                specify how far it is from the circuit?s backbone (a continuous path from the feeder head to the feeder end).</span>
+<span class="sd">                It is very handy to understand the circuit?s topology. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionV</span><span class="o">.</span><span class="n">_bus_levels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">inc_matrix_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of strings specifying the way the rows of the incidence matrix (PDElements) are organized,</span>
+<span class="sd">                 depending on the way the Branch to node incidence matrix was calculated (CalcIncMatrix/CalcIncMatrix_O)</span>
+<span class="sd">                 the result could be very different..&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionV</span><span class="o">.</span><span class="n">_inc_matrix_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">inc_matrix_cols</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of strings specifying the way the cols of the incidence matrix (buses) are organized,</span>
+<span class="sd">                depending on the way the Branch to node incidence matrix was calculated (CalcIncMatrix/CalcIncMatrix_O)</span>
+<span class="sd">                the result could be very different.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionV</span><span class="o">.</span><span class="n">_inc_matrix_cols</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">laplacian</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of integers containing the Laplacian matrix using the incidence matrix previously calculated</span>
+<span class="sd">                , this means that before calling this command the incidence matrix needs to be calculated using</span>
+<span class="sd">                calcincmatrix/calcincmatrix_o. This command will return only the non-zero values in compressed coordinate</span>
+<span class="sd">                format (row, col, value)..&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SolutionV</span><span class="o">.</span><span class="n">_laplacian</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">py_dss_interface</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">How to Use py-dss-interface Python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#indices-and-tables">Indices and Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Paulo Radatz and Ênio Viana.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

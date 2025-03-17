@@ -16,6 +16,8 @@ class TestSolution13Bus:
         dss.text("batchedit regcontrol..* eventlog=True")
         dss.solution.solve()
 
+        dss.dssinterface.allow_forms = 0
+
         return dss
 
     # ===================================================================

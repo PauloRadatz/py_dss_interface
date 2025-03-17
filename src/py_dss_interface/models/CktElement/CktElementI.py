@@ -33,8 +33,8 @@ class CktElementI(Base):
     def _close_terminal(self, argument: int) -> int:
         return self._dss_obj.CktElementI(ctypes.c_int32(4), ctypes.c_int32(argument))
 
-    def _is_terminal_open(self) -> int:
-        return self._dss_obj.CktElementI(ctypes.c_int32(5), ctypes.c_int32(0))
+    def _is_terminal_open(self, argument) -> int:
+        return self._dss_obj.CktElementI(ctypes.c_int32(5), ctypes.c_int32(argument))
 
     def _num_properties(self) -> int:
         return self._dss_obj.CktElementI(ctypes.c_int32(6), ctypes.c_int32(0))

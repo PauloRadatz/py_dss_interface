@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>py_dss_interface.models.Bus.Bus &#8212; py_dss_interface 2.0.2 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for py_dss_interface.models.Bus.Bus</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- encoding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> Created by eniocc at 11/10/2020</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Bus.BusF</span> <span class="kn">import</span> <span class="n">BusF</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Bus.BusI</span> <span class="kn">import</span> <span class="n">BusI</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Bus.BusS</span> <span class="kn">import</span> <span class="n">BusS</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Bus.BusV</span> <span class="kn">import</span> <span class="n">BusV</span>
+
+
+<div class="viewcode-block" id="Bus"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Bus.Bus.Bus">[docs]</a><span class="k">class</span> <span class="nc">Bus</span><span class="p">(</span><span class="n">BusS</span><span class="p">,</span> <span class="n">BusI</span><span class="p">,</span> <span class="n">BusV</span><span class="p">,</span> <span class="n">BusF</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This interface implements the Bus (IBus) interface of OpenDSS by declaring 4 procedures for accessing the</span>
+<span class="sd">    different properties included in this interface: BusS, BusI, BusV, BusF.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_dss</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">obj_dss</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the name of the active bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusS</span><span class="o">.</span><span class="n">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of nodes of this bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusI</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">zsc_refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Recomputes Zsc for active bus for present circuit configuration. Return 1 if the procedure was successful.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusI</span><span class="o">.</span><span class="n">_zsc_refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">coord_defined</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns 1 if a coordinate has been defined for this bus; otherwise, it will return 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusI</span><span class="o">.</span><span class="n">_coord_defined</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">unique_node_number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a unique node number at the active bus to avoid node collisions and adds it to the node list for</span>
+<span class="sd">                the bus. The start number can be specified in the second parameter.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusI</span><span class="o">.</span><span class="n">_unique_node_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="nd">@unique_node_number</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">unique_node_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">BusI</span><span class="o">.</span><span class="n">_unique_node_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_number</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">total_customers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns returns the total number of customers served down line from this bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusI</span><span class="o">.</span><span class="n">_total_customers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">section_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the integer ID of the feeder section in which this bus is located.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusI</span><span class="o">.</span><span class="n">_section_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a complex array of voltages at this bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">seq_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a complex array of Sequence voltages at this bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_seq_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an integer array of node numbers defined at the bus in same order as the voltages.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">voc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the open circuit voltage as complex array.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_voc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">isc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the short circuit current as complex array.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_isc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">pu_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the voltages in per unit at bus as complex array.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_pu_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">zsc_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the complex array of Zsc matrix at bus, column by column.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_zsc_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">zsc1</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the complex positive-sequence short circuit impedance at bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_zsc1</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">zsc0</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the complex zero-sequence short circuit impedance at bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_zsc0</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ysc_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the complex array of Ysc matrix at bus, column by column.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_ysc_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cplx_sequence_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the complex double array of sequence voltages (0, 1, 2) at this bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_cplx_sequence_voltages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">vll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;For 2 and 3 phase buses, returns a variant array of complex numbers representing L-L voltages in volts.</span>
+<span class="sd">                Returns -1.0 for 1-phase bus. If more than 3 phases, returns only first 3.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_vll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">pu_vll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a variant array of complex numbers representing L-L voltages in per unit. Returns -1.0 for 1-phase</span>
+<span class="sd">                bus. If more than 3 phases, returns only first 3. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_pu_vll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">vmag_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a variant array of doubles containing voltages in magnitude (VLN), angle (deg).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_vmag_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">vmag_angle_pu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a variant array of doubles containing voltages in per unit and angles in degrees.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_vmag_angle_pu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">line_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a variant array of strings containing the names of the lines connected to the</span>
+<span class="sd">                active bus. The names of the lines include the class name &#39;Line.&#39; &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_line_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">load_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This parameter returns a variant array of strings containing the names of the loads connected to the</span>
+<span class="sd">                active bus. The names of the lines include the class name &#39;Load.&#39;. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_load_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">axc_012_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Variant array of doubles (complex) containing the complete 012 Zsc matrix.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_axc_012_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">all_pce_active_bus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array with the names of all PCE connected to the active bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_all_pce_active_bus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">all_pde_active_bus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array with the names of all PDE connected to the active bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusV</span><span class="o">.</span><span class="n">_all_pde_active_bus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">kv_base</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the base voltage at bus in kV.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_kv_base</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the X coordinate for the bus.</span>
+<span class="sd">        Allows to write the X coordinate for the bus. Returns 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@x</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">BusF</span><span class="o">.</span><span class="n">_x_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Y coordinate for the bus.</span>
+<span class="sd">        Allows to write the Y coordinate for the bus. Returns 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@y</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">BusF</span><span class="o">.</span><span class="n">_y_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the distance from the energymeter (if non-zero).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bus_lambda</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the accumulated failure rate downstream from this bus, faults per year.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_bus_lambda</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">interruptions_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of interruptions this bus per year.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_interruptions_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">interruptions_avg_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the average interruption duration in hours.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_interruptions_avg_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">interruptions_total_customers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the annual number of customer interruptions from this bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_interruptions_total_customers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">outage_customer_accum_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the accumulated customer outage durations.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_outage_customer_accum_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">line_total_miles</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the total length of line downline from this bus, in miles. For recloser siting algorithm.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_line_total_miles</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">latitude</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the GIS latitude assigned to the active bus (if any).</span>
+<span class="sd">        Sets the GIS latitude to the active bus using the value given at the argument.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_latitude</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@latitude</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">latitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">BusF</span><span class="o">.</span><span class="n">_latitude_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">longitude</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the GIS longitude assigned to the active bus (if any).</span>
+<span class="sd">        Sets the GIS longitude to the active bus using the value given at the argument.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BusF</span><span class="o">.</span><span class="n">_longitude</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@longitude</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">longitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">BusF</span><span class="o">.</span><span class="n">_longitude_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">py_dss_interface</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">How to Use py-dss-interface Python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#indices-and-tables">Indices and Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Paulo Radatz and Ênio Viana.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

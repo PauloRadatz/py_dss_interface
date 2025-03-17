@@ -43,6 +43,10 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
         """Open the specified terminal (Argument) of the active DSS object."""
         return CktElementI._open_terminal(self, argument)
 
+    def is_terminal_open(self, argument: int) -> int:
+        """Return a 1 if any terminal of the active DSS object is open, otherwise, it will return a 0."""
+        return CktElementI._is_terminal_open(self, argument)
+
     def close_terminal(self, argument: int) -> int:
         """Close the specified terminal (Argument) of the active DSS object."""
         return CktElementI._close_terminal(self, argument)
@@ -97,11 +101,6 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
     def num_phases(self) -> int:
         """Delivers the number of phases of the active DSS object."""
         return CktElementI._num_phases(self)
-
-    @property
-    def is_terminal_open(self) -> int:
-        """Return a 1 if any terminal of the active DSS object is open, otherwise, it will return a 0."""
-        return CktElementI._is_terminal_open(self)
 
     @property
     def num_properties(self) -> int:

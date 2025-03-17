@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>py_dss_interface.models.Circuit.Circuit &#8212; py_dss_interface 2.0.2 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for py_dss_interface.models.Circuit.Circuit</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- encoding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> Created by eniocc at 11/10/2020</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Circuit.CircuitF</span> <span class="kn">import</span> <span class="n">CircuitF</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Circuit.CircuitI</span> <span class="kn">import</span> <span class="n">CircuitI</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Circuit.CircuitS</span> <span class="kn">import</span> <span class="n">CircuitS</span>
+<span class="kn">from</span> <span class="nn">py_dss_interface.models.Circuit.CircuitV</span> <span class="kn">import</span> <span class="n">CircuitV</span>
+
+
+<div class="viewcode-block" id="Circuit"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit">[docs]</a><span class="k">class</span> <span class="nc">Circuit</span><span class="p">(</span><span class="n">CircuitI</span><span class="p">,</span> <span class="n">CircuitS</span><span class="p">,</span> <span class="n">CircuitF</span><span class="p">,</span> <span class="n">CircuitV</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This interface implements the Circuit (ICIrcuit) interface of OpenDSS by declaring 4 procedures for accessing the</span>
+<span class="sd">    different properties included in this interface: CircuitI, CircuitS, CircuitF, CircuitV</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_dss</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">obj_dss</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">capacity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">capacity_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">capacity_increment</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the total capacity of the active circuit. Or this parameter it is necessary to specify the start</span>
+<span class="sd">                and increment of the capacity in the arguments argument1 and argument2 respectively. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitF</span><span class="o">.</span><span class="n">_capacity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">capacity_start</span><span class="p">,</span> <span class="n">capacity_increment</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of doubles (two doubles for representing a complex number) with the total losses of the</span>
+<span class="sd">                active circuit. Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">line_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of doubles (two doubles for representing a complex number) with the total Line losses of</span>
+<span class="sd">                the active circuit. Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_line_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">substation_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of doubles (two doubles for representing a complex number) with the total transformer</span>
+<span class="sd">                losses of the active circuit. Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_substation_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">total_power</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of doubles (two doubles for representing a complex number) with the total power in watts</span>
+<span class="sd">                delivered to the active circuit. Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_total_power</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">buses_volts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of doubles (two doubles for representing a complex number) with the node voltages from</span>
+<span class="sd">                the most recent solution. Argument2 must be 0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_buses_volts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">buses_vmag</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of doubles (magnitude) with the node voltages from the most recent solution. Argument2</span>
+<span class="sd">                must be 0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_buses_vmag</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">elements_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of strings with the names of all the elements of the active circuit. Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_elements_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">buses_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of strings with the names of all the Buses of the active circuit (See AllNodeNames).</span>
+<span class="sd">                Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_buses_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">elements_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of doubles (two doubles for representing a complex number) with the losses in each element</span>
+<span class="sd">                of the active circuit. Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_elements_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">buses_vmag_pu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of doubles with the voltages in per unit of the most recent solution of the active circuit.</span>
+<span class="sd">                Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_buses_vmag_pu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nodes_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of strings containing full name of each node in system in same order as returned by</span>
+<span class="sd">                AllBusVolts, etc. Argument2 must be 0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_nodes_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">system_y</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns an array of doubles (two doubles for representing a complex number) containing the Y Bus Matrix of</span>
+<span class="sd">                the system (after a solution has been performed).</span>
+<span class="sd">                Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_system_y</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">buses_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns distance from each bus to parent EnergyMeter. Corresponds to sequence in AllBusNames. Argument2</span>
+<span class="sd">                must be 0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_buses_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nodes_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns distance from each Node to parent EnergyMeter. Corresponds to sequence in AllBusVmag. Argument2</span>
+<span class="sd">                must be 0. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_nodes_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Circuit.nodes_vmag_by_phase"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.nodes_vmag_by_phase">[docs]</a>    <span class="k">def</span> <span class="nf">nodes_vmag_by_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns array of doubles representing the voltage magnitudes for nodes on the specified phase. The phase</span>
+<span class="sd">                must be specified in the Argument2. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_nodes_vmag_by_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Circuit.nodes_vmag_pu_by_phase"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.nodes_vmag_pu_by_phase">[docs]</a>    <span class="k">def</span> <span class="nf">nodes_vmag_pu_by_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns array of doubles representing the voltage magnitudes (in per unit) for nodes on the specified phase.</span>
+<span class="sd">                The phase must be specified in the Argument2.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_nodes_vmag_pu_by_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Circuit.nodes_distances_by_phase"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.nodes_distances_by_phase">[docs]</a>    <span class="k">def</span> <span class="nf">nodes_distances_by_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns array of doubles representing the distances to parent EnergyMeter. Sequence of array corresponds to</span>
+<span class="sd">                other node ByPhase properties. Argument2 must contain the number of the phase to return.&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_nodes_distances_by_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Circuit.nodes_names_by_phase"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.nodes_names_by_phase">[docs]</a>    <span class="k">def</span> <span class="nf">nodes_names_by_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns array of strings of the node names by Phase criteria. Sequence corresponds to other ByPhase</span>
+<span class="sd">                properties. Argument2 must contain the number of the phase to return. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_nodes_names_by_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">y_node_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a variant array of strings containing the names of the nodes in the same order as the Y Matrix.</span>
+<span class="sd">                Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_y_node_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">y_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a variant array of doubles containing complex injection currents for the present solution.</span>
+<span class="sd">                It is the &quot;I&quot; vector of I=YV. Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_y_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">y_node_varray</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a complex array of actual node voltages in same order as SystemY Matrix. Argument2 must be 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitV</span><span class="o">.</span><span class="n">_y_node_varray</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the name of the active circuit.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitS</span><span class="o">.</span><span class="n">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">disable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Allows to disable an element of the active circuit, the element must be specified by name.</span>
+<span class="sd">                As a result, this parameter will deliver the string ?Ok?.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitS</span><span class="o">.</span><span class="n">_disable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">enable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Allows to enable an element of the active circuit, the element must be specified by name.</span>
+<span class="sd">                As a result, this parameter will deliver the string ?Ok?.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitS</span><span class="o">.</span><span class="n">_enable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_ckt_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Will deliver the number of CktElements included in the active circuit.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_num_ckt_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_buses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Will deliver the number of buses included in the active circuit.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_num_buses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Will deliver the number of nodes included in the active circuit.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Circuit.pc_element_first"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.pc_element_first">[docs]</a>    <span class="k">def</span> <span class="nf">pc_element_first</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the first PCElement to be the active PCElement, as a result, this parameter will deliver the index of</span>
+<span class="sd">                the active PCElement (ideally 1). &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_pc_element_first</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Circuit.pc_element_next"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.pc_element_next">[docs]</a>    <span class="k">def</span> <span class="nf">pc_element_next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the next PCElement to be the active PCElement, as a result, this parameter will deliver the index of</span>
+<span class="sd">                the active PCElement (if there is no more it will return a 0). &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_pc_element_next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Circuit.pd_element_first"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.pd_element_first">[docs]</a>    <span class="k">def</span> <span class="nf">pd_element_first</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the first PDElement to be the active PDElement, as a result, this parameter will deliver the index of</span>
+<span class="sd">                the active PDElement (ideally 1). &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_pd_element_first</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Circuit.pd_element_next"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.pd_element_next">[docs]</a>    <span class="k">def</span> <span class="nf">pd_element_next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the next PDElement to be the active PDElement, as a result, this parameter will deliver the index of the</span>
+<span class="sd">                 active PDElement (if there is no more it will return a 0).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_pd_element_next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Circuit.first_element"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.first_element">[docs]</a>    <span class="k">def</span> <span class="nf">first_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the first Element of the active class to be the active Element, as a result, this parameter will</span>
+<span class="sd">                deliver the index of the active Element (0 if none). &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_first_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Circuit.next_element"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.next_element">[docs]</a>    <span class="k">def</span> <span class="nf">next_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the next Element of the active class to be the active Element, as a result, this parameter will</span>
+<span class="sd">                deliver the index of the active Element (0 if none). &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_next_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Forces all meters and monitors to take a sample, returns 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">save_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Forces all meters and monitors to save their sample buffers, returns 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_save_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">update_storage_t</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Forces all storage classes to update. Typically, done after a solution.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_update_storage_t</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">parent_pd_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets parent PD Element, if any, to be the active circuit element and returns index &gt; 0 if it fails or not</span>
+<span class="sd">                applicable. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_parent_pd_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">end_of_time_step_update</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calls end of time step cleanup routine in solutionalgs.pas. Returns 0.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_end_of_time_step_update</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Circuit.set_active_bus"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.set_active_bus">[docs]</a>    <span class="k">def</span> <span class="nf">set_active_bus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">active_bus</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Allows to activate a bus of the active circuit, the bus must be specified by name.</span>
+<span class="sd">                As a result, this parameter will deliver a string with the index of the active Bus.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitS</span><span class="o">.</span><span class="n">_set_active_bus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">active_bus</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Circuit.set_active_bus_i"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.set_active_bus_i">[docs]</a>    <span class="k">def</span> <span class="nf">set_active_bus_i</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets active the bus specified by index, which is compatible with the index delivered by AllBusNames,</span>
+<span class="sd">                returns 0 it everything ok.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitI</span><span class="o">.</span><span class="n">_set_active_bus_i</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Circuit.set_active_element"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.set_active_element">[docs]</a>    <span class="k">def</span> <span class="nf">set_active_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">active_element</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Allows to activate an element of the active circuit, the element must be specified by name.</span>
+<span class="sd">                As a result, this parameter will deliver a string with the index of the active element.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitS</span><span class="o">.</span><span class="n">_set_active_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">active_element</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Circuit.set_active_class"><a class="viewcode-back" href="../../../../py_dss_interface.html#py_dss_interface.models.Circuit.Circuit.Circuit.set_active_class">[docs]</a>    <span class="k">def</span> <span class="nf">set_active_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Allows tto activate a Class of the active circuit, the Class must be specified by name.</span>
+<span class="sd">                As a result, this parameter will deliver a string with the index of the active Class.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CircuitS</span><span class="o">.</span><span class="n">_set_active_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">py_dss_interface</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">How to Use py-dss-interface Python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Source Code Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#indices-and-tables">Indices and Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Paulo Radatz and Ênio Viana.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
