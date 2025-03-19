@@ -140,6 +140,7 @@ class TestFuses13Bus:
         actual = dss.fuses.monitored_obj
         assert actual == expected
 
+    # TODO it is breaking the following tests
     def test_fuses_write_monitored_obj(self, dss):
         expected = 'line.684111'
         dss.fuses.monitored_obj = expected
