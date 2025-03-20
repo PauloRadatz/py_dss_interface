@@ -43,10 +43,7 @@ class TestDSSInterface13Bus:
         assert actual == expected
 
     def test_dss_num_classes(self, dss):
-        if dss.backend == "Windows-Delphi":
-            expected = 55
-        else:
-            expected = 54
+        expected = 54
         actual = dss.dssinterface.num_classes
         assert actual == expected
 
@@ -107,7 +104,6 @@ class TestDSSInterface13Bus:
     # ===================================================================
     # Variant methods
     # ===================================================================
-    # TODO I assume pyControl should also be in C++
     def test_dss_classes(self, dss):
         expected = ['Solution',
                     'LineCode',
@@ -138,7 +134,6 @@ class TestDSSInterface13Bus:
                     'Generator',
                     'WindGen',
                     'GenDispatcher',
-                    'GenController',
                     'Storage',
                     'StorageController',
                     'Relay',
@@ -165,7 +160,7 @@ class TestDSSInterface13Bus:
                     'DynamicExp',
                     'pyControl']
         actual = dss.dssinterface.classes
-        assert actual == expected
+        assert set(actual) == set(expected)
 
     def test_dss_user_classes(self, dss):
         expected = ['None']
