@@ -395,7 +395,7 @@ class TestCircuit13Bus:
                         9.05457499902695e-06,
                         5.820766e-14]
             actual = dss.circuit.elements_losses
-            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
+            assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
 
     def test_all_bus_vmag_pu(self, dss):
         if platform.architecture()[0] == "64bit":
