@@ -7,7 +7,7 @@
 
 # =============================================================================
 # Project: OpenDSSC
-# Configurations: Debug
+# Configurations: Release
 # =============================================================================
 # =============================================================================
 
@@ -20,7 +20,7 @@ msvc_deps_prefix = Note: including file:
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__OpenDSSC_Common_unscanned_Debug
+rule CXX_COMPILER__OpenDSSC_Common_unscanned_Release
   deps = msvc
   command = ${LAUNCHER}${CODE_CHECK}"C:\PROGRA~1\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx64\x64\cl.exe"  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
@@ -29,7 +29,7 @@ rule CXX_COMPILER__OpenDSSC_Common_unscanned_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__OpenDSSC_EXE_unscanned_Debug
+rule CXX_COMPILER__OpenDSSC_EXE_unscanned_Release
   deps = msvc
   command = ${LAUNCHER}${CODE_CHECK}"C:\PROGRA~1\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx64\x64\cl.exe"  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
@@ -38,7 +38,7 @@ rule CXX_COMPILER__OpenDSSC_EXE_unscanned_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__OpenDSSC_EXE_Debug
+rule CXX_EXECUTABLE_LINKER__OpenDSSC_EXE_Release
   command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --intdir=$OBJECT_DIR --rc="C:\PROGRA~2\Windows Kits\10\bin\10.0.22621.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\10.0.22621.0\x64\mt.exe" --manifests $MANIFESTS -- "C:\PROGRA~1\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx64\x64\link.exe" /nologo @$RSP_FILE  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   rspfile = $RSP_FILE
@@ -49,7 +49,7 @@ rule CXX_EXECUTABLE_LINKER__OpenDSSC_EXE_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__OpenDSSC_LIB_unscanned_Debug
+rule CXX_COMPILER__OpenDSSC_LIB_unscanned_Release
   deps = msvc
   command = ${LAUNCHER}${CODE_CHECK}"C:\PROGRA~1\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx64\x64\cl.exe"  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
@@ -58,7 +58,7 @@ rule CXX_COMPILER__OpenDSSC_LIB_unscanned_Debug
 #############################################
 # Rule for linking CXX shared library.
 
-rule CXX_SHARED_LIBRARY_LINKER__OpenDSSC_LIB_Debug
+rule CXX_SHARED_LIBRARY_LINKER__OpenDSSC_LIB_Release
   command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_dll --intdir=$OBJECT_DIR --rc="C:\PROGRA~2\Windows Kits\10\bin\10.0.22621.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\10.0.22621.0\x64\mt.exe" --manifests $MANIFESTS -- "C:\PROGRA~1\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx64\x64\link.exe" /nologo @$RSP_FILE  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /dll /version:0.0 $LINK_FLAGS && $POST_BUILD"
   description = Linking CXX shared library $TARGET_FILE
   rspfile = $RSP_FILE
@@ -77,7 +77,7 @@ rule CUSTOM_COMMAND
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__klusolve_all_unscanned_Debug
+rule C_COMPILER__klusolve_all_unscanned_Release
   deps = msvc
   command = ${LAUNCHER}${CODE_CHECK}"C:\PROGRA~1\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx64\x64\cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building C object $out
@@ -86,7 +86,7 @@ rule C_COMPILER__klusolve_all_unscanned_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__klusolve_all_unscanned_Debug
+rule CXX_COMPILER__klusolve_all_unscanned_Release
   deps = msvc
   command = ${LAUNCHER}${CODE_CHECK}"C:\PROGRA~1\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx64\x64\cl.exe"  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
@@ -95,7 +95,7 @@ rule CXX_COMPILER__klusolve_all_unscanned_Debug
 #############################################
 # Rule for linking CXX shared library.
 
-rule CXX_SHARED_LIBRARY_LINKER__klusolve_all_Debug
+rule CXX_SHARED_LIBRARY_LINKER__klusolve_all_Release
   command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_dll --intdir=$OBJECT_DIR --rc="C:\PROGRA~2\Windows Kits\10\bin\10.0.22621.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\10.0.22621.0\x64\mt.exe" --manifests $MANIFESTS -- "C:\PROGRA~1\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx64\x64\link.exe" /nologo @$RSP_FILE  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /dll /version:0.0 $LINK_FLAGS && $POST_BUILD"
   description = Linking CXX shared library $TARGET_FILE
   rspfile = $RSP_FILE
