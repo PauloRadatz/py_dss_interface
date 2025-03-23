@@ -28,6 +28,12 @@ if ! is_installed "uuid-dev"; then
     MISSING_PACKAGES+=" uuid-dev"
 fi
 
+# Check and install unzip
+if ! is_installed "unzip"; then
+    echo "📦 Installing unzip..."
+    MISSING_PACKAGES+=" unzip"
+fi
+
 # If any package is missing, install them
 if [ -n "$MISSING_PACKAGES" ]; then
     sudo apt update && sudo apt install -y $MISSING_PACKAGES
