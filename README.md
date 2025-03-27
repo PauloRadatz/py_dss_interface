@@ -82,12 +82,14 @@ print(dss.circuit.total_power)
 ```
 
 ---
+
 ## 📖 Documentation
 
 📖 **Full documentation available at:**
 👉 [https://py-dss-interface.readthedocs.io/en/latest/](https://py-dss-interface.readthedocs.io/en/latest/)
 
 ---
+
 ## 🎓 Learn More
 
 ### 📘 Comprehensive Online Course
@@ -142,6 +144,7 @@ If you use `py-dss-interface` in your academic work, please reference it as foll
 
 **BibTeX Entry:**
 
+
 ```bibtex
 @software{radatz2024bdgd2opendss,
   author = {Paulo Radatz},
@@ -152,7 +155,7 @@ If you use `py-dss-interface` in your academic work, please reference it as foll
 }
 ```
 
-> 📌 Please replace `X.X.X` with the version of the package you are using.
+> 📌 Please replace X.X.X with the version of the package you are using.
 
 ---
 
