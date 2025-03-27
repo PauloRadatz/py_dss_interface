@@ -2,15 +2,15 @@
 Contents
 ========
 
+.. include:: ../README.md
+   :parser: myst_parser.sphinx_
+
 .. toctree::
    :maxdepth: 6
+   :caption: Contents:
 
-   readme
-   installation
-   usage
-   modules
-   contributing
-   authors
+   api_reference
+
    changelog
 
 Indices and tables
