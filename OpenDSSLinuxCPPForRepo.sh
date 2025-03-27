@@ -42,11 +42,16 @@ else
     echo "✅ All required dependencies are already installed!"
 fi
 
+
 # Unzip VersionC file
+# Delete VersionC folder if it exists
+[ -d "VersionC" ] && rm -rf VersionC
 echo "📦 Unzipping VersionC..."
 unzip VersionC
 
 # Create build directory
+# Delete buildlinux folder if it exists
+[ -d "buildlinux" ] && rm -rf buildlinux
 echo "📂 Creating build directory..."
 mkdir -p buildlinux
 
@@ -73,13 +78,19 @@ cp -r . ../src/py_dss_interface/opendss_official/linux/cpp/
 # Move into klusolve directory and copy shared libraries
 cd klusolve
 echo "📦 Copying klusolve shared libraries..."
-cp -r libklusolve_all.so ../../src/py_dss_interface/opendss_official/linux/cpp
-cp -r libklusolve_all.so.0 ../../src/py_dss_interface/opendss_official/linux/cpp
-cp -r libklusolve_all.so.0.0.0 ../../src/py_dss_interface/opendss_official/linux/cpp
+for f in libklusolve_all.so libklusolve_all.so.0 libklusolve_all.so.0.0.0; do
+    if [ -f "$f" ]; then
+        cp "$f" ../../src/py_dss_interface/opendss_official/linux/cpp
+    fi
+done
 cd ..
 
 # Clean up the build directory
+cd ../
 echo "🧹 Cleaning up build directory..."
-rm -rf buildlinux
+# Delete buildlinux folder if it exists
+[ -d "buildlinux" ] && rm -rf buildlinux
+# Delete VersionC folder if it exists
+[ -d "VersionC" ] && rm -rf VersionC
 
 echo "✅ Build process completed successfully!"
