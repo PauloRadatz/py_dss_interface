@@ -123,7 +123,7 @@ The best way to master `py-dss-interface` is through the official course:
 
 - 📁 [OpenDSS Repository]()
 - 📁 Local Installation:
-  After installing OpenDSS in your Windows computer, navigate to:
+  After installing OpenDSS on your Windows computer, navigate to:
   `C:\\Program Files\\OpenDSS\\Examples\\Python\\py-dss-interface`
 
 ---
