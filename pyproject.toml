@@ -44,6 +44,7 @@ dev = [
   "flake8"
 ]
 
+
 [project.urls]
 "Documentation" = "https://py_dss_interface.readthedocs.io/"
 "Changelog" = "https://py_dss_interface.readthedocs.io/en/latest/changelog.html"
