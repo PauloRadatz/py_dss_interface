@@ -43,30 +43,32 @@ pip install py-dss-interface
 
 ### 🐧 Linux (OpenDSS C++ Build Required)
 
-To use `py-dss-interface` on Linux, you'll need to build the OpenDSS C++ engine locally:
+To use `py-dss-interface` on Linux, you'll need to build the OpenDSS C++ engine locally.
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/PauloRadatz/py_dss_interface.git
-   cd py_dss_interface
-   ```
+#### 🔧 Step 1: Clone the repository
 
-2. Run the setup script:
-   ```bash
-   cd py_dss_interface
-   bash OpenDSSLinuxCPPForRepo.sh
-   ```
+```bash
+git clone https://github.com/PauloRadatz/py_dss_interface.git
+cd py_dss_interface
+```
 
-3. Install the package:
-   ```bash
-   pip install -e .
-   ```
-   Or if you don’t need editable mode:
-   ```bash
-   pip install .
-   ```
+> This will create a folder named `py_dss_interface` — you’ll use this path later when installing the package.
 
-📌 **Note:** You will need tools for building C++ code on your system (e.g., `g++`, `cmake`, etc.) to compile the OpenDSS engine locally.
+#### ⚙️ Step 2: Build the OpenDSS C++ engine
+
+```bash
+bash py_dss_interface/OpenDSSLinuxCPPForRepo.sh
+```
+
+📌 **Note:** You'll need tools for building C++ code on your system (e.g., `g++`, `cmake`, etc.).
+
+#### 📦 Step 3: Install the package in your Python environment
+
+If you're using `py-dss-interface` in your own Python project or script, install it like this:
+
+```bash
+pip install path/to/py_dss_interface
+```
 
 ---
 
@@ -121,7 +123,7 @@ The best way to master `py-dss-interface` is through the official course:
 
 - 📁 [OpenDSS Repository]()
 - 📁 Local Installation:
-  After installing OpenDSS in your Windows computer, navigate to:
+  After installing OpenDSS on your Windows computer, navigate to:
   `C:\\Program Files\\OpenDSS\\Examples\\Python\\py-dss-interface`
 
 ---
