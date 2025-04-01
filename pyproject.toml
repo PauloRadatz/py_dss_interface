@@ -4,14 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "py-dss-interface"
-version = "2.0.4"
-description = "Python interface for controlling OpenDSS."
-readme = "README.rst"
+version = "2.1.0"
+description = "Python interface for controlling OpenDSS Powered by EPRI."
+readme = "README.md"
 license = {text = "MIT"}
 authors = [
-  {name = "Paulo Radatz", email = "paulo.radatz@gmail.com"},
-  {name = "Ênio Viana", email = "eniocc@gmail.com"},
-  {name = "Rodolfo Londero", email = "rodolfopl@gmail.com"}
+  {name = "Paulo Radatz", email = "paulo.radatz@gmail.com"}
 ]
 dependencies = [
 ]
@@ -45,6 +43,7 @@ dev = [
   "ipython",
   "flake8"
 ]
+
 
 [project.urls]
 "Documentation" = "https://py_dss_interface.readthedocs.io/"
