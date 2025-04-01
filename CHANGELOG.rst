@@ -1,6 +1,11 @@
-
 Changelog
 =========
+2.1.0 (2025-03-29)
+------------------
+* Updated Delphi OpenDSS to 'Version 10.2.0.1'
+* Several fixes in OpenDSS and py-dss-interface
+* it works with OpenDSS Linux version
+
 2.0.4 (2024-03-20)
 ------------------
 * BUS methods do not raise errors.
