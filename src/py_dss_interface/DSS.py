@@ -67,6 +67,7 @@ class DSS:
                 dll_by_user = DLL_NAME_LINUX
 
                 self._dll_path = dll_folder_param
+                # TODO if there is not a folder with Linux - write a message saying to build - see linux_version
             elif System.detect_platform() == 'Windows':
                 if not dll_folder_param:
                     valid_versions = ["cpp", "delphi"]
