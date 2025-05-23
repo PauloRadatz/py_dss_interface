@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/github/license/PauloRadatz/py_dss_interface)
 ![AppVeyor](https://ci.appveyor.com/api/projects/status/github/PauloRadatz/py_dss_interface?branch=master&svg=true)
 
-`py-dss-interface` is a Python package endorsed by [EPRI](https://www.epri.com/) to control **OpenDSS Powered by EPRI** using the Python programming language. This tool is actively used across multiple EPRI research projects and by many utilities and consultants. It also serves as the foundation for the automated testing process of OpenDSS itself.
+`py-dss-interface` is a Python package to control **OpenDSS Powered by [EPRI](https://www.epri.com/)** using the Python programming language. This tool is actively used across multiple EPRI research projects and by many utilities and consultants. It also serves as the foundation for the automated testing process of OpenDSS itself.
 
 
 ---
