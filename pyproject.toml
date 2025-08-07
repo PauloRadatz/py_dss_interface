@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "py-dss-interface"
-version = "2.1.1"
+version = "2.1.2"
 description = "Python interface for controlling OpenDSS Powered by EPRI."
 readme = "README.md"
 license = {text = "MIT"}

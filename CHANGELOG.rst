@@ -1,5 +1,10 @@
 Changelog
 =========
+2.1.2 (2025-08-07)
+------------------
+* OpenDSS C++ updated to Revision 4061 - VersionC.zip file in the GitHub. SourceForge SourceCode https://sourceforge.net/p/electricdss/code/4061/
+* ErrorOpenDSS fixed
+
 2.1.0 (2025-03-29)
 ------------------
 * Updated Delphi OpenDSS to 'Version 10.2.0.1'

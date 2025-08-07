@@ -26,7 +26,7 @@ year = '2020'
 author = 'Paulo Radatz'
 copyright = '{0}, {1}'.format(year, author)
 py_dss_interface_doc = 'py-dss-interface Documentation'
-version = release = '2.1.1'
+version = release = '2.1.2'
 language = 'en'
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = 'sphinx'
