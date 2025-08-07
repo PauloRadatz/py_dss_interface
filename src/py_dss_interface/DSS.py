@@ -109,7 +109,7 @@ class DSS:
                 self.dssinterface = DSSInterface(self._dss_obj)
                 # self.dssprogress = DSSProgress(self._dss_obj)
                 self.dssproperties = DSSProperties(self._dss_obj)
-                self.errorinterface = DSSInterface(self._dss_obj)
+                self.errorinterface = ErrorOpenDSS(self._dss_obj)
                 self.fuses = Fuses(self._dss_obj)
                 self.generators = Generators(self._dss_obj)
                 self.isources = ISources(self._dss_obj)
