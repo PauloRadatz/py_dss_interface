@@ -29,7 +29,7 @@ new regcontrol.creg1a transformer=reg1a winding=2 vreg=120 band=2 ptratio=20 ctp
 ! REDIRECT INPUT STREAM TO FILE CONTAINING DEFINITIONS OF LINECODES
 ! This file defines the line impedances is a similar manner to the description in the test case.
 
-Redirect        IEEELineCodes.DSS
+Redirect        IEEELineCodes.dss
 
 ! LINE DEFINITIONS
 ! Lines are defined by referring to a "linecode" that contains the impedances per unit length
@@ -205,11 +205,11 @@ New Capacitor.C92c      Bus1=92.3    Phases=1     kVAR=50      kV=2.402
 !REGULATORS - REDIRECT TO DEFINITIONS FILE
 ! This file contains definitions for the remainder of regulators on the feeder:
 
-Redirect IEEE123Regulators.DSS
+Redirect IEEE123Regulators.dss
 
 ! SPOT LOADS -- REDIRECT INPUT STREAM TO LOAD DEFINITIONS FILE
 
-Redirect IEEE123Loads.DSS
+Redirect IEEE123Loads.dss
 
 ! All devices in the test feeder are now defined.
 !
