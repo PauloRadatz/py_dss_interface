@@ -14,7 +14,7 @@ Set MaxControlIter=30
 ! Solve executes the solution for the present solution mode, which is "snapshot".
 
 solve
-Buscoords BusCoords.dat   ! load in bus coordinates
+Buscoords Buscoords.dat   ! load in bus coordinates
 
 ! 4321 intervals, 5-sec PV ramp data
 New Loadshape.SolarRamp npts=4321 Interval=(5 3600 /) mult=(file=pv5sdata1.csv) action=normalize

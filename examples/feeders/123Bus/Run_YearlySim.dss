@@ -7,7 +7,7 @@ Compile "IEEE123Master.dss"
 
 solve
 
-Buscoords BusCoords.dat
+Buscoords buscoords.dat
 
 // Define a yearly loadshape  "loadshape1"
 // Change the path for the actual location of the example loadshape file

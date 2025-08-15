@@ -45,7 +45,7 @@ Set MaxControlIter=30
 New EnergyMeter.Feeder Line.L115 1
 
 solve
-Buscoords BusCoords.dat   ! load in bus coordinates
+Buscoords Buscoords.dat   ! load in bus coordinates
 
 ! Show some selected results
 
@@ -97,7 +97,7 @@ RegControl.creg4c.maxtapchange=0  !Fixed at present tap
 New EnergyMeter.Feeder Line.L115 1
 
 solve
-Buscoords BusCoords.dat   ! load in bus coordinates
+Buscoords Buscoords.dat   ! load in bus coordinates
 
 ! Show some selected results
 
