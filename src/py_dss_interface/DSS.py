@@ -75,7 +75,6 @@ class DSS:
                 dll_by_user = DLL_NAME_LINUX
 
                 self._dll_path = dll_folder_param
-                # TODO if there is not a folder with Linux - write a message saying to build - see linux_version
             elif System.detect_platform() == 'Windows':
                 if not dll_folder_param:
                     valid_versions = ["cpp", "delphi"]
@@ -94,7 +93,7 @@ class DSS:
             os.chdir(self._dll_path)
             self.dll_file_path = os.path.join(self._dll_path, dll_by_user)
             # print(f'Final Path of DLL : {self.dll_file_path} For DEBUGGING')
-            
+
             # Try to load the DLL, with fallback for Google Colab
             try:
                 self._dss_obj = ctypes.cdll.LoadLibrary(str(self.dll_file_path))

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "py-dss-interface"
-version = "2.1.2"
+version = "2.2.0"
 description = "Python interface for controlling OpenDSS Powered by EPRI."
 readme = "README.md"
 license = {text = "MIT"}
@@ -55,10 +55,18 @@ dev = [
 packages = { find = {where = ["src"]} }
 
 [tool.setuptools.package-data]
-"py_dss_interface" = ["opendss_official/**/*",
+"py_dss_interface" = [
+  "opendss_official/**/*",
   "opendss_official/windows/delphi/x64/*.dll",
   "opendss_official/windows/delphi/x86/*.dll",
   "opendss_official/windows/cpp/x64/*.dll",
   "opendss_official/windows/cpp/x86/*.dll",
-  "opendss_official/linux/cpp/*.so"
+  "opendss_official/linux/cpp/*.so",
+  "opendss_official/linux/google_colab/*.so",
+  "opendss_official/linux/google_colab/*.txt",
+  "opendss_official/linux/google_colab/libOpenDSSC.so",
+  "opendss_official/linux/google_colab/libklusolve_all.so",
+  "opendss_official/linux/google_colab/libklusolve_all.so.0",
+  "opendss_official/linux/google_colab/libklusolve_all.so.0.0.0",
+  "opendss_official/linux/google_colab/versions.txt"
 ]
