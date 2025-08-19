@@ -1,6 +1,6 @@
 Changelog
 =========
-2.2.0 (2025-08-07)
+2.2.0 (2025-08-19)
 ------------------
 * OpenDSS C++ updated to Revision 4070 - VersionC.zip file in the GitHub. SourceForge SourceCode https://sourceforge.net/p/electricdss/code/4070/
 * Pre-built OpenDSS Linux version provided to work in Google Colab
