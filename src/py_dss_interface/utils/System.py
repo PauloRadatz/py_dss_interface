@@ -17,6 +17,18 @@ class System:
         return 'System cannot be determined' if plat == 0 else plat
 
     @staticmethod
+    def is_google_colab():
+        """
+        Method to detect if the code is running in Google Colab environment
+        :return: bool: True if running in Google Colab, False otherwise
+        """
+        try:
+            import google.colab
+            return True
+        except ImportError:
+            return False
+
+    @staticmethod
     def get_architecture_path(dll_folder):
         """
         Method to detect the architecture of the machine
