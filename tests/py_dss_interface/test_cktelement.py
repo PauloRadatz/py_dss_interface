@@ -580,7 +580,7 @@ class TestCktElement13Bus:
         dss.text("New Generator.G1  Bus1=645.2 phases=1  kV=2.4 kW=100 kvar=-50 Model=1 Vpu=1 Maxkvar=500 Minkvar=-400")
         dss.circuit.set_active_element("generator.g1")
 
-        expected = 59.99999999999999
+        expected = 60
         actual = dss.cktelement.variable_i(1)
 
         assert actual == expected
@@ -590,12 +590,12 @@ class TestCktElement13Bus:
         dss.circuit.set_active_element("generator.g1")
 
         dss.cktelement.active_variable_name("frequency")
-        expected = 59.99999999999999
+        expected = 60
         actual = dss.cktelement.active_variable
         assert actual == expected
 
         dss.cktelement.active_variable_idx(1)
-        expected = 59.99999999999999
+        expected = 60
         actual = dss.cktelement.active_variable
         assert actual == expected
 
