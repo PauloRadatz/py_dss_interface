@@ -108,7 +108,7 @@ class TestBus13Storages:
         assert actual == expected
 
     def test_read_pu_soc(self, dss):
-        expected = 0.7000000000000001
+        expected = 0.7
         actual = dss.storages.pu_soc
         assert actual == expected
 
