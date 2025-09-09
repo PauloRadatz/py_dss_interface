@@ -3,7 +3,7 @@ Changelog
 2.2.1 (2025-09-09)
 ------------------
 * Updating OpenDSS version 10.2.0.1 with a correction to allow negative loads
-* OpenDSS updated to Revision 4073 - VersionC.zip file in the GitHub. SourceForge SourceCode https://sourceforge.net/p/electricdss/code/4073/
+* OpenDSS updated to Revision 4073. SourceCode https://sourceforge.net/p/electricdss/code/4073/
 
 2.2.0 (2025-08-19)
 ------------------
