@@ -97,23 +97,22 @@ class Fuses(FusesI, FusesS, FusesF, FusesV):
         return FusesI._next(self)
 
     @property
-    def normal(self) -> List[str]:
+    def normal_state(self) -> List[str]:
         """Gets a variant array of strings[0..Nphases-1] indicating the normal state for all phases of the active fuse.
                         If value is -1 an error has occurred.
         Sets a variant array of strings [0..Nphases-1] indicating the state for all phases of the active fuse.
                         If value is -1 an error has occurred."""
-        return FusesV._normal(self)
+        return FusesV._normal_state_read(self)
 
-    @normal.setter
-    def normal(self, value: List[str]):
-        FusesV._normal_write(self, value)
+    @normal_state.setter
+    def normal_state(self, value: List[str]):
+        FusesV._normal_state_write(self, value)
 
     @property
     def num_phases(self) -> int:
         """Gets the number of phases of the active fuse."""
         return FusesI._num_phases(self)
 
-    @property
     def open(self) -> int:
         """Opening of fuse."""
         return FusesI._open(self)

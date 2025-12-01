@@ -38,5 +38,23 @@ class TestBus13DSSProperties:
         assert actual == expected
 
     def test_dssproperties_write_value(self, dss):
-        # todo
-        pass
+        expected = "600"
+        dss.dssproperties.active_property = "1"
+        dss.dssproperties.value_write("600")
+        actual = dss.dssproperties.value_read("1")
+        assert actual == expected
+
+    def test_dssproperties_read_active_property(self, dss):
+        expected = "1"
+        actual = dss.dssproperties.active_property
+        assert actual == expected
+
+    def test_dssproperties_write_active_property(self, dss):
+        expected = "2"
+        dss.dssproperties.active_property = "2"
+        actual = dss.dssproperties.active_property
+        assert actual == expected
+
+        expected = "3"
+        actual = dss.dssproperties.value_read("5")
+        assert actual == expected

@@ -23,3 +23,15 @@ class ReclosersV(Base):
 
     def _reclose_intervals(self) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.ReclosersV, 1)
+
+    def _state_read(self) -> List[str]:
+        return Bridge.pointer_read(self._dss_obj.ReclosersV, 2)
+
+    def _state_write(self, argument:  List[str]):
+        return Bridge.pointer_write(self._dss_obj.ReclosersV, 3, argument,4)
+
+    def _normal_state_read(self) -> List[str]:
+        return Bridge.pointer_read(self._dss_obj.ReclosersV, 4)
+
+    def _normal_state_write(self, argument:  List[str]):
+        return Bridge.pointer_write(self._dss_obj.ReclosersV, 5, argument,4)

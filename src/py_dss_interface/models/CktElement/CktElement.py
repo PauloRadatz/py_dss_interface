@@ -287,3 +287,21 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
         """Returns a pointer to an array of complex with the total powers (complex) at ALL terminals of the active circuit element.
         Each element is a complex structure including real and imaginary parts (double, 16 Bytes per element)."""
         return CktElementV._total_powers(self)
+
+    def open(self) -> List[float]:
+        return CktElementV._open(self)
+
+    def close(self) -> List[float]:
+        return CktElementV._close(self)
+
+    @property
+    def is_open(self) -> List[float]:
+        return CktElementV._is_open(self)
+
+    @property
+    def all_losses(self) -> List[float]:
+        return CktElementV._all_losses(self)
+
+    def handle(self) -> List[float]:
+        return CktElementV._handle(self)
+

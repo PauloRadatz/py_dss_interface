@@ -163,24 +163,24 @@ class Reclosers(ReclosersI, ReclosersV, ReclosersS, ReclosersF):
         ReclosersS._switched_obj_write(self, argument)
 
     @property
-    def state(self) -> str:
+    def state(self) -> List[str]:
         """This property gets the present state of recloser. If set to open, open recloser's controlled element and lock out the recloser.
         If set to close, close recloser's controlled and resets recloser to first operation."""
-        return ReclosersS._state_read(self)
+        return ReclosersV._state_read(self)
 
     @state.setter
-    def state(self, argument: str):
-        ReclosersS._state_write(self, argument)
+    def state(self, argument: List[str]):
+        ReclosersV._state_write(self, argument)
 
     @property
-    def normal_state(self) -> str:
+    def normal_state(self) -> List[str]:
         """This property gets the normal state
         (the state for which the active recloser will be forced into at the beginning of the simulation) for the active recloser."""
-        return ReclosersS._normal_state_read(self)
+        return ReclosersV._normal_state_read(self)
 
     @normal_state.setter
-    def normal_state(self, argument: str):
-        ReclosersS._normal_state_write(self, argument)
+    def normal_state(self, argument: List[str]):
+        ReclosersV._normal_state_write(self, argument)
 
     @property
     def names(self) -> List[str]:

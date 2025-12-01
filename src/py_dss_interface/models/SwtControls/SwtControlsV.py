@@ -23,3 +23,15 @@ class SwtControlsV(Base):
 
     def _names(self) -> List[str]:
         return Bridge.pointer_read(self._dss_obj.SwtControlsV, 0)
+
+    def _state_read(self) -> List[str]:
+        return Bridge.pointer_read(self._dss_obj.SwtControlsV, 1)
+
+    def _state_write(self, argument:  List[str]):
+        return Bridge.pointer_write(self._dss_obj.SwtControlsV, 2, argument,4)
+
+    def _normal_state_read(self) -> List[str]:
+        return Bridge.pointer_read(self._dss_obj.SwtControlsV, 3)
+
+    def _normal_state_write(self, argument:  List[str]):
+        return Bridge.pointer_write(self._dss_obj.SwtControlsV, 4, argument,4)

@@ -89,3 +89,18 @@ class CktElementV(Base):
 
     def _total_powers(self) -> List[float]:
         return Bridge.pointer_read(self._dss_obj.CktElementV, 20)
+
+    def _open(self) -> List[float]:
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 21)
+
+    def _close(self) -> List[float]:
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 22)
+
+    def _is_open(self) -> List[float]:
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 23)
+
+    def _all_losses(self) -> List[float]:
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 24)
+
+    def _handle(self) -> List[float]:
+        return Bridge.pointer_read(self._dss_obj.CktElementV, 25)
