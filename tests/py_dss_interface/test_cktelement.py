@@ -33,7 +33,7 @@ class TestCktElement13Bus:
         actual = dss.cktelement.num_phases
         assert actual == expected
 
-    def test_open(self, dss):
+    def test_terminal_open(self, dss):
         # Check terminal 1 is not open
         expected = 0
         actual = dss.cktelement.is_terminal_open(1)
@@ -73,7 +73,7 @@ class TestCktElement13Bus:
         actual = dss.cktelement.is_terminal_open(1)
         assert actual == expected
 
-    def test_close(self, dss):
+    def test_close_terminal(self, dss):
         expected = 0
         actual = dss.cktelement.open_terminal(2)
         assert actual == expected
@@ -90,7 +90,7 @@ class TestCktElement13Bus:
         actual = dss.cktelement.is_terminal_open(2)
         assert actual == expected
 
-    def test_is_open(self, dss):
+    def test_is_open_terminal(self, dss):
         expected = 0
         actual = dss.cktelement.is_terminal_open(1)
         assert actual == expected
@@ -614,3 +614,35 @@ class TestCktElement13Bus:
         dss.cktelement.active_variable = expected
         actual = dss.cktelement.active_variable
         # assert actual == expected
+
+    def test_all_losses(self, dss):
+        expected = [0.009054574999026954,
+                    5.820766091346741e-11,
+                    0.009054574999026954,
+                    5.820766091346741e-11,
+                    0.0,
+                    0.0]
+        actual = dss.cktelement.all_losses
+        assert actual == expected
+
+    # def test_open(self, dss):
+    #     expected = [0, 0, 0]
+    #     dss.cktelement.open()
+    #     actual = dss.cktelement.is_open
+    #     assert actual == expected
+    #
+    # def test_close(self, dss):
+    #     expected = [0, 0, 0]
+    #     dss.cktelement.close()
+    #     actual = dss.cktelement.is_open
+    #     assert actual == expected
+    #
+    # def test_is_open(self, dss):
+    #     expected = [0, 0, 0]
+    #     actual = dss.cktelement.is_open
+    #     assert actual == expected
+
+    def test_handle(self, dss):
+        expected = [39]
+        actual = dss.cktelement.handle()
+        assert actual == expected

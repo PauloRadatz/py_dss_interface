@@ -20,19 +20,6 @@ class SwtControls(SwtControlsS, SwtControlsV, SwtControlsI, SwtControlsF):
     def __init__(self, obj_dss):
         super().__init__(obj_dss)
 
-    @property
-    def delay(self) -> float:
-        """Gets the time delay [s] between arming and opening or closing the switch.
-                Control may reset before actually operating the switch.
-
-        Sets sets the time delay [s] between arming and opening or closing the switch.
-        Control may reset before actually operating the switch."""
-        return SwtControlsF._delay_read(self)
-
-    @delay.setter
-    def delay(self, value: float):
-        SwtControlsF._delay_write(self, value)
-
     def first(self) -> int:
         """Sets the first SwtControl active. Returns 0 if no more."""
         return SwtControlsI._first(self)
@@ -41,18 +28,14 @@ class SwtControls(SwtControlsS, SwtControlsV, SwtControlsI, SwtControlsF):
         """Sets the next SwtControl active. Returns 0 if no more."""
         return SwtControlsI._next(self)
 
-    @property
-    def action(self) -> int:
-        """Gets the open (1) or close (2) action of the switch. No effect if switch is locked.
-                However, reset removes any lock and then closes the switch (shelf state). 0 = none action.
+    def open(self) -> int:
+        return SwtControlsI._open(self)
 
-        Sets open (1) or close (2) the switch. No effect if switch is locked. However,
-        reset removes any lock and then closes the switch (shelf state). 0 = none action (see manual for details). """
-        return SwtControlsI._action_read(self)
+    def close(self) -> int:
+        return SwtControlsI._close(self)
 
-    @action.setter
-    def action(self, value: int):
-        SwtControlsI._action_write(self, value)
+    def reset(self) -> int:
+        return SwtControlsI._reset(self)
 
     @property
     def is_locked(self) -> int:
@@ -107,3 +90,19 @@ class SwtControls(SwtControlsS, SwtControlsV, SwtControlsI, SwtControlsF):
     def names(self) -> List[str]:
         """Gets a variant array of strings with all SwtControl names in the active circuit."""
         return SwtControlsV._names(self)
+
+    @property
+    def state(self) -> List[str]:
+        return SwtControlsV._state_read(self)
+
+    @state.setter
+    def state(self, argument: List[str]):
+        SwtControlsV._state_write(self, argument)
+
+    @property
+    def normal_state(self) -> List[str]:
+        return SwtControlsV._normal_state_read(self)
+
+    @normal_state.setter
+    def normal_state(self, argument: List[str]):
+        SwtControlsV._normal_state_write(self, argument)

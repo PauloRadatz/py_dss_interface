@@ -35,7 +35,14 @@ class DSSPropertiesS(Base):
         result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(2), argument.encode('ascii')))
         return result.value.decode('ascii')
 
-    # TODO include in test
     def _value_write(self, argument: str) -> str:
         result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(3), argument.encode('ascii')))
+        return result.value.decode('ascii')
+
+    def _active_property_read(self) -> str:
+        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(4), ctypes.c_int32(0)))
+        return result.value.decode('ascii')
+
+    def _active_property_write(self, argument: str) -> str:
+        result = ctypes.c_char_p(self._dss_obj.DSSProperties(ctypes.c_int32(5), argument.encode('ascii')))
         return result.value.decode('ascii')

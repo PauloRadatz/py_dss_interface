@@ -42,10 +42,17 @@ class DSSProperties(DSSPropertiesS):
                 """
         return DSSPropertiesS._value_read(self, argument)
 
-    # TODO include in test
     def value_write(self, argument: str) -> str:
         """This parameter will allow to set the value of the active property. The new value must be specified in the
                 variable “argument” as string. This parameter will deliver the name of the active property. The index of the
                 property must be specified in the argument. The index minimum value is 1. This value must be entered as string.
                 """
         return DSSPropertiesS._value_write(self, argument)
+
+    @property
+    def active_property(self) -> str:
+        return DSSPropertiesS._active_property_read(self)
+
+    @active_property.setter
+    def active_property(self, value: str):
+        DSSPropertiesS._active_property_write(self, value)

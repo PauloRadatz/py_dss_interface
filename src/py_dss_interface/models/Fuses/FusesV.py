@@ -28,10 +28,8 @@ class FusesV(Base):
     def _state_write(self, argument: List[str]) -> List[str]:
         return Bridge.pointer_write(self._dss_obj.FusesV, 2, argument, 4)
 
-    # TODO include in test
-    def _normal(self) -> List[str]:
+    def _normal_state_read(self) -> List[str]:
         return Bridge.pointer_read(self._dss_obj.FusesV, 3)
 
-    # TODO include in test
-    def _normal_write(self, argument: List[str]) -> List[str]:
+    def _normal_state_write(self, argument: List[str]) -> List[str]:
         return Bridge.pointer_write(self._dss_obj.FusesV, 4, argument, 4)

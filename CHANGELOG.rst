@@ -1,5 +1,11 @@
 Changelog
 =========
+2.3.0 (2025-)
+------------------
+* Updated methods for reclosers and swtcontrols
+* Added methods for cktelement
+* Added methods for dssproperties
+
 2.2.1 (2025-09-09)
 ------------------
 * Updating OpenDSS version 10.2.0.1 with a correction to allow negative loads

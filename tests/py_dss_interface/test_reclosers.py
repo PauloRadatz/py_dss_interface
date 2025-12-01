@@ -39,30 +39,36 @@ class TestReclosers13Bus:
     # Integer methods
     # ===================================================================
     def test_reclosers_read_state(self, dss):
-        expected = "closed"
+        expected = ["closed", "closed", "closed"]
         actual = dss.reclosers.state
         assert expected == actual
 
     def test_reclosers_write_state(self, dss):
-        expected = "open"
+        expected = ["open", "open", "open"]
+        dss.reclosers.state = expected
+        actual = dss.reclosers.state
+        assert expected == actual
+
+    def test_reclosers_write_state_(self, dss):
+        expected = ["open", "closed", "open"]
         dss.reclosers.state = expected
         actual = dss.reclosers.state
         assert expected == actual
 
     def test_reclosers_read_normal_state(self, dss):
-        expected = "closed"
+        expected = ["closed", "closed", "closed"]
         actual = dss.reclosers.normal_state
         assert expected == actual
 
     def test_reclosers_write_normal_state(self, dss):
-        expected = "open"
+        expected = ["open", "open", "open"]
         dss.reclosers.normal_state = expected
         actual = dss.reclosers.normal_state
         assert expected == actual
 
     def test_reclosers_reset(self, dss):
         dss.reclosers.state = "open"
-        expected = "closed"
+        expected = ["closed", "closed", "closed"]
         dss.reclosers.reset()
         actual = dss.reclosers.state
         assert actual == expected

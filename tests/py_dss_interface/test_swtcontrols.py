@@ -33,16 +33,18 @@ class TestSwtControls13Bus:
         actual = dss.swtcontrols.next()
         assert actual == expected
 
-    def test_swtcontrols_read_action(self, dss):
-        expected = 2
-        actual = dss.swtcontrols.action
+    def test_swtcontrols_open(self, dss):
+        dss.swtcontrols.open()
+        expected = ["open", "open", "open"]
+        actual = dss.swtcontrols.state
         assert actual == expected
 
-    def test_swtcontrols_write_action(self, dss):
-        expected = 2
-        dss.swtcontrols.action = expected
-        actual = dss.swtcontrols.action
+    def test_swtcontrols_close(self, dss):
+        dss.swtcontrols.close()
+        expected = ["closed", "closed", "closed"]
+        actual = dss.swtcontrols.state
         assert actual == expected
+
 
     # TODO Does not work for C++
     def test_swtcontrols_read_is_locked(self, dss):
@@ -83,16 +85,6 @@ class TestSwtControls13Bus:
     # ===================================================================
     # Float methods
     # ===================================================================
-    def test_swtcontrols_read_delay(self, dss):
-        expected = 120
-        actual = dss.swtcontrols.delay
-        assert actual == expected
-
-    def test_swtcontrols_write_delay(self, dss):
-        expected = 160.0
-        dss.swtcontrols.delay = expected
-        actual = dss.swtcontrols.delay
-        assert actual == expected
 
     # ===================================================================
     # String methods
@@ -125,4 +117,39 @@ class TestSwtControls13Bus:
     def test_swtcontrols_names(self, dss):
         expected = ['1', '2']
         actual = dss.swtcontrols.names
+        assert actual == expected
+
+    def test_swtcontrols_read_state(self, dss):
+        expected = ["closed", "closed", "closed"]
+        actual = dss.swtcontrols.state
+        assert expected == actual
+
+    def test_swtcontrols_write_state(self, dss):
+        expected = ["open", "open", "open"]
+        dss.swtcontrols.state = expected
+        actual = dss.swtcontrols.state
+        assert expected == actual
+
+    def test_swtcontrols_write_state_(self, dss):
+        expected = ["open", "closed", "open"]
+        dss.swtcontrols.state = expected
+        actual = dss.swtcontrols.state
+        assert expected == actual
+
+    def test_swtcontrols_read_normal_state(self, dss):
+        expected = ["closed", "closed", "closed"]
+        actual = dss.swtcontrols.normal_state
+        assert expected == actual
+
+    def test_swtcontrols_write_normal_state(self, dss):
+        expected = ["open", "open", "open"]
+        dss.swtcontrols.normal_state = expected
+        actual = dss.swtcontrols.normal_state
+        assert expected == actual
+
+    def test_swtcontrols_reset(self, dss):
+        dss.swtcontrols.state = ["open", "open", "open"]
+        expected = ["closed", "closed", "closed"]
+        dss.swtcontrols.reset()
+        actual = dss.swtcontrols.state
         assert actual == expected

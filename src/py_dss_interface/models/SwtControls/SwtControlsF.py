@@ -19,8 +19,4 @@ class SwtControlsF(Base):
     the variable Parameter, which can be one of the following.
     """
 
-    def _delay_read(self) -> float:
-        return float(self._dss_obj.SwtControlsF(ctypes.c_int32(0), ctypes.c_double(0)))
 
-    def _delay_write(self, argument) -> float:
-        return float(self._dss_obj.SwtControlsF(ctypes.c_int32(1), ctypes.c_double(argument)))

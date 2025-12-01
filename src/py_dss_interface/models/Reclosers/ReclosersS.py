@@ -39,19 +39,3 @@ class ReclosersS(Base):
     def _switched_obj_write(self, argument: str):
         result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(5), argument.encode('ascii')))
         return result.value.decode('ascii')
-
-    def _state_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(6), ctypes.c_int32(0)))
-        return result.value.decode('ascii')
-
-    def _state_write(self, argument: str):
-        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(7), argument.encode('ascii')))
-        return result.value.decode('ascii')
-
-    def _normal_state_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(8), ctypes.c_int32(0)))
-        return result.value.decode('ascii')
-
-    def _normal_state_write(self, argument: str):
-        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(9), argument.encode('ascii')))
-        return result.value.decode('ascii')

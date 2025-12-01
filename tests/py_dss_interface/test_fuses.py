@@ -42,7 +42,7 @@ class TestFuses13Bus:
 
     def test_fuses_open(self, dss):
         expected = 0
-        actual = dss.fuses.open
+        actual = dss.fuses.open()
         assert actual == expected
 
     def test_fuses_close(self, dss):
@@ -191,23 +191,22 @@ class TestFuses13Bus:
 
     def test_fuses_read_normal(self, dss):
         expected = ['closed']
-        actual = dss.fuses.normal
+        actual = dss.fuses.normal_state
         assert actual == expected
 
     def test_fuses_write_normal(self, dss):
         expected = ['closed']
         dss.fuses.normal = expected
-        actual = dss.fuses.normal
+        actual = dss.fuses.normal_state
         assert actual == expected
 
         expected = ['open']
-        dss.fuses.normal = expected
-        actual = dss.fuses.normal
+        dss.fuses.normal_state = expected
+        actual = dss.fuses.normal_state
         assert actual == expected
 
-    # TODO it is breaking the following tests
-    # def test_fuses_write_monitored_obj(self, dss):
-    #     expected = 'line.684111'
-    #     dss.fuses.monitored_obj = expected
-    #     actual = dss.fuses.monitored_obj
-    #     assert actual == expected
+    def test_fuses_write_monitored_obj(self, dss):
+        expected = 'line.684111'
+        dss.fuses.monitored_obj = expected
+        actual = dss.fuses.monitored_obj
+        assert actual == expected
