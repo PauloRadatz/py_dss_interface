@@ -288,15 +288,14 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
         Each element is a complex structure including real and imaginary parts (double, 16 Bytes per element)."""
         return CktElementV._total_powers(self)
 
-    def open(self) -> List[float]:
-        return CktElementV._open(self)
+    def open(self, arg: List[int]) -> List[int]:
+        return CktElementV._open(self, arg)
 
-    def close(self) -> List[float]:
-        return CktElementV._close(self)
+    def close(self, arg: List[int]) -> List[int]:
+        return CktElementV._close(self, arg)
 
-    @property
-    def is_open(self) -> List[float]:
-        return CktElementV._is_open(self)
+    def is_open(self, arg: List[int]) -> List[int]:
+        return CktElementV._is_open(self, arg)
 
     @property
     def all_losses(self) -> List[float]:

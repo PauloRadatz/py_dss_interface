@@ -21,7 +21,10 @@ def pointer_read(f: callable, param: int, optional=None) -> List:
     mySize = ctypes.c_long()
 
     if optional:
-        op_list = [optional]
+        if type(optional) == list:
+            op_list = optional
+        else:
+            op_list = [optional]
         c_array = (ctypes.c_int32 * len(op_list))(*op_list)
         myPointer = ctypes.cast(c_array, ctypes.c_void_p)
 
