@@ -625,22 +625,17 @@ class TestCktElement13Bus:
         actual = dss.cktelement.all_losses
         assert actual == expected
 
-    # def test_open(self, dss):
-    #     expected = [0, 0, 0]
-    #     dss.cktelement.open()
-    #     actual = dss.cktelement.is_open
-    #     assert actual == expected
-    #
-    # def test_close(self, dss):
-    #     expected = [0, 0, 0]
-    #     dss.cktelement.close()
-    #     actual = dss.cktelement.is_open
-    #     assert actual == expected
-    #
-    # def test_is_open(self, dss):
-    #     expected = [0, 0, 0]
-    #     actual = dss.cktelement.is_open
-    #     assert actual == expected
+    def test_open(self, dss):
+        expected = [1]
+        dss.cktelement.open([1, 2])
+        actual = dss.cktelement.is_open([1, 2])
+        assert actual == expected
+
+    def test_close(self, dss):
+        expected = [0]
+        dss.cktelement.close([1, 2])
+        actual = dss.cktelement.is_open([1, 2])
+        assert actual == expected
 
     def test_handle(self, dss):
         expected = [39]
