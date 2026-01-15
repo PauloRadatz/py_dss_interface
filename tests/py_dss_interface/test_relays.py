@@ -33,44 +33,44 @@ class TestRelays13Bus:
     # ===================================================================
 
     def test_relays_open(self, dss):
-        expected = "open"
+        expected = ['open', 'open', 'open']
         dss.relays.open()
         actual = dss.relays.state
         assert expected == actual
 
     def test_relays_close(self, dss):
-        expected = "closed"
+        expected = ['closed', 'closed', 'closed']
         dss.relays.open()
         dss.relays.close()
         actual = dss.relays.state
         assert expected == actual
 
     def test_relays_read_state(self, dss):
-        expected = "closed"
+        expected = ['closed', 'closed', 'closed']
         actual = dss.relays.state
         assert expected == actual
 
     def test_relays_write_state(self, dss):
-        expected = "open"
+        expected = ['open', 'closed', 'closed']
         dss.relays.state = expected
         actual = dss.relays.state
         assert expected == actual
 
     def test_relays_read_normal_state(self, dss):
-        expected = "closed"
+        expected = ["closed", "closed", "closed"]
         actual = dss.relays.normal_state
         assert expected == actual
 
     def test_relays_write_normal_state(self, dss):
-        expected = "open"
+        expected = ["open", "open", "open"]
         dss.relays.normal_state = expected
         actual = dss.relays.normal_state
         assert expected == actual
 
-    def test_relays_reset(self, dss):
+    def test_relays_reset_time(self, dss):
         dss.relays.state = "open"
-        expected = "closed"
-        dss.relays.reset()
+        expected = ['closed', 'closed', 'closed']
+        dss.relays.reset_time()
         actual = dss.relays.state
         assert actual == expected
 

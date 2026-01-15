@@ -51,5 +51,5 @@ class RelaysI(Base):
     def _close(self) -> int:
         return self._dss_obj.RelaysI(ctypes.c_int32(10), ctypes.c_int32(0))
 
-    def _reset(self) -> int:
+    def _reset_time(self) -> int:
         return self._dss_obj.RelaysI(ctypes.c_int32(11), ctypes.c_int32(0))
