@@ -22,3 +22,16 @@ class RelaysV(Base):
 
     def _names(self) -> List[str]:
         return Bridge.pointer_read(self._dss_obj.RelaysV, 0)
+
+    def _state_read(self) -> List[str]:
+        return Bridge.pointer_read(self._dss_obj.RelaysV, 1)
+
+    def _state_write(self, argument:  List[str]):
+        return Bridge.pointer_write(self._dss_obj.RelaysV, 2, argument,4)
+
+    def _normal_state_read(self) -> List[str]:
+        return Bridge.pointer_read(self._dss_obj.RelaysV, 3)
+
+    def _normal_state_write(self, argument:  List[str]):
+        return Bridge.pointer_write(self._dss_obj.RelaysV, 4, argument,4)
+
