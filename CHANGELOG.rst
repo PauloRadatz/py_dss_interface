@@ -1,7 +1,9 @@
 Changelog
 =========
-2.3.0 (2025-)
+2.3.0 (2025-01-31)
 ------------------
+* Updating OpenDSS version 11.0.0.1
+* Updating OpenDSS C version at revision 4133
 * Updated methods for reclosers and swtcontrols
 * Added methods for cktelement
 * Added methods for dssproperties
