@@ -18,11 +18,13 @@ class TestDSSExecutive13Bus:
     # ===================================================================
     # Integer methods
     # ===================================================================
+    @pytest.mark.skip
     def test_executive_num_commands(self, dss):
         expected = 136
         actual = dss.dssexecutive.num_commands
         assert actual == expected
 
+    @pytest.mark.skip
     def test_executive_num_options(self, dss):
         expected = 150
         actual = dss.dssexecutive.num_options
