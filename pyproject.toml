@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=42", "wheel", "setuptools_scm"]
+requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,7 +7,7 @@ name = "py-dss-interface"
 version = "2.2.1"
 description = "Python interface for controlling OpenDSS Powered by EPRI."
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
   {name = "Paulo Radatz", email = "paulo.radatz@gmail.com"}
 ]
@@ -18,7 +18,6 @@ keywords = ["OpenDSS", "Python", "Power Systems", "Distribution Systems", "Energ
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Science/Research",
-  "License :: OSI Approved :: MIT License",
   "Operating System :: Microsoft :: Windows",
   "Operating System :: POSIX :: Linux",
   "Programming Language :: Python :: 3",
