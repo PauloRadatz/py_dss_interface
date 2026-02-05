@@ -19,7 +19,7 @@ class ISourcesS(Base):
     """
 
     def _name_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.IsourceS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.IsourceS(ctypes.c_int32(0), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _name_write(self, argument: str) -> str:

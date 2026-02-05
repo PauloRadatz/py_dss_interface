@@ -19,7 +19,7 @@ class SettingsS(Base):
     """
 
     def _auto_bus_list_read(self):
-        result = ctypes.c_char_p(self._dss_obj.SettingsS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.SettingsS(ctypes.c_int32(0), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _auto_bus_list_write(self, argument):
@@ -27,7 +27,7 @@ class SettingsS(Base):
         return result.value.decode('ascii')
 
     def _price_curve_read(self):
-        result = ctypes.c_char_p(self._dss_obj.SettingsS(ctypes.c_int32(2), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.SettingsS(ctypes.c_int32(2), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _price_curve_write(self, argument):

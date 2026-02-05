@@ -23,11 +23,11 @@ class DSSInterfaceS(Base):
         return result.value.decode('ascii')
 
     def _version(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSS(ctypes.c_int32(1), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.DSSS(ctypes.c_int32(1), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _datapath_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSS(ctypes.c_int32(2), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.DSSS(ctypes.c_int32(2), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _datapath_write(self, argument: str) -> str:
@@ -35,5 +35,5 @@ class DSSInterfaceS(Base):
         return result.value.decode('ascii')
 
     def _default_editor(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSS(ctypes.c_int32(4), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.DSSS(ctypes.c_int32(4), "".encode('ascii')))
         return result.value.decode('ascii')

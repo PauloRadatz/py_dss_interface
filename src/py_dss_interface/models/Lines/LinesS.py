@@ -22,7 +22,7 @@ class LinesS(Base):
     """
 
     def _name_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(0), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _name_write(self, argument: str) -> str:
@@ -30,7 +30,7 @@ class LinesS(Base):
         return result.value.decode('ascii')
 
     def _bus1_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(2), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(2), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _bus1_write(self, argument: str) -> str:
@@ -38,7 +38,7 @@ class LinesS(Base):
         return result.value.decode('ascii')
 
     def _bus2_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(4), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(4), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _bus2_write(self, argument: str) -> str:
@@ -47,7 +47,7 @@ class LinesS(Base):
 
     # TODO: check conflict with another method in this class. Are they the same?
     def _linecode_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(6), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(6), "".encode('ascii')))
         return result.value.decode('ascii')
 
     # TODO: check conflict with another method in this class. Are they the same?
@@ -56,7 +56,7 @@ class LinesS(Base):
         return result.value.decode('ascii')
 
     def _geometry_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(8), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(8), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _geometry_write(self, argument: str) -> str:
@@ -64,7 +64,7 @@ class LinesS(Base):
         return result.value.decode('ascii')
 
     def _spacing_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(10), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.LinesS(ctypes.c_int32(10), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _spacing_write(self, argument: str) -> str:

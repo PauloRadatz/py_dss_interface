@@ -17,7 +17,7 @@ class ReclosersS(Base):
     """
 
     def _name_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(0), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _name_write(self, argument: str):
@@ -25,7 +25,7 @@ class ReclosersS(Base):
         return result.value.decode('ascii')
 
     def _monitored_obj_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(2), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(2), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _monitored_obj_write(self, argument: str):
@@ -33,7 +33,7 @@ class ReclosersS(Base):
         return result.value.decode('ascii')
 
     def _switched_obj_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(4), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.ReclosersS(ctypes.c_int32(4), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _switched_obj_write(self, argument: str):

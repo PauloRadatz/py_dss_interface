@@ -20,7 +20,7 @@ class SwtControlsS(Base):
     """
 
     def _name_read(self):
-        result = ctypes.c_char_p(self._dss_obj.SwtControlsS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.SwtControlsS(ctypes.c_int32(0), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _name_write(self, argument):
@@ -28,7 +28,7 @@ class SwtControlsS(Base):
         return result.value.decode('ascii')
 
     def _switched_obj_read(self):
-        result = ctypes.c_char_p(self._dss_obj.SwtControlsS(ctypes.c_int32(2), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.SwtControlsS(ctypes.c_int32(2), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _switched_obj_write(self, argument):
