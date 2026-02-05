@@ -19,11 +19,11 @@ class SolutionS(Base):
     """
 
     def _mode_id(self):
-        result = ctypes.c_char_p(self._dss_obj.SolutionS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.SolutionS(ctypes.c_int32(0), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _ld_curve_read(self):
-        result = ctypes.c_char_p(self._dss_obj.SolutionS(ctypes.c_int32(1), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.SolutionS(ctypes.c_int32(1), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _ld_curve_write(self, argument):
@@ -31,7 +31,7 @@ class SolutionS(Base):
         return result.value.decode('ascii')
 
     def _default_daily_read(self):
-        result = ctypes.c_char_p(self._dss_obj.SolutionS(ctypes.c_int32(3), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.SolutionS(ctypes.c_int32(3), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _default_daily_write(self, argument):
@@ -39,7 +39,7 @@ class SolutionS(Base):
         return result.value.decode('ascii')
 
     def _default_yearly_read(self):
-        result = ctypes.c_char_p(self._dss_obj.SolutionS(ctypes.c_int32(5), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.SolutionS(ctypes.c_int32(5), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _default_yearly_write(self, argument):

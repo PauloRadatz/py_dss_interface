@@ -21,7 +21,7 @@ class LoadsS(Base):
     """
 
     def _name(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(0), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _name_write(self, argument) -> str:
@@ -29,7 +29,7 @@ class LoadsS(Base):
         return result.value.decode('ascii')
 
     def _cvr_curve(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(2), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(2), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _cvr_curve_write(self, argument) -> str:
@@ -37,7 +37,7 @@ class LoadsS(Base):
         return result.value.decode('ascii')
 
     def _daily(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(4), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(4), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _daily_write(self, argument) -> str:
@@ -45,7 +45,7 @@ class LoadsS(Base):
         return result.value.decode('ascii')
 
     def _duty(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(6), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(6), "".encode('ascii')))
         return result.value.decode('ascii')
 
     # TODO include in test
@@ -54,7 +54,7 @@ class LoadsS(Base):
         return result.value.decode('ascii')
 
     def _spectrum(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(8), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(8), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _spectrum_write(self, argument) -> str:
@@ -62,7 +62,7 @@ class LoadsS(Base):
         return result.value.decode('ascii')
 
     def _yearly(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(10), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(10), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _yearly_write(self, argument) -> str:
@@ -70,7 +70,7 @@ class LoadsS(Base):
         return result.value.decode('ascii')
 
     def _growth(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(12), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(12), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _growth_write(self, argument) -> str:
@@ -78,5 +78,5 @@ class LoadsS(Base):
         return result.value.decode('ascii')
 
     def _sensor(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(14), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.DSSLoadsS(ctypes.c_int32(14), "".encode('ascii')))
         return result.value.decode('ascii')

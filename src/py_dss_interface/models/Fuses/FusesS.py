@@ -19,7 +19,7 @@ class FusesS(Base):
     """
 
     def _name(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.FusesS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.FusesS(ctypes.c_int32(0), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _name_write(self, argument: str) -> str:
@@ -27,7 +27,7 @@ class FusesS(Base):
         return result.value.decode('ascii')
 
     def _monitored_obj(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.FusesS(ctypes.c_int32(2), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.FusesS(ctypes.c_int32(2), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _monitored_obj_write(self, argument: str) -> str:
@@ -35,7 +35,7 @@ class FusesS(Base):
         return result.value.decode('ascii')
 
     def _switched_obj(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.FusesS(ctypes.c_int32(4), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.FusesS(ctypes.c_int32(4), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _switched_obj_write(self, argument) -> str:
@@ -43,7 +43,7 @@ class FusesS(Base):
         return result.value.decode('ascii')
 
     def _tcc_curve(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.FusesS(ctypes.c_int32(6), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.FusesS(ctypes.c_int32(6), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _tcc_curve_write(self, argument: str) -> str:

@@ -13,7 +13,7 @@ from py_dss_interface.models.Base import Base
 class StoragesS(Base):
 
     def _name_read(self) -> str:
-        result = ctypes.c_char_p(self._dss_obj.StoragesS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.StoragesS(ctypes.c_int32(0), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _name_write(self, argument: str) -> str:

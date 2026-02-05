@@ -22,7 +22,7 @@ class TransformersS(Base):
     """
 
     def _xfmr_code_read(self):
-        result = ctypes.c_char_p(self._dss_obj.TransformersS(ctypes.c_int32(0), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.TransformersS(ctypes.c_int32(0), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _xfmr_code_write(self, argument):
@@ -30,7 +30,7 @@ class TransformersS(Base):
         return result.value.decode('ascii')
 
     def _name_read(self):
-        result = ctypes.c_char_p(self._dss_obj.TransformersS(ctypes.c_int32(2), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.TransformersS(ctypes.c_int32(2), "".encode('ascii')))
         return result.value.decode('ascii')
 
     def _name_write(self, argument):
@@ -38,5 +38,5 @@ class TransformersS(Base):
         return result.value.decode('ascii')
 
     def _str_wdg_voltages(self):
-        result = ctypes.c_char_p(self._dss_obj.TransformersS(ctypes.c_int32(4), ctypes.c_int32(0)))
+        result = ctypes.c_char_p(self._dss_obj.TransformersS(ctypes.c_int32(4), "".encode('ascii')))
         return result.value.decode('ascii')
