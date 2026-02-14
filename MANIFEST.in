@@ -23,13 +23,6 @@ recursive-include src/py_dss_interface/opendss_official/windows/delphi/x86 *.dll
 recursive-include src/py_dss_interface/opendss_official/windows/cpp/x64 *.dll
 recursive-include src/py_dss_interface/opendss_official/windows/cpp/x86 *.dll
 recursive-include src/py_dss_interface/opendss_official/linux/cpp/ *.so
-recursive-include src/py_dss_interface/opendss_official/linux/google_colab/ *.so
-recursive-include src/py_dss_interface/opendss_official/linux/google_colab/ *.txt
-include src/py_dss_interface/opendss_official/linux/google_colab/libOpenDSSC.so
-include src/py_dss_interface/opendss_official/linux/google_colab/libklusolve_all.so
-include src/py_dss_interface/opendss_official/linux/google_colab/libklusolve_all.so.0
-include src/py_dss_interface/opendss_official/linux/google_colab/libklusolve_all.so.0.0.0
-include src/py_dss_interface/opendss_official/linux/google_colab/versions.txt
 
 include tox.ini .travis.yml .appveyor.yml .readthedocs.yml
 

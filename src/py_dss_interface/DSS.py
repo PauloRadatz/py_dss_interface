@@ -44,10 +44,8 @@ class DSS:
         self.backend = None
 
         if System.detect_platform() == 'Linux':
-            if System.is_google_colab():
-                self.backend = "Linux-C++-GoogleColab"
-            else:
-                self.backend = "Linux-C++"
+            self.backend = "Linux-C++"
+
         else:
             if windows_version == "delphi":
                 self.backend = "Windows-Delphi"
@@ -63,13 +61,8 @@ class DSS:
         else:
             if System.detect_platform() == 'Linux':
                 if not dll_folder_param:
-                    # Check if running in Google Colab and use pre-built library
-                    if System.is_google_colab():
-                        dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))),
-                                                        "opendss_official", "linux", "google_colab")
-                    else:
-                        dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))),
-                                                        "opendss_official", "linux", "cpp")
+                    dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))),
+                                                    "opendss_official", "linux", "cpp")
                 # print(dll_folder_param)
                 dll_folder_param = pathlib.Path(dll_folder_param)
                 dll_by_user = DLL_NAME_LINUX
@@ -94,16 +87,11 @@ class DSS:
             self.dll_file_path = os.path.join(self._dll_path, dll_by_user)
             # print(f'Final Path of DLL : {self.dll_file_path} For DEBUGGING')
 
-            # Try to load the DLL, with fallback for Google Colab
+            # Try to load the DLL
             try:
                 self._dss_obj = ctypes.cdll.LoadLibrary(str(self.dll_file_path))
             except Exception as e:
-                # If we're in Google Colab and the google_colab version failed, try the standard cpp version
-                if System.is_google_colab():
-                    print("Google Colab version failed, please let Paulo Radatz know using paulo.radatz@gmail.com.")
-                    print("You can try to build OpenDSS from source code in Google Colab following https://github.com/PauloRadatz/py_dss_interface/blob/master/examples/1_py_dss_interfece_in_google_colab.ipynb.")
-                else:
-                    raise e
+                raise e
 
         self.started = bool(self._dss_obj)
         if self.started:

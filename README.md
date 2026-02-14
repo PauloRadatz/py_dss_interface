@@ -86,6 +86,44 @@ print(dss.circuit.total_power)
 
 ---
 
+## 🧪 Running Tests
+
+The project includes a comprehensive test suite using pytest. Tests can be run individually or together depending on your platform and backend.
+
+### Basic Test Execution
+
+```bash
+# Run all tests
+pytest tests/
+```
+
+### Test Execution Modes
+
+#### Automatic Individual Execution (Default)
+
+On **Linux** or when using the **C++ backend on Windows**, tests automatically run individually in separate subprocesses to prevent memory leak issues. This is handled automatically by the test framework.
+
+#### Running All Tests Together
+
+To run all tests together (faster execution, but may have memory issues if there are leaks), use the `--run-together` flag:
+
+```bash
+# Run all tests together (even on Linux/C++)
+pytest tests/ --run-together
+```
+
+**Note:** Use `--run-together` when you want to test memory management fixes or need faster test execution. Individual execution is recommended for normal testing to prevent memory leaks.
+
+### Test Summary
+
+When tests run individually, a detailed summary is displayed at the end showing:
+- Total tests executed
+- Passed/Failed/Error counts
+- List of failed tests (if any)
+- Execution time
+
+---
+
 ## 📖 Documentation
 
 📖 **Full documentation available at:**
