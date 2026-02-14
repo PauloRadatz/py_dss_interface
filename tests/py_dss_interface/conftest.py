@@ -102,8 +102,8 @@ def solve_snap_13bus():
     # dss = py_dss_interface.DSS("C:\OpenDSS_rep\Version8\Source")
     # Uncomment the line below to use C++ backend on Windows
     # This will automatically trigger individual test execution
-    dss = py_dss_interface.DSS(windows_version="cpp")
-    # dss = py_dss_interface.DSS()
+    # dss = py_dss_interface.DSS(windows_version="cpp")
+    dss = py_dss_interface.DSS()
 
     # Store backend info for detection
     # We'll check this in the hook to detect C++ usage
