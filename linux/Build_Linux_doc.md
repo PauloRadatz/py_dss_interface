@@ -170,6 +170,8 @@ Get-ChildItem wheelhouse\*aarch64*.whl
 ### Step 1: Test Basic Wheel Functionality (x86_64)
 
 ```powershell
+$projectDir = (Get-Location).Path
+
 # Create test script
 $testScript = @'
 #!/bin/bash
@@ -180,20 +182,20 @@ python3 -m venv test_env
 source test_env/bin/activate
 pip install --quiet --upgrade pip
 pip install /wheels/*x86_64*.whl
-python3 -c "import py_dss_interface; print('✓ Import successful')"
-python3 -c "import py_dss_interface; dss = py_dss_interface.DSS(); print('✓ DSS object created'); print('✓ Backend:', dss.backend)"
+python3 -c "import py_dss_interface; print('Import successful')"
+python3 -c "import py_dss_interface; dss = py_dss_interface.DSS(); print('DSS object created'); print('Backend:', dss.backend)"
 deactivate
 rm -rf test_env
 '@
 
 $testScript | Out-File -FilePath "test_basic_temp.sh" -Encoding ASCII -NoNewline
 
-# Run test
+# Run test (mount project dir - Docker on Windows creates dirs when mounting single files)
 docker run --rm `
-    -v "${projectDir}\wheelhouse:/wheels" `
-    -v "${projectDir}\test_basic_temp.sh:/test_script.sh" `
+    -v "${projectDir}/wheelhouse:/wheels" `
+    -v "${projectDir}:/project" `
     ubuntu:22.04 `
-    bash -c "tr -d '\r' < /test_script.sh > /tmp/test_script_fixed.sh && chmod +x /tmp/test_script_fixed.sh && bash /tmp/test_script_fixed.sh"
+    bash -c "tr -d '\r' < /project/test_basic_temp.sh > /tmp/test_script_fixed.sh && chmod +x /tmp/test_script_fixed.sh && bash /tmp/test_script_fixed.sh"
 
 # Cleanup
 Remove-Item "test_basic_temp.sh"
@@ -201,9 +203,9 @@ Remove-Item "test_basic_temp.sh"
 
 **Expected output:**
 ```
-✓ Import successful
-✓ DSS object created
-✓ Backend: Linux-C++
+Import successful
+DSS object created
+Backend: Linux-C++
 ```
 
 ### Step 2: Test Basic Wheel Functionality (ARM64)
@@ -215,6 +217,8 @@ Remove-Item "test_basic_temp.sh"
 If you have ARM64 emulation:
 
 ```powershell
+$projectDir = (Get-Location).Path
+
 # Create test script
 $testScript = @'
 #!/bin/bash
@@ -225,21 +229,21 @@ python3 -m venv test_env
 source test_env/bin/activate
 pip install --quiet --upgrade pip
 pip install /wheels/*aarch64*.whl
-python3 -c "import py_dss_interface; print('✓ Import successful')"
-python3 -c "import py_dss_interface; dss = py_dss_interface.DSS(); print('✓ DSS object created'); print('✓ Backend:', dss.backend)"
+python3 -c "import py_dss_interface; print('Import successful')"
+python3 -c "import py_dss_interface; dss = py_dss_interface.DSS(); print('DSS object created'); print('Backend:', dss.backend)"
 deactivate
 rm -rf test_env
 '@
 
 $testScript | Out-File -FilePath "test_basic_temp_arm64.sh" -Encoding ASCII -NoNewline
 
-# Run test (requires ARM64 emulation)
+# Run test (requires ARM64 emulation; mount project dir - Docker on Windows creates dirs when mounting single files)
 docker run --rm `
     --platform linux/arm64 `
-    -v "${projectDir}\wheelhouse:/wheels" `
-    -v "${projectDir}\test_basic_temp_arm64.sh:/test_script.sh" `
+    -v "${projectDir}/wheelhouse:/wheels" `
+    -v "${projectDir}:/project" `
     ubuntu:22.04 `
-    bash -c "tr -d '\r' < /test_script.sh > /tmp/test_script_fixed.sh && chmod +x /tmp/test_script_fixed.sh && bash /tmp/test_script_fixed.sh"
+    bash -c "tr -d '\r' < /project/test_basic_temp_arm64.sh > /tmp/test_script_fixed.sh && chmod +x /tmp/test_script_fixed.sh && bash /tmp/test_script_fixed.sh"
 
 # Cleanup
 Remove-Item "test_basic_temp_arm64.sh"
@@ -250,6 +254,8 @@ Remove-Item "test_basic_temp_arm64.sh"
 **Note:** This step is optional but recommended to verify the wheel works correctly before uploading to PyPI. You can skip this if you're confident the wheel is correct or if you want to test later.
 
 ```powershell
+$projectDir = (Get-Location).Path
+
 # Create pytest test script
 $pytestScript = @'
 #!/bin/bash
@@ -264,7 +270,7 @@ pip install --quiet pytest pytest-cov
 mkdir -p /test_runner
 cp -r /tests /test_runner/
 cp -r /test_cases /test_runner/tests/py_dss_interface/ 2>/dev/null || true
-if [ -f /pytest_ini ]; then cp /pytest_ini /test_runner/pytest.ini; fi
+if [ -f /project/pytest.ini ]; then cp /project/pytest.ini /test_runner/pytest.ini; fi
 cd /test_runner
 pytest tests/ -v --tb=short
 deactivate
@@ -275,13 +281,12 @@ $pytestScript | Out-File -FilePath "test_pytest_temp.sh" -Encoding ASCII -NoNewl
 
 # Run pytest tests (takes 10-30 minutes)
 docker run --rm `
-    -v "${projectDir}\wheelhouse:/wheels" `
-    -v "${projectDir}\tests:/tests" `
-    -v "${projectDir}\tests\py_dss_interface\cases:/test_cases" `
-    -v "${projectDir}\pytest.ini:/pytest_ini" `
-    -v "${projectDir}\test_pytest_temp.sh:/test_script.sh" `
+    -v "${projectDir}/wheelhouse:/wheels" `
+    -v "${projectDir}/tests:/tests" `
+    -v "${projectDir}/tests/py_dss_interface/cases:/test_cases" `
+    -v "${projectDir}:/project" `
     ubuntu:22.04 `
-    bash -c "tr -d '\r' < /test_script.sh > /tmp/test_script_fixed.sh && chmod +x /tmp/test_script_fixed.sh && bash /tmp/test_script_fixed.sh"
+    bash -c "tr -d '\r' < /project/test_pytest_temp.sh > /tmp/test_script_fixed.sh && chmod +x /tmp/test_script_fixed.sh && bash /tmp/test_script_fixed.sh"
 
 # Cleanup
 Remove-Item "test_pytest_temp.sh"
@@ -377,7 +382,7 @@ Use the PowerShell commands from "Part 2: Building ARM64 Wheels" above.
 - **Wheels**: `wheelhouse/` (repaired wheels; `dist/` keeps intermediate unrepaired wheels)
 - **x86_64 wheels**: `*manylinux2014_x86_64.whl`
 - **ARM64 wheels**: `*manylinux2014_aarch64.whl`
-- **Build script**: 
+- **Build script**:
   - `linux/build_manylinux_wheels.sh` (unified script, supports both architectures via ARCH parameter)
 - **Test scripts**: Created temporarily, deleted after use
 - **OpenDSS libraries**: `src/py_dss_interface/opendss_official/linux/cpp/`
