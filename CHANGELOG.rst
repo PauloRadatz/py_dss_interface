@@ -2,11 +2,14 @@ Changelog
 =========
 2.3.0 (2025-01-31)
 ------------------
+* Building and uploading to PyPI: py_dss_interface-2.3.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+* Building and uploading to PyPI: py_dss_interface-2.3.0-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
 * Updating OpenDSS version 11.0.0.1
 * Updating OpenDSS C version at revision 4133
 * Updated methods for reclosers and swtcontrols
 * Added methods for cktelement
 * Added methods for dssproperties
+* There are 10 Tests that failed for C++ that will be fix in the next release
 
 2.2.1 (2025-09-09)
 ------------------
