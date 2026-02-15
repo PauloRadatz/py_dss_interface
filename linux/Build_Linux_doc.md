@@ -110,7 +110,7 @@ docker run --rm `
 Get-ChildItem wheelhouse\*x86_64*.whl
 
 # Expected output:
-# py_dss_interface-2.2.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+# py_dss_interface-2.3.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
 ```
 
 ---
@@ -160,7 +160,7 @@ Same process as x86_64, but:
 Get-ChildItem wheelhouse\*aarch64*.whl
 
 # Expected output:
-# py_dss_interface-2.2.1-py3-none-any-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+# py_dss_interface-2.3.0-py3-none-any-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
 ```
 
 ---
@@ -312,8 +312,8 @@ test_activeclass.py::TestActiveClass13Bus::test_num_elements [2%] PASSED
 Get-ChildItem wheelhouse\*.whl | Format-Table Name, Length, LastWriteTime
 
 # Expected output:
-# py_dss_interface-2.2.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
-# py_dss_interface-2.2.1-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
+# py_dss_interface-2.3.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+# py_dss_interface-2.3.0-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
 ```
 
 ### Upload to PyPI:
