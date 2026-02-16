@@ -1,6 +1,6 @@
 Changelog
 =========
-2.3.0 (2025-01-31)
+2.3.0 (2026-02-15)
 ------------------
 * Building and uploading to PyPI: py_dss_interface-2.3.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
 * Building and uploading to PyPI: py_dss_interface-2.3.0-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl

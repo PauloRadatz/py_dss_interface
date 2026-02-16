@@ -6,8 +6,7 @@
 ![AppVeyor](https://ci.appveyor.com/api/projects/status/github/PauloRadatz/py_dss_interface?branch=master&svg=true)
 ![PyPI Downloads](https://static.pepy.tech/badge/py-dss-interface)
 
-`py-dss-interface` is a Python package to control **OpenDSS Powered by [EPRI](https://www.epri.com/)** using the Python programming language. This tool is actively used across multiple EPRI research projects and by many utilities and consultants. It also serves as the foundation for the automated testing process of OpenDSS itself.
-
+`py-dss-interface` is a Python package to control **OpenDSS Powered by [EPRI](https://www.epri.com/)** — **the official EPRI-maintained distribution of OpenDSS** — using the Python programming language. **It is designed to work with OpenDSS Powered by EPRI only**. This tool is actively used across multiple EPRI research projects and by utilities and consultants, and it also serves as a foundation for automated testing workflows for OpenDSS.
 
 ---
 
@@ -27,11 +26,11 @@ Use the full power of Python to control and automate your OpenDSS workflows:
 Compared to the COM interface, `py-dss-interface` provides a modern, Pythonic experience:
 
 - 💡 **Code Completion**: Works seamlessly with IDEs like PyCharm for better developer productivity.
-- 📦 **No OpenDSS Installation Required (Windows)**: No need to install OpenDSS since `py-dss-interface` comes bundled with a tested version of OpenDSS. However, you may also use a different OpenDSS version if desired. Please note that compatibility is only guaranteed for the bundled version.
+- 📦 **No OpenDSS Installation Required**: No need to install OpenDSS since `py-dss-interface` comes bundled with a tested version of OpenDSS (Windows and Linux). However, you may also use a different OpenDSS version if desired. Please note that compatibility is only guaranteed for the bundled version.
 - 🔄 **Supports Multiple DSS Objects**: Interact with multiple OpenDSS objects at the same time.
-- 🌐 **Multi-Platform**: Supports both **Windows** and now **Linux** (via local OpenDSS C++ build).
+- 🌐 **Multi-Platform**: Supports both **Windows** and **Linux** (pre-built wheels available; build from source if needed).
 - ⚡ **Better Performance**: Some examples comparing performance will be provided later.
-- 🔐 **Version Control Friendly (Windows)**: Avoid breaking your Python code when updating the OpenDSS version on your computer.
+- 🔐 **Version Control Friendly**: Avoid breaking your Python code when updating the OpenDSS version on your computer.
 
 ---
 
@@ -42,34 +41,36 @@ Compared to the COM interface, `py-dss-interface` provides a modern, Pythonic ex
 pip install py-dss-interface
 ```
 
-### 🐧 Linux (OpenDSS C++ Build Required)
+### 🐧 Linux
 
-To use `py-dss-interface` on Linux, you'll need to build the OpenDSS C++ engine locally.
-
-#### 🔧 Step 1: Clone the repository
+Pre-built wheels are available for x86_64 and ARM64. Start with pip install:
 
 ```bash
-git clone https://github.com/PauloRadatz/py_dss_interface.git
-cd py_dss_interface
+pip install py-dss-interface
 ```
 
-> This will create a folder named `py_dss_interface` — you’ll use this path later when installing the package.
+If pip install doesn't work for your environment, you can build from source as described below.
 
-#### ⚙️ Step 2: Build the OpenDSS C++ engine
+#### 🔧 Build from source (fallback)
 
-```bash
-bash py_dss_interface/OpenDSSLinuxCPPForRepo.sh
-```
+To use `py-dss-interface` on Linux, you'll need to build the OpenDSS C++ engine locally using `OpenDSSLinuxCPPForRepo.sh`.
 
-📌 **Note:** You'll need tools for building C++ code on your system (e.g., `g++`, `cmake`, etc.).
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/PauloRadatz/py_dss_interface.git
+   cd py_dss_interface
+   ```
 
-#### 📦 Step 3: Install the package in your Python environment
+2. **Build the OpenDSS C++ engine**
+   ```bash
+   bash py_dss_interface/OpenDSSLinuxCPPForRepo.sh
+   ```
+   📌 **Note:** You'll need tools for building C++ code (e.g., `g++`, `cmake`, etc.).
 
-If you're using `py-dss-interface` in your own Python project or script, install it like this:
-
-```bash
-pip install path/to/py_dss_interface
-```
+3. **Install the package**
+   ```bash
+   pip install path/to/py_dss_interface
+   ```
 
 ---
 
@@ -154,7 +155,7 @@ The best way to master `py-dss-interface` is through the official course:
 
 - 📊 [2023 Hosting Capacity Webinar](https://epri.app.box.com/s/l1y0vyrj1dg3i0dadoseo97c9wj66pys): Examples shown using this package.
 
-- 🔧 [py-dss-toolkit](https://github.com/PauloRadatz/py_dss_toolkit): A new package built on top of `py-dss-interface`, coming soon to PyPI.
+- 🔧 [py-dss-toolkit](https://github.com/PauloRadatz/py_dss_toolkit): A new package built on top of `py-dss-interface`, available in PyPI.
 
 ---
 
@@ -181,23 +182,20 @@ If you use `py-dss-interface` in your academic work, please reference it as foll
 
 **APA Style:**
 
-> Radatz, P. (2025). *py-dss-interface: A Python package that interfaces with OpenDSS powered by EPRI (Version X.X.X)* [Computer software]. GitHub. https://github.com/PauloRadatz/py_dss_interface
+> Radatz, P. (2026). *py-dss-interface: A Python package that interfaces with OpenDSS powered by EPRI (Version 2.3.0)* [Computer software]. GitHub. https://github.com/PauloRadatz/py_dss_interface
 
 **BibTeX Entry:**
 
 
 ```bibtex
-@software{radatz2024bdgd2opendss,
+@software{radatz2026pydssinterface,
   author = {Paulo Radatz},
   title = {py-dss-interface: A Python package that interfaces with OpenDSS powered by EPRI},
-  year = {2025},
-  version = {X.X.X},
+  year = {2026},
+  version = {2.3.0},
   url = {https://github.com/PauloRadatz/py_dss_interface}
 }
 ```
-
-> 📌 Please replace X.X.X with the version of the package you are using.
-
 ---
 
 ## 🙏 Acknowledgements

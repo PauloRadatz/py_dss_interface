@@ -283,7 +283,7 @@ repair_wheels() {
         echo "Warning: No wheels found to repair!"
     else
         echo "Repaired ${WHEEL_COUNT} wheel(s)"
-        
+
         echo ""
         echo "Repaired wheels are in: wheelhouse/"
     fi
@@ -308,8 +308,29 @@ main() {
     echo "Using Python: ${PYTHON_VER_INFO}"
     echo ""
 
-    # Build wheel (universal wheel works for all Python 3.9+)
+    # Create a clean copy for building (excludes Windows binaries from Linux wheel)
+    echo "Creating clean build copy (excluding Windows binaries)..."
+    BUILD_COPY="/tmp/build_copy"
+    rm -rf "${BUILD_COPY}"
+    mkdir -p "${BUILD_COPY}"
+    cp -r src "${BUILD_COPY}/src"
+    cp pyproject.toml "${BUILD_COPY}/"
+    cp README.md "${BUILD_COPY}/"
+    [ -f MANIFEST.in ] && cp MANIFEST.in "${BUILD_COPY}/"
+    [ -f CHANGELOG.rst ] && cp CHANGELOG.rst "${BUILD_COPY}/"
+    [ -f LICENSE ] && cp LICENSE "${BUILD_COPY}/"
+    rm -rf "${BUILD_COPY}/src/py_dss_interface/opendss_official/windows"
+    echo "Windows binaries excluded from build copy"
+
+    # Build wheel from the clean copy (original source tree is never modified)
+    cd "${BUILD_COPY}"
     build_wheel "${PYTHON_VERSION}"
+
+    # Copy wheel back to project directory
+    mkdir -p "${PROJECT_DIR}/dist"
+    cp dist/*.whl "${PROJECT_DIR}/dist/"
+    cd "${PROJECT_DIR}"
+    rm -rf "${BUILD_COPY}"
 
     # List wheel created before repair
     echo ""
