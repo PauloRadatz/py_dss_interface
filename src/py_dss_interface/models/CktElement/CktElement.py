@@ -289,16 +289,20 @@ class CktElement(CktElementI, CktElementS, CktElementF, CktElementV):
         return CktElementV._total_powers(self)
 
     def open(self, arg: List[int]) -> List[int]:
+        """This parameter enables querying whether a specific terminal and phase of the active circuit element are open. If the phase value is zero, the function checks whether any phase at the terminal is open. The caller must provide the Pointer argument as a byte array containing two 32-bit integers: the first representing the terminal and the second indicating the phase. The result is stored in the first element of the array (where the terminal was specified), with false represented as 0."""
         return CktElementV._open(self, arg)
 
     def close(self, arg: List[int]) -> List[int]:
+        """This parameter enables closing the specified terminal and phase of the active circuit element. If the phase value is zero, the operation applies to all phases at the terminal. The caller must provide the Pointer argument as a byte array containing two 32-bit integers: the first representing the terminal and the second indicating the phase. The result is stored in the first element of the array (where the terminal was specified), with false represented as 0."""
         return CktElementV._close(self, arg)
 
     def is_open(self, arg: List[int]) -> List[int]:
+        """This parameter enables querying whether a specific terminal and phase of the active circuit element are open. If the phase value is zero, the function checks whether any phase at the terminal is open. The caller must provide a Pointer argument, which references a byte array containing two 32-bit integers: the first representing the terminal and the second indicating the phase. The result is stored in the first element of the array (corresponding to the specified terminal), with false represented as 0."""
         return CktElementV._is_open(self, arg)
 
     @property
     def all_losses(self) -> List[float]:
+        """This parameter returns a pointer to an array of complex with all power losses in the active circuit element in the following order: Total losses, load losses and no-load losses. Each element is a complex structure including real and imaginary parts (double, 16 Bytes per element)."""
         return CktElementV._all_losses(self)
 
     def handle(self) -> List[float]:
