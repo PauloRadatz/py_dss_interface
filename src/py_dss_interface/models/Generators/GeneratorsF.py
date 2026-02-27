@@ -52,10 +52,14 @@ class GeneratorsF(Base):
         return float(self._dss_obj.GeneratorsF(ctypes.c_int32(10), ctypes.c_double(0)))
 
     def _vmax_pu_write(self, argument: float) -> float:
-        return float(self._dss_obj.GeneratorsF(ctypes.c_int32(11), ctypes.c_double(argument)))
+        from py_dss_interface.models.Text.Text import Text
+        Text(self._dss_obj).text(f"Generator.{self.name}.Vmaxpu={argument}")
+        return argument
 
     def _vmin_pu(self) -> float:
         return float(self._dss_obj.GeneratorsF(ctypes.c_int32(12), ctypes.c_double(0)))
 
     def _vmin_pu_write(self, argument: float) -> float:
-        return float(self._dss_obj.GeneratorsF(ctypes.c_int32(13), ctypes.c_double(argument)))
+        from py_dss_interface.models.Text.Text import Text
+        Text(self._dss_obj).text(f"Generator.{self.name}.Vminpu={argument}")
+        return argument
