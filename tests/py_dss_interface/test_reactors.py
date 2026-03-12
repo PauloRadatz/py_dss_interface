@@ -6,6 +6,7 @@
 # @Software: PyCharm
 
 import pytest
+from tests.py_dss_interface.utils import assert_dss_text_value
 
 
 class TestBus13Reactors:
@@ -216,3 +217,40 @@ class TestBus13Reactors:
         dss.reactors.z2 = expected
         actual = dss.reactors.z2
         assert actual == expected
+
+    # dss.text() verification tests
+
+    def test_write_kv_dss_text(self, dss):
+        expected = 4.161
+        dss.reactors.kv = expected
+        assert_dss_text_value(dss, "? Reactor.r.kV", expected)
+
+    def test_write_kvar_dss_text(self, dss):
+        expected = 610.0
+        dss.reactors.kvar = expected
+        assert_dss_text_value(dss, "? Reactor.r.kvar", expected)
+
+    def test_write_r_dss_text(self, dss):
+        expected = 10.0
+        dss.reactors.r = expected
+        assert_dss_text_value(dss, "? Reactor.r.R", expected)
+
+    def test_write_rp_dss_text(self, dss):
+        expected = 10.0
+        dss.reactors.rp = expected
+        assert_dss_text_value(dss, "? Reactor.r.Rp", expected)
+
+    def test_write_x_dss_text(self, dss):
+        expected = 10.0
+        dss.reactors.x = expected
+        assert_dss_text_value(dss, "? Reactor.r.X", expected)
+
+    def test_write_l_curve_dss_text(self, dss):
+        dss.text("new xycurve.curve npts=1 x=[1] y=[1]")
+        dss.reactors.l_curve = "curve"
+        assert_dss_text_value(dss, "? Reactor.r.LCurve", "curve")
+
+    def test_write_r_curve_dss_text(self, dss):
+        dss.text("new xycurve.curve npts=1 x=[1] y=[1]")
+        dss.reactors.r_curve = "curve"
+        assert_dss_text_value(dss, "? Reactor.r.RCurve", "curve")

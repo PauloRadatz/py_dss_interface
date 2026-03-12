@@ -7,6 +7,8 @@
 
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 
 class TestXYCurves13Bus:
 
@@ -158,3 +160,31 @@ class TestXYCurves13Bus:
         dss.xycurves.y_array = expected
         actual = dss.xycurves.y_array
         assert actual == expected
+
+    # ===================================================================
+    # dss.text() verification tests
+    # ===================================================================
+    def test_xycurves_write_npts_dss_text(self, dss):
+        expected = 8
+        dss.xycurves.npts = expected
+        assert_dss_text_value(dss, "? XYCurve.xycurve1.npts", expected)
+
+    def test_xycurves_write_x_shift_dss_text(self, dss):
+        expected = 1.0
+        dss.xycurves.x_shift = expected
+        assert_dss_text_value(dss, "? XYCurve.xycurve1.Xshift", expected)
+
+    def test_xycurves_write_y_shift_dss_text(self, dss):
+        expected = 1.0
+        dss.xycurves.y_shift = expected
+        assert_dss_text_value(dss, "? XYCurve.xycurve1.Yshift", expected)
+
+    def test_xycurves_write_x_scale_dss_text(self, dss):
+        expected = 1.0
+        dss.xycurves.x_scale = expected
+        assert_dss_text_value(dss, "? XYCurve.xycurve1.Xscale", expected)
+
+    def test_xycurves_write_y_scale_dss_text(self, dss):
+        expected = 1.0
+        dss.xycurves.y_scale = expected
+        assert_dss_text_value(dss, "? XYCurve.xycurve1.Yscale", expected)

@@ -7,6 +7,8 @@
 
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 
 class TestLoadShapes13Bus:
 
@@ -219,3 +221,41 @@ class TestLoadShapes13Bus:
         dss.loadshapes.time_array = expected
         actual = dss.loadshapes.time_array
         assert actual == expected
+
+    # ===================================================================
+    # dss.text() verification tests
+    # ===================================================================
+    def test_loadshapes_write_npts_dss_text(self, dss):
+        expected = 48
+        dss.loadshapes.npts = expected
+        assert_dss_text_value(dss, "? LoadShape.default.npts", expected)
+
+    def test_loadshapes_write_hr_interval_dss_text(self, dss):
+        self.new_loadshape(dss, True)
+        expected = 2.0
+        dss.loadshapes.hr_interval = expected
+        assert_dss_text_value(dss, "? LoadShape.Test.interval", expected)
+
+    def test_loadshapes_write_min_interval_dss_text(self, dss):
+        self.new_loadshape(dss, True)
+        expected = 240.0
+        dss.loadshapes.min_interval = expected
+        assert_dss_text_value(dss, "? LoadShape.Test.minterval", expected)
+
+    def test_loadshapes_write_s_interval_dss_text(self, dss):
+        self.new_loadshape(dss, True)
+        expected = 4800.0
+        dss.loadshapes.s_interval = expected
+        assert_dss_text_value(dss, "? LoadShape.Test.sinterval", expected)
+
+    def test_loadshapes_write_p_base_dss_text(self, dss):
+        self.new_loadshape(dss, True)
+        expected = 100.0
+        dss.loadshapes.p_base = expected
+        assert_dss_text_value(dss, "? LoadShape.Test.Pbase", expected)
+
+    def test_loadshapes_write_q_base_dss_text(self, dss):
+        self.new_loadshape(dss, True)
+        expected = 50.0
+        dss.loadshapes.q_base = expected
+        assert_dss_text_value(dss, "? LoadShape.Test.Qbase", expected)

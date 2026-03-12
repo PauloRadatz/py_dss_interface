@@ -7,6 +7,7 @@
 
 
 import pytest
+from tests.py_dss_interface.utils import assert_dss_text_value
 
 
 class TestCapControls13Bus:
@@ -237,3 +238,64 @@ class TestCapControls13Bus:
         expected = [x.lower() for x in ['CAPBank2A_Ctrl', 'CAPBank2B_Ctrl', 'CAPBank2C_Ctrl']]
         actual = dss.capcontrols.names
         assert actual == expected
+
+    # dss.text() verification tests
+    def test_dss_text_ct_ratio(self, dss):
+        expected = 1.0
+        dss.capcontrols.ct_ratio = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.CTratio", expected)
+
+    def test_dss_text_pt_ratio(self, dss):
+        expected = 1.0
+        dss.capcontrols.pt_ratio = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.PTratio", expected)
+
+    def test_dss_text_on_setting(self, dss):
+        expected = 150.0
+        dss.capcontrols.on_setting = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.ONsetting", expected)
+
+    def test_dss_text_off_setting(self, dss):
+        expected = 150.0
+        dss.capcontrols.off_setting = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.OFFsetting", expected)
+
+    def test_dss_text_vmax(self, dss):
+        expected = 8000.0
+        dss.capcontrols.vmax = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.Vmax", expected)
+
+    def test_dss_text_vmin(self, dss):
+        expected = 7000.0
+        dss.capcontrols.vmin = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.Vmin", expected)
+
+    def test_dss_text_delay(self, dss):
+        expected = 105.0
+        dss.capcontrols.delay = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.Delay", expected)
+
+    def test_dss_text_delay_off(self, dss):
+        expected = 105.0
+        dss.capcontrols.delay_off = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.Delayoff", expected)
+
+    def test_dss_text_dead_time(self, dss):
+        expected = 10.0
+        dss.capcontrols.dead_time = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.DeadTime", expected)
+
+    def test_dss_text_controlled_capacitor(self, dss):
+        expected = 'capbank2b'
+        dss.capcontrols.controlled_capacitor = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.Capacitor", expected)
+
+    def test_dss_text_monitored_object(self, dss):
+        expected = 'line.671680'
+        dss.capcontrols.monitored_object = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.element", expected)
+
+    def test_dss_text_monitored_term(self, dss):
+        expected = 1
+        dss.capcontrols.monitored_term = expected
+        assert_dss_text_value(dss, "? CapControl.CAPBank2C_Ctrl.terminal", expected)

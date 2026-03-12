@@ -7,6 +7,7 @@
 
 
 import pytest
+from tests.py_dss_interface.utils import assert_dss_text_value
 
 
 class TestFuses13Bus:
@@ -210,3 +211,39 @@ class TestFuses13Bus:
         dss.fuses.monitored_obj = expected
         actual = dss.fuses.monitored_obj
         assert actual == expected
+
+    # dss.text() verification tests
+    def test_fuses_dss_text_monitored_term(self, dss):
+        expected = 2
+        dss.fuses.monitored_term = expected
+        assert_dss_text_value(dss, "? Fuse.Fuse1.MonitoredTerm", expected)
+
+    def test_fuses_dss_text_switched_term(self, dss):
+        expected = 2
+        dss.fuses.switched_term = expected
+        assert_dss_text_value(dss, "? Fuse.Fuse1.SwitchedTerm", expected)
+
+    def test_fuses_dss_text_rated_current(self, dss):
+        expected = 12.0
+        dss.fuses.rated_current = expected
+        assert_dss_text_value(dss, "? Fuse.Fuse1.RatedCurrent", expected)
+
+    def test_fuses_dss_text_delay(self, dss):
+        expected = 2.0
+        dss.fuses.delay = expected
+        assert_dss_text_value(dss, "? Fuse.Fuse1.Delay", expected)
+
+    def test_fuses_dss_text_switched_obj(self, dss):
+        expected = 'line.684611'
+        dss.fuses.switched_obj = expected
+        assert_dss_text_value(dss, "? Fuse.Fuse1.SwitchedObj", expected)
+
+    def test_fuses_dss_text_tcc_curve(self, dss):
+        expected = 'tlink2'
+        dss.fuses.tcc_curve = expected
+        assert_dss_text_value(dss, "? Fuse.Fuse1.FuseCurve", expected)
+
+    def test_fuses_dss_text_monitored_obj(self, dss):
+        expected = 'line.684111'
+        dss.fuses.monitored_obj = expected
+        assert_dss_text_value(dss, "? Fuse.Fuse1.MonitoredObj", expected)

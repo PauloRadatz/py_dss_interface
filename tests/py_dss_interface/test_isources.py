@@ -6,6 +6,7 @@
 # @Software: PyCharm
 
 import pytest
+from tests.py_dss_interface.utils import assert_dss_text_value
 
 
 class TestBus13ISources:
@@ -78,4 +79,20 @@ class TestBus13ISources:
         expected = ['myisource']
         actual = dss.isources.names
         assert actual == expected
+
+    # dss.text() verification tests
+    def test_isources_dss_text_amps(self, dss):
+        expected = 0.0
+        dss.isources.amps = expected
+        assert_dss_text_value(dss, "? isource.MyISource.amps", expected)
+
+    def test_isources_dss_text_angle_deg(self, dss):
+        expected = 0.0
+        dss.isources.angle_deg = expected
+        assert_dss_text_value(dss, "? isource.MyISource.angle", expected)
+
+    def test_isources_dss_text_frequency(self, dss):
+        expected = 0.0
+        dss.isources.frequency = expected
+        assert_dss_text_value(dss, "? isource.MyISource.frequency", expected)
 

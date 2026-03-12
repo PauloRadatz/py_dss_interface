@@ -9,6 +9,8 @@ import platform
 
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 
 class TestLoad13Bus:
 
@@ -494,3 +496,197 @@ class TestLoad13Bus:
         dss.loads.name = '671'
         actual = dss.loads.sensor
         assert actual == expected
+
+    # ===================================================================
+    # dss.text() verification tests
+    # ===================================================================
+    def test_loads_write_class_number_dss_text(self, dss):
+        expected = 2
+        dss.loads.class_number = expected
+        assert_dss_text_value(dss, "? Load.671.class", expected)
+
+    def test_loads_write_model_dss_text(self, dss):
+        expected = 2
+        dss.loads.model = expected
+        assert_dss_text_value(dss, "? Load.671.model", expected)
+
+    def test_loads_write_num_cust_dss_text(self, dss):
+        expected = 12
+        dss.loads.num_cust = expected
+        assert_dss_text_value(dss, "? Load.671.NumCust", expected)
+
+    def test_loads_write_status_dss_text(self, dss):
+        status_map = {0: "v", 1: "f", 2: "e"}
+        for code, text in status_map.items():
+            dss.loads.status = code
+            assert_dss_text_value(dss, "? Load.671.status", text)
+
+    def test_loads_write_kv_dss_text(self, dss):
+        expected = 0.48
+        dss.loads.kv = expected
+        assert_dss_text_value(dss, "? Load.671.kV", expected)
+
+    def test_loads_write_kw_dss_text(self, dss):
+        expected = 1000.0
+        dss.loads.kw = expected
+        assert_dss_text_value(dss, "? Load.671.kW", expected)
+
+    def test_loads_write_kvar_dss_text(self, dss):
+        expected = 600.0
+        dss.loads.kvar = expected
+        assert_dss_text_value(dss, "? Load.671.kvar", expected)
+
+    def test_loads_write_pf_dss_text(self, dss):
+        expected = 1.0
+        dss.loads.pf = expected
+        assert_dss_text_value(dss, "? Load.671.PF", expected)
+
+    def test_loads_write_pct_mean_dss_text(self, dss):
+        expected = 123.0
+        dss.loads.pct_mean = expected
+        assert_dss_text_value(dss, "? Load.671.%mean", expected)
+
+    def test_loads_write_pct_std_dev_dss_text(self, dss):
+        expected = 123.0
+        dss.loads.pct_std_dev = expected
+        assert_dss_text_value(dss, "? Load.671.%stddev", expected)
+
+    def test_loads_write_rl_dss_text(self, dss):
+        expected = 123.0
+        dss.loads.rl = expected
+        assert_dss_text_value(dss, "? Load.671.%SeriesRL", expected)
+
+    def test_loads_write_allocation_factor_dss_text(self, dss):
+        expected = 123.0
+        dss.loads.allocation_factor = expected
+        assert_dss_text_value(dss, "? Load.671.allocationfactor", expected)
+
+    def test_loads_write_c_factor_dss_text(self, dss):
+        expected = 123.0
+        dss.loads.c_factor = expected
+        assert_dss_text_value(dss, "? Load.671.Cfactor", expected)
+
+    def test_loads_write_cvr_watts_dss_text(self, dss):
+        expected = 123.0
+        dss.loads.cvr_watts = expected
+        assert_dss_text_value(dss, "? Load.671.CVRwatts", expected)
+
+    def test_loads_write_cvr_vars_dss_text(self, dss):
+        expected = 123.0
+        dss.loads.cvr_vars = expected
+        assert_dss_text_value(dss, "? Load.671.CVRvars", expected)
+
+    def test_loads_write_kva_dss_text(self, dss):
+        expected = 1500.0
+        dss.loads.kva = expected
+        assert_dss_text_value(dss, "? Load.671.kVA", expected)
+
+    def test_loads_write_kwh_dss_text(self, dss):
+        expected = 123.0
+        dss.loads.kwh = expected
+        assert_dss_text_value(dss, "? Load.671.kWh", expected)
+
+    def test_loads_write_kwh_days_dss_text(self, dss):
+        expected = 60.0
+        dss.loads.kwh_days = expected
+        assert_dss_text_value(dss, "? Load.671.kWhdays", expected)
+
+    def test_loads_write_r_neut_dss_text(self, dss):
+        expected = 60.0
+        dss.loads.r_neut = expected
+        assert_dss_text_value(dss, "? Load.671.Rneut", expected)
+
+    def test_loads_write_x_neut_dss_text(self, dss):
+        expected = 60.0
+        dss.loads.x_neut = expected
+        assert_dss_text_value(dss, "? Load.671.Xneut", expected)
+
+    def test_loads_write_vmax_pu_dss_text(self, dss):
+        expected = 1.1
+        dss.loads.vmax_pu = expected
+        assert_dss_text_value(dss, "? Load.671.Vmaxpu", expected)
+
+    def test_loads_write_vmin_pu_dss_text(self, dss):
+        expected = 0.9
+        dss.loads.vmin_pu = expected
+        assert_dss_text_value(dss, "? Load.671.Vminpu", expected)
+
+    def test_loads_write_vmin_emerg_dss_text(self, dss):
+        expected = 0.5
+        dss.loads.vmin_emerg = expected
+        assert_dss_text_value(dss, "? Load.671.Vminemerg", expected)
+
+    def test_loads_write_vmin_norm_dss_text(self, dss):
+        expected = 0.8
+        dss.loads.vmin_norm = expected
+        assert_dss_text_value(dss, "? Load.671.Vminnorm", expected)
+
+    def test_loads_write_xfkva_dss_text(self, dss):
+        expected = 123.1
+        dss.loads.xfkva = expected
+        assert_dss_text_value(dss, "? Load.671.xfkVA", expected)
+
+    def test_loads_write_rel_weight_dss_text(self, dss):
+        expected = 123.1
+        dss.loads.rel_weight = expected
+        assert_dss_text_value(dss, "? Load.671.RelWeight", expected)
+
+    def test_loads_write_daily_dss_text(self, dss):
+        dss.text("New Loadshape.Test npts=24 interval=1 "
+                 "mult= "
+                 "(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 "
+                 "0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 "
+                 "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
+                 "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
+        expected = 'Test'
+        dss.loads.daily = expected
+        assert_dss_text_value(dss, "? Load.671.daily", expected)
+
+    def test_loads_write_duty_dss_text(self, dss):
+        dss.text("New Loadshape.Test npts=24 interval=1 "
+                 "mult= "
+                 "(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 "
+                 "0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 "
+                 "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
+                 "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
+        expected = 'Test'
+        dss.loads.duty = expected
+        assert_dss_text_value(dss, "? Load.671.duty", expected)
+
+    def test_loads_write_spectrum_dss_text(self, dss):
+        dss.text("New Spectrum.Test "
+                 "NumHarm=7 "
+                 "harmonic=(1, 3, 5, 7, 9, 11, 13, ) "
+                 "%mag=(100, 1.5, 20, 14, 1, 9, 7, ) "
+                 "angle=(0, 180, 180, 180, 180, 180, 180, )")
+        expected = 'Test'
+        dss.loads.spectrum = expected
+        assert_dss_text_value(dss, "? Load.671.spectrum", expected)
+
+    def test_loads_write_yearly_dss_text(self, dss):
+        dss.text("New Loadshape.Test npts=24 interval=1 "
+                 "mult= "
+                 "(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 "
+                 "0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 "
+                 "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
+                 "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
+        expected = 'Test'
+        dss.loads.yearly = expected
+        assert_dss_text_value(dss, "? Load.671.yearly", expected)
+
+    def test_loads_write_growth_dss_text(self, dss):
+        dss.text("New GrowthShape.default npts=2 year=(1, 20, ) mult=(1.025, 1.025, )")
+        expected = 'default'
+        dss.loads.growth = expected
+        assert_dss_text_value(dss, "? Load.671.growth", expected)
+
+    def test_loads_write_cvr_curve_dss_text(self, dss):
+        dss.text("New Loadshape.Test npts=24 interval=1 "
+                 "mult= "
+                 "(0.18000001 0.19000000 0.23999999 0.33000001 0.38999999 0.41000000 "
+                 "0.64999998 1.23000002 1.88999999 1.88999999 1.96000004 1.98000002 "
+                 "1.45000005 1.62000000 1.88999999 1.79999995 1.78999996 1.19000006 "
+                 "0.80000001 0.66000003 0.51999998 0.40000001 0.28000000 0.23000000)")
+        expected = 'Test'
+        dss.loads.cvr_curve = expected
+        assert_dss_text_value(dss, "? Load.671.CVRcurve", expected)

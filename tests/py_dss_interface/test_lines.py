@@ -8,6 +8,8 @@
 import platform
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 
 class TestLines13Bus:
 
@@ -489,6 +491,108 @@ class TestLines13Bus:
     # TODO understand it
     def test_lines_write_yprim(self, dss):
         dss.lines.yprim = [1, 1]
+
+    # ===================================================================
+    # dss.text() verification tests
+    # ===================================================================
+    def test_lines_write_phases_dss_text(self, dss):
+        expected = 1
+        dss.lines.phases = expected
+        assert_dss_text_value(dss, "? Line.650632.phases", expected)
+
+    def test_lines_write_bus1_dss_text(self, dss):
+        expected = '670.1'
+        dss.lines.bus1 = expected
+        assert_dss_text_value(dss, "? Line.650632.bus1", expected)
+
+    def test_lines_write_bus2_dss_text(self, dss):
+        expected = '670.1'
+        dss.lines.bus2 = expected
+        assert_dss_text_value(dss, "? Line.650632.bus2", expected)
+
+    def test_lines_write_linecode_dss_text(self, dss):
+        expected = '723'
+        dss.lines.linecode = expected
+        assert_dss_text_value(dss, "? Line.650632.linecode", expected)
+
+    def test_lines_write_length_dss_text(self, dss):
+        expected = 1000
+        dss.lines.length = expected
+        assert_dss_text_value(dss, "? Line.650632.Length", expected)
+
+    def test_lines_write_norm_amps_dss_text(self, dss):
+        expected = 500.0
+        dss.lines.norm_amps = expected
+        assert_dss_text_value(dss, "? Line.650632.normamps", expected)
+
+    def test_lines_write_emerg_amps_dss_text(self, dss):
+        expected = 500.0
+        dss.lines.emerg_amps = expected
+        assert_dss_text_value(dss, "? Line.650632.emergamps", expected)
+
+    def test_lines_write_rg_dss_text(self, dss):
+        expected = 0.1
+        dss.lines.rg = expected
+        assert_dss_text_value(dss, "? Line.650632.Rg", expected)
+
+    def test_lines_write_xg_dss_text(self, dss):
+        expected = 0.1
+        dss.lines.xg = expected
+        assert_dss_text_value(dss, "? Line.650632.Xg", expected)
+
+    def test_lines_write_rho_dss_text(self, dss):
+        expected = 0.1
+        dss.lines.rho = expected
+        assert_dss_text_value(dss, "? Line.650632.rho", expected)
+
+    def test_lines_write_r1_dss_text(self, dss):
+        expected = 0.1
+        dss.lines.r1 = expected
+        dss.text("solve")
+        assert_dss_text_value(dss, "? Line.MyLine.R1", expected)
+
+    def test_lines_write_x1_dss_text(self, dss):
+        expected = 0.12
+        dss.lines.x1 = expected
+        assert_dss_text_value(dss, "? Line.MyLine.X1", expected)
+
+    def test_lines_write_c1_dss_text(self, dss):
+        expected = 10
+        dss.lines.c1 = expected
+        assert_dss_text_value(dss, "? Line.650632.C1", expected)
+
+    def test_lines_write_r0_dss_text(self, dss):
+        expected = 10
+        dss.lines.r0 = expected
+        assert_dss_text_value(dss, "? Line.650632.R0", expected)
+
+    def test_lines_write_x0_dss_text(self, dss):
+        expected = 10
+        dss.lines.x0 = expected
+        assert_dss_text_value(dss, "? Line.650632.X0", expected)
+
+    def test_lines_write_c0_dss_text(self, dss):
+        expected = 10
+        dss.lines.c0 = expected
+        assert_dss_text_value(dss, "? Line.650632.C0", expected)
+
+    def test_lines_write_geometry_dss_text(self, dss):
+        dss.text(
+            "New WireData.1/0_ACSR Rac=0.646847 Runits=km GMRac=0.13589  GMRUnits=cm Radius=0.50546 Radunits=cm "
+            "Normamps=260  Emergamps=260")
+        dss.text("New LineGeometry.1PH-x4_ACSRx4_ACSR  nconds=2  nphases=1 "
+                 " cond=1  wire=1/0_ACSR x=-0.1524 h=10.5156 units=m "
+                 " cond=2  wire=1/0_ACSR x=0.1524  h=8.2296  units=m "
+                 " reduce=y ")
+        expected = '1ph-x4_acsrx4_acsr'
+        dss.lines.geometry = expected
+        assert_dss_text_value(dss, "? Line.650632.geometry", expected)
+
+    def test_lines_write_spacing_dss_text(self, dss):
+        dss.text("new LineSpacing.500 nconds=4 nphases=3 units=ft x=[-4 -1 3 0] h=[28 28 28 24]")
+        expected = '500'
+        dss.lines.spacing = expected
+        assert_dss_text_value(dss, "? Line.650632.spacing", expected)
 
 
 def truncate(num, n):

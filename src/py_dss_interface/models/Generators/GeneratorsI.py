@@ -27,7 +27,7 @@ class GeneratorsI(Base):
     def _forced_on(self) -> int:
         return self._dss_obj.GeneratorsI(ctypes.c_int32(2), ctypes.c_int32(0))
 
-    def _forced_on_write(self, argument: int) -> int:
+    def _force_on_write(self, argument: int) -> int:
         return self._dss_obj.GeneratorsI(ctypes.c_int32(3), ctypes.c_int32(argument))
 
     def _phases(self) -> int:

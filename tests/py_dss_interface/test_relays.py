@@ -7,6 +7,8 @@
 
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 
 class TestRelays13Bus:
 
@@ -161,6 +163,27 @@ class TestRelays13Bus:
     # ===================================================================
     # Variant methods
     # ===================================================================
+
+    # dss.text() verification tests
+    def test_relays_dss_text_monitored_term(self, dss):
+        expected = 2
+        dss.relays.monitored_term = expected
+        assert_dss_text_value(dss, "? Relay.test1.MonitoredTerm", expected)
+
+    def test_relays_dss_text_switched_term(self, dss):
+        expected = 2
+        dss.relays.switched_term = expected
+        assert_dss_text_value(dss, "? Relay.test1.SwitchedTerm", expected)
+
+    def test_relays_dss_text_monitored_obj(self, dss):
+        expected = "line.632645"
+        dss.relays.monitored_obj = expected
+        assert_dss_text_value(dss, "? Relay.test1.MonitoredObj", expected)
+
+    def test_relays_dss_text_switched_obj(self, dss):
+        expected = "line.632645"
+        dss.relays.switched_obj = expected
+        assert_dss_text_value(dss, "? Relay.test1.SwitchedObj", expected)
     def test_relays_all_names(self, dss):
         expected = ["test1", "test2"]
         actual = dss.relays.names

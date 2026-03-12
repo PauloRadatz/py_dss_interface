@@ -8,6 +8,8 @@
 
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 
 class TestMeters13Bus:
 
@@ -354,3 +356,14 @@ class TestMeters13Bus:
         expected = 0
         dss.meters.set_active_section(1)
         # assert actual == expected
+
+    # dss.text() verification tests
+    def test_meters_dss_text_metered_terminal(self, dss):
+        expected = 2
+        dss.meters.metered_terminal = expected
+        assert_dss_text_value(dss, "? EnergyMeter.em1.terminal", expected)
+
+    def test_meters_dss_text_metered_element(self, dss):
+        expected = 'line.684652'
+        dss.meters.metered_element = expected
+        assert_dss_text_value(dss, "? EnergyMeter.em1.element", expected)

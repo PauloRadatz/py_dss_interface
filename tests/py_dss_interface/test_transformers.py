@@ -7,6 +7,8 @@
 
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 
 class TestTransformers13Bus:
 
@@ -293,3 +295,87 @@ class TestTransformers13Bus:
         actual = dss.transformers.core_type
 
         assert actual == expected
+
+    # ===================================================================
+    # dss.text() verification tests
+    # ===================================================================
+    def test_transformers_write_num_windings_dss_text(self, dss):
+        expected = 3
+        dss.transformers.num_windings = expected
+        assert_dss_text_value(dss, "? Transformer.sub.windings", expected)
+
+    def test_transformers_write_num_taps_dss_text(self, dss):
+        expected = 16
+        dss.transformers.num_taps = expected
+        assert_dss_text_value(dss, "? Transformer.sub.NumTaps", expected)
+
+    def test_transformers_write_tap_dss_text(self, dss):
+        expected = 5.0
+        dss.transformers.tap = expected
+        assert_dss_text_value(dss, "? Transformer.sub.tap", expected)
+
+    def test_transformers_write_min_tap_dss_text(self, dss):
+        expected = 0.5
+        dss.transformers.min_tap = expected
+        assert_dss_text_value(dss, "? Transformer.sub.MinTap", expected)
+
+    def test_transformers_write_max_tap_dss_text(self, dss):
+        expected = 1.5
+        dss.transformers.max_tap = expected
+        assert_dss_text_value(dss, "? Transformer.sub.MaxTap", expected)
+
+    def test_transformers_write_kv_dss_text(self, dss):
+        expected = 3.8
+        dss.transformers.kv = expected
+        assert_dss_text_value(dss, "? Transformer.sub.kV", expected)
+
+    def test_transformers_write_kva_dss_text(self, dss):
+        expected = 10000.0
+        dss.transformers.kva = expected
+        assert_dss_text_value(dss, "? Transformer.sub.kVA", expected)
+
+    def test_transformers_write_x_neut_dss_text(self, dss):
+        expected = 1.0
+        dss.transformers.x_neut = expected
+        assert_dss_text_value(dss, "? Transformer.sub.Xneut", expected)
+
+    def test_transformers_write_r_neut_dss_text(self, dss):
+        expected = 1.0
+        dss.transformers.r_neut = expected
+        assert_dss_text_value(dss, "? Transformer.sub.Rneut", expected)
+
+    def test_transformers_write_xhl_dss_text(self, dss):
+        expected = 0.008
+        dss.transformers.xhl = expected
+        assert_dss_text_value(dss, "? Transformer.sub.XHL", expected)
+
+    def test_transformers_write_xht_dss_text(self, dss):
+        expected = 5.0
+        dss.transformers.xht = expected
+        assert_dss_text_value(dss, "? Transformer.sub.XHT", expected)
+
+    def test_transformers_write_xlt_dss_text(self, dss):
+        expected = 5.0
+        dss.transformers.xlt = expected
+        assert_dss_text_value(dss, "? Transformer.sub.XLT", expected)
+
+    def test_transformers_write_xfmr_code_dss_text(self, dss):
+        dss.text(r'New XfmrCode.test phases=1 xhl=0.01 kvas=[1666 1666] kvs=[2.4 2.4] %LoadLoss=0.01 ')
+        expected = 'test'
+        dss.transformers.xfmr_code = expected
+        assert_dss_text_value(dss, "? Transformer.sub.XfmrCode", expected)
+
+    def test_transformers_write_core_type_dss_text(self, dss):
+        expected = 2
+        dss.transformers.core_type = expected
+        assert_dss_text_value(dss, "? Transformer.sub.Core", expected)
+
+    def test_transformers_write_r_dss_text(self, dss):
+        expected = 0.01
+        dss.transformers.r = expected
+        assert_dss_text_value(dss, "? Transformer.sub.%R", expected)
+
+    def test_transformers_write_wdg_dss_text(self, dss):
+        expected = 1
+        dss.transformers.wdg = expected
+        assert_dss_text_value(dss, "? Transformer.sub.wdg", expected)

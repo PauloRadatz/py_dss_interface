@@ -7,6 +7,8 @@
 
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 
 class TestSensors13Bus:
 
@@ -215,3 +217,29 @@ class TestSensors13Bus:
         dss.text("Allocateloads")
         actual = dss.sensors.allocation_factor
         assert [round(value, 6) for value in actual] == [round(value, 6) for value in expected]
+
+    # dss.text() verification tests
+    def test_sensors_dss_text_pct_error(self, dss):
+        expected = 1.5
+        dss.sensors.pct_error = expected
+        assert_dss_text_value(dss, "? Sensor.Sensor1.%Error", expected)
+
+    def test_sensors_dss_text_weight(self, dss):
+        expected = 2.0
+        dss.sensors.weight = expected
+        assert_dss_text_value(dss, "? Sensor.Sensor1.Weight", expected)
+
+    def test_sensors_dss_text_kv_base(self, dss):
+        expected = 0.48
+        dss.sensors.kv_base = expected
+        assert_dss_text_value(dss, "? Sensor.Sensor1.kVBase", expected)
+
+    def test_sensors_dss_text_metered_element(self, dss):
+        expected = "load.611"
+        dss.sensors.metered_element = expected
+        assert_dss_text_value(dss, "? Sensor.Sensor1.element", expected)
+
+    def test_sensors_dss_text_metered_terminal(self, dss):
+        expected = 2
+        dss.sensors.metered_terminal = expected
+        assert_dss_text_value(dss, "? Sensor.Sensor1.terminal", expected)

@@ -6,6 +6,7 @@
 # @Software : VSCode
 
 import pytest
+from tests.py_dss_interface.utils import assert_dss_text_value
 
 
 class TestVSources13Bus:
@@ -117,3 +118,29 @@ class TestVSources13Bus:
         expected = ['source', 'fonte1']
         actual = dss.vsources.names
         assert actual == expected
+
+    # dss.text() verification tests
+    def test_vsources_dss_text_phases(self, dss):
+        expected = 2
+        dss.vsources.phases = expected
+        assert_dss_text_value(dss, "? Vsource.fonte1.phases", expected)
+
+    def test_vsources_dss_text_base_kv(self, dss):
+        expected = 13.8
+        dss.vsources.base_kv = expected
+        assert_dss_text_value(dss, "? Vsource.fonte1.basekv", expected)
+
+    def test_vsources_dss_text_pu(self, dss):
+        expected = 1.1
+        dss.vsources.pu = expected
+        assert_dss_text_value(dss, "? Vsource.fonte1.pu", expected)
+
+    def test_vsources_dss_text_angle_deg(self, dss):
+        expected = 45.0
+        dss.vsources.angle_deg = expected
+        assert_dss_text_value(dss, "? Vsource.fonte1.angle", expected)
+
+    def test_vsources_dss_text_frequency(self, dss):
+        expected = 50.0
+        dss.vsources.frequency = expected
+        assert_dss_text_value(dss, "? Vsource.fonte1.frequency", expected)

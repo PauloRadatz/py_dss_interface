@@ -6,6 +6,7 @@
 # @Software: PyCharm
 
 import pytest
+from tests.py_dss_interface.utils import assert_dss_text_value
 
 
 class TestBus13Storages:
@@ -337,4 +338,82 @@ class TestBus13Storages:
         dss.storages.name = expected
         actual = dss.storages.name
         assert actual == expected
+
+    # dss.text() verification tests
+
+    def test_write_kv_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.kv = expected
+        assert_dss_text_value(dss, "? Storage.St.kV", expected)
+
+    def test_write_kva_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.kva = expected
+        assert_dss_text_value(dss, "? Storage.St.kVA", expected)
+
+    def test_write_kvar_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.kvar = expected
+        assert_dss_text_value(dss, "? Storage.St.kvar", expected)
+
+    def test_write_kw_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.kw = expected
+        assert_dss_text_value(dss, "? Storage.St.kW", expected)
+
+    def test_write_kwh_rated_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.kwh_rated = expected
+        assert_dss_text_value(dss, "? Storage.St.kWhrated", expected)
+
+    def test_write_kw_rated_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.kw_rated = expected
+        assert_dss_text_value(dss, "? Storage.St.kWrated", expected)
+
+    def test_write_pf_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.pf = expected
+        assert_dss_text_value(dss, "? Storage.St.PF", expected)
+
+    def test_write_eff_charge_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.eff_charge = expected
+        assert_dss_text_value(dss, "? Storage.St.%EffCharge", expected)
+
+    def test_write_eff_discharge_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.eff_discharge = expected
+        assert_dss_text_value(dss, "? Storage.St.%EffDischarge", expected)
+
+    def test_write_charge_trigger_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.charge_trigger = expected
+        assert_dss_text_value(dss, "? Storage.St.ChargeTrigger", expected)
+
+    def test_write_discharge_trigger_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.discharge_trigger = expected
+        assert_dss_text_value(dss, "? Storage.St.DischargeTrigger", expected)
+
+    def test_write_time_charge_trig_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.time_charge_trig = expected
+        assert_dss_text_value(dss, "? Storage.St.TimeChargeTrig", expected)
+
+    def test_write_amp_limit_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.amp_limit = expected
+        assert_dss_text_value(dss, "? Storage.St.AmpLimit", expected)
+
+    def test_write_amp_limit_gain_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.amp_limit_gain = expected
+        assert_dss_text_value(dss, "? Storage.St.AmpLimitGain", expected)
+
+    def test_write_pu_soc_dss_text(self, dss):
+        expected = 1.0
+        dss.storages.pu_soc = expected
+        actual_str = dss.text("? Storage.St.%stored").strip()
+        assert float(actual_str) == pytest.approx(expected * 100, abs=1)
 

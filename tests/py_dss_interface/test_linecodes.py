@@ -7,6 +7,8 @@
 
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 
 class TestLineCodes13Bus:
 
@@ -229,6 +231,54 @@ class TestLineCodes13Bus:
                     'mtx602', 'mtx603', 'mtx604', 'mtx605', 'mtx606', 'mtx607']
         actual = dss.linecodes.names
         assert actual == expected
+
+    # ===================================================================
+    # dss.text() verification tests
+    # ===================================================================
+    def test_linecodes_write_phases_dss_text(self, dss):
+        expected = 2
+        dss.linecodes.phases = expected
+        assert_dss_text_value(dss, "? LineCode.1.nphases", expected)
+
+    def test_linecodes_write_r1_dss_text(self, dss):
+        expected = 0.1
+        dss.linecodes.r1 = expected
+        assert_dss_text_value(dss, "? LineCode.1.R1", expected)
+
+    def test_linecodes_write_x1_dss_text(self, dss):
+        expected = 0.1
+        dss.linecodes.x1 = expected
+        assert_dss_text_value(dss, "? LineCode.1.X1", expected)
+
+    def test_linecodes_write_c1_dss_text(self, dss):
+        expected = 1.0
+        dss.linecodes.c1 = expected
+        assert_dss_text_value(dss, "? LineCode.1.C1", expected)
+
+    def test_linecodes_write_r0_dss_text(self, dss):
+        expected = 0.1
+        dss.linecodes.r0 = expected
+        assert_dss_text_value(dss, "? LineCode.1.R0", expected)
+
+    def test_linecodes_write_x0_dss_text(self, dss):
+        expected = 0.1
+        dss.linecodes.x0 = expected
+        assert_dss_text_value(dss, "? LineCode.1.X0", expected)
+
+    def test_linecodes_write_c0_dss_text(self, dss):
+        expected = 2.0
+        dss.linecodes.c0 = expected
+        assert_dss_text_value(dss, "? LineCode.1.C0", expected)
+
+    def test_linecodes_write_norm_amps_dss_text(self, dss):
+        expected = 300.0
+        dss.linecodes.norm_amps = expected
+        assert_dss_text_value(dss, "? LineCode.1.normamps", expected)
+
+    def test_linecodes_write_emerg_amps_dss_text(self, dss):
+        expected = 300.0
+        dss.linecodes.emerg_amps = expected
+        assert_dss_text_value(dss, "? LineCode.1.emergamps", expected)
 
 
 # # Todo move those guys to another place.

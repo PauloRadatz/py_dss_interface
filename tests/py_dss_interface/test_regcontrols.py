@@ -6,6 +6,7 @@
 # @Software : VSCode
 
 import pytest
+from tests.py_dss_interface.utils import assert_dss_text_value
 
 
 class TestRegcontrols13Bus:
@@ -292,3 +293,99 @@ class TestRegcontrols13Bus:
         expected = ['reg1', 'reg2', 'reg3']
         actual = dss.regcontrols.names
         assert actual == expected
+
+    # dss.text() verification tests
+    def test_regcontrols_dss_text_tap_winding(self, dss):
+        expected = 1
+        dss.regcontrols.tap_winding = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.TapWinding", expected)
+
+    def test_regcontrols_dss_text_winding(self, dss):
+        expected = 1
+        dss.regcontrols.winding = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.winding", expected)
+
+    def test_regcontrols_dss_text_max_tap_change(self, dss):
+        expected = 12
+        dss.regcontrols.max_tap_change = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.MaxTapChange", expected)
+
+    def test_regcontrols_dss_text_tap_number(self, dss):
+        expected = 16
+        dss.regcontrols.tap_number = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.TapNum", expected)
+
+    def test_regcontrols_dss_text_ct_primary(self, dss):
+        expected = 600.0
+        dss.regcontrols.ct_primary = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.CTPrim", expected)
+
+    def test_regcontrols_dss_text_pt_ratio(self, dss):
+        expected = 15.0
+        dss.regcontrols.pt_ratio = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.PTratio", expected)
+
+    def test_regcontrols_dss_text_forward_r(self, dss):
+        expected = 4.0
+        dss.regcontrols.forward_r = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.R", expected)
+
+    def test_regcontrols_dss_text_forward_x(self, dss):
+        expected = 8.0
+        dss.regcontrols.forward_x = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.X", expected)
+
+    def test_regcontrols_dss_text_reverse_r(self, dss):
+        expected = 5.0
+        dss.regcontrols.reverse_r = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.revR", expected)
+
+    def test_regcontrols_dss_text_reverse_x(self, dss):
+        expected = 5.0
+        dss.regcontrols.reverse_x = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.revX", expected)
+
+    def test_regcontrols_dss_text_delay(self, dss):
+        expected = 10.0
+        dss.regcontrols.delay = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.Delay", expected)
+
+    def test_regcontrols_dss_text_tap_delay(self, dss):
+        expected = 1.0
+        dss.regcontrols.tap_delay = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.TapDelay", expected)
+
+    def test_regcontrols_dss_text_voltage_limit(self, dss):
+        expected = 1.0
+        dss.regcontrols.voltage_limit = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.Vlimit", expected)
+
+    def test_regcontrols_dss_text_forward_band(self, dss):
+        expected = 1.0
+        dss.regcontrols.forward_band = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.band", expected)
+
+    def test_regcontrols_dss_text_forward_vreg(self, dss):
+        expected = 111.0
+        dss.regcontrols.forward_vreg = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.vreg", expected)
+
+    def test_regcontrols_dss_text_reverse_band(self, dss):
+        expected = 12.0
+        dss.regcontrols.reverse_band = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.revband", expected)
+
+    def test_regcontrols_dss_text_reverse_vreg(self, dss):
+        expected = 110.0
+        dss.regcontrols.reverse_vreg = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.revvreg", expected)
+
+    def test_regcontrols_dss_text_monitored_bus(self, dss):
+        expected = '672'
+        dss.regcontrols.monitored_bus = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.bus", expected)
+
+    def test_regcontrols_dss_text_transformer(self, dss):
+        expected = 'reg2'
+        dss.regcontrols.transformer = expected
+        assert_dss_text_value(dss, "? RegControl.reg1.transformer", expected)

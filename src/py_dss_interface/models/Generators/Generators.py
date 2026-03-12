@@ -37,8 +37,8 @@ class Generators(GeneratorsI, GeneratorsF, GeneratorsS, GeneratorsV):
         return GeneratorsI._forced_on(self)
 
     @forced_on.setter
-    def forced_on(self, value: int):
-        GeneratorsI._forced_on_write(self, value)
+    def force_on(self, value: int):
+        GeneratorsI._force_on_write(self, value)
 
     @property
     def idx(self) -> int:

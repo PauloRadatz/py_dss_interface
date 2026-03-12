@@ -7,6 +7,8 @@
 
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 
 class TestSwtControls13Bus:
 
@@ -153,3 +155,18 @@ class TestSwtControls13Bus:
         dss.swtcontrols.reset()
         actual = dss.swtcontrols.state
         assert actual == expected
+
+    # dss.text() verification tests
+    def test_swtcontrols_write_switched_term_dss_text(self, dss):
+        dss.text("new swtcontrol.1  SwitchedObj=line.650632  SwitchedTerm=1 Action=c")
+        dss.text("new swtcontrol.2  SwitchedObj=line.692675  SwitchedTerm=1 Action=o")
+        dss.solution.solve()
+        dss.swtcontrols.name = '1'
+        expected = 0
+        dss.swtcontrols.switched_term = expected
+        assert_dss_text_value(dss, "? SwtControl.1.SwitchedTerm", expected)
+
+    def test_swtcontrols_write_switched_obj_dss_text(self, dss):
+        expected = 'line.692675'
+        dss.swtcontrols.switched_obj = expected
+        assert_dss_text_value(dss, "? SwtControl.1.SwitchedObj", expected)

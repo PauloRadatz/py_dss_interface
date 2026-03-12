@@ -6,6 +6,7 @@
 # @Software : VSCode
 
 import pytest
+from tests.py_dss_interface.utils import assert_dss_text_value
 
 
 class TestReclosers13Bus:
@@ -334,3 +335,54 @@ class TestReclosers13Bus:
         expected = [0.5, 2, 2]
         actual = dss.reclosers.intervals
         assert actual == expected
+
+    # dss.text() verification tests
+    def test_reclosers_dss_text_monitored_term(self, dss):
+        expected = 2
+        dss.reclosers.monitored_term = expected
+        assert_dss_text_value(dss, "? Recloser.cb1.MonitoredTerm", expected)
+
+    def test_reclosers_dss_text_switched_term(self, dss):
+        expected = 2
+        dss.reclosers.switched_term = expected
+        assert_dss_text_value(dss, "? Recloser.cb1.SwitchedTerm", expected)
+
+    def test_reclosers_dss_text_num_fast(self, dss):
+        expected = 1
+        dss.reclosers.num_fast = expected
+        assert_dss_text_value(dss, "? Recloser.cb1.NumFast", expected)
+
+    def test_reclosers_dss_text_shots(self, dss):
+        expected = 3
+        dss.reclosers.shots = expected
+        assert_dss_text_value(dss, "? Recloser.cb1.Shots", expected)
+
+    def test_reclosers_dss_text_phase_trip(self, dss):
+        expected = 700.0
+        dss.reclosers.phase_trip = expected
+        assert_dss_text_value(dss, "? Recloser.cb1.PhaseTrip", expected)
+
+    def test_reclosers_dss_text_phase_inst(self, dss):
+        expected = 1200.0
+        dss.reclosers.phase_inst = expected
+        assert_dss_text_value(dss, "? Recloser.cb1.PhaseInst", expected)
+
+    def test_reclosers_dss_text_ground_trip(self, dss):
+        expected = 700.0
+        dss.reclosers.ground_trip = expected
+        assert_dss_text_value(dss, "? Recloser.cb1.GroundTrip", expected)
+
+    def test_reclosers_dss_text_ground_inst(self, dss):
+        expected = 1900.0
+        dss.reclosers.ground_inst = expected
+        assert_dss_text_value(dss, "? Recloser.cb1.GroundInst", expected)
+
+    def test_reclosers_dss_text_monitored_obj(self, dss):
+        expected = 'line.684652'
+        dss.reclosers.monitored_obj = expected
+        assert_dss_text_value(dss, "? Recloser.cb1.MonitoredObj", expected)
+
+    def test_reclosers_dss_text_switched_obj(self, dss):
+        expected = 'line.684652'
+        dss.reclosers.switched_obj = expected
+        assert_dss_text_value(dss, "? Recloser.cb1.SwitchedObj", expected)

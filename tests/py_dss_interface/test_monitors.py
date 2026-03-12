@@ -10,6 +10,8 @@ import os
 
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 path = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -2227,3 +2229,19 @@ class TestMonitors13Bus:
         dss.monitors.mode = expected
         actual = dss.monitors.mode
         assert actual == expected
+
+    # dss.text() verification tests
+    def test_monitors_dss_text_terminal(self, dss):
+        expected = 2
+        dss.monitors.terminal = expected
+        assert_dss_text_value(dss, "? Monitor.m1.terminal", expected)
+
+    def test_monitors_dss_text_element(self, dss):
+        expected = "load.671"
+        dss.monitors.element = expected
+        assert_dss_text_value(dss, "? Monitor.m1.element", expected)
+
+    def test_monitors_dss_text_mode(self, dss):
+        expected = 1
+        dss.monitors.mode = expected
+        assert_dss_text_value(dss, "? Monitor.m1.mode", expected)

@@ -6,6 +6,7 @@
 # @Software: PyCharm
 
 import pytest
+from tests.py_dss_interface.utils import assert_dss_text_value
 
 
 class TestPVSystems13Bus:
@@ -197,3 +198,27 @@ class TestPVSystems13Bus:
         expected = ["pv1", "pv2"]
         actual = dss.pvsystems.names
         assert actual == expected
+
+    # dss.text() verification tests
+
+    def test_pvsystems_write_irradiance_dss_text(self, dss):
+        dss.circuit.set_active_element("pvsystem.'PV1'")
+        expected = 0.5
+        dss.pvsystems.irradiance = expected
+        dss.text("solve")
+        assert_dss_text_value(dss, "? PVSystem.PV1.irradiance", expected)
+
+    def test_pvsystems_write_pf_dss_text(self, dss):
+        expected = -0.97
+        dss.pvsystems.pf = expected
+        assert_dss_text_value(dss, "? PVSystem.PV1.PF", expected)
+
+    def test_pvsystems_write_kva_dss_text(self, dss):
+        expected = 1000.0
+        dss.pvsystems.kva = expected
+        assert_dss_text_value(dss, "? PVSystem.PV1.kVA", expected)
+
+    def test_pvsystems_write_pmpp_dss_text(self, dss):
+        expected = 1000.0
+        dss.pvsystems.pmpp = expected
+        assert_dss_text_value(dss, "? PVSystem.PV1.Pmpp", expected)

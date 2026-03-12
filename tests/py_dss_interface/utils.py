@@ -5,6 +5,34 @@
 # @File    : utils.py
 # @Software: PyCharm
 
+import pytest
+
+
+def assert_dss_text_value(dss, text_cmd, expected, tol=1e-4):
+    """Verify a value was persisted to the OpenDSS engine via text query.
+
+    Compares the string returned by dss.text() against the expected value,
+    handling type conversion automatically.
+    """
+    actual_str = dss.text(text_cmd).strip()
+    if isinstance(expected, float):
+        assert float(actual_str) == pytest.approx(expected, abs=tol), (
+            f"engine mismatch for '{text_cmd}': text returned '{actual_str}', expected {expected}"
+        )
+    elif isinstance(expected, int):
+        assert int(round(float(actual_str))) == expected, (
+            f"engine mismatch for '{text_cmd}': text returned '{actual_str}', expected {expected}"
+        )
+    elif isinstance(expected, str):
+        assert actual_str.lower() == expected.strip().lower(), (
+            f"engine mismatch for '{text_cmd}': text returned '{actual_str}', expected '{expected}'"
+        )
+    else:
+        assert str(expected) == actual_str, (
+            f"engine mismatch for '{text_cmd}': text returned '{actual_str}', expected {expected}"
+        )
+
+
 def truncate(num, n):
     # Return a truncated version of a floating point number
     temp = str(num)

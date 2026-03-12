@@ -8,6 +8,8 @@
 
 import pytest
 
+from tests.py_dss_interface.utils import assert_dss_text_value
+
 
 class TestGenerators13Bus:
 
@@ -46,10 +48,10 @@ class TestGenerators13Bus:
         actual = dss.generators.forced_on
         assert actual == expected
 
-    def test_generators_write_forced_on(self, dss):
+    def test_generators_write_force_on(self, dss):
         expected = 1
-        dss.generators.forced_on = expected
-        actual = dss.generators.forced_on
+        dss.generators.force_on = expected
+        actual = dss.generators.force_on
         assert actual == expected
 
     def test_generators_read_phases(self, dss):
@@ -199,3 +201,57 @@ class TestGenerators13Bus:
         expected = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         actual = dss.generators.register_values
         assert actual == expected
+
+    # ===================================================================
+    # dss.text() verification tests
+    # ===================================================================
+    def test_generators_write_force_on_dss_text(self, dss):
+        expected = 1
+        dss.generators.force_on = expected
+        actual_str = dss.text("? Generator.G1.ForceON").strip()
+        assert actual_str.lower() == "true"
+
+    def test_generators_write_phases_dss_text(self, dss):
+        expected = 3
+        dss.generators.phases = expected
+        assert_dss_text_value(dss, "? Generator.G1.phases", expected)
+
+    def test_generators_write_model_dss_text(self, dss):
+        expected = 2
+        dss.generators.model = expected
+        assert_dss_text_value(dss, "? Generator.G1.model", expected)
+
+    def test_generators_write_kv_dss_text(self, dss):
+        expected = 4.8
+        dss.generators.kv = expected
+        assert_dss_text_value(dss, "? Generator.G1.kV", expected)
+
+    def test_generators_write_kw_dss_text(self, dss):
+        expected = 400.0
+        dss.generators.kw = expected
+        assert_dss_text_value(dss, "? Generator.G1.kW", expected)
+
+    def test_generators_write_kvar_dss_text(self, dss):
+        expected = -10.0
+        dss.generators.kvar = expected
+        assert_dss_text_value(dss, "? Generator.G1.kvar", expected)
+
+    def test_generators_write_pf_dss_text(self, dss):
+        expected = -0.90
+        dss.generators.pf = expected
+        assert_dss_text_value(dss, "? Generator.G1.PF", expected)
+
+    def test_generators_write_kva_dss_text(self, dss):
+        expected = 123.0
+        dss.generators.kva = expected
+        assert_dss_text_value(dss, "? Generator.G1.kVA", expected)
+
+    def test_generators_write_vmax_pu_dss_text(self, dss):
+        expected = 1.2
+        dss.generators.vmax_pu = expected
+        assert_dss_text_value(dss, "? Generator.G1.Vmaxpu", expected)
+
+    def test_generators_write_vmin_pu_dss_text(self, dss):
+        expected = 0.85
+        dss.generators.vmin_pu = expected
+        assert_dss_text_value(dss, "? Generator.G1.Vminpu", expected)
