@@ -27,6 +27,12 @@
 # on macOS-C++ but 2400 on Windows-Delphi. The struct field name (PhInst)
 # stays unchanged; only the property keyword the parser recognizes moves.
 #
+# Fixes a TPointerList leak in Controls/ControlElem.cpp::RemoveSelfFromControlelementList.
+# A heap-allocated TempList was copy-assigned into ControlElementList but
+# never freed. Cross-platform; reported as a candidate cause of SwtControl
+# instability on macOS-C++ under repeated subprocess isolation, though the
+# observed SIGBUS likely has a different root.
+#
 # The CMake APPLE branch additionally defines linux=1 and __linux__=1 to enable
 # the existing POSIX code paths gated by those macros, and
 # _LIBCPP___FWD_COMPLEX_H to suppress libc++'s forward declaration of
@@ -552,3 +558,14 @@ diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
  		}
  		break;
  	case 8:													// Reclosers.PhSlowPickup read
+diff -urN a/Controls/ControlElem.cpp b/Controls/ControlElem.cpp
+--- a/Controls/ControlElem.cpp	2026-05-03 15:51:30
++++ b/Controls/ControlElem.cpp	2026-05-03 15:51:39
+@@ -221,6 +221,7 @@
+ 		}
+ 		with0->ControlElementList.Clear();
+ 		with0->ControlElementList = *TempList;
++		delete TempList;
+ 	}
+ }
+ 
