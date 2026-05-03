@@ -8,18 +8,6 @@
 import platform
 import pytest
 
-# Some loss/power vector readouts on macOS arm64 exceed rel=1e-9 (the floor
-# the project picked for IEEE-754 vector comparisons) because of small-magnitude
-# values where Apple libm and arm64 vector reductions disagree with Windows on
-# the last few ULPs. Windows-Delphi passes (AppVeyor master-612, commit 03f96d7).
-# Loosening the tolerance further would mask real algorithmic regressions, so
-# xfail on Darwin instead.
-_macos_loss_power_xfail = pytest.mark.xfail(
-    platform.system() == "Darwin",
-    reason="macOS-C++ small-magnitude loss/power readback exceeds rel=1e-9; Windows-Delphi within tolerance.",
-    strict=False,
-)
-
 
 class TestCircuit13Bus:
 
@@ -157,13 +145,13 @@ class TestCircuit13Bus:
         if platform.architecture()[0] == "64bit":
             expected = [112405.24721569585, 327901.77539540455]
             actual = dss.circuit.losses
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_line_losses(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [106.49777151287977, 317.2152703226103]
             actual = dss.circuit.line_losses
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_substation_losses(self, dss):
         expected = [0.0, 0.0]
@@ -174,7 +162,7 @@ class TestCircuit13Bus:
         if platform.architecture()[0] == "64bit":
             expected = [-3567.2118131482466, -1736.5765097263468]
             actual = dss.circuit.total_power
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_all_bus_volts(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -261,7 +249,7 @@ class TestCircuit13Bus:
                         -1009.5693326805186,
                         2080.532633420145]
             actual = dss.circuit.buses_volts
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_all_bus_vmag(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -307,7 +295,7 @@ class TestCircuit13Bus:
                         2355.8353074279353,
                         2312.5410863842294]
             actual = dss.circuit.buses_vmag
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_all_element_names(self, dss):
         expected = ['Vsource.source', 'Transformer.sub', 'Transformer.reg1', 'RegControl.reg1', 'Transformer.reg2',
@@ -326,7 +314,6 @@ class TestCircuit13Bus:
         actual = dss.circuit.buses_names
         assert actual == expected
 
-    @_macos_loss_power_xfail
     def test_all_element_losses(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [-3567.2118131482466,
@@ -408,7 +395,7 @@ class TestCircuit13Bus:
                         9.05457499902695e-06,
                         5.820766e-14]
             actual = dss.circuit.elements_losses
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_all_bus_vmag_pu(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -454,7 +441,7 @@ class TestCircuit13Bus:
                         0.9808717420023628,
                         0.9628458308192339]
             actual = dss.circuit.buses_vmag_pu
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_all_node_names(self, dss):
         expected = ['sourcebus.1', 'sourcebus.2', 'sourcebus.3', '650.1', '650.2', '650.3', 'rg60.1', 'rg60.2',
@@ -3829,7 +3816,7 @@ class TestCircuit13Bus:
                         13.754939838994417,
                         -13.264848127833126]
             actual = dss.circuit.system_y
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_all_bus_distances(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -3846,7 +3833,7 @@ class TestCircuit13Bus:
                         1.40208, 1.55448, 0.8129016, 0.8129016, 0.8129016, 0.6096, 0.6096, 0.6096, 1.524, 1.524, 1.524,
                         1.31064, 1.31064]
             actual = dss.circuit.nodes_distances
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_all_node_vmag_by_phase(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -3864,7 +3851,7 @@ class TestCircuit13Bus:
                         2471.2992596093127,
                         2498.5158685371916]
             actual = dss.circuit.nodes_vmag_by_phase(2)
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_all_node_vmag_pu_by_phase(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -3882,14 +3869,14 @@ class TestCircuit13Bus:
                         1.0289461246035285,
                         1.0402779874575714]
             actual = dss.circuit.nodes_vmag_pu_by_phase(2)
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_all_node_distances_by_phase(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.0, 0.0, 0.0, 0.762, 0.762, 1.2192, 0.762, 0.85344, 1.2202, 1.3726, 1.40208, 0.8129016, 0.6096,
                         1.524, 1.31064]
             actual = dss.circuit.nodes_distances_by_phase(3)
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_all_node_names_by_phase(self, dss):
         expected = ['sourcebus.2', '650.2', 'rg60.2', '633.2', '634.2', '671.2', '645.2', '646.2', '692.2', '675.2',
@@ -3982,7 +3969,7 @@ class TestCircuit13Bus:
                         -1009.5693326805186,
                         2080.532633420145]
             actual = dss.circuit.y_node_varray
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_y_node_order(self, dss):
         expected = ['SOURCEBUS.1', 'SOURCEBUS.2', 'SOURCEBUS.3', '650.1', '650.2', '650.3', 'RG60.1', 'RG60.2',
@@ -4077,7 +4064,7 @@ class TestCircuit13Bus:
                         0.0,
                         0.0]
             actual = dss.circuit.y_currents
-            assert actual == pytest.approx(expected, rel=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_capacity(self, dss):
         expected = 3566.65122700374

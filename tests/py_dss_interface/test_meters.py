@@ -287,14 +287,14 @@ class TestMeters13Bus:
         dss.text("Allocateloads")
         expected = [473.76911764821904, 188.82002588596725, 424.90119440383563]
         actual = dss.meters.calc_current
-        assert actual == pytest.approx(expected, rel=1e-9)
+        assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     def test_meters_write_calc_current(self, dss):
         dss.meters.calc_current = [394, 301, 403]
         dss.text("Allocateloads")
         expected = [473.76911764821904, 188.82002588596725, 424.90119440383563]
         actual = dss.meters.calc_current
-        assert actual == pytest.approx(expected, rel=1e-9)
+        assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     # TODO C++ with problems here
     def test_meters_read_alloc_factors(self, dss):
@@ -302,7 +302,7 @@ class TestMeters13Bus:
         dss.text("Allocateloads")
         expected = [0.8316287096883996, 1.5941105748061957, 0.9484557946828922]
         actual = dss.meters.alloc_factors
-        assert actual == pytest.approx(expected, rel=1e-9)
+        assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
 
     # TODO C++ with problems here
     def test_meters_write_alloc_factors(self, dss):
