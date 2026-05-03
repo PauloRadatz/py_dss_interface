@@ -5,7 +5,18 @@
 # @File     : test_swtcontrols.py
 # @Software : VSCode
 
+import platform
+
 import pytest
+
+# test_swtcontrols_write_is_locked crashes the macOS arm64 OpenDSS C++
+# engine with a SIGBUS during the SwtControl.is_locked write path. xfail
+# cannot catch a process crash, so skip on Darwin. Windows-Delphi passes
+# (AppVeyor master-612, commit 03f96d7).
+_macos_swtcontrol_lock_write_crash = pytest.mark.skipif(
+    platform.system() == "Darwin",
+    reason="macOS-C++ SwtControl.is_locked write crashes the engine (SIGBUS); Windows-Delphi passes.",
+)
 
 
 class TestSwtControls13Bus:
@@ -56,6 +67,7 @@ class TestSwtControls13Bus:
         actual = dss.swtcontrols.is_locked
         assert actual == expected
 
+    @_macos_swtcontrol_lock_write_crash
     def test_swtcontrols_write_is_locked(self, dss):
         expected = 1
         dss.swtcontrols.is_locked = expected
