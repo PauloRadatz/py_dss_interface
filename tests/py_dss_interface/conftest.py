@@ -60,10 +60,10 @@ def _should_run_individually():
     if os.environ.get('PY_DSS_INTERFACE_RUN_TOGETHER', '').lower() == 'true':
         return False
 
-    # Check if we're on Linux (always uses C++)
-    # This should always return True on Linux systems
+    # Check if we're on Linux or macOS (both always use C++ and have the same
+    # OpenDSS C++ memory-leak behavior across DSS() instantiations).
     detected_platform = System.detect_platform()
-    if detected_platform == 'Linux':
+    if detected_platform in ('Linux', 'Darwin'):
         return True
 
     # Check if Windows C++ backend is being used
