@@ -1,0 +1,384 @@
+# macOS arm64 build patch for OpenDSSC (VersionC.zip).
+# Authored against epri-dev/OpenDSS-C SVN r4133 (see OpenDSSC_Commit.txt).
+#
+# Apply with: patch -p1 -d <unzipped-VersionC-dir> < linux/macos.patch
+#
+# Adds an Apple branch to CMakeLists; gates Linux-only headers (<linux/stat.h>,
+# <linux/unistd.h>, <error.h>) behind #ifndef __APPLE__; replaces glibc-only
+# calls (FpReadLink("/proc/self/exe"), strerror_l, syscall(SYS_exit_group),
+# __errno_location, __LC_ALL/__LC_TIME, _NL_MONETARY_CRNCYSTR) with the macOS
+# equivalents (_NSGetExecutablePath, strerror, _exit, errno, LC_ALL, default
+# values); rewrites Fpopendir/Fpreaddir/Fpclosedir to use opendir/readdir on
+# Apple since macOS lacks SYS_getdents64; replaces xdg-open with open in
+# Show_COM_Help; allows pointer storage in TSearchRec on Apple.
+#
+# The CMake APPLE branch additionally defines linux=1 and __linux__=1 to enable
+# the existing POSIX code paths gated by those macros, and
+# _LIBCPP___FWD_COMPLEX_H to suppress libc++'s forward declaration of
+# std::complex (which would otherwise conflict with Ucomplex::complex via the
+# project's using-directives).
+#
+diff -urN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2026-05-03 11:09:57
++++ b/CMakeLists.txt	2026-05-03 11:09:58
+@@ -298,10 +298,36 @@
+ 		${CMAKE_THREAD_LIBS_INIT}
+ 		${KLUSOLVE_LIB}
+ 	)
++elseif(APPLE)
++	# macOS: libc++ already provides std::filesystem, libSystem already provides
++	# dlopen, and uuid lives in the SDK.  None of stdc++fs/dl/uuid need to be linked.
++	# Define linux/__linux__ so the existing POSIX code paths (guarded by
++	# `#ifdef linux` and `#elif __linux__`) compile.  Truly Linux-only items
++	# (`<linux/stat.h>`, `/proc/self/exe`, `exit_group`) are additionally
++	# guarded with `#ifndef __APPLE__` in the source.
++	#
++	# _LIBCPP___FWD_COMPLEX_H pre-defines libc++'s internal include guard for
++	# <__fwd/complex.h>, suppressing libc++'s forward declaration of
++	# std::complex that <vector> et al pull in transitively.  Without this the
++	# project's Ucomplex::complex and std::complex are both visible to
++	# unqualified `complex` lookup wherever both `using namespace Ucomplex` and
++	# `using namespace std` are in effect, which breaks compilation in many
++	# headers and translation units.  libstdc++ (Linux) does not publish the
++	# forward declaration so the issue does not manifest there.
++	add_compile_definitions(linux=1 __linux__=1 _LIBCPP___FWD_COMPLEX_H)
++	# Apple Clang treats passing a std::string through a variadic function as an
++	# error by default; GCC only warns.  The Format(...) call sites in
++	# Recloser.cpp et al rely on the lenient GCC behavior; downgrade the
++	# diagnostic on macOS until those call sites are migrated to .c_str().
++	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-non-pod-varargs")
++	set(OPENDSSC_COMMON_LIBS
++		${CMAKE_THREAD_LIBS_INIT}
++		${KLUSOLVE_LIB}
++	)
+ else()
+ 	# Linux
+ 	# NOTE: iconv seems to be required on some recent compilers.
+-	#       From the GCC bugtracker and tickets from other projects, 
++	#       From the GCC bugtracker and tickets from other projects,
+ 	#       it could be a bug in the compiler setup, but linking iconv
+ 	#		is enough to work around it.
+ 	set(OPENDSSC_COMMON_LIBS
+diff -urN a/Common/DSSGlobals.cpp b/Common/DSSGlobals.cpp
+--- a/Common/DSSGlobals.cpp	2026-05-03 11:09:58
++++ b/Common/DSSGlobals.cpp	2026-05-03 11:09:58
+@@ -1558,6 +1558,9 @@
+         string url = "https://opendss.epri.com";
+         #ifdef windows
+             ShellExecuteA(0, "open", url.c_str(), 0, 0, SW_SHOWNORMAL);
++        #elif defined(__APPLE__)
++            std::string command = "open " + url + " > /dev/null 2>&1";
++            int hnd = system(command.c_str());
+         #elif __linux__
+         std::string command = "xdg-open " + url + " > /dev/null 2>&1";
+             int hnd = system(command.c_str());
+diff -urN a/Common/Utilities.cpp b/Common/Utilities.cpp
+--- a/Common/Utilities.cpp	2026-05-03 11:09:58
++++ b/Common/Utilities.cpp	2026-05-03 11:09:58
+@@ -195,7 +195,13 @@
+ 
+         // Handle errors here:
+         int the_errno = errno;
++        #ifdef __APPLE__
++        // macOS does not expose strerror_l; strerror is fine here because errno
++        // and the returned static buffer are thread-local on Darwin.
++        char *errno_message = strerror(the_errno);
++#else
+         char *errno_message = strerror_l(the_errno, uselocale(locale_t(0)));
++#endif
+         std::cerr << "fork_execvp error: execvp() returned with errno=" << the_errno << ": " << errno_message << "\n";
+ 
+         // We must not allow any return to the caller.
+@@ -298,7 +304,13 @@
+         if (the_errno) 
+         {
+             // fork_execvp() returned an error.
+-            char *errno_message = strerror_l(the_errno, uselocale(locale_t(0)));
++            #ifdef __APPLE__
++        // macOS does not expose strerror_l; strerror is fine here because errno
++        // and the returned static buffer are thread-local on Darwin.
++        char *errno_message = strerror(the_errno);
++#else
++        char *errno_message = strerror_l(the_errno, uselocale(locale_t(0)));
++#endif
+             std::stringstream error_string;
+             error_string << "FireOffEditor Error: " << error_message << " returned with errno=" << the_errno << ": " << errno_message;
+             DoSimpleMsg( error_string.str().c_str(), 704 );
+@@ -369,7 +381,13 @@
+       int the_errno = fork_execvp(argv[0], argv, &wstatus, &error_message);
+       if (the_errno) {
+         // fork_execvp() returned an error.
++        #ifdef __APPLE__
++        // macOS does not expose strerror_l; strerror is fine here because errno
++        // and the returned static buffer are thread-local on Darwin.
++        char *errno_message = strerror(the_errno);
++#else
+         char *errno_message = strerror_l(the_errno, uselocale(locale_t(0)));
++#endif
+         std::stringstream error_string;
+         error_string << "DoDOSCmd Error: " << error_message << " returned with errno=" << the_errno << ": " << errno_message;
+         DoSimpleMsg( error_string.str().c_str(), 704 );
+diff -urN a/Support/Sysutils.cpp b/Support/Sysutils.cpp
+--- a/Support/Sysutils.cpp	2026-05-03 11:09:58
++++ b/Support/Sysutils.cpp	2026-05-03 11:09:58
+@@ -88,7 +88,13 @@
+ #ifdef linux
+ #include <unistd.h>
+ #include <sys/stat.h>
++#ifdef __APPLE__
++// macOS exposes statfs through <sys/mount.h>, not <sys/statfs.h>.  The struct
++// layout differs in field types but f_bavail / f_bsize / f_blocks are present.
++#include <sys/mount.h>
++#else
+ #include <sys/statfs.h>
++#endif
+ 
+ #include <stddef.h>
+ #include <stdio.h>
+@@ -101,10 +107,12 @@
+ #include <dlfcn.h>
+ #include <iostream>
+ #include <cerrno>
++#ifndef __APPLE__
+ #include <linux/unistd.h> // exit_group
+ /* Because exit_group() appears to not be declared in linux/unistd.h */
+ #include <sys/syscall.h>   /* For SYS_exit_group definition */
+ #endif
++#endif
+ 
+ #include <complex>
+ using namespace std;
+@@ -7127,7 +7135,14 @@
+ 
+ void Fpexit( int Status )
+ {
++#ifdef __APPLE__
++  // macOS has no exit_group syscall.  _exit terminates the process without
++  // running atexit handlers, which matches exit_group's intent closely enough
++  // for the contexts this is used (DLL teardown).
++  _exit(Status);
++#else
+   syscall(SYS_exit_group, Status);
++#endif
+ }
+ 
+ pid_t fpfork( )
+@@ -7782,6 +7797,10 @@
+ 
+ cint fpopen( const char* Path, cint Flags, mode_t Mode )
+ {
++  // macOS lacks O_LARGEFILE; all files are 64-bit by default, so it is a no-op.
++#ifndef O_LARGEFILE
++#define O_LARGEFILE 0
++#endif
+   cint r = open(Path, Flags | O_LARGEFILE, Mode);
+   return r==-1 ? -errno : r;
+ }
+@@ -8697,6 +8716,12 @@
+ 
+ 
+ 
++// glibc-internal locale category constants reimplemented at file scope.  On
++// macOS these names are already provided by <langinfo.h> with different
++// numeric values; the corresponding nl_langinfo() implementation honors them.
++// Skip the redefinition on Apple to avoid both the undeclared __LC_TIME etc.
++// references and accidental clashes with the platform definitions.
++#ifndef __APPLE__
+ const int ABDAY_1 = ( __LC_TIME << 16 );
+ const int DAY_1 = ( ABDAY_1 ) + 7;
+ const int ABMON_1 = ( ABDAY_1 ) + 14;
+@@ -8726,6 +8751,7 @@
+ const int __P_SIGN_POSN = ( __INT_CURR_SYMBOL ) + 13;
+ const int __N_SIGN_POSN = ( __INT_CURR_SYMBOL ) + 14;
+ const int _NL_MONETARY_CRNCYSTR = ( __INT_CURR_SYMBOL ) + 15;
++#endif
+ 
+ 
+ String GetLocaleStr( cint item )
+@@ -8944,7 +8970,13 @@
+ 
+   int i = 0;
+   unsigned char prec = '\0', sep = '\0', signp = '\0';
++  // glibc spells the all-categories sentinel as __LC_ALL; the public POSIX
++  // name is LC_ALL, which is what macOS exposes.
++#ifdef __APPLE__
++  setlocale( LC_ALL, "" );
++#else
+   setlocale( __LC_ALL, "" );
++#endif
+   for ( i = 1; i <= 12; i++)
+   {
+     ShortMonthNames[i - 1] = GetLocaleStr( ABMON_1 + i - 1 );
+@@ -8970,6 +9002,13 @@
+   LongTimeFormat = GetLocaleStr( T_FMT_AMPM );
+   LongTimeFormat = TransformFormatStr( LongTimeFormat );   
+    //Currency stuff
++  // The glibc-internal __FRAC_DIGITS / __P_CS_PRECEDES / etc. names do not
++  // exist on macOS' libc — it exposes the public POSIX names (FRAC_DIGITS,
++  // P_CS_PRECEDES, ...) and uses CRNCYSTR rather than glibc's
++  // _NL_MONETARY_CRNCYSTR.  Default to neutral values on Apple rather than
++  // querying the platform; nothing in the OpenDSS test surface depends on
++  // currency / number formatting picked up from the system locale.
++#ifndef __APPLE__
+   CurrencyString = GetLocaleStr( _NL_MONETARY_CRNCYSTR );
+   CurrencyString = CurrencyString.substr( 2 - 1, CurrencyString.length( ) );
+   CurrencyDecimals = StrToIntDef( GetLocaleStr( __FRAC_DIGITS ), CurrencyDecimals );
+@@ -8985,6 +9024,7 @@
+   //number stuff
+   ThousandSeparator = GetLocaleChar( __THOUSANDS_SEP );
+   DecimalSeparator = GetLocaleChar( RADIXCHAR );
++#endif
+ }
+ 
+ // clocale end
+diff -urN a/Support/Sysutils.h b/Support/Sysutils.h
+--- a/Support/Sysutils.h	2026-05-03 11:09:58
++++ b/Support/Sysutils.h	2026-05-03 11:09:58
+@@ -616,13 +616,13 @@
+   int64_t Size;
+   int Attr;
+   TFileName Name;
+-  int ExcludeAttr; 
+-  #ifdef unix
++  int ExcludeAttr;
++  #if defined(unix) || defined(__APPLE__)
+   void* FindHandle;
+   mode_t Mode;
+-  AnsiString PathOnly; 
++  AnsiString PathOnly;
+   #else
+-  THandle FindHandle;   
++  THandle FindHandle;
+   #endif
+   #ifdef windows
+   TWin32FindData FindData;  
+diff -urN a/Support/d2c_sysexcept.cpp b/Support/d2c_sysexcept.cpp
+--- a/Support/d2c_sysexcept.cpp	2026-05-03 11:09:58
++++ b/Support/d2c_sysexcept.cpp	2026-05-03 11:09:58
+@@ -78,7 +78,9 @@
+ #include <stdio.h>
+ 
+ #ifdef linux
+-#include <error.h>
++#ifndef __APPLE__
++#include <error.h>  // glibc-only convenience wrapper for errno reporting; macOS uses <errno.h>
++#endif
+ #endif
+ 
+ using namespace std;
+diff -urN a/Support/d2c_sysfile.cpp b/Support/d2c_sysfile.cpp
+--- a/Support/d2c_sysfile.cpp	2026-05-03 11:09:58
++++ b/Support/d2c_sysfile.cpp	2026-05-03 11:09:58
+@@ -103,7 +103,13 @@
+ #include "d2c_sysmath.h"  // Hi
+ #undef __GLIBC__
+ #define  __GLIBC__ 1
++#ifndef __APPLE__
+ #include <linux/stat.h> //S_IWUSR etc.
++#endif
++// macOS lacks O_LARGEFILE; all files are 64-bit by default, so it is a no-op.
++#ifndef O_LARGEFILE
++#define O_LARGEFILE 0
++#endif
+ 
+ 
+ cint fpopen( const char* Path, cint Flags, mode_t Mode )
+@@ -221,6 +227,17 @@
+   ptr->dd_size = 0;
+   ptr->dd_nextoff = 0;
+   ptr->dd_max = sizeof( *ptr->dd_buf );
++#ifdef __APPLE__
++  // macOS has no getdents64 syscall.  Wrap the fd into a DIR* for readdir().
++  // fdopendir takes ownership of FD on success; subsequent closedir() handles it.
++  ptr->dd_lock = (void*) fdopendir( FD );
++  if ( ptr->dd_lock == NULL )
++  {
++    delete ptr->dd_buf;
++    delete ptr;
++    return NULL;
++  }
++#endif
+   return ptr;
+ }
+ 
+@@ -236,7 +253,13 @@
+ cint Fpclosedir( Dir* dirP )
+ {
+   cint result = 0;
++#ifdef __APPLE__
++  // closedir() also closes the underlying fd that fdopendir() took ownership of.
++  if ( dirP->dd_lock )
++    result = closedir( (DIR*) dirP->dd_lock );
++#else
+   result = fpclose( dirP->dd_fd );
++#endif
+   delete dirP->dd_buf;
+   delete dirP;
+   return result;
+@@ -245,6 +268,10 @@
+ 
+ dirent* Fpreaddir( Dir* dirP )
+ {
++#ifdef __APPLE__
++  // macOS readdir() handles deleted-entry skipping internally.
++  return readdir( (DIR*) dirP->dd_lock );
++#else
+   dirent* result = NULL;
+   int Bytes = 0;
+   dirent* dp = NULL;
+@@ -267,6 +294,7 @@
+   }
+   while ( ! ( dp->d_fileno != 0 ) ); // don'T show deleted files
+   return dp;
++#endif
+ }
+ 
+ #endif
+diff -urN a/Support/d2c_sysstring.cpp b/Support/d2c_sysstring.cpp
+--- a/Support/d2c_sysstring.cpp	2026-05-03 11:09:58
++++ b/Support/d2c_sysstring.cpp	2026-05-03 11:09:58
+@@ -344,7 +344,13 @@
+ 
+ cint fpgetCerrno( )
+ {
++#ifdef __APPLE__
++  // macOS / libc++ does not expose __errno_location.  errno is already a
++  // thread-local lvalue via <errno.h>.
++  return errno;
++#else
+   return *__errno_location();
++#endif
+ }
+ 
+ 
+diff -urN a/Support/d2c_system.cpp b/Support/d2c_system.cpp
+--- a/Support/d2c_system.cpp	2026-05-03 11:09:58
++++ b/Support/d2c_system.cpp	2026-05-03 11:09:58
+@@ -82,7 +82,10 @@
+ #if !defined(windows)
+ #include <unistd.h>
+ #include "windows2posix.h"
++#ifdef __APPLE__
++#include <mach-o/dyld.h>  // _NSGetExecutablePath
+ #endif
++#endif
+ 
+ #if defined(windows) && defined (_WIDESTRING)
+ #include <ShellAPI.h> // CommandLineToArgvW
+@@ -866,7 +869,16 @@
+ {
+   int i = 0;
+   execpathstr[0] = '\x00';
++#ifdef __APPLE__
++  // macOS has no /proc filesystem.  _NSGetExecutablePath returns the path of
++  // the executable image; for a dylib we still get the host process path,
++  // which matches the Linux behavior of /proc/self/exe.
++  uint32_t bufsize = 255;
++  if ( _NSGetExecutablePath( &execpathstr[1], &bufsize ) == 0 )
++    i = (int) strlen( &execpathstr[1] );
++#else
+   i = FpReadLink( "/proc/self/exe", &execpathstr[1], 255 /*# High(execpathstr) */ );
++#endif
+   /* it must also be an ABSOLUTE Filename, LINUX 2.0 Points to A memory
+     location So this will Skip that */
+   if ( ( i > 0 ) && ( execpathstr[1] == '/' ) )

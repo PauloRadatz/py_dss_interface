@@ -84,3 +84,13 @@ tests/py_dss_interface/cases/13Bus/IEEE13Nodeckt_EXP_SEQVOLTAGES.CSV
 tests/py_dss_interface/cases/13Bus/IEEE13Nodeckt_VLL.Txt
 tests/py_dss_interface/cases/13Bus/IEEE13Nodeckt_VLN.Txt
 tests/py_dss_interface/cases/13Bus/IEEE13Nodeckt_VLN_Node.Txt
+
+# macOS C++ engine build (created by OpenDSSMacOSCPPForRepo.sh).  The build
+# script's working directory; the actual dylibs land under
+# src/py_dss_interface/opendss_official/macos/cpp/ and are also untracked.
+/build_macos_src/
+src/py_dss_interface/opendss_official/macos/cpp/*.dylib
+src/py_dss_interface/opendss_official/macos/cpp/*.dylib.*
+
+# Local working notes (Track C upstream PR draft, etc.)
+/notes/
