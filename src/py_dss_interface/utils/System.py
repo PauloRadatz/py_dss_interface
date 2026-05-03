@@ -11,7 +11,7 @@ class System:
     def detect_platform():
         """
         Method to detect platform. Based on that result the methods can change
-        :return: plat: A string contains the platform name like 'Windows', 'Linux'.
+        :return: plat: A string containing the platform name, e.g. 'Windows', 'Linux', 'Darwin'.
         """
         plat = platform.system()
         return 'System cannot be determined' if plat == 0 else plat

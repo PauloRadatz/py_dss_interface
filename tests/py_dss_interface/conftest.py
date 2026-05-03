@@ -32,20 +32,21 @@ _current_test_number = 0
 def _should_run_individually():
     """
     Determine if tests should run individually based on platform and backend.
-    Returns True for Linux (always C++) or Windows with C++ backend.
+    Returns True for Linux/macOS (always C++) or Windows with C++ backend.
 
     This prevents memory leak issues when running multiple C++ tests together.
 
     Command-line options:
-    - --run-together: Override to run all tests together (even on Linux/C++)
+    - --run-together: Override to run all tests together (even on Linux/macOS/C++)
 
     Environment variables:
     - PY_DSS_INTERFACE_CPP=true: Force C++ backend detection on Windows
-    - PY_DSS_INTERFACE_RUN_TOGETHER=true: Override to run all tests together (even on Linux/C++)
+    - PY_DSS_INTERFACE_RUN_TOGETHER=true: Override to run all tests together
+      (even on Linux/macOS/C++)
     - _PY_DSS_INTERFACE_IN_SUBPROCESS=true: Internal flag to prevent recursion
 
-    On Linux, tests automatically run individually since Linux always uses C++.
-    On Windows, individual execution is triggered when C++ backend is detected.
+    On Linux and macOS, tests run individually since both always use C++.
+    On Windows, individual execution triggers when the C++ backend is detected.
     """
     # CRITICAL: Prevent recursion - if we're already in a subprocess, don't run individually again
     if os.environ.get('_PY_DSS_INTERFACE_IN_SUBPROCESS', '').lower() == 'true':
@@ -61,7 +62,7 @@ def _should_run_individually():
         return False
 
     # Check if we're on Linux or macOS (both always use C++ and have the same
-    # OpenDSS C++ memory-leak behavior across DSS() instantiations).
+    # OpenDSS C++ memory leak behavior across DSS() instantiations).
     detected_platform = System.detect_platform()
     if detected_platform in ('Linux', 'Darwin'):
         return True
@@ -138,8 +139,9 @@ def solve_snap_13bus():
 
 def pytest_runtest_protocol(item, nextitem):
     """
-    Pytest hook that runs each test individually when on Linux or C++ backend.
-    This prevents memory leak issues when running multiple tests together.
+    Pytest hook that runs each test individually on Linux, macOS, or with the
+    C++ backend on Windows. This prevents memory leak issues when running
+    multiple tests together.
 
     Returns:
         True: Test was handled (ran in subprocess), pytest will skip normal execution

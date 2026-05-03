@@ -1,7 +1,7 @@
 # 🐍 py-dss-interface: Python Control for OpenDSS Powered by EPRI
 
 ![PyPI](https://img.shields.io/pypi/v/py-dss-interface)
-![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-brightgreen)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-brightgreen)
 ![License](https://img.shields.io/github/license/PauloRadatz/py_dss_interface)
 ![AppVeyor](https://ci.appveyor.com/api/projects/status/github/PauloRadatz/py_dss_interface?branch=master&svg=true)
 ![PyPI Downloads](https://static.pepy.tech/badge/py-dss-interface)
@@ -26,9 +26,9 @@ Use the full power of Python to control and automate your OpenDSS workflows:
 Compared to the COM interface, `py-dss-interface` provides a modern, Pythonic experience:
 
 - 💡 **Code Completion**: Works seamlessly with IDEs like PyCharm for better developer productivity.
-- 📦 **No OpenDSS Installation Required**: No need to install OpenDSS since `py-dss-interface` comes bundled with a tested version of OpenDSS (Windows and Linux). However, you may also use a different OpenDSS version if desired. Please note that compatibility is only guaranteed for the bundled version.
+- 📦 **No OpenDSS Installation Required**: No need to install OpenDSS since `py-dss-interface` comes bundled with a tested version of OpenDSS (Windows, Linux, and macOS). However, you may also use a different OpenDSS version if desired. Please note that compatibility is only guaranteed for the bundled version.
 - 🔄 **Supports Multiple DSS Objects**: Interact with multiple OpenDSS objects at the same time.
-- 🌐 **Multi-Platform**: Supports both **Windows** and **Linux** (pre-built wheels available; build from source if needed).
+- 🌐 **Cross platform**: Runs on **Windows**, **Linux**, and **macOS** (Apple Silicon). Pre-built wheels are published for Windows and Linux; macOS users build from source today.
 - ⚡ **Better Performance**: Some examples comparing performance will be provided later.
 - 🔐 **Version Control Friendly**: Avoid breaking your Python code when updating the OpenDSS version on your computer.
 
@@ -126,14 +126,14 @@ pytest tests/
 
 #### Automatic Individual Execution (Default)
 
-On **Linux** or when using the **C++ backend on Windows**, tests automatically run individually in separate subprocesses to prevent memory leak issues. This is handled automatically by the test framework.
+On **Linux**, **macOS**, or when using the **C++ backend on Windows**, tests automatically run individually in separate subprocesses to prevent memory leak issues. The test framework handles this automatically.
 
 #### Running All Tests Together
 
 To run all tests together (faster execution, but may have memory issues if there are leaks), use the `--run-together` flag:
 
 ```bash
-# Run all tests together (even on Linux/C++)
+# Run all tests together (even on Linux/macOS/C++)
 pytest tests/ --run-together
 ```
 
