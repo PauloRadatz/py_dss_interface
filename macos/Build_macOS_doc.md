@@ -42,11 +42,16 @@ The first should print `arm64`; the second `path @loader_path`.
 bash macos/build_macos_wheels.sh
 ```
 
-Output goes to `wheelhouse/`. One wheel per Python version found on PATH,
-tagged `cp3X-cp3X-macosx_11_0_arm64`. The script calls
-`OpenDSSMacOSCPPForRepo.sh` first to stage dylibs, then loops `python -m
-build --wheel` per interpreter and runs `delocate-wheel` to bundle the
-klusolve dependency inside each wheel.
+Output goes to `wheelhouse/`. One wheel per Python version found, tagged
+`cp3X-none-macosx_11_0_arm64` (no CPython extension, so ABI tag is
+`none`). The script calls `OpenDSSMacOSCPPForRepo.sh` first to stage
+dylibs, then loops `python -m build --wheel` per interpreter and runs
+`delocate-wheel` to bundle the klusolve dependency inside each wheel.
+
+The wheel script resolves Python interpreters in this order: pyenv shims,
+`/Library/Frameworks/Python.framework/Versions/X.Y/bin/pythonX.Y`,
+`pythonX.Y` on `PATH`, `python3` if its version matches. Missing
+versions are reported and skipped, not fatal.
 
 ## What the patch does
 

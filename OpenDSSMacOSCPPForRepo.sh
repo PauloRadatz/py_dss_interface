@@ -20,6 +20,7 @@ PATCH_FILE="${REPO_ROOT}/macos/macos.patch"
 WORK_DIR="${REPO_ROOT}/build_macos_src"
 OUT_DIR="${REPO_ROOT}/src/py_dss_interface/opendss_official/macos/cpp"
 ARCH="${ARCH:-arm64}"
+DEPLOYMENT_TARGET="${MACOSX_DEPLOYMENT_TARGET:-11.0}"
 
 require_tool() {
     if ! command -v "$1" >/dev/null 2>&1; then
@@ -52,11 +53,12 @@ unzip -q "${SRC_ZIP}" -d "${WORK_DIR}"
 echo "==> Applying ${PATCH_FILE}"
 patch -p1 -d "${WORK_DIR}/VersionC" < "${PATCH_FILE}"
 
-echo "==> Configuring CMake (${ARCH}, Release, SHARED)"
+echo "==> Configuring CMake (${ARCH}, Release, SHARED, deployment target=${DEPLOYMENT_TARGET})"
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DMyOutputType:STRING=SHARED \
     -DCMAKE_OSX_ARCHITECTURES=${ARCH} \
+    -DCMAKE_OSX_DEPLOYMENT_TARGET=${DEPLOYMENT_TARGET} \
     -S "${WORK_DIR}/VersionC" \
     -B "${WORK_DIR}/build"
 
