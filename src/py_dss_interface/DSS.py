@@ -19,6 +19,7 @@ from .utils.Error import Error
 DLL_NAME_WIN_DELPHI = "OpenDSSDirect.dll"
 DLL_NAME_WIN_CPP = "OpenDSSC.dll"
 DLL_NAME_LINUX = "libOpenDSSC.so"
+DLL_NAME_MACOS = "libOpenDSSC.dylib"
 
 
 class DSSDLL:
@@ -46,6 +47,9 @@ class DSS:
         if System.detect_platform() == 'Linux':
             self.backend = "Linux-C++"
 
+        elif System.detect_platform() == 'Darwin':
+            self.backend = "macOS-C++"
+
         else:
             if windows_version == "delphi":
                 self.backend = "Windows-Delphi"
@@ -66,6 +70,14 @@ class DSS:
                 # print(dll_folder_param)
                 dll_folder_param = pathlib.Path(dll_folder_param)
                 dll_by_user = DLL_NAME_LINUX
+
+                self._dll_path = dll_folder_param
+            elif System.detect_platform() == 'Darwin':
+                if not dll_folder_param:
+                    dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))),
+                                                    "opendss_official", "macos", "cpp")
+                dll_folder_param = pathlib.Path(dll_folder_param)
+                dll_by_user = DLL_NAME_MACOS
 
                 self._dll_path = dll_folder_param
             elif System.detect_platform() == 'Windows':
