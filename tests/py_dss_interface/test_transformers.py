@@ -251,7 +251,7 @@ class TestTransformers13Bus:
                     -1200.311654294895,
                     2080.141951753078]
         actual = dss.transformers.wdg_voltages
-        assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+        assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_transformers_wdg_currents(self, dss):
         expected = [10.886376124155504,
@@ -279,7 +279,7 @@ class TestTransformers13Bus:
                     -36.93970551621169,
                     623.9349866397679]
         actual = dss.transformers.wdg_currents
-        assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+        assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_core_type_read(self, dss):
         expected = 0

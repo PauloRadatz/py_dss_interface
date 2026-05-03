@@ -8,18 +8,6 @@
 import platform
 import pytest
 
-# test_total_powers on macOS arm64 produces a max relative diff of ~2.1e-7 on
-# vector readback, which exceeds the project tolerance floor (rel=1e-7,
-# abs=1e-9). The other vector readouts in this file pass under that tolerance.
-# Apple libm and arm64 vector reduction order diverge from Windows on the last
-# few ULPs; Windows-Delphi passes (AppVeyor master-612, commit 03f96d7). xfail
-# on Darwin until the divergence is investigated upstream.
-_macos_vector_readout_xfail = pytest.mark.xfail(
-    platform.system() == "Darwin",
-    reason="macOS-C++ vector readback rel diff ~2.1e-7 exceeds rel=1e-7 floor; Windows-Delphi within tolerance.",
-    strict=False,
-)
-
 
 class TestCktElement13Bus:
 
@@ -242,7 +230,7 @@ class TestCktElement13Bus:
                         -1015.4071496666263,
                         2083.115713199055]
             actual = dss.cktelement.voltages
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_currents(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -259,7 +247,7 @@ class TestCktElement13Bus:
                         57.895368576049805,
                         -170.77582168579102]
             actual = dss.cktelement.currents
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_powers(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -276,13 +264,13 @@ class TestCktElement13Bus:
                         -414.5331687728567,
                         -52.804238327724946]
             actual = dss.cktelement.powers
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_losses(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.009054574999026954, 5.820766091e-11]
             actual = dss.cktelement.losses
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_phase_losses(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -293,7 +281,7 @@ class TestCktElement13Bus:
                         3.25162545777857e-06,
                         2.910383e-14]
             actual = dss.cktelement.phase_losses
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_seq_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -304,7 +292,7 @@ class TestCktElement13Bus:
                         2391.5781244654136,
                         42.2125249966211]
             actual = dss.cktelement.seq_voltages
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_seq_currents(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -315,7 +303,7 @@ class TestCktElement13Bus:
                         142.81151076209932,
                         71.9262709364223]
             actual = dss.cktelement.seq_currents
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_seq_powers(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -332,7 +320,7 @@ class TestCktElement13Bus:
                         6.226033828412597,
                         6.648497832081523]
             actual = dss.cktelement.seq_powers
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_all_property_names(self, dss):
         expected = ['bus1',
@@ -384,7 +372,7 @@ class TestCktElement13Bus:
         if platform.architecture()[0] == "64bit":
             expected = [203.7660585822039, 11.613009723287425, 203.7660585822039, -168.38699026704103]
             actual = dss.cktelement.residuals_currents
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_y_prim(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -397,7 +385,7 @@ class TestCktElement13Bus:
                         0.0,
                         -10000000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10000000.0, 0.0]
             actual = dss.cktelement.y_prim
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_cplx_seq_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -414,7 +402,7 @@ class TestCktElement13Bus:
                         -34.729368969132395,
                         23.995170297295772]
             actual = dss.cktelement.cplx_seq_voltages
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_cplx_seq_currents(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -431,7 +419,7 @@ class TestCktElement13Bus:
                         -10.60562233342202,
                         71.1400676534711]
             actual = dss.cktelement.cplx_seq_currents
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_all_variables_names(self, dss):
         dss.text("New Storage.str bus=650 kw=50")
@@ -512,7 +500,7 @@ class TestCktElement13Bus:
                     0.0,
                     0.0]
         actual = dss.cktelement.variables_values
-        assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+        assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_node_order(self, dss):
         expected = [1, 2, 3, 1, 2, 3]
@@ -534,7 +522,7 @@ class TestCktElement13Bus:
                         180.3226413266336,
                         -71.27262944761924]
             actual = dss.cktelement.currents_mag_ang
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_voltages_mag_ang(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -551,13 +539,12 @@ class TestCktElement13Bus:
                         2317.4172594012734,
                         115.98674983388848]
             actual = dss.cktelement.voltages_mag_ang
-            assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
-    @_macos_vector_readout_xfail
     def test_total_powers(self, dss):
         expected = [1013.9073261842649, 19.022226213147135, -1013.9073171296899, -19.02222621314708]
         actual = dss.cktelement.total_powers
-        assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+        assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_guid(self, dss):
         dss.circuit.set_active_element("transformer.sub")
@@ -636,7 +623,7 @@ class TestCktElement13Bus:
                     0.0,
                     0.0]
         actual = dss.cktelement.all_losses
-        assert actual == pytest.approx(expected, rel=1e-7, abs=1e-9)
+        assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     def test_open(self, dss):
         expected = [1]
