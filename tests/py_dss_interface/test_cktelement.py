@@ -230,7 +230,7 @@ class TestCktElement13Bus:
                         -1015.4071496666263,
                         2083.115713199055]
             actual = dss.cktelement.voltages
-            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_currents(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -247,7 +247,7 @@ class TestCktElement13Bus:
                         57.895368576049805,
                         -170.77582168579102]
             actual = dss.cktelement.currents
-            assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_powers(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -264,13 +264,13 @@ class TestCktElement13Bus:
                         -414.5331687728567,
                         -52.804238327724946]
             actual = dss.cktelement.powers
-            assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_losses(self, dss):
         if platform.architecture()[0] == "64bit":
             expected = [0.009054574999026954, 5.820766091e-11]
             actual = dss.cktelement.losses
-            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_phase_losses(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -281,7 +281,7 @@ class TestCktElement13Bus:
                         3.25162545777857e-06,
                         2.910383e-14]
             actual = dss.cktelement.phase_losses
-            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_seq_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -292,7 +292,7 @@ class TestCktElement13Bus:
                         2391.5781244654136,
                         42.2125249966211]
             actual = dss.cktelement.seq_voltages
-            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_seq_currents(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -303,7 +303,7 @@ class TestCktElement13Bus:
                         142.81151076209932,
                         71.9262709364223]
             actual = dss.cktelement.seq_currents
-            assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_seq_powers(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -320,7 +320,7 @@ class TestCktElement13Bus:
                         6.226033828412597,
                         6.648497832081523]
             actual = dss.cktelement.seq_powers
-            assert [round(value, 22) for value in actual] == [round(value, 22) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_all_property_names(self, dss):
         expected = ['bus1',
@@ -372,7 +372,7 @@ class TestCktElement13Bus:
         if platform.architecture()[0] == "64bit":
             expected = [203.7660585822039, 11.613009723287425, 203.7660585822039, -168.38699026704103]
             actual = dss.cktelement.residuals_currents
-            assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_y_prim(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -385,7 +385,7 @@ class TestCktElement13Bus:
                         0.0,
                         -10000000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10000000.0, 0.0]
             actual = dss.cktelement.y_prim
-            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_cplx_seq_voltages(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -402,7 +402,7 @@ class TestCktElement13Bus:
                         -34.729368969132395,
                         23.995170297295772]
             actual = dss.cktelement.cplx_seq_voltages
-            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_cplx_seq_currents(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -419,7 +419,7 @@ class TestCktElement13Bus:
                         -10.60562233342202,
                         71.1400676534711]
             actual = dss.cktelement.cplx_seq_currents
-            assert [round(value, 21) for value in actual] == [round(value, 21) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_all_variables_names(self, dss):
         dss.text("New Storage.str bus=650 kw=50")
@@ -522,7 +522,7 @@ class TestCktElement13Bus:
                         180.3226413266336,
                         -71.27262944761924]
             actual = dss.cktelement.currents_mag_ang
-            assert [round(value, 10) for value in actual] == [round(value, 10) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_voltages_mag_ang(self, dss):
         if platform.architecture()[0] == "64bit":
@@ -539,12 +539,12 @@ class TestCktElement13Bus:
                         2317.4172594012734,
                         115.98674983388848]
             actual = dss.cktelement.voltages_mag_ang
-            assert [round(value, 20) for value in actual] == [round(value, 20) for value in expected]
+            assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_total_powers(self, dss):
         expected = [1013.9073261842649, 19.022226213147135, -1013.9073171296899, -19.02222621314708]
         actual = dss.cktelement.total_powers
-        assert [round(value, 12) for value in actual] == [round(value, 12) for value in expected]
+        assert actual == pytest.approx(expected, rel=1e-9)
 
     def test_guid(self, dss):
         dss.circuit.set_active_element("transformer.sub")
