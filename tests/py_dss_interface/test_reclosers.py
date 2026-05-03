@@ -5,21 +5,7 @@
 # @File     : test_reclosers.py
 # @Software : VSCode
 
-import platform
-
 import pytest
-
-# Recloser.PhaseInst / GroundInst readback returns 0.0 on macOS arm64 even
-# when the recloser was created with explicit PhaseInst=2400 / GroundInst=1200.
-# Windows-Delphi returns the configured trip current. AppVeyor master-612
-# (commit 03f96d7) confirms Windows passes both. Cause is engine side, not
-# wrapper side; the *write* path (test_reclosers_write_phase_inst,
-# test_reclosers_write_ground_inst) round-trips correctly.
-_macos_recloser_inst_readback_xfail = pytest.mark.xfail(
-    platform.system() == "Darwin",
-    reason="macOS-C++ Recloser.PhaseInst/GroundInst readback returns 0.0; Windows-Delphi returns the configured trip current.",
-    strict=False,
-)
 
 
 class TestReclosers13Bus:
@@ -233,7 +219,6 @@ class TestReclosers13Bus:
         actual = dss.reclosers.phase_trip
         assert actual == expected
 
-    @_macos_recloser_inst_readback_xfail
     def test_reclosers_read_phase_inst(self, dss):
         expected = 2400
         actual = dss.reclosers.phase_inst
@@ -256,7 +241,6 @@ class TestReclosers13Bus:
         actual = dss.reclosers.ground_trip
         assert actual == expected
 
-    @_macos_recloser_inst_readback_xfail
     def test_reclosers_read_ground_inst(self, dss):
         expected = 1200
         actual = dss.reclosers.ground_inst

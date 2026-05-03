@@ -18,6 +18,15 @@
 # "Error, parameter not recognized". Cross-platform bug; surfaces on the
 # C++ backend (Linux/macOS) since Windows defaults to the Delphi backend.
 #
+# Renames Recloser PropertyName[12]/[13] from "PhInst"/"GndInst" to
+# "PhaseInst"/"GroundInst". The bundled VersionC.zip uses the short names;
+# the Python tests, the OpenDSS Delphi backend, and the OpenDSSCDLL wrapper
+# all use the long names. Without the alias, "New Recloser ... PhaseInst=2400"
+# is parsed as an unknown property and silently ignored, leaving PhInst at
+# its default 0.0 -- which is why test_reclosers_read_phase_inst returned 0.0
+# on macOS-C++ but 2400 on Windows-Delphi. The struct field name (PhInst)
+# stays unchanged; only the property keyword the parser recognizes moves.
+#
 # The CMake APPLE branch additionally defines linux=1 and __linux__=1 to enable
 # the existing POSIX code paths gated by those macros, and
 # _LIBCPP___FWD_COMPLEX_H to suppress libc++'s forward declaration of
@@ -508,3 +517,38 @@ diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
  		break;
  	default:
  		*myType = 4; //string
+diff -urN a/Controls/Recloser.cpp b/Controls/Recloser.cpp
+--- a/Controls/Recloser.cpp	2026-05-03 15:48:24
++++ b/Controls/Recloser.cpp	2026-05-03 15:48:26
+@@ -108,8 +108,8 @@
+ 	PropertyName[9 - 1] = "GndSlowCurve";
+ 	PropertyName[10 - 1] = "PhFastPickup";
+ 	PropertyName[11 - 1] = "GndFastPickup";
+-	PropertyName[12 - 1] = "PhInst";
+-	PropertyName[13 - 1] = "GndInst";
++	PropertyName[12 - 1] = "PhaseInst";
++	PropertyName[13 - 1] = "GroundInst";
+ 	PropertyName[14 - 1] = "ResetTime";
+ 	PropertyName[15 - 1] = "Shots";
+ 	PropertyName[16 - 1] = "RecloseIntervals";
+diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
+--- a/DLL/OpenDSSCDLL.cpp	2026-05-03 15:49:25
++++ b/DLL/OpenDSSCDLL.cpp	2026-05-03 15:49:25
+@@ -11599,7 +11599,7 @@
+ 		elem = (TRecloserObj*)RecloserClass->GetActiveObj();
+ 		if (elem != nullptr)
+ 		{
+-			Set_ParameterReC("PhInst", Format("%f", arg));
++			Set_ParameterReC("PhaseInst", Format("%f", arg));
+ 		}
+ 		break;
+ 	case 4:													// Reclosers.GndFastPickup read
+@@ -11627,7 +11627,7 @@
+ 		elem = (TRecloserObj*)RecloserClass->GetActiveObj();
+ 		if (elem != nullptr)
+ 		{
+-			Set_ParameterReC("GndInst", Format("%f", arg));
++			Set_ParameterReC("GroundInst", Format("%f", arg));
+ 		}
+ 		break;
+ 	case 8:													// Reclosers.PhSlowPickup read
