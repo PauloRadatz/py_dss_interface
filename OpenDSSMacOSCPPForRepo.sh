@@ -4,7 +4,7 @@
 #
 # Mirrors OpenDSSLinuxCPPForRepo.sh.  The OpenDSS C++ source ships as
 # VersionC.zip at the repo root; this script extracts it, applies
-# linux/macos.patch (Apple Clang / Apple Silicon portability fixes), runs
+# macos/macos.patch (Apple Clang / Apple Silicon portability fixes), runs
 # CMake/Clang, and copies the resulting dylibs into
 # src/py_dss_interface/opendss_official/macos/cpp/.
 #
@@ -16,9 +16,10 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_ZIP="${REPO_ROOT}/VersionC.zip"
-PATCH_FILE="${REPO_ROOT}/linux/macos.patch"
+PATCH_FILE="${REPO_ROOT}/macos/macos.patch"
 WORK_DIR="${REPO_ROOT}/build_macos_src"
 OUT_DIR="${REPO_ROOT}/src/py_dss_interface/opendss_official/macos/cpp"
+ARCH="${ARCH:-arm64}"
 
 require_tool() {
     if ! command -v "$1" >/dev/null 2>&1; then
@@ -51,11 +52,11 @@ unzip -q "${SRC_ZIP}" -d "${WORK_DIR}"
 echo "==> Applying ${PATCH_FILE}"
 patch -p1 -d "${WORK_DIR}/VersionC" < "${PATCH_FILE}"
 
-echo "==> Configuring CMake (arm64, Release, SHARED)"
+echo "==> Configuring CMake (${ARCH}, Release, SHARED)"
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DMyOutputType:STRING=SHARED \
-    -DCMAKE_OSX_ARCHITECTURES=arm64 \
+    -DCMAKE_OSX_ARCHITECTURES=${ARCH} \
     -S "${WORK_DIR}/VersionC" \
     -B "${WORK_DIR}/build"
 

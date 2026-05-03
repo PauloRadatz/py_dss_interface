@@ -89,7 +89,7 @@ No pre-built wheels are published for macOS. Build the OpenDSS C++ engine from s
    📌 **Notes:**
    - Requires Xcode Command Line Tools and `cmake` (`brew install cmake`).
    - Builds for Apple Silicon (`arm64`) only. Intel users can edit `OpenDSSMacOSCPPForRepo.sh` and change `-DCMAKE_OSX_ARCHITECTURES=arm64` to `x86_64`.
-   - The build script applies `linux/macos.patch` to a working copy of `VersionC.zip`; the bundled archive is left untouched.
+   - The build script applies `macos/macos.patch` to a working copy of `VersionC.zip`; the bundled archive is left untouched.
 
 3. **Install the package**
    ```bash
