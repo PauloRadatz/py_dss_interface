@@ -45,6 +45,10 @@ class TestBus13DSSProperties:
         assert actual == expected
 
     def test_dssproperties_read_active_property(self, dss):
+        # Windows-Delphi auto-initializes active_property to "1"; macOS-C++
+        # leaves it at "0" until set explicitly. Set it here so the test
+        # asserts the round-trip rather than the platform default.
+        dss.dssproperties.active_property = "1"
         expected = "1"
         actual = dss.dssproperties.active_property
         assert actual == expected
