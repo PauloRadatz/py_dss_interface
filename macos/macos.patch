@@ -1,7 +1,7 @@
 # macOS arm64 build patch for OpenDSSC (VersionC.zip).
 # Authored against epri-dev/OpenDSS-C SVN r4133 (see OpenDSSC_Commit.txt).
 #
-# Apply with: patch -p1 -d <unzipped-VersionC-dir> < linux/macos.patch
+# Apply with: patch -p1 -d <unzipped-VersionC-dir> < macos/macos.patch
 #
 # Adds an Apple branch to CMakeLists; gates Linux-only headers (<linux/stat.h>,
 # <linux/unistd.h>, <error.h>) behind #ifndef __APPLE__; replaces glibc-only
@@ -11,6 +11,12 @@
 # values); rewrites Fpopendir/Fpreaddir/Fpclosedir to use opendir/readdir on
 # Apple since macOS lacks SYS_getdents64; replaces xdg-open with open in
 # Show_COM_Help; allows pointer storage in TSearchRec on Apple.
+#
+# Implements the missing RelaysV variant cases 1-4 (State/NormalState read/
+# write per-phase array). The upstream RelaysV only handled case 0
+# (AllNames); cases 1-4 fell through to the default branch returning
+# "Error, parameter not recognized". Cross-platform bug; surfaces on the
+# C++ backend (Linux/macOS) since Windows defaults to the Delphi backend.
 #
 # The CMake APPLE branch additionally defines linux=1 and __linux__=1 to enable
 # the existing POSIX code paths gated by those macros, and
@@ -382,3 +388,123 @@ diff -urN a/Support/d2c_system.cpp b/Support/d2c_system.cpp
    /* it must also be an ABSOLUTE Filename, LINUX 2.0 Points to A memory
      location So this will Skip that */
    if ( ( i > 0 ) && ( execpathstr[1] == '/' ) )
+diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
+--- a/DLL/OpenDSSCDLL.cpp	2026-05-03 15:41:58
++++ b/DLL/OpenDSSCDLL.cpp	2026-05-03 15:43:09
+@@ -13427,9 +13427,87 @@
+ 					WriteStr2Array(elem->LName);
+ 					WriteStr2Array(Char0());
+ 					elem = (TRelayObj*)pList->Get_Next();
++				}
++			}
++		}
++		if (myStrArray.size() == 0)
++		{
++			WriteStr2Array("None");
++			WriteStr2Array(Char0());
++		}
++		*mySize = myStrArray.size();
++		*myPtr = (uintptr_t)(void*)&(myStrArray[0]);
++		break;
++	case 1:													// Relays.State read (per-phase array)
++		*myType = 4;
++		myStrArray.resize(0);
++		elem = (TRelayObj*)RelayClass->GetActiveObj();
++		if (elem != nullptr)
++		{
++			int nphases = elem->Get_NPhases();
++			for (int i = 1; i <= nphases; i++)
++			{
++				if (elem->get_State() == CTRL_CLOSE)
++				{
++					WriteStr2Array("closed");
++				}
++				else
++				{
++					WriteStr2Array("open");
++				}
++				WriteStr2Array(Char0());
++			}
++		}
++		if (myStrArray.size() == 0)
++		{
++			WriteStr2Array("None");
++			WriteStr2Array(Char0());
++		}
++		*mySize = myStrArray.size();
++		*myPtr = (uintptr_t)(void*)&(myStrArray[0]);
++		break;
++	case 2:													// Relays.State write
++		*myType = 4;
++		myStrArray.resize(0);
++		elem = (TRelayObj*)RelayClass->GetActiveObj();
++		if (elem != nullptr)
++		{
++			char** pchar = (char**)myPtr;
++			if (pchar != nullptr && *pchar != nullptr)
++			{
++				if (LowerCase((string)*pchar)[0] == 'c')
++				{
++					elem->set_State(CTRL_CLOSE);
+ 				}
++				else
++				{
++					elem->set_State(CTRL_OPEN);
++				}
+ 			}
+ 		}
++		*mySize = 0;
++		*myPtr = 0;
++		break;
++	case 3:													// Relays.NormalState read (per-phase array)
++		*myType = 4;
++		myStrArray.resize(0);
++		elem = (TRelayObj*)RelayClass->GetActiveObj();
++		if (elem != nullptr)
++		{
++			int nphases = elem->Get_NPhases();
++			for (int i = 1; i <= nphases; i++)
++			{
++				if (elem->get_NormalState() == CTRL_CLOSE)
++				{
++					WriteStr2Array("closed");
++				}
++				else
++				{
++					WriteStr2Array("open");
++				}
++				WriteStr2Array(Char0());
++			}
++		}
+ 		if (myStrArray.size() == 0)
+ 		{
+ 			WriteStr2Array("None");
+@@ -13437,6 +13515,28 @@
+ 		}
+ 		*mySize = myStrArray.size();
+ 		*myPtr = (uintptr_t)(void*)&(myStrArray[0]);
++		break;
++	case 4:													// Relays.NormalState write
++		*myType = 4;
++		myStrArray.resize(0);
++		elem = (TRelayObj*)RelayClass->GetActiveObj();
++		if (elem != nullptr)
++		{
++			char** pchar = (char**)myPtr;
++			if (pchar != nullptr && *pchar != nullptr)
++			{
++				if (LowerCase((string)*pchar)[0] == 'c')
++				{
++					elem->set_NormalState(CTRL_CLOSE);
++				}
++				else
++				{
++					elem->set_NormalState(CTRL_OPEN);
++				}
++			}
++		}
++		*mySize = 0;
++		*myPtr = 0;
+ 		break;
+ 	default:
+ 		*myType = 4; //string

@@ -51,7 +51,13 @@ mkdir -p "${WORK_DIR}"
 unzip -q "${SRC_ZIP}" -d "${WORK_DIR}"
 
 echo "==> Applying ${PATCH_FILE}"
-patch -p1 -d "${WORK_DIR}/VersionC" < "${PATCH_FILE}"
+# Normalize the patch file to CRLF line endings before applying. The OpenDSS
+# source ships with CRLF, and BSD patch (the default on macOS) doesn't have
+# GNU's --strip-trailing-cr flag. Converting the patch is the portable fix.
+PATCH_TMP="$(mktemp)"
+awk '{ sub(/\r$/, ""); printf "%s\r\n", $0 }' "${PATCH_FILE}" > "${PATCH_TMP}"
+patch -p1 -d "${WORK_DIR}/VersionC" < "${PATCH_TMP}"
+rm -f "${PATCH_TMP}"
 
 echo "==> Configuring CMake (${ARCH}, Release, SHARED, deployment target=${DEPLOYMENT_TARGET})"
 cmake \
