@@ -72,6 +72,30 @@ To use `py-dss-interface` on Linux, you'll need to build the OpenDSS C++ engine 
    pip install path/to/py_dss_interface
    ```
 
+### 🍎 macOS
+
+No pre-built wheels are published for macOS. Build the OpenDSS C++ engine from source and install in editable mode.
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/PauloRadatz/py_dss_interface.git
+   cd py_dss_interface
+   ```
+
+2. **Build the OpenDSS C++ engine**
+   ```bash
+   bash OpenDSSMacOSCPPForRepo.sh
+   ```
+   📌 **Notes:**
+   - Requires Xcode Command Line Tools and `cmake` (`brew install cmake`).
+   - Builds for Apple Silicon (`arm64`) only. Intel users can edit `OpenDSSMacOSCPPForRepo.sh` and change `-DCMAKE_OSX_ARCHITECTURES=arm64` to `x86_64`.
+   - The build script applies `linux/macos.patch` to a working copy of `VersionC.zip`; the bundled archive is left untouched.
+
+3. **Install the package**
+   ```bash
+   pip install path/to/py_dss_interface
+   ```
+
 ---
 
 ## 📦 Quickstart Example
