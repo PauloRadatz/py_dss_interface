@@ -28,6 +28,26 @@
 # scalar TRelayObj::FPresentState field is left untouched, so the existing
 # uniform-state control logic and tests are unaffected.
 #
+# Resets SolutionAbort and Redirect_Abort in TExecutive::Clear and
+# ClearAllCircuits. Without this, a prior runtime error (e.g. setting a
+# fuse / relay / recloser MonitoredObj to a circuit element that doesn't
+# exist) leaves SolutionAbort = true. The user's subsequent
+# `dss.text("Clear"); dss.text("ClearAll"); dss.text("compile X")`
+# pattern hits DoRedirect's `if (!SolutionAbort)` gate at
+# Executive/ExecHelper.cpp:636 -- the gate evaluates to false, every
+# command in the .dss file is skipped, ActiveCircuit[ActiveActor] stays
+# NULL, and the next `New Generator.X` (or any other new ckt element)
+# segfaults at ExecHelper.cpp:1893
+#     if(ActiveCircuit[ActiveActor]->DuplicatesAllowed)
+# dereferencing the NULL TDSSCircuit at offset 0x1301 (DuplicatesAllowed).
+# Surfaces in pytest --run-together when test_fuses.test_fuses_write_
+# monitored_obj sets monitoredobj=line.684111 (a line that doesn't exist
+# in IEEE13Nodeckt.dss); the next test's fixture compile fails silently
+# and the next `New Generator/Recloser/etc` segfaults. Cross-platform UB;
+# the Clear/ClearAll path was missing the abort-flag reset on every
+# backend, but only macOS-arm64 happened to expose the resulting NULL
+# deref deterministically through the test combination.
+#
 # Renames Recloser PropertyName[12]/[13] from "PhInst"/"GndInst" to
 # "PhaseInst"/"GroundInst". The bundled VersionC.zip uses the short names;
 # the Python tests, the OpenDSS Delphi backend, and the OpenDSSCDLL wrapper
@@ -704,3 +724,35 @@ diff -urN a/PDElements/fuse.cpp b/PDElements/fuse.cpp
  	for(stop = min(FUSEMAXDIM, Fnphases), i = 1; i <= stop; i++)
  	{
  		(*FPresentState)[i - 1] = CTRL_CLOSE;
+diff -urN a/Executive/Executive.cpp b/Executive/Executive.cpp
+--- a/Executive/Executive.cpp	2026-05-03 23:24:00
++++ b/Executive/Executive.cpp	2026-05-03 23:24:01
+@@ -177,6 +177,14 @@
+ 	DefaultEarthModel = DERI;
+ 	LogQueries = false;
+ 	MaxAllocationIterations = 2;
++	// Reset abort flags so a subsequent compile / redirect can proceed.
++	// Without this, an error before Clear (e.g. setting a control's
++	// MonitoredObj to a nonexistent element) leaves SolutionAbort = true,
++	// causing DoRedirect to silently skip every command in the file and
++	// leaving ActiveCircuit[ActiveActor] NULL. The next "new ..." command
++	// then dereferences a NULL TDSSCircuit and segfaults.
++	SolutionAbort = false;
++	Redirect_Abort = false;
+ 
+        /*Prepare for new variables*/
+ 	delete ParserVars;
+diff -urN a/Common/DSSGlobals.cpp b/Common/DSSGlobals.cpp
+--- a/Common/DSSGlobals.cpp	2026-05-03 23:24:00
++++ b/Common/DSSGlobals.cpp	2026-05-03 23:24:01
+@@ -613,6 +613,10 @@
+         LogQueries = false;
+         MaxAllocationIterations = 2;
+         ActiveActor = 1;
++        // Reset abort flags so a subsequent compile / redirect can
++        // proceed; see TExecutive::Clear for the full rationale.
++        SolutionAbort = false;
++        Redirect_Abort = false;
+     }
+ 
+ 
