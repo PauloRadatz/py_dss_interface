@@ -37,11 +37,28 @@
 # on macOS-C++ but 2400 on Windows-Delphi. The struct field name (PhInst)
 # stays unchanged; only the property keyword the parser recognizes moves.
 #
-# Fixes a TPointerList leak in Controls/ControlElem.cpp::RemoveSelfFromControlelementList.
-# A heap-allocated TempList was copy-assigned into ControlElementList but
-# never freed. Cross-platform; reported as a candidate cause of SwtControl
-# instability on macOS-C++ under repeated subprocess isolation, though the
-# observed SIGBUS likely has a different root.
+# Fixes a heap buffer overflow in TSwtControlObj / TRecloserObj / TFuseObj
+# constructors. Each allocates a per-phase state array via
+#     realloc(FPresentState, sizeof((*FPresentState)[1 - 1]) * Fnphases)
+# which evaluates to sizeof(EControlAction) * Fnphases (~12 bytes on arm64),
+# but the StateArray typedef is EControlAction[6] and the access loop in
+# get_States/set_States/Reset reads (*FPresentState)[Idx-1] for Idx up to
+# Fnphases (3). The 4th-byte read past the 12-byte allocation is detected
+# by macOS arm64 xzone malloc as a free-list integrity violation and aborts
+# with SIGTRAP at _xzm_xzone_malloc_freelist_outlined. ASan confirms:
+#     heap-buffer-overflow on address ... 0 bytes after 12-byte region
+#     READ of size 4 at SwtControl.cpp:get_States
+#     allocated by TSwtControlObj::TSwtControlObj at SwtControl.cpp realloc
+# Fix: realloc(...sizeof(StateArray)) -- allocate the full SWTCONTROLMAXDIM /
+# RECLOSERMAXDIM / FUSEMAXDIM (=6) entries the StateArray typedef declares,
+# matching what get_States/set_States actually access. Cross-platform UB;
+# Linux/glibc and Delphi's allocator tolerate the overrun, Apple Silicon
+# xzone malloc does not. Recovers the 20 SwtControl tests on macOS-C++.
+#
+# Also fixes a TPointerList leak in Controls/ControlElem.cpp::
+# RemoveSelfFromControlelementList: a heap-allocated TempList was copy-
+# assigned into ControlElementList but never freed. Cross-platform; not
+# load-bearing for the SwtControl SIGTRAP but worth keeping.
 #
 # The CMake APPLE branch additionally defines linux=1 and __linux__=1 to enable
 # the existing POSIX code paths gated by those macros, and
@@ -645,3 +662,45 @@ diff -urN a/Controls/Relay.cpp b/Controls/Relay.cpp
  EControlAction TRelayObj::get_NormalState()
  {
  	EControlAction result;
+diff -urN a/Controls/SwtControl.cpp b/Controls/SwtControl.cpp
+--- a/Controls/SwtControl.cpp	2026-05-03 22:50:00
++++ b/Controls/SwtControl.cpp	2026-05-03 22:50:01
+@@ -272,8 +272,8 @@
+ 	FNormalState = nullptr;
+ 
+      // Reallocate arrays  (Must be initialized to nil for first call)
+-	FPresentState = (pStateArray) realloc(FPresentState, sizeof((*FPresentState)[1 - 1]) * Fnphases);
+-	FNormalState = (pStateArray) realloc(FNormalState, sizeof((*FNormalState)[1 - 1]) * Fnphases);
++	FPresentState = (pStateArray) realloc(FPresentState, sizeof(StateArray));
++	FNormalState = (pStateArray) realloc(FNormalState, sizeof(StateArray));
+ 	for(stop = min(SWTCONTROLMAXDIM, Fnphases), i = 1; i <= stop; i++)
+ 	{
+ 		(*FPresentState)[i - 1] = CTRL_CLOSE;
+diff -urN a/Controls/Recloser.cpp b/Controls/Recloser.cpp
+--- a/Controls/Recloser.cpp	2026-05-03 22:50:00
++++ b/Controls/Recloser.cpp	2026-05-03 22:50:01
+@@ -595,8 +595,8 @@
+ 	IdxMultiPh = Get_NPhases() + 1;
+ 
+ 	 // Reallocate arrays  (Must be initialized to nil for first call)
+-	FPresentState = (pStateArray) realloc(FPresentState, sizeof((*FPresentState)[1 - 1]) * Fnphases);
+-	FNormalState = (pStateArray) realloc(FNormalState, sizeof((*FNormalState)[1 - 1]) * Fnphases);
++	FPresentState = (pStateArray) realloc(FPresentState, sizeof(StateArray));
++	FNormalState = (pStateArray) realloc(FNormalState, sizeof(StateArray));
+ 	LockedOut.resize(IdxMultiPh);
+ 	ArmedForClose.resize(IdxMultiPh);
+     ArmedForOpen.resize(IdxMultiPh);
+diff -urN a/PDElements/fuse.cpp b/PDElements/fuse.cpp
+--- a/PDElements/fuse.cpp	2026-05-03 22:50:00
++++ b/PDElements/fuse.cpp	2026-05-03 22:50:01
+@@ -361,8 +361,8 @@
+ 	FNormalState = nullptr;
+ 
+      // Reallocate arrays  (Must be initialized to nil for first call)
+-	FPresentState = (pStateArray) realloc(FPresentState, sizeof((*FPresentState)[1 - 1]) * Fnphases);
+-	FNormalState = (pStateArray) realloc(FNormalState, sizeof((*FNormalState)[1 - 1]) * Fnphases);
++	FPresentState = (pStateArray) realloc(FPresentState, sizeof(StateArray));
++	FNormalState = (pStateArray) realloc(FNormalState, sizeof(StateArray));
+ 	for(stop = min(FUSEMAXDIM, Fnphases), i = 1; i <= stop; i++)
+ 	{
+ 		(*FPresentState)[i - 1] = CTRL_CLOSE;

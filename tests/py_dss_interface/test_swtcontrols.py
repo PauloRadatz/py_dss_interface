@@ -5,23 +5,7 @@
 # @File     : test_swtcontrols.py
 # @Software : VSCode
 
-import platform
-
 import pytest
-
-# SwtControl tests crash the macOS arm64 OpenDSS C++ engine with SIGBUS during
-# fixture setup (Text/Text.py:14 -> Solution/SolutionI.py:_solve under
-# `dss.text("new swtcontrol.X ...")` and `dss.solution.solve()`). Different
-# cases trip across runs; one hard crash takes the parent pytest down with
-# exit 133 / 138. xfail can't catch a process crash, so skip the class on
-# Darwin. With --run-together (single process) all 20 SwtControl tests pass
-# on macOS-C++. Windows-Delphi passes all 20 (AppVeyor master-612). The
-# existing # TODO Does not work for C++ comment near
-# test_swtcontrols_read_is_locked predates this branch.
-pytestmark = pytest.mark.skipif(
-    platform.system() == "Darwin",
-    reason="macOS-C++ SwtControl tests crash the engine (SIGBUS) under subprocess isolation; Windows-Delphi passes.",
-)
 
 
 class TestSwtControls13Bus:
