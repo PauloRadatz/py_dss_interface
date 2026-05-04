@@ -28,6 +28,25 @@
 # scalar TRelayObj::FPresentState field is left untouched, so the existing
 # uniform-state control logic and tests are unaffected.
 #
+# Plugs the cross-DSS()-instance memory leak in TMyApplication::DoRun
+# (DLL/OpenDSSCDLL.cpp). Every `DSS.Start` (which Python's
+# py_dss_interface.DSS() invokes via DSSI(3,0)) used to allocate a fresh
+# TExecutive whose constructor calls CreateDSSClasses() to instantiate
+# ~54 TDSSClass metaclass objects (TLine, TLoad, TGenerator, ...).
+# DoRun did not delete the previous DSSExecutive[ActiveActor] before the
+# new assignment, so each Python DSS() leaked one full set of TDSSClass
+# instances plus their property arrays / hash lists -- ~1 MB per
+# instance. Measured with notes/measure_dss_leak.py: baseline 1.04 MB /
+# cycle slope; after fix 8 KB / cycle slope (~130x reduction). 100
+# DSS() instances grew RSS by 102 MB before, 0.78 MB after. macOS `leaks`
+# confirmed: 48 instances each of TInvControl, TRelay, TXYcurve etc.
+# leaked via root-leak chain `ClearAll -> CreateDSSClasses -> operator new`.
+# Cross-platform; affects every backend that uses the C++ engine.
+# Fix: gate `DSSExecutive[ActiveActor] = new TExecutive()` on the slot
+# being null. The first DSS() in a process allocates the executive; every
+# subsequent DSS() reuses it. Clear/ClearAll already provide the per-call
+# state reset, so reuse is safe.
+#
 # Resets SolutionAbort and Redirect_Abort in TExecutive::Clear and
 # ClearAllCircuits. Without this, a prior runtime error (e.g. setting a
 # fuse / relay / recloser MonitoredObj to a circuit element that doesn't
@@ -451,9 +470,30 @@ diff -urN a/Support/d2c_system.cpp b/Support/d2c_system.cpp
      location So this will Skip that */
    if ( ( i > 0 ) && ( execpathstr[1] == '/' ) )
 diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
---- a/DLL/OpenDSSCDLL.cpp	2026-05-03 21:34:00
-+++ b/DLL/OpenDSSCDLL.cpp	2026-05-03 21:34:01
-@@ -11599,7 +11599,7 @@
+--- a/DLL/OpenDSSCDLL.cpp	2026-05-04 01:24:00
++++ b/DLL/OpenDSSCDLL.cpp	2026-05-04 01:24:01
+@@ -200,8 +200,18 @@
+ //	NoFormsAllowed = true; # Redundant isn't
+ 	ActiveActor = 1;
+ 	IsDLL = true;
+-	DSSExecutive[ActiveActor] = new TExecutive();  // Make a DSS object
+-	DSSExecutive[ActiveActor]->CreateDefaultDSSItems();
++	// Reuse existing executive on subsequent calls. Without this guard, every
++	// DSS.Start (which Python's py_dss_interface.DSS() invokes via DSSI(3,0))
++	// allocated a fresh TExecutive whose constructor called CreateDSSClasses()
++	// to instantiate ~54 TDSSClass metaclass objects, abandoning the previous
++	// batch (the assignment to DSSExecutive[ActiveActor] dropped the old
++	// pointer without delete). Each Python DSS() then leaked one full set of
++	// TDSSClass instances plus their property arrays / hash lists, ~1 MB per
++	// instance.
++	if (DSSExecutive[ActiveActor] == nullptr) {
++		DSSExecutive[ActiveActor] = new TExecutive();
++		DSSExecutive[ActiveActor]->CreateDefaultDSSItems();
++	}
+ 	DataDirectory[ActiveActor] = StartupDirectory;
+ 	OutputDirectory[ActiveActor] = StartupDirectory;
+ 	SetCurrentDir(DataDirectory[ActiveActor]);
+@@ -11599,7 +11609,7 @@
  		elem = (TRecloserObj*)RecloserClass->GetActiveObj();
  		if (elem != nullptr)
  		{
@@ -462,7 +502,7 @@ diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
  		}
  		break;
  	case 4:													// Reclosers.GndFastPickup read
-@@ -11627,7 +11627,7 @@
+@@ -11627,7 +11637,7 @@
  		elem = (TRecloserObj*)RecloserClass->GetActiveObj();
  		if (elem != nullptr)
  		{
@@ -471,7 +511,7 @@ diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
  		}
  		break;
  	case 8:													// Reclosers.PhSlowPickup read
-@@ -13427,9 +13427,95 @@
+@@ -13427,7 +13437,93 @@
  					WriteStr2Array(elem->LName);
  					WriteStr2Array(Char0());
  					elem = (TRelayObj*)pList->Get_Next();
@@ -539,9 +579,9 @@ diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
 +						elem->set_States(i, CTRL_CLOSE);
 +						break;
 +					}
- 				}
- 			}
- 		}
++				}
++			}
++		}
 +		*mySize = k;
 +		break;
 +	case 3:													// Relays.NormalState read (per-phase array)
@@ -556,21 +596,20 @@ diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
 +				if (elem->get_NormalState() == CTRL_CLOSE)
 +				{
 +					WriteStr2Array("closed");
-+				}
+ 				}
 +				else
 +				{
 +					WriteStr2Array("open");
 +				}
 +				WriteStr2Array(Char0());
-+			}
-+		}
+ 			}
+ 		}
  		if (myStrArray.size() == 0)
- 		{
- 			WriteStr2Array("None");
-@@ -13438,6 +13524,28 @@
+@@ -13437,6 +13533,28 @@
+ 		}
  		*mySize = myStrArray.size();
  		*myPtr = (uintptr_t)(void*)&(myStrArray[0]);
- 		break;
++		break;
 +	case 4:													// Relays.NormalState write
 +		*myType = 4;
 +		myStrArray.resize(0);
@@ -592,10 +631,9 @@ diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
 +		}
 +		*mySize = 0;
 +		*myPtr = 0;
-+		break;
+ 		break;
  	default:
  		*myType = 4; //string
- 		myStrArray.resize(0);
 diff -urN a/Controls/Recloser.cpp b/Controls/Recloser.cpp
 --- a/Controls/Recloser.cpp	2026-05-03 15:48:24
 +++ b/Controls/Recloser.cpp	2026-05-03 15:48:26
