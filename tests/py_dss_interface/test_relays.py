@@ -5,22 +5,7 @@
 # @File     : test_relays.py
 # @Software : VSCode
 
-import platform
-
 import pytest
-
-# TRelayObj on the C++ backend stores a single FPresentState (one
-# EControlAction per relay), not a per-phase state vector like the Delphi
-# backend keeps. test_relays_write_state asserts a round-trip of
-# ['open', 'closed', 'closed'] (mixed per phase), which the C++ engine
-# cannot represent: the write applies one state to the whole relay, the
-# read emits per-phase repeats of that state. Windows-Delphi has per-phase
-# state and passes this case.
-_macos_relay_no_per_phase_state_xfail = pytest.mark.xfail(
-    platform.system() == "Darwin",
-    reason="macOS-C++ TRelayObj has single FPresentState, not per-phase state vector; mixed per-phase write cannot round-trip.",
-    strict=False,
-)
 
 
 class TestRelays13Bus:
@@ -65,7 +50,6 @@ class TestRelays13Bus:
         actual = dss.relays.state
         assert expected == actual
 
-    @_macos_relay_no_per_phase_state_xfail
     def test_relays_write_state(self, dss):
         expected = ['open', 'closed', 'closed']
         dss.relays.state = expected

@@ -18,6 +18,16 @@
 # "Error, parameter not recognized". Cross-platform bug; surfaces on the
 # C++ backend (Linux/macOS) since Windows defaults to the Delphi backend.
 #
+# Adds per-phase TRelayObj::get_States(int)/set_States(int, EControlAction)
+# accessors mirroring the Fuse pattern (PDElements/fuse.cpp::get_States/set_States),
+# and rewires RelaysV cases 1 (read State) and 2 (write State) to use them.
+# Case 1 now calls elem->get_States(i) per phase instead of the scalar
+# elem->get_State(); case 2 decodes the input string array with BArray2Str
+# and dispatches per phase. Recovers test_relays_write_state, which writes
+# ['open', 'closed', 'closed'] and expects to read the same back -- the
+# scalar TRelayObj::FPresentState field is left untouched, so the existing
+# uniform-state control logic and tests are unaffected.
+#
 # Renames Recloser PropertyName[12]/[13] from "PhInst"/"GndInst" to
 # "PhaseInst"/"GroundInst". The bundled VersionC.zip uses the short names;
 # the Python tests, the OpenDSS Delphi backend, and the OpenDSSCDLL wrapper
@@ -404,9 +414,27 @@ diff -urN a/Support/d2c_system.cpp b/Support/d2c_system.cpp
      location So this will Skip that */
    if ( ( i > 0 ) && ( execpathstr[1] == '/' ) )
 diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
---- a/DLL/OpenDSSCDLL.cpp	2026-05-03 15:41:58
-+++ b/DLL/OpenDSSCDLL.cpp	2026-05-03 15:43:09
-@@ -13427,9 +13427,87 @@
+--- a/DLL/OpenDSSCDLL.cpp	2026-05-03 21:34:00
++++ b/DLL/OpenDSSCDLL.cpp	2026-05-03 21:34:01
+@@ -11599,7 +11599,7 @@
+ 		elem = (TRecloserObj*)RecloserClass->GetActiveObj();
+ 		if (elem != nullptr)
+ 		{
+-			Set_ParameterReC("PhInst", Format("%f", arg));
++			Set_ParameterReC("PhaseInst", Format("%f", arg));
+ 		}
+ 		break;
+ 	case 4:													// Reclosers.GndFastPickup read
+@@ -11627,7 +11627,7 @@
+ 		elem = (TRecloserObj*)RecloserClass->GetActiveObj();
+ 		if (elem != nullptr)
+ 		{
+-			Set_ParameterReC("GndInst", Format("%f", arg));
++			Set_ParameterReC("GroundInst", Format("%f", arg));
+ 		}
+ 		break;
+ 	case 8:													// Reclosers.PhSlowPickup read
+@@ -13427,9 +13427,95 @@
  					WriteStr2Array(elem->LName);
  					WriteStr2Array(Char0());
  					elem = (TRelayObj*)pList->Get_Next();
@@ -430,7 +458,7 @@ diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
 +			int nphases = elem->Get_NPhases();
 +			for (int i = 1; i <= nphases; i++)
 +			{
-+				if (elem->get_State() == CTRL_CLOSE)
++				if (elem->get_States(i) == CTRL_CLOSE)
 +				{
 +					WriteStr2Array("closed");
 +				}
@@ -449,27 +477,35 @@ diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
 +		*mySize = myStrArray.size();
 +		*myPtr = (uintptr_t)(void*)&(myStrArray[0]);
 +		break;
-+	case 2:													// Relays.State write
++	case 2:													// Relays.State write (per-phase array)
 +		*myType = 4;
-+		myStrArray.resize(0);
++		k = 0;
 +		elem = (TRelayObj*)RelayClass->GetActiveObj();
 +		if (elem != nullptr)
 +		{
-+			char** pchar = (char**)myPtr;
-+			if (pchar != nullptr && *pchar != nullptr)
++			int nphases = elem->Get_NPhases();
++			for (int i = 1; i <= nphases; i++)
 +			{
-+				if (LowerCase((string)*pchar)[0] == 'c')
++				string S = BArray2Str(myPtr, &k);
++				if (S.empty())
 +				{
-+					elem->set_State(CTRL_CLOSE);
- 				}
++					break;
++				}
 +				else
 +				{
-+					elem->set_State(CTRL_OPEN);
-+				}
++					switch (LowerCase(S)[0])
++					{
++					case 'o':
++						elem->set_States(i, CTRL_OPEN);
++						break;
++					case 'c':
++						elem->set_States(i, CTRL_CLOSE);
++						break;
++					}
+ 				}
  			}
  		}
-+		*mySize = 0;
-+		*myPtr = 0;
++		*mySize = k;
 +		break;
 +	case 3:													// Relays.NormalState read (per-phase array)
 +		*myType = 4;
@@ -494,11 +530,10 @@ diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
  		if (myStrArray.size() == 0)
  		{
  			WriteStr2Array("None");
-@@ -13437,6 +13515,28 @@
- 		}
+@@ -13438,6 +13524,28 @@
  		*mySize = myStrArray.size();
  		*myPtr = (uintptr_t)(void*)&(myStrArray[0]);
-+		break;
+ 		break;
 +	case 4:													// Relays.NormalState write
 +		*myType = 4;
 +		myStrArray.resize(0);
@@ -520,9 +555,10 @@ diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
 +		}
 +		*mySize = 0;
 +		*myPtr = 0;
- 		break;
++		break;
  	default:
  		*myType = 4; //string
+ 		myStrArray.resize(0);
 diff -urN a/Controls/Recloser.cpp b/Controls/Recloser.cpp
 --- a/Controls/Recloser.cpp	2026-05-03 15:48:24
 +++ b/Controls/Recloser.cpp	2026-05-03 15:48:26
@@ -537,27 +573,6 @@ diff -urN a/Controls/Recloser.cpp b/Controls/Recloser.cpp
  	PropertyName[14 - 1] = "ResetTime";
  	PropertyName[15 - 1] = "Shots";
  	PropertyName[16 - 1] = "RecloseIntervals";
-diff -urN a/DLL/OpenDSSCDLL.cpp b/DLL/OpenDSSCDLL.cpp
---- a/DLL/OpenDSSCDLL.cpp	2026-05-03 15:49:25
-+++ b/DLL/OpenDSSCDLL.cpp	2026-05-03 15:49:25
-@@ -11599,7 +11599,7 @@
- 		elem = (TRecloserObj*)RecloserClass->GetActiveObj();
- 		if (elem != nullptr)
- 		{
--			Set_ParameterReC("PhInst", Format("%f", arg));
-+			Set_ParameterReC("PhaseInst", Format("%f", arg));
- 		}
- 		break;
- 	case 4:													// Reclosers.GndFastPickup read
-@@ -11627,7 +11627,7 @@
- 		elem = (TRecloserObj*)RecloserClass->GetActiveObj();
- 		if (elem != nullptr)
- 		{
--			Set_ParameterReC("GndInst", Format("%f", arg));
-+			Set_ParameterReC("GroundInst", Format("%f", arg));
- 		}
- 		break;
- 	case 8:													// Reclosers.PhSlowPickup read
 diff -urN a/Controls/ControlElem.cpp b/Controls/ControlElem.cpp
 --- a/Controls/ControlElem.cpp	2026-05-03 15:51:30
 +++ b/Controls/ControlElem.cpp	2026-05-03 15:51:39
@@ -569,3 +584,64 @@ diff -urN a/Controls/ControlElem.cpp b/Controls/ControlElem.cpp
  	}
  }
  
+diff -urN a/Controls/Relay.h b/Controls/Relay.h
+--- a/Controls/Relay.h	2026-05-03 21:34:00
++++ b/Controls/Relay.h	2026-05-03 21:34:01
+@@ -190,6 +190,8 @@
+ 	void InterpretRelayState(int ActorID, const String Action, const String property_name);
+ 	EControlAction get_State();
+ 	void set_State(const EControlAction Value);
++	EControlAction get_States(int Idx);
++	void set_States(int Idx, const EControlAction Value);
+ 	EControlAction get_NormalState();
+ 	void set_NormalState(const EControlAction Value);
+ 	void InterpretRelayType(const String s);
+diff -urN a/Controls/Relay.cpp b/Controls/Relay.cpp
+--- a/Controls/Relay.cpp	2026-05-03 21:34:00
++++ b/Controls/Relay.cpp	2026-05-03 21:34:01
+@@ -1277,6 +1277,45 @@
+ 	}
+ }
+ 
++EControlAction TRelayObj::get_States(int Idx)
++{
++	EControlAction result;
++	result = CTRL_CLOSE;
++	if(get_FControlledElement() != nullptr)
++	{
++		get_FControlledElement()->Set_ActiveTerminal(ElementTerminal);
++		if(get_FControlledElement()->Get_ConductorClosed(Idx, ActiveActor))
++		{
++            /*TRUE:*/
++			result = CTRL_CLOSE;
++		} else {
++			result = CTRL_OPEN;
++		}
++	}
++	return result;
++}
++
++void TRelayObj::set_States(int Idx, const EControlAction Value)
++{
++	if(get_States(Idx) != Value)
++	{
++		if(get_FControlledElement() != nullptr)
++		{
++			get_FControlledElement()->Set_ActiveTerminal(ElementTerminal);
++			switch(Value)
++			{
++				case 	CTRL_OPEN:
++				get_FControlledElement()->Set_ConductorClosed(Idx, ActiveActor, false);
++				break;
++                /*CTRL_CLOSE:*/
++				default:
++				get_FControlledElement()->Set_ConductorClosed(Idx, ActiveActor, true);
++				break;
++			}
++		}
++	}
++}
++
+ EControlAction TRelayObj::get_NormalState()
+ {
+ 	EControlAction result;
