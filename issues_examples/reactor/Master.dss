@@ -1,0 +1,16 @@
+Clear
+New Circuit.thevenin
+
+
+Redirect Vsource.dss
+Redirect LoadShape.dss
+Redirect GrowthShape.dss
+Redirect XYcurve.dss
+Redirect TCC_Curve.dss
+Redirect Spectrum.dss
+Redirect Line.dss
+Redirect Reactor.dss
+MakeBusList
+Redirect BusVoltageBases.dss  ! set voltage bases
+Buscoords BusCoords.dss
+GIScoords GISCoords.dss

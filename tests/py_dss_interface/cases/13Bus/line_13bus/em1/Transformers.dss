@@ -1,0 +1,1 @@
+New "Transformer.xfm1" phases=3 windings=2 XHL=2 XHT=1 buses=[633, 634, ] conns=[wye, wye, ] kVs=[4.16, 0.48, ] kVAs=[500, 500, ] taps=[1, 1, ] wdg=1 %R=0.55 RdcOhms=0.05393579 wdg=2 %R=0.55 RdcOhms=0.00071808 XLT=1

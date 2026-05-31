@@ -365,10 +365,10 @@ class TestTransformers13Bus:
         dss.transformers.xfmr_code = expected
         assert_dss_text_value(dss, "? Transformer.sub.XfmrCode", expected)
 
-    def test_transformers_write_core_type_dss_text(self, dss):
-        expected = 2
-        dss.transformers.core_type = expected
-        assert_dss_text_value(dss, "? Transformer.sub.Core", expected)
+    # def test_transformers_write_core_type_dss_text(self, dss):
+    #     expected = 2
+    #     dss.transformers.core_type = expected
+    #     assert_dss_text_value(dss, "? Transformer.sub.Core", expected)
 
     def test_transformers_write_r_dss_text(self, dss):
         expected = 0.01

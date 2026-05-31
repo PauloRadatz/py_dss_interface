@@ -172,16 +172,19 @@ class TestBus13Capacitors:
     # dss.text() verification tests
 
     def test_write_num_steps_dss_text(self, dss):
+        dss.capacitors.name = 'cap1'
         expected = 5
         dss.capacitors.num_steps = expected
         assert_dss_text_value(dss, "? Capacitor.cap1.Numsteps", expected)
 
     def test_write_kv_dss_text(self, dss):
+        dss.capacitors.name = 'cap1'
         expected = 2.6
         dss.capacitors.kv = expected
         assert_dss_text_value(dss, "? Capacitor.cap1.kV", expected)
 
     def test_write_kvar_dss_text(self, dss):
+        dss.capacitors.name = 'cap1'
         expected = 50.0
         dss.capacitors.kvar = expected
         actual_str = dss.text("? Capacitor.cap1.kvar").strip().strip("[]").strip()

@@ -1,0 +1,2 @@
+Edit "Vsource.source" bus1=sourcebus pu=1.0 basekv=13.8 Model=ideal
+New "Vsource.v1" bus1=loadbus basekv=2.4 pu=1.0001 phases=3 angle=30 MVAsc3=1000 MVAsc1=2000

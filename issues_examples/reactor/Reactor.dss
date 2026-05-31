@@ -1,0 +1,1 @@
+New "Reactor.r" bus1=SourceBus bus2=LoadBus phases=3 kv=4.16 kvar=600

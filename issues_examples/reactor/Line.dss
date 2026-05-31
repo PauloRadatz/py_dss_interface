@@ -1,0 +1,1 @@
+New "Line.lb" phases=3 bus1=sourcebus bus2=loadbus length=0.001 units=none r1=0.01 x1=0.01 r0=0.01 x0=0.01 C1=0 C0=0

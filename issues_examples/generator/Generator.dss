@@ -1,0 +1,1 @@
+New "Generator.g1" bus1=SourceBus phases=1 kv=2.4 kW=100 kvar=-50 model=1 Vpu=1 Vminpu=0.95 forceon=no
