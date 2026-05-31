@@ -7,7 +7,7 @@ import os
 import pathlib
 
 from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, Base
-from . import DSSExecutive, DSSInterface, DSSProperties, ErrorOpenDSS, Fuses, Generators, ISources
+from . import DSSExecutive, DSSInterface, DSSProperties, ErrorOpenDSS, Export, Fuses, Generators, ISources
 from . import LineCodes, Lines, Loads, LoadShapes, Meters, Monitors, Parallel, Parser, PDElements, PVSystems, Reactors, \
     Reclosers
 from . import Relays, RegControls, Sensors, Settings, Solution, Storages, SwtControls, Text, Topology, Transformers, \
@@ -115,6 +115,7 @@ class DSS:
                 # self.dssprogress = DSSProgress(self._dss_obj)
                 self.dssproperties = DSSProperties(self._dss_obj)
                 self.errorinterface = ErrorOpenDSS(self._dss_obj)
+                self.export = Export(self._dss_obj)
                 self.fuses = Fuses(self._dss_obj)
                 self.generators = Generators(self._dss_obj)
                 self.isources = ISources(self._dss_obj)

@@ -16,6 +16,7 @@ from py_dss_interface.models.DSSInterface.DSSInterface import DSSInterface
 from py_dss_interface.models.DSSProgress.DSSProgress import DSSProgress
 from py_dss_interface.models.DSSProperties.DSSProperties import DSSProperties
 from py_dss_interface.models.ErrorInterface.ErrorInterface import ErrorOpenDSS
+from py_dss_interface.models.Export.Export import Export
 from py_dss_interface.models.Fuses.Fuses import Fuses
 from py_dss_interface.models.Generators.Generators import Generators
 from py_dss_interface.models.ISources.ISources import ISources
