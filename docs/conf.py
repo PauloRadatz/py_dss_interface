@@ -25,8 +25,16 @@ project = 'py_dss_interface'
 year = '2020'
 author = 'Paulo Radatz'
 copyright = '{0}, {1}'.format(year, author)
-py_dss_interface_doc = 'py-dss-interface Documentation'
-version = release = '2.2.1'
+# Get version dynamically from __init__.py
+version = release = '2.3.0'  # Fallback
+init_path = os.path.join(os.path.dirname(__file__), "..", "src", "py_dss_interface", "__init__.py")
+if os.path.exists(init_path):
+    with open(init_path, "r") as f:
+        for line in f:
+            if line.startswith("__version__"):
+                version = release = line.split("=")[1].strip().strip("'").strip('"')
+                break
+
 language = 'en'
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = 'sphinx'

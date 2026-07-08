@@ -1,10 +1,15 @@
 # -*- coding: iso-8859-15 -*-
 # TODO to work the docs
 
+import _ctypes
 import ctypes
 import json
 import os
 import pathlib
+import shutil
+import tempfile
+import uuid
+import weakref
 
 from . import ActiveClass, Bus, CapControls, Capacitors, Circuit, CktElement, CMathLib, CtrlQueue, DSSElement, Base
 from . import DSSExecutive, DSSInterface, DSSProperties, ErrorOpenDSS, Fuses, Generators, ISources
@@ -31,7 +36,7 @@ class DSSDLL:
 
 class DSS:
 
-    def __init__(self, dll_folder_param=None, dll_by_user=None, print_dss_info=False, windows_version: str = "delphi"):
+    def __init__(self, dll_folder_param=None, dll_by_user=None, print_dss_info=False, windows_version: str = "delphi", single_instance: bool = True):
         # TODO: dss_write_allowforms
         """
         Class to create an OpenDSS object
@@ -55,15 +60,11 @@ class DSS:
         if dll_folder_param and dll_by_user:
             os.chdir(dll_folder_param)
             self.dll_file_path = os.path.join(dll_folder_param, dll_by_user)
-            self._dss_obj = ctypes.cdll.LoadLibrary(str(self.dll_file_path))
-            self.started = True
-
         else:
             if System.detect_platform() == 'Linux':
                 if not dll_folder_param:
                     dll_folder_param = os.path.join(pathlib.Path(os.path.dirname(os.path.abspath(__file__))),
                                                     "opendss_official", "linux", "cpp")
-                # print(dll_folder_param)
                 dll_folder_param = pathlib.Path(dll_folder_param)
                 dll_by_user = DLL_NAME_LINUX
 
@@ -85,13 +86,37 @@ class DSS:
 
             os.chdir(self._dll_path)
             self.dll_file_path = os.path.join(self._dll_path, dll_by_user)
-            # print(f'Final Path of DLL : {self.dll_file_path} For DEBUGGING')
 
-            # Try to load the DLL
+        # Load Library based on single_instance option
+        if single_instance:
             try:
                 self._dss_obj = ctypes.cdll.LoadLibrary(str(self.dll_file_path))
             except Exception as e:
                 raise e
+        else:
+            # Create a unique temporary directory
+            temp_dir = os.path.join(tempfile.gettempdir(), "py_dss_interface", f"instance_{uuid.uuid4().hex}")
+            os.makedirs(temp_dir, exist_ok=True)
+            
+            # Copy all files from the DLL folder to the temp folder (so dependencies like KLUSolve are copied too)
+            dll_dir = os.path.dirname(self.dll_file_path)
+            shutil.copytree(dll_dir, temp_dir, dirs_exist_ok=True)
+            
+            # Load the DLL from the copied temp path
+            copied_dll_path = os.path.join(temp_dir, os.path.basename(self.dll_file_path))
+            
+            try:
+                # Update PATH or working directory context so load handles nested DLLs in copied location
+                _original_cwd = os.getcwd()
+                os.chdir(temp_dir)
+                self._dss_obj = ctypes.cdll.LoadLibrary(copied_dll_path)
+            except Exception as e:
+                raise e
+            finally:
+                os.chdir(_original_cwd)
+                
+            # Register finalizer to unload the DLL and delete the temp directory
+            self._finalizer = weakref.finalize(self, self._cleanup_temp_dir, self._dss_obj, temp_dir)
 
         self.started = bool(self._dss_obj)
         if self.started:
@@ -180,3 +205,23 @@ class DSS:
 
         for i in self.__memory_commands:
             exec(i)
+
+    @staticmethod
+    def _cleanup_temp_dir(dss_obj, temp_dir):
+        # 1. Unload the DLL from memory to release OS file locks
+        try:
+            import _ctypes
+            import os
+            if os.name == 'nt':
+                _ctypes.FreeLibrary(dss_obj._handle)
+            else:
+                _ctypes.dlclose(dss_obj._handle)
+        except Exception:
+            pass
+
+        # 2. Safely remove the temp directory
+        try:
+            import shutil
+            shutil.rmtree(temp_dir, ignore_errors=True)
+        except Exception:
+            pass

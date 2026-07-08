@@ -220,6 +220,14 @@ PVSystems
    :undoc-members:
    :show-inheritance:
 
+Reactors
+---------------
+
+.. automodule:: py_dss_interface.models.Reactors.Reactors
+   :members: Reactors
+   :undoc-members:
+   :show-inheritance:
+
 Reclosers
 ---------------
 
@@ -265,6 +273,14 @@ Solution
 
 .. automodule:: py_dss_interface.models.Solution.Solution
    :members: Solution
+   :undoc-members:
+   :show-inheritance:
+
+Storages
+---------------
+
+.. automodule:: py_dss_interface.models.Storages.Storages
+   :members: Storages
    :undoc-members:
    :show-inheritance:
 

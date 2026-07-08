@@ -12,7 +12,6 @@ from py_dss_interface.models.CtrlQueue.CtrlQueue import CtrlQueue
 from py_dss_interface.models.DSSElement.DSSElement import DSSElement
 from py_dss_interface.models.DSSExecutive.DSSExecutive import DSSExecutive
 from py_dss_interface.models.DSSInterface.DSSInterface import DSSInterface
-from py_dss_interface.models.DSSInterface.DSSInterface import DSSInterface
 from py_dss_interface.models.DSSProgress.DSSProgress import DSSProgress
 from py_dss_interface.models.DSSProperties.DSSProperties import DSSProperties
 from py_dss_interface.models.ErrorInterface.ErrorInterface import ErrorOpenDSS
@@ -27,7 +26,6 @@ from py_dss_interface.models.Meters.Meters import Meters
 from py_dss_interface.models.Monitors.Monitors import Monitors
 from py_dss_interface.models.PDElements.PDElements import PDElements
 from py_dss_interface.models.PVSystems.PVSystems import PVSystems
-from py_dss_interface.models.Parallel.Parallel import Parallel
 from py_dss_interface.models.Parallel.Parallel import Parallel
 from py_dss_interface.models.Parser.Parser import Parser
 from py_dss_interface.models.Reactors.Reactors import Reactors
