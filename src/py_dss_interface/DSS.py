@@ -58,7 +58,7 @@ class DSS:
                 self.backend = "Windows-C++"
 
         if dll_folder_param and dll_by_user:
-            os.chdir(dll_folder_param)
+            self._dll_path = dll_folder_param
             self.dll_file_path = os.path.join(dll_folder_param, dll_by_user)
         else:
             if System.detect_platform() == 'Linux':
@@ -84,15 +84,20 @@ class DSS:
 
                 self._dll_path = System.get_architecture_path(dll_folder_param)
 
-            os.chdir(self._dll_path)
             self.dll_file_path = os.path.join(self._dll_path, dll_by_user)
 
         # Load Library based on single_instance option
         if single_instance:
+            _dll_dir_cookie = None
+            if os.name == 'nt' and hasattr(os, 'add_dll_directory'):
+                _dll_dir_cookie = os.add_dll_directory(str(self._dll_path))
             try:
                 self._dss_obj = ctypes.cdll.LoadLibrary(str(self.dll_file_path))
             except Exception as e:
                 raise e
+            finally:
+                if _dll_dir_cookie:
+                    _dll_dir_cookie.close()
         else:
             # Create a unique temporary directory
             temp_dir = os.path.join(tempfile.gettempdir(), "py_dss_interface", f"instance_{uuid.uuid4().hex}")
@@ -105,15 +110,17 @@ class DSS:
             # Load the DLL from the copied temp path
             copied_dll_path = os.path.join(temp_dir, os.path.basename(self.dll_file_path))
             
+            _dll_dir_cookie = None
+            if os.name == 'nt' and hasattr(os, 'add_dll_directory'):
+                _dll_dir_cookie = os.add_dll_directory(str(temp_dir))
+                
             try:
-                # Update PATH or working directory context so load handles nested DLLs in copied location
-                _original_cwd = os.getcwd()
-                os.chdir(temp_dir)
                 self._dss_obj = ctypes.cdll.LoadLibrary(copied_dll_path)
             except Exception as e:
                 raise e
             finally:
-                os.chdir(_original_cwd)
+                if _dll_dir_cookie:
+                    _dll_dir_cookie.close()
                 
             # Register finalizer to unload the DLL and delete the temp directory
             self._finalizer = weakref.finalize(self, self._cleanup_temp_dir, self._dss_obj, temp_dir)
@@ -202,6 +209,8 @@ class DSS:
     def __allocate_memory(self):
         self._dss_obj.DSSPut_Command.restype = ctypes.c_char_p
         self._dss_obj.DSSProperties.restype = ctypes.c_char_p
+        self._dss_obj.ErrorDesc.restype = ctypes.c_char_p
+        self._dss_obj.ErrorCode.restype = ctypes.c_int32
 
         for i in self.__memory_commands:
             exec(i)
