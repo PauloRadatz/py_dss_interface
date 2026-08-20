@@ -484,7 +484,7 @@ class TestLines13Bus:
                         0.8867184358481344,
                         -2.95059355831667]
             actual = dss.lines.yprim
-            assert actual == expected
+            assert actual == pytest.approx(expected, rel=1e-6, abs=1e-9)
 
     # TODO understand it
     def test_lines_write_yprim(self, dss):

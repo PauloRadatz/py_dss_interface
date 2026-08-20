@@ -6,10 +6,20 @@
 import gc
 import os
 import pathlib
+import re
 import subprocess
 import sys
 import time
 import pytest
+
+# Match pytest's per-test result line, e.g.
+#   tests/py_dss_interface/test_relays.py::TestRelays13Bus::test_relays_open PASSED [ 21%]
+#   tests/py_dss_interface/test_relays.py::TestRelays13Bus::test_relays_open XFAIL
+# The token must be the trailing word of the line so unrelated lines that
+# merely contain "ERROR" or "FAILED" (tracebacks, test names) are ignored.
+_RESULT_RE = re.compile(
+    r"\b(PASSED|FAILED|ERROR|SKIPPED|XFAIL|XPASS)\b\s*(?:\[\s*\d+%\s*\])?\s*$"
+)
 
 import py_dss_interface
 from py_dss_interface.utils.System import System
@@ -32,20 +42,21 @@ _current_test_number = 0
 def _should_run_individually():
     """
     Determine if tests should run individually based on platform and backend.
-    Returns True for Linux (always C++) or Windows with C++ backend.
+    Returns True for Linux/macOS (always C++) or Windows with C++ backend.
 
     This prevents memory leak issues when running multiple C++ tests together.
 
     Command-line options:
-    - --run-together: Override to run all tests together (even on Linux/C++)
+    - --run-together: Override to run all tests together (even on Linux/macOS/C++)
 
     Environment variables:
     - PY_DSS_INTERFACE_CPP=true: Force C++ backend detection on Windows
-    - PY_DSS_INTERFACE_RUN_TOGETHER=true: Override to run all tests together (even on Linux/C++)
+    - PY_DSS_INTERFACE_RUN_TOGETHER=true: Override to run all tests together
+      (even on Linux/macOS/C++)
     - _PY_DSS_INTERFACE_IN_SUBPROCESS=true: Internal flag to prevent recursion
 
-    On Linux, tests automatically run individually since Linux always uses C++.
-    On Windows, individual execution is triggered when C++ backend is detected.
+    On Linux and macOS, tests run individually since both always use C++.
+    On Windows, individual execution triggers when the C++ backend is detected.
     """
     # CRITICAL: Prevent recursion - if we're already in a subprocess, don't run individually again
     if os.environ.get('_PY_DSS_INTERFACE_IN_SUBPROCESS', '').lower() == 'true':
@@ -60,10 +71,10 @@ def _should_run_individually():
     if os.environ.get('PY_DSS_INTERFACE_RUN_TOGETHER', '').lower() == 'true':
         return False
 
-    # Check if we're on Linux (always uses C++)
-    # This should always return True on Linux systems
+    # Check if we're on Linux or macOS (both always use C++ and have the same
+    # OpenDSS C++ memory leak behavior across DSS() instantiations).
     detected_platform = System.detect_platform()
-    if detected_platform == 'Linux':
+    if detected_platform in ('Linux', 'Darwin'):
         return True
 
     # Check if Windows C++ backend is being used
@@ -138,8 +149,9 @@ def solve_snap_13bus():
 
 def pytest_runtest_protocol(item, nextitem):
     """
-    Pytest hook that runs each test individually when on Linux or C++ backend.
-    This prevents memory leak issues when running multiple tests together.
+    Pytest hook that runs each test individually on Linux, macOS, or with the
+    C++ backend on Windows. This prevents memory leak issues when running
+    multiple tests together.
 
     Returns:
         True: Test was handled (ran in subprocess), pytest will skip normal execution
@@ -292,79 +304,45 @@ def pytest_runtest_protocol(item, nextitem):
             # This is the key: subprocess isolation = automatic memory cleanup
         )
 
-        # Display the output (quiet mode already reduces verbosity)
-        # Extract just the result (PASSED/FAILED) from output
-        # Filter out pytest session headers and collection messages
+        # Walk subprocess stdout and extract the pytest result token from the
+        # per-test result line. Anchored regex avoids false matches on
+        # tracebacks and test names that contain "ERROR" or "FAILED".
+        test_result = None
+        error_details = []
         if result.stdout:
-            output_lines = result.stdout.split('\n')
-            test_result = None
-            error_details = []
-
-            for line in output_lines:
-                # Skip session headers and collection messages
-                if any(skip in line.lower() for skip in [
-                    'test session starts',
-                    'collecting',
-                    'collected',
-                    'platform',
-                    'rootdir',
-                    'configfile',
-                    'plugins',
-                    '====='
-                ]):
+            for line in result.stdout.split('\n'):
+                stripped = line.rstrip()
+                m = _RESULT_RE.search(stripped)
+                if m:
+                    test_result = m.group(1)
                     continue
+                lower = stripped.lower()
+                if 'assert' in lower or 'exception' in lower or 'traceback' in lower:
+                    error_details.append(stripped.strip())
 
-                # Look for test results
-                if 'PASSED' in line:
-                    test_result = 'PASSED'
-                elif 'FAILED' in line:
-                    test_result = 'FAILED'
-                    # Capture failure details
-                    if 'FAILED' in line or 'assert' in line.lower():
-                        error_details.append(line.strip())
-                elif 'ERROR' in line:
-                    test_result = 'ERROR'
-                    # Capture error details
-                    if 'ERROR' in line or 'exception' in line.lower():
-                        error_details.append(line.strip())
-                elif line.strip() and test_result is None:
-                    # Check if this looks like an error line
-                    if any(keyword in line.lower() for keyword in ['error', 'exception', 'traceback']):
-                        error_details.append(line.strip())
+        # Decide the bucket. If the regex didn't fire, trust the subprocess
+        # exit code: 0 -> passed, anything else -> error.
+        if test_result is None:
+            test_result = 'PASSED' if result.returncode == 0 else 'ERROR'
 
-            # Display result
-            if test_result:
-                sys.stdout.write(f"{test_result}\n")
-                # Track test result
-                if test_result == 'PASSED':
-                    _test_results['passed'].append(test_display_name)
-                elif test_result == 'FAILED':
-                    _test_results['failed'].append(test_display_name)
-                elif test_result == 'ERROR':
-                    _test_results['error'].append(test_display_name)
-                # Show error details if any
-                if error_details and test_result != 'PASSED':
-                    for detail in error_details[:3]:  # Limit to first 3 lines
-                        if detail:
-                            sys.stderr.write(f"  {detail}\n")
-            else:
-                # If no result found but exit code is 0, assume passed
-                if result.returncode == 0:
-                    sys.stdout.write('.\n')
-                    _test_results['passed'].append(test_display_name)
-                else:
-                    sys.stdout.write('ERROR\n')
-                    _test_results['error'].append(test_display_name)
-            sys.stdout.flush()
+        if test_result in ('PASSED', 'XFAIL', 'XPASS'):
+            sys.stdout.write(f"{test_result}\n")
+            _test_results['passed'].append(test_display_name)
+        elif test_result == 'SKIPPED':
+            sys.stdout.write("SKIPPED\n")
+            _test_results['skipped'].append(test_display_name)
+        elif test_result == 'FAILED':
+            sys.stdout.write("FAILED\n")
+            _test_results['failed'].append(test_display_name)
         else:
-            # No output - check return code
-            if result.returncode == 0:
-                sys.stdout.write('.\n')
-                _test_results['passed'].append(test_display_name)
-            else:
-                sys.stdout.write('ERROR\n')
-                _test_results['error'].append(test_display_name)
-            sys.stdout.flush()
+            sys.stdout.write("ERROR\n")
+            _test_results['error'].append(test_display_name)
+
+        if error_details and test_result not in ('PASSED', 'XFAIL', 'XPASS', 'SKIPPED'):
+            for detail in error_details[:3]:
+                if detail:
+                    sys.stderr.write(f"  {detail}\n")
+        sys.stdout.flush()
 
         if result.stderr:
             # Only show stderr if it's not already captured in error_details
